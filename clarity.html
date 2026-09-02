@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Ясность — ценность и форматы работы · Discovery System</title>
+<meta name="description" content="Не подписка на чужое — своя система, которая твоя. Консалтинг, инфопродукты и опциональное внедрение. Цены прозрачные, разбор ни к чему не обязывает."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111524;--surface:rgba(255,255,255,.06);--surface-2:rgba(255,255,255,.09);--line:rgba(255,255,255,.1);--line-soft:rgba(255,255,255,.07);--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--accent:#7bc4ff;--accent-2:#a5b4ff;--accent-soft:rgba(123,196,255,.12);--ok:#5ed9a8;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.16,1,.3,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.bg-fx{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(1200px 600px at 68% -4%,rgba(123,196,255,.08),transparent 60%),radial-gradient(900px 700px at -8% 30%,rgba(139,157,255,.045),transparent 55%),linear-gradient(180deg,#111524,#161a2e)}
+a{text-decoration:none;color:inherit}::selection{background:rgba(123,196,255,.25)}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 48px}section{padding:120px 0}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:500;display:inline-block}
+h1{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:22px 0 28px;max-width:20em}
+h1 em{font-style:normal;background:linear-gradient(95deg,var(--accent) 30%,var(--accent-2) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-.022em;line-height:1.1;margin-bottom:16px}
+h3{font-family:var(--display);font-size:1.15rem;font-weight:600}
+p.lead{color:var(--body);font-size:clamp(1rem,1.3vw,1.12rem);max-width:36em;line-height:1.7}
+.sub{color:var(--meta);font-size:14.5px;max-width:34em;margin-top:8px}
+header{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px}.brand b{font-family:var(--display);font-weight:700;font-size:15px}.brand span{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:var(--body);font-size:14px;transition:color .2s var(--ease)}.nav-links a:hover{color:var(--accent)}.nav-links .cta{color:var(--accent);font-weight:500}
+.btn{display:inline-block;background:linear-gradient(180deg,var(--accent),#5da8e8);color:#0a0d18;border:none;border-radius:10px;font-family:var(--display);font-size:15px;font-weight:600;padding:14px 30px;cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease);box-shadow:0 8px 32px rgba(123,196,255,.26),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 40px rgba(123,196,255,.38)}
+.btn-ghost{display:inline-block;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;font-family:var(--display);font-size:14px;font-weight:500;padding:12px 24px;cursor:pointer;transition:border-color .2s,background .2s}
+.btn-ghost:hover{border-color:rgba(123,196,255,.4);background:var(--surface-2)}
+.sec-head{margin-bottom:56px}
+/* инфопродукты */
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:56px}
+.prod-card{background:linear-gradient(135deg,rgba(123,196,255,.06),rgba(165,180,255,.02));border:1px solid rgba(123,196,255,.18);border-radius:16px;padding:32px 34px}
+.prod-card .pc-tag{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.06em;display:block;margin-bottom:10px}
+.prod-card h3{font-size:1.2rem;margin-bottom:10px}
+.prod-card p{font-size:14.5px;color:var(--body);line-height:1.6;margin-bottom:14px}
+.prod-card .pc-price{font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--accent)}
+.prod-card .pc-price small{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400;display:block;margin-top:2px}
+/* доказательство */
+.proof-strip{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:56px}
+.proof-item{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:24px 28px}
+.proof-item .pi-place{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.06em;margin-bottom:6px;display:block}
+.proof-item .pi-result{font-family:var(--display);font-size:1.5rem;font-weight:800;color:var(--accent);letter-spacing:-.02em;margin-bottom:6px}
+.proof-item p{font-size:13.5px;color:var(--body);line-height:1.55}
+/* внедрение — опционально */
+.impl-block{background:var(--surface);border:1px solid var(--line-soft);border-radius:16px;padding:36px 40px;text-align:center}
+.impl-block .impl-kicker{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;display:block}
+.impl-block h3{font-size:1.3rem;margin-bottom:10px}
+.impl-block p{font-size:14px;color:var(--meta);line-height:1.6;max-width:32em;margin:0 auto 20px}
+.impl-block .impl-note{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:16px;display:block}
+/* CTA */
+.cta-block{margin-top:48px}
+footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line-soft);padding-top:32px;flex-wrap:wrap;gap:16px}
+.foot .meta{font-family:var(--mono);font-size:11px;color:var(--faint)}.foot nav{display:flex;gap:24px}.foot a{color:var(--meta);font-size:13.5px}.foot a:hover{color:var(--accent)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media(max-width:900px){.wrap{padding:0 24px}.products-grid,.proof-strip{grid-template-columns:1fr}.nav-links{display:none}section{padding:80px 0}}
+</style>
+</head>
+<body>
+<div class="bg-fx"></div>
+<header><div class="wrap nav">
+  <div class="brand"><img src="logo-nav.png" alt="" style="width:22px;height:22px;border-radius:5px;flex-shrink:0"/><b>discovery system</b><span>// рыночная разведка</span></div>
+  <nav class="nav-links">
+    <a href="index.html">главная</a>
+    <a href="market.html">рынок</a>
+    <a href="system.html">система</a>
+    <a href="channel.html">канал</a>
+    <a class="cta" href="calculator.html">Калькулятор ↗</a>
+  </nav>
+</div></header>
+
+<section style="padding-top:100px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">ясность · офферы</div>
+      <h1>Сначала цена.<br/><em>Потом решение.</em></h1>
+      <p class="lead">Узнай стоимость своей системы в калькуляторе — бесплатно, за 60 секунд. После расчёта выбери: собрать самому с гайдом, заказать готовую сборку или подписаться на сигналы рынка.</p>
+    </div>
+
+    <!-- ГЛАВНОЕ: КАЛЬКУЛЯТОР -->
+    <div class="prod-card rv" style="margin-bottom:40px">
+      <span class="pc-tag">бесплатно · без регистрации</span>
+      <h3>Калькулятор стоимости ИИ-агента</h3>
+      <p>7 вопросов — конкретная цена твоей системы в месяц. Модель, хостинг, интеграции. После расчёта — три варианта забрать результат.</p>
+      <div class="pc-price">0 ₽<small>без регистрации · 60 секунд</small></div>
+      <a class="btn" href="calculator.html" style="margin-top:16px">Узнать стоимость →</a>
+    </div>
+
+    <!-- ВАРИАНТЫ ПОСЛЕ КАЛЬКУЛЯТОРА -->
+    <div class="sec-head rv" style="margin-top:48px">
+      <div class="kicker">забрать результат</div>
+      <h2>Три варианта — после расчёта</h2>
+      <p class="sub">Что получаешь: конфигурацию под твою связку, таблицу из 20 сборок или сигналы рынка. Что отдаёшь: 3 000–5 000 ₽ разово или 0 ₽ за подписку.</p>
+    </div>
+
+    <div class="products-grid">
+      <div class="prod-card rv">
+        <span class="pc-tag">сборка</span>
+        <h3>Конфигурация под твою связку</h3>
+        <p>Модель с обоснованием, промпты, пошаговая установка, месячные расходы — под выбранный в калькуляторе стек. Правки включены.</p>
+        <div class="pc-price">5 000 ₽<small>разово · сборка 24 часа</small></div>
+      </div>
+      <div class="prod-card rv" style="transition-delay:.06s">
+        <span class="pc-tag">самостоятельно</span>
+        <h3>Гайд: 20 конфигураций ИИ-агента</h3>
+        <p>Все связки в одной таблице: модель, стек, промпты, провайдеры РФ и зарубежные. Для тех, кто хочет собрать сам, но не тратить недели на исследование.</p>
+        <div class="pc-price">3 000 ₽<small>разово · PDF + таблица</small></div>
+      </div>
+    </div>
+
+    <div class="prod-card rv" style="margin-top:20px">
+      <span class="pc-tag">бесплатно</span>
+      <h3>Подписка на канал «Discovery System»</h3>
+      <p>Сигналы рынка ИИ-агентов с источниками и датами. Что заметить, что проверить, что забрать в работу. Чтобы не упустить момент.</p>
+      <div class="pc-price">0 ₽<small>Telegram · 2–3 раза в неделю</small></div>
+      <a class="btn-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener" style="margin-top:16px;display:inline-block">Подписаться →</a>
+    </div>
+
+    <!-- ДОКАЗАТЕЛЬСТВО -->
+    <div class="sec-head rv" style="margin-top:48px">
+      <div class="kicker">почему мне можно доверять</div>
+      <h2>Два раза приходил первым</h2>
+      <p class="sub">Разные задачи — одна методология: проверить, не поверить. Та же логика работает для твоей связки.</p>
+    </div>
+
+    <div class="proof-strip">
+      <div class="proof-item rv">
+        <span class="pi-place">WorkWay · AI-HR-Tech · B2B SaaS</span>
+        <div class="pi-result">20 → 80%</div>
+        <p>Первый PM на нулевой стадии. AI-скоринг кандидатов 20→80% через промпт-инжиниринг. Фаундер пересмотрел стратегию по моим рекомендациям.</p>
+      </div>
+      <div class="proof-item rv" style="transition-delay:.06s">
+        <span class="pi-place">Chill Music Lab · 4M MAU · YouTube</span>
+        <div class="pi-result">+16% выручки</div>
+        <p>Первый ресёрcher бренда. A/B-сервис с нуля → данные выявили 4 виральных видео → +16% к годовой выручке. Конкуренты копируют формат.</p>
+      </div>
+    </div>
+
+    <!-- КОНСАЛТИНГ — МЕЛКИЙ БЛОК -->
+    <div class="impl-block rv" style="margin-top:48px">
+      <span class="impl-kicker">опционально · для тех, кто хочет разбор</span>
+      <h3>Аудит или стратегия — если нужен разбор</h3>
+      <p>Не обязательно. Если после калькулятора нужен глубокий разбор задачи — есть два формата. Аудит задачи и связки — 7 000 ₽, продуктовая стратегия ИИ — 15 000 ₽. Цена явная, разбор ни к чему не обязывает.</p>
+      <a class="btn-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Спросить про разбор →</a>
+      <span class="impl-note">консалтинг не обязывает к внедрению · цена фиксированная</span>
+    </div>
+
+  </div>
+</section>
+
+<footer><div class="wrap foot">
+  <span class="meta">discovery system // собери свою систему · 2026</span>
+  <nav><a href="index.html">Главная</a><a href="market.html">Рынок</a><a href="system.html">Система</a><a href="calculator.html">Калькулятор</a><a href="channel.html">Канал</a></nav>
+</div></footer>
+<script>const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.rv').forEach(el=>io.observe(el));</script>
+</body></html>

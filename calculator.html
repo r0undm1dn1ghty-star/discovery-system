@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discovery System — Сколько стоит твой ИИ-агент</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#111524; --bg2:#161a2e; --bg3:#111524;
+    --panel:#161b2e; --panel2:#1a2036; --line:#1e2636; --line2:#232a3a;
+    --txt:#eef2f9; --muted:#b8c3d6; --dim:#8893a8; --faint:#5a6275;
+    --primary:#7bc4ff; --primary-l:#a5b4ff; --primary-dim:rgba(123,196,255,.12); --primary-line:rgba(123,196,255,.25);
+    --up:#5ed9a8; --mid:#f2b665; --down:#ff5c5c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:880px;margin:0 auto;padding:28px 18px 70px}
+  .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+  .brand{font-size:14px;font-weight:700;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+  .brand b{color:var(--primary-l);font-weight:800}
+  .head .chip{font-size:12px;color:var(--muted);background:var(--panel2);border:1px solid var(--line2);padding:5px 12px;border-radius:20px}
+  .hero{padding:20px 0 2px}
+  .hero h1{font-size:clamp(26px,4.2vw,38px);font-weight:800;letter-spacing:-.5px;margin-bottom:12px;line-height:1.15}
+  .hero h1 em{font-style:normal;color:var(--primary-l)}
+  .hero p{color:var(--muted);max-width:660px;font-size:15px;line-height:1.6}
+  .steps{display:flex;gap:5px;margin:20px 0 24px;flex-wrap:wrap}
+  .steps .step{flex:1;min-width:24px;height:3px;border-radius:999px;background:var(--line);transition:.3s}
+  .steps .step.done{background:var(--primary)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 28px}
+  .step-num{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--primary-l);text-transform:uppercase;margin-bottom:6px}
+  .card h2{font-size:21px;font-weight:800;margin-bottom:8px;letter-spacing:-.2px}
+  .card .sub{color:var(--muted);font-size:14.5px;margin-bottom:20px;max-width:600px;line-height:1.55}
+  .count{color:var(--dim);font-size:12px;font-weight:600;margin-left:6px}
+  .opts,.tasks,.conns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .opt,.task,.conn{position:relative;border:1px solid var(--line2);border-radius:12px;padding:13px 15px;cursor:pointer;background:var(--panel2);transition:.15s;display:flex;gap:12px;align-items:flex-start}
+  .opt:hover,.task:hover,.conn:hover{border-color:var(--primary);background:#1a2130}
+  .opt.selected,.task.selected,.conn.selected{border-color:var(--primary);background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(167,139,250,.06));box-shadow:0 0 0 1px var(--primary) inset}
+  .ic{flex-shrink:0;width:34px;height:34px;border-radius:9px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);display:flex;align-items:center;justify-content:center}
+  .ic svg{width:18px;height:18px;stroke:var(--primary-l);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .opt.selected .ic,.task.selected .ic,.conn.selected .ic{background:var(--primary);border-color:var(--primary)}
+  .opt.selected .ic svg,.task.selected .ic svg,.conn.selected .ic svg{stroke:#fff}
+  .opt .body,.task .body,.conn .body{flex:1;min-width:0}
+  .opt .t,.task .t,.conn .t{font-weight:600;font-size:14px}
+  .opt .d,.task .d,.conn .d{font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+  .opt .tag,.task .econ{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;margin-top:7px;color:var(--up);background:#0f1f1a;border:1px solid #1f3d33}
+  .opt.selected .tag,.task.selected .econ{color:#fff;background:var(--primary);border-color:var(--primary)}
+  .row{display:flex;flex-wrap:wrap;gap:8px}
+  .pill{border:1px solid var(--line2);border-radius:999px;padding:9px 15px;cursor:pointer;background:var(--panel2);font-size:14px;color:var(--txt);transition:.15s}
+  .pill:hover{border-color:var(--primary)}
+  .pill.selected{border-color:var(--primary);background:var(--primary-dim);color:#fff;box-shadow:0 0 0 1px var(--primary) inset}
+  .subblock{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+  .subblock h4{font-size:12px;font-weight:700;letter-spacing:1.2px;color:var(--dim);text-transform:uppercase;margin-bottom:12px}
+  .nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}
+  .btn{border:none;border-radius:10px;padding:13px 24px;font-size:15px;font-weight:600;cursor:pointer;transition:.15s;font-family:inherit}
+  .btn-ghost{background:var(--panel2);color:var(--txt);border:1px solid var(--line2)}
+  .btn-ghost:hover{background:#1a2130}
+  .btn-ghost:disabled{opacity:.3;cursor:not-allowed}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-primary:hover{background:var(--primary-l);transform:translateY(-1px)}
+  .btn-block{width:100%}
+  .steps-count{color:var(--dim);font-size:13px;font-weight:500}
+  .livebar{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.92);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;padding:10px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .livebar .lbl{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+  .livebar .val{font-size:20px;font-weight:800;color:var(--up)}
+  .livebar .val span{font-size:12px;color:var(--muted);font-weight:500}
+  .livebar .hint{font-size:12px;color:var(--muted)}
+  .result{display:none}
+  .result.show{display:block}
+  .rcard{background:linear-gradient(160deg,var(--bg2) 0%,var(--bg3) 60%,var(--bg2) 100%);border:1px solid var(--line);border-radius:16px;padding:32px;position:relative;overflow:hidden}
+  .rcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--primary-l))}
+  .aha-tag{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--primary-l);text-transform:uppercase;margin-bottom:14px}
+  .aha-title{font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.4px;line-height:1.2;margin-bottom:14px}
+  .aha-title em{font-style:normal;color:var(--primary-l)}
+  .aha-desc{font-size:15px;color:var(--muted);line-height:1.6;margin-bottom:24px;max-width:620px}
+  .hero-number{display:flex;align-items:center;gap:28px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:24px;flex-wrap:wrap}
+  .big-money{font-size:50px;font-weight:800;color:var(--up);letter-spacing:-1px;line-height:1}
+  .big-money span{font-size:17px;font-weight:600;color:var(--muted);margin-left:6px}
+  .hero-side{flex:1;min-width:220px}
+  .hero-side .saving{font-size:17px;font-weight:700;margin-bottom:4px}
+  .hero-side .saving-note{font-size:13.5px;color:var(--muted);line-height:1.5}
+  .spec{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:14px}
+  .spec .row2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+  .spec .name{font-size:16px;font-weight:700}
+  .spec .name span{font-size:12px;font-weight:600;color:var(--primary-l);letter-spacing:1px;text-transform:uppercase;margin-left:8px}
+  .spec ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px}
+  .spec li{font-size:13.5px;color:var(--muted);padding:4px 0;display:flex;gap:8px;align-items:flex-start}
+  .spec li svg{width:14px;height:14px;stroke:var(--up);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
+  .spec li b{color:var(--txt);font-weight:600}
+  .offer{background:linear-gradient(135deg,var(--primary-dim) 0%,var(--panel) 60%);border:1px solid var(--primary-line);border-radius:16px;padding:30px;margin-top:18px}
+  .offer .offer-tag{font-size:12px;font-weight:700;letter-spacing:1.5px;color:var(--primary-l);text-transform:uppercase;margin-bottom:10px}
+  .offer h3{font-size:19px;font-weight:800;margin-bottom:8px}
+  .offer .why{font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+  .offer .why b{color:var(--txt)}
+  .offer-opt{border:1px solid var(--primary-line);border-radius:12px;padding:20px;background:rgba(139,92,246,.08);margin-bottom:16px}
+  .o-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+  .o-name{font-size:16px;font-weight:800}
+  .o-badge{font-size:11px;font-weight:700;color:var(--primary-l);background:var(--primary-dim);border:1px solid var(--primary-line);padding:3px 10px;border-radius:999px;letter-spacing:.5px;text-transform:uppercase}
+  .o-desc{font-size:13.5px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+  .o-price{font-size:26px;font-weight:800;color:#fff;margin-bottom:14px}
+  .o-price small{font-size:13px;font-weight:500;color:var(--muted)}
+  .btn-cta-ghost{background:transparent;border:1px solid var(--line2);color:var(--txt)}
+  .btn-cta-ghost:hover{background:var(--panel2)}
+  .price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+  .old{font-size:16px;color:var(--faint);text-decoration:line-through}
+  .new{font-size:34px;font-weight:800;color:#fff}
+  .new small{font-size:14px;font-weight:500;color:var(--muted)}
+  .guarantee{font-size:13px;color:var(--mid);font-weight:500;margin-bottom:18px}
+  .btn-cta{width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit}
+  .btn-cta:hover{background:var(--primary-l);transform:translateY(-1px)}
+  .sub-copy{text-align:center;font-size:12.5px;color:var(--faint);margin-top:12px}
+  .foot{text-align:center;color:var(--faint);font-size:12.5px;margin-top:32px;line-height:1.7}
+  .foot a{color:var(--primary-l);text-decoration:none}
+  .leadform{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 28px;margin-top:18px}
+  .leadform h3{font-size:18px;font-weight:800;margin-bottom:6px}
+  .leadform .sub{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .leadform input[type=email]{width:100%;background:var(--panel2);border:1px solid var(--line2);border-radius:10px;padding:14px 16px;font-size:15px;color:var(--txt);font-family:inherit;margin-bottom:12px}
+  .leadform input[type=email]:focus{outline:none;border-color:var(--primary)}
+  .leadform .err{color:var(--down);font-size:13px;margin-bottom:10px;display:none}
+  .leadform .ok{color:var(--up);font-size:13px;margin-bottom:10px;display:none}
+  .leadform .privacy{font-size:12px;color:var(--faint);margin-top:10px;line-height:1.5}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--primary-line);border-radius:10px;padding:12px 20px;font-size:14px;color:var(--txt);z-index:100;display:none;box-shadow:0 8px 30px rgba(0,0,0,.5)}
+  .toast.show{display:block;animation:fadein .2s}
+  @keyframes fadein{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+  @media(max-width:640px){.opts,.tasks,.conns,.spec ul{grid-template-columns:1fr}.hero-number{gap:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="head">
+    <div class="brand"><img src="logo-nav.png" alt="" style="width:20px;height:20px;border-radius:4px;vertical-align:-4px;margin-right:6px"/>Discovery <b>System</b></div>
+    <div class="chip">калькулятор связки</div>
+  </div>
+
+  <div class="hero">
+    <h1>Сколько времени и денег забирает<br/><em>твоя рутина — посчитай за 60 секунд</em></h1>
+    <p>Узнай, сколько часов в месяц освободит твоя система и сколько она будет стоить. 7 вопросов — конкретная цифра в часах и рублях, с оплатой из РФ и без VPN. После расчёта — три варианта забрать результат.</p>
+  </div>
+
+  <div class="livebar" id="livebar">
+    <div class="lbl">Твоя связка</div>
+    <div class="val" id="livePrice">— <span>₽/мес</span></div>
+    <div class="hint" id="liveHint">заполни шаги — цена и время обновятся</div>
+  </div>
+
+  <div class="steps" id="steps"></div>
+
+  <div class="card" id="card1">
+    <div class="step-num">01 · Устройство</div>
+    <h2>Где будет жить агент?</h2>
+    <div class="sub">Определяет, потянет ли он локально или пойдёт через облако / хостинг.</div>
+    <div class="opts" id="deviceOpts"></div>
+  </div>
+
+  <div class="card" id="card2" style="display:none">
+    <div class="step-num">02 · Цель</div>
+    <h2>Что хочешь получить?<span class="count">главное</span></h2>
+    <div class="sub">Подстроим связку под результат, который ты заберёшь себе.</div>
+    <div class="opts" id="goalOpts"></div>
+  </div>
+
+  <div class="card" id="card3" style="display:none">
+    <div class="step-num">03 · Сценарии</div>
+    <h2>С чем агент будет работать?<span class="count">несколько</span></h2>
+    <div class="sub">Что ты делаешь руками — это он заберёт.</div>
+    <div class="tasks" id="taskOpts"></div>
+  </div>
+
+  <div class="card" id="card4" style="display:none">
+    <div class="step-num">04 · Автономность</div>
+    <h2>Насколько сам он работает?</h2>
+    <div class="sub">Чем выше — тем больше умеет и тем дороже.</div>
+    <div class="opts" id="autoOpts"></div>
+  </div>
+
+  <div class="card" id="card5" style="display:none">
+    <div class="step-num">05 · Подключения</div>
+    <h2>Что подключить?<span class="count">несколько</span></h2>
+    <div class="sub">Куда агент получит доступ, чтобы работать не в вакууме.</div>
+    <div class="conns" id="connOpts"></div>
+  </div>
+
+  <div class="card" id="card6" style="display:none">
+    <div class="step-num">06 · Данные и оплата</div>
+    <h2>Где хранить и как платить?</h2>
+    <div class="sub">Учитываем РФ-реалии: хранение данных и оплату из России.</div>
+    <div class="subblock">
+      <h4>Где хранить данные</h4>
+      <div class="opts" id="dataOpts"></div>
+    </div>
+    <div class="subblock">
+      <h4>Как будешь платить</h4>
+      <div class="opts" id="payOpts"></div>
+    </div>
+  </div>
+
+  <div class="card" id="card7" style="display:none">
+    <div class="step-num">07 · Бюджет</div>
+    <h2>Сколько в месяц?</h2>
+    <div class="sub">Даже 0 ₽ работает — соберём бесплатный старт.</div>
+    <div class="row" id="budgetOpts"></div>
+  </div>
+
+  <div class="nav">
+    <button class="btn btn-ghost" id="backBtn" onclick="go(-1)">← Назад</button>
+    <span class="steps-count" id="stepsCount"></span>
+    <button class="btn btn-primary" id="nextBtn" onclick="next()">Далее →</button>
+  </div>
+
+  <div class="result" id="result">
+    <div class="rcard">
+      <div class="aha-tag">Твоя связка готова</div>
+      <div class="aha-title" id="ahaTitle"></div>
+      <div class="aha-desc" id="ahaDesc"></div>
+      <div class="hero-number">
+        <div class="big-money" id="ahaCost">—</div>
+        <div class="hero-side">
+          <div class="saving" id="ahaSaving"></div>
+          <div class="saving-note" id="ahaSavingNote"></div>
+        </div>
+      </div>
+      <div class="spec" id="specBox">
+        <div class="row2"><div class="name" id="specName"></div></div>
+        <ul id="specList"></ul>
+      </div>
+    </div>
+
+    <div class="offer" id="offerBox" style="display:none">
+      <div class="offer-tag">Забрать результат</div>
+      <div class="offer-opt">
+        <div class="o-top"><div class="o-name">Конфигурация под твою связку</div><span class="o-badge">сборка 24 часа</span></div>
+        <div class="o-desc">Модель с обоснованием, промпты, пошаговая установка, месячные расходы — под выбранный тобой стек. Правки включены.</div>
+        <div class="o-price">5 000 ₽ <small>разово</small></div>
+        <button class="btn-cta" onclick="goCheckout('config')">Собрать конфигурацию →</button>
+      </div>
+      <div class="offer-opt">
+        <div class="o-top"><div class="o-name">Вся таблица: 20 конфигураций</div></div>
+        <div class="o-desc">Все связки с моделями и промптами — соберёшь сам. Доступ навсегда, обновления тарифов 2026.</div>
+        <div class="o-price">3 000 ₽ <small>разово</small></div>
+        <button class="btn-cta btn-cta-ghost" onclick="goCheckout('table')">Выбрать таблицу →</button>
+      </div>
+      <div class="offer-opt">
+        <div class="o-top"><div class="o-name">Подписка на канал Discovery System</div></div>
+        <div class="o-desc">Сигналы рынка ИИ-агентов с источниками и датами. Что заметить, что проверить, что забрать в работу. Чтобы не упустить момент.</div>
+        <div class="o-price">0 ₽ <small>Telegram · бесплатно</small></div>
+        <a class="btn-cta btn-cta-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">Подписаться на канал →</a>
+      </div>
+      <div class="sub-copy">Модели и сервер оплачиваешь провайдерам отдельно: от 0₽ (бесплатный старт) до ~1 400 ₽/мес с API-провайдером. Мы отдаём проверенную сборку.</div>
+    </div>
+
+    <div class="leadform" id="leadForm" style="display:none">
+      <h3>Куда прислать документ?</h3>
+      <div class="sub">Email нужен для доставки: конфигурация или таблица придут туда.</div>
+      <input type="email" id="leadEmail" placeholder="твой@email.ru" autocomplete="email">
+      <div class="err" id="leadErr">Введи корректный email</div>
+      <div class="ok" id="leadOk">Email сохранён — жми кнопку варианта выше.</div>
+      <button class="btn btn-primary btn-block" id="leadBtn" onclick="saveLeadAndContinue()">Сохранить и продолжить →</button>
+      <div class="privacy">Никакого спама. Только доставка и обновления тарифов. Отписка в один клик.</div>
+    </div>
+
+    <div class="foot">
+      Расчёт ориентировочный, на основе тарифов 2026. Цена зависит от модели, автономности и подключений.<br>
+      Discovery System · <a href="index.html">Главная</a> · <a href="market.html">Рынок</a> · <a href="system.html">Система</a> · <a href="clarity.html">Ясность</a> · <a href="channel.html">Канал</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ========== SVG ICONS ========== */
+const ICONS={
+  laptop:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>',
+  gpu:'<svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>',
+  server:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>',
+  phone:'<svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>',
+  rocket:'<svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8-.8-.7-2-.7-3 0z"/><path d="M12 15l-3-3c1-4 4-8 9-9 0 5-4 8-9 9z"/><path d="M9 12H4s.5-3 2-4.5C8 6 12 6 12 6"/><path d="M12 15v5s3-.5 4.5-2c1.5-1.5 1.5-5.5 1.5-5.5"/></svg>',
+  money:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c-.5-1-1.7-1.5-3-1.5-1.4 0-2.5.7-2.5 1.8 0 2.7 5.5 1.3 5.5 4 0 1.2-1.2 1.9-2.7 1.9-1.4 0-2.6-.6-3-1.7"/></svg>',
+  pen:'<svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>',
+  brain:'<svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 0 7 4.5v.6A2.5 2.5 0 0 0 4.5 7.5c0 .5.15 1 .4 1.4A2.5 2.5 0 0 0 5 13.5 2.5 2.5 0 0 0 7 18v1.5A2.5 2.5 0 0 0 9.5 22c.9 0 1.7-.5 2.1-1.2.4.7 1.2 1.2 2.1 1.2a2.5 2.5 0 0 0 2.5-2.5V18a2.5 2.5 0 0 0 2-4.5c.25-.4.4-.9.4-1.4a2.5 2.5 0 0 0-2.9-2.5v-.6A2.5 2.5 0 0 0 13 2c-.9 0-1.7.5-2.1 1.2A2.5 2.5 0 0 0 9.5 2z"/></svg>',
+  bot:'<svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 4v4M8 13h.01M16 13h.01M9 17c1-1 5-1 6 0"/></svg>',
+  chart:'<svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>',
+  doc:'<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>',
+  globe:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>',
+  megaphone:'<svg viewBox="0 0 24 24"><path d="M3 11l18-7v16L3 13v-2z"/><path d="M11 6v13"/></svg>',
+  phone2:'<svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>',
+  search:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+  book:'<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+  cart:'<svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>',
+  video:'<svg viewBox="0 0 24 24"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>',
+  mic:'<svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/></svg>',
+  eye:'<svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+  gear:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h.1a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+  shield:'<svg viewBox="0 0 24 24"><path d="M12 22s8-3 8-10V5l-8-3-8 3v7c0 7 8 10 8 10z"/></svg>',
+  card:'<svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>',
+  lock:'<svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>',
+  cloud:'<svg viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.6 1.5A4 4 0 0 0 7 19h10.5z"/></svg>',
+  check:'<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>',
+  zap:'<svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+  refresh:'<svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6"/></svg>',
+  wallet:'<svg viewBox="0 0 24 24"><path d="M20 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-2"/><path d="M21 12a1 1 0 0 0-1-1h-4a2 2 0 0 0 0 4h4a1 1 0 0 0 1-1v-2z"/></svg>',
+  home:'<svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>',
+  users:'<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>',
+  calendar:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+  sparkles:'<svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15z"/></svg>'
+};
+function ic(name){return '<div class="ic">'+(ICONS[name]||ICONS.bot)+'</div>';}
+
+/* ========== ДАННЫЕ ========== */
+const DEVICES=[
+  {id:'cpu',t:'Ноутбук / ПК без видеокарты',d:'CPU-only · облако',ic:'laptop'},
+  {id:'gpu8',t:'Видеокарта 4–8 GB',d:'слабая · только мелкие модели',ic:'gpu'},
+  {id:'gpu12',t:'Видеокарта 12–16 GB',d:'ComfyUI · модели до ~14B',ic:'gpu'},
+  {id:'gpu24',t:'Видеокарта 24 GB+',d:'RTX 4090 · большие локальные',ic:'gpu'},
+  {id:'vps',t:'Свой сервер / VPS (РФ)',d:'постоянный сервер',ic:'server'},
+  {id:'host',t:'Облачный сервер (не у меня)',d:'хостинг провайдера',ic:'cloud'},
+  {id:'phone',t:'Только телефон',d:'облако через API',ic:'phone'}
+];
+const GOALS=[
+  {id:'content',t:'Больше контента без выгорания',d:'посты, видео, тексты — без «пустого листа»',econ:20,ic:'pen'},
+  {id:'business',t:'Запустить своё дело',d:'идеи, MVP, документы, первые клиенты',econ:16,ic:'sparkles'},
+  {id:'subscription',t:'Запустить подписочный продукт',d:'первая $1000 MRR, онбординг',econ:18,ic:'wallet'},
+  {id:'finance',t:'Навести порядок в учёте',d:'отчёты, сверки, письма',econ:12,ic:'doc'},
+  {id:'life',t:'База знаний о своей жизни',d:'Obsidian, заметки, память',econ:8,ic:'book'},
+  {id:'assist',t:'Личный ассистент на все случаи',d:'тексты, планы, рутина',econ:8,ic:'bot'}
+];
+const TASKS=[
+  {id:'text',label:'Тексты и посты',d:'план, редактура, реклама',econ:8,base:'qwen',ic:'pen'},
+  {id:'design',label:'Дизайн и картинки',d:'брифы, генерация',econ:9,base:'multimodal',ic:'gpu'},
+  {id:'docs',label:'Документы и отчёты',d:'сверки, письма',econ:12,base:'deepseek',ic:'doc'},
+  {id:'data',label:'Данные и аналитика',d:'выгрузки, сводки',econ:10,base:'deepseek',ic:'chart'},
+  {id:'web',label:'Браузер / интернет',d:'сбор с сайтов, проверка',econ:8,base:'qwen',ic:'globe'},
+  {id:'social',label:'Соцсети и публикации',d:'каналы, сторис',econ:9,base:'qwen',ic:'megaphone'},
+  {id:'sales',label:'Продажи и звонки',d:'скрипты, разбор звонков',econ:12,base:'deepseek',ic:'phone2'},
+  {id:'research',label:'Исследования и резюме',d:'сбор, структура, выводы',econ:8,base:'qwen',ic:'search'}
+];
+const AUTONOMY=[
+  {id:'draft',t:'Черновики и идеи',d:'агент готовит, я проверяю',mult:1,label:'Низкая',ic:'pen'},
+  {id:'review',t:'Готовит + проверка',d:'я утверждаю перед отправкой',mult:1.25,label:'Средняя',ic:'eye'},
+  {id:'auto',t:'Работает сам',d:'делает и отправляет',mult:1.6,label:'Высокая',ic:'gear'},
+  {id:'full',t:'Автономный процесс',d:'сам ведёт и отчитывается',mult:2.0,label:'Полная',ic:'brain'}
+];
+const CONNS=[
+  {id:'tg',label:'Telegram',d:'общение, уведомления',cost:0,ic:'bot'},
+  {id:'bot',label:'Чат-бот для аудитории',d:'отвечает 24/7',cost:450,ic:'bot'},
+  {id:'pub',label:'Публикация постов',d:'соцсети, канал',cost:400,ic:'megaphone'},
+  {id:'obs',label:'Obsidian / база знаний',d:'заметки о жизни',cost:0,ic:'book'},
+  {id:'sheets',label:'Таблицы и документы',d:'Sheets, Notion',cost:250,ic:'doc'},
+  {id:'crm',label:'CRM / GetCourse / рассылки',d:'клиенты, воронки',cost:550,ic:'users'},
+  {id:'analytics',label:'Аналитика',d:'метрики, отчёты',cost:400,ic:'chart'},
+  {id:'mem',label:'Память между проектами',d:'помнит контекст',cost:150,ic:'brain'}
+];
+const DATA=[
+  {id:'local',t:'Локально — на моём устройстве',d:'полный контроль, никуда не уходит',ic:'lock'},
+  {id:'cloud',t:'В облаке — не у меня',d:'доступ откуда угодно, хостинг +цена',ic:'cloud'},
+  {id:'ru',t:'На РФ-сервере',d:'данные в России, 152-ФЗ',ic:'shield'},
+  {id:'hybrid',t:'Гибрид — чувствительное локально',d:'контроль + скорость',ic:'refresh'}
+];
+const PAY=[
+  {id:'rucard',t:'Карта РФ / СБП',d:'оплата рублями, без VPN',ic:'card'},
+  {id:'crypto',t:'Крипта',d:'USDT и другие',ic:'wallet'},
+  {id:'proxy',t:'Через посредников',d:'виртуальные карты, сервисы',ic:'refresh'},
+  {id:'payfree',t:'Только бесплатные',d:'0 ₽, лимиты',ic:'sparkles'}
+];
+const BUDGETS=[
+  {id:'free',label:'0 ₽ — бесплатно',max:0},
+  {id:'b1',label:'до 1 000 ₽',max:1000},
+  {id:'b3',label:'до 3 000 ₽',max:3000},
+  {id:'b6',label:'до 6 000 ₽',max:6000},
+  {id:'b',label:'без ограничений',max:Infinity}
+];
+const MODELS={
+  free:{cost:0,name:'Оллам-кванта · free tier',cat:'Облако',dets:['Бесплатный старт','Ограничение по объёму','Telegram / веб']},
+  local:{cost:0,name:'Локальные модели (железо твоё)',cat:'Локально',dets:['Маржинальная цена ≈0','Данные никуда не уходят','ComfyUI / Ollama / OpenClaw','Без VPN']},
+  qwen:{cost:1400,name:'Qwen 3.7 / GLM-5.x (облако)',cat:'Облако',dets:['Работает через API — без VPN','Не зависит от бана западных','Telegram / веб']},
+  deepseek:{cost:2600,name:'DeepSeek V4 Pro (облако)',cat:'Облако',dets:['Reasoning для расчётов','Read-only сверки','Человек утверждает']},
+  multimodal:{cost:1200,name:'Llama 4 / Qwen 3.5 (мульти)',cat:'Облако',dets:['Брифы и референсы','Генерация изображений']},
+  open:{cost:900,name:'OpenRouter / Groq / DeepSeek',cat:'Облако',dets:['Быстрые и дешёвые','Максимум за минимум']},
+  omnir:{cost:0,name:'OmniRoute · бесплатные РФ',cat:'Облако',dets:['Много бесплатных провайдеров','Без VPN','Один ключ'],note:'бесплатные тарифы с лимитами и перебоями'},
+  claude:{cost:0,name:'Claude (твоя подписка ~$20/мес)',cat:'Подписка',dets:['Ты уже платишь','Доп. трата на агент = 0','Сильный в коде, для бизнес-процессов ограничен']},
+  chatgpt:{cost:0,name:'ChatGPT (твоя подписка ~$20/мес)',cat:'Подписка',dets:['Ты уже платишь','Доп. трата на агент = 0','Бесплатного API нет','Сильный в тексте и коде']},
+  hybrid:{cost:1000,name:'Гибрид VPS + API',cat:'Гибрид',dets:['Локально для черновиков','API для сложных','Безопасный контур']}
+};
+
+/* ====== STATE ====== */
+let device=null,goal=null,tasks=[],autonomy=null,conns=[],data=null,pay=null,budget=null;
+let step=1; const N=7;
+
+/* ========== RENDER ========== */
+function renderSteps(){
+  let h='';for(let i=1;i<=N;i++)h+=`<div class="step ${i<=step?'done':''}"></div>`;
+  document.getElementById('steps').innerHTML=h;
+}
+function renderCards(){
+  document.getElementById('deviceOpts').innerHTML=DEVICES.map(d=>`<div class="opt ${device===d.id?'selected':''}" onclick="device='${d.id}';pickOption();">${ic(d.ic)}<div class="body"><div class="t">${d.t}</div><div class="d">${d.d}</div></div></div>`).join('');
+  document.getElementById('goalOpts').innerHTML=GOALS.map(g=>`<div class="opt ${goal===g.id?'selected':''}" onclick="goal='${g.id}';pickOption();">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">+${days(g.econ)}</div></div></div>`).join('');
+  document.getElementById('taskOpts').innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">+${days(t.econ)}</div></div></div>`).join('');
+  document.getElementById('autoOpts').innerHTML=AUTONOMY.map(a=>`<div class="opt ${autonomy===a.id?'selected':''}" onclick="autonomy='${a.id}';pickOption();">${ic(a.ic)}<div class="body"><div class="t">${a.label}</div><div class="d">${a.d}</div></div></div>`).join('');
+  document.getElementById('connOpts').innerHTML=CONNS.map(c=>`<div class="conn ${conns.includes(c.id)?'selected':''}" onclick="toggleConn('${c.id}')">${ic(c.ic)}<div class="body"><div class="t">${c.label}</div><div class="d">${c.d}</div></div></div>`).join('');
+  document.getElementById('dataOpts').innerHTML=DATA.map(d=>`<div class="opt ${data===d.id?'selected':''}" onclick="data='${d.id}';pickOption();">${ic(d.ic)}<div class="body"><div class="t">${d.t}</div><div class="d">${d.d}</div></div></div>`).join('');
+  document.getElementById('payOpts').innerHTML=PAY.map(p=>`<div class="opt ${pay===p.id?'selected':''}" onclick="pay='${p.id}';pickOption();">${ic(p.ic)}<div class="body"><div class="t">${p.t}</div><div class="d">${p.d}</div></div></div>`).join('');
+  document.getElementById('budgetOpts').innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
+}
+function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();stepRender();}
+function toggleConn(id){conns=conns.includes(id)?conns.filter(x=>x!==id):[...conns,id];renderCards();updateLive();stepRender();}
+function days(h){const d=h/8;return d>=1?(d%1===0?d.toFixed(0):d.toFixed(1))+' дн/мес':Math.round(d*8)+' ч/мес';}
+
+/* ========== LIVE PRICE ========== */
+function estimate(){
+  if(!device||!goal||!autonomy||!budget)return null;
+  const g=GOALS.find(x=>x.id===goal);
+  const b=BUDGETS.find(x=>x.id===budget);
+  const aut=AUTONOMY.find(x=>x.id===autonomy);
+  const autoMult=aut.mult;
+  let base='qwen';
+  if(tasks.includes('design')||tasks.includes('video'))base='multimodal';
+  else if(tasks.includes('docs')||tasks.includes('data')||tasks.includes('sales'))base='deepseek';
+  const localFeasible=(device==='gpu12'||device==='gpu24'||device==='vps');
+  let modelKey,cat;
+  if(b.max===0){modelKey='free';cat='Облако';}
+  else if(device==='gpu12'||device==='gpu24'){modelKey='local';cat='Локально';}
+  else if(device==='vps'){modelKey='hybrid';cat='Гибрид';}
+  else {
+    cat='Облако';
+    // подбираем модель под бюджет: если базовая дороже бюджета — берём дешевле
+    const baseKey=base==='deepseek'?'deepseek':(base==='multimodal'?'multimodal':'qwen');
+    const baseCost=MODELS[baseKey].cost;
+    if(budget==='b1'&&baseCost>1000){modelKey='open';}
+    else if(budget==='b3'&&baseCost>3000){modelKey='open';}
+    else {modelKey=baseKey;}
+  }
+  const m=MODELS[modelKey];
+  const hosting=(device==='host'||data==='cloud')?350:0;
+  const connCost=conns.reduce((s,c)=>s+CONNS.find(x=>x.id===c).cost,0);
+  let hours=g.econ; tasks.forEach(t=>hours+=TASKS.find(x=>x.id===t).econ);
+  hours=Math.round(hours*autoMult);
+  // при бюджете 0 ₽ или «только бесплатные» в оплате — бесплатный старт
+  const monthly=(b.max===0||pay==='payfree')?0:Math.round((m.cost+hosting+connCost)*autoMult);
+  return {monthly,hours,cat,modelKey};
+}
+function updateLive(){
+  const e=estimate();
+  if(!e){document.getElementById('livePrice').innerHTML='— <span>₽/мес</span>';document.getElementById('liveHint').textContent='заполни шаги — цена обновится';return;}
+  document.getElementById('livePrice').innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>₽/мес</span>';
+  const b=BUDGETS.find(x=>x.id===budget);
+  if(b&&b.max!==Infinity&&e.monthly>b.max){
+    document.getElementById('liveHint').textContent='⚠ превышает бюджет '+b.max.toLocaleString('ru-RU')+' ₽ — убери подключения';
+  }else{
+    document.getElementById('liveHint').textContent='освобождает ~'+days(e.hours)+' · '+e.cat;
+  }
+}
+
+/* ========== NAV ========== */
+function show(cardNo){
+  for(let i=1;i<=N;i++)document.getElementById('card'+i).style.display=(i===cardNo)?'':'none';
+  document.getElementById('stepsCount').textContent=step+' / '+N;
+  renderSteps();
+}
+function stepValid(){
+  if(step===1)return !!device;
+  if(step===2)return !!goal;
+  if(step===3)return tasks.length>0;
+  if(step===4)return !!autonomy;
+  if(step===5)return true; // подключения опциональны
+  if(step===6)return !!data&&!!pay;
+  if(step===7)return !!budget;
+  return true;
+}
+function stepRender(){
+  show(step);
+  document.getElementById('backBtn').style.visibility=step===1?'hidden':'visible';
+  document.getElementById('nextBtn').textContent=step===N?'Собрать связку →':'Далее →';
+  // кнопка «загорается» только когда выбор валиден
+  const valid=stepValid();
+  document.getElementById('nextBtn').disabled=!valid;
+  document.getElementById('nextBtn').style.opacity=valid?'1':'.35';
+  document.getElementById('nextBtn').style.cursor=valid?'pointer':'not-allowed';
+}
+function pickOption(){
+  if(step===1&&device){step=2;}
+  else if(step===2&&goal){step=3;}
+  else if(step===4&&autonomy){step=5;}
+  else if(step===6&&data&&pay){step=7;}
+  renderCards();   // ← подсветка выбранной опции (баг: не вызывалась)
+  updateLive();stepRender();
+}
+function go(delta){step=Math.min(N,Math.max(1,step+delta));stepRender();}
+function next(){
+  if(step===1&&!device){toast('Выбери устройство');return;}
+  if(step===2&&!goal){toast('Выбери цель');return;}
+  if(step===3&&tasks.length===0){toast('Выбери хотя бы один сценарий');return;}
+  if(step===4&&!autonomy){toast('Выбери автономность');return;}
+  if(step===6&&!data){toast('Выбери, где хранить данные');return;}
+  if(step===6&&!pay){toast('Выбери, как платить');return;}
+  if(step===7&&!budget){toast('Выбери бюджет');return;}
+  if(step<N){step++;stepRender();}
+  else calculate();
+}
+function toast(m){
+  const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+/* ========== ENGINE ========== */
+function calculate(){
+  const e=estimate();
+  if(!e)return;
+  const g=GOALS.find(x=>x.id===goal);
+  const aut=AUTONOMY.find(x=>x.id===autonomy);
+  const m=MODELS[e.modelKey];
+  const goalName=g.t;
+
+  document.getElementById('ahaTitle').innerHTML=`Твой агент — <em>«${goalName}»</em>`;
+  document.getElementById('ahaDesc').innerHTML=`Освобождает ~${days(e.hours)} и стоит ${e.monthly.toLocaleString('ru-RU')} ₽/мес. Собран под твою цель, автономность «${aut.label}». Готов работать уже сегодня.`;
+  document.getElementById('ahaCost').innerHTML=`${e.monthly.toLocaleString('ru-RU')} <span>₽/мес</span>`;
+  document.getElementById('ahaSaving').textContent=`освобождает ~${days(e.hours)}`;
+  document.getElementById('ahaSavingNote').textContent=`На «${aut.label}» автономности агент берёт на себя рутину, а ты забираешь время.`;
+
+  document.getElementById('specName').innerHTML=`Связка под «${goalName}»<span>${e.cat}</span>`;
+  const dets=[];
+  if(goal==='content')dets.push('Конвейер контента без выгорания');
+  if(goal==='subscription')dets.push('Онбординг как воронка продаж, первая $1000 MRR');
+  if(conns.includes('bot'))dets.push('Telegram-бот для аудитории 24/7');
+  if(conns.includes('obs'))dets.push('Obsidian — база знаний о жизни');
+  if(data==='ru')dets.push('Данные на РФ-сервере — 152-ФЗ');
+  if(data==='local')dets.push('Данные локально — полный контроль');
+  if(pay==='rucard')dets.push('Оплата картой РФ / СБП — без VPN');
+  if(pay==='crypto')dets.push('Оплата криптой (USDT)');
+  if(pay==='proxy')dets.push('Оплата через посредников');
+  document.getElementById('specList').innerHTML=dets.map(d=>`<li>${ic('check')}${d}</li>`).join('');
+
+  document.getElementById('result').classList.add('show');
+  // показываем оффер (варианты покупки) — раньше был скрыт навсегда
+  document.getElementById('offerBox').style.display='block';
+  document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+
+/* ========== LEAD CAPTURE + CHECKOUT ========== */
+let chosenOffer=null;
+function leadEmail(){
+  let e='';
+  try{e=(JSON.parse(localStorage.getItem('ds_lead')||'null')||{}).email||'';}catch(_){}
+  return e||document.getElementById('leadEmail').value.trim();
+}
+function goCheckout(kind){
+  chosenOffer=kind;
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail())){
+    const f=document.getElementById('leadForm');
+    f.style.display='block';
+    document.getElementById('leadErr').style.display='block';
+    document.getElementById('leadOk').style.display='none';
+    f.scrollIntoView({behavior:'smooth'});
+    document.getElementById('leadEmail').focus();
+    return;
+  }
+  proceedToCheckout();
+}
+function saveLeadAndContinue(){
+  const email=document.getElementById('leadEmail').value.trim();
+  const err=document.getElementById('leadErr'),ok=document.getElementById('leadOk');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.style.display='block';ok.style.display='none';return;}
+  err.style.display='none';
+  try{localStorage.setItem('ds_lead',JSON.stringify({email,ts:Date.now(),goal,device,monthly:estimate()?.monthly}));}catch(e){}
+  ok.style.display='block';
+  document.getElementById('leadBtn').style.display='none';
+  document.getElementById('leadEmail').style.display='none';
+  document.getElementById('leadForm').querySelector('h3').textContent='Email сохранён';
+  document.getElementById('leadForm').querySelector('.sub').textContent='Возвращайся к варианту — доставка привяжется к нему.';
+  try{if(window.gtag)gtag('event','lead_captured',{email_provided:true,goal});}catch(e){}
+  if(chosenOffer)setTimeout(proceedToCheckout,600);
+}
+function proceedToCheckout(){
+  let email='';
+  try{email=(JSON.parse(localStorage.getItem('ds_lead')||'null')||{}).email||'';}catch(_){}
+  try{localStorage.setItem('ds_order',JSON.stringify({email,ts:Date.now(),offer:chosenOffer,goal,device,monthly:estimate()?.monthly}));}catch(e){}
+  const label=chosenOffer==='config'?'Конфигурация 5 000 ₽':'Таблица 3 000 ₽';
+  toast(label+' — оформление…');
+  setTimeout(()=>toast('Сюда подключим ЮKassa / Telegram-бот — ссылку пришлю после оплаты'),1600);
+}
+
+/* ========== INIT ========== */
+renderCards();
+renderSteps();
+document.getElementById('stepsCount').textContent='1 / '+N;
+</script>
+</body>
+</html>

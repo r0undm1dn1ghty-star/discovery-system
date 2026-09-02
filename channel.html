@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Канал — сигналы рынка ИИ-агентов · Discovery System</title>
+<meta name="description" content="Полевые заметки о продуктах, агентах и решениях, которые выдерживают проверку. Сигналы с источниками."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111524;--surface:rgba(255,255,255,.06);--surface-2:rgba(255,255,255,.09);--line:rgba(255,255,255,.1);--line-soft:rgba(255,255,255,.07);--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--accent:#7bc4ff;--accent-2:#a5b4ff;--accent-soft:rgba(123,196,255,.12);--ok:#5ed9a8;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.16,1,.3,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.bg-fx{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(1200px 600px at 68% -4%,rgba(123,196,255,.08),transparent 60%),radial-gradient(900px 700px at -8% 30%,rgba(139,157,255,.045),transparent 55%),linear-gradient(180deg,#111524,#161a2e)}
+a{text-decoration:none;color:inherit}::selection{background:rgba(123,196,255,.25)}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 48px}section{padding:120px 0}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:500;display:inline-block}
+h1{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:22px 0 28px;max-width:20em}
+h1 em{font-style:normal;background:linear-gradient(95deg,var(--accent) 30%,var(--accent-2) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-.022em;line-height:1.1;margin-bottom:16px}
+h3{font-family:var(--display);font-size:1.1rem;font-weight:600}
+p.lead{color:var(--body);font-size:clamp(1rem,1.3vw,1.12rem);max-width:36em;line-height:1.7}
+.sub{color:var(--meta);font-size:14.5px;max-width:34em;margin-top:8px}
+header{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px}.brand b{font-family:var(--display);font-weight:700;font-size:15px}.brand span{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:var(--body);font-size:14px;transition:color .2s var(--ease)}.nav-links a:hover{color:var(--accent)}.nav-links .cta{color:var(--accent);font-weight:500}
+.btn{display:inline-block;background:linear-gradient(180deg,var(--accent),#5da8e8);color:#0a0d18;border:none;border-radius:10px;font-family:var(--display);font-size:15px;font-weight:600;padding:14px 30px;cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease);box-shadow:0 8px 32px rgba(123,196,255,.26),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 40px rgba(123,196,255,.38)}
+.btn-ghost{display:inline-block;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;font-family:var(--display);font-size:14px;font-weight:500;padding:12px 24px;cursor:pointer;transition:border-color .2s,background .2s}
+.btn-ghost:hover{border-color:rgba(123,196,255,.4);background:var(--surface-2)}
+.sec-head{margin-bottom:56px}
+/* форматы материалов */
+.formats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.fmt-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:28px 30px;transition:border-color .25s var(--ease)}
+.fmt-card:hover{border-color:rgba(123,196,255,.2)}
+.fmt-card .f-num{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.1em;margin-bottom:10px;display:block}
+.fmt-card h3{font-size:1.05rem;margin-bottom:8px}
+.fmt-card p{font-size:13.5px;color:var(--body);line-height:1.6}
+.fmt-card .f-tag{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:10px;display:block}
+/* live-лента сигналов */
+.feed{display:flex;flex-direction:column;gap:12px;margin-top:48px;margin-bottom:48px}
+.feed-head{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.feed-head .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:fpulse 2s ease infinite}
+@keyframes fpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.sig{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;padding:16px 22px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.sig.in{opacity:1;transform:none}
+.sig .sig-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.sig .sig-body{font-size:13.5px;color:var(--body);line-height:1.5}
+.sig .sig-body b{color:var(--ink);font-weight:600}
+.sig .sig-meta{font-family:var(--mono);font-size:10.5px;color:var(--faint);text-align:right;white-space:nowrap}
+.sig .sig-meta .sig-src{color:var(--accent);display:block}
+.cta-block{margin-top:56px;display:flex;gap:16px;flex-wrap:wrap}
+footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line-soft);padding-top:32px;flex-wrap:wrap;gap:16px}
+.foot .meta{font-family:var(--mono);font-size:11px;color:var(--faint)}.foot nav{display:flex;gap:24px}.foot a{color:var(--meta);font-size:13.5px}.foot a:hover{color:var(--accent)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media(max-width:900px){.wrap{padding:0 24px}.formats{grid-template-columns:1fr}.nav-links{display:none}section{padding:80px 0}}
+</style>
+</head>
+<body>
+<div class="bg-fx"></div>
+<header><div class="wrap nav">
+  <div class="brand"><img src="logo-nav.png" alt="" style="width:22px;height:22px;border-radius:5px;flex-shrink:0"/><b>discovery system</b><span>// рыночная разведка</span></div>
+  <nav class="nav-links">
+    <a href="index.html">главная</a>
+    <a href="market.html">рынок</a>
+    <a href="system.html">система</a>
+    <a href="clarity.html">ясность</a>
+    <a class="cta" href="calculator.html">Калькулятор ↗</a>
+  </nav>
+</div></header>
+
+<section style="padding-top:100px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">канал · live signals</div>
+      <h1>Не пропусти момент,<br/><em>когда сигнал становится решением.</em></h1>
+      <p class="lead">Короткие разборы без гонки за хайпом: что заметить, что проверить и что можно забрать себе в работу.</p>
+    </div>
+
+    <div class="formats">
+      <div class="fmt-card rv">
+        <span class="f-num">01 · ЗАМЕТИТЬ</span>
+        <h3>Сигнал</h3>
+        <p>Что изменилось в рынке и почему это касается твоего продукта, команды или следующего эксперимента.</p>
+        <span class="f-tag">с источником и датой</span>
+      </div>
+      <div class="fmt-card rv" style="transition-delay:.06s">
+        <span class="f-num">02 · ПРОВЕРИТЬ</span>
+        <h3>Доказательство</h3>
+        <p>Разделение демо, кейса и устойчивого процесса. Что выдержит проверку задачей, а что — нет.</p>
+        <span class="f-tag">метод в каждом разборе</span>
+      </div>
+      <div class="fmt-card rv" style="transition-delay:.12s">
+        <span class="f-num">03 · ЗАБРАТЬ</span>
+        <h3>Рабочая связка</h3>
+        <p>Конструкция с задачей, входами, выходами и местом для человека. Не «магия», а система.</p>
+        <span class="f-tag">можно скопировать</span>
+      </div>
+    </div>
+
+    <div class="feed">
+      <div class="feed-head"><span class="pulse"></span> live-лента · последние сигналы</div>
+      <div class="sig">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>40% ИИ-проектов закроют к 2027</b> — из-за стоимости и неясной ценности</div>
+        <div class="sig-meta">25.06.25<span class="sig-src">Gartner</span></div>
+      </div>
+      <div class="sig">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>2–3 трлн ₽ через ИИ-агентов к 2032</b> — в e-commerce</div>
+        <div class="sig-meta">21.08.26<span class="sig-src">Data Insight</span></div>
+      </div>
+      <div class="sig">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>Рынок ИИ-моделей растёт — спрос на агентов обгоняет</b></div>
+        <div class="sig-meta">2026<span class="sig-src">AIANA / Коммерсант</span></div>
+      </div>
+      <div class="sig">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>316 млрд ₽ — рынок ИИ в РФ</b>, +40% среднегодовой рост</div>
+        <div class="sig-meta">2025<span class="sig-src">AIANA / Коммерсант</span></div>
+      </div>
+    </div>
+
+    <div class="cta-block rv">
+      <a class="btn" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Подписаться на канал →</a>
+      <a class="btn-ghost" href="system.html">Сначала посмотреть систему →</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap foot">
+  <span class="meta">discovery system // собери свою систему · 2026</span>
+  <nav><a href="index.html">Главная</a><a href="market.html">Рынок</a><a href="system.html">Система</a><a href="clarity.html">Ясность</a><a href="calculator.html">Калькулятор</a></nav>
+</div></footer>
+<script>const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.rv,.sig').forEach(el=>io.observe(el));setTimeout(()=>{document.querySelectorAll('.rv:not(.in),.sig:not(.in)').forEach(el=>el.classList.add('in'));},1500);</script>
+</body></html>
