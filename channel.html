@@ -102,35 +102,35 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
 
     <div class="feed">
       <div class="feed-head"><span class="pulse"></span> live-лента · последние сигналы</div>
-      <div class="sig">
+      <div class="sig" data-date="2026-09-02">
         <span class="sig-dot"></span>
         <div class="sig-body"><b>Яндекс вывел Hermes Agent в Marketplace — от 3 642 ₽/мес</b>, без оплаты за API-ключи</div>
         <div class="sig-meta">02.09.26<span class="sig-src">Yandex Cloud</span></div>
       </div>
-      <div class="sig">
-        <span class="sig-dot"></span>
-        <div class="sig-body"><b>55 млрд ₽/год — расходы Яндекса на Алису AI</b> · 24 млн человек в неделю решают в ней задачи</div>
-        <div class="sig-meta">27.07.26<span class="sig-src">vc.ru</span></div>
-      </div>
-      <div class="sig">
+      <div class="sig" data-date="2026-09-02">
         <span class="sig-dot"></span>
         <div class="sig-body"><b>Сбер: 350 млрд ₽ в ИИ + «ГигаАгент» на ВЭФ</b> — автономный агент на GigaChat (экономика туманная)</div>
         <div class="sig-meta">02.09.26<span class="sig-src">modelora.ru</span></div>
       </div>
-      <div class="sig">
+      <div class="sig" data-date="2026-08-30">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>Личный ассистент на VPS — 6 600 ₽</b>, без VPN на телефоне: считает смену, приходы/уходы и время сотрудников</div>
+        <div class="sig-meta">30.08.26<span class="sig-src">кейс</span></div>
+      </div>
+      <div class="sig" data-date="2026-08-24">
         <span class="sig-dot"></span>
         <div class="sig-body"><b>400–850 млрд ₽ — агентная коммерция к 2028–29</b> · до 2–3 трлн к 2030–32</div>
         <div class="sig-meta">24.08.26<span class="sig-src">Data Insight</span></div>
       </div>
-      <div class="sig">
+      <div class="sig" data-date="2026-07-27">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>55 млрд ₽/год — расходы Яндекса на Алису AI</b> · 24 млн человек в неделю решают в ней задачи</div>
+        <div class="sig-meta">27.07.26<span class="sig-src">vc.ru</span></div>
+      </div>
+      <div class="sig" data-date="2026-07-01">
         <span class="sig-dot"></span>
         <div class="sig-body"><b>Вакансии с ИИ-навыками ×2,4 за 3 года</b> · запросы «внедрение ИИ» +17% г/г — единственный рост в digital</div>
         <div class="sig-meta">2026<span class="sig-src">hh.ru · eLama</span></div>
-      </div>
-      <div class="sig">
-        <span class="sig-dot"></span>
-        <div class="sig-body"><b>Личный ассистент на VPS — 6 600 ₽</b>, без VPN на телефоне: считает смену, приходы/уходы и время сотрудников</div>
-        <div class="sig-meta">08.30<span class="sig-src">кейс</span></div>
       </div>
     </div>
 
@@ -145,5 +145,5 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
   <span class="meta">discovery system // собери свою систему · 2026</span>
   <nav><a href="index.html">Главная</a><a href="market.html">Рынок</a><a href="system.html">Система</a><a href="clarity.html">Ясность</a><a href="calculator.html">Калькулятор</a></nav>
 </div></footer>
-<script>const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.rv,.sig').forEach(el=>io.observe(el));setTimeout(()=>{document.querySelectorAll('.rv:not(.in),.sig:not(.in)').forEach(el=>el.classList.add('in'));},1500);</script>
+<script>document.querySelectorAll('.feed').forEach(feed=>{const sigs=[...feed.querySelectorAll('.sig')];sigs.sort((a,b)=>(b.dataset.date||'').localeCompare(a.dataset.date||''));sigs.forEach(s=>feed.appendChild(s));});const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.rv,.sig').forEach(el=>io.observe(el));setTimeout(()=>{document.querySelectorAll('.rv:not(.in),.sig:not(.in)').forEach(el=>el.classList.add('in'));},1500);</script>
 </body></html>
