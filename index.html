@@ -70,6 +70,18 @@ header{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.85);backdrop-f
 /* hero */
 .hero{padding:140px 0 110px}
 .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.mini-calc{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+.mc-head{font-size:15px;font-weight:600;margin-bottom:18px;color:var(--ink)}
+.mc-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;margin-bottom:16px;font-size:13px;color:var(--muted)}
+.mc-row input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--accent)}
+.mc-val{font-weight:600;color:var(--ink);min-width:32px;text-align:right}
+.mc-result{background:rgba(123,196,255,.08);border:1px solid rgba(123,196,255,.2);border-radius:12px;padding:16px;margin-top:20px}
+.mc-r-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;color:var(--muted)}
+.mc-r-row:last-child{margin-bottom:0}
+.mc-r-row b{color:var(--ink)}
+.mc-r-row.mc-save{margin-top:12px;padding-top:12px;border-top:1px solid rgba(123,196,255,.15)}
+.mc-r-row.mc-save b{color:var(--accent);font-size:15px}
+.mc-foot{font-size:12px;color:var(--meta);margin-top:14px;text-align:center}
 .hero-meta{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.05em;margin-top:36px;padding-top:22px;border-top:1px solid var(--line-soft)}
 .hero-meta span{color:var(--body)}
 .signals{display:flex;flex-direction:column;gap:14px}
@@ -235,19 +247,29 @@ footer{padding:64px 0 80px}
         </div>
       </div>
       <div class="rv" style="transition-delay:.16s">
-        <div class="term" aria-label="Сборка системы">
-          <div class="tl tt">$ discovery build --market</div>
-          <div class="tl to">провайдер ...... <span class="err">✗ VPN · баны</span></div>
-          <div class="tl to">агент .......... <span class="err">✗ чужой</span></div>
-          <div class="tl to">база знаний .... <span class="err">✗ подписка</span></div>
-          <div class="tl to">gateway ........ <span class="err">✗ отвалился</span></div>
-          <div class="tl to">запрос ......... <span class="ok">✓ определён</span></div>
-          <div class="tl to dim">→ пересборка:</div>
-          <div class="tl to">провайдер ...... <span class="ok">✓ 2 000 ₽/мес</span></div>
-          <div class="tl to">агент .......... <span class="ok">✓ под задачу</span></div>
-          <div class="tl to">база знаний .... <span class="ok">✓ оцифрована · загружена</span></div>
-          <div class="tl to">gateway ........ <span class="ok">✓ telegram</span></div>
-          <div class="tl sum">система собрана · 2–4К ₽/мес</div>
+        <div class="mini-calc">
+          <div class="mc-head">Посчитай свою рутину</div>
+          <div class="mc-row">
+            <span>Задач в неделю</span>
+            <input type="range" min="1" max="20" value="5" id="mcTasks" oninput="mcUpdate()">
+            <span class="mc-val" id="mcTasksVal">5</span>
+          </div>
+          <div class="mc-row">
+            <span>Часов на задачу</span>
+            <input type="range" min="0.5" max="8" value="2" step="0.5" id="mcHours" oninput="mcUpdate()">
+            <span class="mc-val" id="mcHoursVal">2</span>
+          </div>
+          <div class="mc-row">
+            <span>Ставка в час (₽)</span>
+            <input type="range" min="500" max="5000" value="1000" step="100" id="mcRate" oninput="mcUpdate()">
+            <span class="mc-val" id="mcRateVal">1000</span>
+          </div>
+          <div class="mc-result">
+            <div class="mc-r-row"><span>Тратишь в месяц:</span><b id="mcSpend">40 000 ₽</b></div>
+            <div class="mc-r-row"><span>Время:</span><b id="mcTime">40 ч</b></div>
+            <div class="mc-r-row mc-save"><span>С агентом:</span><b id="mcSave">~2 000 ₽</b></div>
+          </div>
+          <div class="mc-foot">Агент сделает за ~2 ч · экономия ~38 000 ₽/мес</div>
         </div>
       </div>
     </div>
@@ -452,6 +474,32 @@ const bar=e.target.querySelector('.case-bar');if(bar)bar.style.width='80%';
 document.querySelectorAll('.rv,.quote').forEach(el=>io.observe(el));
 // fallback: если IO не сработал (headless, slow load) — показываем всё через 1.5с
 setTimeout(()=>{document.querySelectorAll('.rv:not(.in),.quote:not(.in)').forEach(el=>{el.classList.add('in');const bar=el.querySelector('.case-bar');if(bar)bar.style.width='80%';});},1500);
+</script>
+<script>
+// Mini calculator in hero
+function mcUpdate(){
+  const tasks = +document.getElementById('mcTasks').value;
+  const hours = +document.getElementById('mcHours').value;
+  const rate = +document.getElementById('mcRate').value;
+  
+  document.getElementById('mcTasksVal').textContent = tasks;
+  document.getElementById('mcHoursVal').textContent = hours;
+  document.getElementById('mcRateVal').textContent = rate.toLocaleString('ru-RU');
+  
+  const hoursPerMonth = tasks * hours * 4.33;
+  const spend = hoursPerMonth * rate;
+  const agentHours = tasks * 0.5 * 4.33; // агент делает задачу за 30 мин
+  const agentCost = 2000; // базовая стоимость агента
+  
+  document.getElementById('mcTime').textContent = Math.round(hoursPerMonth) + ' ч';
+  document.getElementById('mcSpend').textContent = Math.round(spend / 1000) * 1000 + ' ₽';
+  document.getElementById('mcSave').textContent = '~' + (agentCost / 1000) + ' 000 ₽';
+  
+  const saveMoney = spend - agentCost;
+  const saveTime = hoursPerMonth - agentHours;
+  document.getElementById('mcFoot').innerHTML = `Агент сделает за ~${Math.round(agentHours)} ч · экономия ~${Math.round(saveMoney / 1000)} 000 ₽/мес`;
+}
+mcUpdate();
 </script>
 </body>
 </html>
