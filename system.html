@@ -41,7 +41,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.85);backdrop-f
 .repo-card .r-go{font-family:var(--mono);font-size:13px;color:var(--accent);white-space:nowrap}
 .repo-card .r-go:hover{color:var(--ink)}
 /* терминал-установка */
-.term{background:rgba(10,14,28,.75);border:1px solid var(--line);border-radius:14px;font-family:var(--mono);font-size:12.5px;line-height:2.05;padding:24px 26px;box-shadow:0 28px 80px rgba(0,0,0,.45);white-space:pre;margin-bottom:32px}
+.term{background:rgba(10,14,28,.75);border:1px solid var(--line);border-radius:14px;font-family:var(--mono);font-size:12.5px;line-height:2.05;padding:24px 26px;box-shadow:0 28px 80px rgba(0,0,0,.45);white-space:pre-wrap;word-break:break-word;overflow-wrap:break-word;max-width:100%;overflow-x:auto;margin-bottom:32px}
+.term a{word-break:break-all}
 .term .tl{opacity:0;transform:translateY(4px);animation:tline .5s var(--ease) forwards}
 .term .tl:nth-child(1){animation-delay:.1s}.term .tl:nth-child(2){animation-delay:.4s}.term .tl:nth-child(3){animation-delay:.7s}
 .term .tl:nth-child(4){animation-delay:1s}.term .tl:nth-child(5){animation-delay:1.3s}.term .tl:nth-child(6){animation-delay:1.6s}
@@ -64,7 +65,8 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
 .foot .meta{font-family:var(--mono);font-size:11px;color:var(--faint)}.foot nav{display:flex;gap:24px}.foot a{color:var(--meta);font-size:13.5px}.foot a:hover{color:var(--accent)}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
-@media(max-width:900px){.wrap{padding:0 24px}.repo-card{grid-template-columns:1fr}.nav-links{display:none}section{padding:80px 0}}
+@media(max-width:900px){.wrap{padding:0 20px;overflow-x:hidden}.nav-links{display:none}section{padding:80px 0}h1{font-size:2rem!important;line-height:1.15;word-wrap:break-word;overflow-wrap:break-word}h2{font-size:1.6rem!important}.lead{font-size:14px!important;line-height:1.55;word-wrap:break-word;overflow-wrap:break-word}}
+@media(max-width:420px){.wrap{padding:0 16px}.brand span{display:none}h1{font-size:1.7rem!important}}
 </style>
 </head>
 <body>
@@ -84,15 +86,15 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
   <div class="wrap">
     <div class="sec-head rv">
       <div class="kicker">система · библиотека</div>
-      <h1>Идеальных инструментов не бывает - но есть проблема неинформированного подбора.<br/><em>Собирай свою подходящую связку.</em></h1>
-      <p class="lead">Три бесплатных инструмента для малого бизнеса и ИИ-предпринимателей на GitHub. Скачай, изучи, проверь логику в своей нейронке. Бесплатно и открыто.</p>
+      <h1>Не ищи идеальный инструмент.<br/><em>Ищи правильную связку.</em></h1>
+      <p class="lead">Три репозитория на GitHub — рабочие методики и инструменты. Скачай, изучи, проверь логику. Бесплатно и открыто.</p>
     </div>
     <div class="term rv" aria-label="Установка инструментов">
       <div class="tl tt">$ discovery install --tools</div>
-      <div class="tl to"><a href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted rgba(123,196,255,.4);text-underline-offset:3px">spiral-maturity</a> ...проверка стадии зрелости компании для управления изменениями <span class="ok">✓ готов</span></div>
-      <div class="tl to"><a href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted rgba(123,196,255,.4);text-underline-offset:3px">market-evidence-diagnostic</a> ...проверка утверждений о зрелости бизнес-модели компании <span class="ok">✓ готов</span></div>
-      <div class="tl to"><a href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted rgba(123,196,255,.4);text-underline-offset:3px">pnl-check</a> ...проверка управленческих данных в P&L перед принятием решений (РФ-специфика 2026) <span class="ok">✓ готов</span></div>
-      <div class="tl to dim">→ 3 навыка для ИИ-агента · 0 ₽</div>
+      <div class="tl to"><a href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted rgba(123,196,255,.4);text-underline-offset:3px">spiral-maturity</a> ........ <span class="ok">✓ готов</span></div>
+      <div class="tl to"><a href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted rgba(123,196,255,.4);text-underline-offset:3px">market-evidence-diagnostic</a> . <span class="ok">✓ готов</span></div>
+      <div class="tl to"><a href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted rgba(123,196,255,.4);text-underline-offset:3px">pnl-check</a> ............. <span class="ok">✓ готов</span></div>
+      <div class="tl to dim">→ 3 репозитория · 0 ₽</div>
       <div class="tl sum">проверь логику, не слова</div>
     </div>
 
@@ -100,7 +102,7 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
       <div class="repo-card rv">
         <div class="r-info">
           <h3>spiral-maturity</h3>
-          <p>Оценка зрелости компании: слой ценностей → управление, продукт, метрики. Инструмент на основе текущей корпоративной культуры и управленческой ситуации показывает, какие решения смогут починить систему.</p>
+          <p>Один вопрос вместо чек-листа на 50 пунктов. Оценка зрелости компании: слой ценностей → управление, продукт, метрики. Диагностика: готов ли бизнес к ИИ-агенту, или сначала нужна структура.</p>
           <div class="r-tags"><span class="r-tag">диагностика</span><span class="r-tag">зрелость</span></div>
         </div>
         <a class="r-go" href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener">GitHub ↗</a>
@@ -108,7 +110,7 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
       <div class="repo-card rv" style="transition-delay:.06s">
         <div class="r-info">
           <h3>market-evidence-diagnostic</h3>
-          <p>Оценка факторов жизнеспособности бизнес-модели через рынок: реальная проблема, конкуренты, доказательства из открытых источников. Каждый вывод — источник + дата. Для тех, кто хочет найти уязвимости в своём и чужом бизнесе.</p>
+          <p>Проверка claims бизнес-модели через рынок: реальная проблема, альтернативы, доказательства из каналов. Каждый вывод — источник + дата. Для тех, кто хочет «проверить, а не поверить».</p>
           <div class="r-tags"><span class="r-tag">рынок</span><span class="r-tag">доказательства</span></div>
         </div>
         <a class="r-go" href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener">GitHub ↗</a>
@@ -116,7 +118,7 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
       <div class="repo-card rv" style="transition-delay:.12s">
         <div class="r-info">
           <h3>pnl-check</h3>
-          <p>Оценка состояния бизнеса через анализ управленческой отчётности. Факты → сверка доходов/расходов → бриф для решения. Скилл обучен на кейсах российских компаний в 2026 году и проверен 20 миллионами симуляций Монте-Карло.</p>
+          <p>Проверка, можно ли принимать управленческое решение на текущих цифрах. Факты → сверка прибыли и денег → бриф для решения. Без угадывания и шаблонных советов.</p>
           <div class="r-tags"><span class="r-tag">финансы</span><span class="r-tag">решения</span></div>
         </div>
         <a class="r-go" href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener">GitHub ↗</a>
@@ -124,7 +126,7 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
     </div>
     <div class="guide-block rv">
       <h3>Гайд: 20 конфигураций ИИ-агента</h3>
-      <p>Все связки в одной таблице: модели, стеки, промпты, провайдеры и хостинги РФ/зарубежные. Для тех, кто хочет собрать сам и не тратить недели на исследования и внедрения.</p>
+      <p>Все связки в одной таблице: модель, стек, промпты, провайдеры РФ и зарубежные. Для тех, кто хочет собрать сам, но не тратить недели на исследование.</p>
       <div class="g-price">3 000 ₽ · разово</div>
       <a class="btn" href="calculator.html">Узнать стоимость и забрать гайд →</a>
     </div>

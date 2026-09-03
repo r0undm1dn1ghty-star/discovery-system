@@ -55,7 +55,8 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
 .foot .meta{font-family:var(--mono);font-size:11px;color:var(--faint)}.foot nav{display:flex;gap:24px}.foot a{color:var(--meta);font-size:13.5px}.foot a:hover{color:var(--accent)}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
-@media(max-width:900px){.wrap{padding:0 24px}.formats{grid-template-columns:1fr}.nav-links{display:none}section{padding:80px 0}}
+@media(max-width:900px){.wrap{padding:0 20px;overflow-x:hidden}.nav-links{display:none}section{padding:80px 0}h1{font-size:2rem!important;line-height:1.15;word-wrap:break-word;overflow-wrap:break-word}h2{font-size:1.6rem!important}.lead{font-size:14px!important;line-height:1.55;word-wrap:break-word;overflow-wrap:break-word}}
+@media(max-width:420px){.wrap{padding:0 16px}.brand span{display:none}h1{font-size:1.7rem!important}}
 </style>
 </head>
 <body>
@@ -75,7 +76,7 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
   <div class="wrap">
     <div class="sec-head rv">
       <div class="kicker">канал · live signals</div>
-      <h1>Делюсь сигналами о готовых решениях,<br/><em>которые можно внедрить до того, как они стали недоступной подпиской.</em></h1>
+      <h1>Не пропусти момент,<br/><em>когда сигнал становится решением.</em></h1>
       <p class="lead">Короткие разборы без гонки за хайпом: что заметить, что проверить и что можно забрать себе в работу.</p>
     </div>
 
@@ -89,48 +90,38 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
       <div class="fmt-card rv" style="transition-delay:.06s">
         <span class="f-num">02 · ПРОВЕРИТЬ</span>
         <h3>Доказательство</h3>
-        <p>Разделение демонстраций, рабочих кейсов и устойчивых процессов. Что выдержит проверку задачей, а что — нет.</p>
+        <p>Разделение демо, кейса и устойчивого процесса. Что выдержит проверку задачей, а что — нет.</p>
         <span class="f-tag">метод в каждом разборе</span>
       </div>
       <div class="fmt-card rv" style="transition-delay:.12s">
-        <span class="f-num">03 · ВНЕДРИТЬ</span>
+        <span class="f-num">03 · ЗАБРАТЬ</span>
         <h3>Рабочая связка</h3>
-        <p>Понятная сборка для ИИ с задачей, входами, выходами и ролью для человека. Оно как-то само, но ты понимаешь как.</p>
+        <p>Конструкция с задачей, входами, выходами и местом для человека. Не «магия», а система.</p>
         <span class="f-tag">можно скопировать</span>
       </div>
     </div>
 
     <div class="feed">
       <div class="feed-head"><span class="pulse"></span> live-лента · последние сигналы</div>
-      <div class="sig" data-date="2026-09-02">
+      <div class="sig">
         <span class="sig-dot"></span>
-        <div class="sig-body"><b>Яндекс вывел Hermes Agent в Marketplace — от 3 642 ₽/мес</b>, без оплаты за API-ключи</div>
-        <div class="sig-meta">02.09.26<span class="sig-src">Yandex Cloud</span></div>
+        <div class="sig-body"><b>40% ИИ-проектов закроют к 2027</b> — из-за стоимости и неясной ценности</div>
+        <div class="sig-meta">25.06.25<span class="sig-src">Gartner</span></div>
       </div>
-      <div class="sig" data-date="2026-09-02">
+      <div class="sig">
         <span class="sig-dot"></span>
-        <div class="sig-body"><b>Сбер: 350 млрд ₽ в ИИ + «ГигаАгент» на ВЭФ</b> — автономный агент на GigaChat (экономика туманная)</div>
-        <div class="sig-meta">02.09.26<span class="sig-src">modelora.ru</span></div>
+        <div class="sig-body"><b>2–3 трлн ₽ через ИИ-агентов к 2032</b> — в e-commerce</div>
+        <div class="sig-meta">21.08.26<span class="sig-src">Data Insight</span></div>
       </div>
-      <div class="sig" data-date="2026-08-30">
+      <div class="sig">
         <span class="sig-dot"></span>
-        <div class="sig-body"><b>Личный ассистент на VPS — 6 600 ₽</b>, без VPN на телефоне: считает смену, приходы/уходы и время сотрудников</div>
-        <div class="sig-meta">30.08.26<span class="sig-src">кейс</span></div>
+        <div class="sig-body"><b>Рынок ИИ-моделей растёт — спрос на агентов обгоняет</b></div>
+        <div class="sig-meta">2026<span class="sig-src">AIANA / Коммерсант</span></div>
       </div>
-      <div class="sig" data-date="2026-08-24">
+      <div class="sig">
         <span class="sig-dot"></span>
-        <div class="sig-body"><b>400–850 млрд ₽ — агентная коммерция к 2028–29</b> · до 2–3 трлн к 2030–32</div>
-        <div class="sig-meta">24.08.26<span class="sig-src">Data Insight</span></div>
-      </div>
-      <div class="sig" data-date="2026-07-27">
-        <span class="sig-dot"></span>
-        <div class="sig-body"><b>55 млрд ₽/год — расходы Яндекса на Алису AI</b> · 24 млн человек в неделю решают в ней задачи</div>
-        <div class="sig-meta">27.07.26<span class="sig-src">vc.ru</span></div>
-      </div>
-      <div class="sig" data-date="2026-07-01">
-        <span class="sig-dot"></span>
-        <div class="sig-body"><b>Запросы о digital-услугах выросли на 17% г/г</b> — весь рост дала формулировка «внедрение ИИ»: без неё категория упала бы на 28%</div>
-        <div class="sig-meta">2026<span class="sig-src">eLama</span></div>
+        <div class="sig-body"><b>316 млрд ₽ — рынок ИИ в РФ</b>, +40% среднегодовой рост</div>
+        <div class="sig-meta">2025<span class="sig-src">AIANA / Коммерсант</span></div>
       </div>
     </div>
 
@@ -145,5 +136,5 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
   <span class="meta">discovery system // собери свою систему · 2026</span>
   <nav><a href="index.html">Главная</a><a href="market.html">Рынок</a><a href="system.html">Система</a><a href="clarity.html">Ясность</a><a href="calculator.html">Калькулятор</a></nav>
 </div></footer>
-<script>document.querySelectorAll('.feed').forEach(feed=>{const sigs=[...feed.querySelectorAll('.sig')];sigs.sort((a,b)=>(b.dataset.date||'').localeCompare(a.dataset.date||''));sigs.forEach(s=>feed.appendChild(s));});const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.rv,.sig').forEach(el=>io.observe(el));setTimeout(()=>{document.querySelectorAll('.rv:not(.in),.sig:not(.in)').forEach(el=>el.classList.add('in'));},1500);</script>
+<script>const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.rv,.sig').forEach(el=>io.observe(el));setTimeout(()=>{document.querySelectorAll('.rv:not(.in),.sig:not(.in)').forEach(el=>el.classList.add('in'));},1500);</script>
 </body></html>
