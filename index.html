@@ -123,12 +123,15 @@ header{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.85);backdrop-f
 .f-label{font-family:var(--mono);font-size:11px;fill:var(--accent);font-weight:600;letter-spacing:.08em;text-anchor:middle;pointer-events:none}
 .f-title{font-family:var(--display);font-size:13px;fill:var(--ink);font-weight:700;text-anchor:middle;pointer-events:none}
 .f-count{font-family:var(--mono);font-size:10.5px;fill:var(--meta);text-anchor:middle;pointer-events:none}
-.f-detail{margin-top:18px;background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:16px 18px;min-height:64px;transition:border-color .22s var(--ease)}
-.f-detail.active{border-color:rgba(123,196,255,.32);background:rgba(123,196,255,.06)}
-.fd-label{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.06em;margin-bottom:6px}
-.fd-text{font-size:13px;color:var(--body);line-height:1.5}
+.f-detail{margin-top:18px;background:#151a2e;border:1px solid rgba(123,196,255,.28);border-radius:14px;padding:16px 18px;min-height:64px;transition:border-color .22s var(--ease),background .22s var(--ease)}
+.f-detail.active{border-color:rgba(123,196,255,.45);background:rgba(123,196,255,.08)}
+.fd-label{font-family:var(--mono);font-size:10.5px;color:var(--accent);font-weight:600;letter-spacing:.08em;margin-bottom:6px;text-transform:uppercase}
+.fd-text{font-size:13.5px;color:var(--ink);line-height:1.55}
 .fd-text a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
-.f-output{margin-top:16px;padding:16px 18px;background:linear-gradient(135deg,rgba(123,196,255,.10),rgba(165,180,255,.03));border:1px dashed rgba(123,196,255,.32);border-radius:14px;display:flex;gap:12px;align-items:center}
+.f-tip{position:absolute;max-width:320px;width:320px;background:#151a2e;border:1px solid rgba(123,196,255,.35);border-radius:12px;padding:14px 16px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(4px);transition:opacity .15s var(--ease),transform .15s var(--ease),visibility .15s;z-index:20}
+.f-tip.visible{opacity:1;visibility:visible;transform:translateY(0)}
+.f-tip::after{content:'';position:absolute;left:-6px;top:18px;width:10px;height:10px;background:#151a2e;border-left:1px solid rgba(123,196,255,.35);border-bottom:1px solid rgba(123,196,255,.35);transform:rotate(45deg)}
+.f-output{margin-top:16px;padding:16px 18px;background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;display:flex;gap:12px;align-items:center}
 .f-out-icon{width:32px;height:32px;border-radius:8px;background:var(--accent);color:#0a0d18;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-family:var(--mono);font-size:16px}
 .f-out-text{font-size:13.5px;color:var(--body);line-height:1.5}
 .f-out-text a{color:var(--accent);font-weight:500}
@@ -417,6 +420,10 @@ footer{padding:64px 0 80px}
         <div class="fd-label" id="fdLabel">Наведи на ярус — узнай, что внутри</div>
         <div class="fd-text" id="fdText">Каждый уровень — фильтр. Чем ниже, тем точнее. Внизу — сигнал уже в канале.</div>
       </div>
+      <div class="f-tip" id="fTip" role="tooltip" aria-hidden="true">
+        <div class="fd-label" id="tipLabel"></div>
+        <div class="fd-text" id="tipText"></div>
+      </div>
       <div class="f-output">
         <div class="f-out-icon">→</div>
         <div class="f-out-text">Сигнал попадает в <a href="https://t.me/discoverysystem" target="_blank" rel="noopener">Telegram-канал</a> и на страницу <a href="channel.html">«Канал»</a> — с источником, датой и опровержением.</div>
@@ -521,37 +528,62 @@ mcUpdate();
 
 <script>
 const funnelData=[
-  {label:"01 · Шум",text:"200 источников: новости, отчёты, тарифы, исследования. Всё, что звучит на рынке. ИИ-агент собирает из открытых источников — TAdviser, VC.ru, Хабр, Gartner."},
-  {label:"02 · Отбор",text:"ИИ-агент оценивает влияние на рынок и российского потребителя. Что не меняет экономику — отбрасывается. Остаётся ~50."},
-  {label:"03 · Сигнал",text:"Датирован, с источником. Не обещание — наблюдение. Формат: факт + источник + дата. Пример: «Gartner: 40% ИИ-проектов закроют к 2027» — 25.06.2025. ~30 сигналов."},
-  {label:"04 · Доказательство",text:"Опровержения приветствуются. Метод: три попытки опровергнуть. Если все три не разрушают — факт. Подводные камни видны на берегу. ~10 фактов."},
-  {label:"05 · Экономика",text:"Факт подтверждён, цена посчитана. Калькулятор считает конкретно: модель, хостинг, интеграции. Знаешь цену до старта, не после."},
-  {label:"→ Выход",text:"Сигнал попадает в Telegram-канал @discoverysystem и на страницу «Канал» — с источником, датой и опровержением."}
+  {label:"01 · Шум — ~200",text:"200 источников: новости, отчёты, тарифы, исследования. Всё, что звучит на рынке. TAdviser, VC.ru, Хабр, Gartner."},
+  {label:"02 · Отбор — ~50",text:"ИИ-агент оценивает влияние на рынок и потребителя РФ. Что не меняет экономику — отбрасывается."},
+  {label:"03 · Сигнал — ~30",text:"Датирован, с источником. Не обещание — наблюдение. Факт + источник + дата. Пример: «Gartner: 40% ИИ-проектов закроют к 2027» — 25.06.2025."},
+  {label:"04 · Доказательство — ~10",text:"Опровержения приветствуются. Три попытки опровергнуть. Если не разрушают — факт. Подводные камни видны на берегу."},
+  {label:"05 · Экономика — цена",text:"Факт подтверждён, цена посчитана. Калькулятор считает: модель, хостинг, интеграции. Знаешь цену до старта, не после."},
+  {label:"→ Выход — канал",text:"Сигнал попадает в Telegram @discoverysystem и на страницу «Канал» — с источником, датой и опровержением."}
 ];
 (function(){
   const traps=document.querySelectorAll('.f-trap');
   const fdL=document.getElementById('fdLabel');
   const fdT=document.getElementById('fdText');
   const box=document.getElementById('fDetail');
-  if(!traps.length||!fdL) return;
-  function setActive(i){
+  const tip=document.getElementById('fTip');
+  const tipL=document.getElementById('tipLabel');
+  const tipT=document.getElementById('tipText');
+  const viz=document.getElementById('funnelViz');
+  if(!traps.length||!fdL||!tip) return;
+  const isMobile=()=> window.matchMedia('(max-width:900px)').matches;
+  function showTip(i, anchor){
     traps.forEach(el=>el.classList.remove('active'));
-    if(traps[i]) traps[i].classList.add('active');
+    traps[i].classList.add('active');
     box.classList.add('active');
     fdL.textContent=funnelData[i].label;
     fdT.textContent=funnelData[i].text;
+    tipL.textContent=funnelData[i].label;
+    tipT.textContent=funnelData[i].text;
+    if(isMobile()){
+      tip.style.left=''; tip.style.top=''; tip.classList.remove('visible'); return;
+    }
+    const r=anchor.getBoundingClientRect();
+    const vw=window.innerWidth, vh=window.innerHeight;
+    const W=320, gap=16;
+    let left=r.right+gap, top=r.top + r.height/2 - 44;
+    if(left+W > vw-12) left=r.left - W - gap;
+    if(left < 12) left=12;
+    if(top+120 > vh-12) top=vh-132;
+    if(top < 12) top=12;
+    tip.style.left=left+'px'; tip.style.top=top+'px';
+    tip.classList.add('visible'); tip.setAttribute('aria-hidden','false');
   }
-  traps.forEach((el,i)=>{
-    el.addEventListener('mouseenter',()=>setActive(i));
-    el.addEventListener('click',()=>setActive(i));
-    el.addEventListener('focus',()=>setActive(i));
-  });
-  document.getElementById('funnelViz').addEventListener('mouseleave',()=>{
+  function hideTip(){
+    if(isMobile()) return;
     traps.forEach(el=>el.classList.remove('active'));
     box.classList.remove('active');
     fdL.textContent='Наведи на ярус — узнай, что внутри';
     fdT.textContent='Каждый уровень — фильтр. Чем ниже, тем точнее. Внизу — сигнал уже в канале.';
+    tip.classList.remove('visible'); tip.setAttribute('aria-hidden','true');
+  }
+  traps.forEach((el,i)=>{
+    el.addEventListener('mouseenter',()=> showTip(i, el));
+    el.addEventListener('click',()=> showTip(i, el));
+    el.addEventListener('focus',()=> showTip(i, el));
+    el.setAttribute('tabindex','0'); el.setAttribute('role','button'); el.setAttribute('aria-label', funnelData[i].label);
   });
+  viz.addEventListener('mouseleave', hideTip);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') hideTip(); });
 })();
 </script>
 
