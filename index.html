@@ -220,21 +220,21 @@ footer{padding:64px 0 80px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.term .tl{opacity:1;transform:none}}
 /* адаптив */
 @media(max-width:900px){
-  .wrap{padding:0 20px;overflow-x:hidden}
+  .wrap{padding:0 20px !important;overflow-x:hidden}
   .hero-grid,.who-grid,.entry-grid{grid-template-columns:1fr;gap:32px}
   .who-photo{width:100%;height:auto;max-width:320px;margin:0 auto;display:block}
   .dsys-grid{grid-template-columns:1fr}
   .nav-links{display:none}
   section{padding:80px 0}
   .hero{padding:96px 0 72px}
-  h1{font-size:2rem!important;line-height:1.15}
+  h1{font-size:1.55rem!important;line-height:1.15}
   h2{font-size:1.6rem!important}
   .lead{font-size:14px!important;line-height:1.55;word-wrap:break-word;overflow-wrap:break-word}
   .hero .rv[style*="gap:14px"]{flex-direction:column;align-items:stretch!important}
   .hero .btn,.hero .btn-ghost{width:100%;text-align:center;box-sizing:border-box}
   .mini-calc{padding:18px 16px}
-  .mc-row>span:first-child{flex:0 0 130px;font-size:12px}
-  .mc-row{gap:8px;font-size:12px}
+  .mc-row>span:first-child{flex:0 0 110px;font-size:11px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mc-row{gap:8px;font-size:12px;min-width:0}
   .mc-compare{grid-template-columns:1fr;gap:12px}
   .mc-arrow{transform:rotate(90deg);font-size:20px}
   .mc-col-num{font-size:26px}
