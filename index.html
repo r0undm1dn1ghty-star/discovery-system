@@ -113,30 +113,26 @@ header{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.85);backdrop-f
 .dsys-card p{font-size:14px;color:var(--body);line-height:1.6}
 .dsys-card .dc-link{font-family:var(--mono);font-size:12px;color:var(--accent);margin-top:14px;display:inline-block}
 .dsys-card .dc-link:hover{color:var(--ink)}
-/* метод — интерактивная воронка-фильтр */
-.funnel-interactive{max-width:640px;margin:0 auto;display:flex;flex-direction:column}
-.fn-step{position:relative;padding:20px 22px;margin-bottom:12px;background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;box-sizing:border-box;max-width:100%;overflow:hidden;cursor:default;transition:border-color .22s var(--ease),background .22s var(--ease),transform .22s var(--ease)}
-.fn-step:hover{border-color:rgba(123,196,255,.32);background:rgba(123,196,255,.06);transform:translateY(-1px)}
-.fn-bar{height:4px;background:var(--accent);border-radius:2px;margin-bottom:14px;opacity:.22;transition:opacity .22s var(--ease),width .5s var(--ease)}
-.fn-step:hover .fn-bar{opacity:.85}
-.fn-bar-accent{opacity:.9}
-.fn-body{display:flex;gap:16px;align-items:flex-start}
-.fn-num{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.08em;min-width:26px;padding-top:3px;flex-shrink:0}
-.fn-content{flex:1;min-width:0;overflow:hidden}
-.fn-content h3{font-size:15px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
-.fn-content h3 small{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400;margin-left:8px}
-.fn-desc{font-size:13.5px;color:var(--body);line-height:1.55;margin:0}
-.fn-hover{font-size:12px;color:var(--meta);line-height:1.5;margin-top:0;max-height:0;overflow:hidden;opacity:0;transition:max-height .32s var(--ease),opacity .28s var(--ease),margin-top .28s var(--ease)}
-.fn-step:hover .fn-hover{max-height:160px;opacity:1;margin-top:10px}
-.fn-step.fn-final{background:linear-gradient(135deg,rgba(123,196,255,.1),rgba(165,180,255,.02));border-color:rgba(123,196,255,.25)}
-.fn-step.fn-final:hover{border-color:rgba(123,196,255,.45)}
-.fn-step.fn-final .fn-bar{opacity:.9}
-.fn-hover a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
-.fn-output{margin-top:20px;padding:18px 22px;background:var(--surface);border:1px dashed rgba(123,196,255,.32);border-radius:14px;display:flex;gap:14px;align-items:center}
-.fn-out-icon{width:32px;height:32px;border-radius:8px;background:var(--accent);color:#0a0d18;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-family:var(--mono);font-size:16px}
-.fn-out-text{font-size:13.5px;color:var(--body);line-height:1.5}
-.fn-out-text a{color:var(--accent);font-weight:500}
-.fn-out-text a:hover{text-decoration:underline}
+/* метод — воронка-трапеция с ховерами */
+.funnel-viz{max-width:480px;margin:0 auto}
+.funnel-svg{width:100%;height:auto;overflow:visible;display:block}
+.f-trap{cursor:pointer}
+.f-trap path{transition:fill .22s var(--ease),stroke .22s var(--ease),filter .22s var(--ease)}
+.f-trap:hover path{fill:rgba(123,196,255,.22) !important;stroke:rgba(123,196,255,.55) !important;filter:drop-shadow(0 4px 16px rgba(123,196,255,.25))}
+.f-trap.active path{fill:rgba(123,196,255,.20) !important;stroke:rgba(123,196,255,.50) !important}
+.f-label{font-family:var(--mono);font-size:11px;fill:var(--accent);font-weight:600;letter-spacing:.08em;text-anchor:middle;pointer-events:none}
+.f-title{font-family:var(--display);font-size:13px;fill:var(--ink);font-weight:700;text-anchor:middle;pointer-events:none}
+.f-count{font-family:var(--mono);font-size:10.5px;fill:var(--meta);text-anchor:middle;pointer-events:none}
+.f-detail{margin-top:18px;background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:16px 18px;min-height:64px;transition:border-color .22s var(--ease)}
+.f-detail.active{border-color:rgba(123,196,255,.32);background:rgba(123,196,255,.06)}
+.fd-label{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.06em;margin-bottom:6px}
+.fd-text{font-size:13px;color:var(--body);line-height:1.5}
+.fd-text a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.f-output{margin-top:16px;padding:16px 18px;background:linear-gradient(135deg,rgba(123,196,255,.10),rgba(165,180,255,.03));border:1px dashed rgba(123,196,255,.32);border-radius:14px;display:flex;gap:12px;align-items:center}
+.f-out-icon{width:32px;height:32px;border-radius:8px;background:var(--accent);color:#0a0d18;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-family:var(--mono);font-size:16px}
+.f-out-text{font-size:13.5px;color:var(--body);line-height:1.5}
+.f-out-text a{color:var(--accent);font-weight:500}
+.f-out-text a:hover{text-decoration:underline}
 /* терминал — одна строка signature */
 .term{background:rgba(6,8,18,.75);border:1px solid var(--line);border-radius:14px;font-family:var(--mono);font-size:12.5px;line-height:2.05;padding:24px 26px;box-shadow:0 28px 80px rgba(0,0,0,.45);overflow-x:auto;word-break:break-word;max-width:100%}
 .term .tl{opacity:0;transform:translateY(4px);animation:tline .5s var(--ease) forwards}
@@ -220,7 +216,7 @@ footer{padding:64px 0 80px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.term .tl{opacity:1;transform:none}}
 /* адаптив */
 
-.funnel-interactive,.fn-step,.entry-grid,.e-main,.e-card{max-width:100%;box-sizing:border-box}
+.funnel-viz,.fn-step,.entry-grid,.e-main,.e-card{max-width:100%;box-sizing:border-box}
 
 
 
@@ -243,7 +239,7 @@ footer{padding:64px 0 80px}
   p,.lede,.sub,.fn-desc,.fn-hover,.r-desc,.mission,.ex-label{white-space:normal !important;overflow-wrap:anywhere !important;word-break:break-word !important;hyphens:auto !important;max-width:100% !important}
   h1,h2,h3{overflow-wrap:anywhere !important;word-break:break-word !important;max-width:100% !important}
   .who-text .lede{max-width:100% !important}
-  .funnel-interactive{width:100% !important;max-width:100% !important}
+  .funnel-viz{width:100% !important;max-width:100% !important}
   .fn-step{width:100% !important;max-width:100% !important;box-sizing:border-box !important;overflow:hidden !important}
   .fn-step p{white-space:normal !important;overflow-wrap:anywhere !important;word-break:break-word !important}
   .who-result{display:block !important;max-width:100% !important}
@@ -367,65 +363,57 @@ footer{padding:64px 0 80px}
       <h2>Сигналы → Доказательства → Экономика</h2>
       <p class="sub">Как из 200 источников получается один сигнал, который ты забираешь в Telegram.</p>
     </div>
-    <div class="funnel-interactive rv">
-      <div class="fn-step" data-fn="signals">
-        <div class="fn-bar" style="width:100%"></div>
-        <div class="fn-body">
-          <span class="fn-num">01</span>
-          <div class="fn-content">
-            <h3>Сигналы <small>~200 источников</small></h3>
-            <p class="fn-desc">ИИ-агент собирает из открытых источников: новости, отчёты, тарифы, исследования. Шум — всё, что звучит на рынке.</p>
-            <p class="fn-hover">Открытые источники: TAdviser, VC.ru, Хабр, Data Insight, Gartner, AIANA. Фильтр — влияние на рынок и потребителя.</p>
-          </div>
-        </div>
+    <div class="funnel-viz rv" id="funnelViz">
+      <svg class="funnel-svg" viewBox="0 0 460 520" aria-label="Воронка метода: от шума к экономике">
+        <g class="f-trap" data-i="0">
+          <path d="M12 14 L448 14 L408 78 L52 78 Z" fill="rgba(123,196,255,.06)" stroke="rgba(123,196,255,.18)" stroke-width="1.5" rx="8"/>
+          <text class="f-title" x="230" y="38">Шум</text>
+          <text class="f-count" x="230" y="56">всё, что звучит · ~200</text>
+          <text class="f-label" x="230" y="72" style="font-size:9px;opacity:.6">открытые источники</text>
+        </g>
+        <g class="f-trap" data-i="1">
+          <path d="M52 88 L408 88 L378 152 L82 152 Z" fill="rgba(123,196,255,.09)" stroke="rgba(123,196,255,.24)" stroke-width="1.5"/>
+          <text class="f-title" x="230" y="112">Отбор</text>
+          <text class="f-count" x="230" y="130">влияние на рынок · ~50</text>
+          <text class="f-label" x="230" y="146" style="font-size:9px;opacity:.6">ИИ-агент фильтрует</text>
+        </g>
+        <g class="f-trap" data-i="2">
+          <path d="M82 162 L378 162 L348 226 L112 226 Z" fill="rgba(123,196,255,.13)" stroke="rgba(123,196,255,.30)" stroke-width="1.5"/>
+          <text class="f-title" x="230" y="186">Сигнал</text>
+          <text class="f-count" x="230" y="204">датирован, с источником · ~30</text>
+          <text class="f-label" x="230" y="220" style="font-size:9px;opacity:.6">факт + дата + источник</text>
+        </g>
+        <g class="f-trap" data-i="3">
+          <path d="M112 236 L348 236 L318 300 L142 300 Z" fill="rgba(123,196,255,.17)" stroke="rgba(123,196,255,.36)" stroke-width="1.5"/>
+          <text class="f-title" x="230" y="260">Доказательство</text>
+          <text class="f-count" x="230" y="278">опровержения · ~10 фактов</text>
+          <text class="f-label" x="230" y="294" style="font-size:9px;opacity:.6">подводные камни видны</text>
+        </g>
+        <g class="f-trap" data-i="4">
+          <path d="M142 310 L318 310 L288 374 L172 374 Z" fill="rgba(123,196,255,.24)" stroke="rgba(123,196,255,.46)" stroke-width="1.5"/>
+          <text class="f-title" x="230" y="334">Экономика</text>
+          <text class="f-count" x="230" y="352">цена посчитана</text>
+          <text class="f-label" x="230" y="368" style="font-size:9px;opacity:.6">модель · хостинг · интеграции</text>
+        </g>
+        <!-- стрелка вниз к выходу -->
+        <g>
+          <line x1="230" y1="384" x2="230" y2="408" stroke="rgba(123,196,255,.35)" stroke-width="1.5"/>
+          <polygon points="230,416 224,408 236,408" fill="rgba(123,196,255,.45)"/>
+        </g>
+        <!-- выход: куда уходит сигнал -->
+        <g class="f-trap" data-i="5">
+          <rect x="70" y="424" width="320" height="58" rx="14" fill="rgba(123,196,255,.08)" stroke="rgba(123,196,255,.28)" stroke-width="1.5"/>
+          <text class="f-title" x="230" y="449" style="font-size:13px">→ канал · страница</text>
+          <text class="f-count" x="230" y="467">Telegram + /channel · с источником и датой</text>
+        </g>
+      </svg>
+      <div class="f-detail" id="fDetail">
+        <div class="fd-label" id="fdLabel">Наведи на ярус — узнай, что внутри</div>
+        <div class="fd-text" id="fdText">Каждый уровень — фильтр. Чем ниже, тем точнее. Внизу — сигнал уже в канале.</div>
       </div>
-      <div class="fn-step" data-fn="filter">
-        <div class="fn-bar" style="width:75%"></div>
-        <div class="fn-body">
-          <span class="fn-num">02</span>
-          <div class="fn-content">
-            <h3>Отбор <small>~50 отобрано</small></h3>
-            <p class="fn-desc">Агент оценивает влияние на рынок и российского потребителя. Что не меняет экономику — отбрасывается.</p>
-            <p class="fn-hover">Критерий отбора: меняет ли цену, спрос или доступность ИИ-инструментов в РФ. Остальное — шум.</p>
-          </div>
-        </div>
-      </div>
-      <div class="fn-step" data-fn="signal">
-        <div class="fn-bar" style="width:55%"></div>
-        <div class="fn-body">
-          <span class="fn-num">03</span>
-          <div class="fn-content">
-            <h3>Сигнал <small>~30 сигналов</small></h3>
-            <p class="fn-desc">Датирован, с источником. Не обещание — наблюдение. Каждый сигнал проверяется опровержением.</p>
-            <p class="fn-hover">Формат сигнала: факт + источник + дата + опровержение. Пример: «Gartner: 40% ИИ-проектов закроют к 2027» — 25.06.2025.</p>
-          </div>
-        </div>
-      </div>
-      <div class="fn-step" data-fn="proof">
-        <div class="fn-bar" style="width:38%"></div>
-        <div class="fn-body">
-          <span class="fn-num">04</span>
-          <div class="fn-content">
-            <h3>Доказательство <small>~10 фактов</small></h3>
-            <p class="fn-desc">Опровержения приветствуются. Подводные камни видны на берегу. Проверено, не обещано.</p>
-            <p class="fn-hover">Метод: ищу три попытки опровергнуть. Если все три не разрушают — факт. Если хоть одна разрушает — отбрасываю.</p>
-          </div>
-        </div>
-      </div>
-      <div class="fn-step fn-final" data-fn="economy">
-        <div class="fn-bar fn-bar-accent" style="width:22%"></div>
-        <div class="fn-body">
-          <span class="fn-num">05</span>
-          <div class="fn-content">
-            <h3>Экономика <small>цена посчитана</small></h3>
-            <p class="fn-desc">Факт подтверждён, цена посчитана. Калькулятор считает конкретно: модель, хостинг, интеграции.</p>
-            <p class="fn-hover">Результат: ты знаешь цену до старта, не после. Сигнал уходит в канал — <a href="https://t.me/discoverysystem" target="_blank" rel="noopener">@discoverysystem</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="fn-output rv">
-        <div class="fn-out-icon">→</div>
-        <div class="fn-out-text">Сигнал попадает в <a href="https://t.me/discoverysystem" target="_blank" rel="noopener">Telegram-канал</a> и на страницу <a href="channel.html">«Канал»</a>. С источником, датой и опровержением.</div>
+      <div class="f-output">
+        <div class="f-out-icon">→</div>
+        <div class="f-out-text">Сигнал попадает в <a href="https://t.me/discoverysystem" target="_blank" rel="noopener">Telegram-канал</a> и на страницу <a href="channel.html">«Канал»</a> — с источником, датой и опровержением.</div>
       </div>
     </div>
   </div>
@@ -524,5 +512,42 @@ function mcUpdate(){
 }
 mcUpdate();
 </script>
+
+<script>
+const funnelData=[
+  {label:"01 · Шум",text:"200 источников: новости, отчёты, тарифы, исследования. Всё, что звучит на рынке. ИИ-агент собирает из открытых источников — TAdviser, VC.ru, Хабр, Gartner."},
+  {label:"02 · Отбор",text:"ИИ-агент оценивает влияние на рынок и российского потребителя. Что не меняет экономику — отбрасывается. Остаётся ~50."},
+  {label:"03 · Сигнал",text:"Датирован, с источником. Не обещание — наблюдение. Формат: факт + источник + дата. Пример: «Gartner: 40% ИИ-проектов закроют к 2027» — 25.06.2025. ~30 сигналов."},
+  {label:"04 · Доказательство",text:"Опровержения приветствуются. Метод: три попытки опровергнуть. Если все три не разрушают — факт. Подводные камни видны на берегу. ~10 фактов."},
+  {label:"05 · Экономика",text:"Факт подтверждён, цена посчитана. Калькулятор считает конкретно: модель, хостинг, интеграции. Знаешь цену до старта, не после."},
+  {label:"→ Выход",text:"Сигнал попадает в Telegram-канал @discoverysystem и на страницу «Канал» — с источником, датой и опровержением."}
+];
+(function(){
+  const traps=document.querySelectorAll('.f-trap');
+  const fdL=document.getElementById('fdLabel');
+  const fdT=document.getElementById('fdText');
+  const box=document.getElementById('fDetail');
+  if(!traps.length||!fdL) return;
+  function setActive(i){
+    traps.forEach(el=>el.classList.remove('active'));
+    if(traps[i]) traps[i].classList.add('active');
+    box.classList.add('active');
+    fdL.textContent=funnelData[i].label;
+    fdT.textContent=funnelData[i].text;
+  }
+  traps.forEach((el,i)=>{
+    el.addEventListener('mouseenter',()=>setActive(i));
+    el.addEventListener('click',()=>setActive(i));
+    el.addEventListener('focus',()=>setActive(i));
+  });
+  document.getElementById('funnelViz').addEventListener('mouseleave',()=>{
+    traps.forEach(el=>el.classList.remove('active'));
+    box.classList.remove('active');
+    fdL.textContent='Наведи на ярус — узнай, что внутри';
+    fdT.textContent='Каждый уровень — фильтр. Чем ниже, тем точнее. Внизу — сигнал уже в канале.';
+  });
+})();
+</script>
+
 </body>
 </html>
