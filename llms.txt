@@ -6,7 +6,7 @@
 - [Главная — Discovery System](https://r0undm1dn1ghty-star.github.io/discovery-system/): Герой-калькулятор «Сколько забирает твоя рутина», метод Шум→Экономика, вход в систему
 - [Рынок](https://r0undm1dn1ghty-star.github.io/discovery-system/market.html): Что продают вместо системы — разбор альтернатив
 - [Система](https://r0undm1dn1ghty-star.github.io/discovery-system/system.html): Инструменты и связки — spiral-maturity, market-evidence-diagnostic, pnl-check
-- [Ясность — лестница внедрения](https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html): 0₽ калькулятор → 3К гайд 20 связок → 5К персональная сборка → 7/10/15К установка
+- [Ясность — форматы внедрения](https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html): 0₽ калькулятор → 3К гайд 20 связок → 5К персональная сборка → 7/10/15К установка
 - [Канал — сигналы](https://r0undm1dn1ghty-star.github.io/discovery-system/channel.html): 6 сигналов с источниками и датами (Gartner, Data Insight, Яндекс, Сбер)
 - [Калькулятор](https://r0undm1dn1ghty-star.github.io/discovery-system/calculator.html): 7 вопросов, считает часы и рубли — твоя рутина vs агент
 
