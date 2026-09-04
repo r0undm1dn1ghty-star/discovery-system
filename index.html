@@ -284,6 +284,27 @@ h1{font-size:1.5rem !important}
 .f-counter{font-family:var(--mono);font-size:11px;color:var(--ok);font-weight:700;letter-spacing:.06em;text-align:center;margin-top:10px}
 .particle{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(123,196,255,.55);pointer-events:none}
 
+
+/* nav-toggle — taste fix: single line desktop, burger mobile */
+.nav-toggle{display:none;appearance:none;background:transparent;border:1px solid var(--line-soft);border-radius:9px;width:40px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer}
+.nav-toggle span{width:18px;height:1.5px;background:var(--ink);display:block;border-radius:2px;transition:.2s}
+@media(max-width:900px){
+  .nav-toggle{display:flex}
+  .nav-links{position:fixed;top:64px;right:16px;left:16px;background:rgba(17,21,36,.98);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:14px;padding:18px;flex-direction:column;align-items:flex-start;gap:14px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;z-index:49}
+  .nav-links.open{opacity:1;visibility:visible;transform:none;display:flex !important}
+  .nav-links a{font-size:15px}
+  header{position:sticky}
+}
+
+
+/* funnel minimodal fix: tooltip near cursor, detail stays subtle */
+.f-detail{opacity:.85}
+.f-detail.active{opacity:1}
+.f-tip{max-width:340px; width:min(340px, 90vw)}
+@media(min-width:901px){
+  .f-tip{display:block !important}
+}
+
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization", "name": "Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "logo": {"@type": "ImageObject", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 связок, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem", "https://vc.ru/id6099688", "https://x.com/d1sc0v3rysyst3m"], "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#website", "name": "Discovery System — рыночная разведка в мире ИИ-агентов", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "inLanguage": "ru-RU", "publisher": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}, "potentialAction": {"@type": "SearchAction", "target": {"@type": "EntryPoint", "urlTemplate": "https://r0undm1dn1ghty-star.github.io/discovery-system/calculator.html?q={search_term_string}"}, "query-input": "required name=search_term_string"}}</script>
@@ -295,6 +316,7 @@ h1{font-size:1.5rem !important}
 
 <header><div class="wrap nav">
   <div class="brand"><img src="logo-nav.png" alt="" style="width:22px;height:22px;border-radius:5px;flex-shrink:0"/><b>discovery system</b><span>// рыночная разведка</span></div>
+  <button class="nav-toggle" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav-links">
     <a href="market.html">рынок</a>
     <a href="system.html">система</a>
@@ -627,12 +649,12 @@ mcUpdate(); updateHintAndFunnel();
 
 <script>
 const funnelData=[
-  {label:"01 · Шум",text:"200 источников: новости, отчёты, тарифы, исследования. Всё, что звучит на рынке. ИИ-агент собирает из открытых источников — TAdviser, VC.ru, Хабр, Gartner."},
-  {label:"02 · Отбор",text:"ИИ-агент оценивает влияние на рынок и российского потребителя. Что не меняет экономику — отбрасывается. Остаётся ~50."},
-  {label:"03 · Сигнал",text:"Датирован, с источником. Не обещание — наблюдение. Формат: факт + источник + дата. Пример: «Gartner: 40% ИИ-проектов закроют к 2027» — 25.06.2025. ~30 сигналов."},
-  {label:"04 · Доказательство",text:"Опровержения приветствуются. Метод: три попытки опровергнуть. Если все три не разрушают — факт. Подводные камни видны на берегу. ~10 фактов."},
-  {label:"05 · Экономика",text:"Факт подтверждён, цена посчитана. Калькулятор считает конкретно: модель, хостинг, интеграции. Знаешь цену до старта, не после."},
-  {label:"→ Выход",text:"Сигнал попадает в Telegram-канал @discoverysystem и на страницу «Канал» — с источником, датой и опровержением."}
+  {label:"01 · Шум",text:"~200 источников: новости, отчёты, тарифы. ИИ-агент собирает из TAdviser, VC, Хабра, Gartner."},
+  {label:"02 · Отбор",text:"~50 остаётся после фильтра «влияет ли на твой рынок?». Остальное — шум."},
+  {label:"03 · Сигнал",text:"~30 фактов с датой и источником. Пример: «Gartner: 40% ИИ-проектов закроют к 2027 — 25.06.2025»."},
+  {label:"04 · Доказательство",text:"~10 после 3 попыток опровергнуть. Подводные камни видны до старта."},
+  {label:"05 · Экономика",text:"Цена твоей связки: модель + хостинг + интеграции. Знаешь чек до старта."},
+  {label:"→ Выход",text:"Готовый сигнал — в Telegram @discoverysystem и на /channel с источником и датой."}
 ];
 (function(){
   const traps=document.querySelectorAll('.f-trap');
@@ -684,6 +706,27 @@ const funnelData=[
   });
   viz.addEventListener('mouseleave', hideTip);
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') hideTip(); });
+})();
+</script>
+
+
+<script>
+(function(){
+  const btn=document.querySelector('.nav-toggle');
+  const nav=document.querySelector('.nav-links');
+  if(!btn||!nav) return;
+  btn.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true':'false');
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+  }));
+  document.addEventListener('click',e=>{
+    if(!nav.contains(e.target) && !btn.contains(e.target)){
+      nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+    }
+  });
 })();
 </script>
 

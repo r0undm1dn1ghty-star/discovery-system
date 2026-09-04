@@ -82,16 +82,32 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
 .foot .meta{font-family:var(--mono);font-size:11px;color:var(--faint)}.foot nav{display:flex;gap:24px}.foot a{color:var(--meta);font-size:13.5px}.foot a:hover{color:var(--accent)}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
-@media(max-width:900px){.wrap{padding:0 20px !important;overflow-x:hidden}.market-grid{grid-template-columns:1fr}.nav-links{display:none}section{padding:80px 0}h1{font-size:1.55rem!important;line-height:1.15;word-wrap:break-word;overflow-wrap:break-word}h2{font-size:1.6rem!important}.lead{font-size:14px!important;line-height:1.55;word-wrap:break-word;overflow-wrap:break-word}.cmp-row{font-size:12px;flex-wrap:wrap;gap:4px}.ba-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.wrap{padding:0 20px !important;overflow-x:hidden}.market-grid{grid-template-columns:1fr}/* nav-links handled by toggle */section{padding:80px 0}h1{font-size:1.55rem!important;line-height:1.15;word-wrap:break-word;overflow-wrap:break-word}h2{font-size:1.6rem!important}.lead{font-size:14px!important;line-height:1.55;word-wrap:break-word;overflow-wrap:break-word}.cmp-row{font-size:12px;flex-wrap:wrap;gap:4px}.ba-grid{grid-template-columns:1fr}}
 @media(max-width:420px){.wrap{padding:0 16px}.brand span{display:none}h1{font-size:1.7rem!important}}
+
+/* nav-toggle — taste fix: single line desktop, burger mobile */
+.nav-toggle{display:none;appearance:none;background:transparent;border:1px solid var(--line-soft);border-radius:9px;width:40px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer}
+.nav-toggle span{width:18px;height:1.5px;background:var(--ink);display:block;border-radius:2px;transition:.2s}
+@media(max-width:900px){
+  .nav-toggle{display:flex}
+  .nav-links{position:fixed;top:64px;right:16px;left:16px;background:rgba(17,21,36,.98);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:14px;padding:18px;flex-direction:column;align-items:flex-start;gap:14px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;z-index:49}
+  .nav-links.open{opacity:1;visibility:visible;transform:none;display:flex !important}
+  .nav-links a{font-size:15px}
+  header{position:sticky}
+}
+
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization", "name": "Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "logo": {"@type": "ImageObject", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 связок, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem", "https://vc.ru/id6099688", "https://x.com/d1sc0v3rysyst3m"], "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Discovery System", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/"}, {"@type": "ListItem", "position": 2, "name": "Рынок", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/market.html"}]}</script>
+<style>
+@media(max-width:700px){.dash [style*="grid-template-columns:repeat(4,"]{grid-template-columns:repeat(2,1fr) !important} .dash [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important} .dash [style*="columns:2"]{columns:1 !important}}
+</style>
 </head>
 <body>
 <div class="bg-fx"></div>
 <header><div class="wrap nav">
   <div class="brand"><img src="logo-nav.png" alt="" style="width:22px;height:22px;border-radius:5px;flex-shrink:0"/><b>discovery system</b><span>// рыночная разведка</span></div>
+  <button class="nav-toggle" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav-links">
     <a href="index.html">главная</a>
     <a href="system.html">система</a>
@@ -171,6 +187,76 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
       <div class="cmp-row"><span class="c-l">Лекции и гайд за опрос</span><span class="c-r">0 ₽ · привязка к платформе</span></div>
       <div class="cmp-row"><span class="c-l">Свой бесплатный старт</span><span class="c-r">0 ₽ · локальные модели</span></div>
     </div>
+    
+<!--  dashboard embed — hakowsky dark, density 3, sources linked  -->
+<div class="dash rv" style="margin-top:40px;border:1px solid var(--line-soft);border-radius:16px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02))">
+  <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:20px 28px 16px;border-bottom:1px solid var(--line-soft)">
+    <span style="font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)">Авг 2026 · РФ · горизонт Q4′28</span>
+    <span style="font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.02em">ИИ-агенты в России</span>
+    <span style="font-size:13px;color:var(--meta);max-width:520px;line-height:1.5"><b style="color:var(--ink)">Агент</b> сам ставит задачи, <b style="color:var(--ink)">чат-бот</b> только отвечает — считаем только агентов.</span>
+  </div>
+  <div style="padding:18px 20px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+      <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px"><div style="font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1">340<span style="font-size:13px;color:var(--meta);font-weight:500">К</span></div><div style="font-size:12px;color:var(--meta);margin-top:4px">звёзд OpenClaw</div><div style="font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:4px">GitHub · мар 2026</div></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px"><div style="font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1">30<span style="font-size:13px;color:var(--meta);font-weight:500">К+</span></div><div style="font-size:12px;color:var(--meta);margin-top:4px">инстансов OpenClaw</div><div style="font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:4px">12 дней · BitSight</div></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px"><div style="font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1">×2,4</div><div style="font-size:12px;color:var(--meta);margin-top:4px">вакансии с ИИ-навыками</div><div style="font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:4px">hh.ru · 3 года</div></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,179,71,.35);border-radius:12px;padding:14px 14px"><div style="font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1;color:#f2b665">~5%</div><div style="font-size:12px;color:var(--meta);margin-top:4px">компаний с агентами</div><div style="font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:4px">Авг′26 · потолок 6,3%</div></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px"><div style="font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1">+17<span style="font-size:13px;color:var(--meta);font-weight:500">%</span></div><div style="font-size:12px;color:var(--meta);margin-top:4px">запросы «внедрение ИИ»</div><div style="font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:4px">eLama · 2026</div></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px"><div style="font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1">55<span style="font-size:13px;color:var(--meta);font-weight:500"> млрд ₽</span></div><div style="font-size:12px;color:var(--meta);margin-top:4px">Яндекс → Алиса AI</div><div style="font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:4px">2025 · Monocle</div></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px"><div style="font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1">350<span style="font-size:13px;color:var(--meta);font-weight:500"> млрд ₽</span></div><div style="font-size:12px;color:var(--meta);margin-top:4px">Сбер → ИИ на 2026</div><div style="font-family:var(--mono);font-size:9.5px;color:var(--faint);margin-top:4px">Monocle 24.08.2026</div></div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px;display:flex;flex-direction:column;justify-content:center"><div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.06em;font-weight:600">источники</div><div style="font-size:12px;color:var(--meta);margin-top:4px;line-height:1.5"><a href="#market-srcs" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">20 источников ↓</a> · факт + дата</div></div>
+    </div>
+    <div style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="background:#12141a;border:1px solid var(--line-soft);border-radius:12px;padding:16px">
+        <div style="font-family:var(--display);font-weight:600;font-size:13px">Диффузия · доля организаций, %</div>
+        <div style="font-size:11px;color:var(--meta);margin-top:2px">2026 — точка перегиба · раннее большинство</div>
+        <div style="margin-top:12px;height:180px;background:repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 88px), linear-gradient(180deg, rgba(123,196,255,.06), transparent);border-radius:8px;position:relative;overflow:hidden">
+          <svg viewBox="0 0 320 180" style="width:100%;height:100%;display:block">
+            <polyline fill="none" stroke="#ff9f43" stroke-width="2.2" points="10,168 60,156 110,142 160,120 210,88 270,52 310,28"/>
+            <polyline fill="none" stroke="#4fc3f7" stroke-width="2.2" points="10,172 60,162 110,152 160,138 210,108 270,72 310,48"/>
+            <line x1="160" y1="10" x2="160" y2="170" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <text x="162" y="18" font-size="7" fill="#ff6b6b" font-family="IBM Plex Mono,monospace">СЕЙЧАС</text>
+          </svg>
+          <div style="position:absolute;left:12px;bottom:8px;display:flex;gap:10px;font-family:var(--mono);font-size:9px;color:var(--meta)"><span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff9f43;vertical-align:middle;margin-right:4px"></span>Бизнес</span><span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4fc3f7;vertical-align:middle;margin-right:4px"></span>Население</span></div>
+        </div>
+      </div>
+      <div style="background:#12141a;border:1px solid var(--line-soft);border-radius:12px;padding:16px">
+        <div style="font-family:var(--display);font-weight:600;font-size:13px">Рынок ИИ РФ, млрд ₽ · 316 факт ′25 → 690 оценка ′28</div>
+        <div style="font-size:11px;color:var(--meta);margin-top:2px">Тёмные — факт, серые — оценка +30% г/г</div>
+        <div style="margin-top:12px;display:flex;align-items:end;gap:8px;height:180px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:46px;background:#5e6b6b;border-radius:6px 6px 0 0;position:relative"><span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--meta)">116</span></div><span style="font-family:var(--mono);font-size:10px;color:var(--meta)">2023</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:48px;background:#5e6b6b;border-radius:6px 6px 0 0;position:relative"><span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--meta)">118</span></div><span style="font-family:var(--mono);font-size:10px;color:var(--meta)">2024</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:110px;background:#5e6b6b;border-radius:6px 6px 0 0;position:relative"><span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:#f5f6f8;font-weight:700">316</span></div><span style="font-family:var(--mono);font-size:10px;color:var(--meta)">2025</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:138px;background:#2a2d34;border-radius:6px 6px 0 0;position:relative"><span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--meta)">410</span><span style="position:absolute;top:8px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:7px;color:var(--faint)">оценка</span></div><span style="font-family:var(--mono);font-size:10px;color:var(--meta)">2026</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:158px;background:#2a2d34;border-radius:6px 6px 0 0;position:relative"><span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--meta)">530</span></div><span style="font-family:var(--mono);font-size:10px;color:var(--meta)">2027</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:100%;height:180px;background:#2a2d34;border-radius:6px 6px 0 0;position:relative"><span style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--meta)">690</span></div><span style="font-family:var(--mono);font-size:10px;color:var(--meta)">2028</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+      <div style="background:#0b0c10;border:1px solid rgba(61,220,151,.28);border-top:3px solid #3ddc97;border-radius:10px;padding:12px"><div style="font-size:12px;font-weight:600;color:#f5f6f8">Hermes Agent (Яндекс)</div><div style="font-family:var(--mono);font-size:11px;color:#3ddc97;margin:4px 0 6px">цена не публикуется · VPS+Telegram</div><div style="font-size:11px;color:#c9ced8;line-height:1.5">Yandex Cloud Marketplace · open-source агент на ВМ · рубли · без VPN</div></div>
+      <div style="background:#0b0c10;border:1px solid rgba(255,179,71,.28);border-top:3px solid #ffb347;border-radius:10px;padding:12px"><div style="font-size:12px;font-weight:600;color:#f5f6f8">Claude Code (Anthropic)</div><div style="font-family:var(--mono);font-size:11px;color:#ffb347;margin:4px 0 6px">$20+ · прокси-провайдеры</div><div style="font-size:11px;color:#c9ced8;line-height:1.5">В РФ — через ANTHROPIC_BASE_URL · двусторонний риск</div></div>
+      <div style="background:#0b0c10;border:1px solid rgba(255,107,107,.28);border-top:3px solid #ff6b6b;border-radius:10px;padding:12px"><div style="font-size:12px;font-weight:600;color:#f5f6f8">ChatGPT / Codex</div><div style="font-family:var(--mono);font-size:11px;color:#ff8a8a;margin:4px 0 6px">$20+ · VPN + оплата из-за рубежа</div><div style="font-size:11px;color:#c9ced8;line-height:1.5">Двойная блокировка: RKN + OpenAI гео-блок</div></div>
+    </div>
+    <div id="market-srcs" style="margin-top:14px;padding:14px 16px;background:rgba(255,255,255,.03);border:1px solid var(--line-soft);border-radius:10px">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.06em;font-weight:600;margin-bottom:8px">источники · 20 — факт = источник + дата</div>
+      <div style="font-size:11px;color:var(--meta);line-height:1.75;columns:2;column-gap:24px">
+        <div>— OpenClaw 340К звёзд · osipenkov.ru · 01.04.2026</div>
+        <div>— 30К+ инстансов OpenClaw · BitSight · 15.04.2026</div>
+        <div>— Вакансии ИИ ×2,4 · hh.ru · 13.07.2026</div>
+        <div>— «Внедрение ИИ» +17% г/г · eLama.ru · 2026</div>
+        <div>— Агент в Яндекс Браузере · rozetked.me · авг 2025</div>
+        <div>— Рынок ИИ 316,1 млрд ₽ · Коммерсантъ/AIANA · 10.08.2026</div>
+        <div>— 33% корп. ПО agentic к 2028 · Gartner 2025</div>
+        <div>— 6,3% организаций используют ИИ · ИСИЭЗ НИУ ВШЭ · 2024</div>
+        <div>— Москва 800 млн ₽ на ИИ · ABN · 21.08.2026</div>
+        <div>— Hermes Agent в Yandex Cloud · yandex.cloud · 31.07.2026</div>
+      </div>
+      <div style="margin-top:10px"><a href="https://r0undm1dn1ghty-star.github.io/discovery-system/channel.html" style="font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:underline;text-underline-offset:3px">Разбор рынка в канале →</a> <span style="font-size:11px;color:var(--faint)">·</span> <a href="https://t.me/discoverysystem" target="_blank" style="font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:underline;text-underline-offset:3px">Telegram @discoverysystem ↗</a></div>
+    </div>
+  </div>
+</div>
+
     <div class="cta-block rv">
       <a class="btn" href="calculator.html">Посчитать свою связку →</a>
       <a class="btn-ghost" href="system.html">Что можно взять за основу →</a>
@@ -185,4 +271,25 @@ footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;alig
 </div><!-- © Discovery System · CC BY 4.0 · code MIT · author Viktor Zaitsev -->
 </footer>
 <script>const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.rv').forEach(el=>io.observe(el));</script>
+
+<script>
+(function(){
+  const btn=document.querySelector('.nav-toggle');
+  const nav=document.querySelector('.nav-links');
+  if(!btn||!nav) return;
+  btn.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true':'false');
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+  }));
+  document.addEventListener('click',e=>{
+    if(!nav.contains(e.target) && !btn.contains(e.target)){
+      nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+    }
+  });
+})();
+</script>
+
 </body></html>
