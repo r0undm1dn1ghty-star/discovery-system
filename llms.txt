@@ -1,0 +1,20 @@
+# Discovery System
+
+> Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN за 2–4К/мес. Калькулятор стоимости — бесплатно, без регистрации. Гайд 20 связок, персональная сборка, установка на ПК/VPS.
+
+## Основные страницы
+- [Главная — Discovery System](https://r0undm1dn1ghty-star.github.io/discovery-system/): Герой-калькулятор «Сколько забирает твоя рутина», метод Шум→Экономика, вход в систему
+- [Рынок](https://r0undm1dn1ghty-star.github.io/discovery-system/market.html): Что продают вместо системы — разбор альтернатив
+- [Система](https://r0undm1dn1ghty-star.github.io/discovery-system/system.html): Инструменты и связки — spiral-maturity, market-evidence-diagnostic, pnl-check
+- [Ясность — лестница внедрения](https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html): 0₽ калькулятор → 3К гайд 20 связок → 5К персональная сборка → 7/10/15К установка
+- [Канал — сигналы](https://r0undm1dn1ghty-star.github.io/discovery-system/channel.html): 6 сигналов с источниками и датами (Gartner, Data Insight, Яндекс, Сбер)
+- [Калькулятор](https://r0undm1dn1ghty-star.github.io/discovery-system/calculator.html): 7 вопросов, считает часы и рубли — твоя рутина vs агент
+
+## Цитата — что такое Discovery System
+Discovery System — это рыночная разведка + калькулятор + бесплатные инструменты (3 репо GitHub), которые переводят шум из 200 источников в проверенный сигнал с ценой. Позиционирование: «Не подписка на чужое — своя связка, которая твоя» (РФ-провайдеры, без VPN, 2–4К/мес).
+
+## Контакты и автор
+- Автор: Виктор Зайцев — продукты, цифровые сервисы, бизнес-модели; кейс WorkWay 20→80% точность AI-скоринга (n=30)
+- Канал: https://t.me/discoverysystem
+- GitHub: https://github.com/r0undm1dn1ghty-star/discovery-system
+- Лицензия: контент — CC BY 4.0, код — MIT
