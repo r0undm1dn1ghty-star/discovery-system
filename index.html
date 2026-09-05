@@ -305,6 +305,12 @@ h1{font-size:1.5rem !important}
   .f-tip{display:block !important}
 }
 
+
+@media(max-width:900px){
+  .who-results{grid-template-columns:1fr !important}
+  .geo-answer div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr !important}
+}
+
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization", "name": "Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "logo": {"@type": "ImageObject", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 связок, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem", "https://vc.ru/id6099688", "https://x.com/d1sc0v3rysyst3m"], "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#website", "name": "Discovery System — рыночная разведка в мире ИИ-агентов", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "inLanguage": "ru-RU", "publisher": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}, "potentialAction": {"@type": "SearchAction", "target": {"@type": "EntryPoint", "urlTemplate": "https://r0undm1dn1ghty-star.github.io/discovery-system/calculator.html?q={search_term_string}"}, "query-input": "required name=search_term_string"}}</script>
@@ -341,9 +347,14 @@ h1{font-size:1.5rem !important}
       </div>
       <div class="rv" style="transition-delay:.16s">
         <div class="mini-calc">
-                  <div class="mc-head">Сколько забирает рутина</div>
-                  <!-- DKCP: micro-hint — approval: label «Моя рутина» vs «Моё время» vs «Моя свобода» -->
-                  <div id="mcHint" style="font-size:11.5px;color:var(--meta);margin:-8px 0 14px;line-height:1.4">10 задач × 2 ч = 20 ч/нед → <b style="color:var(--ink)">87 ч/мес</b> руками</div>
+                  <div class="mc-head">Рутина → часы → ₽ — за 10 сек</div>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+                    <button class="mc-chip" data-s="tg" onclick="mcPick('tg')" style="font-family:var(--mono);font-size:11.5px;padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--body);cursor:pointer">ТГ — заявки</button>
+                    <button class="mc-chip" data-s="avito" onclick="mcPick('avito')" style="font-family:var(--mono);font-size:11.5px;padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--body);cursor:pointer">Авито — отклики</button>
+                    <button class="mc-chip" data-s="crm" onclick="mcPick('crm')" style="font-family:var(--mono);font-size:11.5px;padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--body);cursor:pointer">CRM — статусы</button>
+                    <button class="mc-chip" data-s="content" onclick="mcPick('content')" style="font-family:var(--mono);font-size:11.5px;padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--body);cursor:pointer">Контент</button>
+                  </div>
+                  <div id="mcHint" style="font-size:11.5px;color:var(--meta);margin:-2px 0 14px;line-height:1.4">10 задач × 2 ч = 20 ч/нед → <b style="color:var(--ink)">87 ч/мес</b> руками · выбери сценарий выше</div>
                   <div class="mc-row">
                     <span>Задач в неделю</span>
                     <input type="range" min="1" max="50" value="10" id="mcTasks" oninput="mcUpdate()">
@@ -365,21 +376,27 @@ h1{font-size:1.5rem !important}
                       <div class="mc-col-label">Руками</div>
                       <div class="mc-col-num"><span id="mcHandsHours">87</span> <small>ч/мес</small></div>
                       <div class="mc-col-money"><span id="mcHandsCost">130</span> <small>тыс ₽</small></div>
-                      <div class="mc-col-foot">твоё время + оплата подрядчику</div>
+                      <div class="mc-col-foot">твоё время + оплата</div>
                     </div>
                     <div class="mc-arrow">→</div>
                     <div class="mc-col mc-after">
                       <div class="mc-col-label">С агентом</div>
                       <div class="mc-col-num"><span id="mcAgentHours">9</span> <small>ч/мес</small></div>
                       <div class="mc-col-money"><span id="mcAgentCost">3</span> <small>тыс ₽</small></div>
-                      <div class="mc-col-foot">только контроль и решения</div>
+                      <div class="mc-col-foot">контроль + решения</div>
                     </div>
                   </div>
 
                   <div class="mc-save-box">
                     <div class="mc-save-big"><span id="mcSaveHours">78</span> <small>ч</small> · <span id="mcSaveMoney">127</span> <small>тыс ₽</small></div>
-                    <div class="mc-save-foot">экономия в месяц — твоё время возвращается, деньги остаются</div>
+                    <div class="mc-save-foot" id="mcSaveFoot">экономия в месяц — вернёшь время, оставишь деньги</div>
                   </div>
+                  <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+                    <a class="btn" href="calculator.html" id="mcGo" style="flex:1;text-align:center">Узнать точную связку →</a>
+                    <a class="btn-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener" style="text-align:center">Канал →</a>
+                  </div>
+                  <div style="font-family:var(--mono);font-size:10.5px;color:var(--faint);text-align:center;margin-top:8px">сохраним расчёт и подставим в калькулятор</div>
+                </div>
                 </div>
       </div>
     </div>
@@ -391,22 +408,33 @@ h1{font-size:1.5rem !important}
   <div class="wrap">
     <div class="who-grid">
       <div class="rv">
-        <img class="who-photo" src="viktor.jpg" alt="Виктор Зайцев"/>
+        <img class="who-photo" src="viktor.jpg" alt="Виктор Зайцев — продукт, система, разведка"/>
+        <div style="margin-top:12px;font-family:var(--mono);font-size:11px;color:var(--faint);line-height:1.5">Живу в Питере · строю в открытую · пишу сигналы с источником и датой</div>
       </div>
       <div class="who-text">
         <div class="kicker rv" style="transition-delay:.04s">кто за системой</div>
         <h2 class="rv" style="transition-delay:.08s">Виктор Зайцев</h2>
-        <p class="lede rv" style="transition-delay:.12s">Строил продукты, запускал цифровые сервисы, менял бизнес-модели. Теперь даю тем, кто устал платить за чужие системы, <b>инструменты, чтобы собирать свои</b> — без студий, курсов и подписок.</p>
-        <div class="who-result rv" style="transition-delay:.16s">
-          <span class="r-big">20 → 80%</span>
-          <div>
-            <div class="r-desc">Точность AI-скоринга кандидатов. Промпт-инжиниринг, n=30. Повысил точность отбора и сократил Time-to-Hire.</div>
-            <span class="r-src">WorkWay · AI-HR-стартап</span>
+        <p class="lede rv" style="transition-delay:.12s">Продукт-менеджер. Строил продукты с нуля, запускал цифровые сервисы, менял бизнес-модели на живых метриках. Сейчас делаю <b>инструменты, чтобы ты собирал свою систему</b> — без студий, курсов и подписок на чужое.</p>
+        <p class="rv" style="transition-delay:.14s;font-size:14.5px;color:var(--body);line-height:1.65;max-width:560px;margin-top:12px">Разведка → система → канал — один метод. Проверяю на своей шкуре и на твоей рутине: если не забирает часы — не внедряем. Если забирает — собираем связку, которую ты контролируешь.</p>
+        <div class="who-results rv" style="transition-delay:.16s;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px">
+          <div style="background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:18px 20px">
+            <div style="font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--accent);letter-spacing:-.02em;line-height:1">20 → 80%</div>
+            <div style="font-size:13px;color:var(--body);line-height:1.5;margin-top:6px">Точность AI-скоринга кандидатов</div>
+            <div style="font-size:12px;color:var(--meta);line-height:1.45;margin-top:4px">Промпт-инжиниринг, n=30 · Time-to-Hire ↓</div>
+            <div style="font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:8px">WorkWay · AI-HR · первый PM на нуле</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:18px 20px">
+            <div style="font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--accent);letter-spacing:-.02em;line-height:1">+16% <span style="font-size:12px;color:var(--meta);font-weight:600">· 4M MAU</span></div>
+            <div style="font-size:13px;color:var(--body);line-height:1.5;margin-top:6px">Выручка за счёт A/B-видео и нативной рекламы</div>
+            <div style="font-size:12px;color:var(--meta);line-height:1.45;margin-top:4px">Chill Music Lab · медиа · проверка метода на другом домене</div>
+            <div style="font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:8px">не МСБ — честно про релевантность</div>
           </div>
         </div>
-        <div class="signature rv" style="transition-delay:.2s">
+        <div class="signature rv" style="transition-delay:.2s;margin-top:18px">
           <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub ↗</a>
           <a href="https://t.me/discoverysystem" target="_blank" rel="noopener">Канал ↗</a>
+          <a href="https://vc.ru/id6099688" target="_blank" rel="noopener">VC ↗</a>
+          <span style="font-family:var(--mono);font-size:11px;color:var(--faint);margin-left:8px">отвечаю сам · без отдела продаж</span>
         </div>
       </div>
     </div>
@@ -485,17 +513,20 @@ h1{font-size:1.5rem !important}
 <!-- 4 · ВХОД — якорь в калькулятор -->
 
 <!-- GEO: согласовать — цитатный блок для ИИ (definition pattern) -->
-<section class="geo-answer" style="max-width:780px;margin:48px auto 0;padding:24px 28px;background:var(--surface);border:1px solid var(--line-soft);border-radius:14px">
-  <h3 style="font-family:var(--display);font-size:1.2rem;margin-bottom:12px">Что такое Discovery System</h3>
-  <p style="font-size:15px;line-height:1.7;color:var(--body)">Discovery System — это сигналы о сборках ИИ-агентов из 94 источников (новости, отчёты, тарифы, исследования) в проверенный сигнал с ценой. Метод: фильтр «Шум → Отбор → Сигнал → Доказательство → Экономика», где каждый уровень — критерий отбора. Результат — своя ИИ-связка на РФ-провайдерах без VPN за 2–4К/мес (сборка 5К, установка 7/10/15К).</p>
-  <p style="font-size:13px;color:var(--meta);margin-top:12px">Источник: сигналы канала @discoverysystem с датой и источником (например, Gartner: 40% ИИ-проектов закроют к 2027 — 25.06.2025). Обновляется еженедельно.</p>
+<section class="geo-answer" style="max-width:780px;margin:52px auto 0;padding:28px 28px;background:var(--surface);border:1px solid var(--line-soft);border-radius:16px">
+  <h3 style="font-family:var(--display);font-size:1.25rem;margin-bottom:10px;letter-spacing:-.02em">Что такое Discovery System</h3>
+  <p style="font-size:15.5px;line-height:1.7;color:var(--body)"><b style="color:var(--ink)">Discovery System</b> — это разведка, система и канал для владельца (3–30 чел.), который хочет <b style="color:var(--ink)">свою ИИ-связку</b>, а не чужую подписку.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:18px">
+    <div style="background:rgba(255,255,255,.04);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px"><div style="font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.08em;font-weight:600;margin-bottom:6px">01 · РАЗВЕДКА</div><div style="font-size:13px;color:var(--body);line-height:1.5">94 источника → фильтр «Шум → Отбор → Сигнал → Доказательство → Экономика». Каждый сигнал — с датой и источником.</div></div>
+    <div style="background:rgba(255,255,255,.04);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px"><div style="font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.08em;font-weight:600;margin-bottom:6px">02 · СИСТЕМА</div><div style="font-size:13px;color:var(--body);line-height:1.5">Связка под твою рутину (ТГ / Авито / CRM) на РФ-провайдерах без VPN. 2–4К/мес. Сборка твоя, не моя.</div></div>
+    <div style="background:rgba(255,255,255,.04);border:1px solid var(--line-soft);border-radius:12px;padding:14px 14px"><div style="font-family:var(--mono);font-size:10.5px;color:var(--accent);letter-spacing:.08em;font-weight:600;margin-bottom:6px">03 · КАНАЛ</div><div style="font-size:13px;color:var(--body);line-height:1.5">Сигналы 2–3×/нед в Telegram — что заметить, что проверить, что забрать в работу.</div></div>
+  </div>
+  <p style="font-size:12.5px;color:var(--meta);margin-top:14px;line-height:1.5">Метод один — масштаб твой: та же воронка, только вместо кандидатов — твои заявки, чаты, таблицы.</p>
 </section>
 
 
 <!-- GEO: согласовать — статистический блок для цитаты -->
-<section class="geo-stat" style="max-width:780px;margin:24px auto 0;padding:20px 28px;background:var(--surface);border:1px solid var(--line-soft);border-radius:14px">
-  <p style="font-size:14.5px;line-height:1.6;color:var(--body)"><b style="color:var(--ink)">Факт:</b> Яндекс вывел Hermes Agent в Marketplace — от 3 642 ₽/мес без оплаты за API-ключи (02.09.2026, Yandex Cloud). Сбер вложил 350 млрд ₽ в ИИ и показал «ГигаАгент» на ВЭФ (02.09.2026). Личный ассистент на VPS — 6 600 ₽ без VPN на телефоне (кейс 30.08.2026).</p>
-</section>
+
 
 <section id="entry" style="padding-top:84px">
   <div class="wrap">
@@ -643,6 +674,14 @@ nction mcUpdate(){
   const saveMoney = handsCost - agentCost;
   document.getElementById('mcSaveHours').textContent = Math.round(saveHours);
   document.getElementById('mcSaveMoney').textContent = Math.round(saveMoney / 1000);
+      const foot=document.getElementById('mcSaveFoot');
+      if(foot) foot.textContent = saveHours>60 ? 'освободишь ~'+Math.round(saveHours/8)+' дн/мес — хватит на продукт, не на рутину' : 'вернёшь '+Math.round(saveHours)+' ч/мес — хватит на проверку гипотезы';
+      try{
+        const payload={tasks, hours, rate, handsHours, handsCost, agentHours, agentCost, saveHours, saveMoney, ts:Date.now()};
+        sessionStorage.setItem('ds_mc', JSON.stringify(payload));
+        const go=document.getElementById('mcGo');
+        if(go) go.href='calculator.html#from-hero';
+      }catch(e){}
 }
 mcUpdate(); updateHintAndFunnel();
 </script>

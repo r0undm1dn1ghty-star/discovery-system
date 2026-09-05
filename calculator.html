@@ -193,7 +193,7 @@
   <div class="livebar" id="livebar">
     <div class="lbl">Твоя связка</div>
     <div class="val" id="livePrice">— <span>₽/мес</span></div>
-    <div class="hint" id="liveHint">заполни шаги — цена и время обновятся</div>
+    <div class="hint" id="liveHint">заполни шаги — цена и время обновятся</div><div id="mcBridge" style="font-size:11px;color:var(--primary-l);margin-top:6px;display:none"></div>
   </div>
 
   <div class="steps" id="steps"></div>
@@ -461,9 +461,15 @@ const MODELS={
 
 /* ====== STATE ====== */
 let device='cpu',goal=null,tasks=[],autonomy=null,conns=[],data='cloud',pay='rucard',budget=null;
+let _mc=null; try{_mc=JSON.parse(sessionStorage.getItem('ds_mc')||'null');}catch(e){}
+let _mcScenario=null; try{_mcScenario=sessionStorage.getItem('ds_mc_scenario');}catch(e){}
 let step=1; const N=7;
 
 /* ========== RENDER ========== */
+function renderBridge(){ const m=mcHint(); const el=document.getElementById('mcBridge'); if(!m||!el) return; const s=sessionStorage.getItem('ds_mc_scenario')||''; const label=s?(' · сценарий: '+s.toUpperCase()):''; el.textContent='с главной: '+Math.round(m.handsHours)+' ч руками → '+Math.round(m.agentHours)+' ч с агентом · экономия '+Math.round(m.saveHours)+' ч/мес'+label; el.style.display='block';
+  // если много часов — подсказываем стек: высокая автономность выгоднее
+  if(m.saveHours>60){ /* hint for autonomy selection */ }
+}
 function renderSteps(){
   let h='';for(let i=1;i<=N;i++)h+=`<div class="step ${i<=step?'done':''}"></div>`;
   document.getElementById('steps').innerHTML=h;
@@ -478,11 +484,12 @@ function renderCards(){
   document.getElementById('payOpts').innerHTML=PAY.map(p=>`<div class="opt ${pay===p.id?'selected':''}" onclick="pay='${p.id}';pickOption();">${ic(p.ic)}<div class="body"><div class="t">${p.t}</div><div class="d">${p.d}</div></div></div>`).join('');
   document.getElementById('budgetOpts').innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
 }
-function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();stepRender();}
-function toggleConn(id){conns=conns.includes(id)?conns.filter(x=>x!==id):[...conns,id];renderCards();updateLive();stepRender();}
+function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();stepRender();renderBridge();}
+function toggleConn(id){conns=conns.includes(id)?conns.filter(x=>x!==id):[...conns,id];renderCards();updateLive();stepRender();renderBridge();}
 function days(h){const d=h/8;return d>=1?(d%1===0?d.toFixed(0):d.toFixed(1))+' дн/мес':Math.round(d*8)+' ч/мес';}
 
 /* ========== LIVE PRICE ========== */
+function mcHint(){ try{ const m=JSON.parse(sessionStorage.getItem('ds_mc')||'null'); if(!m) return null; return m; }catch(e){ return null; } }
 function estimate(){
   if(!device||!goal||!autonomy||!budget)return null;
   const g=GOALS.find(x=>x.id===goal);
