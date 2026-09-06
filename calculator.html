@@ -165,19 +165,40 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Discovery System", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятор", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/calculator.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/calculator.html#app", "name": "Калькулятор стоимости ИИ-агента — Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/calculator.html", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "7 вопросов — сколько часов и рублей стоит твоя рутина (Руками vs С агентом). Считает экономию до старта, без регистрации.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB", "availability": "https://schema.org/InStock"}, "author": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}, "isAccessibleForFree": true}</script>
 
+
+
+
 <style>
-.nav-toggle{display:none;appearance:none;background:transparent;border:1px solid #232a3a;border-radius:9px;width:40px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer}
-.nav-toggle span{width:18px;height:1.5px;background:#eef2f9;display:block;border-radius:2px}
-@media(max-width:900px){
-  .nav-toggle{display:flex}
-  .nav-links{position:fixed;top:64px;right:16px;left:16px;background:rgba(17,21,36,.98);border:1px solid #1e2636;border-radius:14px;padding:18px;flex-direction:column;align-items:flex-start;gap:14px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.2s;z-index:49}
-  .nav-links.open{opacity:1;visibility:visible;transform:none;display:flex !important}
+/* v8 skin — манифест→инструмент */
+:root{
+  --bg:#0e1220;--panel:#131728;--panel2:#161b30;--line:#232a3f;--line2:#2a3350;
+  --txt:#eef1f8;--muted:#aab4c8;--dim:#717a92;--faint:#4d5468;
+  --primary:#7bc4ff;--primary-l:#a5c8ff;--up:#5ed9a8;--mid:#f2b665;--down:#ff5c5c;
 }
+body{background:var(--bg)}
+.wrap{max-width:920px;padding-top:76px}
+.hero h1{font-family:'Outfit',var(--sans);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.card{font-family:'Outfit','IBM Plex Sans',sans-serif}
+.card h2{font-family:'Outfit',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.18}
+.step-num{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:var(--faint)}
+.head{display:none}
+.term-bar-like,.livebar{background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.livebar{position:sticky;top:70px}
+.opt,.task,.conn{background:var(--paper-bg,rgba(255,255,255,.03));border:1px solid var(--line)}
+.opt,.task,.conn{background:rgba(255,255,255,.03)}
+.opt.selected,.task.selected,.conn.selected{background:rgba(123,196,255,.09);border-color:rgba(123,196,255,.35);box-shadow:none}
+.opt.selected .ic,.task.selected .ic,.conn.selected .ic{background:var(--primary);border-color:var(--primary)}
+.btn-primary,.btn-cta{font-family:'Outfit',sans-serif}
+.pill{border-radius:8px}
+footer.foot,.foot{font-family:'IBM Plex Mono',monospace}
 </style>
 
 </head>
 <body>
-<header style="position:sticky;top:0;z-index:50;background:rgba(17,21,36,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)"><div class="wrap nav" style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;max-width:880px;margin:0 auto"><div class="brand" style="display:flex;align-items:center;gap:10px;font-family:Outfit,sans-serif;font-weight:700;font-size:15px;letter-spacing:-.01em"><img src="logo-nav.png" alt="" style="width:22px;height:22px;border-radius:5px;flex-shrink:0"/><b style="color:#eef2f9">discovery system</b><span style="font-family:IBM Plex Mono,monospace;font-size:10.5px;color:#5a6275;letter-spacing:.06em">// рыночная разведка</span></div><button class="nav-toggle" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button><nav class="nav-links" style="display:flex;gap:22px;align-items:center"><a href="index.html" style="color:#b8c3d6;font-size:14px;text-decoration:none">главная</a><a href="market.html" style="color:#b8c3d6;font-size:14px;text-decoration:none">рынок</a><a href="system.html" style="color:#b8c3d6;font-size:14px;text-decoration:none">система</a><a href="clarity.html" style="color:#b8c3d6;font-size:14px;text-decoration:none">ясность</a><a href="channel.html" style="color:#b8c3d6;font-size:14px;text-decoration:none">канал</a><a class="cta" href="calculator.html" style="color:#7bc4ff;font-weight:500;font-size:14px;text-decoration:none">Калькулятор ↗</a></nav></div></header>
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;mix-blend-mode:difference;display:flex;align-items:center;padding:18px 32px">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;letter-spacing:.08em">discovery system</div>
+  <div style="margin-left:auto"><a href="index.html" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;margin-left:18px;letter-spacing:.06em;text-decoration:none">главная</a><a href="clarity.html" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;margin-left:18px;letter-spacing:.06em;text-decoration:none">форматы</a><a href="calculator.html" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#fff;margin-left:18px;letter-spacing:.06em;text-decoration:none;border-bottom:1px solid #fff;padding-bottom:2px">калькулятор →</a></div>
+</header>
 <div class="wrap">
 
   <div class="head">
@@ -676,17 +697,7 @@ renderSteps();
 document.getElementById('stepsCount').textContent='1 / '+N;
 </script>
 
-<script>
-(function(){
-  const btn=document.querySelector('.nav-toggle');
-  const nav=document.querySelector('.nav-links');
-  if(!btn||!nav) return;
-  btn.addEventListener('click',()=>{
-    const open=nav.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open?'true':'false');
-  });
-})();
-</script>
+
 
 </body>
 </html>
