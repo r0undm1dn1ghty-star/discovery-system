@@ -3,132 +3,192 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Связка — из чего собирается твоя система · Discovery System</title>
-<meta name="description" content="Своя ИИ-связка на РФ-провайдерах: модель, платформа, память, интеграции. Цены реальные, без VPN, 2–4К/мес."/>
+<title>Система — инструменты и связки · Discovery System</title>
+<link rel="canonical" href="https://r0undm1dn1ghty-star.github.io/discovery-system/system.html"/>
+<meta property="og:title" content="Система — инструменты и связки · Discovery System"/>
+<meta property="og:description" content="Бесплатные инструменты на GitHub: spiral-maturity, market-evidence-diagnostic, pnl-check. Рабочий код, не презентация."/>
+<meta property="og:url" content="https://r0undm1dn1ghty-star.github.io/discovery-system/system.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="https://r0undm1dn1ghty-star.github.io/discovery-system/og-cover.png"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Discovery System"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Система — инструменты и связки · Discovery System"/>
+<meta name="twitter:description" content="Бесплатные инструменты на GitHub: spiral-maturity, market-evidence-diagnostic, pnl-check. Рабочий код, не презентация."/>
+<meta name="twitter:image" content="https://r0undm1dn1ghty-star.github.io/discovery-system/og-cover.png"/>
+<meta name="description" content="Бесплатные инструменты на GitHub: spiral-maturity, market-evidence-diagnostic, pnl-check. Рабочий код, не презентация."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0e1220;--ink:#eef1f8;--body:#aab4c8;--meta:#717a92;--faint:#4d5468;
-  --accent:#7bc4ff;--ok:#5ed9a8;
-  --line:rgba(255,255,255,.09);--line-soft:rgba(255,255,255,.055);--paper:rgba(255,255,255,.03);
-  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;
+:root{--bg:#111524;--surface:rgba(255,255,255,.06);--surface-2:rgba(255,255,255,.09);--line:rgba(255,255,255,.1);--line-soft:rgba(255,255,255,.07);--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--accent:#7bc4ff;--accent-2:#a5b4ff;--accent-soft:rgba(123,196,255,.12);--ok:#5ed9a8;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.16,1,.3,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
+.bg-fx{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(1200px 600px at 68% -4%,rgba(123,196,255,.08),transparent 60%),radial-gradient(900px 700px at -8% 30%,rgba(139,157,255,.045),transparent 55%),linear-gradient(180deg,#111524,#161a2e)}
+a{text-decoration:none;color:inherit}::selection{background:rgba(123,196,255,.25)}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 48px;box-sizing:border-box;width:100%}section{padding:120px 0}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:500;display:inline-block}
+h1{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:22px 0 28px;max-width:20em}
+h1 em{font-style:normal;background:linear-gradient(95deg,var(--accent) 30%,var(--accent-2) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-.022em;line-height:1.1;margin-bottom:16px}
+h1,h2,h3{text-wrap:balance}p.lead,.sub{text-wrap:pretty}h3{font-family:var(--display);font-size:1.15rem;font-weight:600}
+p.lead{color:var(--body);font-size:clamp(1rem,1.3vw,1.12rem);max-width:36em;line-height:1.7}
+.sub{color:var(--meta);font-size:14.5px;max-width:34em;margin-top:8px}
+header{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px}.brand b{font-family:var(--display);font-weight:700;font-size:15px}.brand span{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:var(--body);font-size:14px;transition:color .2s var(--ease)}.nav-links a:hover{color:var(--accent)}.nav-links .cta{color:var(--accent);font-weight:500}
+.btn{display:inline-block;background:linear-gradient(180deg,var(--accent),#5da8e8);color:#0a0d18;border:none;border-radius:10px;font-family:var(--display);font-size:15px;font-weight:600;padding:14px 30px;cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease);box-shadow:0 8px 32px rgba(123,196,255,.26),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 40px rgba(123,196,255,.38)}
+.btn-ghost{display:inline-block;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;font-family:var(--display);font-size:14px;font-weight:500;padding:12px 24px;cursor:pointer;transition:border-color .2s,background .2s}
+.btn-ghost:hover{border-color:rgba(123,196,255,.4);background:var(--surface-2)}
+.sec-head{margin-bottom:56px}
+/* репо-карточки */
+.repo-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.repo-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:28px 32px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.repo-card:hover{border-color:rgba(123,196,255,.2);transform:translateY(-1px)}
+.repo-card .r-info h3{font-size:1.1rem;margin-bottom:8px}
+.repo-card .r-info p{font-size:14px;color:var(--body);line-height:1.6}
+.repo-card .r-info .r-tags{display:flex;gap:8px;margin-top:12px}
+.repo-card .r-info .r-tag{font-family:var(--mono);font-size:10.5px;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:6px}
+.repo-card .r-go{font-family:var(--mono);font-size:13px;color:var(--accent);white-space:nowrap}
+.repo-card .r-go:hover{color:var(--ink)}
+/* терминал-установка */
+.term{background:rgba(10,14,28,.75);border:1px solid var(--line);border-radius:14px;font-family:var(--mono);font-size:12.5px;line-height:2.05;padding:24px 26px;box-shadow:0 28px 80px rgba(0,0,0,.45);white-space:pre-wrap;word-break:break-word;overflow-wrap:break-word;max-width:100%;overflow-x:auto;margin-bottom:32px}
+.term a{word-break:break-all}
+.term .tl{opacity:0;transform:translateY(4px);animation:tline .5s var(--ease) forwards}
+.term .tl:nth-child(1){animation-delay:.1s}.term .tl:nth-child(2){animation-delay:.4s}.term .tl:nth-child(3){animation-delay:.7s}
+.term .tl:nth-child(4){animation-delay:1s}.term .tl:nth-child(5){animation-delay:1.3s}.term .tl:nth-child(6){animation-delay:1.6s}
+.term .tl:nth-child(7){animation-delay:1.9s}.term .tl:nth-child(8){animation-delay:2.2s}.term .tl:nth-child(9){animation-delay:2.5s}
+.term .tl:nth-child(10){animation-delay:2.8s}
+@keyframes tline{to{opacity:1;transform:none}}
+.term .tt{color:var(--ink)}
+.term .to{color:#7d879c}
+.term .lb{color:var(--accent);font-weight:600}
+.term .ok{color:var(--ok);font-weight:600}
+.term .sum{color:var(--accent);font-weight:700}
+@media(prefers-reduced-motion:reduce){.term .tl{opacity:1;transform:none;animation:none}}
+/* гайд-блок */
+.guide-block{background:linear-gradient(135deg,rgba(123,196,255,.07),rgba(165,180,255,.02));border:1px solid rgba(123,196,255,.22);border-radius:16px;padding:36px 40px;margin-top:32px}
+.guide-block h3{font-size:1.2rem;margin-bottom:10px}
+.guide-block p{font-size:14px;color:var(--body);line-height:1.6;margin-bottom:16px}
+.guide-block .g-price{font-family:var(--mono);font-size:18px;color:var(--accent);font-weight:600;margin-bottom:16px}
+.cta-block{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line-soft);padding-top:32px;flex-wrap:wrap;gap:16px}
+.foot .meta{font-family:var(--mono);font-size:11px;color:var(--faint)}.foot nav{display:flex;gap:24px}.foot a{color:var(--meta);font-size:13.5px}.foot a:hover{color:var(--accent)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media(max-width:900px){.wrap{padding:0 20px !important;overflow-x:hidden}/* nav-links handled by toggle */section{padding:80px 0}h1{font-size:1.55rem!important;line-height:1.15;word-wrap:break-word;overflow-wrap:break-word}h2{font-size:1.6rem!important}.lead{font-size:14px!important;line-height:1.55;word-wrap:break-word;overflow-wrap:break-word}}
+@media(max-width:420px){.wrap{padding:0 16px}.brand span{display:none}h1{font-size:1.7rem!important}}
+
+/* nav-toggle — taste fix: single line desktop, burger mobile */
+.nav-toggle{display:none;appearance:none;background:transparent;border:1px solid var(--line-soft);border-radius:9px;width:40px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer}
+.nav-toggle span{width:18px;height:1.5px;background:var(--ink);display:block;border-radius:2px;transition:.2s}
+@media(max-width:900px){
+  .nav-toggle{display:flex}
+  .nav-links{position:fixed;top:64px;right:16px;left:16px;background:rgba(17,21,36,.98);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:14px;padding:18px;flex-direction:column;align-items:flex-start;gap:14px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;z-index:49}
+  .nav-links.open{opacity:1;visibility:visible;transform:none;display:flex !important}
+  .nav-links a{font-size:15px}
+  header{position:sticky}
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{background:var(--bg);scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
-::selection{background:rgba(123,196,255,.3)}
-a{text-decoration:none;color:inherit}
-.wrap{max-width:1000px;margin:0 auto;padding:0 40px}
-@media(max-width:700px){.wrap{padding:0 20px}}
-header{position:fixed;top:0;left:0;right:0;z-index:50;mix-blend-mode:difference;display:flex;align-items:center;padding:18px 32px}
-header .b{font-family:var(--mono);font-size:11px;color:#fff;letter-spacing:.08em}
-header .r{margin-left:auto}
-header .r a{font-family:var(--mono);font-size:11px;color:#fff;margin-left:18px;letter-spacing:.06em}
-header .r a.cta{border-bottom:1px solid #fff;padding-bottom:2px}
-@media(max-width:700px){header{padding:14px 20px}header .r a:first-child{display:none}}
-.k{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px}
-h2{font-family:'Outfit',var(--sans);font-size:clamp(1.9rem,4.4vw,3.1rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:34px}
-h2 em{font-style:normal;color:var(--accent)}
-section{padding:110px 0;position:relative}
-section .num{position:absolute;top:26px;right:40px;font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.18em}
-.hero{padding:150px 0 60px}
-.hero .who{margin-top:34px;font-family:var(--mono);font-size:11.5px;color:var(--meta);letter-spacing:.05em;line-height:2}
-/* цепочка */
-.chain{max-width:840px;border-top:1px solid var(--line)}
-.crow{display:grid;grid-template-columns:52px 1fr auto;gap:20px;align-items:baseline;padding:24px 6px;border-bottom:1px solid var(--line-soft);transition:background .2s}
-.crow:hover{background:rgba(255,255,255,.022)}
-.crow .n{font-family:var(--mono);font-size:12px;color:var(--faint)}
-.crow h3{font-family:'Outfit',var(--sans);font-size:1.15rem;font-weight:700;letter-spacing:-.015em}
-.crow .d{font-size:13.5px;color:var(--meta);margin-top:4px;line-height:1.55;max-width:38em}
-.crow .p{font-family:var(--mono);font-size:1rem;font-weight:600;white-space:nowrap;color:var(--accent)}
-.crow .p small{display:block;font-size:10px;color:var(--faint);font-weight:400;margin-top:2px}
-@media(max-width:700px){.crow{grid-template-columns:40px 1fr}.crow .p{grid-column:2}}
-.prose p{font-size:15.5px;color:var(--body);max-width:36em;line-height:1.75;margin-top:16px}
-.prose p b{color:var(--ink)}
-.sig{margin-top:18px;font-family:var(--mono);font-size:11.5px;color:var(--accent);line-height:2}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-.btn{display:inline-block;background:var(--accent);color:#0a0d18;border-radius:9px;padding:13px 24px;font-family:'Outfit',var(--sans);font-weight:600;font-size:14.5px;border:none;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-footer{border-top:1px solid var(--line-soft);padding:26px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.05em}
-footer .links a{margin-left:16px;color:var(--meta)}
-@media(max-width:700px){footer{padding:22px 20px}}
-.rv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization", "name": "Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "logo": {"@type": "ImageObject", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 связок, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem", "https://vc.ru/id6099688", "https://x.com/d1sc0v3rysyst3m"], "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Discovery System", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/"}, {"@type": "ListItem", "position": 2, "name": "Система", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/system.html"}]}</script>
 </head>
 <body>
-<header>
-  <div class="b">discovery system</div>
-  <div class="r"><a href="index.html">главная</a><a href="calculator.html" class="cta">посчитать →</a></div>
-</header>
+<div class="bg-fx"></div>
+<header><div class="wrap nav">
+  <div class="brand"><img src="logo-nav.png" alt="" style="width:22px;height:22px;border-radius:5px;flex-shrink:0"/><b>discovery system</b><span>// рыночная разведка</span></div>
+  <button class="nav-toggle" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links">
+    <a href="index.html">главная</a>
+    <a href="market.html">рынок</a>
+    <a href="clarity.html">ясность</a>
+    <a href="channel.html">канал</a>
+    <a class="cta" href="calculator.html">Калькулятор ↗</a>
+  </nav>
+</div></header>
 
-<section class="hero">
-  <div class="num">связка</div>
+<section style="padding-top:100px">
   <div class="wrap">
-    <div class="k">система · из чего собирается</div>
-    <h2 class="rv">Пять слоёв.<br/>Все — <em>твои.</em></h2>
-    <div class="who rv" style="transition-delay:.1s">не подписка и не чёрный ящик · каждый слой можно поменять, починить или выкинуть</div>
-  </div>
-</section>
+    <div class="sec-head rv">
+      <div class="kicker">система · библиотека</div>
+      <h1>Не ищи идеальный инструмент.<br/><em>Ищи правильную связку.</em></h1>
+      <p class="lead">Три репозитория на GitHub — рабочие методики и инструменты. Скачай, изучи, проверь логику. Бесплатно и открыто.</p>
+    </div>
+    <div class="term rv" aria-label="Установка инструментов">
+      <div class="tl tt">$ discovery install --tools</div>
+      <div class="tl to"><a href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted rgba(123,196,255,.4);text-underline-offset:3px">spiral-maturity</a> ........ <span class="ok">✓ готов</span></div>
+      <div class="tl to"><a href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted rgba(123,196,255,.4);text-underline-offset:3px">market-evidence-diagnostic</a> . <span class="ok">✓ готов</span></div>
+      <div class="tl to"><a href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted rgba(123,196,255,.4);text-underline-offset:3px">pnl-check</a> ............. <span class="ok">✓ готов</span></div>
+      <div class="tl to dim">→ 3 репозитория · 0 ₽</div>
+      <div class="tl sum">проверь логику, не слова</div>
+    </div>
 
-<section style="padding-top:40px">
-  <div class="wrap">
-    <div class="chain rv">
-      <div class="crow">
-        <span class="n">01</span>
-        <div><h3>Модель — под задачу и бюджет</h3><div class="d">DeepSeek — если цена решает. Qwen — если нужен длинный контекст. YandexGPT/GigaChat — если нужен русский без внешнего API. Флагманы не переплачиваем.</div></div>
-        <span class="p">0 – 2 600 ₽/мес<small>по тарифам 08.2026</small></span>
+    <div class="repo-grid">
+      <div class="repo-card rv">
+        <div class="r-info">
+          <h3>spiral-maturity</h3>
+          <p>Один вопрос вместо чек-листа на 50 пунктов. Оценка зрелости компании: слой ценностей → управление, продукт, метрики. Диагностика: готов ли бизнес к ИИ-агенту, или сначала нужна структура.</p>
+          <div class="r-tags"><span class="r-tag">диагностика</span><span class="r-tag">зрелость</span></div>
+        </div>
+        <a class="r-go" href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
-      <div class="crow">
-        <span class="n">02</span>
-        <div><h3>Платформа — конструктор агента</h3><div class="d">Timeweb AI-агенты: 30+ моделей, MCP-галерея, Telegram из коробки. Или open-source: OpenClaw / Hermes — на своей машине, без ограничений.</div></div>
-        <span class="p">1 ₽/агент/мес<small>Timeweb · авг 2026</small></span>
+      <div class="repo-card rv" style="transition-delay:.06s">
+        <div class="r-info">
+          <h3>market-evidence-diagnostic</h3>
+          <p>Проверка claims бизнес-модели через рынок: реальная проблема, альтернативы, доказательства из каналов. Каждый вывод — источник + дата. Для тех, кто хочет «проверить, а не поверить».</p>
+          <div class="r-tags"><span class="r-tag">рынок</span><span class="r-tag">доказательства</span></div>
+        </div>
+        <a class="r-go" href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
-      <div class="crow">
-        <span class="n">03</span>
-        <div><h3>База знаний — твои материалы</h3><div class="d">Скрипты ответов, прайс, регламенты, история чатов. Оцифровывается один раз — агент отвечает твоим языком, а не общими словами.</div></div>
-        <span class="p">~45 ₽/млн токенов<small>Timeweb · vs 400 ₽ у YandexGPT</small></span>
+      <div class="repo-card rv" style="transition-delay:.12s">
+        <div class="r-info">
+          <h3>pnl-check</h3>
+          <p>Проверка, можно ли принимать управленческое решение на текущих цифрах. Факты → сверка прибыли и денег → бриф для решения. Без угадывания и шаблонных советов.</p>
+          <div class="r-tags"><span class="r-tag">финансы</span><span class="r-tag">решения</span></div>
+        </div>
+        <a class="r-go" href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
-      <div class="crow">
-        <span class="n">04</span>
-        <div><h3>Интеграции — куда уходит работа</h3><div class="d">Telegram-бот, CRM, Авито-чаты, таблицы. Заявки уходят куда надо, память между чатами сохраняется.</div></div>
-        <span class="p">0 – 550 ₽/мес<small>зависит от подключений</small></span>
-      </div>
-      <div class="crow">
-        <span class="n">05</span>
-        <div><h3>Железо — РФ-хостинг или твой ПК</h3><div class="d">VPS от 300 ₽/мес без VPN, оплата картой РФ. Или локально: данные никуда не уходят. GPU не нужен — если есть, используем.</div></div>
-        <span class="p">0 – 400 ₽/мес<small>OpenClaw VPS · от 300 ₽</small></span>
-      </div>
+    </div>
+    <div class="guide-block rv">
+      <h3>Гайд: 20 конфигураций ИИ-агента</h3>
+      <p>Все связки в одной таблице: модель, стек, промпты, провайдеры РФ и зарубежные. Для тех, кто хочет собрать сам, но не тратить недели на исследование.</p>
+      <div class="g-price">3 000 ₽ · разово</div>
+      <a class="btn" href="calculator.html">Узнать стоимость и забрать гайд →</a>
+    </div>
+    <div class="cta-block rv">
+      <a class="btn-ghost" href="calculator.html">Проверить стоимость связки →</a>
+      <a class="btn-ghost" href="clarity.html">Понять, что собирать →</a>
     </div>
   </div>
 </section>
 
-<section class="prose" style="padding-top:60px">
-  <div class="num">почему</div>
-  <div class="wrap">
-    <div class="k">что это даёт</div>
-    <h2 class="rv">Считаешь один раз.<br/><em>Работает без тебя.</em></h2>
-    <p class="rv" style="transition-delay:.06s"><b>Полный чек связки — от 0 до ~4К ₽/мес.</b> Бесплатный старт: GigaChat freemium 365 млн токенов в год, Timeweb-агент за 1 ₽. Серьёзный режим: DeepSeek + VPS + интеграции.</p>
-    <p class="rv" style="transition-delay:.1s"><b>Никакой вендорной привязки.</b> Промпты, база знаний, конфигурация — всё у тебя. Починить может любой: я, ты или другой подрядчик. Связку не отбирают вместе с подпиской.</p>
-    <p class="rv" style="transition-delay:.14s"><b>Модели дешевеют.</b> YandexGPT подешевел втрое за полгода, GigaChat — втрое для юрлиц. Связка, собранная сегодня, будет стоить меньше через год — не больше, как чужие подписки.</p>
-    <div class="sig rv" style="transition-delay:.18s">— YandexGPT 5.1 Pro: 0,40 ₽/1000 токенов, −3x с июня 2026 · axioma-ai<br/>— GigaChat API: трёхкратное снижение для компаний · 02.02.2026<br/>— SaluteSpeech для физлиц закрыт с 15.07.2026 — не берём</div>
-    <div class="cta-row rv" style="transition-delay:.2s">
-      <a class="btn" href="calculator.html">Посчитать свою связку →</a>
-      <a class="btn ghost" href="clarity.html">Форматы работы →</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>discovery system · связка, которая твоя · 2026</span>
-  <span class="links"><a href="index.html">главная</a><a href="market.html">рынок</a><a href="clarity.html">форматы</a><a href="channel.html">канал</a><a href="calculator.html">калькулятор</a></span>
+<footer><div class="wrap foot">
+  <span class="meta">discovery system // собери свою систему · 2026</span>
+  <nav><a href="index.html">Главная</a><a href="market.html">Рынок</a><a href="clarity.html">Ясность</a><a href="calculator.html">Калькулятор</a><a href="channel.html">Канал</a></nav>
+</div><!-- © Discovery System · CC BY 4.0 · code MIT · author Viktor Zaitsev -->
 </footer>
+<script>const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.rv').forEach(el=>io.observe(el));</script>
 
 <script>
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+(function(){
+  const btn=document.querySelector('.nav-toggle');
+  const nav=document.querySelector('.nav-links');
+  if(!btn||!nav) return;
+  btn.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true':'false');
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+  }));
+  document.addEventListener('click',e=>{
+    if(!nav.contains(e.target) && !btn.contains(e.target)){
+      nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+    }
+  });
+})();
 </script>
-</body>
-</html>
+
+</body></html>

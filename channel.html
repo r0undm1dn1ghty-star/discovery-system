@@ -3,130 +3,206 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Канал — сигналы с источником и датой · Discovery System</title>
-<meta name="description" content="Сигналы рынка ИИ-агентов РФ: что заметить, что проверить, что забрать в работу. Каждый — с источником и датой. 2–3 в неделю."/>
+<title>Канал — сигналы рынка ИИ-агентов · Discovery System</title>
+<link rel="canonical" href="https://r0undm1dn1ghty-star.github.io/discovery-system/channel.html"/>
+<meta property="og:title" content="Канал — сигналы рынка ИИ-агентов · Discovery System"/>
+<meta property="og:description" content="Полевые заметки о продуктах, агентах и решениях, которые выдерживают проверку. Сигналы с источниками."/>
+<meta property="og:url" content="https://r0undm1dn1ghty-star.github.io/discovery-system/channel.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="https://r0undm1dn1ghty-star.github.io/discovery-system/og-cover.png"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Discovery System"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Канал — сигналы рынка ИИ-агентов · Discovery System"/>
+<meta name="twitter:description" content="Полевые заметки о продуктах, агентах и решениях, которые выдерживают проверку. Сигналы с источниками."/>
+<meta name="twitter:image" content="https://r0undm1dn1ghty-star.github.io/discovery-system/og-cover.png"/>
+<meta name="description" content="Полевые заметки о продуктах, агентах и решениях, которые выдерживают проверку. Сигналы с источниками."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0e1220;--ink:#eef1f8;--body:#aab4c8;--meta:#717a92;--faint:#4d5468;
-  --accent:#7bc4ff;--ok:#5ed9a8;
-  --line:rgba(255,255,255,.09);--line-soft:rgba(255,255,255,.055);--paper:rgba(255,255,255,.03);
-  --mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;
+:root{--bg:#111524;--surface:rgba(255,255,255,.06);--surface-2:rgba(255,255,255,.09);--line:rgba(255,255,255,.1);--line-soft:rgba(255,255,255,.07);--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--accent:#7bc4ff;--accent-2:#a5b4ff;--accent-soft:rgba(123,196,255,.12);--ok:#5ed9a8;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.16,1,.3,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.bg-fx{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(1200px 600px at 68% -4%,rgba(123,196,255,.08),transparent 60%),radial-gradient(900px 700px at -8% 30%,rgba(139,157,255,.045),transparent 55%),linear-gradient(180deg,#111524,#161a2e)}
+a{text-decoration:none;color:inherit}::selection{background:rgba(123,196,255,.25)}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 48px;box-sizing:border-box;width:100%}section{padding:120px 0}
+.kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:500;display:inline-block}
+h1{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:22px 0 28px;max-width:20em}
+h1 em{font-style:normal;background:linear-gradient(95deg,var(--accent) 30%,var(--accent-2) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-.022em;line-height:1.1;margin-bottom:16px}
+h1,h2,h3{text-wrap:balance}p.lead,.sub{text-wrap:pretty}h3{font-family:var(--display);font-size:1.1rem;font-weight:600}
+p.lead{color:var(--body);font-size:clamp(1rem,1.3vw,1.12rem);max-width:36em;line-height:1.7}
+.sub{color:var(--meta);font-size:14.5px;max-width:34em;margin-top:8px}
+header{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-soft)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px}.brand b{font-family:var(--display);font-weight:700;font-size:15px}.brand span{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:var(--body);font-size:14px;transition:color .2s var(--ease)}.nav-links a:hover{color:var(--accent)}.nav-links .cta{color:var(--accent);font-weight:500}
+.btn{display:inline-block;background:linear-gradient(180deg,var(--accent),#5da8e8);color:#0a0d18;border:none;border-radius:10px;font-family:var(--display);font-size:15px;font-weight:600;padding:14px 30px;cursor:pointer;transition:transform .18s var(--ease),box-shadow .18s var(--ease);box-shadow:0 8px 32px rgba(123,196,255,.26),inset 0 1px 0 rgba(255,255,255,.35)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 40px rgba(123,196,255,.38)}
+.btn-ghost{display:inline-block;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;font-family:var(--display);font-size:14px;font-weight:500;padding:12px 24px;cursor:pointer;transition:border-color .2s,background .2s}
+.btn-ghost:hover{border-color:rgba(123,196,255,.4);background:var(--surface-2)}
+.sec-head{margin-bottom:56px}
+/* форматы материалов */
+.formats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.fmt-card{background:var(--surface);border:1px solid var(--line-soft);border-radius:14px;padding:28px 30px;transition:border-color .25s var(--ease)}
+.fmt-card:hover{border-color:rgba(123,196,255,.2)}
+.fmt-card .f-num{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.1em;margin-bottom:10px;display:block}
+.fmt-card h3{font-size:1.05rem;margin-bottom:8px}
+.fmt-card p{font-size:13.5px;color:var(--body);line-height:1.6}
+.fmt-card .f-tag{font-family:var(--mono);font-size:10.5px;color:var(--faint);margin-top:10px;display:block}
+/* live-лента сигналов */
+.feed{display:flex;flex-direction:column;gap:12px;margin-top:48px;margin-bottom:48px}
+.feed-head{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.feed-head .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:fpulse 2s ease infinite}
+@keyframes fpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+.sig{background:var(--surface);border:1px solid var(--line-soft);border-radius:12px;padding:16px 22px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.sig.in{opacity:1;transform:none}
+.sig .sig-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.sig .sig-body{font-size:13.5px;color:var(--body);line-height:1.5}
+.sig .sig-body b{color:var(--ink);font-weight:600}
+.sig .sig-meta{font-family:var(--mono);font-size:10.5px;color:var(--faint);text-align:right;white-space:nowrap}
+.sig .sig-meta .sig-src{color:var(--accent);text-decoration:none;display:block}
+.cta-block{margin-top:56px;display:flex;gap:16px;flex-wrap:wrap}
+footer{padding:64px 0 80px}.foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line-soft);padding-top:32px;flex-wrap:wrap;gap:16px}
+.foot .meta{font-family:var(--mono);font-size:11px;color:var(--faint)}.foot nav{display:flex;gap:24px}.foot a{color:var(--meta);font-size:13.5px}.foot a:hover{color:var(--accent)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media(max-width:900px){.wrap{padding:0 20px !important;overflow-x:hidden}/* nav-links handled by toggle */section{padding:80px 0}h1{font-size:1.55rem!important;line-height:1.15;word-wrap:break-word;overflow-wrap:break-word}h2{font-size:1.6rem!important}.lead{font-size:14px!important;line-height:1.55;word-wrap:break-word;overflow-wrap:break-word}}
+@media(max-width:420px){.wrap{padding:0 16px}.brand span{display:none}h1{font-size:1.7rem!important}}
+
+/* nav-toggle — taste fix: single line desktop, burger mobile */
+.nav-toggle{display:none;appearance:none;background:transparent;border:1px solid var(--line-soft);border-radius:9px;width:40px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer}
+.nav-toggle span{width:18px;height:1.5px;background:var(--ink);display:block;border-radius:2px;transition:.2s}
+@media(max-width:900px){
+  .nav-toggle{display:flex}
+  .nav-links{position:fixed;top:64px;right:16px;left:16px;background:rgba(17,21,36,.98);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:14px;padding:18px;flex-direction:column;align-items:flex-start;gap:14px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s var(--ease),transform .2s var(--ease),visibility .2s;z-index:49}
+  .nav-links.open{opacity:1;visibility:visible;transform:none;display:flex !important}
+  .nav-links a{font-size:15px}
+  header{position:sticky}
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{background:var(--bg);scroll-behavior:smooth}
-body{font-family:var(--sans);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
-::selection{background:rgba(123,196,255,.3)}
-a{text-decoration:none;color:inherit}
-.wrap{max-width:1000px;margin:0 auto;padding:0 40px}
-@media(max-width:700px){.wrap{padding:0 20px}}
-header{position:fixed;top:0;left:0;right:0;z-index:50;mix-blend-mode:difference;display:flex;align-items:center;padding:18px 32px}
-header .b{font-family:var(--mono);font-size:11px;color:#fff;letter-spacing:.08em}
-header .r{margin-left:auto}
-header .r a{font-family:var(--mono);font-size:11px;color:#fff;margin-left:18px;letter-spacing:.06em}
-header .r a.cta{border-bottom:1px solid #fff;padding-bottom:2px}
-@media(max-width:700px){header{padding:14px 20px}header .r a:first-child{display:none}}
-.k{font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.16em;text-transform:uppercase;margin-bottom:22px}
-h2{font-family:'Outfit',var(--sans);font-size:clamp(1.9rem,4.4vw,3.1rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:34px}
-h2 em{font-style:normal;color:var(--accent)}
-section{padding:110px 0;position:relative}
-section .num{position:absolute;top:26px;right:40px;font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.18em}
-.hero{padding:150px 0 60px}
-.hero .who{margin-top:34px;font-family:var(--mono);font-size:11.5px;color:var(--meta);letter-spacing:.05em;line-height:2}
-/* сигналы */
-.sig-list{max-width:840px}
-.sig{border:1px solid var(--line-soft);border-radius:14px;padding:22px 24px;margin-bottom:14px;background:var(--paper);transition:border-color .2s}
-.sig:hover{border-color:rgba(123,196,255,.25)}
-.sig .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
-.sig .tag{font-family:var(--mono);font-size:10.5px;color:var(--accent);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
-.sig .date{font-family:var(--mono);font-size:10px;color:var(--faint)}
-.sig .txt{font-size:14.5px;color:var(--ink);margin-top:10px;line-height:1.6}
-.sig .txt b{color:var(--accent)}
-.sig .src{font-family:var(--mono);font-size:10.5px;color:var(--meta);margin-top:10px;padding-top:10px;border-top:1px solid var(--line-soft)}
-.sig .act{margin-top:10px;font-size:12.5px;color:var(--body);line-height:1.55}
-.sig .act b{color:var(--ok)}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-.btn{display:inline-block;background:var(--accent);color:#0a0d18;border-radius:9px;padding:13px 24px;font-family:'Outfit',var(--sans);font-weight:600;font-size:14.5px;border:none;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-footer{border-top:1px solid var(--line-soft);padding:26px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:10.5px;color:var(--faint);letter-spacing:.05em}
-footer .links a{margin-left:16px;color:var(--meta)}
-@media(max-width:700px){footer{padding:22px 20px}}
-.rv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
-.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}}
+
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization", "name": "Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "logo": {"@type": "ImageObject", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 связок, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem"], "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Discovery System", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/"}, {"@type": "ListItem", "position": 2, "name": "Канал", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/channel.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Сигналы рынка ИИ-агентов", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "Article", "headline": "Яндекс вывел Hermes Agent в Marketplace — от 3 642 ₽/мес", "datePublished": "2026-09-02", "author": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}}}, {"@type": "ListItem", "position": 2, "item": {"@type": "Article", "headline": "Сбер: 350 млрд ₽ в ИИ + ГигаАгент на ВЭФ", "datePublished": "2026-09-02", "author": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}}}, {"@type": "ListItem", "position": 3, "item": {"@type": "Article", "headline": "Личный ассистент на VPS — 6 600 ₽, без VPN", "datePublished": "2026-08-30", "author": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}}}, {"@type": "ListItem", "position": 4, "item": {"@type": "Article", "headline": "400–850 млрд ₽ — агентная коммерция к 2028–29", "datePublished": "2026-08-24", "author": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#author-viktor", "name": "Виктор Зайцев", "description": "Продукт-менеджер, рыночная разведка ИИ. Кейс WorkWay 20→80% точность AI-скоринга (n=30).", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"], "knowsAbout": ["AI agents", "product management", "market research"], "jobTitle": "Founder, Discovery System"}</script>
 </head>
 <body>
-<header>
-  <div class="b">discovery system</div>
-  <div class="r"><a href="index.html">главная</a><a href="calculator.html" class="cta">посчитать →</a></div>
-</header>
+<div class="bg-fx"></div>
+<header><div class="wrap nav">
+  <div class="brand"><img src="logo-nav.png" alt="" style="width:22px;height:22px;border-radius:5px;flex-shrink:0"/><b>discovery system</b><span>// рыночная разведка</span></div>
+  <button class="nav-toggle" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links">
+    <a href="index.html">главная</a>
+    <a href="market.html">рынок</a>
+    <a href="system.html">система</a>
+    <a href="clarity.html">ясность</a>
+    <a class="cta" href="calculator.html">Калькулятор ↗</a>
+  </nav>
+</div></header>
 
-<section class="hero">
-  <div class="num">канал</div>
+<section style="padding-top:100px">
   <div class="wrap">
-    <div class="k">сигналы · 2–3 в неделю</div>
-    <h2 class="rv">Что заметить.<br/>Что <em>проверить.</em><br/>Что забрать в работу.</h2>
-    <div class="who rv" style="transition-delay:.1s">каждый сигнал — источник + дата + три попытки опровергнуть · не прошло — не публикую</div>
+    <div class="sec-head rv">
+      <div class="kicker">канал · live signals</div>
+      <h1>Не пропусти момент,<br/><em>когда сигнал становится решением.</em></h1>
+      <p class="lead">Короткие разборы без гонки за хайпом: что заметить, что проверить и что можно забрать себе в работу.</p>
+    </div>
+
+    <div class="formats">
+      <div class="fmt-card rv">
+        <span class="f-num">01 · ЗАМЕТИТЬ</span>
+        <h3>Сигнал</h3>
+        <p>Что изменилось в рынке и почему это касается твоего продукта, команды или следующего эксперимента.</p>
+        <span class="f-tag">с источником и датой</span>
+      </div>
+      <div class="fmt-card rv" style="transition-delay:.06s">
+        <span class="f-num">02 · ПРОВЕРИТЬ</span>
+        <h3>Доказательство</h3>
+        <p>Разделение демо, кейса и устойчивого процесса. Что выдержит проверку задачей, а что — нет.</p>
+        <span class="f-tag">метод в каждом разборе</span>
+      </div>
+      <div class="fmt-card rv" style="transition-delay:.12s">
+        <span class="f-num">03 · ЗАБРАТЬ</span>
+        <h3>Рабочая связка</h3>
+        <p>Конструкция с задачей, входами, выходами и местом для человека. Не «магия», а система.</p>
+        <span class="f-tag">можно скопировать</span>
+      </div>
+    </div>
+
+        <div class="feed">
+      <div class="feed-head"><span class="pulse"></span> live-лента · последние сигналы</div>
+      <div class="sig" data-date="2026-09-02">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>Яндекс вывел Hermes Agent в Marketplace — от 3 642 ₽/мес</b>, без оплаты за API-ключи</div>
+        <div class="sig-meta">02.09.26<a class="sig-src" href="https://yandex.cloud/ru/marketplace" target="_blank" rel="noopener">Yandex Cloud ↗</a></div>
+      </div>
+      <div class="sig" data-date="2026-09-02">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>Сбер: 350 млрд ₽ в ИИ + «ГигаАгент» на ВЭФ</b> — автономный агент на GigaChat (экономика туманная)</div>
+        <div class="sig-meta">02.09.26<a class="sig-src" href="https://modelora.ru/news/sber-350-mlrd-gigaagent-vef-2025" target="_blank" rel="noopener">modelora.ru ↗</a></div>
+      </div>
+      <div class="sig" data-date="2026-08-30">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>Личный ассистент на VPS — 6 600 ₽</b>, без VPN на телефоне: считает смену, приходы/уходы и время сотрудников</div>
+        <div class="sig-meta">30.08.26<a class="sig-src" href="https://github.com/r0undm1dn1ghty-star/discovery-system" target="_blank" rel="noopener">кейс ↗</a></div>
+      </div>
+      <div class="sig" data-date="2026-08-24">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>400–850 млрд ₽ — агентная коммерция к 2028–29</b> · до 2–3 трлн к 2030–32</div>
+        <div class="sig-meta">24.08.26<a class="sig-src" href="https://datainsight.ru/" target="_blank" rel="noopener">Data Insight ↗</a></div>
+      </div>
+      <div class="sig" data-date="2026-07-27">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>55 млрд ₽/год — расходы Яндекса на Алису AI</b> · 24 млн человек в неделю решают в ней задачи</div>
+        <div class="sig-meta">27.07.26<a class="sig-src" href="https://vc.ru/services/1800000-55-mlrd-alice-ai-2025" target="_blank" rel="noopener">vc.ru ↗</a></div>
+      </div>
+      <div class="sig" data-date="2026-07-01">
+        <span class="sig-dot"></span>
+        <div class="sig-body"><b>Запросы о digital-услугах выросли на 17% г/г</b> — весь рост дала формулировка «внедрение ИИ»: без неё категория упала бы на 28%</div>
+        <div class="sig-meta">2026<a class="sig-src" href="https://elama.ru/blog/digital-uslugi-17-procent-2025/" target="_blank" rel="noopener">eLama ↗</a></div>
+      </div>
+    </div>
+
+    
+<!-- GEO: согласовать — сводка сигналов для ИИ -->
+<section class="geo-summary" style="max-width:780px;margin:32px auto 0;padding:22px 28px;background:var(--surface);border:1px solid var(--line-soft);border-radius:14px">
+  <h3 style="font-size:1.1rem;margin-bottom:10px">Как читать сигналы</h3>
+  <p style="font-size:14.5px;line-height:1.6;color:var(--body)">Каждый сигнал — факт с датой, источником и проверкой на опровержение (3 попытки). Пример: «400–850 млрд ₽ — агентная коммерция к 2028–29, до 2–3 трлн к 2030–32» (Data Insight, 24.08.2026). Полная лента — в Telegram @discoverysystem.</p>
+</section>
+
+<div class="cta-block rv">
+      <a class="btn" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Подписаться на канал →</a>
+      <a class="btn-ghost" href="system.html">Сначала посмотреть систему →</a>
+    </div>
   </div>
 </section>
 
-<section style="padding-top:30px">
-  <div class="wrap">
-    <div class="sig-list">
-      <div class="sig rv">
-        <div class="top"><span class="tag">цены</span><span class="date">11.06.2026</span></div>
-        <div class="txt">YandexGPT 5.1 Pro подешевел <b>втрое</b> — до 0,40 ₽ за 1000 токенов. Связка на API стала ещё дешевле: полгода назад этот же объём стоил в три раза больше.</div>
-        <div class="act"><b>Что значит для тебя:</b> если ждал «когда подешевеет» — момент настал. Бесплатный старт на GigaChat + дешёвый API Яндекса закрывают 90% сценариев МСБ.</div>
-        <div class="src">источник: axioma-ai.ru · тарифы Yandex AI Studio · проверено</div>
-      </div>
-      <div class="sig rv" style="transition-delay:.05s">
-        <div class="top"><span class="tag">платформа</span><span class="date">02.09.2026</span></div>
-        <div class="txt">Сбер показал <b>ГигаАгент</b> на ВЭФ: понимает задачу, планирует, выполняет, создаёт навыки. Экономику не раскрывают.</div>
-        <div class="act"><b>Что проверить:</b> появление ноу-код платформы Сбера (ждём анонсы). Если GigaChat получит конструктор как у Timeweb — связка станет ещё проще.</div>
-        <div class="src">источник: ВЭФ · lenta.ru · 30.07.2026 · GigaChat 16% у россиян (ВЦИОМ)</div>
-      </div>
-      <div class="sig rv" style="transition-delay:.1s">
-        <div class="top"><span class="tag">конкуренты</span><span class="date">02.09.2026</span></div>
-        <div class="txt">PapAI: «80+ внедрений, <b>от 49 000 ₽</b>, запуск за 3 дня, демо до оплаты». Дарэ: внедрение 49 990–250 000 ₽. Вход внедренцев закрепился на ~50К.</div>
-        <div class="act"><b>Что значит для тебя:</b> студии держат чек 50К+ за установку. Своя связка — 3–15К разово + 0–1,4К/мес провайдерам. Разница оплачивает твоё время на месяцы вперёд.</div>
-        <div class="src">источник: papaisoft.com (сниппет, перепроверить) · dareai.ru · 25–30.07.2026</div>
-      </div>
-      <div class="sig rv" style="transition-delay:.15s">
-        <div class="top"><span class="tag">риски</span><span class="date">30.06.2025</span></div>
-        <div class="txt">Gartner: <b>&gt;40% агентных проектов отменят к концу 2027</b>. Причина — неготовые данные и завышенные ожидания, не технологии.</div>
-        <div class="act"><b>Что значит для тебя:</b> выживают те, кто посчитал до старта. Поэтому у нас сначала калькулятор, потом связка — а не наоборот.</div>
-        <div class="src">источник: Gartner · osp.ru/articles/2025/0630/13059700 · проверено</div>
-      </div>
-      <div class="sig rv" style="transition-delay:.2s">
-        <div class="top"><span class="tag">рынок</span><span class="date">10.08.2026</span></div>
-        <div class="txt">Рынок ИИ РФ: <b>316,1 млрд ₽</b> (+29,7% г/г), 883 компании. При этом агентов использует ~5% организаций — разрыв между шумом и внедрением.</div>
-        <div class="act"><b>Что проверить:</b> ИСИЭЗ ВШЭ обновит долю организаций с ИИ (2024: 6,3%). Рост доли = окно для связок закрывается.</div>
-        <div class="src">источник: Коммерсантъ/AIANA · kommersant.ru/doc/8875821 · проверено · ИСИЭЗ НИУ ВШЭ</div>
-      </div>
-      <div class="sig rv" style="transition-delay:.25s">
-        <div class="top"><span class="tag">инфраструктура</span><span class="date">26.08.2026</span></div>
-        <div class="txt">SaluteSpeech <b>закрыл freemium для физлиц</b> с 15.07.2026 — только юрлица. Голосовые сценарии для ИП переезжают на GigaAM v3 (STT, MIT) + Silero v5 (TTS).</div>
-        <div class="act"><b>Что значит для тебя:</b> если в связке есть голос — собираем на открытых моделях, а не на закрытой платформе Сбера.</div>
-        <div class="src">источник: developers.sber.ru/docs/ru/salutespeech · 16.07.2026</div>
-      </div>
-    </div>
-    <div class="cta-row rv">
-      <a class="btn" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Сигналы в Telegram →</a>
-      <a class="btn ghost" href="calculator.html">Посчитать свою рутину →</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>discovery system · связка, которая твоя · 2026</span>
-  <span class="links"><a href="index.html">главная</a><a href="market.html">рынок</a><a href="system.html">связка</a><a href="clarity.html">форматы</a><a href="calculator.html">калькулятор</a></span>
+<footer><div class="wrap foot">
+  <span class="meta">discovery system // собери свою систему · 2026</span>
+  <nav><a href="https://vc.ru/id6099688" target="_blank" rel="noopener">VC ↗</a><a href="https://x.com/d1sc0v3rysyst3m" target="_blank" rel="noopener">X ↗</a><a href="index.html">Главная</a><a href="market.html">Рынок</a><a href="system.html">Система</a><a href="clarity.html">Ясность</a><a href="calculator.html">Калькулятор</a></nav>
+</div><!-- © Discovery System · CC BY 4.0 · code MIT · author Viktor Zaitsev -->
 </footer>
+<script>const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});document.querySelectorAll('.rv,.sig').forEach(el=>io.observe(el));setTimeout(()=>{document.querySelectorAll('.rv:not(.in),.sig:not(.in)').forEach(el=>el.classList.add('in'));},1500);</script>
 
 <script>
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+(function(){
+  const btn=document.querySelector('.nav-toggle');
+  const nav=document.querySelector('.nav-links');
+  if(!btn||!nav) return;
+  btn.addEventListener('click',()=>{
+    const open=nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true':'false');
+  });
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+  }));
+  document.addEventListener('click',e=>{
+    if(!nav.contains(e.target) && !btn.contains(e.target)){
+      nav.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+    }
+  });
+})();
 </script>
-</body>
-</html>
+
+</body></html>
