@@ -139,7 +139,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .btn-ghost{border:1px solid var(--line);color:var(--ink)}
 
 /* ── footer ── */
-footer{padding:64px 0 80px;text-align:center;color:var(--meta);font-size:14px}
+
 
 /* ── reveal ── */
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -170,6 +170,20 @@ html{scroll-behavior:auto}
 .js .cbar-fill{transform:scaleY(1)}
 .js .canyon-seg{transform:scaleX(1)}
 }
+
+
+.sig{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.sig-photo{width:48px;height:60px;object-fit:cover;border-radius:6px;filter:grayscale(.3)}
+.sig-text{display:flex;flex-direction:column;gap:2px}
+.sig-name{font-family:var(--display);font-size:17px;font-weight:600;color:var(--ink)}
+.sig-role{font-size:14px;color:var(--meta)}
+.sig-tg{font-size:14px;color:var(--accent);text-decoration:none;margin-top:4px}
+.sig-tg:hover{text-decoration:underline}
+.sig-c{text-align:center;color:var(--meta);font-size:14px;margin-top:24px}
+.sig-c a{color:var(--meta);text-decoration:none}
+.sig-c a:hover{color:var(--ink)}
+@media(max-width:760px){.sig{justify-content:center}.sig-c{text-align:center}}
+
 </style>
 </head>
 <body>
@@ -332,7 +346,19 @@ html{scroll-behavior:auto}
 
 </main>
 
-<footer><div class="wrap">Discovery System · <a href="channel.html" style="color:var(--meta)">сигналы в канале</a> · 2026</div></footer>
+<footer>
+<div class="wrap">
+<div class="sig">
+<img src="viktor.jpg" alt="Виктор Зайцев" loading="lazy" class="sig-photo"/>
+<div class="sig-text">
+<span class="sig-name">Виктор Зайцев</span>
+<span class="sig-role">отвечаю сам · без отдела продаж</span>
+<a href="https://t.me/discoverysystem" target="_blank" rel="noopener" class="sig-tg">Telegram →</a>
+</div>
+</div>
+<p class="sig-c">Discovery System · 2026 · <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a> · <a href="https://vc.ru/id6099688">VC</a></p>
+</div>
+</footer>
 
 <script>
 (function(){
