@@ -99,6 +99,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .step-medium .m-arg em{font-style:normal;color:var(--ink);font-weight:600}
 /* install grid */
 .install-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
+.install-opt .pick{display:block;font-family:var(--mono);font-size:13px;color:var(--accent);margin:4px 0 8px}
 .install-opt{border:1px solid var(--line-soft);border-radius:12px;padding:18px}
 .install-opt b{color:var(--ink);font-size:15px}
 .install-opt p{font-size:14px;color:var(--body);margin:8px 0 12px;line-height:1.5}
@@ -118,7 +119,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 /* воронка 20→80% */
 .funnel{display:flex;align-items:center;gap:16px;margin:8px 0 20px}
 .funnel-bar{height:8px;border-radius:4px;background:rgba(255,255,255,.08);position:relative;flex:1;overflow:hidden}
-.funnel-fill{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:linear-gradient(90deg,rgba(123,196,255,.2),var(--accent));transition:width .8s var(--ease)}
+.funnel-fill{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:linear-gradient(90deg,rgba(123,196,255,.2),var(--accent));transform-origin:left;transition:transform .8s var(--ease)}
 .funnel-num{font-family:var(--mono);font-size:14px;color:var(--meta);white-space:nowrap}
 .funnel-num b{color:var(--ink);font-weight:600}
 .proof-main .what{font-size:15.5px;color:var(--body);line-height:1.65;margin:0}
@@ -214,6 +215,8 @@ html{scroll-behavior:auto}
 .pl-dim{color:var(--meta);font-size:14px}
 @media(max-width:760px){.pl-big{font-size:2rem}}
 
+.choose-hint{font-size:15px;color:var(--meta);margin:0 0 28px;padding:14px 20px;border-left:2px solid var(--accent);background:rgba(123,196,255,.04);border-radius:0 8px 8px 0}
+.choose-hint a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -224,10 +227,11 @@ html{scroll-behavior:auto}
 <p class="sub rv">ясность · форматы работы</p>
 <h1 class="rv" style="transition-delay:.06s">ИИ-агент под твою рутину — от 0 до 15К</h1>
 <p class="lead rv" style="transition-delay:.12s"><a href="calculator.html">Узнай стоимость за 60 сек — остальное по желанию.</a> Калькулятор бесплатный, без регистрации. Дальше — только если захочешь: шаг за шагом от гайда к установке под ключ.</p>
-<p class="fine rv" style="transition-delay:.18s">Не подписка на чужое — своя связка 2–4К/мес на РФ-провайдерах без VPN. Каждый формат — одна суть и честный вклад с твоей стороны.</p>
+<p class="fine rv" style="transition-delay:.18s">Не подписка на чужое — своя связка 2–4К/мес. Эти деньги идут провайдерам модели и хостинга, не мне. Каждый формат — одна суть и честный вклад.</p>
 </div></header>
 <main>
 <section><div class="wrap">
+<p class="choose-hint rv">Не знаешь, что выбрать? Начни с <a href="calculator.html">калькулятора</a> — он покажет твою цифру. Дальше видно.</p>
 <div class="ladder">
 <!-- Level 0 — compact, muted stepping stone -->
 <div class="step-compact rv">
@@ -268,7 +272,7 @@ html{scroll-behavior:auto}
 <li>Промпты под твои сценарии</li>
 <li>30 дней правок в Telegram</li>
 </ul>
-<div class="chips"><span class="chip acc"><b>30 мин</b> созвона</span><span class="chip">сборка 24 часа</span><span class="chip acc"><b>30 дней</b> правок</span><span class="chip">без подписки</span></div>
+<div class="chips"><span class="chip acc"><b>30 мин</b> созвона</span><span class="chip">сборка 24 часа</span><span class="chip acc"><b>30 дней</b> правок</span><span class="chip">дальше сам · без подписки</span></div>
 <div class="star-cta">
 <a class="btn btn-ok" href="calculator.html">Собрать мою связку →</a>
 <span style="font-family:var(--mono);font-size:13px;color:var(--meta)">сборка 24 часа · правки включены</span>
@@ -286,9 +290,9 @@ html{scroll-behavior:auto}
 </div>
 <p class="m-arg">Пришёл — <em>работает.</em> Агент отвечает в твоём ТГ/CRM.</p>
 <div class="install-grid">
-<div class="install-opt"><b>На твоём ПК</b><p>Без VPS, данные локально. Нужен ПК, который не выключаешь.</p><div class="p">7 000 ₽ <small>разово</small></div><div class="v">вклад: доступ к ПК (AnyDesk) · 2 часа на установку</div></div>
-<div class="install-opt hi"><b>VPS · РФ-хостинг</b><p>РФ-хостинг, оплата СБП/картой. Агент 24/7.</p><div class="p">10 000 ₽ <small>+ ~400 ₽/мес VPS</small></div><div class="v">вклад: доступы к VPS/ТГ · 2 часа, дальше без участия</div></div>
-<div class="install-opt"><b>С интеграцией</b><p>ТГ-бот + CRM/Авито, память между чатами.</p><div class="p">15 000 ₽ <small>разово</small></div><div class="v">вклад: токены ботов/CRM · тест на твоих 5 заявках</div></div>
+<div class="install-opt"><b>На твоём ПК</b><span class="pick">если ПК всегда включён</span><p>Без VPS, данные локально.</p><div class="p">7 000 ₽ <small>разово</small></div><div class="v">вклад: доступ к ПК (AnyDesk) · 2 часа</div></div>
+<div class="install-opt hi"><b>VPS · РФ-хостинг</b><span class="pick">если нужен 24/7</span><p>РФ-хостинг, оплата СБП/картой.</p><div class="p">10 000 ₽ <small>+ ~400 ₽/мес VPS</small></div><div class="v">вклад: доступы к VPS/ТГ · 2 часа, дальше без участия</div></div>
+<div class="install-opt"><b>С интеграцией</b><span class="pick">если есть CRM/Авито-поток</span><p>ТГ-бот + CRM/Авито, память между чатами.</p><div class="p">15 000 ₽ <small>разово</small></div><div class="v">вклад: токены ботов/CRM · тест на 5 заявках</div></div>
 </div>
 <div class="chips"><span class="chip acc"><b>2 часа</b> и работает</span><span class="chip">сборка 5К включена</span><span class="chip">без абонентки</span></div>
 </div>
@@ -324,7 +328,7 @@ html{scroll-behavior:auto}
 </details>
 <details>
 <summary>После 30 дней поддержки что дальше — подписка?</summary>
-<p>Нет абонентки. Платишь только провайдерам (0–1 400 ₽/мес). Дальше — сам или разовые правки по запросу.</p>
+<p>Нет абонентки. Платишь только провайдерам (0–1 400 ₽/мес). Через 2 месяца понадобится правка — напишешь, назову цену заранее. Без обязательств.</p>
 </details>
 <details>
 <summary>Чем персональная сборка отличается от гайда?</summary>
@@ -337,6 +341,10 @@ html{scroll-behavior:auto}
 <details>
 <summary>Можно начать с бесплатного и докупить позже?</summary>
 <p>Да. Гайд 3К → доплата 2К до персоналки. Установка включает персоналку — переплаты нет.</p>
+</details>
+<details>
+<summary>За что именно 2–4К/мес?</summary>
+<p>Это оплата провайдерам: модель (API) + хостинг. Мне — ничего. Ты платишь их по своим счетам, я не посредник. Сумма зависит от нагрузки: тихая рутина — ближе к 2К, активный поток заявок — к 4К.</p>
 </details>
 <details>
 <summary>Студия берёт помесячно — почему у тебя разово?</summary>
