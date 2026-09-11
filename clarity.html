@@ -197,6 +197,15 @@ html{scroll-behavior:auto}
 .chip b{color:var(--ink);font-weight:600}
 .chip.acc{color:var(--accent);border-color:rgba(123,196,255,.25)}
 
+
+/* приёмка — то, чего нет у студий */
+.acc-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line-soft)}
+.acc-item{display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.acc-n{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600;min-width:26px}
+.acc-t{font-size:15.5px;color:var(--ink);flex:1;min-width:220px}
+.acc-check{font-family:var(--mono);font-size:13px;color:var(--meta);white-space:nowrap}
+@media(max-width:760px){.acc-item{gap:10px}.acc-t{min-width:0}.acc-check{width:100%;padding-left:42px}}
+
 </style>
 </head>
 <body>
@@ -217,20 +226,20 @@ html{scroll-behavior:auto}
 <div class="lvl-row"><span class="lvl-num">0</span><h3>Бесплатно — примерить</h3><span class="price">0 ₽ <small>60 сек</small></span></div>
 <p class="arg-c">Увидеть чек до разговора. <em>Без звонков и «оставь телефон».</em></p>
 <ul>
-<li>Калькулятор — 7 вопросов, цена в ₽/мес и часы/мес</li>
-<li>Канал — сигналы рынка с источником и датой, 2–3×/нед</li>
-<li>Сравнение «руками vs с агентом» на твоих цифрах</li>
+<li>Калькулятор — цена в ₽/мес и часы/мес</li>
+<li>Канал — сигналы с источником и датой</li>
+<li>Сравнение «руками vs агент» на твоих цифрах</li>
 </ul>
 <div class="chips"><span class="chip acc"><b>60 сек</b></span><span class="chip">7 ответов</span><span class="chip">без доступов</span><span class="chip">без давления</span></div>
 </div>
 <!-- Level 1 — compact, muted stepping stone -->
 <div class="step-compact rv" style="transition-delay:.05s">
 <div class="lvl-row"><span class="lvl-num">1</span><h3>Гайд — собрать самому</h3><span class="price">3 000 ₽ <small>разово</small></span></div>
-<p class="arg-c">Не тратить недели на исследование — <em>все 20 связок с моделями, промптами и провайдерами РФ в одной таблице.</em></p>
+<p class="arg-c">Недели исследования — <em>в одной таблице.</em></p>
 <ul>
-<li>PDF + таблица: 20 конфигураций (модель, хостинг, интеграции)</li>
-<li>Промпты и пошаговая установка для каждой</li>
-<li>Расходы провайдеров помесячно — без сюрпризов</li>
+<li>20 конфигураций: модель, хостинг, интеграции</li>
+<li>Промпты и установка для каждой</li>
+<li>Расходы провайдеров помесячно</li>
 </ul>
 <div class="chips"><span class="chip acc"><b>3–4 часа</b> на сборку</span><span class="chip">доступы к ТГ/таблицам</span><span class="chip">без кода</span><span class="chip">апгрейд +2К до сборки</span></div>
 </div>
@@ -244,12 +253,12 @@ html{scroll-behavior:auto}
 <span class="tag">персонально</span>
 <span class="price">5 000 ₽ <small>разово</small></span>
 </div>
-<p class="star-arg">Твоя связка, <em>а не шаблон.</em> Под твою рутину (ТГ/Авито/CRM) — с обоснованием модели и проверкой на твоих данных.</p>
+<p class="star-arg">Твоя связка, <em>а не шаблон.</em> Под твою рутину — с проверкой на твоих данных.</p>
 <ul class="star-list">
 <li>Всё из гайда 3К включено</li>
-<li>Подбор модели и провайдера под твой кейс + чек-лист установок</li>
-<li>Промпты под твои 2–3 сценария (не общие)</li>
-<li>30 дней правок в Telegram — если что-то не завелось</li>
+<li>Модель и провайдер под твой кейс</li>
+<li>Промпты под твои сценарии</li>
+<li>30 дней правок в Telegram</li>
 </ul>
 <div class="chips"><span class="chip acc"><b>30 мин</b> созвона</span><span class="chip">сборка 24 часа</span><span class="chip acc"><b>30 дней</b> правок</span><span class="chip">без подписки</span></div>
 <div class="star-cta">
@@ -267,17 +276,31 @@ html{scroll-behavior:auto}
 <span class="tag">с интеграцией</span>
 <span class="price">7 / 10 / 15К <small>разово</small></span>
 </div>
-<p class="m-arg">Пришёл — <em>работает.</em> Не гайд, а агент уже отвечает в твоём ТГ/CRM. GPU и хостинг — решим ниже.</p>
+<p class="m-arg">Пришёл — <em>работает.</em> Агент отвечает в твоём ТГ/CRM.</p>
 <div class="install-grid">
-<div class="install-opt"><b>На твоём ПК</b><p>Без VPS, данные никуда не уходят. Подходит если есть ноут/ПК который не выключаешь.</p><div class="p">7 000 ₽ <small>разово</small></div><div class="v">вклад: доступ к ПК (AnyDesk) · 2 часа на установку</div></div>
-<div class="install-opt hi"><b>VPS · РФ-хостинг</b><p>Ставим на российский VPS — без VPN, оплата СБП/картой РФ. Агент 24/7.</p><div class="p">10 000 ₽ <small>+ ~400 ₽/мес VPS</small></div><div class="v">вклад: доступы к VPS/ТГ · 2 часа, дальше без участия</div></div>
-<div class="install-opt"><b>С интеграцией</b><p>ТГ-бот + CRM/таблицы/Авито — заявки уходят куда надо, память между чатами.</p><div class="p">15 000 ₽ <small>разово</small></div><div class="v">вклад: токены ботов/CRM · тест на твоих 5 заявках</div></div>
+<div class="install-opt"><b>На твоём ПК</b><p>Без VPS, данные локально. Нужен ПК, который не выключаешь.</p><div class="p">7 000 ₽ <small>разово</small></div><div class="v">вклад: доступ к ПК (AnyDesk) · 2 часа на установку</div></div>
+<div class="install-opt hi"><b>VPS · РФ-хостинг</b><p>РФ-хостинг, оплата СБП/картой. Агент 24/7.</p><div class="p">10 000 ₽ <small>+ ~400 ₽/мес VPS</small></div><div class="v">вклад: доступы к VPS/ТГ · 2 часа, дальше без участия</div></div>
+<div class="install-opt"><b>С интеграцией</b><p>ТГ-бот + CRM/Авито, память между чатами.</p><div class="p">15 000 ₽ <small>разово</small></div><div class="v">вклад: токены ботов/CRM · тест на твоих 5 заявках</div></div>
 </div>
 <div class="chips"><span class="chip acc"><b>2 часа</b> и работает</span><span class="chip">сборка 5К включена</span><span class="chip">без абонентки</span></div>
 </div>
 </div>
 </div></section>
 <section><div class="wrap">
+<div class="proof-wrap rv" style="margin-top:0">
+<p class="eyebrow">приёмка — то, чего нет у студий</p>
+<h2 style="color:var(--ink);font-family:var(--display);font-size:clamp(1.5rem,3.2vw,2rem);font-weight:700;line-height:1.15;margin:0 0 16px">5 пунктов приёмки. Не подписываешь — не платишь.</h2>
+<p style="font-size:16px;color:var(--body);margin:0 0 28px">Студия берёт 49–290К и показывает демо. Здесь ты проверяешь агента на своих задачах до оплаты. Чек-лист внизу — критерий, а не обещание.</p>
+<div class="acc-list">
+<div class="acc-item"><span class="acc-n">01</span><span class="acc-t">Заявка из ТГ/Авито доходит до тебя</span><span class="acc-check">на твоей заявке</span></div>
+<div class="acc-item"><span class="acc-n">02</span><span class="acc-t">Ответ не дольше 5 минут в рабочее время</span><span class="acc-check">замеряем 3 раза</span></div>
+<div class="acc-item"><span class="acc-n">03</span><span class="acc-t">Помнит контекст между чатами</span><span class="acc-check">проверяем вживую</span></div>
+<div class="acc-item"><span class="acc-n">04</span><span class="acc-t">Откат на заглушку, если агент упал</span><span class="acc-check">показываю где</span></div>
+<div class="acc-item"><span class="acc-n">05</span><span class="acc-t">Лог первых 5 задач — что сделал, что нет</span><span class="acc-check">отдаю тебе</span></div>
+</div>
+<p style="font-family:var(--mono);font-size:14px;color:var(--meta);margin-top:20px">Связка остаётся у тебя. Уходишь — работает дальше.</p>
+</div>
+
 <div class="proof-wrap rv">
 <p class="eyebrow">та же методология — другой масштаб</p>
 <div class="proof-grid">
