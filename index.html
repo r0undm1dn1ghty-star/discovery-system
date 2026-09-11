@@ -127,6 +127,15 @@ html{scroll-behavior:auto}
 .sig-c a:hover{color:var(--ink)}
 @media(max-width:760px){.sig{justify-content:center}.sig-c{text-align:center}}
 
+
+.links-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:36px}
+.link-card{display:flex;flex-direction:column;gap:6px;padding:24px;border:1px solid var(--line-soft);border-radius:14px;text-decoration:none;transition:transform .4s var(--ease),border-color .3s var(--ease);position:relative}
+.link-card:hover{transform:translateY(-2px);border-color:rgba(123,196,255,.3)}
+.lc-title{font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink)}
+.lc-desc{font-size:14px;color:var(--meta);line-height:1.5}
+.lc-go{position:absolute;top:24px;right:24px;color:var(--accent);font-family:var(--mono);font-size:16px}
+@media(max-width:760px){.links-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -145,37 +154,25 @@ html{scroll-behavior:auto}
 </div></header>
 <main>
 <section id="product"><div class="wrap">
-<p class="eyebrow rv">~/discovery/skills — 5 скиллов, 0 ₽</p>
+<p class="eyebrow rv">5 скиллов на GitHub — 0 ₽</p>
 <h2 class="rv">Продукт, а не обещание</h2>
-<div class="screen rv" aria-label="Терминал Discovery System: скиллы, сигналы, системы">
-<div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-<div class="screen-tabs" role="tablist" aria-label="Разделы терминала">
-<button class="on" role="tab" id="t-skills" aria-selected="true" aria-controls="p-skills">скиллы</button>
-<button role="tab" id="t-signals" aria-selected="false" aria-controls="p-signals">сигналы</button>
-<button role="tab" id="t-systems" aria-selected="false" aria-controls="p-systems">системы</button>
+<div class="links-grid">
+<a class="link-card rv" href="system.html">
+<span class="lc-title">Скиллы</span>
+<span class="lc-desc">5 рабочих методик на GitHub — бесплатно</span>
+<span class="lc-go">→</span>
+</a>
+<a class="link-card rv" href="channel.html" style="transition-delay:.06s">
+<span class="lc-title">Сигналы</span>
+<span class="lc-desc">Лента рынка с источниками и датами</span>
+<span class="lc-go">→</span>
+</a>
+<a class="link-card rv" href="clarity.html" style="transition-delay:.12s">
+<span class="lc-title">Системы</span>
+<span class="lc-desc">0 ₽ → 3К → 5К → 7–15К — цена видна до разговора</span>
+<span class="lc-go">→</span>
+</a>
 </div>
-<div class="screen-body">
-<div class="panel on" id="p-skills" role="tabpanel" aria-labelledby="t-skills">
-<div class="row"><span class="cmd">warm-lead-parser <span class="free">0 ₽</span></span><br/><span class="desc">— клиенты из открытых источников, скоринг 0–100</span></div>
-<div class="row"><span class="cmd">geo-audit-skill <span class="free">0 ₽</span></span><br/><span class="desc">— 92 правила видимости в AI-поиске</span></div>
-<div class="row"><span class="cmd">market-evidence-diagnostic <span class="free">0 ₽</span></span><br/><span class="desc">— проверка бизнес-модели, вывод источник+дата</span></div>
-<div class="row"><span class="cmd">pnl-check <span class="free">0 ₽</span></span><br/><span class="desc">— факты→сверка→бриф</span></div>
-<div class="row"><span class="cmd">spiral-maturity <span class="free">0 ₽</span></span><br/><span class="desc">— один вопрос вместо чек-листа на 50</span></div>
-</div>
-<div class="panel" id="p-signals" role="tabpanel" aria-labelledby="t-signals">
-<div class="row"><span class="cmd"><span class="free">02.09 ·</span> <a href="channel.html">Hermes Agent в Marketplace</a> <span class="free">от 3 642 ₽/мес</span></span><br/><span class="desc">— Яндекс, рубли, без VPN</span></div>
-<div class="row"><span class="cmd"><span class="free">02.09 ·</span> <a href="channel.html">Сбер: 350 млрд ₽ в ИИ</a> <span class="free">+ «ГигаАгент»</span></span><br/><span class="desc">— автономный агент на GigaChat</span></div>
-<div class="row"><span class="cmd"><span class="free">30.08 ·</span> <a href="channel.html">Ассистент на VPS — 6 600 ₽</a> <span class="free">без VPN</span></span><br/><span class="desc">— считает смену и время сотрудников</span></div>
-</div>
-<div class="panel" id="p-systems" role="tabpanel" aria-labelledby="t-systems">
-<div class="row"><span class="cmd">calc <span class="free">0 ₽ · 60 сек</span></span><br/><span class="desc">— расчёт на твоих цифрах</span></div>
-<div class="row"><span class="cmd">guide-20 <span class="free">3 000 ₽</span></span><br/><span class="desc">— 20 связок, собрать самому</span></div>
-<div class="row"><span class="cmd">build <span class="free">5 000 ₽ · 30 дней</span></span><br/><span class="desc">— связка под твою рутину</span></div>
-<div class="row"><span class="cmd">install <span class="free">7–15 000 ₽</span></span><br/><span class="desc">— установка под ключ</span></div>
-</div>
-</div>
-</div>
-<p class="screen-cap rv">ещё сигналы и системы — <a href="channel.html">внутри</a></p>
 </div></section>
 <section id="facts"><div class="wrap">
 <p class="eyebrow rv">рынок в цифрах</p>
