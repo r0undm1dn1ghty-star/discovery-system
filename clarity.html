@@ -58,14 +58,14 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .step-compact{padding:20px 24px;border:1px solid var(--line-soft);border-radius:14px;background:rgba(255,255,255,.012)}
 .step-compact .lvl-row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;margin-bottom:8px}
 .step-compact .lvl-num{font-family:var(--mono);font-size:13px;color:var(--faint);font-weight:600}
-.step-compact h3{color:var(--body);font-size:1.05rem;font-family:var(--display);font-weight:600}
-.step-compact .price{margin-left:auto;font-family:var(--mono);font-size:14px;color:var(--meta)}
-.step-compact .price small{color:var(--faint);font-size:13px}
-.step-compact .arg-c{font-size:14px;color:var(--meta);line-height:1.6;margin:0 0 10px}
-.step-compact .arg-c em{font-style:normal;color:var(--body);font-weight:500}
+.step-compact h3{color:var(--ink);font-size:1.12rem;font-family:var(--display);font-weight:700}
+.step-compact .price{margin-left:auto;font-family:var(--display);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.step-compact .price small{color:var(--meta);font-size:13px;font-weight:400;font-family:var(--mono)}
+.step-compact .arg-c{font-size:15px;color:var(--body);line-height:1.6;margin:0 0 12px}
+.step-compact .arg-c em{font-style:normal;color:var(--ink);font-weight:600}
 .step-compact ul{list-style:none;margin:0 0 10px}
-.step-compact li{padding:3px 0 3px 18px;position:relative;font-size:13px;color:var(--meta);border-bottom:none}
-.step-compact li:before{content:"—";position:absolute;left:0;color:var(--faint);font-family:var(--mono)}
+.step-compact li{padding:4px 0 4px 22px;position:relative;font-size:14.5px;color:var(--body);border-bottom:none}
+.step-compact li:before{content:"\2713";position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-size:13px}
 .step-compact .meta-c{font-size:13px;color:var(--faint);padding-top:8px;border-top:1px solid rgba(255,255,255,.04);line-height:1.5}
 .step-compact .meta-c b{color:var(--meta);font-weight:600}
 /* ★ star level — double-bezel glowing hero */
@@ -76,7 +76,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .star-head .star-num{font-family:var(--mono);font-size:20px;color:var(--ok);font-weight:600}
 .star-head h3{color:var(--ink);font-size:1.5rem;font-family:var(--display);font-weight:700}
 .star-head .tag{font-family:var(--mono);font-size:13px;color:var(--ok);letter-spacing:.06em;opacity:.8}
-.star-head .price{margin-left:auto;font-family:var(--mono);font-size:17px;color:var(--ink)}
+.star-head .price{margin-left:auto;font-family:var(--display);font-size:26px;font-weight:800;color:var(--ok)}
 .star-head .price small{color:var(--meta);font-size:13px}
 .star-arg{font-size:18px;color:var(--body);margin:0 0 22px;line-height:1.65}
 .star-arg em{font-style:normal;color:var(--ok);font-weight:600}
@@ -93,7 +93,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .step-medium .m-num{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600}
 .step-medium h3{color:var(--ink);font-size:1.25rem;font-family:var(--display);font-weight:700}
 .step-medium .tag{font-family:var(--mono);font-size:13px;color:var(--meta);letter-spacing:.06em}
-.step-medium .price{margin-left:auto;font-family:var(--mono);font-size:15px;color:var(--ink)}
+.step-medium .price{margin-left:auto;font-family:var(--display);font-size:22px;font-weight:700;color:var(--ink)}
 .step-medium .price small{color:var(--meta);font-size:13px}
 .step-medium .m-arg{font-size:16px;color:var(--body);margin:0 0 20px}
 .step-medium .m-arg em{font-style:normal;color:var(--ink);font-weight:600}
@@ -102,7 +102,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .install-opt{border:1px solid var(--line-soft);border-radius:12px;padding:18px}
 .install-opt b{color:var(--ink);font-size:15px}
 .install-opt p{font-size:14px;color:var(--body);margin:8px 0 12px;line-height:1.5}
-.install-opt .p{font-family:var(--mono);font-size:16px;color:var(--ink)}
+.install-opt .p{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ink)}
 .install-opt .p small{font-size:13px;color:var(--meta)}
 .install-opt .v{font-family:var(--mono);font-size:13px;color:var(--meta);margin-top:6px}
 .install-opt.hi{border-color:rgba(var(--accent-rgb),.35);background:rgba(var(--accent-rgb),.05)}
@@ -190,6 +190,13 @@ html{scroll-behavior:auto}
 .sig-c a:hover{color:var(--ink)}
 @media(max-width:760px){.sig{justify-content:center}.sig-c{text-align:center}}
 
+
+/* усилие клиента — видимые чипы, не стены текста */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{font-family:var(--mono);font-size:13px;color:var(--body);border:1px solid var(--line-soft);border-radius:999px;padding:5px 14px;white-space:nowrap;background:rgba(255,255,255,.02)}
+.chip b{color:var(--ink);font-weight:600}
+.chip.acc{color:var(--accent);border-color:rgba(123,196,255,.25)}
+
 </style>
 </head>
 <body>
@@ -214,7 +221,7 @@ html{scroll-behavior:auto}
 <li>Канал — сигналы рынка с источником и датой, 2–3×/нед</li>
 <li>Сравнение «руками vs с агентом» на твоих цифрах</li>
 </ul>
-<div class="meta-c"><b>Вклад:</b> 7 ответов, 60 сек, без доступов · далее → если цифра ок — идёшь к гайду/сборке; если нет — остаёшься в канале, без давления</div>
+<div class="chips"><span class="chip acc"><b>60 сек</b></span><span class="chip">7 ответов</span><span class="chip">без доступов</span><span class="chip">без давления</span></div>
 </div>
 <!-- Level 1 — compact, muted stepping stone -->
 <div class="step-compact rv" style="transition-delay:.05s">
@@ -225,7 +232,7 @@ html{scroll-behavior:auto}
 <li>Промпты и пошаговая установка для каждой</li>
 <li>Расходы провайдеров помесячно — без сюрпризов</li>
 </ul>
-<div class="meta-c"><b>Вклад:</b> 3–4 часа на сборку, доступы к ТГ/таблицам — без кода · далее → ты чинишь сам; если застрял — апгрейд к персональной сборке (+2К) без доплат за гайд повторно</div>
+<div class="chips"><span class="chip acc"><b>3–4 часа</b> на сборку</span><span class="chip">доступы к ТГ/таблицам</span><span class="chip">без кода</span><span class="chip">апгрейд +2К до сборки</span></div>
 </div>
 <!-- Level ★ — FEATURED double-bezel glowing hero -->
 <div class="step-star rv" style="transition-delay:.1s">
@@ -244,10 +251,7 @@ html{scroll-behavior:auto}
 <li>Промпты под твои 2–3 сценария (не общие)</li>
 <li>30 дней правок в Telegram — если что-то не завелось</li>
 </ul>
-<div class="star-meta">
-<span><b>Вклад:</b> 30 мин созвона/переписки + доступы (ТГ-бот токен / таблицы / CRM — по выбору). Без доступов — соберём на заглушках</span>
-<span class="next">далее → я чиню 30 дней; дальше — ты сам, без подписки мне</span>
-</div>
+<div class="chips"><span class="chip acc"><b>30 мин</b> созвона</span><span class="chip">сборка 24 часа</span><span class="chip acc"><b>30 дней</b> правок</span><span class="chip">без подписки</span></div>
 <div class="star-cta">
 <a class="btn btn-ok" href="calculator.html">Собрать мою связку →</a>
 <span style="font-family:var(--mono);font-size:13px;color:var(--meta)">сборка 24 часа · правки включены</span>
@@ -269,10 +273,7 @@ html{scroll-behavior:auto}
 <div class="install-opt hi"><b>VPS · РФ-хостинг</b><p>Ставим на российский VPS — без VPN, оплата СБП/картой РФ. Агент 24/7.</p><div class="p">10 000 ₽ <small>+ ~400 ₽/мес VPS</small></div><div class="v">вклад: доступы к VPS/ТГ · 2 часа, дальше без участия</div></div>
 <div class="install-opt"><b>С интеграцией</b><p>ТГ-бот + CRM/таблицы/Авито — заявки уходят куда надо, память между чатами.</p><div class="p">15 000 ₽ <small>разово</small></div><div class="v">вклад: токены ботов/CRM · тест на твоих 5 заявках</div></div>
 </div>
-<div class="m-meta">
-<span><b>Общее:</b> персональная сборка 5К включена (гайд + подбор + 30 дней)</span>
-<span class="next">далее → я устанавливаю и тестирую 2 часа; чинит дальше — ты или я по запросу, без абонентки</span>
-</div>
+<div class="chips"><span class="chip acc"><b>2 часа</b> и работает</span><span class="chip">сборка 5К включена</span><span class="chip">без абонентки</span></div>
 </div>
 </div>
 </div></section>
