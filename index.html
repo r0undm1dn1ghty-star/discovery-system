@@ -139,6 +139,13 @@ html{scroll-behavior:auto}
 
 h1,h2,h3{text-wrap:balance}
 p,li,.lead,.desc{text-wrap:pretty}
+
+/* sticky CTA — сопровождает пользователя (WIM) */
+.sticky-cta{position:fixed;bottom:24px;right:24px;z-index:50;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
+.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;background:var(--accent);color:#0b1220;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.sticky-cta a:hover{transform:scale(1.02)}
+@media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
@@ -183,6 +190,7 @@ p,li,.lead,.desc{text-wrap:pretty}
 <div class="fact rv"><span class="n"><span data-count="53">53</span>%</span><span class="t">МСП уже используют нейросети</span><br/><span class="s">ПСБ · Опора, 08.2026</span></div>
 <div class="fact rv" style="transition-delay:.06s"><span class="n"><span data-count="43">43</span>%</span><span class="t">не понимают, что именно автоматизировать</span><br/><span class="s">SpeShu.AI, 08.2026</span></div>
 <div class="fact rv" style="transition-delay:.12s"><span class="n"><span data-count="49990">49 990</span> ₽</span><span class="t">берут студии за внедрение</span><br/><span class="s">Дарэ · PapAI, 2026</span></div>
+<div class="fact rv" style="transition-delay:.15s"><span class="n">5–15 <small>млн ₽</small></span><span class="t">внедрение агентов в малом бизнесе за 3 года — Axenix × МГУ</span><br/><span class="s">Forbes · 2026</span></div>
 <div class="fact rv" style="transition-delay:.18s"><span class="n accent">2–4К ₽/мес</span><span class="t">стоит своя связка</span><br/><span class="s">РФ-провайдеры, 2026</span></div>
 </div></section>
 <section id="systems"><div class="wrap">
@@ -288,6 +296,23 @@ requestAnimationFrame(step);
 io2.observe(el);
 });
 }
+})();
+</script>
+<div class="sticky-cta" id="stickyCta"><a href="calculator.html">Цена твоей связки ↗</a></div>
+<script>
+/* sticky CTA: показывается после первого экрана */
+(function(){
+var sc=document.getElementById('stickyCta');
+if(!sc)return;
+var shown=false;
+function upd(){
+var y=window.scrollY||document.documentElement.scrollTop;
+var h=window.innerHeight;
+if(y>h*0.8&&!shown){sc.classList.add('show');shown=true;}
+else if(y<h*0.3&&shown){sc.classList.remove('show');shown=false;}
+}
+window.addEventListener('scroll',upd,{passive:true});
+upd();
 })();
 </script>
 </body>

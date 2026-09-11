@@ -139,6 +139,13 @@ html{scroll-behavior:auto}
 
 h1,h2,h3{text-wrap:balance}
 p,li,.lead,.desc{text-wrap:pretty}
+
+/* sticky CTA — сопровождает пользователя (WIM) */
+.sticky-cta{position:fixed;bottom:24px;right:24px;z-index:50;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
+.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;background:var(--accent);color:#0b1220;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.sticky-cta a:hover{transform:scale(1.02)}
+@media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
 </style>
 </head>
 <body>
@@ -261,6 +268,23 @@ d.querySelectorAll('.rv,.sig').forEach(function(el){io.observe(el);});
 }else{
 d.querySelectorAll('.rv,.sig').forEach(function(el){el.classList.add('in');});
 }
+})();
+</script>
+<div class="sticky-cta" id="stickyCta"><a href="calculator.html">Цена твоей связки ↗</a></div>
+<script>
+/* sticky CTA: показывается после первого экрана */
+(function(){
+var sc=document.getElementById('stickyCta');
+if(!sc)return;
+var shown=false;
+function upd(){
+var y=window.scrollY||document.documentElement.scrollTop;
+var h=window.innerHeight;
+if(y>h*0.8&&!shown){sc.classList.add('show');shown=true;}
+else if(y<h*0.3&&shown){sc.classList.remove('show');shown=false;}
+}
+window.addEventListener('scroll',upd,{passive:true});
+upd();
 })();
 </script>
 </body>
