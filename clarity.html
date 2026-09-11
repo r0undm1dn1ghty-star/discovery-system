@@ -206,6 +206,14 @@ html{scroll-behavior:auto}
 .acc-check{font-family:var(--mono);font-size:13px;color:var(--meta);white-space:nowrap}
 @media(max-width:760px){.acc-item{gap:10px}.acc-t{min-width:0}.acc-check{width:100%;padding-left:42px}}
 
+
+/* компактный proof — одна строка вместо простыни */
+.proof-line{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap}
+.pl-big{font-family:var(--display);font-size:clamp(2rem,4vw,2.8rem);font-weight:800;color:var(--accent);line-height:1.1;white-space:nowrap}
+.pl-txt{font-size:15.5px;color:var(--body);line-height:1.6;flex:1;min-width:240px}
+.pl-dim{color:var(--meta);font-size:14px}
+@media(max-width:760px){.pl-big{font-size:2rem}}
+
 </style>
 </head>
 <body>
@@ -214,7 +222,7 @@ html{scroll-behavior:auto}
 </div></nav>
 <header class="hero"><div class="wrap">
 <p class="sub rv">ясность · форматы работы</p>
-<h1 class="rv" style="transition-delay:.06s">Цена видна до разговора</h1>
+<h1 class="rv" style="transition-delay:.06s">ИИ-агент под твою рутину — от 0 до 15К</h1>
 <p class="lead rv" style="transition-delay:.12s"><a href="calculator.html">Узнай стоимость за 60 сек — остальное по желанию.</a> Калькулятор бесплатный, без регистрации. Дальше — только если захочешь: шаг за шагом от гайда к установке под ключ.</p>
 <p class="fine rv" style="transition-delay:.18s">Не подписка на чужое — своя связка 2–4К/мес на РФ-провайдерах без VPN. Каждый формат — одна суть и честный вклад с твоей стороны.</p>
 </div></header>
@@ -301,28 +309,7 @@ html{scroll-behavior:auto}
 <p style="font-family:var(--mono);font-size:14px;color:var(--meta);margin-top:20px">Связка остаётся у тебя. Уходишь — работает дальше.</p>
 </div>
 
-<div class="proof-wrap rv">
-<p class="eyebrow">та же методология — другой масштаб</p>
-<div class="proof-grid">
-<div class="proof-main">
-<div class="pi">WorkWay · AI-HR-Tech · первый PM на нуле</div>
-<div class="big">20 → 80%</div>
-<div class="funnel" role="img" aria-label="Воронка: было 20%, стало 80% точности">
-<div class="funnel-num">было <b>20%</b></div>
-<div class="funnel-bar"><div class="funnel-fill" style="width:20%"></div></div>
-<div class="funnel-bar"><div class="funnel-fill" style="width:80%"></div></div>
-<div class="funnel-num"><b>80%</b> стало</div>
-</div>
-<p class="what"><b>Точность AI-скоринга</b> — промпт-инжиниринг + тест на n=30. Та же воронка, только вместо кандидатов — твои ТГ-заявки или Авито-чаты.</p>
-<p class="why">Что переносится: метод → тест на твоих данных → чек «забирает часы?». Что нет: сам скоринг HR.</p>
-</div>
-<div class="proof-side">
-<h4>Честно про релевантность</h4>
-<p>Второй кейс — Chill Music Lab (4M MAU, +16% выручки за счёт A/B-видео). Это не МСБ, а медиа. Оставляю как <b>проверку метода на другом домене</b>, а не как «вот так будет у тебя».</p>
-<p>Хочешь кейс из своей ниши — прогони калькулятор, покажу конфигурацию под ТГ/Авито/CRM.</p>
-</div>
-</div>
-</div>
+
 <div class="pay-bar rv">
 <span class="k">оплата:</span>
 <span class="v2">карта РФ (ЮKassa/СБП) · Telegram-бот · чек одинаковый</span>
