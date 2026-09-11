@@ -126,11 +126,11 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .window-seg.w2{background:linear-gradient(90deg,rgba(123,196,255,.18),rgba(123,196,255,.08));color:var(--body)}
 .window-seg.w3{background:rgba(255,255,255,.04);color:var(--meta)}
 .window-labels{display:flex;margin-top:10px}
-.window-labels span{flex:1;text-align:center;font-family:var(--mono);font-size:13px;color:var(--meta)}
+.window-labels span{flex:1;text-align:center;font-family:var(--mono);font-size:13px;color:var(--meta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .window-labels span:first-child{color:var(--accent)}
 .window-marker{position:absolute;top:-8px;font-family:var(--mono);font-size:13px;color:var(--meta);white-space:nowrap;transform:translateX(-50%);padding:2px 8px;border:1px solid var(--line-soft);border-radius:4px;background:var(--bg)}
-.window-seg.w1 .window-marker{left:70%;top:-10px}
-@media(max-width:760px){.window-track{height:48px;font-size:13px}.window-marker{font-size:13px}}
+.window-seg.w1 .window-marker{left:50%;top:-10px}
+@media(max-width:760px){.window-track{height:48px}.window-labels span{font-size:11px;white-space:normal}.window-marker{font-size:11px;padding:1px 6px}}
 
 /* ── CTA ── */
 .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
