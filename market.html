@@ -194,6 +194,25 @@ p,li,.lead,.desc{text-wrap:pretty}
 .sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;background:var(--accent);color:#0b1220;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
 .sticky-cta a:hover{transform:scale(1.02)}
 @media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
+
+/* gap-визуализация: 53% vs 5% */
+.gapchart{margin:44px 0 16px}
+.gaprow{display:grid;grid-template-columns:180px 1fr 64px;align-items:center;gap:20px;padding:14px 0}
+.gap-label{font-size:15px;color:var(--body);text-align:right}
+.gap-track{height:22px;background:rgba(255,255,255,.04);border:1px solid var(--line-soft);border-radius:4px;overflow:hidden}
+.gap-fill{height:100%;width:var(--w);background:linear-gradient(90deg,rgba(123,196,255,.55),rgba(123,196,255,.28));border-radius:3px;transform:scaleX(0);transform-origin:left;transition:transform 1.1s var(--ease)}
+.gap-fill-low{background:linear-gradient(90deg,rgba(242,182,101,.5),rgba(242,182,101,.25))}
+.gapchart.grow .gap-fill{transform:scaleX(1)}
+.gap-val{font-family:var(--mono);font-size:16px;color:var(--ink);font-weight:600}
+.gap-mark{display:flex;gap:16px;align-items:flex-start;margin-top:20px;padding:20px 0 0;border-top:1px solid var(--line-soft)}
+.gap-x{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--accent);line-height:1;letter-spacing:-.02em;flex:none}
+.gap-note{font-size:15px;color:var(--body);line-height:1.6;max-width:64ch}
+@media (max-width:760px){
+.gaprow{grid-template-columns:1fr;gap:8px;position:relative}
+.gap-label{text-align:left;font-size:14px}
+.gap-val{position:absolute;right:0;top:0}
+.gap-mark{flex-direction:column;gap:8px}
+}
 </style>
 </head>
 <body>
@@ -249,6 +268,28 @@ p,li,.lead,.desc{text-wrap:pretty}
 <div class="kpi-s">калькулятор на этом сайте · 09.2026</div>
 </div>
 </div>
+</div></section>
+
+<section id="gap"><div class="wrap">
+<p class="eyebrow rv">разрыв, который видно</p>
+<h2 class="rv">53% пробуют. 5% доходят. Между ними — решение.</h2>
+<div class="gapchart rv" role="img" aria-label="Сравнение: 53 процента малого бизнеса пробуют нейросети, только около 5 процентов дошли до внедрения ИИ-агентов. Разрыв в десять раз.">
+<div class="gaprow">
+<span class="gap-label">Пробуют нейросети</span>
+<div class="gap-track"><div class="gap-fill" style="--w:53%"></div></div>
+<span class="gap-val">53%</span>
+</div>
+<div class="gaprow">
+<span class="gap-label">Дошли до агентов</span>
+<div class="gap-track"><div class="gap-fill gap-fill-low" style="--w:5%"></div></div>
+<span class="gap-val">~5%</span>
+</div>
+<div class="gap-mark rv">
+<span class="gap-x">×10</span>
+<span class="gap-note">разрыв между «попробовал» и «работает» — не про технологию, а про решение: что автоматизировать, за сколько, кто чинит</span>
+</div>
+</div>
+<p class="chart-cap rv">53% — ПСБ · Опора России, 08.2026 · ~5% — ИСИЭЗ НИУ ВШЭ, 2024 (потолок 6,3% по внедрению ИИ в целом)</p>
 </div></section>
 
 <!-- ════ bar chart ════ -->
@@ -390,6 +431,7 @@ var io2=new IntersectionObserver(function(es){
 es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('grow');io2.unobserve(e.target);}});
 },{threshold:.35});
 d.querySelectorAll('.cbars').forEach(function(el){io2.observe(el);});
+d.querySelectorAll('.gapchart').forEach(function(el){io2.observe(el);});
 /* canyon segments */
 var io3=new IntersectionObserver(function(es){
 es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('animate');io3.unobserve(e.target);}});
@@ -398,6 +440,7 @@ d.querySelectorAll('.canyon').forEach(function(el){io3.observe(el);});
 }else{
 d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});
 d.querySelectorAll('.cbars').forEach(function(el){el.classList.add('grow');});
+d.querySelectorAll('.gapchart').forEach(function(el){el.classList.add('grow');});
 d.querySelectorAll('.canyon').forEach(function(el){el.classList.add('animate');});
 }
 })();
