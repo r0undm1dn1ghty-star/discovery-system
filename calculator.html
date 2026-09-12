@@ -192,6 +192,9 @@ body{background:var(--bg)}
 .btn-primary,.btn-cta{font-family:'Outfit',sans-serif}
 .pill{border-radius:8px}
 footer.foot,.foot{font-family:'IBM Plex Mono',monospace}
+
+/* a11y: focus visible (anti-slop detector) */
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
 </style>
 
 </head>
@@ -686,10 +689,22 @@ function saveLeadAndContinue(){
 function proceedToCheckout(){
   let email='';
   try{email=(JSON.parse(localStorage.getItem('ds_lead')||'null')||{}).email||'';}catch(_){}
-  try{localStorage.setItem('ds_order',JSON.stringify({email,ts:Date.now(),offer:chosenOffer,goal,device,monthly:estimate()?.monthly}));}catch(e){}
-  const label=chosenOffer==='config'?'Конфигурация 5 000 ₽':'Таблица 3 000 ₽';
-  toast(label+' — оформление…');
-  setTimeout(()=>toast('Сюда подключим ЮKassa / Telegram-бот — ссылку пришлю после оплаты'),1600);
+  const est=estimate()||{};
+  const label=chosenOffer==='config'?'Персональная сборка — 5 000 ₽':'Гайд: 20 конфигураций — 3 000 ₽';
+  try{localStorage.setItem('ds_order',JSON.stringify({email,ts:Date.now(),offer:chosenOffer,goal,device,monthly:est.monthly}));}catch(e){}
+  const lines=[
+    'Заявка: '+label,
+    email?'Почта: '+email:'',
+    est.monthly?'Рутина: ~'+est.monthly+' ₽/мес':'',
+    goal?'Задачи: '+goal:'',
+    device?'Железо: '+device:''
+  ].filter(Boolean).join('
+');
+  try{navigator.clipboard&&navigator.clipboard.writeText(lines);}catch(_){}
+  toast('Заявка скопирована — вставь её в чат Telegram');
+  window.open('https://t.me/discoverysystem','_blank','noopener');
+  const m=document.getElementById('mailFallback');
+  if(m)m.style.display='block';
 }
 
 /* ========== INIT ========== */

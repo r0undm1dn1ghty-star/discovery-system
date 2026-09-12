@@ -78,6 +78,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .fact .n{display:block;color:var(--ink);font-family:var(--display);font-weight:700;font-size:clamp(2rem,5vw,3rem);line-height:1.2}
 .fact .t{color:var(--body);font-size:18px}
 .fact .s{color:var(--meta);font-size:15px}
+a.sys{text-decoration:none;color:inherit}
 .sys{padding:44px 0;border-top:1px solid var(--line);display:flex;gap:24px;align-items:baseline;justify-content:space-between;flex-wrap:wrap}
 .sys:last-child{border-bottom:1px solid var(--line)}
 .sys .l{color:var(--ink);font-size:20px;font-weight:600}
@@ -97,6 +98,15 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 /* reveal: без JS контент виден */
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
+
+/* terminal rows — ссылки внутри вкладок */
+.screen-body .row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none;transition:background .2s var(--ease)}
+.screen-body .row:last-child{border-bottom:none}
+.screen-body .row:hover{background:rgba(123,196,255,.04)}
+.screen-body .row:hover .rl{color:var(--ink)}
+.rl{color:var(--body);font-size:14px;line-height:1.6}
+.rl b{color:var(--ink);font-weight:600}
+.rr{flex:none;color:var(--accent);font-size:13px;white-space:nowrap}
 @media (max-width:760px){
 body{font-size:17px}
 section{padding:110px 0}
@@ -106,6 +116,9 @@ section{padding:110px 0}
 .sys{flex-direction:column;gap:8px}
 .cta-row .btn{width:100%}
 .screen-body{font-size:14px;padding:20px 16px}
+.screen-body .row{flex-direction:column;gap:6px;align-items:flex-start}
+.rl{font-size:13px}
+.rr{font-size:12px}
 .screen-tabs{gap:18px;flex-wrap:wrap}
 }
 @media (prefers-reduced-motion:reduce){
@@ -164,25 +177,40 @@ p,li,.lead,.desc{text-wrap:pretty}
 </div></header>
 <main>
 <section id="product"><div class="wrap">
-<p class="eyebrow rv">5 скиллов на GitHub — 0 ₽</p>
+<p class="eyebrow rv">скиллы · сигналы · системы — в одном окне</p>
 <h2 class="rv">Продукт, а не обещание</h2>
-<div class="links-grid">
-<a class="link-card rv" href="system.html">
-<span class="lc-title">Скиллы</span>
-<span class="lc-desc">5 рабочих методик на GitHub — бесплатно</span>
-<span class="lc-go">→</span>
-</a>
-<a class="link-card rv" href="channel.html" style="transition-delay:.06s">
-<span class="lc-title">Сигналы</span>
-<span class="lc-desc">Лента рынка с источниками и датами</span>
-<span class="lc-go">→</span>
-</a>
-<a class="link-card rv" href="clarity.html" style="transition-delay:.12s">
-<span class="lc-title">Системы</span>
-<span class="lc-desc">0 ₽ → 3К → 5К → 7–15К — цена видна до разговора</span>
-<span class="lc-go">→</span>
-</a>
+<div class="screen rv">
+<div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+<div class="screen-tabs" role="tablist" aria-label="Что внутри">
+<button role="tab" id="tab-skills" aria-controls="p-skills" aria-selected="true" class="on">скиллы · 0 ₽</button>
+<button role="tab" id="tab-signals" aria-controls="p-signals" aria-selected="false" tabindex="-1">сигналы</button>
+<button role="tab" id="tab-systems" aria-controls="p-systems" aria-selected="false" tabindex="-1">системы</button>
 </div>
+<div class="screen-body">
+<div class="panel on" id="p-skills" role="tabpanel" aria-labelledby="tab-skills">
+<a class="row" href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener"><span class="rl"><b>spiral-maturity</b> — один вопрос вместо чек-листа на 50</span><span class="rr">0 ₽ ↗</span></a>
+<a class="row" href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener"><span class="rl"><b>market-evidence-diagnostic</b> — проверка бизнес-модели, вывод источник+дата</span><span class="rr">0 ₽ ↗</span></a>
+<a class="row" href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener"><span class="rl"><b>pnl-check</b> — факты → сверка → бриф для решения</span><span class="rr">0 ₽ ↗</span></a>
+<a class="row" href="https://github.com/r0undm1dn1ghty-star/geo-audit-skill" target="_blank" rel="noopener"><span class="rl"><b>geo-audit-skill</b> — 92 правила видимости в AI-поиске</span><span class="rr">0 ₽ ↗</span></a>
+<a class="row" href="system.html"><span class="rl"><b>warm-lead-parser</b> — клиенты из открытых источников, скоринг 0–100</span><span class="rr">в работе</span></a>
+</div>
+<div class="panel" id="p-signals" role="tabpanel" aria-labelledby="tab-signals">
+<a class="row" href="https://yandex.cloud/ru/marketplace/products/yc/hermes-agent" target="_blank" rel="noopener"><span class="rl"><b>02.09</b> Яндекс вывел Hermes Agent в Marketplace — цена VPS решена</span><span class="rr">от 3 642 ₽/мес ↗</span></a>
+<a class="row" href="https://datainsight.ru/" target="_blank" rel="noopener"><span class="rl"><b>24.08</b> Data Insight: агентная коммерция 400–850 млрд ₽ к 2028–29</span><span class="rr">спрос ↗</span></a>
+<a class="row" href="https://vc.ru/services/1800000-55-mlrd-alice-ai-2025" target="_blank" rel="noopener"><span class="rl"><b>27.07</b> 24 млн человек в неделю решают задачи в Алисе</span><span class="rr">привычка ↗</span></a>
+<a class="row" href="https://elama.ru/blog/digital-uslugi-17-procent-2025/" target="_blank" rel="noopener"><span class="rl"><b>01.07</b> digital-услуги +17% г/г — весь рост дала формулировка «внедрение ИИ»</span><span class="rr">спрос ↗</span></a>
+<a class="row" href="channel.html"><span class="rl">вся лента — с источниками и датами</span><span class="rr">канал →</span></a>
+</div>
+<div class="panel" id="p-systems" role="tabpanel" aria-labelledby="tab-systems">
+<a class="row" href="calculator.html"><span class="rl"><b>Расчёт на твоих цифрах</b> — цена и часы за 60 секунд</span><span class="rr">0 ₽ →</span></a>
+<a class="row" href="clarity.html"><span class="rl"><b>Гайд: 20 конфигураций</b> — модель, хостинг, промпты в одной таблице</span><span class="rr">3 000 ₽ →</span></a>
+<a class="row" href="clarity.html"><span class="rl"><b>Персональная сборка</b> — связка под твою рутину, 30 дней правок</span><span class="rr">5 000 ₽ →</span></a>
+<a class="row" href="clarity.html"><span class="rl"><b>Установка под ключ</b> — ПК / VPS / с интеграцией ТГ·CRM·Авито</span><span class="rr">7–15К →</span></a>
+<a class="row" href="https://t.me/discoverysystem" target="_blank" rel="noopener"><span class="rl">спросить про любой формат — отвечаю сам</span><span class="rr">Telegram →</span></a>
+</div>
+</div>
+</div>
+<p class="screen-cap rv">Переключай вкладки — всё с ценой и ссылкой, без «оставь телефон».</p>
 </div></section>
 <section id="facts"><div class="wrap">
 <p class="eyebrow rv">рынок в цифрах</p>
@@ -197,8 +225,8 @@ p,li,.lead,.desc{text-wrap:pretty}
 <p class="eyebrow rv">четыре входа</p>
 <h2 class="rv">Системы</h2>
 <div class="sys rv"><span class="l"><a href="calculator.html">Расчёт на твоих цифрах</a></span><span class="r">0 ₽ · 60 сек</span></div>
-<div class="sys rv" style="transition-delay:.06s"><span class="l">20 связок</span><span class="r">3 000 ₽</span></div>
-<div class="sys rv" style="transition-delay:.12s"><span class="l">Связка под рутину</span><span class="r">5 000 ₽ · 30 дней чиню</span></div>
+<a class="sys rv" href="clarity.html" style="transition-delay:.06s"><span class="l">20 связок — гайд</span><span class="r">3 000 ₽ →</span></a>
+<a class="sys rv" href="clarity.html" style="transition-delay:.12s"><span class="l">Связка под рутину — сборка</span><span class="r">5 000 ₽ · 30 дней чиню →</span></a>
 <div class="sys rv" style="transition-delay:.18s"><span class="l">Установка</span><span class="r">7–15 000 ₽ · платные — <a href="https://t.me/discoverysystem">в канале</a></span></div>
 </div></section>
 <section id="who"><div class="wrap">
@@ -251,6 +279,7 @@ tabs.forEach(function(t){
 var on=t===tab;
 t.classList.toggle('on',on);
 t.setAttribute('aria-selected',on?'true':'false');
+t.setAttribute('tabindex',on?'0':'-1');
 var p=d.getElementById(t.getAttribute('aria-controls'));
 if(p)p.classList.toggle('on',on);
 });
