@@ -213,6 +213,27 @@ p,li,.lead,.desc{text-wrap:pretty}
 .gap-val{position:absolute;right:0;top:0}
 .gap-mark{flex-direction:column;gap:8px}
 }
+
+/* ── mobile layout fixes (360px audit) ── */
+@media (max-width:760px){
+nav.top{padding:14px 0}
+nav.top .wrap{gap:0 10px}
+nav.top a{font-size:13px;min-height:38px}
+nav.top a.home{flex-basis:100%;justify-content:center;margin-bottom:0}
+nav.top img{height:24px}
+h1{font-size:clamp(1.3rem,5.9vw,1.7rem);line-height:1.22}
+h1 br{display:none}
+h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
+.screen-tabs{gap:14px;flex-wrap:nowrap;font-size:13px;padding:14px 16px;overflow-x:auto;scrollbar-width:none}
+.screen-tabs::-webkit-scrollbar{display:none}
+.screen-tabs button{white-space:nowrap}
+}
+
+/* market hero: h1 шире на десктопе */
+@media (min-width:761px){
+.hero .wrap{max-width:1000px}
+h1{font-size:clamp(1.9rem,3.6vw,2.6rem)}
+}
 </style>
 </head>
 <body>
@@ -222,7 +243,7 @@ p,li,.lead,.desc{text-wrap:pretty}
 
 <header class="hero"><div class="wrap">
 <p class="sub rv">рынок · 2026 · каждый факт = источник + дата</p>
-<h1 class="rv" style="transition-delay:.06s">Внедрение ИИ-агентов ломается<br/>на точке входа — вебинарных обещаниях<br/>без экономики</h1>
+<h1 class="rv" style="transition-delay:.06s">Внедрение ИИ-агентов ломается на точке входа — вебинарных обещаниях без экономики</h1>
 <p class="rv" style="transition-delay:.12s">Доказать, что ИИ умеет что-то делать, уже не нужно. Нужно понять, в каком процессе ему можно доверить часть работы — и за сколько. Цены ниже реальные, с рынка.</p>
 </div></header>
 
