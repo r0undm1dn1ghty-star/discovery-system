@@ -54,7 +54,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:24px}
 /* stack — рельс форматов: ноды на одной вертикали */
 .stack{position:relative;margin-top:6px}
-.stack:before{content:"";position:absolute;left:7px;top:24px;bottom:24px;width:1px;background:linear-gradient(180deg,transparent,var(--line) 8%,var(--line) 92%,transparent)}
+.stack:before{content:"";position:absolute;left:7.5px;top:40px;bottom:40px;width:1px;background:linear-gradient(180deg,transparent,var(--line) 5%,var(--line) 95%,transparent)}
 .node{position:relative;padding:36px 0 36px 46px}
 .node .dot{position:absolute;left:0;top:40px;width:15px;height:15px;border-radius:50%;border:1px solid var(--line);background:var(--bg);z-index:1}
 .node.star .dot{background:var(--accent);border-color:var(--accent)}
@@ -62,19 +62,19 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .n-head .n{font-family:var(--mono);font-size:13px;color:var(--meta);font-weight:600;min-width:14px}
 .n-head h3{color:var(--ink);font-family:var(--display);font-size:1.28rem;font-weight:700;letter-spacing:-.01em}
 .n-head .price{margin-left:auto;font-family:var(--display);font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
-.n-head .price small{color:var(--meta);font-size:12.5px;font-weight:400;font-family:var(--mono)}
+.n-head .price small{color:var(--meta);font-size:12.5px;font-weight:400;font-family:var(--mono);margin-left:6px}
 .n-arg{font-size:15.5px;color:var(--body);line-height:1.65;margin:0 0 14px;max-width:62ch}
 .n-arg em{font-style:normal;color:var(--ink);font-weight:600}
 .n-list{list-style:none;margin:0 0 14px;max-width:62ch}
-.n-list li{padding:4.5px 0 4.5px 24px;position:relative;font-size:15px;color:var(--body)}
-.n-list li:before{content:"";position:absolute;left:1px;top:.78em;width:10px;height:1px;background:var(--faint)}
+.n-list li{padding:4.5px 0 4.5px 22px;position:relative;font-size:15px;color:var(--body)}
+.n-list li:before{content:"";position:absolute;left:4px;top:.6em;width:6px;height:6px;border-radius:50%;background:rgba(var(--accent-rgb),.4)}
 .n-meta{font-family:var(--mono);font-size:12.5px;color:var(--meta);line-height:1.7;margin:0}
-.node.star{background:rgba(var(--accent-rgb),.05);border:1px solid rgba(var(--accent-rgb),.16);border-radius:18px;padding:30px 30px 28px 46px;margin:10px 0}
+.node.star{padding-top:46px;padding-bottom:42px}
 .n-cta{margin-top:18px}
 .n-opts{margin:2px 0 16px}
 .opt{padding:13px 0;border-top:1px solid var(--line-soft)}
 .opt:last-child{border-bottom:1px solid var(--line-soft)}
-.opt-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.opt-top{display:flex;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
 .opt-top b{color:var(--ink);font-size:15px;font-weight:600}
 .opt-if{font-family:var(--mono);font-size:12px;color:var(--meta)}
 .opt-price{margin-left:auto;font-family:var(--display);font-size:17px;font-weight:700;color:var(--ink);white-space:nowrap}
@@ -101,11 +101,11 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 @keyframes panelIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 /* cta */
 .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;align-items:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:13px 30px;border-radius:999px;text-decoration:none;font-weight:600;font-size:16px;border:none;cursor:pointer}
-.btn-primary{background:linear-gradient(180deg,#8fd4b8,#6fb296);color:#0a1220;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 2px 8px rgba(0,0,0,.3);transition:transform .15s,box-shadow .15s}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.btn-primary{background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14)}.btn-primary:hover{background:#26895b;transform:translateY(-1px)}.btn-primary:active{background:#1a6b44;transform:none}
 .btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 4px 14px rgba(0,0,0,.35)}
 .btn-primary:active{transform:translateY(0);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 1px 4px rgba(0,0,0,.2)}
-.btn-ok{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.05) inset;transition:transform .15s,background .15s}
+.btn-ok{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.12);color:var(--ink)}.btn-ok:hover{background:rgba(255,255,255,.06)}
 .final-cta{margin-top:48px}
 .final-cta .hint{font-family:var(--mono);font-size:13px;color:var(--meta)}
 /* footer */
@@ -119,8 +119,8 @@ body{font-size:17px}
 section{padding:64px 0}
 .cta-row .btn{width:100%}
 .node{padding:30px 0 30px 34px}
-.node.star{padding:26px 20px 24px 34px;margin:8px 0}
-.stack:before{left:5px}
+.node.star{padding:38px 0 34px 34px}
+.stack:before{left:5.5px}
 .node .dot{width:11px;height:11px;top:34px}
 .n-head .price{margin-left:0;width:100%}
 .n-cta .btn{width:100%}
@@ -168,7 +168,7 @@ html{scroll-behavior:auto}
 /* sticky CTA — сопровождает пользователя (WIM) */
 .sticky-cta{position:fixed;bottom:24px;right:24px;z-index:50;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
 .sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
-.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;background:linear-gradient(180deg,#8fd4b8,#6fb296);color:#0a1220;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 8px 32px rgba(0,0,0,.4)}
+.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:10px;background:#1f7a4d;color:#f2fbf5;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
 .sticky-cta a:hover{transform:scale(1.02)}
 @media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
 

@@ -99,8 +99,8 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .geo-summary a.src{color:var(--accent)}
 /* cta */
 .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:48px}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:13px 30px;border-radius:999px;text-decoration:none;font-weight:600;font-size:16px}
-.btn-primary{background:linear-gradient(180deg,#8fd4b8,#6fb296);color:#0a1220;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 2px 8px rgba(0,0,0,.3);transition:transform .15s,box-shadow .15s}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.btn-primary{background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14)}.btn-primary:hover{background:#26895b;transform:translateY(-1px)}.btn-primary:active{background:#1a6b44;transform:none}
 .btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 4px 14px rgba(0,0,0,.35)}
 .btn-primary:active{transform:translateY(0);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 1px 4px rgba(0,0,0,.2)}
 .btn-ghost{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.05) inset;transition:transform .15s,background .15s,border-color .15s}
@@ -146,7 +146,7 @@ p,li,.lead,.desc{text-wrap:pretty}
 /* sticky CTA — сопровождает пользователя (WIM) */
 .sticky-cta{position:fixed;bottom:24px;right:24px;z-index:50;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
 .sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
-.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;background:var(--accent);color:#0b1220;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:10px;background:#1f7a4d;color:#f2fbf5;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
 .sticky-cta a:hover{transform:scale(1.02)}
 @media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
 
