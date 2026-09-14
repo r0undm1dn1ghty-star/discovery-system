@@ -31,4 +31,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://r0undm1dn1ghty-star.github.io/discovery-system/sitemap.xml
+Sitemap: https://discovery-system.ru/sitemap.xml
