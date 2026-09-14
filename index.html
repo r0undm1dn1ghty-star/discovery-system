@@ -37,7 +37,7 @@ h1{font-size:clamp(2.4rem,6vw,4rem);margin:0 0 40px}
 h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 64px}
 p{margin:0 0 24px}
 a{color:var(--ink)}
-:focus-visible{outline:2px solid #7bc4ff;outline-offset:3px;border-radius:4px}
+:focus-visible{outline:2px solid #7bc4a8;outline-offset:3px;border-radius:4px}
 nav.top{padding:28px 0}
 nav.top .wrap{display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center}
 nav.top a{color:var(--meta);text-decoration:none;font-size:15px;min-height:44px;display:inline-flex;align-items:center}
@@ -50,9 +50,12 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .hero .lead{max-width:640px;margin:0 auto 20px;font-size:20px}
 .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:56px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:13px 30px;border-radius:999px;text-decoration:none;font-weight:600;font-size:17px}
-.btn-primary{background:#7bc4ff;color:#0b1220;border:none}
-.btn-ghost{border:1px solid var(--line);color:var(--ink)}
-.accent{color:#7bc4ff;font-weight:700}
+.btn-primary{background:linear-gradient(180deg,#8fd4b8,#6fb296);color:#0a1220;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 2px 8px rgba(0,0,0,.3);transition:transform .15s,box-shadow .15s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 4px 14px rgba(0,0,0,.35)}
+.btn-primary:active{transform:translateY(0);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 1px 4px rgba(0,0,0,.2)}
+.btn-ghost{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.05) inset;transition:transform .15s,background .15s,border-color .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);transform:translateY(-1px)}}
+.accent{color:#7bc4a8;font-weight:700}
 .eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:24px}
 .screen{max-width:800px;margin:0 auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:left}
 .screen-bar{display:flex;gap:8px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
@@ -70,7 +73,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .cmd{color:var(--ink);font-weight:600}
 .cmd .free{color:var(--meta);font-weight:400}
 .cmd a{color:var(--ink);font-weight:600;text-decoration:none}
-.cmd a:hover{color:#7bc4ff}
+.cmd a:hover{color:#7bc4a8}
 .desc{color:var(--meta)}
 .screen-cap{text-align:center;color:var(--meta);font-size:16px;margin-top:28px}
 .fact{padding:56px 0;border-top:1px solid var(--line)}
@@ -102,7 +105,7 @@ a.sys{text-decoration:none;color:inherit}
 /* terminal rows — ссылки внутри вкладок */
 .screen-body .row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none;transition:background .2s var(--ease)}
 .screen-body .row:last-child{border-bottom:none}
-.screen-body .row:hover{background:rgba(123,196,255,.04)}
+.screen-body .row:hover{background:rgba(123,196,168,.04)}
 .screen-body .row:hover .rl{color:var(--ink)}
 .rl{color:var(--body);font-size:14px;line-height:1.6}
 .rl b{color:var(--ink);font-weight:600}
@@ -143,7 +146,7 @@ html{scroll-behavior:auto}
 
 .links-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:36px}
 .link-card{display:flex;flex-direction:column;gap:6px;padding:24px;border:1px solid var(--line-soft);border-radius:14px;text-decoration:none;transition:transform .4s var(--ease),border-color .3s var(--ease);position:relative}
-.link-card:hover{transform:translateY(-2px);border-color:rgba(123,196,255,.3)}
+.link-card:hover{transform:translateY(-2px);border-color:rgba(123,196,168,.3)}
 .lc-title{font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink)}
 .lc-desc{font-size:14px;color:var(--meta);line-height:1.5}
 .lc-go{position:absolute;top:24px;right:24px;color:var(--accent);font-family:var(--mono);font-size:16px}

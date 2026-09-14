@@ -19,7 +19,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Гайд: 20 конфигураций ИИ-агентов","description":"20 конфигураций ИИ-агентов: модель, хостинг, интеграции, промпты. Работает на РФ-провайдерах без VPN после установки.","brand":{"@type":"Brand","name":"Discovery System"},"offers":{"@type":"Offer","price":"3000","priceCurrency":"RUB","availability":"https://schema.org/InStock","url":"https://discovery-system.ru/pay.html","seller":{"@type":"Person","name":"Виктор Зайцев"}}}</script>
 <script>document.documentElement.className+=' js';</script>
 <style>
-:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4ff;--ok:#5ed9a8;--accent-rgb:123,196,255;--ok-rgb:94,217,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--ok:#5ed9a8;--accent-rgb:123,196,168;--ok-rgb:94,217,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
@@ -55,8 +55,11 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .pay-box h2{margin:0 0 12px;font-size:1.5rem}
 .pay-box .sub{font-size:16px;color:var(--body);margin:0 0 24px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:15px 36px;border-radius:999px;text-decoration:none;font-weight:600;font-size:17px;border:none;cursor:pointer;font-family:var(--sans)}
-.btn-primary{background:var(--accent);color:#0b1220;box-shadow:0 4px 20px rgba(var(--accent-rgb),.35)}
-.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-primary{background:linear-gradient(180deg,#8fd4b8,#6fb296);color:#0a1220;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 2px 8px rgba(0,0,0,.3);transition:transform .15s,box-shadow .15s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 4px 14px rgba(0,0,0,.35)}
+.btn-primary:active{transform:translateY(0);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 1px 4px rgba(0,0,0,.2)}
+.btn-ghost{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.05) inset;transition:transform .15s,background .15s,border-color .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);transform:translateY(-1px)}}
 .pay-meta{font-family:var(--mono);font-size:13px;color:var(--meta);margin-top:18px;line-height:1.7}
 /* шаги */
 .steps{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line-soft);margin-top:8px}
