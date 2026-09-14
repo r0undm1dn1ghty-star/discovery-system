@@ -52,84 +52,37 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .hero .lead a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(var(--accent-rgb),.4)}
 .hero .fine{max-width:660px;margin:0 auto;color:var(--meta);font-size:15px}
 .eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:24px}
-/* ladder */
-.ladder{display:flex;flex-direction:column;gap:16px}
-/* compact levels — muted stepping stones */
-.step-compact{padding:20px 24px;border:1px solid var(--line-soft);border-radius:14px;background:rgba(255,255,255,.012)}
-.step-compact .lvl-row{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;margin-bottom:8px}
-.step-compact .lvl-num{font-family:var(--mono);font-size:13px;color:var(--faint);font-weight:600}
-.step-compact h3{color:var(--ink);font-size:1.12rem;font-family:var(--display);font-weight:700}
-.step-compact .price{margin-left:auto;font-family:var(--display);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
-.step-compact .price small{color:var(--meta);font-size:13px;font-weight:400;font-family:var(--mono)}
-.step-compact .arg-c{font-size:15px;color:var(--body);line-height:1.6;margin:0 0 12px}
-.step-compact .arg-c em{font-style:normal;color:var(--ink);font-weight:600}
-.step-compact ul{list-style:none;margin:0 0 10px}
-.step-compact li{padding:4px 0 4px 22px;position:relative;font-size:14.5px;color:var(--body);border-bottom:none}
-.step-compact li:before{content:"\2713";position:absolute;left:0;color:var(--accent);font-family:var(--mono);font-size:13px}
-.step-compact .meta-c{font-size:13px;color:var(--faint);padding-top:8px;border-top:1px solid rgba(255,255,255,.04);line-height:1.5}
-.step-compact .meta-c b{color:var(--meta);font-weight:600}
-/* ★ star level — double-bezel glowing hero */
-.step-star{margin:4px 0}
-.star-shell{border:1px solid rgba(var(--accent-rgb),.15);background:rgba(var(--accent-rgb),.03);border-radius:2rem;padding:8px;box-shadow:0 4px 24px rgba(0,0,0,.2)}
-.star-core{background:rgba(255,255,255,.02);border:1px solid rgba(var(--ok-rgb),.28);border-radius:calc(2rem - .5rem);padding:36px 36px 32px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
-.star-head{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;margin-bottom:18px}
-.star-head .star-num{font-family:var(--mono);font-size:20px;color:var(--ok);font-weight:600}
-.star-head h3{color:var(--ink);font-size:1.5rem;font-family:var(--display);font-weight:700}
-.star-head .tag{font-family:var(--mono);font-size:13px;color:var(--ok);letter-spacing:.06em;opacity:.8}
-.star-head .price{margin-left:auto;font-family:var(--display);font-size:26px;font-weight:800;color:var(--ok)}
-.star-head .price small{color:var(--meta);font-size:13px}
-.star-arg{font-size:18px;color:var(--body);margin:0 0 22px;line-height:1.65}
-.star-arg em{font-style:normal;color:var(--ok);font-weight:600}
-.star-list{list-style:none;margin:0 0 22px}
-.star-list li{padding:10px 0 10px 26px;position:relative;font-size:15.5px;color:var(--body);border-bottom:1px solid rgba(255,255,255,.04)}
-.star-list li:before{content:"\2713";position:absolute;left:0;top:10px;color:var(--ok);font-family:var(--mono);font-size:14px}
-.star-meta{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--meta);padding-top:16px;border-top:1px solid rgba(255,255,255,.05);margin-bottom:24px}
-.star-meta b{color:var(--body);font-weight:600}
-.star-meta .next{flex:1;min-width:240px}
-.star-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-/* medium level — solid card */
-.step-medium{padding:28px 28px 24px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025)}
-.step-medium .m-head{display:flex;gap:16px;align-items:baseline;flex-wrap:wrap;margin-bottom:16px}
-.step-medium .m-num{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600}
-.step-medium h3{color:var(--ink);font-size:1.25rem;font-family:var(--display);font-weight:700}
-.step-medium .tag{font-family:var(--mono);font-size:13px;color:var(--meta);letter-spacing:.06em}
-.step-medium .price{margin-left:auto;font-family:var(--display);font-size:22px;font-weight:700;color:var(--ink)}
-.step-medium .price small{color:var(--meta);font-size:13px}
-.step-medium .m-arg{font-size:16px;color:var(--body);margin:0 0 20px}
-.step-medium .m-arg em{font-style:normal;color:var(--ink);font-weight:600}
-/* install grid */
-.install-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px}
-.install-opt .pick{display:block;font-family:var(--mono);font-size:13px;color:var(--accent);margin:4px 0 8px}
-.install-opt{border:1px solid var(--line-soft);border-radius:12px;padding:18px}
-.install-opt b{color:var(--ink);font-size:15px}
-.install-opt p{font-size:14px;color:var(--body);margin:8px 0 12px;line-height:1.5}
-.install-opt .p{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ink)}
-.install-opt .p small{font-size:13px;color:var(--meta)}
-.install-opt .v{font-family:var(--mono);font-size:13px;color:var(--meta);margin-top:6px}
-.install-opt.hi{border-color:rgba(var(--accent-rgb),.35);background:rgba(var(--accent-rgb),.05)}
-.step-medium .m-meta{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--meta);padding-top:14px;border-top:1px solid rgba(255,255,255,.05)}
-.step-medium .m-meta b{color:var(--body);font-weight:600}
-.step-medium .m-meta .next{flex:1;min-width:240px}
+/* stack — рельс форматов: ноды на одной вертикали */
+.stack{position:relative;margin-top:6px}
+.stack:before{content:"";position:absolute;left:7px;top:24px;bottom:24px;width:1px;background:linear-gradient(180deg,transparent,var(--line) 8%,var(--line) 92%,transparent)}
+.node{position:relative;padding:36px 0 36px 46px}
+.node .dot{position:absolute;left:0;top:40px;width:15px;height:15px;border-radius:50%;border:1px solid var(--line);background:var(--bg);z-index:1}
+.node.star .dot{background:var(--accent);border-color:var(--accent)}
+.n-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:10px}
+.n-head .n{font-family:var(--mono);font-size:13px;color:var(--meta);font-weight:600;min-width:14px}
+.n-head h3{color:var(--ink);font-family:var(--display);font-size:1.28rem;font-weight:700;letter-spacing:-.01em}
+.n-head .price{margin-left:auto;font-family:var(--display);font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.01em;white-space:nowrap}
+.n-head .price small{color:var(--meta);font-size:12.5px;font-weight:400;font-family:var(--mono)}
+.n-arg{font-size:15.5px;color:var(--body);line-height:1.65;margin:0 0 14px;max-width:62ch}
+.n-arg em{font-style:normal;color:var(--ink);font-weight:600}
+.n-list{list-style:none;margin:0 0 14px;max-width:62ch}
+.n-list li{padding:4.5px 0 4.5px 24px;position:relative;font-size:15px;color:var(--body)}
+.n-list li:before{content:"";position:absolute;left:1px;top:.78em;width:10px;height:1px;background:var(--faint)}
+.n-meta{font-family:var(--mono);font-size:12.5px;color:var(--meta);line-height:1.7;margin:0}
+.node.star{background:rgba(var(--accent-rgb),.05);border:1px solid rgba(var(--accent-rgb),.16);border-radius:18px;padding:30px 30px 28px 46px;margin:10px 0}
+.n-cta{margin-top:18px}
+.n-opts{margin:2px 0 16px}
+.opt{padding:13px 0;border-top:1px solid var(--line-soft)}
+.opt:last-child{border-bottom:1px solid var(--line-soft)}
+.opt-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.opt-top b{color:var(--ink);font-size:15px;font-weight:600}
+.opt-if{font-family:var(--mono);font-size:12px;color:var(--meta)}
+.opt-price{margin-left:auto;font-family:var(--display);font-size:17px;font-weight:700;color:var(--ink);white-space:nowrap}
+.opt-price small{font-size:12px;color:var(--meta);font-family:var(--mono);font-weight:400}
+.opt-desc{font-size:14px;color:var(--body);margin:5px 0 3px;line-height:1.55}
+.opt-v{font-family:var(--mono);font-size:12.5px;color:var(--meta);margin:0;line-height:1.55}
 /* proof */
 .proof-wrap{margin-top:0}
-.proof-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:20px}
-.proof-main{border:1px solid var(--line-soft);border-radius:16px;padding:32px;background:rgba(255,255,255,.02)}
-.proof-main .pi{font-family:var(--mono);font-size:13px;color:var(--meta);margin-bottom:16px}
-.proof-main .big{font-family:var(--display);font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:16px;letter-spacing:-.02em}
-/* воронка 20→80% */
-.funnel{display:flex;align-items:center;gap:16px;margin:8px 0 20px}
-.funnel-bar{height:8px;border-radius:4px;background:rgba(255,255,255,.08);position:relative;flex:1;overflow:hidden}
-.funnel-fill{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:linear-gradient(90deg,rgba(123,196,168,.2),var(--accent));transform-origin:left;transition:transform .8s var(--ease)}
-.funnel-num{font-family:var(--mono);font-size:14px;color:var(--meta);white-space:nowrap}
-.funnel-num b{color:var(--ink);font-weight:600}
-.proof-main .what{font-size:15.5px;color:var(--body);line-height:1.65;margin:0}
-.proof-main .what b{color:var(--ink)}
-.proof-main .why{font-size:14px;color:var(--meta);margin:16px 0 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.05)}
-.proof-side{border:1px solid var(--line-soft);border-radius:14px;padding:24px;background:rgba(255,255,255,.012)}
-.proof-side h4{color:var(--ink);font-size:1rem;margin:0 0 10px;font-family:var(--display);font-weight:600}
-.proof-side p{font-size:14px;color:var(--body);line-height:1.6;margin:0}
-.proof-side p+p{margin-top:10px;font-size:13px;color:var(--meta)}
-.proof-side b{color:var(--ink)}
 /* payment bar */
 .pay-bar{margin-top:24px;padding:14px 20px;border:1px solid var(--line-soft);border-radius:12px;background:rgba(255,255,255,.012);font-family:var(--mono);font-size:13px;color:var(--meta);display:flex;gap:10px;flex-wrap:wrap;align-items:center;line-height:1.5}
 .pay-bar .k{color:var(--accent);font-weight:600}
@@ -154,7 +107,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .btn-primary:active{transform:translateY(0);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 1px 4px rgba(0,0,0,.2)}
 .btn-ok{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.05) inset;transition:transform .15s,background .15s}
 .final-cta{margin-top:48px}
-.final-cta .hint{font-family:var(--mono);font-size:13px;color:var(--faint)}
+.final-cta .hint{font-family:var(--mono);font-size:13px;color:var(--meta)}
 /* footer */
 
 /* reveal */
@@ -164,13 +117,14 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 @media (max-width:760px){
 body{font-size:17px}
 section{padding:64px 0}
-.install-grid{grid-template-columns:1fr}
-.proof-grid{grid-template-columns:1fr}
-.star-core{padding:24px 20px}
-.star-head .price,.step-compact .price,.step-medium .price{margin-left:0;width:100%}
-.cta-row .btn,.star-cta .btn{width:100%}
-.step-medium{padding:20px}
-.proof-main{padding:24px 20px}
+.cta-row .btn{width:100%}
+.node{padding:30px 0 30px 34px}
+.node.star{padding:26px 20px 24px 34px;margin:8px 0}
+.stack:before{left:5px}
+.node .dot{width:11px;height:11px;top:34px}
+.n-head .price{margin-left:0;width:100%}
+.n-cta .btn{width:100%}
+.opt-top .opt-price{margin-left:0;width:100%}
 }
 /* reduced motion */
 @media (prefers-reduced-motion:reduce){
@@ -194,11 +148,7 @@ html{scroll-behavior:auto}
 @media(max-width:760px){.sig{justify-content:center}.sig-c{text-align:center}}
 
 
-/* усилие клиента — видимые чипы, не стены текста */
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.chip{font-family:var(--mono);font-size:13px;color:var(--body);border:1px solid var(--line-soft);border-radius:999px;padding:5px 14px;white-space:nowrap;background:rgba(255,255,255,.02)}
-.chip b{color:var(--ink);font-weight:600}
-.chip.acc{color:var(--accent);border-color:rgba(123,196,168,.25)}
+
 
 
 /* приёмка — то, чего нет у студий */
@@ -210,12 +160,7 @@ html{scroll-behavior:auto}
 @media(max-width:760px){.acc-item{gap:10px}.acc-t{min-width:0}.acc-check{width:100%;padding-left:42px}}
 
 
-/* компактный proof — одна строка вместо простыни */
-.proof-line{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap}
-.pl-big{font-family:var(--display);font-size:clamp(2rem,4vw,2.8rem);font-weight:800;color:var(--accent);line-height:1.1;white-space:nowrap}
-.pl-txt{font-size:15.5px;color:var(--body);line-height:1.6;flex:1;min-width:240px}
-.pl-dim{color:var(--meta);font-size:14px}
-@media(max-width:760px){.pl-big{font-size:2rem}}
+
 
 .choose-hint{font-size:15px;color:var(--meta);margin:0 0 28px;padding:14px 20px;border-left:2px solid var(--accent);background:rgba(123,196,168,.04);border-radius:0 8px 8px 0}
 .choose-hint a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
@@ -223,7 +168,7 @@ html{scroll-behavior:auto}
 /* sticky CTA — сопровождает пользователя (WIM) */
 .sticky-cta{position:fixed;bottom:24px;right:24px;z-index:50;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
 .sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
-.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;background:var(--accent);color:#0b1220;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:999px;background:linear-gradient(180deg,#8fd4b8,#6fb296);color:#0a1220;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 8px 32px rgba(0,0,0,.4)}
 .sticky-cta a:hover{transform:scale(1.02)}
 @media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
 
@@ -256,74 +201,59 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 <main>
 <section><div class="wrap">
 <p class="choose-hint rv">Не знаешь, что выбрать? Начни с <a href="calculator.html">калькулятора</a> — он покажет твою цифру. Дальше видно.</p>
-<div class="ladder">
-<!-- Level 0 — compact, muted stepping stone -->
-<div class="step-compact rv">
-<div class="lvl-row"><span class="lvl-num">0</span><h3>Бесплатно — примерить</h3><span class="price">0 ₽ <small>60 сек</small></span></div>
-<p class="arg-c">Увидеть чек до разговора. <em>Без звонков и «оставь телефон».</em></p>
-<ul>
+<div class="stack">
+
+<div class="node rv">
+<span class="dot" aria-hidden="true"></span>
+<div class="n-head"><span class="n">0</span><h3>Бесплатно — примерить</h3><span class="price">0 ₽</span></div>
+<p class="n-arg">Увидеть чек до разговора. <em>Без звонков и «оставь телефон».</em></p>
+<ul class="n-list">
 <li>Калькулятор — цена в ₽/мес и часы/мес</li>
 <li>Канал — сигналы с источником и датой</li>
 <li>Сравнение «руками vs агент» на твоих цифрах</li>
 </ul>
-<div class="chips"><span class="chip acc"><b>60 сек</b></span><span class="chip">7 ответов</span><span class="chip">без доступов</span><span class="chip">без давления</span></div>
+<p class="n-meta">60 сек · 7 ответов · без доступов · без давления</p>
 </div>
-<!-- Level 1 — compact, muted stepping stone -->
-<div class="step-compact rv" style="transition-delay:.05s">
-<div class="lvl-row"><span class="lvl-num">1</span><h3>Гайд — собрать самому</h3><span class="price">3 000 ₽ <small>разово</small></span></div>
-<p class="arg-c">Недели исследования — <em>в одной таблице.</em></p>
-<ul>
+
+<div class="node rv" style="transition-delay:.05s">
+<span class="dot" aria-hidden="true"></span>
+<div class="n-head"><span class="n">1</span><h3>Гайд — собрать самому</h3><span class="price">3 000 ₽ <small>разово</small></span></div>
+<p class="n-arg">Недели исследования — <em>в одной таблице.</em></p>
+<ul class="n-list">
 <li>20 конфигураций: модель, хостинг, интеграции</li>
 <li>Промпты и установка для каждой</li>
 <li>Расходы провайдеров помесячно</li>
 </ul>
-<div class="chips"><span class="chip acc"><b>3–4 часа</b> на сборку</span><span class="chip">доступы к ТГ/таблицам</span><span class="chip">без кода</span><span class="chip">апгрейд +2К до сборки</span></div>
-<div class="cta-row" style="margin-top:18px">
-<a class="btn btn-primary" href="pay.html">Купить гайд 3 000 ₽ →</a>
-<span style="font-family:var(--mono);font-size:13px;color:var(--meta)">оплата СБП/картой · чек самозанятого · доступ навсегда</span>
+<p class="n-meta">3–4 часа на сборку · доступы к ТГ/таблицам · без кода · апгрейд +2К до сборки</p>
+<div class="n-cta"><a class="btn btn-primary" href="pay.html">Купить гайд 3 000 ₽ →</a><p class="n-meta" style="margin:10px 0 0">оплата СБП/картой · чек самозанятого · доступ навсегда</p></div>
 </div>
-</div>
-<!-- Level ★ — FEATURED double-bezel glowing hero -->
-<div class="step-star rv" style="transition-delay:.1s">
-<div class="star-shell">
-<div class="star-core">
-<div class="star-head">
-<span class="star-num">★</span>
-<h3>Персональная сборка</h3>
-<span class="tag">персонально</span>
-<span class="price">5 000 ₽ <small>разово</small></span>
-</div>
-<p class="star-arg">Твоя связка, <em>а не шаблон.</em> Под твою рутину — с проверкой на твоих данных.</p>
-<ul class="star-list">
+
+<div class="node star rv" style="transition-delay:.1s">
+<span class="dot" aria-hidden="true"></span>
+<div class="n-head"><span class="n">★</span><h3>Персональная сборка</h3><span class="price">5 000 ₽ <small>разово</small></span></div>
+<p class="n-arg">Твоя связка, <em>а не шаблон.</em> Под твою рутину — с проверкой на твоих данных.</p>
+<ul class="n-list">
 <li>Всё из гайда 3К включено</li>
 <li>Модель и провайдер под твой кейс</li>
 <li>Промпты под твои сценарии</li>
 <li>30 дней правок в Telegram</li>
 </ul>
-<div class="chips"><span class="chip acc"><b>30 мин</b> созвона</span><span class="chip">сборка 24 часа</span><span class="chip acc"><b>30 дней</b> правок</span><span class="chip">дальше сам · без подписки</span></div>
-<div class="star-cta">
-<a class="btn btn-ok" href="calculator.html">Собрать мою связку →</a>
-<span style="font-family:var(--mono);font-size:13px;color:var(--meta)">сборка 24 часа · правки включены</span>
+<p class="n-meta">30 мин созвона · сборка 24 часа · дальше сам · без подписки</p>
+<div class="n-cta"><a class="btn btn-ok" href="calculator.html">Собрать мою связку →</a></div>
 </div>
+
+<div class="node rv" style="transition-delay:.15s">
+<span class="dot" aria-hidden="true"></span>
+<div class="n-head"><span class="n">↗</span><h3>Установка под ключ</h3><span class="price">7 / 10 / 15К <small>разово</small></span></div>
+<p class="n-arg">Пришёл — <em>работает.</em> Агент отвечает в твоём ТГ/CRM.</p>
+<div class="n-opts">
+<div class="opt"><div class="opt-top"><b>На твоём ПК</b><span class="opt-if">если ПК всегда включён</span><span class="opt-price">7 000 ₽</span></div><p class="opt-desc">Без VPS, данные локально.</p><p class="opt-v">вклад: доступ к ПК (AnyDesk) · 2 часа</p></div>
+<div class="opt"><div class="opt-top"><b>VPS · РФ-хостинг</b><span class="opt-if">если нужен 24/7</span><span class="opt-price">10 000 ₽ <small>+ ~400 ₽/мес VPS</small></span></div><p class="opt-desc">РФ-хостинг, оплата СБП/картой.</p><p class="opt-v">вклад: доступы к VPS/ТГ · 2 часа, дальше без участия</p></div>
+<div class="opt"><div class="opt-top"><b>С интеграцией</b><span class="opt-if">если есть CRM/Авито-поток</span><span class="opt-price">15 000 ₽</span></div><p class="opt-desc">ТГ-бот + CRM/Авито, память между чатами.</p><p class="opt-v">вклад: токены ботов/CRM · тест на 5 заявках</p></div>
 </div>
+<p class="n-meta">сборка 5К включена · без абонентки</p>
 </div>
-</div>
-<!-- Level ↗ — medium weight solid card with install grid -->
-<div class="step-medium rv" style="transition-delay:.15s">
-<div class="m-head">
-<span class="m-num">↗</span>
-<h3>Установка под ключ</h3>
-<span class="tag">с интеграцией</span>
-<span class="price">7 / 10 / 15К <small>разово</small></span>
-</div>
-<p class="m-arg">Пришёл — <em>работает.</em> Агент отвечает в твоём ТГ/CRM.</p>
-<div class="install-grid">
-<div class="install-opt"><b>На твоём ПК</b><span class="pick">если ПК всегда включён</span><p>Без VPS, данные локально.</p><div class="p">7 000 ₽ <small>разово</small></div><div class="v">вклад: доступ к ПК (AnyDesk) · 2 часа</div></div>
-<div class="install-opt hi"><b>VPS · РФ-хостинг</b><span class="pick">если нужен 24/7</span><p>РФ-хостинг, оплата СБП/картой.</p><div class="p">10 000 ₽ <small>+ ~400 ₽/мес VPS</small></div><div class="v">вклад: доступы к VPS/ТГ · 2 часа, дальше без участия</div></div>
-<div class="install-opt"><b>С интеграцией</b><span class="pick">если есть CRM/Авито-поток</span><p>ТГ-бот + CRM/Авито, память между чатами.</p><div class="p">15 000 ₽ <small>разово</small></div><div class="v">вклад: токены ботов/CRM · тест на 5 заявках</div></div>
-</div>
-<div class="chips"><span class="chip acc"><b>2 часа</b> и работает</span><span class="chip">сборка 5К включена</span><span class="chip">без абонентки</span></div>
-</div>
+
 </div>
 </div></section>
 <section><div class="wrap">
