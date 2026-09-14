@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Гайд: 20 конфигураций ИИ-агентов — 3 000 ₽ — Discovery System</title>
+<meta name="description" content="20 конфигураций: модель, хостинг, интеграции, промпты. Работает на РФ-провайдерах без VPN. 3 000 ₽ разово, доступ навсегда, чек самозанятого."/>
+<link rel="canonical" href="https://discovery-system.ru/pay.html"/>
+<meta property="og:title" content="Гайд: 20 конфигураций ИИ-агентов — 3 000 ₽"/>
+<meta property="og:description" content="Модель, хостинг, интеграции и промпты в одной таблице. Работает без VPN. Доступ навсегда."/>
+<meta property="og:url" content="https://discovery-system.ru/pay.html"/>
+<meta property="og:type" content="product"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Discovery System"/>
+<link rel="icon" href="favicon-32.png" sizes="32x32"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Гайд: 20 конфигураций ИИ-агентов","description":"20 конфигураций ИИ-агентов: модель, хостинг, интеграции, промпты. Работает на РФ-провайдерах без VPN после установки.","brand":{"@type":"Brand","name":"Discovery System"},"offers":{"@type":"Offer","price":"3000","priceCurrency":"RUB","availability":"https://schema.org/InStock","url":"https://discovery-system.ru/pay.html","seller":{"@type":"Person","name":"Виктор Зайцев"}}}</script>
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4ff;--ok:#5ed9a8;--accent-rgb:123,196,255;--ok-rgb:94,217,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+h1,h2{color:var(--ink);font-family:var(--display);line-height:1.15;font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 28px;text-wrap:balance}
+h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 36px;text-wrap:balance}
+p{margin:0 0 24px;text-wrap:pretty}
+a{color:var(--ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+nav.top{padding:28px 0}
+nav.top .wrap{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:center}
+nav.top a{color:var(--meta);text-decoration:none;font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+nav.top a:hover{color:var(--ink)}
+nav.top img{height:28px;width:auto;border-radius:4px}
+nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
+nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.hero{padding:64px 0 24px;text-align:center}
+.hero .sub{color:var(--meta);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:24px;font-family:var(--mono)}
+.hero .lead{max-width:640px;margin:0 auto 28px;font-size:19px}
+.price-row{display:flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.price-big{font-family:var(--display);font-size:clamp(2.4rem,6vw,3.4rem);font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.price-note{font-family:var(--mono);font-size:14px;color:var(--meta)}
+.eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:24px}
+/* список содержимого */
+.inc-list{list-style:none;border-top:1px solid var(--line-soft)}
+.inc-list li{display:flex;align-items:baseline;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft);font-size:16px;color:var(--body);flex-wrap:wrap}
+.inc-list .n{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600;min-width:26px}
+.inc-list b{color:var(--ink);font-weight:600}
+/* оплата */
+.pay-box{border:1px solid rgba(var(--accent-rgb),.25);background:rgba(var(--accent-rgb),.04);border-radius:16px;padding:32px 28px;text-align:center}
+.pay-box h2{margin:0 0 12px;font-size:1.5rem}
+.pay-box .sub{font-size:16px;color:var(--body);margin:0 0 24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:15px 36px;border-radius:999px;text-decoration:none;font-weight:600;font-size:17px;border:none;cursor:pointer;font-family:var(--sans)}
+.btn-primary{background:var(--accent);color:#0b1220;box-shadow:0 4px 20px rgba(var(--accent-rgb),.35)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.pay-meta{font-family:var(--mono);font-size:13px;color:var(--meta);margin-top:18px;line-height:1.7}
+/* шаги */
+.steps{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line-soft);margin-top:8px}
+.step{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line-soft);align-items:baseline;flex-wrap:wrap}
+.step .sn{font-family:var(--mono);font-size:13px;color:var(--accent);font-weight:600;min-width:26px}
+.step .st{font-size:16px;color:var(--ink);flex:1;min-width:220px}
+.step .sd{font-family:var(--mono);font-size:13px;color:var(--meta);white-space:nowrap}
+/* faq */
+.faq details{border:1px solid var(--line-soft);border-radius:12px;margin-bottom:10px;overflow:hidden;transition:background .2s var(--ease),border-color .2s var(--ease)}
+.faq details[open]{background:rgba(255,255,255,.03);border-color:rgba(var(--accent-rgb),.15)}
+.faq summary{color:var(--ink);font-size:16px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 22px;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-family:var(--mono);color:var(--meta);font-size:18px;flex-shrink:0}
+.faq details[open] summary:after{content:"\2013";color:var(--accent)}
+.faq details[open] summary{border-bottom:1px solid var(--line-soft)}
+.faq details p{font-size:14.5px;color:var(--body);padding:14px 22px 18px;line-height:1.6;margin:0}
+/* футер */
+footer{padding:48px 0 64px;border-top:1px solid var(--line-soft)}
+.sig{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.sig-photo{width:48px;height:60px;object-fit:cover;border-radius:6px;filter:grayscale(.3)}
+.sig-text{display:flex;flex-direction:column;gap:2px}
+.sig-name{font-family:var(--display);font-size:17px;font-weight:600;color:var(--ink)}
+.sig-role{font-size:14px;color:var(--meta)}
+.sig-tg{font-size:14px;color:var(--accent);text-decoration:none;margin-top:4px}
+.sig-tg:hover{text-decoration:underline}
+.sig-c{color:var(--meta);font-size:14px;margin-top:24px;text-align:center}
+.sig-c a{color:var(--meta);text-decoration:none}
+.sig-c a:hover{color:var(--ink)}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+@media (max-width:760px){
+body{font-size:17px}
+section{padding:56px 0}
+nav.top{padding:14px 0}
+nav.top .wrap{gap:0 10px}
+nav.top a{font-size:13px;min-height:38px}
+nav.top a.home{flex-basis:100%;justify-content:center}
+nav.top img{height:24px}
+.pay-box{padding:24px 20px}
+.btn{width:100%}
+.step .sd{white-space:normal}
+.sig{justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*{animation:none!important;transition:none!important}
+.js .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Основная навигация"><div class="wrap">
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
+</div></nav>
+
+<main>
+<section class="hero"><div class="wrap">
+<p class="sub rv">гайд · доступ навсегда</p>
+<h1 class="rv">20 конфигураций ИИ-агентов</h1>
+<p class="lead rv">Модель, хостинг, интеграции и промпты — в одной таблице. Собираешь свою связку за 3–4 часа, без кода. Работает на РФ-провайдерах без VPN после установки.</p>
+<div class="price-row rv"><span class="price-big">3 000 ₽</span><span class="price-note">разово · без подписки</span></div>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow rv">что внутри</p>
+<ul class="inc-list rv">
+<li><span class="n">01</span><span><b>20 конфигураций</b> — под маркетолога, бухгалтера, дизайнера, копирайтера, предпринимателя</span></li>
+<li><span class="n">02</span><span><b>Модель и провайдер</b> — что взять под задачу, что бесплатно, что за деньги</span></li>
+<li><span class="n">03</span><span><b>Промпты</b> — готовые, под каждую конфигурацию</span></li>
+<li><span class="n">04</span><span><b>Расходы помесячно</b> — от 0 ₽ до ~1 400 ₽, без сюрпризов</span></li>
+<li><span class="n">05</span><span><b>Установка по шагам</b> — VPN нужен только на этом этапе, дальше нет</span></li>
+<li><span class="n">06</span><span><b>Апгрейд до сборки</b> — +2 000 ₽, если захочешь, чтобы собрал я</span></li>
+</ul>
+</div></section>
+
+<section id="buy"><div class="wrap">
+<div class="pay-box rv">
+<h2>Забрать гайд</h2>
+<p class="sub">Оплата по СБП или картой РФ. Чек самозанятого — сразу после оплаты.</p>
+<a class="btn btn-primary" id="buyBtn" href="https://t.me/discoverysystem">Оплатить 3 000 ₽ →</a>
+<p class="pay-meta" id="payMeta">Откроется чат — пришлю ссылку на оплату и отдам гайд после платежа</p>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow rv">как это работает</p>
+<div class="steps rv">
+<div class="step"><span class="sn">01</span><span class="st">Оплачиваешь по СБП или картой</span><span class="sd">1 минута</span></div>
+<div class="step"><span class="sn">02</span><span class="st">Получаешь чек в «Мой налог»</span><span class="sd">сразу</span></div>
+<div class="step"><span class="sn">03</span><span class="st">Гайд приходит в Telegram или на почту</span><span class="sd">до 15 минут</span></div>
+<div class="step"><span class="sn">04</span><span class="st">Собираешь связку и задаёшь вопросы</span><span class="sd">3–4 часа</span></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow rv">частые сомнения</p>
+<div class="faq rv">
+<details open>
+<summary>Что если не разберусь сам?</summary>
+<p>Пиши в Telegram — отвечу. Если по ходу станет ясно, что нужна сборка под тебя, доплачиваешь 2 000 ₽ и я собираю связку: модель, провайдер, промпты под твои сценарии и 30 дней правок.</p>
+</details>
+<details>
+<summary>Нужен VPN?</summary>
+<p>Только на этапе установки — получить API-ключ. Дальше работа идёт через API, VPN не нужен. В гайде это отдельным шагом с бесплатными вариантами.</p>
+</details>
+<details>
+<summary>Сколько стоит содержать?</summary>
+<p>От 0 ₽ (бесплатные связки) до ~1 400 ₽/мес у провайдера. Это оплата провайдеру напрямую — мне за это ничего не идёт.</p>
+</details>
+<details>
+<summary>Можно вернуть деньги?</summary>
+<p>До передачи материалов — да, напиши и верну. После передачи доступа возврат не предусмотрен: материал уже у тебя. Условия — в <a href="oferta.html" style="color:var(--accent);text-decoration:underline">оферте</a>.</p>
+</details>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="sig">
+<img src="viktor.jpg" alt="Виктор Зайцев" loading="lazy" class="sig-photo"/>
+<div class="sig-text">
+<span class="sig-name">Виктор Зайцев</span>
+<span class="sig-role">отвечаю сам · без отдела продаж</span>
+<a href="https://t.me/discoverysystem" target="_blank" rel="noopener" class="sig-tg">Telegram →</a>
+</div>
+</div>
+<p class="sig-c">Discovery System · 2026 · <a href="oferta.html">оферта</a> · <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a> · <a href="https://vc.ru/id6099688">VC</a></p>
+</div></footer>
+
+<script>
+(function(){var d=document;if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}else{d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});}})();
+</script>
+<script>
+/* ============================================================
+   НАСТРОЙКА ОПЛАТЫ — заполнить и задеплоить
+   ------------------------------------------------------------
+   PAY_LINK  — ссылка на платёжную страницу (Prodamus / Tribute / ЮKassa).
+               Если пусто — кнопка ведёт в Telegram.
+   SBP_PHONE — номер для перевода по СБП (формат +7XXXXXXXXXX).
+               Если задан — на кнопке появится подсказка про СБП.
+   ============================================================ */
+var PAY_LINK  = '';
+var SBP_PHONE = '';
+var TG_URL    = 'https://t.me/discoverysystem';
+
+(function(){
+  var btn = document.getElementById('buyBtn');
+  var meta = document.getElementById('payMeta');
+  if(!btn) return;
+  if(PAY_LINK){
+    btn.href = PAY_LINK;
+    btn.setAttribute('rel','noopener');
+    if(meta) meta.textContent = 'Оплата картой РФ или СБП · чек самозанятого сразу после платежа';
+  } else if(SBP_PHONE){
+    btn.href = TG_URL;
+    if(meta) meta.textContent = 'СБП: ' + SBP_PHONE + ' · после перевода напиши в чат — отдам гайд и чек';
+  } else {
+    btn.href = TG_URL;
+  }
+})();
+</script>
+</body>
+</html>
