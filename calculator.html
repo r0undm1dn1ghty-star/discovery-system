@@ -713,8 +713,7 @@ function proceedToCheckout(){
     est.monthly?'Рутина: ~'+est.monthly+' ₽/мес':'',
     goal?'Задачи: '+goal:'',
     device?'Железо: '+device:''
-  ].filter(Boolean).join('
-');
+  ].filter(Boolean).join('\n');
   try{navigator.clipboard&&navigator.clipboard.writeText(lines);}catch(_){}
   toast('Заявка скопирована — вставь её в чат Telegram');
   window.open('https://t.me/discoverysystem','_blank','noopener');
