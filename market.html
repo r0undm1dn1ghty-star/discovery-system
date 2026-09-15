@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Рынок ИИ-агентов в России — цифры с датами — Discovery System</title>
-<meta name="description" content="Рынок ИИ-агентов РФ: 316 млрд ₽ в 2025, ~5% компаний с агентами, чек студий 49–290К. Каждый факт — источник и дата. Своя связка 2–4К/мес."/>
+<meta name="description" content="Студии — 49 990 ₽ за «агента», сервисы — 43,7К ₽/год аренды. Своя связка — 2–4К ₽/мес, провайдерам напрямую. Каждый факт — источник и дата."/>
 <link rel="canonical" href="https://discovery-system.ru/market.html"/>
 <meta property="og:title" content="Рынок ИИ-агентов в России — Discovery System"/>
 <meta property="og:description" content="Цифры с источниками и датами. Четыре дороги внедрения с реальными ценами."/>
@@ -60,27 +60,9 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .kpi-n small{font-size:.5em;color:var(--meta);font-weight:500;letter-spacing:0}
 .kpi-t{font-size:15px;color:var(--body);line-height:1.5;margin-bottom:10px}
 .kpi-s{font-size:13px;color:var(--meta);line-height:1.5}
+.kpi.wide{grid-column:1/-1;background:rgba(123,196,168,.05);border-color:rgba(123,196,168,.18)}
 
 /* ── bar chart ── */
-.cbars{display:flex;gap:14px;margin:44px 0 16px;border-bottom:1px solid var(--line-soft);padding-bottom:0}
-.cbar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:248px;gap:8px;position:relative}
-.cbar-fill{width:100%;border-radius:6px 6px 0 0;position:relative;background:linear-gradient(180deg,#3a4152,#2a3142);transform:scaleY(0);transform-origin:bottom;transition:transform .9s var(--ease)}
-.cbar-fill::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:rgba(255,255,255,.06);border-radius:6px 6px 0 0}
-.cbar-fill.fact{background:linear-gradient(180deg,#7bc4a8,#5da8e8);box-shadow:0 -4px 28px rgba(123,196,168,.22),0 0 16px rgba(123,196,168,.1)}
-.cbar-fill.fact::after{background:rgba(255,255,255,.18)}
-.cbars.grow .cbar-fill{transform:scaleY(1)}
-.cbars.grow .cbar:nth-child(1) .cbar-fill{transition-delay:0ms}
-.cbars.grow .cbar:nth-child(2) .cbar-fill{transition-delay:80ms}
-.cbars.grow .cbar:nth-child(3) .cbar-fill{transition-delay:160ms}
-.cbars.grow .cbar:nth-child(4) .cbar-fill{transition-delay:240ms}
-.cbars.grow .cbar:nth-child(5) .cbar-fill{transition-delay:320ms}
-.cbars.grow .cbar:nth-child(6) .cbar-fill{transition-delay:400ms}
-.cbar-val{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:13px;color:var(--meta);white-space:nowrap}
-.cbar-val.hot{color:var(--ink);font-weight:600}
-.cbar-year{font-family:var(--mono);font-size:13px;color:var(--meta)}
-.cbar-tip{position:absolute;bottom:calc(100% + 36px);left:50%;transform:translateX(-50%) translateY(8px);background:rgba(17,21,36,.96);border:1px solid rgba(255,255,255,.1);padding:8px 14px;border-radius:8px;font-family:var(--mono);font-size:13px;color:var(--ink);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s var(--ease),transform .2s var(--ease);z-index:20;box-shadow:0 4px 20px rgba(0,0,0,.3)}
-.cbar:hover{z-index:10}
-.cbar:hover .cbar-tip{opacity:1;transform:translateX(-50%) translateY(0)}
 .chart-cap{font-size:14px;color:var(--meta);margin-top:8px}
 
 /* ── price canyon ── */
@@ -129,8 +111,8 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .window-labels span{flex:1;text-align:center;font-family:var(--mono);font-size:13px;color:var(--meta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .window-labels span:first-child{color:var(--accent)}
 .window-marker{position:absolute;top:-8px;font-family:var(--mono);font-size:13px;color:var(--meta);white-space:nowrap;transform:translateX(-50%);padding:2px 8px;border:1px solid var(--line-soft);border-radius:4px;background:var(--bg)}
-.window-seg.w1 .window-marker{left:50%;top:-10px}
-@media(max-width:760px){.window-track{height:48px}.window-labels span{font-size:11px;white-space:normal}.window-marker{font-size:11px;padding:1px 6px}}
+.window-seg .window-marker{left:50%;top:-10px}
+@media(max-width:760px){.window-track{height:48px}.window-labels span{font-size:11px;white-space:normal}.window-marker{font-size:11px;padding:1px 6px}.window-seg{font-size:11px;padding:0 6px;text-align:center;line-height:1.3}}
 
 /* ── CTA ── */
 .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
@@ -157,8 +139,6 @@ section{padding:80px 0}
 .road-head{flex-direction:column;gap:4px}
 .road-price{white-space:normal}
 .cta-row .btn{width:100%}
-.cbar{height:200px}
-.cbars{gap:8px}
 }
 @media (max-width:420px){
 .kpis{grid-template-columns:1fr}
@@ -170,7 +150,6 @@ section{padding:80px 0}
 html{scroll-behavior:auto}
 *{animation:none!important;transition:none!important}
 .js .rv{opacity:1;transform:none}
-.js .cbar-fill{transform:scaleY(1)}
 .js .canyon-seg{transform:scaleX(1)}
 }
 
@@ -254,44 +233,30 @@ h1{font-size:clamp(1.9rem,3.6vw,2.6rem)}
 
 <!-- ════ KPI strip ════ -->
 <section id="facts"><div class="wrap">
-<p class="eyebrow rv">рынок в семи цифрах</p>
+<p class="eyebrow rv">что продают — и что это стоит на самом деле</p>
 <div class="kpis rv" style="transition-delay:.04s">
 <div class="kpi">
-<div class="kpi-n">316 <small>млрд ₽</small></div>
-<div class="kpi-t">рынок ИИ в России, 2025 — факт</div>
-<div class="kpi-s">Коммерсантъ/AIANA · <a class="src" href="https://www.kommersant.ru" target="_blank" rel="noopener">kommersant.ru ↗</a> · 10.08.2026</div>
+<div class="kpi-n">49 990 <small>₽</small></div>
+<div class="kpi-t">«внедрение агента» у студий — разово, приёмки нет</div>
+<div class="kpi-s">студии внедрения · 2026</div>
 </div>
 <div class="kpi">
-<div class="kpi-n">~5<small>%</small></div>
-<div class="kpi-t">компаний дошли до ИИ-агентов (потолок 6,3% по внедрению ИИ в целом)</div>
-<div class="kpi-s">ИСИЭЗ НИУ ВШЭ · 2024</div>
+<div class="kpi-n">43,7К <small>₽/год</small></div>
+<div class="kpi-t">готовый агент как сервис — 3 642 ₽/мес, связка на их условиях, не твоя</div>
+<div class="kpi-s">Яндекс Cloud · Marketplace · 02.09.2026</div>
 </div>
 <div class="kpi">
-<div class="kpi-n">53<small>%</small></div>
-<div class="kpi-t">МСП уже пробуют нейросети — год назад 17%. Пробуют ≠ работает</div>
-<div class="kpi-s">ПСБ · Опора России · 08.2026</div>
+<div class="kpi-n">$20 <small>/мес</small></div>
+<div class="kpi-t">курс «поставь Claude» — плюс VPN, плюс риск бана</div>
+<div class="kpi-s">курсы по ИИ · 2026</div>
 </div>
-<div class="kpi">
-<div class="kpi-n">×2,4</div>
-<div class="kpi-t">вакансии с ИИ-навыками за три года — спрос растёт быстрее предложения</div>
-<div class="kpi-s">hh.ru · 07.2026</div>
-</div>
-<div class="kpi">
-<div class="kpi-n">10–50 <small>млн ₽</small></div>
-<div class="kpi-t">чек B2B-проекта с агентами в студиях</div>
-<div class="kpi-s">Ведомости · 08.2026</div>
-</div>
-<div class="kpi">
-<div class="kpi-n">5–15 <small>млн ₽</small></div>
-<div class="kpi-t">затраты малого бизнеса на агентов за 3 года — Axenix × МГУ</div>
-<div class="kpi-s">Forbes · 2026</div>
-</div>
-<div class="kpi">
+<div class="kpi wide">
 <div class="kpi-n acc">2–4К <small>₽/мес</small></div>
-<div class="kpi-t">стоит своя связка на РФ-провайдерах — без VPN, оплата картой РФ</div>
+<div class="kpi-t">своя связка целиком: модель, хостинг, память — провайдерам напрямую, не мне. Остаётся у тебя.</div>
 <div class="kpi-s">калькулятор на этом сайте · 09.2026</div>
 </div>
 </div>
+<p class="chart-cap rv" style="margin-top:20px">Рынок продаёт не агентов — чужую инфраструктуру и курсы по ней. Я показываю настоящую цену и отдаю знания: связка, которую соберёшь, остаётся у тебя.</p>
 </div></section>
 
 <section id="gap"><div class="wrap">
@@ -316,38 +281,7 @@ h1{font-size:clamp(1.9rem,3.6vw,2.6rem)}
 <p class="chart-cap rv">53% — ПСБ · Опора России, 08.2026 · ~5% — ИСИЭЗ НИУ ВШЭ, 2024 (потолок 6,3% по внедрению ИИ в целом)</p>
 </div></section>
 
-<!-- ════ bar chart ════ -->
-<section id="chart"><div class="wrap">
-<p class="eyebrow rv">рынок ИИ РФ · млрд ₽</p>
-<h2 class="rv">316 — факт. Дальше — оценка +30% г/г</h2>
-<div class="cbars" role="img" aria-label="Рынок ИИ России в миллиардах рублей: 2023 — 116, 2024 — 118, 2025 — 316 (факт), 2026 — 410 (оценка), 2027 — 530 (оценка), 2028 — 690 (оценка)">
-<div class="cbar">
-<div class="cbar-fill" style="height:34px"><span class="cbar-val">116</span><div class="cbar-tip">116 млрд ₽ · 2023</div></div>
-<span class="cbar-year">2023</span>
-</div>
-<div class="cbar">
-<div class="cbar-fill" style="height:34px"><span class="cbar-val">118</span><div class="cbar-tip">118 млрд ₽ · 2024</div></div>
-<span class="cbar-year">2024</span>
-</div>
-<div class="cbar">
-<div class="cbar-fill fact" style="height:92px"><span class="cbar-val hot">316</span><div class="cbar-tip">316 млрд ₽ · 2025 — факт</div></div>
-<span class="cbar-year">2025</span>
-</div>
-<div class="cbar">
-<div class="cbar-fill" style="height:119px"><span class="cbar-val">410</span><div class="cbar-tip">410 млрд ₽ · 2026 — оценка</div></div>
-<span class="cbar-year">2026</span>
-</div>
-<div class="cbar">
-<div class="cbar-fill" style="height:154px"><span class="cbar-val">530</span><div class="cbar-tip">530 млрд ₽ · 2027 — оценка</div></div>
-<span class="cbar-year">2027</span>
-</div>
-<div class="cbar">
-<div class="cbar-fill" style="height:200px"><span class="cbar-val">690</span><div class="cbar-tip">690 млрд ₽ · 2028 — оценка</div></div>
-<span class="cbar-year">2028</span>
-</div>
-</div>
-<p class="chart-cap rv">Факт 116→118→316: Коммерсантъ/AIANA, 10.08.2026 · хвост — оценка. <a class="src" href="https://discovery-system.ru/products-leadmagnets/рынок-ии-агентов-2028/дашборд-ии-агенты-2028.html" target="_blank" rel="noopener">полный дашборд: 20 источников ↗</a></p>
-</div></section>
+
 
 <!-- ════ price canyon ════ -->
 <section id="spectrum"><div class="wrap">
@@ -406,18 +340,18 @@ h1{font-size:clamp(1.9rem,3.6vw,2.6rem)}
 
 <!-- ════ thesis ════ -->
 <section id="thesis" class="thesis"><div class="wrap">
-<p class="eyebrow rv">вывод</p>
-<h2 class="rv">Окно открыто. Закрывается к 2028.</h2>
-<div class="window rv" role="img" aria-label="Окно спроса: 2025 — широко, 2026-27 — сужается, 2028 — закрыто. Метка: Gartner 40% отмены к 2027">
+<p class="eyebrow rv">где тебя бросают</p>
+<h2 class="rv">До оплаты — их забота. После — сам.</h2>
+<div class="window rv" role="img" aria-label="Вебинар, курс, установку и бота — продают. Работу агента — нет: 40% проектов отменяются">
 <div class="window-track">
-<div class="window-seg w1"><span class="window-marker">Gartner: 40% отмены</span></div>
-<div class="window-seg w2"></div>
-<div class="window-seg w3"></div>
+<div class="window-seg w1">вебинар · курс</div>
+<div class="window-seg w1">установка · бот</div>
+<div class="window-seg w3">работа агента</div>
 </div>
-<div class="window-labels"><span>2025 · открыто</span><span>2026–27 · сужается</span><span>2028 · закрыто</span></div>
+<div class="window-labels"><span>продают</span><span>продают</span><span>не продают · 40% бросают</span></div>
 </div>
 <p class="rv" style="transition-delay:.06s"><b>Разрыв — это спрос.</b> 53% МСП пробуют, до агентов дошли единицы. Между «попробовал» и «работает» стоит решение: что автоматизировать, за сколько, кто чинит. Его никто не продаёт — продают установку. Своя связка — 3–15К разово + 2–4К/мес провайдерам. Студия — от 50К. Они — установку, здесь — инструмент, который остаётся у тебя.</p>
-<div class="t-sig rv" style="transition-delay:.24s">— Data Insight: агентная коммерция 400–850 млрд ₽ к 2028–29 · 22.08.2026<br/>— hh.ru: вакансии с ИИ-навыками ×2,4 за три года · 07.2026<br/>— Gartner: 40% агентных проектов будут отменены к 2027 · 2025</div>
+<div class="t-sig rv" style="transition-delay:.24s">— Gartner: 40% агентных проектов будут отменены к 2027 · прогноз, 2025<br/>— ПСБ · Опора России: 53% МСП уже пробуют нейросети · 08.2026</div>
 <div class="cta-row rv" style="transition-delay:.3s">
 <a class="btn btn-primary" href="calculator.html">Посчитать свою связку →</a>
 <a class="btn btn-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Спросить в Telegram →</a>
@@ -455,7 +389,6 @@ d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
 var io2=new IntersectionObserver(function(es){
 es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('grow');io2.unobserve(e.target);}});
 },{threshold:.35});
-d.querySelectorAll('.cbars').forEach(function(el){io2.observe(el);});
 d.querySelectorAll('.gapchart').forEach(function(el){io2.observe(el);});
 /* canyon segments */
 var io3=new IntersectionObserver(function(es){
@@ -464,7 +397,6 @@ es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('animate');io
 d.querySelectorAll('.canyon').forEach(function(el){io3.observe(el);});
 }else{
 d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});
-d.querySelectorAll('.cbars').forEach(function(el){el.classList.add('grow');});
 d.querySelectorAll('.gapchart').forEach(function(el){el.classList.add('grow');});
 d.querySelectorAll('.canyon').forEach(function(el){el.classList.add('animate');});
 }
