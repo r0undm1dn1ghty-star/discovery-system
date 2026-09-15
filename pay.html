@@ -108,6 +108,14 @@ html{scroll-behavior:auto}
 *{animation:none!important;transition:none!important}
 .js .rv{opacity:1;transform:none}
 }
+
+/* grain — текстура поверх фона (Jamie McKaye pattern) */
+body{position:relative}
+body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
+/* luminance steps — глубина через уровни темноты, не тени */
+:root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
 </style>
 </head>
 <body>

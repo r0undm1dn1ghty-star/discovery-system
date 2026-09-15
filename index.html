@@ -177,6 +177,17 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 .screen-tabs::-webkit-scrollbar{display:none}
 .screen-tabs button{white-space:nowrap}
 }
+
+/* grain — текстура поверх фона (Jamie McKaye pattern) */
+body{position:relative}
+body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
+/* chrome-text — металлический градиент на ключевых словах */
+.chrome-text{background:linear-gradient(170deg,#e9ebef 8%,#aeb4bd 46%,#6e747d 72%,#e9ebef 100%);
+-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-style:normal}
+/* luminance steps — глубина через уровни темноты, не тени */
+:root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
 </style>
 </head>
 <body>
@@ -189,7 +200,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 <p class="lead rv" style="transition-delay:.12s">Гайды с вебинаров не дают чётких ответов, что нужно именно в твоей ситуации. Студийные проекты за 49–290К — неадекватно дорогие для личных целей.</p>
 <p class="lead rv" style="transition-delay:.18s">Я показываю цены и логику — до покупки токенов: скиллы за 0 ₽, связки 2–4К ₽/мес на РФ-провайдерах, сигналы рынка — с источниками и датами.</p>
 <div class="cta-row rv" style="transition-delay:.24s">
-<a class="btn btn-primary" href="calculator.html">Цена месячного владения твоим ИИ-агентом ↗</a>
+<a class="btn btn-primary" href="calculator.html"><span class="chrome-text">Цена месячного владения</span> твоим ИИ-агентом ↗</a>
 <a class="btn btn-ghost" href="https://t.me/discoverysystem">Сигналы в канале →</a>
 </div>
 </div></header>

@@ -186,6 +186,17 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 .screen-tabs::-webkit-scrollbar{display:none}
 .screen-tabs button{white-space:nowrap}
 }
+
+/* grain — текстура поверх фона (Jamie McKaye pattern) */
+body{position:relative}
+body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
+/* chrome-text — металлический градиент на ключевых словах */
+.chrome-text{background:linear-gradient(170deg,#e9ebef 8%,#aeb4bd 46%,#6e747d 72%,#e9ebef 100%);
+-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-style:normal}
+/* luminance steps — глубина через уровни темноты, не тени */
+:root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
 </style>
 </head>
 <body>
@@ -196,7 +207,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 <p class="sub rv">ясность · форматы работы</p>
 <h1 class="rv" style="transition-delay:.06s">ИИ-агент под твою рутину — от 0 до 15К</h1>
 <p class="lead rv" style="transition-delay:.12s"><a href="calculator.html">Узнай стоимость за 60 сек — остальное по желанию.</a> Калькулятор бесплатный, без регистрации. Дальше — только если захочешь: шаг за шагом от гайда к установке под ключ.</p>
-<p class="fine rv" style="transition-delay:.18s">Не подписка на чужое — своя связка 2–4К/мес. Эти деньги идут провайдерам модели и хостинга, не мне.</p>
+<p class="fine rv" style="transition-delay:.18s">Не подписка на чужое — <span class="chrome-text">своя связка</span> 2–4К/мес. Эти деньги идут провайдерам модели и хостинга, не мне.</p>
 </div></header>
 <main>
 <section><div class="wrap">
