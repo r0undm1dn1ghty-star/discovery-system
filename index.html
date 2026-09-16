@@ -189,15 +189,32 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 /* luminance steps — глубина через уровни темноты, не тени */
 :root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
 
-/* hero anchor — визуальный якорь «продают → ответ» */
-.hero-anchor{max-width:420px;margin:48px auto 0;padding:20px 24px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);font-family:var(--mono);font-size:13.5px}
-.anchor-row{display:flex;align-items:center;gap:12px;padding:7px 0;color:var(--body)}
-.anchor-row.acc{color:var(--ink);padding-top:10px;margin-top:4px;border-top:1px solid var(--line)}
-.anchor-dot{width:6px;height:6px;border-radius:50%;background:var(--meta);flex:none}
-.anchor-dot.acc{background:var(--accent)}
-.anchor-txt b{font-weight:600}
-.anchor-arrow{text-align:center;color:var(--meta);font-size:16px;padding:6px 0 2px;line-height:1}
-@media(max-width:760px){.hero-anchor{max-width:100%}}
+
+/* hero price-terminal — живой ценовой разрыв */
+.price-term{max-width:480px;margin:52px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:left;background:rgba(255,255,255,.015);box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.pt-bar{display:flex;gap:8px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line-soft)}
+.pt-bar .d{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.12)}
+.pt-bar .t{font-family:var(--mono);font-size:12px;color:var(--meta);letter-spacing:.04em}
+.pt-body{padding:22px 20px 20px;font-family:var(--mono);font-size:13px}
+.pt-row{display:grid;grid-template-columns:78px 1fr 90px;align-items:center;gap:10px;padding:8px 0}
+.pt-label{color:var(--meta);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.pt-track{height:18px;border-radius:3px;background:rgba(255,255,255,.03);overflow:hidden;position:relative}
+.pt-fill{height:100%;border-radius:3px;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--ease) var(--d,0ms)}
+.pt-fill.dim{background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.06))}
+.pt-fill.acc{background:linear-gradient(90deg,var(--accent),rgba(123,196,168,.5))}
+.pt-price{font-size:13px;color:var(--ink);font-weight:600;text-align:right;white-space:nowrap}
+.pt-price small{color:var(--meta);font-weight:400;font-size:11px;display:block;margin-top:1px}
+.pt-verdict{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-soft);display:flex;gap:16px;flex-wrap:wrap}
+.pt-verdict .v{font-size:12px;color:var(--body);display:flex;align-items:center;gap:6px}
+.pt-verdict .v b{color:var(--accent);font-weight:600}
+.pt-verdict .v .check{color:var(--accent);font-size:14px}
+/* анимация баров: .price-term.grow → fill scaleX(1) */
+.price-term.grow .pt-fill{transform:scaleX(1)}
+.price-term.grow .pt-row:nth-child(1) .pt-fill{transition-delay:0ms}
+.price-term.grow .pt-row:nth-child(2) .pt-fill{transition-delay:120ms}
+.price-term.grow .pt-row:nth-child(3) .pt-fill{transition-delay:240ms}
+.price-term.grow .pt-row:nth-child(4) .pt-fill{transition-delay:480ms}
+@media(max-width:760px){.price-term{max-width:100%;border-radius:12px}.pt-row{grid-template-columns:62px 1fr 72px;gap:8px}.pt-label{font-size:11px}.pt-price{font-size:12px}}
 </style>
 </head>
 <body>
@@ -212,12 +229,35 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <a class="btn btn-primary" href="calculator.html"><span class="chrome-text">Цена владения</span> твоим ИИ-агентом ↗</a>
 <a class="btn btn-ghost" href="https://t.me/discoverysystem">Сигналы в канале →</a>
 </div>
-<div class="hero-anchor rv" style="transition-delay:.3s">
-<div class="anchor-row"><span class="anchor-dot"></span><span class="anchor-txt">студии — 49 990 ₽ за «внедрение»</span></div>
-<div class="anchor-row"><span class="anchor-dot"></span><span class="anchor-txt">сервисы — 43,7К ₽/год аренды</span></div>
-<div class="anchor-row"><span class="anchor-dot"></span><span class="anchor-txt">курсы — $20/мес + VPN</span></div>
-<div class="anchor-arrow">↓</div>
-<div class="anchor-row acc"><span class="anchor-dot acc"></span><span class="anchor-txt"><b>своя связка — 2–4К ₽/мес, остаётся у тебя</b></span></div>
+<div class="price-term rv" style="transition-delay:.3s">
+<div class="pt-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">discovery --compare-market</span></div>
+<div class="pt-body">
+<div class="pt-row">
+<span class="pt-label">студии</span>
+<div class="pt-track"><div class="pt-fill dim" style="width:100%"></div></div>
+<span class="pt-price">49 990 ₽<small>разово</small></span>
+</div>
+<div class="pt-row">
+<span class="pt-label">сервис</span>
+<div class="pt-track"><div class="pt-fill dim" style="width:87%"></div></div>
+<span class="pt-price">43,7К ₽<small>/год</small></span>
+</div>
+<div class="pt-row">
+<span class="pt-label">курс</span>
+<div class="pt-track"><div class="pt-fill dim" style="width:18%"></div></div>
+<span class="pt-price">$20<small>/мес +VPN</small></span>
+</div>
+<div class="pt-row">
+<span class="pt-label" style="color:var(--accent)">твоя</span>
+<div class="pt-track"><div class="pt-fill acc" style="width:6%"></div></div>
+<span class="pt-price" style="color:var(--accent)">2–4К ₽<small>/мес</small></span>
+</div>
+<div class="pt-verdict">
+<span class="v"><span class="check">✓</span><b>×10 дешевле</b></span>
+<span class="v"><span class="check">✓</span>остаётся у тебя</span>
+<span class="v"><span class="check">✓</span>без VPN</span>
+</div>
+</div>
 </div>
 </div></header>
 <main>
@@ -346,17 +386,25 @@ var io=new IntersectionObserver(function(es){
 es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
 },{threshold:.12});
 d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
-}else{d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});}
+/* price-term: bars grow on scroll */
+var ioPT=new IntersectionObserver(function(es){
+es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('grow');ioPT.unobserve(e.target);}});
+},{threshold:.3});
+d.querySelectorAll('.price-term').forEach(function(el){ioPT.observe(el);});
+}else{
+d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});
+d.querySelectorAll('.price-term').forEach(function(el){el.classList.add('grow');});
+}
 /* счётчик фактов: без JS и при reduced-motion числа стоят на месте */
 var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduced){
 d.querySelectorAll('[data-count]').forEach(function(el){
 var target=parseInt(el.getAttribute('data-count'),10);
 if(isNaN(target))return;
-var io2=new IntersectionObserver(function(es){
+var ioCount=new IntersectionObserver(function(es){
 es.forEach(function(e){
 if(!e.isIntersecting)return;
-io2.unobserve(e.target);
+ioCount.unobserve(e.target);
 var t0=null,dur=800;
 function step(ts){
 if(!t0)t0=ts;
@@ -368,7 +416,7 @@ if(p<1)requestAnimationFrame(step);
 requestAnimationFrame(step);
 });
 },{threshold:.4});
-io2.observe(el);
+ioCount.observe(el);
 });
 }
 })();
