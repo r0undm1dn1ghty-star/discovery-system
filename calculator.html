@@ -32,6 +32,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
   .wrap{max-width:880px;margin:0 auto;padding:28px 18px 70px}
+  nav.top{padding:28px 0}nav.top .wrap{display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center}nav.top a{color:var(--muted);text-decoration:none;font-size:15px;min-height:44px;display:inline-flex;align-items:center}nav.top a:hover{color:var(--txt)}nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--txt);font-weight:600}nav.top img{height:28px;width:auto;border-radius:4px}nav.top a.calc{color:var(--txt);text-decoration:underline;text-underline-offset:4px}
   .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
   .brand{font-size:14px;font-weight:700;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
   .brand b{color:var(--primary-l);font-weight:800}
@@ -51,8 +52,8 @@
   .opts,.tasks,.conns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .opt,.task,.conn{position:relative;border:1px solid var(--line2);border-radius:12px;padding:13px 15px;cursor:pointer;background:var(--panel2);transition:.15s;display:flex;gap:12px;align-items:flex-start}
   .opt:hover,.task:hover,.conn:hover{border-color:var(--primary);background:#1a2130}
-  .opt.selected,.task.selected,.conn.selected{border-color:var(--primary);background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(167,139,250,.06));box-shadow:0 0 0 1px var(--primary) inset}
-  .ic{flex-shrink:0;width:34px;height:34px;border-radius:9px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);display:flex;align-items:center;justify-content:center}
+  .opt.selected,.task.selected,.conn.selected{border-color:var(--primary);background:rgba(123,196,168,.08);box-shadow:0 0 0 1px var(--primary) inset}
+  .ic{flex-shrink:0;width:34px;height:34px;border-radius:9px;background:rgba(123,196,168,.12);border:1px solid rgba(123,196,168,.25);display:flex;align-items:center;justify-content:center}
   .ic svg{width:18px;height:18px;stroke:var(--primary-l);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .opt.selected .ic,.task.selected .ic,.conn.selected .ic{background:var(--primary);border-color:var(--primary)}
   .opt.selected .ic svg,.task.selected .ic svg,.conn.selected .ic svg{stroke:#fff}
@@ -72,8 +73,8 @@
   .btn-ghost{background:var(--panel2);color:var(--txt);border:1px solid var(--line2)}
   .btn-ghost:hover{background:#1a2130}
   .btn-ghost:disabled{opacity:.3;cursor:not-allowed}
-  .btn-primary{background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14)}.btn-primary:hover{background:#26895b;transform:translateY(-1px)}.btn-primary:active{background:#1a6b44;transform:none}
-  .btn-primary:hover{background:linear-gradient(180deg,#9adec0,#7ab8a0);color:#0a1220;transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 4px 14px rgba(0,0,0,.35)}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-primary:hover{background:var(--primary-l);transform:translateY(-1px)}
   .btn-block{width:100%}
   .steps-count{color:var(--dim);font-size:13px;font-weight:500}
   .livebar{position:sticky;top:0;z-index:50;background:rgba(17,21,36,.92);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;padding:10px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -95,6 +96,14 @@
   .hero-side{flex:1;min-width:220px}
   .hero-side .saving{font-size:17px;font-weight:700;margin-bottom:4px}
   .hero-side .saving-note{font-size:13.5px;color:var(--muted);line-height:1.5}
+  .diag{background:rgba(123,196,168,.05);border:1px solid rgba(123,196,168,.18);border-radius:12px;padding:16px 18px;margin-top:14px}
+  .diag-tag{font-family:monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--primary-l);margin-bottom:8px}
+  .diag-lead{font-size:13.5px;color:var(--muted);line-height:1.55;margin-bottom:12px}
+  .diag-list{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;margin-bottom:12px}
+  .diag-item{font-size:12.5px;color:var(--txt);padding-left:14px;position:relative;line-height:1.5}
+  .diag-item::before{content:"→";position:absolute;left:0;color:var(--primary-l)}
+  .diag-note{font-size:12.5px;color:var(--dim);line-height:1.55;margin-bottom:14px}
+  @media(max-width:640px){.diag-list{grid-template-columns:1fr}}
   .spec{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:14px}
   .spec .row2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
   .spec .name{font-size:16px;font-weight:700}
@@ -108,7 +117,7 @@
   .offer h3{font-size:19px;font-weight:800;margin-bottom:8px}
   .offer .why{font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6}
   .offer .why b{color:var(--txt)}
-  .offer-opt{border:1px solid var(--primary-line);border-radius:12px;padding:20px;background:rgba(139,92,246,.08);margin-bottom:16px}
+  .offer-opt{border:1px solid var(--primary-line);border-radius:12px;padding:20px;background:rgba(123,196,168,.08);margin-bottom:16px}
   .o-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px}
   .o-name{font-size:16px;font-weight:800}
   .o-badge{font-size:11px;font-weight:700;color:var(--primary-l);background:var(--primary-dim);border:1px solid var(--primary-line);padding:3px 10px;border-radius:999px;letter-spacing:.5px;text-transform:uppercase}
@@ -122,8 +131,8 @@
   .new{font-size:34px;font-weight:800;color:#fff}
   .new small{font-size:14px;font-weight:500;color:var(--muted)}
   .guarantee{font-size:13px;color:var(--mid);font-weight:500;margin-bottom:18px}
-  .btn-cta{width:100%;background:#1f7a4d;color:#f2fbf5;border:none;border-radius:10px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;font-family:inherit;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 2px 8px rgba(0,0,0,.3)
-  .btn-cta:hover{background:#26895b;transform:translateY(-1px)}
+  .btn-cta{width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit}
+  .btn-cta:hover{background:var(--primary-l);transform:translateY(-1px)}
   .sub-copy{text-align:center;font-size:12.5px;color:var(--faint);margin-top:12px}
   .foot{text-align:center;color:var(--faint);font-size:12.5px;margin-top:32px;line-height:1.7}
   .foot a{color:var(--primary-l);text-decoration:none}
@@ -134,7 +143,17 @@
   .leadform input[type=email]:focus{outline:none;border-color:var(--primary)}
   .leadform .err{color:var(--down);font-size:13px;margin-bottom:10px;display:none}
   .leadform .ok{color:var(--up);font-size:13px;margin-bottom:10px;display:none}
-  .leadform .privacy{font-size:12px;color:var(--faint);margin-top:10px;line-height:1.5}
+  .leadform .pay-rows{display:flex;flex-direction:column;gap:8px;margin:14px 0 16px;padding:2px}
+.leadform .pay-row{display:flex;justify-content:space-between;align-items:center;gap:12px;
+background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:11px 14px}
+.leadform .pay-row.copyable{cursor:pointer;transition:border-color .15s}
+.leadform .pay-row.copyable:hover{border-color:var(--primary)}
+.leadform .pay-l{font-size:12.5px;color:var(--faint);flex:0 0 auto}
+.leadform .pay-v{font-size:14px;color:var(--ink);font-weight:500}
+.leadform .pay-v.mono{font-family:var(--mono);font-size:13px;letter-spacing:.02em}
+.leadform .btn-ghost{background:transparent;border:1px solid var(--line2);color:var(--body)}
+.leadform .btn-ghost:hover{border-color:var(--primary);color:var(--ink)}
+.leadform .privacy{font-size:12px;color:var(--faint);margin-top:10px;line-height:1.5}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--primary-line);border-radius:10px;padding:12px 20px;font-size:14px;color:var(--txt);z-index:100;display:none;box-shadow:0 8px 30px rgba(0,0,0,.5)}
   .toast.show{display:block;animation:fadein .2s}
   @keyframes fadein{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
@@ -160,19 +179,46 @@
     .opt,.task,.conn{padding:14px 14px !important}
   }
 
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  /* ── детализация результата: бары, разбивка, окупаемость ── */
+  .vs{margin:0 0 18px}
+  .vs-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .vs-l{font-size:11.5px;color:var(--dim);width:88px;text-transform:uppercase;letter-spacing:.6px;font-weight:700;flex-shrink:0}
+  .vs-bar{flex:1;height:14px;border-radius:999px;background:rgba(255,255,255,.05);overflow:hidden;border:1px solid var(--line2)}
+  .vs-fill{height:100%;border-radius:999px;width:0;transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+  .vs-fill.hands{background:linear-gradient(90deg,#ff5c5c,#f2b665)}
+  .vs-fill.agent{background:linear-gradient(90deg,#5ed9a8,#7bc4a8)}
+  .vs-v{font-size:13px;color:var(--muted);font-weight:600;flex-shrink:0;min-width:130px;text-align:right;font-variant-numeric:tabular-nums}
+  .brk{margin:4px 0 18px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .brk .brow{display:flex;justify-content:space-between;padding:9px 16px;font-size:13.5px;color:var(--muted);border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .brk .brow:last-child{border-bottom:none}
+  .brk .brow b{color:var(--txt);font-weight:600;font-variant-numeric:tabular-nums}
+  .brk .brow.total{background:rgba(123,196,168,.07);color:var(--txt);font-weight:700}
+  .brk .brow.total b{color:var(--up)}
+  .payback{border:1px solid var(--primary-line);border-radius:12px;padding:16px 18px;background:rgba(123,196,168,.05)}
+  .pb-head{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--primary-l);text-transform:uppercase;margin-bottom:10px}
+  .pb-line{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .pb-line b{color:var(--txt);font-variant-numeric:tabular-nums}
+  .payback input[type=range]{width:100%;accent-color:var(--primary);margin:4px 0 10px;cursor:pointer}
+  .pb-res{font-size:16px;font-weight:700;color:var(--txt);line-height:1.45}
+  .pb-res em{font-style:normal;color:var(--up)}
+  .pb-res b{color:var(--txt)}
+  .pb-note{font-size:12.5px;color:var(--dim);margin-top:6px;line-height:1.5}
+  .goal-meta{margin-top:14px;font-size:13px;color:var(--primary-l);font-weight:600;font-family:'IBM Plex Mono',monospace}
+  .ai-map{border:1px solid var(--line2);border-radius:10px;padding:12px 14px;margin-bottom:14px;background:rgba(255,255,255,.03)}
+  .ai-map .am-h{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--primary-l);margin-bottom:8px}
+  .ai-map .am-r{font-size:12.5px;color:var(--muted);line-height:1.65}
+  .ai-map .yes{display:inline-block;font-size:10px;font-weight:700;color:#5ed9a8;border:1px solid rgba(94,217,168,.35);border-radius:5px;padding:1px 6px;margin-right:8px;text-transform:uppercase;letter-spacing:.5px}
+  .ai-map .no{display:inline-block;font-size:10px;font-weight:700;color:#ff5c5c;border:1px solid rgba(255,92,92,.35);border-radius:5px;padding:1px 6px;margin-right:8px;text-transform:uppercase;letter-spacing:.5px}
+  .rcard{animation:rcardIn .5s cubic-bezier(.22,1,.36,1)}
+  @keyframes rcardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .opt,.task,.conn{transition:transform .18s cubic-bezier(.34,1.56,.64,1),border-color .15s,background .15s}
+  .opt:active,.task:active,.conn:active{transform:scale(.98)}
 
-/* grain — текстура поверх фона (Jamie McKaye pattern) */
-body{position:relative}
-body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
-/* luminance steps — глубина через уровни темноты, не тени */
-:root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
-</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://discovery-system.ru/#organization", "name": "Discovery System", "url": "https://discovery-system.ru/", "logo": {"@type": "ImageObject", "url": "https://discovery-system.ru/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 связок, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://discovery-system.ru/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem", "https://vc.ru/id6099688", "https://x.com/d1sc0v3rysyst3m"], "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Discovery System", "item": "https://discovery-system.ru/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятор", "item": "https://discovery-system.ru/calculator.html"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "@id": "https://discovery-system.ru/calculator.html#app", "name": "Калькулятор стоимости ИИ-агента — Discovery System", "url": "https://discovery-system.ru/calculator.html", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "7 вопросов — сколько часов и рублей стоит твоя рутина (Руками vs С агентом). Считает экономию до старта, без регистрации.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB", "availability": "https://schema.org/InStock"}, "author": {"@id": "https://discovery-system.ru/#organization"}, "isAccessibleForFree": true}</script>
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* grain — текстура поверх фона */body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}.seg-badge{display:none;margin-top:14px;padding:12px 16px;border:1px solid var(--primary-line);border-radius:10px;background:var(--primary-dim);font-size:13.5px;line-height:1.55;color:var(--muted)}.seg-badge b{color:var(--txt)}.seg-badge .seg-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--primary-l);margin-bottom:4px}.hero-paths{margin-top:14px;display:grid;gap:6px;max-width:660px}.hero-paths div{font-size:13.5px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative}.hero-paths div:before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--primary)}.hero-paths b{color:var(--txt);font-weight:600}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization", "name": "Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "logo": {"@type": "ImageObject", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 связок, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem", "https://vc.ru/id6099688", "https://x.com/d1sc0v3rysyst3m"], "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Discovery System", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятор", "item": "https://discovery-system.ru/calculator.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "@id": "https://discovery-system.ru/calculator.html#app", "name": "Калькулятор стоимости ИИ-агента — Discovery System", "url": "https://discovery-system.ru/calculator.html", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "7 вопросов — сколько часов и рублей стоит твоя рутина (Руками vs С агентом). Считает экономию до старта, без регистрации.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB", "availability": "https://schema.org/InStock"}, "author": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}, "isAccessibleForFree": true}</script>
 
 
 
@@ -228,14 +274,9 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 </header>
 <div class="wrap">
 
-  <div class="head">
-    <div class="brand"><img src="logo-nav.png" alt="" style="width:20px;height:20px;border-radius:4px;vertical-align:-4px;margin-right:6px"/>Discovery <b>System</b></div>
-    <div class="chip">калькулятор связки</div>
-  </div>
-
-  <div class="hero">
+  <nav class="top" aria-label="Основная навигация"><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"/><span style="font-weight:600;color:var(--txt)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a></div></nav><div class="hero">
     <h1>Сколько времени и денег забирает<br/><em>твоя рутина — посчитай за 60 секунд</em></h1>
-    <p>Узнай, сколько часов в месяц освободит твоя система и сколько она будет стоить. 7 вопросов — конкретная цифра в часах и рублях, с оплатой из РФ и без VPN. После расчёта — форматы в <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">ясности</a>: гайд 3К → персоналка 5К (30д поддержки) → установка 7/10/15К. GPU и 152-ФЗ — в «продвинутых», можно пропустить.</p>
+    <p>7 вопросов — конкретная цифра: часы руками против часов с агентом, разбивка по деньгам, окупаемость по твоей цене часа. Оплата из РФ, без VPN.</p><div class="hero-paths"><div><b>Знаешь, что автоматизировать</b> — проходи расчёт, в конце покажу связку и цену.</div><div><b>Не можешь назвать</b> — выбери «не могу назвать»: разберём твой день, найдём рутину. Без продажи воздуха.</div><div><b>Нужен результат под ключ</b> — после расчёта жми «Собрать мою связку»: 24 часа и готово.</div></div>
   </div>
 
   <div class="livebar" id="livebar">
@@ -247,10 +288,12 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
   <div class="steps" id="steps"></div>
 
   <div class="card" id="card1">
-    <div class="step-num">01 · Рутина</div>
-    <h2>Где рутина? <span class="count">ТГ / Авито / CRM</span></h2>
-    <div class="sub">Выбери, где чаще всего тонешь руками — под это соберём связку. Можно одну, можно две.</div>
+    <div class="step-num">01 · Что делаешь руками</div>
+    <h2>Что повторяется каждую неделю? <span class="count">до 3 · главное</span></h2>
+    <div class="sub">Отметь одну-три вещи, которые делаешь руками чаще всего — под них соберём связку. Не можешь назвать — так и скажи, разберёмся вместе.</div>
     <div class="opts" id="goalOpts"></div>
+    <div class="goal-meta" id="goalMeta" style="display:none"></div>
+    <div class="seg-badge" id="segBadge"></div>
   </div>
 
   <div class="card" id="card2" style="display:none">
@@ -337,6 +380,50 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
           <div class="saving-note" id="ahaSavingNote"></div>
         </div>
       </div>
+      <div id="detailBox" style="display:none">
+        <div class="vs" id="vsBox">
+          <div class="vs-row">
+            <div class="vs-l">руками сейчас</div>
+            <div class="vs-bar"><div class="vs-fill hands" id="vsHands"></div></div>
+            <div class="vs-v" id="vsHandsVal"></div>
+          </div>
+          <div class="vs-row">
+            <div class="vs-l">с агентом</div>
+            <div class="vs-bar"><div class="vs-fill agent" id="vsAgent"></div></div>
+    document.getElementById('vsAgentVal').textContent=(e.handsHours-e.hours)+' ч/мес (твой контроль)';
+          </div>
+        </div>
+        <div class="brk" id="brkTable"></div>
+        <div class="payback" id="paybackBox">
+          <div class="pb-head">Окупаемость — двигай ползунок</div>
+          <div class="pb-line"><span>твоя цена часа</span><b id="pbRate">700 ₽</b></div>
+          <input type="range" id="pbSlider" min="300" max="3000" step="100" value="700" oninput="recalcPayback()">
+          <div class="pb-res" id="pbRes"></div>
+  document.getElementById('pbNote').textContent='Экономия = часы, которые забирает агент × твоя цена часа — если эти часы ты правда превращаешь в деньги или в работу. Двигай ползунок — цифра живая.';
+        </div>
+      </div>
+      <div class="diag" id="diagBox" style="display:none">
+        <div class="diag-tag">Начнём с диагностики</div>
+        <p class="diag-lead">Ты не обязан знать, что автоматизировать — это как раз то, с чего начинают. Опиши свой обычный день словами, и я покажу, где у тебя повторяющееся действие.</p>
+        <div class="diag-list">
+          <div class="diag-item">Отвечаешь на одно и то же в переписке</div>
+          <div class="diag-item">Разгребаешь заявки руками</div>
+          <div class="diag-item">Собираешь один и тот же отчёт</div>
+          <div class="diag-item">Ищешь и сверяешь информацию по кускам</div>
+          <div class="diag-item">Пишешь тексты с нуля каждый раз</div>
+          <div class="diag-item">Разбираешь документы и выписки</div>
+        </div>
+        <div class="ai-map">
+          <div class="am-h">Что ИИ реально может — и что воздух</div>
+          <div class="am-r"><span class="yes">да</span>отвечать по твоим правилам 24/7 — заявки, вопросы, переписка</div>
+          <div class="am-r"><span class="yes">да</span>собирать, сверять, готовить тексты и отчёты по шаблону</div>
+          <div class="am-r"><span class="no">нет</span>решать за тебя без правил и описания процесса</div>
+          <div class="am-r"><span class="no">нет</span>заменять человека в договорах и деньгах</div>
+        </div>
+        <p class="diag-note">Ничего не подошло — тоже нормально. Напиши, чем занят день, разберём вместе и посчитаем связку.</p>
+        <button class="btn-cta" onclick="openDiagChat()">Описать мой день →</button>
+      </div>
+
       <div class="spec" id="specBox">
         <div class="row2"><div class="name" id="specName"></div></div>
         <ul id="specList"></ul>
@@ -347,21 +434,21 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       <div class="offer-tag">Забрать результат</div>
       <div class="offer-opt" style="border-color:rgba(94,217,168,.28);background:rgba(94,217,168,.06)">
         <div class="o-top"><div class="o-name">Персональная сборка — твоя связка</div><span class="o-badge" style="background:rgba(94,217,168,.14);border-color:rgba(94,217,168,.28);color:#5ed9a8">сборка 24 часа · 30 дней поддержки</span></div>
-        <div class="o-desc">Гайд (20 связок) включён + подбор модели под твою рутину (ТГ/Авито/CRM) + промпты под твои 2–3 сценария + 30 дней правок. Вклад: 30 мин + доступы по выбору.</div>
+        <div class="o-desc">Гайд (20 связок) включён + подбор модели под твой процесс + промпты под твои 2–3 сценария + 30 дней правок. Вклад: 30 мин + доступы по выбору.</div>
         <div class="o-price">5 000 ₽ <small>разово · <a href="clarity.html" style="color:var(--muted);text-decoration:underline">что входит в 5К →</a></small></div>
         <button class="btn-cta" onclick="goCheckout('config')">Собрать мою связку →</button>
       </div>
       <div class="offer-opt">
         <div class="o-top"><div class="o-name">Гайд: 20 конфигураций — собрать самому</div></div>
         <div class="o-desc">Все связки с моделями и промптами в одной таблице — соберёшь сам за 3–4 часа. Апгрейд до персоналки: +2К без доплат за гайд.</div>
-        <div class="o-price">3 000 ₽ <small>разово · <a href="oferta.html" style="color:var(--muted);text-decoration:underline">условия</a></small></div>
-        <a class="btn-cta btn-cta-ghost" href="pay.html" style="display:block;text-align:center;text-decoration:none">Купить гайд 3 000 ₽ →</a>
+        <div class="o-price">3 000 ₽ <small>разово</small></div>
+        <button class="btn-cta btn-cta-ghost" onclick="goCheckout('table')">Взять гайд →</button>
       </div>
       <div class="offer-opt" style="border-color:rgba(242,182,101,.22)">
         <div class="o-top"><div class="o-name">Установка под ключ — 7 / 10 / 15К</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">2 часа до запуска · GPU/хостинг решим</span></div>
         <div class="o-desc">На твоём ПК (7К), на VPS РФ без VPN (10К) или с интеграцией ТГ/CRM/Авито (15К). Включает персоналку 5К. <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в ясности →</a></div>
         <div class="o-price">7 / 10 / 15К <small>разово · 2 часа</small></div>
-        <a class="btn-cta btn-cta-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">Спросить про установку →</a>
+        <button class="btn-cta btn-cta-ghost" onclick="openInstallChat()" style="width:100%">Спросить про установку →</button>
       </div>
       <div class="offer-opt">
         <div class="o-top"><div class="o-name">Подписка на канал Discovery System</div></div>
@@ -372,20 +459,43 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       <div class="sub-copy">Модели и сервер оплачиваешь провайдерам отдельно: от 0₽ (бесплатный старт) до ~1 400 ₽/мес с API-провайдером. Мы отдаём проверенную сборку.</div>
     </div>
 
-    <div class="leadform" id="leadForm" style="display:none">
-      <h3>Куда прислать документ?</h3>
-      <div class="sub">Email нужен для доставки: конфигурация или таблица придут туда.</div>
-      <input type="email" id="leadEmail" placeholder="твой@email.ru" autocomplete="email">
-      <div class="err" id="leadErr">Введи корректный email</div>
-      <div class="ok" id="leadOk">Email сохранён — жми кнопку варианта выше.</div>
-      <button class="btn btn-primary btn-block" id="leadBtn" onclick="saveLeadAndContinue()">Сохранить и продолжить →</button>
-      <div class="privacy">Никакого спама. Только доставка и обновления тарифов. Отписка в один клик.</div>
+    <div class="leadform" id="payPanel" style="display:none">
+      <h3 id="payTitle">Оплата и получение</h3>
+      <div class="sub" id="paySub">Оплати переводом — и напиши мне в личку, отправлю материал.</div>
+
+      <div class="pay-rows">
+        <div class="pay-row">
+          <span class="pay-l">Сумма</span>
+          <span class="pay-v" id="payAmount">3 000 ₽</span>
+        </div>
+        <div class="pay-row">
+          <span class="pay-l">Способ</span>
+          <span class="pay-v">СБП по номеру телефона</span>
+        </div>
+        <div class="pay-row copyable" id="rowPhone" onclick="copyTxt(this)" title="Нажми, чтобы скопировать">
+          <span class="pay-l">Телефон</span>
+          <span class="pay-v mono">+7 911 995-07-12</span>
+        </div>
+        <div class="pay-row copyable" id="rowName" onclick="copyTxt(this)" title="Нажми, чтобы скопировать">
+          <span class="pay-l">Получатель</span>
+          <span class="pay-v mono">Зайцев Виктор П.</span>
+        </div>
+        <div class="pay-row">
+          <span class="pay-l">Банк</span>
+          <span class="pay-v" id="payBank">любой банк РФ · СБП</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="btnPaid" onclick="openChat('paid')">Я оплатил — получить гайд →</button>
+      <button class="btn btn-ghost btn-block" id="btnAsk" onclick="openChat('ask')" style="margin-top:10px">Сначала спрошу в личке →</button>
+
+      <div class="privacy">Оплата — прямой перевод по СБП. Вопросы — задай их в личке до оплаты, отвечаю лично.</div>
+    </div>
     </div>
 
     <div class="foot">
       Расчёт ориентировочный, на основе тарифов 2026. Цена зависит от модели, автономности и подключений.<br>
-      Discovery System · <a href="index.html">Главная</a> · <a href="market.html">Рынок</a> · <a href="system.html">Система</a> · <a href="clarity.html">Ясность</a> · <a href="channel.html">Канал</a> · <a href="oferta.html">Оферта</a><br>
-      Зайцев Виктор, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a> · <a href="tel:+79119950712">+7 911 995-07-12</a>
+      Discovery System · <a href="index.html">Главная</a> · <a href="market.html">Рынок</a> · <a href="system.html">Система</a> · <a href="clarity.html">Ясность</a> · <a href="channel.html">Канал</a>
     </div>
   </div>
 
@@ -443,12 +553,13 @@ const DEVICES=[
   {id:'phone',t:'Только телефон',d:'облако через API',ic:'phone'}
 ];
 const GOALS=[
-  {id:'tg',t:'Telegram — заявки и чаты',d:'отвечать, греть, доводить до оплаты',econ:16,ic:'bot'},
-  {id:'avito',t:'Авито — отклики и лиды',d:'скрипты, ответы, воронка',econ:14,ic:'search'},
-  {id:'crm',t:'CRM / таблицы — рутина',d:'карточки, статусы, отчёты',econ:14,ic:'doc'},
-  {id:'content',t:'Контент — посты/рилс без выгорания',d:'идеи, тексты, план',econ:18,ic:'pen'},
-  {id:'sales',t:'Продажи — звонки и заявки',d:'скрипты, разбор, догон',econ:14,ic:'phone2'},
-  {id:'assist',t:'Разное — ассистент на всё',d:'тексты, планы, быт',econ:8,ic:'sparkles'}
+  {id:'repeat',t:'Отвечаю на одни и те же вопросы',sn:'Ответы на частые вопросы',d:'клиенты, заявки, переписка',econ:16,ic:'bot'},
+  {id:'leads',t:'Разгребаю заявки, пока не остыли',sn:'Разбор и квалификация заявок',d:'отклики, лиды, воронка',econ:14,ic:'search'},
+  {id:'report',t:'Каждую неделю собираю один и тот же отчёт',sn:'Регулярный отчёт',d:'выгрузки, сверки, таблицы',econ:14,ic:'doc'},
+  {id:'scan',t:'Ищу и проверяю информацию по кускам',sn:'Сбор и проверка информации',d:'сайты, сравнение, выжимки',econ:10,ic:'globe'},
+  {id:'write',t:'Пишу тексты с нуля каждый раз',sn:'Конвейер текстов',d:'посты, реклама, план',econ:18,ic:'pen'},
+  {id:'paper',t:'Разбираю документы и выписки',sn:'Разбор документов',d:'сверки, письма, классификация',econ:12,ic:'chart'},
+  {id:'unsure',t:'Пока не могу назвать — надо разобраться',sn:'Диагностика процесса',d:'опиши день, найдём повторяющееся',econ:10,ic:'sparkles'}
 ];
 const TASKS=[
   {id:'text',label:'Тексты и посты',d:'план, редактура, реклама',econ:8,base:'qwen',ic:'pen'},
@@ -509,7 +620,7 @@ const MODELS={
 };
 
 /* ====== STATE ====== */
-let device='cpu',goal=null,tasks=[],autonomy=null,conns=[],data='cloud',pay='rucard',budget=null;
+let device='cpu',goal=null,goals=[],tasks=[],autonomy=null,conns=[],data='cloud',pay='rucard',budget=null;
 let _mc=null; try{_mc=JSON.parse(sessionStorage.getItem('ds_mc')||'null');}catch(e){}
 let _mcScenario=null; try{_mcScenario=sessionStorage.getItem('ds_mc_scenario');}catch(e){}
 let step=1; const N=7;
@@ -525,7 +636,8 @@ function renderSteps(){
 }
 function renderCards(){
   document.getElementById('deviceOpts').innerHTML=DEVICES.map(d=>`<div class="opt ${device===d.id?'selected':''}" onclick="device='${d.id}';pickOption();">${ic(d.ic)}<div class="body"><div class="t">${d.t}</div><div class="d">${d.d}</div></div></div>`).join('');
-  document.getElementById('goalOpts').innerHTML=GOALS.map(g=>`<div class="opt ${goal===g.id?'selected':''}" onclick="goal='${g.id}';pickOption();">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">+${days(g.econ)}</div></div></div>`).join('');
+  const showUnsure=goals.length===0||goals.includes('unsure');
+  document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">+${days(g.econ)}</div></div></div>`).join('');
   document.getElementById('taskOpts').innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">+${days(t.econ)}</div></div></div>`).join('');
   document.getElementById('autoOpts').innerHTML=AUTONOMY.map(a=>`<div class="opt ${autonomy===a.id?'selected':''}" onclick="autonomy='${a.id}';pickOption();">${ic(a.ic)}<div class="body"><div class="t">${a.label}</div><div class="d">${a.d}</div></div></div>`).join('');
   document.getElementById('connOpts').innerHTML=CONNS.map(c=>`<div class="conn ${conns.includes(c.id)?'selected':''}" onclick="toggleConn('${c.id}')">${ic(c.ic)}<div class="body"><div class="t">${c.label}</div><div class="d">${c.d}</div></div></div>`).join('');
@@ -534,14 +646,54 @@ function renderCards(){
   document.getElementById('budgetOpts').innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
 }
 function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();stepRender();renderBridge();}
+function toggleGoal(id){
+  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;renderCards();updateLive();stepRender();updateGoalMeta();return;}
+  goals=goals.filter(x=>x!=='unsure');
+  if(goals.includes(id)){goals=goals.filter(x=>x!==id);}
+  else{if(goals.length>=3)goals.shift();goals.push(id);}
+  goal=goals[0]||null;
+  renderCards();updateLive();stepRender();updateGoalMeta();
+}
+function segProfile(){
+  // профиль по выбору шага 01: unsure -> новичок; иначе владелец-оператор
+  return goals.includes('unsure') ? 'newbie' : 'owner';
+}
+function updateGoalMeta(){
+  const el=document.getElementById('goalMeta'); if(!el) return;
+  if(!goals.length){el.style.display='none';return;}
+  const names=goals.map(id=>{const g=GOALS.find(x=>x.id===id);return g?(g.sn||g.t):id;});
+  const hours=goals.reduce((s,id)=>s+(GOALS.find(x=>x.id===id)||{econ:0}).econ,0);
+  el.textContent='\u2248 '+hours+' \u0447/\u043c\u0435\u0441 \u0440\u0443\u043a\u0430\u043c\u0438: '+names.join(' + ');
+  el.style.display='block';
+  const seg=document.getElementById('segBadge');
+  if(seg){
+    const p=segProfile();
+    const multi=goals.filter(g=>g!=='unsure').length>1;
+    let tag='',txt='';
+    if(p==='newbie'){
+      tag='\u0422\u0432\u043e\u0439 \u043f\u0443\u0442\u044c \u2014 \u0434\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430';
+      txt='<b>\u041d\u0435 \u0437\u043d\u0430\u0442\u044c \u0441 \u0447\u0435\u0433\u043e \u043d\u0430\u0447\u0430\u0442\u044c \u2014 \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e: \u044d\u0442\u043e \u0443 43% \u0432\u043b\u0430\u0434\u0435\u043b\u044c\u0446\u0435\u0432</b>. '
+        + '\u0412 \u043a\u043e\u043d\u0446\u0435 \u0440\u0430\u0441\u0447\u0451\u0442\u0430 \u043f\u043e\u043a\u0430\u0436\u0443 \u0440\u0430\u0437\u0431\u043e\u0440 \u0442\u0432\u043e\u0435\u0433\u043e \u0434\u043d\u044f \u2014 \u043d\u0430\u0439\u0434\u0435\u043c \u043f\u043e\u0432\u0442\u043e\u0440\u044f\u044e\u0449\u0435\u0435\u0441\u044f, \u0447\u0442\u043e \u043c\u043e\u0436\u043d\u043e \u043e\u0442\u0434\u0430\u0442\u044c \u0430\u0433\u0435\u043d\u0442\u0443. \u0411\u0435\u0437 \u043f\u0440\u043e\u0434\u0430\u0436\u0438 \u0432\u043e\u0437\u0434\u0443\u0445\u0430.';
+    } else {
+      tag='\u0422\u0432\u043e\u0439 \u043f\u0443\u0442\u044c \u2014 \u0441\u0432\u044f\u0437\u043a\u0430 \u043f\u043e\u0434 \u043f\u0440\u043e\u0446\u0435\u0441\u0441'+(multi?' \u00b7 \u043c\u0443\u043b\u044c\u0442\u0438\u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0439':'');
+      txt='<b>\u0423 \u0442\u0435\u0431\u044f \u043f\u0440\u043e\u0446\u0435\u0441\u0441 \u0435\u0441\u0442\u044c \u2014 \u0441\u0447\u0438\u0442\u0430\u0435\u043c \u0434\u0435\u043d\u044c\u0433\u0438.</b> '
+        + '\u0412 \u0440\u0430\u0441\u0447\u0451\u0442\u0435: \u0447\u0430\u0441\u044b \u0440\u0443\u043a\u0430\u043c\u0438 \u043f\u0440\u043e\u0442\u0438\u0432 \u0447\u0430\u0441\u043e\u0432 \u0441 \u0430\u0433\u0435\u043d\u0442\u043e\u043c, \u0440\u0430\u0437\u0431\u0438\u0432\u043a\u0430 \u043f\u043e \u0441\u0442\u0430\u0442\u044c\u044f\u043c \u0438 \u043e\u043a\u0443\u043f\u0430\u0435\u043c\u043e\u0441\u0442\u044c \u043f\u043e \u0442\u0432\u043e\u0435\u0439 \u0446\u0435\u043d\u0435 \u0447\u0430\u0441\u0430.';
+    }
+    seg.innerHTML='<span class="seg-tag">'+tag+'</span><br/>'+txt;
+    seg.style.display='block';
+  }
+}
 function toggleConn(id){conns=conns.includes(id)?conns.filter(x=>x!==id):[...conns,id];renderCards();updateLive();stepRender();renderBridge();}
+function goalLabel(){return goals.map(id=>{const g=GOALS.find(x=>x.id===id);return g?(g.sn||g.t):'';}).filter(Boolean).join(' + ')||'';}
+function deviceLabel(){const d=device?DEVICES.find(x=>x.id===device):null;return d?d.t:(device||'');}
+function budgetLabel(){const b=budget?BUDGETS.find(x=>x.id===budget):null;return b?b.label:'';}
 function days(h){const d=h/8;return d>=1?(d%1===0?d.toFixed(0):d.toFixed(1))+' дн/мес':Math.round(d*8)+' ч/мес';}
 
 /* ========== LIVE PRICE ========== */
 function mcHint(){ try{ const m=JSON.parse(sessionStorage.getItem('ds_mc')||'null'); if(!m) return null; return m; }catch(e){ return null; } }
 function estimate(){
-  if(!device||!goal||!autonomy||!budget)return null;
-  const g=GOALS.find(x=>x.id===goal);
+  if(!device||!goals.length||!autonomy||!budget)return null;
+  const gs=goals.map(id=>GOALS.find(x=>x.id===id)).filter(Boolean);
   const b=BUDGETS.find(x=>x.id===budget);
   const aut=AUTONOMY.find(x=>x.id===autonomy);
   const autoMult=aut.mult;
@@ -565,11 +717,16 @@ function estimate(){
   const m=MODELS[modelKey];
   const hosting=(device==='host'||data==='cloud')?350:0;
   const connCost=conns.reduce((s,c)=>s+CONNS.find(x=>x.id===c).cost,0);
-  let hours=g.econ; tasks.forEach(t=>hours+=TASKS.find(x=>x.id===t).econ);
-  hours=Math.round(hours*autoMult);
-  // при бюджете 0 ₽ или «только бесплатные» в оплате — бесплатный старт
+  let handsHours=gs.reduce((s,g)=>s+g.econ,0); tasks.forEach(t=>handsHours+=TASKS.find(x=>x.id===t).econ);
+  const modelCost=Math.round(m.cost*autoMult);
+  const hostCost=Math.round(hosting*autoMult);
+  const connTotal=Math.round(connCost*autoMult);
   const monthly=(b.max===0||pay==='payfree')?0:Math.round((m.cost+hosting+connCost)*autoMult);
-  return {monthly,hours,cat,modelKey};
+  // с агентом: что осталось человеку — контроль и правки, доля от автономности
+  const agentShare=draft=>({draft:0.4,review:0.3,auto:0.2,full:0.1}[draft]||0.3);
+  const agentHours=Math.round(handsHours*(1-agentShare(autonomy))*1);
+  const handsTotal=handsHours;
+  return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost,hostCost,connTotal,modelName:m.name};
 }
 function updateLive(){
   const e=estimate();
@@ -579,7 +736,7 @@ function updateLive(){
   if(b&&b.max!==Infinity&&e.monthly>b.max){
     document.getElementById('liveHint').textContent='⚠ превышает бюджет '+b.max.toLocaleString('ru-RU')+' ₽ — убери подключения';
   }else{
-    document.getElementById('liveHint').textContent='освобождает ~'+days(e.hours)+' · '+e.cat;
+    document.getElementById('liveHint').textContent='руками '+e.handsHours+' ч/мес → агент заберёт '+e.hours+' ч · '+e.cat;
   }
 }
 
@@ -591,7 +748,7 @@ function show(cardNo){
   if(cardNo===7) updatePreSummary();
 }
 function stepValid(){
-  if(step===1)return !!goal;
+  if(step===1)return goals.length>0;
   if(step===2)return !!budget;
   if(step===3)return tasks.length>0;
   if(step===4)return !!autonomy;
@@ -611,8 +768,7 @@ function stepRender(){
   document.getElementById('nextBtn').style.cursor=valid?'pointer':'not-allowed';
 }
 function pickOption(){
-  if(step===1&&goal){step=2;}
-  else if(step===2&&budget){step=3;}
+  if(step===2&&budget){step=3;}
   else if(step===4&&autonomy){step=5;}
   // шаг 6 — продвинутые: можно пропустить, валидация не блокирует
   renderCards();
@@ -622,13 +778,13 @@ function pickOption(){
 function skipAdvanced(){ device='cpu'; data='cloud'; pay='rucard'; renderCards(); updateLive(); step=7; stepRender(); updatePreSummary(); }
 function updatePreSummary(){
   const el=document.getElementById('preSummary'); if(!el) return;
-  const g=goal?GOALS.find(x=>x.id===goal):null;
   const b=budget?BUDGETS.find(x=>x.id===budget):null;
-  el.textContent=(g?g.t:'—')+' · '+(b?b.label:'бюджет не выбран')+' · '+(tasks.length?tasks.length+' сценариев':'сценарии не выбраны');
+  const names=goals.map(id=>{const g=GOALS.find(x=>x.id===id);return g?(g.sn||g.t):'';}).filter(Boolean);
+  el.textContent=(names.length?names.join(' + '):'—')+' · '+(b?b.label:'бюджет не выбран')+' · '+(tasks.length?tasks.length+' сценариев':'сценарии не выбраны');
 }
 function go(delta){step=Math.min(N,Math.max(1,step+delta));stepRender();}
 function next(){
-  if(step===1&&!goal){toast('Выбери, где рутина (ТГ/Авито/CRM)');return;}
+  if(step===1&&!goals.length){toast('Отметь 1–3 повторяющиеся вещи');return;}
   if(step===2&&!budget){toast('Выбери бюджет');return;}
   if(step===3&&tasks.length===0){toast('Выбери хотя бы один сценарий');return;}
   if(step===4&&!autonomy){toast('Выбери автономность');return;}
@@ -643,91 +799,177 @@ function toast(m){
 }
 
 /* ========== ENGINE ========== */
+function countUp(el,to,suffix){
+  const dur=900,start=performance.now();
+  const rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(rm){el.textContent=to.toLocaleString('ru-RU')+(suffix||'');return;}
+  function frame(t){
+    const p=Math.min(1,(t-start)/dur);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(to*e).toLocaleString('ru-RU')+(suffix||'');
+    if(p<1)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+function recalcPayback(){
+  const rate=+document.getElementById('pbSlider').value;
+  const e=estimate(); if(!e)return;
+  document.getElementById('pbRate').textContent=rate.toLocaleString('ru-RU')+' \u20bd';
+  const save=e.hours;
+  const saveMoney=save*rate;
+  const res=document.getElementById('pbRes');
+  if(e.monthly===0){res.innerHTML='\u0411\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439 \u0441\u0442\u0430\u0440\u0442 \u2014 <em>\u043e\u043a\u0443\u043f\u0430\u0435\u0442\u0441\u044f \u0441\u0440\u0430\u0437\u0443</em>';}
+  else if(saveMoney<=0){res.innerHTML='\u041d\u0430 \u044d\u0442\u043e\u0439 \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0441\u0442\u0438 \u0430\u0433\u0435\u043d\u0442 \u043d\u0435 \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u0442 \u0447\u0430\u0441\u044b \u2014 <b>\u0441\u043c\u0435\u043d\u0438 \u0440\u0435\u0436\u0438\u043c</b> \u043d\u0430 \u0448\u0430\u0433\u0435 04.';}
+  else{
+    const days=Math.ceil(e.monthly/(saveMoney/30));
+    res.innerHTML=saveMoney>=e.monthly
+      ?'\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u044f <b>'+saveMoney.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b> \u00b7 \u0430\u0433\u0435\u043d\u0442 \u043e\u043a\u0443\u043f\u0430\u0435\u0442\u0441\u044f \u0437\u0430 <em>'+days+' \u0434\u043d</em>'
+      :'\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u044f <b>'+saveMoney.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b> \u00b7 \u043e\u043a\u0443\u043f\u0430\u0435\u043c\u043e\u0441\u0442\u044c <b>'+days+' \u0434\u043d</b>';
+  }
+  document.getElementById('pbNote').textContent='\u0421\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0435\u0441\u0442\u043d\u043e: \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u044f = (\u0440\u0443\u043a\u0430\u043c\u0438 \u2212 \u0441 \u0430\u0433\u0435\u043d\u0442\u043e\u043c) \u00d7 \u0442\u0432\u043e\u044f \u0446\u0435\u043d\u0430 \u0447\u0430\u0441\u0430. \u0414\u0432\u0438\u0433\u0430\u0439 \u043f\u043e\u043b\u0437\u0443\u043d\u043e\u043a \u2014 \u0446\u0438\u0444\u0440\u0430 \u0436\u0438\u0432\u0430\u044f.';
+}
 function calculate(){
-  const e=estimate();
-  if(!e)return;
+  const e=estimate(); if(!e)return;
   const g=GOALS.find(x=>x.id===goal);
   const aut=AUTONOMY.find(x=>x.id===autonomy);
   const m=MODELS[e.modelKey];
-  const goalName=g.t;
+  const isUnsure=(goal==='unsure');
+  const goalName=isUnsure?'\u0434\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430':(goals.length>1?goals.length+' \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0430':'\u00ab'+(g.sn||g.t)+'\u00bb');
+  const multiTag=goals.length>1?' \u00b7 \u043c\u0443\u043b\u044c\u0442\u0438\u0441\u0446\u0435\u043d\u0430\u0440\u043d\u0430\u044f \u0441\u0432\u044f\u0437\u043a\u0430':'';
 
-  document.getElementById('ahaTitle').innerHTML=`Твой агент — <em>«${goalName}»</em>`;
-  document.getElementById('ahaDesc').innerHTML=`Освобождает ~${days(e.hours)} и стоит ${e.monthly.toLocaleString('ru-RU')} ₽/мес. Собран под твою цель, автономность «${aut.label}». Готов работать уже сегодня.`;
-  document.getElementById('ahaCost').innerHTML=`${e.monthly.toLocaleString('ru-RU')} <span>₽/мес</span>`;
-  document.getElementById('ahaSaving').textContent=`освобождает ~${days(e.hours)}`;
-  document.getElementById('ahaSavingNote').textContent=`На «${aut.label}» автономности агент берёт на себя рутину, а ты забираешь время.`;
+  document.getElementById('ahaTitle').innerHTML=isUnsure
+    ?'Начнём с <em>диагностики</em>'
+    :('Твой агент — <em>'+goalName+'</em>'+(multiTag?'<span style="font-size:.55em;color:var(--muted);font-weight:600">'+multiTag+'</span>':''));
+  document.getElementById('ahaDesc').innerHTML=isUnsure
+    ?'Ты не смог назвать процесс — это не проблема, а точка входа. Большинство не может: процесс нигде не описан. Опиши день — покажу, что автоматизировать первым.'
+    :('Из <b>'+e.handsHours+' ч/мес руками</b> агент забирает <b>'+e.hours+' ч</b> — тебе остаётся '+(e.handsHours-e.hours)+' ч на контроль. Автономность «'+aut.label+'». Готов работать уже сегодня.');
+  document.getElementById('ahaCost').innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>\u20bd/\u043c\u0435\u0441</span>';
+  document.getElementById('ahaSaving').textContent='освобождает ~'+days(e.hours);
+  document.getElementById('ahaSavingNote').textContent='\u041d\u0430 \u00ab'+aut.label+'\u00bb \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0441\u0442\u0438 \u0430\u0433\u0435\u043d\u0442 \u0431\u0435\u0440\u0451\u0442 \u043d\u0430 \u0441\u0435\u0431\u044f \u0440\u0443\u0442\u0438\u043d\u0443, \u0430 \u0442\u044b \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0448\u044c \u0432\u0440\u0435\u043c\u044f.';
 
-  document.getElementById('specName').innerHTML=`Связка под «${goalName}»<span>${e.cat}</span>`;
+  const detail=document.getElementById('detailBox');
+  detail.style.display=isUnsure?'none':'block';
+  if(!isUnsure){
+    const max=Math.max(e.handsHours,e.hours,1);
+    document.getElementById('vsHandsVal').textContent=e.handsHours+' \u0447/\u043c\u0435\u0441';
+    document.getElementById('vsAgentVal').textContent=e.hours+' \u0447/\u043c\u0435\u0441 (\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c)';
+    setTimeout(()=>{
+      document.getElementById('vsHands').style.width=Math.round(e.handsHours/max*100)+'%';
+      document.getElementById('vsAgent').style.width=Math.round((e.handsHours-e.hours)/max*100)+'%';
+    },60);
+    const rows=[['\u041c\u043e\u0434\u0435\u043b\u044c \u2014 '+e.modelName,e.modelCost],['\u0425\u043e\u0441\u0442\u0438\u043d\u0433 (\u0420\u0424, \u0431\u0435\u0437 VPN)',e.hostCost],['\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f',e.connTotal]];
+    document.getElementById('brkTable').innerHTML=
+      rows.filter(r=>r[1]>0).map(r=>'<div class="brow"><span>'+r[0]+'</span><b>'+r[1].toLocaleString('ru-RU')+' \u20bd</b></div>').join('')
+      +(e.monthly===0?'<div class="brow"><span>\u0418\u0442\u043e\u0433\u043e</span><b>0 \u20bd \u2014 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439 \u0441\u0442\u0430\u0440\u0442</b></div>':'<div class="brow total"><span>\u0418\u0442\u043e\u0433\u043e</span><b>'+e.monthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b></div>');
+    recalcPayback();
+  }
+
+  document.getElementById('specName').innerHTML=isUnsure?'\u0414\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430<span>\u0440\u0430\u0437\u0431\u043e\u0440</span>':('Связка под '+goalName+'<span>'+e.cat+'</span>');
   const dets=[];
-  if(goal==='content')dets.push('Конвейер контента без выгорания');
-  if(goal==='subscription')dets.push('Онбординг как воронка продаж, первая $1000 MRR');
-  if(conns.includes('bot'))dets.push('Telegram-бот для аудитории 24/7');
-  if(conns.includes('obs'))dets.push('Obsidian — база знаний о жизни');
-  if(data==='ru')dets.push('Данные на РФ-сервере — 152-ФЗ');
-  if(data==='local')dets.push('Данные локально — полный контроль');
-  if(pay==='rucard')dets.push('Оплата картой РФ / СБП — без VPN');
-  if(pay==='crypto')dets.push('Оплата криптой (USDT)');
-  if(pay==='proxy')dets.push('Оплата через посредников');
-  document.getElementById('specList').innerHTML=dets.map(d=>`<li>${ic('check')}${d}</li>`).join('');
+  if(goals.includes('write'))dets.push('\u041a\u043e\u043d\u0432\u0435\u0439\u0435\u0440 \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u0430 \u0431\u0435\u0437 \u0432\u044b\u0433\u043e\u0440\u0430\u043d\u0438\u044f');
+  if(isUnsure)dets.push('\u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u0434\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430: \u043d\u0430\u0439\u0434\u0435\u043c, \u0447\u0442\u043e \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u0435\u0440\u0432\u044b\u043c');
+  if(conns.includes('bot'))dets.push('Telegram-\u0431\u043e\u0442 \u0434\u043b\u044f \u0430\u0443\u0434\u0438\u0442\u043e\u0440\u0438\u0438 24/7');
+  if(conns.includes('obs'))dets.push('Obsidian \u2014 \u0431\u0430\u0437\u0430 \u0437\u043d\u0430\u043d\u0438\u0439 \u043e \u0436\u0438\u0437\u043d\u0438');
+  if(data==='ru')dets.push('\u0414\u0430\u043d\u043d\u044b\u0435 \u043d\u0430 \u0420\u0424-\u0441\u0435\u0440\u0432\u0435\u0440\u0435 \u2014 152-\u0424\u0417');
+  if(data==='local')dets.push('\u0414\u0430\u043d\u043d\u044b\u0435 \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e \u2014 \u043f\u043e\u043b\u043d\u044b\u0439 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c');
+  if(pay==='rucard')dets.push('\u041e\u043f\u043b\u0430\u0442\u0430 \u043a\u0430\u0440\u0442\u043e\u0439 \u0420\u0424 / \u0421\u0411\u041f \u2014 \u0431\u0435\u0437 VPN');
+  if(pay==='crypto')dets.push('\u041e\u043f\u043b\u0430\u0442\u0430 \u043a\u0440\u0438\u043f\u0442\u043e\u0439 (USDT)');
+  if(pay==='proxy')dets.push('\u041e\u043f\u043b\u0430\u0442\u0430 \u0447\u0435\u0440\u0435\u0437 \u043f\u043e\u0441\u0440\u0435\u0434\u043d\u0438\u043a\u043e\u0432');
+  if(goals.length>1)dets.push(goals.length+' \u043f\u0440\u043e\u0446\u0435\u0441\u0441\u0430 \u0432 \u043e\u0434\u043d\u043e\u0439 \u0441\u0432\u044f\u0437\u043a\u0435');
+  document.getElementById('specList').innerHTML=dets.map(d=>'<li>'+ic('check')+d+'</li>').join('');
 
+  document.getElementById('diagBox').style.display=isUnsure?'block':'none';
+  document.getElementById('specBox').style.display=isUnsure?'none':'block';
+  if(isUnsure){
+    document.getElementById('ahaCost').innerHTML='0 <span>\u20bd \u0437\u0430 \u0440\u0430\u0437\u0431\u043e\u0440</span>';
+    document.getElementById('ahaSaving').textContent='\u0440\u0430\u0437\u0431\u043e\u0440 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439';
+    document.getElementById('ahaSavingNote').textContent='\u0414\u0430\u043b\u044c\u0448\u0435 \u2014 \u0442\u043e\u043b\u044c\u043a\u043e \u0435\u0441\u043b\u0438 \u0443\u0432\u0438\u0434\u0438\u0448\u044c \u0441\u043c\u044b\u0441\u043b. \u041d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u043d\u0430\u0432\u044f\u0437\u044b\u0432\u0430\u0435\u043c.';
+  }
+  const rcard=document.querySelector('.rcard');
+  if(rcard){rcard.style.animation='none';rcard.offsetHeight;rcard.style.animation='';}
+  countUp(document.getElementById('ahaCost'),e.monthly,' \u20bd/\u043c\u0435\u0441');
   document.getElementById('result').classList.add('show');
-  // показываем оффер (варианты покупки) — раньше был скрыт навсегда
   document.getElementById('offerBox').style.display='block';
   document.getElementById('result').scrollIntoView({behavior:'smooth'});
 }
 
-/* ========== LEAD CAPTURE + CHECKOUT ========== */
+/* ========== ОПЛАТА: прямой перевод + личка ========== */
+/* Никаких ботов и автоматизации: СБП/карта → личка Виктора с готовым текстом. */
+const TG_ME='https://t.me/soulvictor';
 let chosenOffer=null;
-function leadEmail(){
-  let e='';
-  try{e=(JSON.parse(localStorage.getItem('ds_lead')||'null')||{}).email||'';}catch(_){}
-  return e||document.getElementById('leadEmail').value.trim();
-}
+
+function payConfig(){return chosenOffer==='config'?{
+  amount:'5 000 ₽',title:'Персональная сборка — оплата',sub:'Переведи 5 000 ₽ и напиши мне: соберу связку под твои задачи за 24 часа.',btn:'Я оплатил — начать сборку →'
+}:{amount:'3 000 ₽',title:'Гайд: 20 конфигураций — оплата',sub:'Переведи 3 000 ₽ и напиши мне: отправлю таблицу сразу после подтверждения.',btn:'Я оплатил — получить гайд →'}}
+
 function goCheckout(kind){
   chosenOffer=kind;
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(leadEmail())){
-    const f=document.getElementById('leadForm');
-    f.style.display='block';
-    document.getElementById('leadErr').style.display='block';
-    document.getElementById('leadOk').style.display='none';
-    f.scrollIntoView({behavior:'smooth'});
-    document.getElementById('leadEmail').focus();
-    return;
-  }
-  proceedToCheckout();
+  const c=payConfig();
+  const panel=document.getElementById('payPanel');
+  document.getElementById('payTitle').textContent=c.title;
+  document.getElementById('paySub').textContent=c.sub;
+  document.getElementById('payAmount').textContent=c.amount;
+  document.getElementById('btnPaid').textContent=c.btn;
+  panel.style.display='block';
+  panel.scrollIntoView({behavior:'smooth',block:'start'});
 }
-function saveLeadAndContinue(){
-  const email=document.getElementById('leadEmail').value.trim();
-  const err=document.getElementById('leadErr'),ok=document.getElementById('leadOk');
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err.style.display='block';ok.style.display='none';return;}
-  err.style.display='none';
-  try{localStorage.setItem('ds_lead',JSON.stringify({email,ts:Date.now(),goal,device,monthly:estimate()?.monthly}));}catch(e){}
-  ok.style.display='block';
-  document.getElementById('leadBtn').style.display='none';
-  document.getElementById('leadEmail').style.display='none';
-  document.getElementById('leadForm').querySelector('h3').textContent='Email сохранён';
-  document.getElementById('leadForm').querySelector('.sub').textContent='Возвращайся к варианту — доставка привяжется к нему.';
-  try{if(window.gtag)gtag('event','lead_captured',{email_provided:true,goal});}catch(e){}
-  if(chosenOffer)setTimeout(proceedToCheckout,600);
-}
-function proceedToCheckout(){
-  let email='';
-  try{email=(JSON.parse(localStorage.getItem('ds_lead')||'null')||{}).email||'';}catch(_){}
+
+/* Текст сообщения, которое клиент пришлёт тебе в личку */
+function orderText(paid){
   const est=estimate()||{};
-  const label=chosenOffer==='config'?'Персональная сборка — 5 000 ₽':'Гайд: 20 конфигураций — 3 000 ₽';
-  try{localStorage.setItem('ds_order',JSON.stringify({email,ts:Date.now(),offer:chosenOffer,goal,device,monthly:est.monthly}));}catch(e){}
-  const lines=[
-    'Заявка: '+label,
-    email?'Почта: '+email:'',
-    est.monthly?'Рутина: ~'+est.monthly+' ₽/мес':'',
-    goal?'Задачи: '+goal:'',
-    device?'Железо: '+device:''
-  ].filter(Boolean).join('\n');
-  try{navigator.clipboard&&navigator.clipboard.writeText(lines);}catch(_){}
-  toast('Заявка скопирована — вставь её в чат Telegram');
-  window.open('https://t.me/discoverysystem','_blank','noopener');
-  const m=document.getElementById('mailFallback');
-  if(m)m.style.display='block';
+  const offer=chosenOffer==='config'?'Персональная сборка (5 000 ₽)':'Гайд: 20 конфигураций (3 000 ₽)';
+  const lines=[];
+  if(paid){
+    lines.push('Оплатил '+offer+'. Скрин перевода прилагаю.');
+    if(goalLabel())lines.push('Задачи: '+goalLabel());
+    if(est.monthly)lines.push('Расчёт калькулятора: ~'+est.monthly+' ₽/мес');
+    if(device)lines.push('Железо: '+deviceLabel());
+  }else{
+    lines.push('Здравствуйте! Хочу '+offer+'.');
+    if(goalLabel())lines.push('Задачи: '+goalLabel());
+    lines.push('Подскажи, как оплатить и что нужно от меня.');
+  }
+  return lines.join('\n');
+}
+
+/* Установка (7/10/15К): сразу в личку, с контекстом */
+function openInstallChat(){
+  const est=estimate()||{};
+  const lines=['Здравствуйте! Интересует установка под ключ (7 / 10 / 15К).'];
+  if(goal)lines.push('Задачи: '+goalLabel());
+  if(device)lines.push('Железо: '+deviceLabel());
+  if(est.monthly)lines.push('Расчёт калькулятора: ~'+est.monthly+' ₽/мес');
+  lines.push('Какой вариант подойдёт и когда сможете сделать?');
+  try{localStorage.setItem('ds_order',JSON.stringify({offer:'install',paid:false,ts:Date.now(),goals,device,monthly:est.monthly}));}catch(e){}
+  window.open(TG_ME+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener');
+}
+
+function openDiagChat(){
+  const lines=['Здравствуйте! Прошёл калькулятор, но не могу назвать процесс, который надо автоматизировать.'];
+  const est=estimate()||{};
+  if(est.monthly)lines.push('Расчёт калькулятора: ~'+est.monthly+' ₽/мес');
+  if(device)lines.push('Железо: '+deviceLabel());
+  if(budget)lines.push('Бюджет: '+budgetLabel());
+  lines.push('Помогите разобраться, что автоматизировать первым.');
+  try{localStorage.setItem('ds_order',JSON.stringify({offer:'diagnostic',paid:false,ts:Date.now(),goals,device,monthly:est.monthly}));}catch(e){}
+  window.open(TG_ME+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener');
+}
+
+function openChat(paid){
+  const url=TG_ME+'?text='+encodeURIComponent(orderText(paid));
+  try{localStorage.setItem('ds_order',JSON.stringify({offer:chosenOffer,paid,ts:Date.now(),goals,device,monthly:(estimate()||{}).monthly}));}catch(e){}
+  window.open(url,'_blank','noopener');
+}
+
+/* Копирование реквизитов по тапу */
+function copyTxt(row){
+  const v=row.querySelector('.pay-v').textContent.trim();
+  const t=(navigator.clipboard&&navigator.clipboard.writeText)?navigator.clipboard.writeText(v):Promise.reject();
+  t.then(()=>toast('Скопировано: '+v)).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=v;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');toast('Скопировано: '+v)}catch(_){toast(v)}
+    ta.remove();
+  });
 }
 
 /* ========== INIT ========== */
