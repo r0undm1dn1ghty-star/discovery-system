@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Discovery System — свой ИИ-агент вместо подписки на чужие обещания</title>
+<meta name="description" content="Разведка, система и канал для тех, кто устал от подписок на чужие обещания. Своя связка ИИ-агента на РФ-провайдерах без VPN. Всё остаётся у тебя."/>
+<link rel="canonical" href="https://discovery-system.ru/"/>
+<meta property="og:title" content="Discovery System — свой ИИ-агент вместо подписки на чужие обещания"/>
+<meta property="og:description" content="Своя связка ИИ-агента на РФ-провайдерах без VPN за 2–4К/мес. Скиллы, сигналы, системы — всё твоё."/>
+<meta property="og:url" content="https://discovery-system.ru/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://discovery-system.ru/og-cover.png"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Discovery System"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Discovery System — свой ИИ-агент вместо подписки на чужие обещания"/>
+<meta name="twitter:description" content="Своя связка ИИ-агента на РФ-провайдерах без VPN за 2–4К/мес. Скиллы, сигналы, системы — всё твоё."/>
+<meta name="twitter:image" content="https://discovery-system.ru/og-cover.png"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-nav.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Скиллы, сигналы, системы.","founder":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem"]},"sameAs":["https://github.com/r0undm1dn1ghty-star/discovery-system","https://t.me/discoverysystem","https://vc.ru/id6099688","https://x.com/d1sc0v3rysyst3m"],"license":"https://creativecommons.org/licenses/by/4.0/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Discovery System","url":"https://discovery-system.ru/","description":"Рыночная разведка в мире ИИ-агентов: скиллы, сигналы, системы. Своя связка, которая твоя.","inLanguage":"ru"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://discovery-system.ru/#author","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","jobTitle":"Основатель Discovery System","knowsAbout":["AI-агенты","рыночная разведка","продуктовый консалтинг","автоматизация МСБ"],"sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem","https://vc.ru/id6099688"]}</script>
+<link rel="icon" href="favicon-32.png" sizes="32x32"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--line:rgba(255,255,255,.12);--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+section{padding:170px 0}
+h1,h2{color:var(--ink);font-family:var(--display);line-height:1.15;font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,6vw,4rem);margin:0 0 40px}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 64px}
+p{margin:0 0 24px}
+a{color:var(--ink)}
+:focus-visible{outline:2px solid #7bc4a8;outline-offset:3px;border-radius:4px}
+nav.top{padding:28px 0}
+nav.top .wrap{display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center}
+nav.top a{color:var(--meta);text-decoration:none;font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+nav.top a:hover{color:var(--ink)}
+nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
+nav.top img{height:28px;width:auto;border-radius:4px}
+nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.hero{text-align:center;padding:180px 0}
+.hero .sub{color:var(--meta);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:32px}
+.hero .lead{max-width:640px;margin:0 auto 20px;font-size:20px}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:56px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.btn-primary{background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14)}.btn-primary:hover{background:#26895b;transform:translateY(-1px)}.btn-primary:active{background:#1a6b44;transform:none}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 4px 14px rgba(0,0,0,.35)}
+.btn-primary:active{transform:translateY(0);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 1px 4px rgba(0,0,0,.2)}
+.btn-ghost{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.05) inset;transition:transform .15s,background .15s,border-color .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);transform:translateY(-1px)}}
+.accent{color:#7bc4a8;font-weight:700}
+.eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:24px}
+.screen{max-width:800px;margin:0 auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:left}
+.screen-bar{display:flex;gap:8px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.dot{width:11px;height:11px;border-radius:50%;background:#3a4152}
+.screen-tabs{display:flex;gap:28px;padding:16px 24px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:14px;color:var(--meta)}
+.screen-tabs button{appearance:none;background:none;border:none;border-bottom:1px solid transparent;padding:0 0 2px;font:inherit;color:var(--meta);cursor:pointer}
+.screen-tabs button:hover{color:var(--ink)}
+.screen-tabs button.on{color:var(--ink);border-bottom-color:var(--ink)}
+.panel{display:none}
+.panel.on{display:block;animation:panelIn .18s var(--ease)}
+@keyframes panelIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.screen-body{font-family:var(--mono);font-size:15px;line-height:1.9;padding:28px 24px}
+.screen-body .row{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.screen-body .row:last-child{border-bottom:none}
+.cmd{color:var(--ink);font-weight:600}
+.cmd .free{color:var(--meta);font-weight:400}
+.cmd a{color:var(--ink);font-weight:600;text-decoration:none}
+.cmd a:hover{color:#7bc4a8}
+.desc{color:var(--meta)}
+.screen-cap{text-align:center;color:var(--meta);font-size:16px;margin-top:28px}
+.fact{padding:56px 0;border-top:1px solid var(--line)}
+.fact:last-child{border-bottom:1px solid var(--line)}
+.fact .n{display:block;color:var(--ink);font-family:var(--display);font-weight:700;font-size:clamp(2rem,5vw,3rem);line-height:1.2}
+.fact .t{color:var(--body);font-size:18px}
+.fact .s{color:var(--meta);font-size:15px}
+a.sys{text-decoration:none;color:inherit}
+.sys{padding:44px 0;border-top:1px solid var(--line);display:flex;gap:24px;align-items:baseline;justify-content:space-between;flex-wrap:wrap}
+.sys:last-child{border-bottom:1px solid var(--line)}
+.sys .l{color:var(--ink);font-size:20px;font-weight:600}
+.sys .r{color:var(--meta);font-size:16px;transition:color .2s var(--ease)}
+.sys:hover .r{color:var(--body)}
+.who{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start}
+.who img{width:200px;border-radius:14px;border:1px solid var(--line);display:block;filter:grayscale(1);transition:filter .35s var(--ease)}
+.who:hover img{filter:grayscale(0)}
+.who .own{color:var(--ink)}
+.stats{display:flex;gap:36px;margin:32px 0;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--display);font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.stat span{font-family:var(--mono);font-size:13px;color:var(--meta)}
+.who .links{display:flex;gap:24px;flex-wrap:wrap;font-size:16px}
+.finale{text-align:center}
+.finale .micro{color:var(--meta);font-size:15px;margin-top:32px;letter-spacing:.06em}
+
+/* reveal: без JS контент виден */
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+
+/* terminal rows — ссылки внутри вкладок */
+.screen-body .row{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none;transition:background .2s var(--ease)}
+.screen-body .row:last-child{border-bottom:none}
+.screen-body .row:hover{background:rgba(123,196,168,.04)}
+.screen-body .row:hover .rl{color:var(--ink)}
+.rl{color:var(--body);font-size:14px;line-height:1.6}
+.rl b{color:var(--ink);font-weight:600}
+.rr{flex:none;color:var(--accent);font-size:13px;white-space:nowrap}
+@media (max-width:760px){
+body{font-size:17px}
+section{padding:110px 0}
+.hero{padding:120px 0}
+.who{grid-template-columns:1fr;gap:28px}
+.who img{width:140px}
+.sys{flex-direction:column;gap:8px}
+.cta-row .btn{width:100%}
+.screen-body{font-size:14px;padding:20px 16px}
+.screen-body .row{flex-direction:column;gap:6px;align-items:flex-start}
+.rl{font-size:13px}
+.rr{font-size:12px}
+.screen-tabs{gap:18px;flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*{animation:none!important;transition:none!important}
+.js .rv{opacity:1;transform:none}
+}
+
+
+.sig{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.sig-photo{width:48px;height:60px;object-fit:cover;border-radius:6px;filter:grayscale(.3)}
+.sig-text{display:flex;flex-direction:column;gap:2px}
+.sig-name{font-family:var(--display);font-size:17px;font-weight:600;color:var(--ink)}
+.sig-role{font-size:14px;color:var(--meta)}
+.sig-tg{font-size:14px;color:var(--accent);text-decoration:none;margin-top:4px}
+.sig-tg:hover{text-decoration:underline}
+.sig-c{text-align:center;color:var(--meta);font-size:14px;margin-top:24px}
+.sig-c a{color:var(--meta);text-decoration:none}
+.sig-c a:hover{color:var(--ink)}
+@media(max-width:760px){.sig{justify-content:center}.sig-c{text-align:center}}
+
+
+.links-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:36px}
+.link-card{display:flex;flex-direction:column;gap:6px;padding:24px;border:1px solid var(--line-soft);border-radius:14px;text-decoration:none;transition:transform .4s var(--ease),border-color .3s var(--ease);position:relative}
+.link-card:hover{transform:translateY(-2px);border-color:rgba(123,196,168,.3)}
+.lc-title{font-family:var(--display);font-size:18px;font-weight:600;color:var(--ink)}
+.lc-desc{font-size:14px;color:var(--meta);line-height:1.5}
+.lc-go{position:absolute;top:24px;right:24px;color:var(--accent);font-family:var(--mono);font-size:16px}
+@media(max-width:760px){.links-grid{grid-template-columns:1fr}}
+
+
+h1,h2,h3{text-wrap:balance}
+p,li,.lead,.desc{text-wrap:pretty}
+
+/* sticky CTA — сопровождает пользователя (WIM) */
+.sticky-cta{position:fixed;bottom:24px;right:24px;z-index:50;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
+.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:10px;background:#1f7a4d;color:#f2fbf5;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.sticky-cta a:hover{transform:scale(1.02)}
+@media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
+
+/* ── mobile layout fixes (360px audit) ── */
+@media (max-width:760px){
+nav.top{padding:14px 0}
+nav.top .wrap{gap:0 10px}
+nav.top a{font-size:13px;min-height:38px}
+nav.top a.home{flex-basis:100%;justify-content:center;margin-bottom:0}
+nav.top img{height:24px}
+h1{font-size:clamp(1.3rem,5.9vw,1.7rem);line-height:1.22}
+h1 br{display:none}
+h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
+.screen-tabs{gap:14px;flex-wrap:nowrap;font-size:13px;padding:14px 16px;overflow-x:auto;scrollbar-width:none}
+.screen-tabs::-webkit-scrollbar{display:none}
+.screen-tabs button{white-space:nowrap}
+}
+
+/* grain — текстура поверх фона (Jamie McKaye pattern) */
+body{position:relative}
+body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
+/* chrome-text — металлический градиент на ключевых словах */
+.chrome-text{background:linear-gradient(170deg,#e9ebef 8%,#aeb4bd 46%,#6e747d 72%,#e9ebef 100%);
+-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-style:normal}
+/* luminance steps — глубина через уровни темноты, не тени */
+:root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
+
+
+/* hero price-terminal — живой ценовой разрыв */
+.price-term{max-width:480px;margin:52px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:left;background:rgba(255,255,255,.015);box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.pt-bar{display:flex;gap:8px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line-soft)}
+.pt-bar .d{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.12)}
+.pt-bar .t{font-family:var(--mono);font-size:12px;color:var(--meta);letter-spacing:.04em}
+.pt-body{padding:22px 20px 20px;font-family:var(--mono);font-size:13px}
+.pt-row{display:grid;grid-template-columns:78px 1fr 90px;align-items:center;gap:10px;padding:8px 0}
+.pt-label{color:var(--meta);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.pt-track{height:18px;border-radius:3px;background:rgba(255,255,255,.03);overflow:hidden;position:relative}
+.pt-fill{height:100%;border-radius:3px;transform-origin:left;transform:scaleX(0);transition:transform .9s var(--ease) var(--d,0ms)}
+.pt-fill.dim{background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.06))}
+.pt-fill.acc{background:linear-gradient(90deg,var(--accent),rgba(123,196,168,.5))}
+.pt-price{font-size:13px;color:var(--ink);font-weight:600;text-align:right;white-space:nowrap}
+.pt-price small{color:var(--meta);font-weight:400;font-size:11px;display:block;margin-top:1px}
+.pt-verdict{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-soft);display:flex;gap:16px;flex-wrap:wrap}
+.pt-verdict .v{font-size:12px;color:var(--body);display:flex;align-items:center;gap:6px}
+.pt-verdict .v b{color:var(--accent);font-weight:600}
+.pt-verdict .v .check{color:var(--accent);font-size:14px}
+/* анимация баров: .price-term.grow → fill scaleX(1) */
+.price-term.grow .pt-fill{transform:scaleX(1)}
+.price-term.grow .pt-row:nth-child(1) .pt-fill{transition-delay:0ms}
+.price-term.grow .pt-row:nth-child(2) .pt-fill{transition-delay:120ms}
+.price-term.grow .pt-row:nth-child(3) .pt-fill{transition-delay:240ms}
+.price-term.grow .pt-row:nth-child(4) .pt-fill{transition-delay:480ms}
+@media(max-width:760px){.price-term{max-width:100%;border-radius:12px}.pt-row{grid-template-columns:62px 1fr 72px;gap:8px}.pt-label{font-size:11px}.pt-price{font-size:12px}}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Основная навигация"><div class="wrap">
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
+</div></nav>
+<header class="hero"><div class="wrap">
+<p class="sub rv">устали от подписок на чужие обещания</p>
+<h1 class="rv" style="transition-delay:.06s">ИИ-агента можно выбрать с первого раза</h1>
+<p class="lead rv" style="transition-delay:.12s">Гайды не дают ответов для твоей ситуации. Студии берут 49–290К. Я показываю цену и логику — <span class="chrome-text">до покупки токенов</span>.</p>
+<div class="cta-row rv" style="transition-delay:.24s">
+<a class="btn btn-primary" href="calculator.html"><span class="chrome-text">Цена владения</span> твоим ИИ-агентом ↗</a>
+<a class="btn btn-ghost" href="https://t.me/discoverysystem">Сигналы в канале →</a>
+</div>
+<div class="price-term rv" style="transition-delay:.3s">
+<div class="pt-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="t">discovery --compare-market</span></div>
+<div class="pt-body">
+<div class="pt-row">
+<span class="pt-label">студии</span>
+<div class="pt-track"><div class="pt-fill dim" style="width:100%"></div></div>
+<span class="pt-price">49 990 ₽<small>разово</small></span>
+</div>
+<div class="pt-row">
+<span class="pt-label">сервис</span>
+<div class="pt-track"><div class="pt-fill dim" style="width:87%"></div></div>
+<span class="pt-price">43,7К ₽<small>/год</small></span>
+</div>
+<div class="pt-row">
+<span class="pt-label">курс</span>
+<div class="pt-track"><div class="pt-fill dim" style="width:18%"></div></div>
+<span class="pt-price">$20<small>/мес +VPN</small></span>
+</div>
+<div class="pt-row">
+<span class="pt-label" style="color:var(--accent)">твоя</span>
+<div class="pt-track"><div class="pt-fill acc" style="width:6%"></div></div>
+<span class="pt-price" style="color:var(--accent)">2–4К ₽<small>/мес</small></span>
+</div>
+<div class="pt-verdict">
+<span class="v"><span class="check">✓</span><b>×10 дешевле</b></span>
+<span class="v"><span class="check">✓</span>остаётся у тебя</span>
+<span class="v"><span class="check">✓</span>без VPN</span>
+</div>
+</div>
+</div>
+</div></header>
+<main>
+<section id="product"><div class="wrap">
+<p class="eyebrow rv">скиллы · сигналы · системы — в одном окне</p>
+<h2 class="rv">Ценность, которую вы можете проверить сами за 1 минуту</h2>
+<div class="screen rv">
+<div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+<div class="screen-tabs" role="tablist" aria-label="Что внутри">
+<button role="tab" id="tab-skills" aria-controls="p-skills" aria-selected="true" class="on">скиллы · 0 ₽</button>
+<button role="tab" id="tab-signals" aria-controls="p-signals" aria-selected="false" tabindex="-1">сигналы</button>
+<button role="tab" id="tab-systems" aria-controls="p-systems" aria-selected="false" tabindex="-1">системы</button>
+</div>
+<div class="screen-body">
+<div class="panel on" id="p-skills" role="tabpanel" aria-labelledby="tab-skills">
+<a class="row" href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener"><span class="rl"><b>spiral-maturity</b> — зрелость организации × агентная лестница A0–A4: готов ли бизнес к агенту</span><span class="rr">0 ₽ ↗</span></a>
+<a class="row" href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener"><span class="rl"><b>market-evidence-diagnostic</b> — проверка жизнеспособности бизнес-модели на фактах рынка</span><span class="rr">0 ₽ ↗</span></a>
+<a class="row" href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener"><span class="rl"><b>pnl-check</b> — аудит управленческой отчётности в РФ в 2026 (налоги и риски)</span><span class="rr">0 ₽ ↗</span></a>
+<a class="row" href="https://github.com/r0undm1dn1ghty-star/geo-audit-skill" target="_blank" rel="noopener"><span class="rl"><b>geo-audit-skill</b> — 92 правила видимости в AI-поиске</span><span class="rr">0 ₽ ↗</span></a>
+<a class="row" href="system.html"><span class="rl"><b>warm-lead-parser</b> — поиск клиентов из открытых источников по 52 нишам</span><span class="rr">в работе</span></a>
+</div>
+<div class="panel" id="p-signals" role="tabpanel" aria-labelledby="tab-signals">
+<a class="row" href="https://yandex.cloud/ru/marketplace/products/yc/hermes-agent" target="_blank" rel="noopener"><span class="rl"><b>02.09</b> Яндекс вывел Hermes Agent в Marketplace — цена VPS решена</span><span class="rr">от 3 642 ₽/мес ↗</span></a>
+<a class="row" href="https://datainsight.ru/" target="_blank" rel="noopener"><span class="rl"><b>24.08</b> Data Insight: агентная коммерция 400–850 млрд ₽ к 2028–29</span><span class="rr">спрос ↗</span></a>
+<a class="row" href="https://vc.ru/services/1800000-55-mlrd-alice-ai-2025" target="_blank" rel="noopener"><span class="rl"><b>27.07</b> "24 млн" человек в неделю решают задачи в Алисе</span><span class="rr">привычка или PR ↗</span></a>
+<a class="row" href="https://elama.ru/blog/digital-uslugi-17-procent-2025/" target="_blank" rel="noopener"><span class="rl"><b>01.07</b> digital-услуги +17% г/г — весь рост дала формулировка «внедрение ИИ»</span><span class="rr">спрос ↗</span></a>
+<a class="row" href="channel.html"><span class="rl">вся лента — с источниками и датами</span><span class="rr">канал →</span></a>
+</div>
+<div class="panel" id="p-systems" role="tabpanel" aria-labelledby="tab-systems">
+<a class="row" href="calculator.html"><span class="rl"><b>Cтоимость месячного обслуживания ИИ-агента</b> — цена и сэкономленное время за 60 секунд</span><span class="rr">0 ₽ →</span></a>
+<a class="row" href="clarity.html"><span class="rl"><b>Гайд: 20 конфигураций ИИ-агентов</b> — модель, хостинг, промпты для установки в одной таблице с рисками</span><span class="rr">3 000 ₽ →</span></a>
+<a class="row" href="clarity.html"><span class="rl"><b>Персональная сборка ИИ-агента</b> — связка под твою рутину и ограничения (оплата, данные, устройства), 30 дней правок</span><span class="rr">5 000 ₽ →</span></a>
+<a class="row" href="clarity.html"><span class="rl"><b>Установка под ключ</b> — ПК / VPS / с интеграцией ТГ·CRM·Авито</span><span class="rr">7–15К →</span></a>
+<a class="row" href="https://t.me/discoverysystem" target="_blank" rel="noopener"><span class="rl">спроси про любой формат — я отвечаю сам без ботов</span><span class="rr">Telegram →</span></a>
+</div>
+</div>
+</div>
+<p class="screen-cap rv">Переключай вкладки — увидишь всё с ценой и ссылками, без твоего телефона и почты.</p>
+</div></section>
+<section id="facts"><div class="wrap">
+<p class="eyebrow rv">рынок в цифрах</p>
+<h2 class="rv">Почему своя связка — дешевле</h2>
+<div class="fact rv"><span class="n"><span data-count="53">53</span>%</span><span class="t">МСП уже используют нейросети</span><br/><span class="s">ПСБ · Опора, 08.2026</span></div>
+<div class="fact rv" style="transition-delay:.06s"><span class="n"><span data-count="43">43</span>%</span><span class="t">не понимают, что именно автоматизировать</span><br/><span class="s">SpeShu.AI, 08.2026</span></div>
+<div class="fact rv" style="transition-delay:.12s"><span class="n"><span data-count="49990">49 990</span> ₽</span><span class="t">берут студии за внедрение</span><br/><span class="s">Студии внедрения, 2026</span></div>
+<div class="fact rv" style="transition-delay:.15s"><span class="n">5–15 <small>млн ₽</small></span><span class="t">внедрение агентов в малом бизнесе за 3 года — Axenix × МГУ</span><br/><span class="s">Forbes · 2026</span></div>
+<div class="fact rv" style="transition-delay:.18s"><span class="n accent">2–4К ₽/мес</span><span class="t">стоит твоя связка</span><br/><span class="s">РФ-провайдеры, 2026</span></div>
+</div></section>
+<section id="systems"><div class="wrap">
+<p class="eyebrow rv">четыре входа</p>
+<h2 class="rv">Системы</h2>
+<div class="sys rv"><span class="l"><a href="calculator.html">Стоимость ИИ-агента в месяц</a></span><span class="r">0 ₽ · 60 сек</span></div>
+<a class="sys rv" href="clarity.html" style="transition-delay:.06s"><span class="l">20 конфигураций ИИ-агентов — гайд</span><span class="r">3 000 ₽ →</span></a>
+<a class="sys rv" href="clarity.html" style="transition-delay:.12s"><span class="l">Связка под ключ — сборка</span><span class="r">5 000 ₽ · 30 дней правлю →</span></a>
+<div class="sys rv" style="transition-delay:.18s"><span class="l">Установка ПК/VPS/телефон</span><span class="r">7–15 000 ₽ · чек-лист приёмки — <a href="https://t.me/discoverysystem">в канале</a></span></div>
+</div></section>
+<section id="who"><div class="wrap">
+<p class="eyebrow rv">кто строит</p>
+<h2 class="rv" id="author">Виктор Зайцев</h2>
+<div class="who rv">
+<img src="viktor.jpg" alt="Виктор Зайцев" loading="lazy"/>
+<div>
+<p>3 года в цифровых продуктах и рыночных исследованиях. Я делюсь опытом того, как можно быстрее и точнее достигать результата ИИ-агентами. Здесь — то же для твоей рутины, бизнеса и работы.</p>
+<p class="own">Связка остаётся у тебя. Все инструменты под твоим контролем и ты знаешь, сколько они на самом деле стоят.</p>
+<div class="stats">
+<div class="stat"><b>20→80%</b><span>точность AI-скоринга кандидатов</span></div>
+<div class="stat"><b>+23%</b><span>выручка на единицу продукта</span></div>
+<div class="stat"><b>×1.8</b><span>время разработки и релиза продукта</span></div>
+</div>
+<p class="links"><a href="https://t.me/discoverysystem">Telegram</a><a href="https://github.com/r0undm1dn1ghty-star">GitHub</a><a href="https://vc.ru/id6099688">VC</a></p>
+<p class="links" style="color:var(--meta)">отвечаю лично · без ботов</p>
+</div>
+</div>
+</div></section>
+<section class="finale rv"><div class="wrap">
+<h2>Посчитай месячную стоимость своего ИИ-агента — за минуту</h2>
+<div class="cta-row">
+<a class="btn btn-primary" href="calculator.html">Цена твоей сборки ↗</a>
+<a class="btn btn-ghost" href="https://t.me/discoverysystem">Сигналы рынка в канале →</a>
+</div>
+<p class="micro">бесплатно · без регистрации и данных · минута</p>
+</div></section>
+<footer>
+<div class="wrap">
+<div class="sig">
+<img src="viktor.jpg" alt="Виктор Зайцев" loading="lazy" class="sig-photo"/>
+<div class="sig-text">
+<span class="sig-name">Виктор Зайцев</span>
+<span class="sig-role">отвечаю лично · без ботов</span>
+<a href="https://t.me/discoverysystem" target="_blank" rel="noopener" class="sig-tg">Telegram →</a>
+</div>
+</div>
+<p class="sig-c">Discovery System · 2026 · <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a> · <a href="https://vc.ru/id6099688">VC</a> · <a href="oferta.html">оферта</a> · <a href="policy.html">политика ПД</a></p>
+<p class="sig-c" style="margin-top:8px">Зайцев Виктор, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a> · <a href="tel:+79119950712">+7 911 995-07-12</a></p>
+</div>
+</footer>
+</main>
+<script>
+(function(){
+var d=document;
+/* табы терминала */
+var tabs=[].slice.call(d.querySelectorAll('[role="tab"]'));
+function pick(tab){
+tabs.forEach(function(t){
+var on=t===tab;
+t.classList.toggle('on',on);
+t.setAttribute('aria-selected',on?'true':'false');
+t.setAttribute('tabindex',on?'0':'-1');
+var p=d.getElementById(t.getAttribute('aria-controls'));
+if(p)p.classList.toggle('on',on);
+});
+}
+tabs.forEach(function(t,i){
+t.addEventListener('click',function(){pick(t);});
+t.addEventListener('keydown',function(e){
+if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+e.preventDefault();
+var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];
+n.focus();pick(n);
+}
+});
+});
+/* reveal */
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(es){
+es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+/* price-term: bars grow on scroll */
+var ioPT=new IntersectionObserver(function(es){
+es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('grow');ioPT.unobserve(e.target);}});
+},{threshold:.3});
+d.querySelectorAll('.price-term').forEach(function(el){ioPT.observe(el);});
+}else{
+d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});
+d.querySelectorAll('.price-term').forEach(function(el){el.classList.add('grow');});
+}
+/* счётчик фактов: без JS и при reduced-motion числа стоят на месте */
+var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduced){
+d.querySelectorAll('[data-count]').forEach(function(el){
+var target=parseInt(el.getAttribute('data-count'),10);
+if(isNaN(target))return;
+var ioCount=new IntersectionObserver(function(es){
+es.forEach(function(e){
+if(!e.isIntersecting)return;
+ioCount.unobserve(e.target);
+var t0=null,dur=800;
+function step(ts){
+if(!t0)t0=ts;
+var p=Math.min((ts-t0)/dur,1);
+p=1-Math.pow(1-p,4);
+el.textContent=Math.round(target*p).toLocaleString('ru-RU');
+if(p<1)requestAnimationFrame(step);
+}
+requestAnimationFrame(step);
+});
+},{threshold:.4});
+ioCount.observe(el);
+});
+}
+})();
+</script>
+<div class="sticky-cta" id="stickyCta"><a href="calculator.html">Цена твоей связки ↗</a></div>
+<script>
+/* sticky CTA: показывается после первого экрана */
+(function(){
+var sc=document.getElementById('stickyCta');
+if(!sc)return;
+var shown=false;
+function upd(){
+var y=window.scrollY||document.documentElement.scrollTop;
+var h=window.innerHeight;
+if(y>h*0.8&&!shown){sc.classList.add('show');shown=true;}
+else if(y<h*0.3&&shown){sc.classList.remove('show');shown=false;}
+}
+window.addEventListener('scroll',upd,{passive:true});
+upd();
+})();
+</script>
+</body>
+</html>

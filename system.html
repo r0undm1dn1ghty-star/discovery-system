@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Система — 5 скиллов за 0 ₽ и гайд 20 связок — Discovery System</title>
+<meta name="description" content="Пять открытых скиллов на GitHub за 0 ₽: парсер лидов, диагностика рынка, pnl-check, spiral-maturity, geo-audit. Гайд 20 конфигураций — 3 000 ₽."/>
+<link rel="canonical" href="https://discovery-system.ru/system.html"/>
+<meta property="og:title" content="Discovery System — Система"/>
+<meta property="og:description" content="5 скиллов за 0 ₽ и гайд 20 связок. Скачай, проверь логику."/>
+<meta property="og:url" content="https://discovery-system.ru/system.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="https://discovery-system.ru/og-cover.png"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Discovery System"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Discovery System — Система"/>
+<meta name="twitter:description" content="5 скиллов за 0 ₽ и гайд 20 связок. Скачай, проверь логику."/>
+<meta name="twitter:image" content="https://discovery-system.ru/og-cover.png"/>
+<link rel="icon" href="favicon-32.png" sizes="32x32"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-nav.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов.","founder":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/clarity.html#author","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem"]},"license":"https://creativecommons.org/licenses/by/4.0/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Discovery System","item":"https://discovery-system.ru/"},{"@type":"ListItem","position":2,"name":"Система","item":"https://discovery-system.ru/system.html"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Скиллы Discovery System","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"spiral-maturity","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"},"url":"https://github.com/r0undm1dn1ghty-star/spiral-maturity"}},{"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"market-evidence-diagnostic","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"},"url":"https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic"}},{"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"pnl-check","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"},"url":"https://github.com/r0undm1dn1ghty-star/pnl-check"}},{"@type":"ListItem","position":4,"item":{"@type":"SoftwareApplication","name":"geo-audit-skill","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"},"url":"https://github.com/r0undm1dn1ghty-star/geo-audit-skill"}},{"@type":"ListItem","position":5,"item":{"@type":"SoftwareApplication","name":"warm-lead-parser","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"}}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+section{padding:110px 0}
+h1,h2{color:var(--ink);font-family:var(--display);line-height:1.15;font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,5.5vw,3.4rem);margin:0 0 36px}
+h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 44px}
+p{margin:0 0 24px}
+a{color:var(--ink)}
+a.src{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(123,196,168,.45)}
+:focus-visible{outline:2px solid #7bc4a8;outline-offset:3px;border-radius:4px}
+nav.top{padding:28px 0}
+nav.top .wrap{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:center}
+nav.top a{color:var(--meta);text-decoration:none;font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+nav.top a:hover{color:var(--ink)}
+nav.top img{height:28px;width:auto;border-radius:4px}nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
+nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.hero{padding:110px 0 40px}
+.hero .sub{color:var(--meta);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:24px}
+.screen{max-width:800px;margin:0 auto 28px;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:left}
+.screen-bar{display:flex;gap:8px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.dot{width:11px;height:11px;border-radius:50%;background:#3a4152}
+.screen-body{font-family:var(--mono);font-size:14px;line-height:1.9;padding:24px}
+.screen-body .row{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.screen-body .row:last-child{border-bottom:none}
+.screen-body .cmd a{color:var(--ink);font-weight:600;text-decoration:underline dotted rgba(123,196,168,.4);text-underline-offset:3px}
+.screen-body .free{color:var(--meta);font-weight:400}
+.screen-body .desc{color:var(--meta)}
+.screen-cap{text-align:center;color:var(--meta);font-size:15px;margin-top:20px}
+.intg{margin:56px 0 8px;padding:32px 28px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}
+.intg h3{color:var(--ink);font-family:var(--display);font-size:1.22rem;margin:0 0 16px;font-weight:600}
+.intg code{font-family:var(--mono);font-size:.86em;color:#cfe8dd;background:rgba(123,196,168,.10);padding:2px 6px;border-radius:5px;white-space:nowrap}
+.intg .screen{margin:22px 0 18px}
+.skill{padding:30px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 130px;gap:24px;align-items:start}
+.skill:last-of-type{border-bottom:1px solid var(--line)}
+.skill .s-name{color:var(--ink);font-size:19px;font-weight:600;font-family:var(--mono)}
+.skill .s-name a{text-decoration:none;color:var(--ink)}
+.skill .s-name a:hover{color:var(--accent)}
+.skill .s-desc{color:var(--body);font-size:16px;margin-top:8px;line-height:1.6}
+.skill .s-tag{font-family:var(--mono);font-size:13px;color:var(--meta);margin-top:10px;display:block}
+.skill .s-go{text-align:right;font-family:var(--mono);font-size:13px;color:var(--accent)}
+.skill .s-go a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.guide{border:1px solid var(--line-soft);border-radius:14px;padding:36px;margin-top:64px;background:rgba(255,255,255,.02)}
+.guide h3{color:var(--ink);font-size:1.3rem;margin-bottom:12px;font-family:var(--display)}
+.guide .g-price{font-family:var(--mono);color:var(--accent);font-size:15px;margin:16px 0 20px}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:48px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.btn-primary{background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14)}.btn-primary:hover{background:#26895b;transform:translateY(-1px)}.btn-primary:active{background:#1a6b44;transform:none}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 4px 14px rgba(0,0,0,.35)}
+.btn-primary:active{transform:translateY(0);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 1px 4px rgba(0,0,0,.2)}
+.btn-ghost{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.05) inset;transition:transform .15s,background .15s,border-color .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);transform:translateY(-1px)}}
+
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+@media (max-width:760px){
+body{font-size:17px}
+section{padding:72px 0}
+.skill{grid-template-columns:1fr;gap:8px}
+.skill .s-go{text-align:left}
+.guide{padding:24px}
+.cta-row .btn{width:100%}
+.screen-body{font-size:13px;padding:18px 14px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+
+
+.sig{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.sig-photo{width:48px;height:60px;object-fit:cover;border-radius:6px;filter:grayscale(.3)}
+.sig-text{display:flex;flex-direction:column;gap:2px}
+.sig-name{font-family:var(--display);font-size:17px;font-weight:600;color:var(--ink)}
+.sig-role{font-size:14px;color:var(--meta)}
+.sig-tg{font-size:14px;color:var(--accent);text-decoration:none;margin-top:4px}
+.sig-tg:hover{text-decoration:underline}
+.sig-c{text-align:center;color:var(--meta);font-size:14px;margin-top:24px}
+.sig-c a{color:var(--meta);text-decoration:none}
+.sig-c a:hover{color:var(--ink)}
+@media(max-width:760px){.sig{justify-content:center}.sig-c{text-align:center}}
+
+
+h1,h2,h3{text-wrap:balance}
+p,li,.lead,.desc{text-wrap:pretty}
+
+/* sticky CTA — сопровождает пользователя (WIM) */
+.sticky-cta{position:fixed;bottom:24px;right:24px;z-index:50;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
+.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:10px;background:#1f7a4d;color:#f2fbf5;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.sticky-cta a:hover{transform:scale(1.02)}
+@media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
+
+/* ── mobile layout fixes (360px audit) ── */
+@media (max-width:760px){
+nav.top{padding:14px 0}
+nav.top .wrap{gap:0 10px}
+nav.top a{font-size:13px;min-height:38px}
+nav.top a.home{flex-basis:100%;justify-content:center;margin-bottom:0}
+nav.top img{height:24px}
+h1{font-size:clamp(1.3rem,5.9vw,1.7rem);line-height:1.22}
+h1 br{display:none}
+h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
+.screen-tabs{gap:14px;flex-wrap:nowrap;font-size:13px;padding:14px 16px;overflow-x:auto;scrollbar-width:none}
+.screen-tabs::-webkit-scrollbar{display:none}
+.screen-tabs button{white-space:nowrap}
+}
+
+/* grain — текстура поверх фона (Jamie McKaye pattern) */
+body{position:relative}
+body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
+/* luminance steps — глубина через уровни темноты, не тени */
+:root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Основная навигация"><div class="wrap">
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
+</div></nav>
+<header class="hero"><div class="wrap">
+<p class="sub rv">система · библиотека</p>
+<h1 class="rv" style="transition-delay:.06s">Пять скиллов за 0 &#8381;.<br/>Гайд 20 связок — 3 000 &#8381;.</h1>
+<p class="rv" style="transition-delay:.12s">Пять скиллов на GitHub — рабочие методики и инструменты. Скачай, изучи, проверь логику. Бесплатно и открыто.</p>
+</div></header>
+<main>
+<section id="skills"><div class="wrap">
+<p class="eyebrow rv">~/discovery/skills — 5 скиллов, 0 ₽</p>
+<div class="screen rv" role="img" aria-label="Терминал: пять скиллов Discovery System, каждый 0 рублей">
+<div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+<div class="screen-body">
+<div class="row"><span class="cmd"><a href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener">spiral-maturity</a> <span class="free">0 ₽</span></span><br/><span class="desc">— зрелость организации × агентная лестница A0–A4</span></div>
+<div class="row"><span class="cmd"><a href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener">market-evidence-diagnostic</a> <span class="free">0 ₽</span></span><br/><span class="desc">— проверка бизнес-модели, вывод источник+дата</span></div>
+<div class="row"><span class="cmd"><a href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener">pnl-check</a> <span class="free">0 ₽</span></span><br/><span class="desc">— факты→сверка→бриф</span></div>
+<div class="row"><span class="cmd"><a href="https://github.com/r0undm1dn1ghty-star/geo-audit-skill" target="_blank" rel="noopener">geo-audit-skill</a> <span class="free">0 ₽</span></span><br/><span class="desc">— 92 правила видимости в AI-поиске</span></div>
+<div class="row"><span class="cmd">warm-lead-parser <span class="free">0 ₽</span></span><br/><span class="desc">— клиенты из открытых источников, скоринг 0–100</span></div>
+</div>
+</div>
+<p class="screen-cap rv">сигналы — <a href="channel.html">в канале</a> · системы — <a href="clarity.html">в ясности</a></p>
+<div class="skill rv">
+<div><div class="s-name"><a href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener">spiral-maturity</a></div><p class="s-desc">Зрелость организации × агентная зрелость: 7 уровней ценностей и лестница ИИ-агентов A0–A4 (по модели ВШЭ + Cloud.ru). 16 индикаторов за 10 минут → формат внедрения, который переживёт пилот. Отвечает: готов ли бизнес к агенту — или сначала нужны данные и владелец процесса.</p><span class="s-tag">диагностика · ИИ-агенты · зрелость</span></div>
+<div class="s-go"><a href="https://github.com/r0undm1dn1ghty-star/spiral-maturity" target="_blank" rel="noopener">GitHub ↗</a></div>
+</div>
+<div class="skill rv" style="transition-delay:.05s">
+<div><div class="s-name"><a href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener">market-evidence-diagnostic</a></div><p class="s-desc">Проверка утверждений бизнес-модели через рынок: реальная проблема, альтернативы, доказательства из каналов. Каждый вывод — источник + дата. Для тех, кто хочет проверить, прежде чем верить.</p><span class="s-tag">рынок · доказательства</span></div>
+<div class="s-go"><a href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic" target="_blank" rel="noopener">GitHub ↗</a></div>
+</div>
+<div class="skill rv" style="transition-delay:.1s">
+<div><div class="s-name"><a href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener">pnl-check</a></div><p class="s-desc">Проверка, можно ли принимать решение на текущих цифрах. Факты → сверка прибыли и денег → бриф для решения. Без угадывания и шаблонных советов.</p><span class="s-tag">финансы · решения</span></div>
+<div class="s-go"><a href="https://github.com/r0undm1dn1ghty-star/pnl-check" target="_blank" rel="noopener">GitHub ↗</a></div>
+</div>
+<div class="skill rv" style="transition-delay:.15s">
+<div><div class="s-name"><a href="https://github.com/r0undm1dn1ghty-star/geo-audit-skill" target="_blank" rel="noopener">geo-audit-skill</a></div><p class="s-desc">Аудит видимости в AI-поиске: 92 правила, 6 измерений, спецификации 7 движков. Проверяет, найдёт ли тебя ChatGPT, Perplexity и Claude — и что чинить первым.</p><span class="s-tag">GEO/AEO · AI-поиск</span></div>
+<div class="s-go"><a href="https://github.com/r0undm1dn1ghty-star/geo-audit-skill" target="_blank" rel="noopener">GitHub ↗</a></div>
+</div>
+<div class="skill rv" style="transition-delay:.2s">
+<div><div class="s-name">warm-lead-parser</div><p class="s-desc">Клиенты из открытых источников, скоринг 0–100. Ищет тёплых, отсеивает мусор, отдаёт список с приоритетом.</p><span class="s-tag">лиды · скоринг</span></div>
+<div class="s-go">в работе</div>
+</div>
+<div class="intg rv" id="integration">
+<h3>Подключение к любому агенту или боту — за 1 минуту, без зависимостей</h3>
+<p>Каждый скилл ставится копированием папки. Никаких <code>pip install</code>, npm или API-ключей: только стандартная библиотека Python 3.8+. Шесть каналов на выбор — HTTP-сервис, CLI, импорт как библиотека, MCP-сервер, GPT Actions (OpenAPI 3.1) и загрузка файлов в агента.</p>
+<div class="screen" role="img" aria-label="Терминал: установка и подключение скилла за три команды">
+<div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+<div class="screen-body">
+<div class="row"><span class="cmd">git clone &lt;repo&gt; &amp;&amp; python integrations/kit/skillkit.py --serve --port 8765</span><br/><span class="desc">— поднять HTTP-сервис рядом с ботом</span></div>
+<div class="row"><span class="cmd">curl -s localhost:8765/run -H 'Content-Type: application/json' -d '{"input": ...}'</span><br/><span class="desc">— вызвать из Telegram-бота, n8n, Make, Bitrix24, любого стека</span></div>
+<div class="row"><span class="cmd">integrations/mcp_server.py</span><br/><span class="desc">— подключить к Claude Desktop, Claude Code, Cursor, Cline</span></div>
+</div>
+</div>
+<p class="screen-cap rv">Полная инструкция — <code>INTEGRATION.md</code> в каждом репозитории · проверка установки — <code>python integrations/sources.py --selftest</code> (9/9)</p>
+<p class="screen-cap rv">Проверка на реальных рыночных данных — <a href="https://github.com/r0undm1dn1ghty-star/spiral-maturity/blob/main/EVAL.md" target="_blank" rel="noopener">spiral</a> · <a href="https://github.com/r0undm1dn1ghty-star/market-evidence-diagnostic/blob/main/EVAL.md" target="_blank" rel="noopener">market-evidence</a> · <a href="https://github.com/r0undm1dn1ghty-star/pnl-check/blob/main/EVAL.md" target="_blank" rel="noopener">pnl-check</a> · <a href="https://github.com/r0undm1dn1ghty-star/geo-audit-skill/blob/master/EVAL.md" target="_blank" rel="noopener">geo-audit</a> · <a href="https://github.com/r0undm1dn1ghty-star/discovery-warm-lead-parser/blob/main/EVAL.md" target="_blank" rel="noopener">парсер лидов</a></p>
+<p class="screen-cap rv">Каждый <code>EVAL.md</code> — реальные кейсы рынка, покрытие правил и воспроизводимые команды: что инструмент измеряет и с чем справляется.</p>
+</div>
+<div class="guide rv">
+<h3>Гайд: 20 конфигураций ИИ-агента</h3>
+<p>Все связки в одной таблице: модель, стек, промпты, провайдеры РФ и зарубежные. Для тех, кто хочет собрать сам, но не тратить недели на исследование.</p>
+<div class="g-price">3 000 ₽ · разово</div>
+<a class="btn btn-primary" href="calculator.html">Узнать стоимость и забрать гайд →</a>
+</div>
+<div class="cta-row rv">
+<a class="btn btn-ghost" href="calculator.html">Проверить стоимость связки →</a>
+<a class="btn btn-ghost" href="clarity.html">Понять, что собирать →</a>
+</div>
+</div></section>
+</main>
+<footer>
+<div class="wrap">
+<div class="sig">
+<img src="viktor.jpg" alt="Виктор Зайцев" loading="lazy" class="sig-photo"/>
+<div class="sig-text">
+<span class="sig-name">Виктор Зайцев</span>
+<span class="sig-role">отвечаю сам · без отдела продаж</span>
+<a href="https://t.me/discoverysystem" target="_blank" rel="noopener" class="sig-tg">Telegram →</a>
+</div>
+</div>
+<p class="sig-c">Discovery System · 2026 · <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a> · <a href="https://vc.ru/id6099688">VC</a> · <a href="oferta.html">оферта</a> · <a href="policy.html">политика ПД</a></p>
+<p class="sig-c" style="margin-top:8px">Зайцев Виктор, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a> · <a href="tel:+79119950712">+7 911 995-07-12</a></p>
+</div>
+</footer>
+<script>(function(){var d=document;if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}else{d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});}})();</script>
+<div class="sticky-cta" id="stickyCta"><a href="calculator.html">Цена твоей связки ↗</a></div>
+<script>
+/* sticky CTA: показывается после первого экрана */
+(function(){
+var sc=document.getElementById('stickyCta');
+if(!sc)return;
+var shown=false;
+function upd(){
+var y=window.scrollY||document.documentElement.scrollTop;
+var h=window.innerHeight;
+if(y>h*0.8&&!shown){sc.classList.add('show');shown=true;}
+else if(y<h*0.3&&shown){sc.classList.remove('show');shown=false;}
+}
+window.addEventListener('scroll',upd,{passive:true});
+upd();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Инфографика · потери аккаунтов ИИ · Discovery System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#111524;color:#b8c3d6;font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.6;padding:30px 30px 54px;
+background-image:radial-gradient(900px 420px at 82% -8%,rgba(123,196,168,.10),transparent 62%)}
+.kick{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7bc4a8;display:flex;align-items:center;gap:9px;margin-bottom:16px}
+.kick i{width:20px;height:20px;border-radius:50%;border:1.5px solid #7bc4a8;display:block;position:relative}
+.kick i:after{content:"";position:absolute;inset:5px;border-radius:50%;background:#7bc4a8}
+h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:52px;line-height:1.05;letter-spacing:-.028em;color:#eef2f9;margin-bottom:12px}
+h1 em{font-style:normal;color:#7bc4a8}
+.sub{color:#8893a8;font-size:15px;max-width:640px;margin-bottom:26px}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:18px 20px}
+.card.hi{border-color:rgba(123,196,168,.42);background:rgba(123,196,168,.055)}
+.k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:#8893a8;margin-bottom:8px}
+.k.a{color:#7bc4a8}
+.v{font-family:'Outfit',sans-serif;font-weight:800;font-size:44px;color:#eef2f9;letter-spacing:-.02em;line-height:1;margin-bottom:5px}
+.v small{font-size:.4em;color:#7bc4a8;font-weight:700}
+.money{font-family:'Outfit',sans-serif;font-weight:700;font-size:21px;color:#f0a09e;letter-spacing:-.01em;margin:0 0 8px;line-height:1.2}
+.money.acc{color:#f3b9b7}
+.c{font-size:12.5px;color:#a8b3c6}
+h2{font-family:'Outfit',sans-serif;font-weight:700;font-size:23px;color:#eef2f9;letter-spacing:-.01em;margin-bottom:5px}
+.s{color:#9aa5b8;font-size:13.5px;margin-bottom:17px}
+.wide{margin-bottom:20px}
+/* воронка статичная */
+.frow{display:grid;grid-template-columns:1fr 118px 92px;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.frow:last-child{border-bottom:none}
+.fl{font-size:13.5px;color:#b8c3d6}
+.fl b{color:#eef2f9;font-weight:600}
+.fb{height:9px;border-radius:4.5px;background:rgba(255,255,255,.07);overflow:hidden;min-width:4px}
+.fb i{display:block;height:100%;border-radius:4.5px;background:#7bc4a8}
+.fn{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#eef2f9;text-align:right;white-space:nowrap;padding-right:4px}
+.frow.fin .fl b{color:#7bc4a8}
+.frow.fin .fn{color:#7bc4a8;font-weight:600}
+/* два столбца */
+.two{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin-bottom:14px}
+.split{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden}
+.half{padding:17px 19px}
+.half:first-child{border-right:1px solid rgba(255,255,255,.12);background:rgba(123,196,168,.05)}
+.hh{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.half:first-child .hh{color:#7bc4a8}
+.half:last-child .hh{color:#8893a8}
+.half ul{list-style:none;font-size:13px}
+.half li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:9px;align-items:baseline;justify-content:space-between}
+.half li:last-child{border-bottom:none}
+.half li .b{font-family:'IBM Plex Mono',monospace;color:#eef2f9;font-size:12.5px;flex:none}
+/* уравнение */
+.eq{border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden}
+.er{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:baseline;padding:9px 16px;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px}
+.er:last-child{border-bottom:none}
+.er .f{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#8893a8;text-align:right}
+.er .n{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#eef2f9;font-weight:600;text-align:right;white-space:nowrap}
+.er.fin{background:rgba(123,196,168,.07)}
+.er.fin .n{color:#7bc4a8}
+/* сравнение */
+.cmp{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.cc{border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px 16px}
+.cc.mine{border-color:rgba(123,196,168,.45);background:rgba(123,196,168,.05)}
+.ct{font-size:13.5px;color:#eef2f9;font-weight:600;margin-bottom:5px}
+.cd{font-size:12.5px;color:#8893a8}
+.grp{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8893a8;margin:0 0 8px}
+.grp.m{color:#7bc4a8}
+.foot{margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8893a8}
+.ctabox{border-color:rgba(123,196,168,.4);background:rgba(123,196,168,.055);display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.ctap{color:#eef2f9;font-size:14.5px;max-width:520px;margin:0}
+.ctab{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:10px;font-weight:600;font-size:14px;background:#1f7a4d;color:#f2fbf5;border:1px solid rgba(255,255,255,.14);flex:none}
+</style>
+</head>
+<body>
+<div class="kick"><i></i>Discovery System · рыночная разведка</div>
+<h1>Твой доступ к ИИ — <em>не твой</em></h1>
+<p class="sub">Сколько людей в России уже потеряли аккаунты ChatGPT и Claude за 2026 год. Каждая цифра — с датой и источником.</p>
+
+<div class="row3">
+<div class="card"><div class="k">нижняя граница</div><div class="v">39 <small>тыс. человек</small></div><div class="money">82 млн ₽ <span style="font-size:.78em;color:#9aa5b8;font-weight:400">/ мес</span></div><div class="c">10-й перцентиль честного интервала · по 2 097 ₽ в месяц</div></div>
+<div class="card hi"><div class="k a">рабочая оценка</div><div class="v">86 <small>тыс. человек</small></div><div class="money acc">180 млн ₽ <span style="font-size:.78em;color:#9aa5b8;font-weight:400">/ мес</span></div><div class="c">медиана 200 000 прогонов · теряют 2,2 млрд ₽ в год</div></div>
+<div class="card"><div class="k">верхняя граница</div><div class="v">170 <small>тыс. человек</small></div><div class="money">356 млн ₽ <span style="font-size:.78em;color:#9aa5b8;font-weight:400">/ мес</span></div><div class="c">90-й перцентиль честного интервала · по 2 097 ₽ в месяц</div></div>
+</div>
+
+<div class="card wide">
+<h2>Как 11,4 млн банов превращаются в 86 тысяч</h2>
+<p class="s">Каждый фильтр отсекает часть. Два последних множителя — оценка, а не факт из документа.</p>
+<div class="frow"><span class="fl"><b>Баны Anthropic</b>, H1 2026, весь мир</span><span class="fb"><i style="width:100%"></i></span><span class="fn">11 400 000</span></div>
+<div class="frow"><span class="fl">Оставляем только <b>регион и обход доступа</b></span><span class="fb"><i style="width:15%"></i></span><span class="fn">× 5–25%</span></div>
+<div class="frow"><span class="fl">Доля <b>России</b> среди этих банов</span><span class="fb"><i style="width:4%"></i></span><span class="fn">× 12–45%</span></div>
+<div class="frow"><span class="fl">Убираем <b>повторные баны</b> аккаунта</span><span class="fb"><i style="width:3%"></i></span><span class="fn">÷ 1,0–2,0</span></div>
+<div class="frow"><span class="fl">Оставляем <b>живых людей</b>, не ботов и фермы</span><span class="fb"><i style="width:2%"></i></span><span class="fn">× 30–60%</span></div>
+<div class="frow"><span class="fl">Делим на <b>аккаунтов на человека</b></span><span class="fb"><i style="width:1.5%"></i></span><span class="fn">÷ 2,5–5,0</span></div>
+<div class="frow"><span class="fl">Старый аккаунт <b>мёртв навсегда</b></span><span class="fb"><i style="width:1.2%"></i></span><span class="fn">× 80–97%</span></div>
+<div class="frow"><span class="fl">Второе полугодие <b>тяжелее первого</b></span><span class="fb"><i style="width:2.5%"></i></span><span class="fn">× 2,0–2,5</span></div>
+<div class="frow fin"><span class="fl">Плюс потери <b>ChatGPT</b> за год</span><span class="fb"><i style="width:3%"></i></span><span class="fn">≈ 86 000</span></div>
+</div>
+
+<div class="two">
+<div class="split">
+<div class="half"><div class="hh">подтверждено документами</div><ul>
+<li><span>Баны Anthropic, H1 2026, мир</span><span class="b">11,4 млн</span></li>
+<li><span>Апелляции и отмены</span><span class="b">398 / 42 тыс.</span></li>
+<li><span>Успешных апелляций</span><span class="b">10,6%</span></li>
+<li><span>Отменённых от всех банов</span><span class="b">0,37%</span></li>
+<li><span>Баны и успех апелляций, H2 2025</span><span class="b">1,45 млн / 3,3%</span></li>
+</ul></div>
+<div class="half"><div class="hh">оценка, признаём открыто</div><ul>
+<li><span>Доля России среди банов</span><span class="b">косвенно</span></li>
+<li><span>Каскад второго полугодия</span><span class="b">оценка</span></li>
+<li><span>Добавочные потери ChatGPT</span><span class="b">оценка</span></li>
+<li><span>Их вклад в итог</span><span class="b">~45%</span></li>
+</ul></div>
+</div>
+</div>
+
+<div class="card wide">
+<h2>Прозрачная цепочка</h2>
+<p class="s">Каждый шаг виден и оспорим.</p>
+<div class="eq">
+<div class="er"><span>Баны Anthropic, H1 2026</span><span class="f">факт</span><span class="n">11 400 000</span></div>
+<div class="er"><span>За регион и обход доступа</span><span class="f">× 5–25%</span><span class="n">570K – 2,85M</span></div>
+<div class="er"><span>Доля России</span><span class="f">× 12–45%</span><span class="n">~ 395 000</span></div>
+<div class="er"><span>Повторные баны аккаунта</span><span class="f">÷ 1,0–2,0</span><span class="n">~ 264 000</span></div>
+<div class="er"><span>Живые, не боты и фермы</span><span class="f">× 30–60%</span><span class="n">~ 119 000</span></div>
+<div class="er"><span>Аккаунтов на человека</span><span class="f">÷ 2,5–5,0</span><span class="n">~ 34 000</span></div>
+<div class="er"><span>Мёртв навсегда</span><span class="f">× 80–97%</span><span class="n">~ 30 500</span></div>
+<div class="er"><span>Второе полугодие тяжелее</span><span class="f">× 2,0–2,5</span><span class="n">~ 69 000</span></div>
+<div class="er fin"><span>Плюс потери ChatGPT</span><span class="f">× 1,15–1,40</span><span class="n">≈ 86 000</span></div>
+</div>
+</div>
+
+<div class="card wide">
+<h2>Где стоит твоя система</h2>
+<p class="s">Пока система на чужой земле, ты не решаешь, когда она работает.</p>
+<div class="cmp">
+<div>
+<p class="grp">чужая инфраструктура</p>
+<div class="cc"><div class="ct">Рубильник у них</div><div class="cd">Платформа решает, когда закрыть доступ. Гео и проверка личности — достаточная причина.</div></div>
+<div class="cc" style="margin-top:11px"><div class="ct">Данные уходят с аккаунтом</div><div class="cd">Чаты, проекты и код удаляются вместе с профилем. Деньги возвращают, работу — нет.</div></div>
+</div>
+<div>
+<p class="grp m">своя связка</p>
+<div class="cc mine"><div class="ct">Доступ не отключат за гео</div><div class="cd">Работает на российских провайдерах без VPN и без чужих правил.</div></div>
+<div class="cc mine" style="margin-top:11px"><div class="ct">Данные остаются у тебя</div><div class="cd">База знаний под твоим контролем, а не в чужом профиле.</div></div>
+</div>
+</div>
+</div>
+
+<div class="card wide ctabox">
+<p class="ctap">Пока система стоит на чужой земле, ты не решаешь, когда она работает. Своя связка — на своих провайдерах, без VPN.</p>
+<div class="ctab">Узнать стоимость ИИ-агента, который не исчезнет как Claude/ChatGPT ↗</div>
+</div>
+
+<div class="foot">
+<span>Discovery System · сентябрь 2026 · модель 200 000 прогонов</span>
+<span>Источники: Anthropic Transparency Hub, RBC, CNews, ТАСС, Mediascope, Sensor Tower, TechCrunch</span>
+</div>
+</body>
+</html>
