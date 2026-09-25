@@ -170,17 +170,17 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 </header>
 
 <div class="grid trio" id="hero">
-<div class="card rv"><div class="k">нижняя граница</div><div class="v"><span data-count="39">39</span> <small>тыс. человек</small></div><div class="money"><span data-count="82">82</span> млн ₽ <span style="font-size:.75em;color:#9aa5b8;font-weight:400">/ мес</span></div><div class="c">10-й перцентиль честного интервала · по 2 097 ₽ в месяц</div></div>
-<div class="card hi rv"><div class="k acc">рабочая оценка</div><div class="v"><span data-count="86">86</span> <small>тыс. человек</small></div><div class="money acc"><span data-count="180">180</span> млн ₽ <span style="font-size:.75em;color:#9aa5b8;font-weight:400">/ мес</span></div><div class="c">медиана 200 000 прогонов · теряют 2,2 млрд ₽ в год</div></div>
-<div class="card rv"><div class="k">верхняя граница</div><div class="v"><span data-count="170">170</span> <small>тыс. человек</small></div><div class="money"><span data-count="356">356</span> млн ₽ <span style="font-size:.75em;color:#9aa5b8;font-weight:400">/ мес</span></div><div class="c">90-й перцентиль честного интервала · по 2 097 ₽ в месяц</div></div>
+<div class="card rv"><div class="k">нижняя граница</div><div class="v"><span data-count="39">39</span> <small>тыс. человек</small></div><div class="money">≈ 1 <small>млрд ₽/год</small></div><div class="c">10-й перцентиль честного интервала</div></div>
+<div class="card hi rv"><div class="k acc">рабочая оценка</div><div class="v"><span data-count="86">86</span> <small>тыс. человек</small></div><div class="money acc">≈ 2,2 <small>млрд ₽/год</small></div><div class="c">медиана 200 000 прогонов</div></div>
+<div class="card rv"><div class="k">верхняя граница</div><div class="v"><span data-count="170">170</span> <small>тыс. человек</small></div><div class="money">≈ 4,3 <small>млрд ₽/год</small></div><div class="c">90-й перцентиль честного интервала</div></div>
 </div>
-<div class="grid one"><div class="loss-line rv">82–356 млн ₽ в месяц уходят навсегда: подписку возвращают не всегда — по условиям Anthropic при блокировке рефанда нет, работу и данные не возместит никто.</div></div>
+<div class="grid one"><div class="loss-line rv">1–4,3 млрд ₽ в год платят российские пользователи за аккаунты, которые сгорают без предупреждения. По условиям Anthropic рефанда при блокировке нет — работу и данные не возместит никто.</div></div>
 
 <div class="grid one">
 <div class="card rv">
 <div class="k">интерактив · воронка</div>
 <h2>Как 11,4 млн банов превращаются в 86 тысяч</h2>
-<p class="sub">Потяни ползунок или нажми на строку — увидишь, где оседает число. Каждый фильтр отсекает часть.</p>
+<p class="sub">Тяни ползунок или жми на строку — где оседает число.</p>
 <div class="funnel" id="funnel"></div>
 <input class="slider" id="fs" type="range" min="0" max="8" value="8" aria-label="Стадия воронки"/>
 <div class="sl-hint"><span>старт · все баны</span><span>итог · живые люди в России</span></div>
@@ -192,7 +192,7 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <div class="card rv">
 <div class="k">интерактив · проверка</div>
 <h2>Заголовки против расчёта</h2>
-<p class="sub">Собери сам: потяни ползунок вправо, чтобы стереть громкую цифру и увидеть, что за ней.</p>
+<p class="sub">Потяни вправо — сотри заголовок, увидь расчёт.</p>
 <div class="wipe" id="wide"><div class="p"><div class="lab">так пишут в заголовках</div><div class="big">1,5 млн</div><div class="d">глобальные баны Anthropic за полгода, подписанные «россияне»</div></div>
 <div class="top"><div class="p"><div class="lab">так посчитали мы</div><div class="big">39–170 тыс.</div><div class="d">честный интервал, рабочая оценка 86 тыс.</div></div></div></div>
 <div class="wctl"><span>заголовки</span><input id="ws" type="range" min="0" max="100" value="50" aria-label="Сравнение оценок"/><span>расчёт</span></div>
@@ -203,7 +203,7 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <div class="card rv">
 <div class="k">честность метода</div>
 <h2>Что мы знаем точно, а что считаем</h2>
-<p class="sub">Мы не смешиваем факт и оценку — поэтому и показываем их отдельно.</p>
+<p class="sub">Факт и оценка — раздельно.</p>
 <div class="split">
 <div class="half"><div class="hh">подтверждено документами</div><ul>
 <li><span>Баны Anthropic, H1 2026, весь мир</span><span class="b">11,4 млн</span></li>
@@ -226,7 +226,7 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <div class="card rv">
 <div class="k">интерактив · таймлайн</div>
 <h2>Как это происходило</h2>
-<p class="sub">Нажми на дату — раскроется деталь волны.</p>
+<p class="sub">Клик по дате — деталь волны.</p>
 <div class="tl" id="tl">
 <div class="it"><button aria-expanded="false"><span class="dt">08.05.2026</span><span class="tt">Anthropic массово блокирует аккаунты из России</span><span class="ar">›</span></button><div class="dtl"><p>Сотни пострадавших по данным Baza. Профили удаляют вместе с данными; единичные возвраты за подписку — жест платформы, по условиям сервиса при блокировке рефанда нет. Источник: RBC, CNews.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt">21.05.2026</span><span class="tt">OpenAI бьёт по серому рынку перепродажи</span><span class="ar">›</span></button><div class="dtl"><p>Усиленная защита, цены у перекупов выросли. Источник: Газета.ру.</p></div></div>
@@ -239,7 +239,7 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <div class="card rv">
 <div class="k">уравнение</div>
 <h2>Прозрачная цепочка</h2>
-<p class="sub">Каждый шаг виден и оспорим.</p>
+<p class="sub">Каждый шаг оспорим.</p>
 <div class="eq">
 <div class="er"><span>Баны Anthropic, H1 2026</span><span class="f">факт</span><span class="n">11 400 000</span></div>
 <div class="er"><span>За регион и обход доступа</span><span class="f">× 5–25%</span><span class="n">570K – 2,85M</span></div>
@@ -258,7 +258,7 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <div class="card rv">
 <div class="k">интерактив · выбор</div>
 <h2>Где стоит твоя система</h2>
-<p class="sub">Переключи и посмотри, что именно ты теряешь или сохраняешь.</p>
+<p class="sub">Что теряешь и что сохраняешь.</p>
 <div class="sw" role="group" aria-label="Сравнение инфраструктур">
 <button data-c="foreign" aria-pressed="false">чужая</button>
 <button data-c="mine" aria-pressed="false">своя</button>
@@ -279,7 +279,7 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <div class="card rv" id="personal">
 <div class="k">интерактив · личный счёт</div>
 <h2>Сколько в этом твоих денег</h2>
-<p class="sub">Это исследование про рынок. Твой счёт считается за одну цифру — той, что ты платишь каждый месяц.</p>
+<p class="sub">Одна цифра — та, что платишь каждый месяц.</p>
 <div class="ms-row">
 <input class="ms-input" id="ms-in" type="number" min="0" step="100" value="2000" inputmode="numeric" aria-label="Сколько ты платишь за ИИ-сервисы в месяц"/>
 <span class="ms-per">₽ в месяц за ChatGPT / Claude / прочее</span>
