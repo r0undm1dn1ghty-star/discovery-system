@@ -29,7 +29,12 @@
 :root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--ok:#5ed9a8;--accent-rgb:123,196,168;--ok-rgb:94,217,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;position:relative}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+radial-gradient(720px 480px at 82% -6%,rgba(123,196,168,.10),transparent 68%),
+radial-gradient(640px 520px at -8% 34%,rgba(70,96,168,.08),transparent 70%),
+radial-gradient(560px 420px at 55% 112%,rgba(150,118,84,.06),transparent 72%)}
+@media(max-width:760px){body:before{background:radial-gradient(420px 320px at 88% -4%,rgba(123,196,168,.09),transparent 70%)}}
 .wrap{max-width:880px;margin:0 auto;padding:0 24px}
 section{padding:100px 0}
 h1,h2{color:var(--ink);font-family:var(--display);line-height:1.15;font-weight:700;letter-spacing:-.01em}

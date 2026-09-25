@@ -28,7 +28,12 @@
 :root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.06);--accent:#7bc4a8;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;position:relative}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+radial-gradient(720px 480px at 82% -6%,rgba(123,196,168,.10),transparent 68%),
+radial-gradient(640px 520px at -8% 34%,rgba(70,96,168,.08),transparent 70%),
+radial-gradient(560px 420px at 55% 112%,rgba(150,118,84,.06),transparent 72%)}
+@media(max-width:760px){body:before{background:radial-gradient(420px 320px at 88% -4%,rgba(123,196,168,.09),transparent 70%)}}
 .wrap{max-width:880px;margin:0 auto;padding:0 24px}
 section{padding:120px 0}
 h1,h2{color:var(--ink);font-family:var(--display);line-height:1.15;font-weight:700;letter-spacing:-.01em}
@@ -235,7 +240,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div></nav>
 
 <header class="hero"><div class="wrap">
-<p class="sub rv">рынок · 2026 · каждый факт = источник + дата</p>
+<p class="sub rv">рынок · сентябрь 2026 · каждый факт = источник + дата</p>
 <h1 class="rv" style="transition-delay:.06s">Внедрение ИИ-агентов ломается на точке входа — вебинарных обещаниях без экономики</h1>
 <p class="rv" style="transition-delay:.12s">Доказать, что ИИ умеет что-то делать, уже не нужно. Нужно понять, в каком процессе ему можно доверить часть работы — и за сколько. Цены ниже реальные, с рынка.</p>
 </div></header>
@@ -257,14 +262,14 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="kpi-s">Яндекс Cloud · Marketplace · 02.09.2026</div>
 </div>
 <div class="kpi">
-<div class="kpi-n">$20 <small>/мес</small></div>
-<div class="kpi-t">курс «поставь Claude» — плюс VPN, плюс риск бана</div>
-<div class="kpi-s">курсы по ИИ · 2026</div>
+<div class="kpi-n">60 <small>млрд ₽</small></div>
+<div class="kpi-t">рынок генеративного ИИ в РФ — вышел из стадии экспериментов, агенты — главный рост</div>
+<div class="kpi-s">Коммерсантъ · 23.09.2026</div>
 </div>
-<div class="kpi wide">
-<div class="kpi-n acc">2–4К <small>₽/мес</small></div>
-<div class="kpi-t">своя связка целиком: модель, хостинг, память — провайдерам напрямую, не мне. Остаётся у тебя.</div>
-<div class="kpi-s">калькулятор на этом сайте · 09.2026</div>
+<div class="kpi">
+<div class="kpi-n">2–4К <small>₽/мес</small></div>
+<div class="kpi-t">своя связка целиком: модель, хостинг, память — внутри рыночной нормы трат МСБ (до 3 000 ₽/мес у большинства платящих)</div>
+<div class="kpi-s">Т-Бизнес секреты · 07.09.2026 · калькулятор на этом сайте</div>
 </div>
 </div>
 <p class="chart-cap rv" style="margin-top:20px">Рынок продаёт не агентов — чужую инфраструктуру и курсы по ней. Я показываю настоящую цену и отдаю знания: связка, которую соберёшь, <span class="chrome-text">остаётся у тебя</span>.</p>
@@ -286,7 +291,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div>
 <div class="gap-mark rv">
 <span class="gap-x">×10</span>
-<span class="gap-note">разрыв между «попробовал» и «работает» — не про технологию, а про решение: что автоматизировать, за сколько, кто чинит</span>
+<span class="gap-note">разрыв между «попробовал» и «работает» — не про технологию: 38% МСБ называют барьером «непонятную пользу», 9% доверяют агенту автономные решения — VK WorkSpace × Hi-Tech Mail, 09.2026</span>
 </div>
 </div>
 <p class="chart-cap rv">53% — ПСБ · Опора России, 08.2026 · ~5% — ИСИЭЗ НИУ ВШЭ, 2024 (потолок 6,3% по внедрению ИИ в целом)</p>
@@ -361,8 +366,8 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div>
 <div class="window-labels"><span>продают</span><span>продают</span><span>не продают · 40% бросают</span></div>
 </div>
-<p class="rv" style="transition-delay:.06s"><b>Разрыв — это спрос.</b> 53% МСП пробуют, до агентов дошли единицы. Между «попробовал» и «работает» стоит решение: что автоматизировать, за сколько, кто чинит. Его никто не продаёт — продают установку. Своя связка — 3–15К разово + 2–4К/мес провайдерам. Студия — от 50К. Они — установку, здесь — инструмент, который остаётся у тебя.</p>
-<div class="t-sig rv" style="transition-delay:.24s">— Gartner: 40% агентных проектов будут отменены к 2027 · прогноз, 2025<br/>— ПСБ · Опора России: 53% МСП уже пробуют нейросети · 08.2026</div>
+<p class="rv" style="transition-delay:.06s"><b>Разрыв — это спрос.</b> 53% МСП пробуют, до агентов дошли единицы. Рынок генИИ достиг 60 млрд ₽, агентные системы — его главный рост, но 74% компаний упираются в разрыв компетенций. Между «попробовал» и «работает» стоит решение: что автоматизировать, за сколько, кто чинит. Его никто не продаёт — продают установку. Своя связка — 3–15К разово + 2–4К/мес провайдерам. Студия — от 50К. Они — установку, здесь — инструмент, который остаётся у тебя.</p>
+<div class="t-sig rv" style="transition-delay:.24s">— Gartner: 40% агентных проектов будут отменены к 2027 · прогноз, 2025<br/>— Коммерсантъ: рынок генИИ 60 млрд ₽, агенты — главный рост · 23.09.2026<br/>— «Яков и Партнёры» × Яндекс: ×4,5 к 2028, 74% — разрыв компетенций · 09.2026<br/>— ПСБ · Опора России: 53% МСП уже пробуют нейросети · 08.2026</div>
 <div class="cta-row rv" style="transition-delay:.3s">
 <a class="btn btn-primary" href="calculator.html">Посчитать свою связку →</a>
 <a class="btn btn-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Спросить в Telegram →</a>

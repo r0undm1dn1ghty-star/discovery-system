@@ -29,7 +29,12 @@
 :root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--line:rgba(255,255,255,.12);--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;position:relative}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+radial-gradient(720px 480px at 82% -6%,rgba(123,196,168,.10),transparent 68%),
+radial-gradient(640px 520px at -8% 34%,rgba(70,96,168,.08),transparent 70%),
+radial-gradient(560px 420px at 55% 112%,rgba(150,118,84,.06),transparent 72%)}
+@media(max-width:760px){body:before{background:radial-gradient(420px 320px at 88% -4%,rgba(123,196,168,.09),transparent 70%)}}
 .wrap{max-width:880px;margin:0 auto;padding:0 24px}
 section{padding:170px 0}
 h1,h2{color:var(--ink);font-family:var(--display);line-height:1.15;font-weight:700;letter-spacing:-.01em}
@@ -45,7 +50,16 @@ nav.top a:hover{color:var(--ink)}
 nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
 nav.top img{height:28px;width:auto;border-radius:4px}
 nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
-.hero{text-align:center;padding:180px 0}
+.hero{position:relative;text-align:center;padding:180px 0}
+.hero:before{content:"";position:absolute;left:50%;top:-140px;width:560px;height:560px;transform:translateX(-50%);pointer-events:none;opacity:.5;
+background:
+radial-gradient(circle,transparent 30.6%,rgba(123,196,168,.14) 31%,transparent 33%),
+radial-gradient(circle,transparent 45.6%,rgba(123,196,168,.10) 46%,transparent 48%),
+radial-gradient(circle,transparent 62.6%,rgba(123,196,168,.07) 63%,transparent 65%),
+radial-gradient(circle,rgba(123,196,168,.10),transparent 70%);
+filter:blur(.3px)}
+@media(max-width:760px){.hero:before{width:360px;height:360px;top:-90px;opacity:.4}}
+
 .hero .sub{color:var(--meta);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:32px}
 .hero .lead{max-width:640px;margin:0 auto 20px;font-size:20px}
 .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:56px}
@@ -203,8 +217,8 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 @keyframes ledgerTotal{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:none}}
 @keyframes ledgerTrace{from{transform:scaleX(.2);opacity:0}to{transform:scaleX(1);opacity:.35}}
 .op-row:first-of-type{border-top:none}
-.op-name{color:var(--body);line-height:1.5}
-.op-name small{display:block;color:var(--meta);font-size:13px;margin-top:3px;line-height:1.55}
+.op-name{color:var(--body);line-height:1.55}
+.op-name small{display:block;color:var(--meta);font-size:13px;margin-top:5px;line-height:1.6}
 .op-val{color:var(--ink);font-weight:600;white-space:nowrap;font-family:var(--mono);font-size:15px}
 .op-total{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:15px 0 5px;margin-top:6px;border-top:1px solid var(--line);font-size:17px}
 .op-total .op-name{color:var(--ink);font-weight:600}
@@ -213,7 +227,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .op-them .th{display:flex;justify-content:space-between;align-items:baseline;gap:16px;line-height:1.5}
 .op-them .th span{color:var(--meta)}
 .op-them .th b{color:var(--ink);font-weight:600;white-space:nowrap;font-family:var(--mono);font-size:14px}
-.op-verdict{margin:18px 0 0;font-size:16px;color:var(--ink);line-height:1.6}
+.op-verdict{margin:24px 0 0;font-size:16px;color:var(--ink);line-height:1.6;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
 .op-verdict b{color:var(--accent)}
 .op-note{font-size:13.5px;color:var(--meta);margin:10px 0 0;line-height:1.6}
 .op-more{margin:14px 0 0;font-size:16px}
@@ -228,7 +242,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <header class="hero"><div class="wrap">
 <p class="sub rv">устали от подписок на чужие обещания</p>
 <h1 class="rv" style="transition-delay:.06s">ИИ-агента можно выбрать с первого раза</h1>
-<p class="lead rv" style="transition-delay:.12s">Гайды не дают ответов для твоей ситуации. Студии берут 49–290К. Я показываю цену и логику — <span class="chrome-text">до покупки токенов</span>.</p>
+<p class="lead rv" style="transition-delay:.12s">Гайды не дают ответов для твоей ситуации. Студии берут 49–290К. Рынок генИИ уже 60 млрд ₽ — а внедрение ломается на выборе. Я показываю цену и логику — <span class="chrome-text">до покупки токенов</span>.</p>
 <div class="cta-row rv" style="transition-delay:.24s">
 <a class="btn btn-primary" href="calculator.html"><span class="chrome-text">Цена владения</span> твоим ИИ-агентом ↗</a>
 <a class="btn btn-ghost" href="https://t.me/discoverysystem">Сигналы в канале →</a>
@@ -268,10 +282,10 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <a class="row" href="system.html"><span class="rl"><b>warm-lead-parser</b> — поиск клиентов из открытых источников по 52 нишам</span><span class="rr">в работе</span></a>
 </div>
 <div class="panel" id="p-signals" role="tabpanel" aria-labelledby="tab-signals">
+<a class="row" href="https://www.kommersant.ru/doc/8973433" target="_blank" rel="noopener"><span class="rl"><b>23.09</b> Рынок генИИ в РФ достиг 60 млрд ₽ — вышел из экспериментов, агенты — главный рост</span><span class="rr">рынок ↗</span></a>
+<a class="row" href="https://runet.news/news/80850" target="_blank" rel="noopener"><span class="rl"><b>23.09</b> Лишь 23% МСБ пробуют ИИ: 38% не видят понятной пользы — барьер не в цене</span><span class="rr">спрос ↗</span></a>
 <a class="row" href="https://yandex.cloud/ru/marketplace/products/yc/hermes-agent" target="_blank" rel="noopener"><span class="rl"><b>02.09</b> Яндекс вывел Hermes Agent в Marketplace — цена VPS решена</span><span class="rr">от 3 642 ₽/мес ↗</span></a>
 <a class="row" href="https://datainsight.ru/" target="_blank" rel="noopener"><span class="rl"><b>24.08</b> Data Insight: агентная коммерция 400–850 млрд ₽ к 2028–29</span><span class="rr">спрос ↗</span></a>
-<a class="row" href="https://vc.ru/services/1800000-55-mlrd-alice-ai-2025" target="_blank" rel="noopener"><span class="rl"><b>27.07</b> "24 млн" человек в неделю решают задачи в Алисе</span><span class="rr">привычка или PR ↗</span></a>
-<a class="row" href="https://elama.ru/blog/digital-uslugi-17-procent-2025/" target="_blank" rel="noopener"><span class="rl"><b>01.07</b> digital-услуги +17% г/г — весь рост дала формулировка «внедрение ИИ»</span><span class="rr">спрос ↗</span></a>
 <a class="row" href="channel.html"><span class="rl">вся лента — с источниками и датами</span><span class="rr">канал →</span></a>
 </div>
 <div class="panel" id="p-systems" role="tabpanel" aria-labelledby="tab-systems">
