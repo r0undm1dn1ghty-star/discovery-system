@@ -41,6 +41,7 @@ header p{margin-top:14px;max-width:660px;color:var(--meta);font-size:16px}
 .money b{font-weight:800}
 .money.acc{color:#f3b9b7}
 .v.red{color:#f0a09e}
+.loss-line{border:1px solid rgba(224,96,94,.4);background:rgba(224,96,94,.06);border-radius:14px;padding:18px 24px;font-family:var(--display);font-weight:700;font-size:clamp(1.05rem,2.4vw,1.35rem);color:#f3b9b7;line-height:1.45;letter-spacing:-.01em}
 .c{font-size:13.5px;color:#9aa5b8}
 h2{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--ink);letter-spacing:-.01em;margin-bottom:6px}
 .sub{color:#9aa5b8;font-size:14.5px;margin-bottom:16px}
@@ -162,6 +163,7 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <div class="card hi rv"><div class="k acc">рабочая оценка</div><div class="v"><span data-count="86">86</span> <small>тыс. человек</small></div><div class="money acc"><span data-count="180">180</span> млн ₽ <span style="font-size:.75em;color:#9aa5b8;font-weight:400">/ мес</span></div><div class="c">медиана 200 000 прогонов · теряют 2,2 млрд ₽ в год</div></div>
 <div class="card rv"><div class="k">верхняя граница</div><div class="v"><span data-count="170">170</span> <small>тыс. человек</small></div><div class="money"><span data-count="356">356</span> млн ₽ <span style="font-size:.75em;color:#9aa5b8;font-weight:400">/ мес</span></div><div class="c">90-й перцентиль честного интервала · по 2 097 ₽ в месяц</div></div>
 </div>
+<div class="grid one"><div class="loss-line rv">82–356 млн ₽ в месяц уходят навсегда: подписку возвращают не всегда — по условиям Anthropic при блокировке рефанда нет, работу и данные не возместит никто.</div></div>
 
 <div class="grid one">
 <div class="card rv">
@@ -215,7 +217,7 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <h2>Как это происходило</h2>
 <p class="sub">Нажми на дату — раскроется деталь волны.</p>
 <div class="tl" id="tl">
-<div class="it"><button aria-expanded="false"><span class="dt">08.05.2026</span><span class="tt">Anthropic массово блокирует аккаунты из России</span><span class="ar">›</span></button><div class="dtl"><p>Сотни пострадавших по данным Baza. Профили удаляют вместе с данными, деньги за подписку возвращают. Источник: RBC, CNews.</p></div></div>
+<div class="it"><button aria-expanded="false"><span class="dt">08.05.2026</span><span class="tt">Anthropic массово блокирует аккаунты из России</span><span class="ar">›</span></button><div class="dtl"><p>Сотни пострадавших по данным Baza. Профили удаляют вместе с данными; единичные возвраты за подписку — жест платформы, по условиям сервиса при блокировке рефанда нет. Источник: RBC, CNews.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt">21.05.2026</span><span class="tt">OpenAI бьёт по серому рынку перепродажи</span><span class="ar">›</span></button><div class="dtl"><p>Усиленная защита, цены у перекупов выросли. Источник: Газета.ру.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt">08.07.2026</span><span class="tt">Claude вводит проверку личности через Persona</span><span class="ar">›</span></button><div class="dtl"><p>Паспорт и селфи для помеченных аккаунтов. Провал проверки — перманентный лок без повтора. Источник: Хабр, fillikam.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt">26.07.2026</span><span class="tt">OpenRouter отказывает части пользователей из России</span><span class="ar">›</span></button><div class="dtl"><p>Закрывается маршрут и через агрегатор. Источник: Хабр.</p></div></div>
@@ -253,7 +255,7 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 </div>
 <div class="cmp" id="cmp">
 <div class="cc foreign"><div class="ct">Рубильник у них</div><div class="cd">Платформа решает, когда закрыть доступ. Гео и проверка личности — достаточная причина.</div></div>
-<div class="cc foreign"><div class="ct">Данные уходят с аккаунтом</div><div class="cd">Чаты, проекты и код удаляются вместе с профилем. Деньги возвращают, работу — нет.</div></div>
+<div class="cc foreign"><div class="ct">Данные уходят с аккаунтом</div><div class="cd">Чаты, проекты и код удаляются вместе с профилем. Подписку при блокировке обычно не возвращают, работу — тем более.</div></div>
 <div class="cc foreign"><div class="ct">Обходные маршруты закрывают</div><div class="cd">Серые аккаунты живут недели, агрегаторы отказывают, барьер растёт.</div></div>
 <div class="cc mine"><div class="ct">Доступ не отключат за гео</div><div class="cd">Своя связка на российских провайдерах работает без VPN и без чужих правил.</div></div>
 <div class="cc mine"><div class="ct">Ты знаешь цену каждой части</div><div class="cd">Видно, сколько стоит провайдер, агент и база — без студий и курсов.</div></div>
