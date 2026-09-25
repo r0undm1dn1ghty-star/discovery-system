@@ -42,6 +42,17 @@ header p{margin-top:14px;max-width:660px;color:var(--meta);font-size:16px}
 .money.acc{color:#f3b9b7}
 .v.red{color:#f0a09e}
 .loss-line{border:1px solid rgba(224,96,94,.4);background:rgba(224,96,94,.06);border-radius:14px;padding:18px 24px;font-family:var(--display);font-weight:700;font-size:clamp(1.05rem,2.4vw,1.35rem);color:#f3b9b7;line-height:1.45;letter-spacing:-.01em}
+/* личный счёт */
+.ms-row{display:flex;align-items:baseline;gap:12px;margin:18px 0 14px;flex-wrap:wrap}
+.ms-input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);border-radius:10px;color:var(--ink);font-family:var(--mono);font-size:22px;font-weight:600;padding:12px 16px;width:170px;outline:none;transition:border-color .15s}
+.ms-input:focus{border-color:var(--accent)}
+.ms-input::-webkit-outer-spin-button,.ms-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.ms-input[type=number]{-moz-appearance:textfield;appearance:textfield}
+.ms-per{font-family:var(--mono);font-size:14px;color:var(--meta)}
+.ms-src{font-family:var(--mono);font-size:12px;color:var(--meta);margin-top:-6px}
+.ms-out{margin-top:16px;font-family:var(--display);font-weight:600;font-size:clamp(1.1rem,2.6vw,1.45rem);color:var(--ink);line-height:1.5;letter-spacing:-.01em}
+.ms-out b{color:#f0a09e;font-weight:800}
+.msub{display:block;font-family:var(--sans);font-weight:400;font-size:13px;color:var(--meta);margin-top:8px}
 .c{font-size:13.5px;color:#9aa5b8}
 h2{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--ink);letter-spacing:-.01em;margin-bottom:6px}
 .sub{color:#9aa5b8;font-size:14.5px;margin-bottom:16px}
@@ -264,6 +275,20 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 </div>
 </div>
 
+<div class="grid one">
+<div class="card rv" id="personal">
+<div class="k">интерактив · личный счёт</div>
+<h2>Сколько в этом твоих денег</h2>
+<p class="sub">Это исследование про рынок. Твой счёт считается за одну цифру — той, что ты платишь каждый месяц.</p>
+<div class="ms-row">
+<input class="ms-input" id="ms-in" type="number" min="0" step="100" value="2000" inputmode="numeric" aria-label="Сколько ты платишь за ИИ-сервисы в месяц"/>
+<span class="ms-per">₽ в месяц за ChatGPT / Claude / прочее</span>
+</div>
+<div class="ms-src">2 000 ₽ — медиана трат на ИИ в России · ТАСС / ППВМ, 09.2026</div>
+<div class="ms-out" id="ms-out" aria-live="polite"></div>
+</div>
+</div>
+
 <div class="cta rv">
 <p><b style="color:var(--ink)">Вывод простой:</b> пока система стоит на чужой земле, ты не решаешь, когда она работает. Свою связку собирают на своих провайдерах — без VPN и без чужих правил.</p>
 <a class="btn" href="https://discovery-system.ru/calculator.html">Узнать стоимость ИИ-агента, который не исчезнет как Claude/ChatGPT ↗</a>
@@ -285,6 +310,17 @@ var t=parseInt(el.getAttribute('data-count'),10);
 if(!isNaN(t))el.textContent=t.toLocaleString('ru-RU');
 });
 }
+/* ---------- личный счёт ---------- */
+var msi=d.getElementById('ms-in'), mso=d.getElementById('ms-out');
+function msCalc(){
+if(!msi||!mso)return;
+var m=parseFloat(String(msi.value).replace(',','.'));
+if(isNaN(m)||m<0){mso.innerHTML='';return;}
+m=Math.min(m,999999);
+var y=m*12;
+mso.innerHTML='За год это <b>'+Math.round(y).toLocaleString('ru-RU')+' ₽</b> — и вся история чатов, проекты, память. Блокировка приходит без предупреждения'+(m>0?' — и это не возвращается.':'.');
+}
+if(msi){msi.addEventListener('input',msCalc);msCalc();}
 /* ---------- воронка ---------- */
 var F=[
  {l:'<b>Баны Anthropic</b>, H1 2026, весь мир', v:11400000, m:'Это официальная цифра из Transparency Hub. Почти все баны — за нарушения правил: спам, дистилляция, скам. Регион и обход доступа — лишь часть.', w:100, f:'11 400 000'},
