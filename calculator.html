@@ -429,7 +429,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
     <div class="offer" id="offerBox" style="display:none">
       <div class="offer-tag">Забрать результат</div>
       <div class="offer-opt" style="border-color:rgba(94,217,168,.28);background:rgba(94,217,168,.06)">
-        <div class="o-top"><div class="o-name">Персональная сборка — твоя связка</div><span class="o-badge" style="background:rgba(94,217,168,.14);border-color:rgba(94,217,168,.28);color:#5ed9a8">сборка 24 часа · 30 дней поддержки</span></div>
+        <div class="o-top"><div class="o-name">Персональная сборка — твоя связка</div><span class="o-badge" style="background:rgba(94,217,168,.14);border-color:rgba(94,217,168,.28);color:#5ed9a8">сборка 24 часа · 30 дней правок</span></div>
         <div class="o-desc">Гайд (20 связок) включён + подбор модели под твой процесс + промпты под твои 2–3 сценария + 30 дней правок. Вклад: 30 мин + доступы по выбору.</div>
         <div class="o-price">5 000 ₽ <small>разово · <a href="clarity.html" style="color:var(--muted);text-decoration:underline">что входит в 5К →</a></small></div>
         <button class="btn-cta" onclick="goCheckout('config')">Собрать мою связку →</button>
@@ -444,7 +444,9 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="o-top"><div class="o-name">Установка под ключ — 7 / 10 / 15К</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">2 часа до запуска · GPU/хостинг решим</span></div>
         <div class="o-desc">На твоём ПК (7К), на VPS РФ без VPN (10К) или с интеграцией ТГ/CRM/Авито (15К). Включает персоналку 5К. <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в ясности →</a></div>
         <div class="o-price">7 / 10 / 15К <small>разово · 2 часа</small></div>
-        <button class="btn-cta btn-cta-ghost" onclick="openInstallChat()" style="width:100%">Спросить про установку →</button>
+        <button class="btn-cta btn-cta-ghost" onclick="goInstall('pc')" style="width:100%">Установка на ПК — 7 000 ₽ →</button>
+        <button class="btn-cta btn-cta-ghost" onclick="goInstall('vps')" style="width:100%;margin-top:8px">Установка на VPS — 10 000 ₽ →</button>
+        <button class="btn-cta btn-cta-ghost" onclick="goInstall('integ')" style="width:100%;margin-top:8px">С интеграцией ТГ/CRM/Авито — 15 000 ₽ →</button>
       </div>
       <div class="offer-opt">
         <div class="o-top"><div class="o-name">Подписка на канал Discovery System</div></div>
@@ -452,7 +454,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="o-price">0 ₽ <small>Telegram · бесплатно</small></div>
         <a class="btn-cta btn-cta-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">Подписаться на канал →</a>
       </div>
-      <div class="sub-copy">Модели и сервер оплачиваешь провайдерам отдельно: от 0₽ (бесплатный старт) до ~1 400 ₽/мес с API-провайдером. Мы отдаём проверенную сборку.</div>
+      <div class="sub-copy">Модели и сервер оплачиваешь провайдерам отдельно: локально/API — от 0 ₽ до ~1 400 ₽/мес; VPS 24/7 и дополнительные подключения могут довести эксплуатацию до 2–4К ₽/мес. Разовые услуги после одобрения оформляются через Robokassa. Подписочные форматы вынесены отдельно в <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">ясность</a> и оформляются через Tribute.</div>
     </div>
 
     <div class="leadform" id="payPanel" style="display:none">
@@ -466,15 +468,12 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         </div>
         <div class="pay-row">
           <span class="pay-l">Способ</span>
-          <span class="pay-v">СБП по номеру телефона</span>
+          <span class="pay-v">СБП через платёжную ссылку</span>
         </div>
-        <div class="pay-row copyable" id="rowPhone" onclick="copyTxt(this)" title="Нажми, чтобы скопировать">
-          <span class="pay-l">Телефон</span>
-          <span class="pay-v mono">+7 911 995-07-12</span>
-        </div>
+        
         <div class="pay-row copyable" id="rowName" onclick="copyTxt(this)" title="Нажми, чтобы скопировать">
           <span class="pay-l">Получатель</span>
-          <span class="pay-v mono">Зайцев Виктор П.</span>
+          <span class="pay-v mono">Зайцев Виктор Павлович</span>
         </div>
         <div class="pay-row">
           <span class="pay-l">Банк</span>
@@ -492,7 +491,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
     <div class="foot">
       Расчёт ориентировочный, на основе тарифов 2026. Цена зависит от модели, автономности и подключений.<br>
       Discovery System · <a href="index.html">Главная</a> · <a href="market.html">Рынок</a> · <a href="system.html">Система</a> · <a href="clarity.html">Ясность</a> · <a href="channel.html">Канал</a><br>
-      <a href="pay.html">Оплата и возврат</a> · <a href="oferta.html">оферта</a> · <a href="policy.html">политика ПД</a> · Зайцев Виктор, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>
+      <a href="pay.html">Оплата и возврат</a> · <a href="oferta.html">оферта</a> · <a href="policy.html">политика ПД</a> · Зайцев Виктор Павлович, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>
     </div>
   </div>
 
@@ -929,10 +928,16 @@ function orderText(paid){
   return lines.join('\n');
 }
 
-/* Установка (7/10/15К): сразу в личку, с контекстом */
-function openInstallChat(){
+/* Установка (7/10/15К): раздельная ссылка Robokassa на каждый вариант, пока пусто — личка с контекстом */
+function goInstall(kind){
+  const link=kind==='pc'?PAY_LINK_ROBOKASSA_INSTALL_PC:kind==='vps'?PAY_LINK_ROBOKASSA_INSTALL_VPS:kind==='integ'?PAY_LINK_ROBOKASSA_INSTALL_INTEG:'';
+  if(link){window.open(link,'_blank','noopener');return;}
+  openInstallChat(kind);
+}
+function openInstallChat(kind){
   const est=estimate()||{};
-  const lines=['Здравствуйте! Интересует установка под ключ (7 / 10 / 15К).'];
+  const k=kind==='pc'?'на ПК (7 000 ₽)':kind==='vps'?'на VPS РФ (10 000 ₽)':kind==='integ'?'с интеграцией ТГ/CRM/Авито (15 000 ₽)':'(7 / 10 / 15К)';
+  const lines=['Здравствуйте! Интересует установка под ключ '+k+'.'];
   if(goal)lines.push('Задачи: '+goalLabel());
   if(device)lines.push('Железо: '+deviceLabel());
   if(est.monthly)lines.push('Расчёт калькулятора: ~'+est.monthly+' ₽/мес');
@@ -953,7 +958,7 @@ function openDiagChat(){
 }
 
 function openChat(paid){
-  const plink=(chosenOffer==='table'&&PAY_LINK_ROBOKASSA)?PAY_LINK_ROBOKASSA:(chosenOffer==='config'&&PAY_LINK_TRIBUTE)?PAY_LINK_TRIBUTE:'';
+  const plink=(chosenOffer==='table'&&PAY_LINK_ROBOKASSA_GUIDE)?PAY_LINK_ROBOKASSA_GUIDE:(chosenOffer==='config'&&PAY_LINK_ROBOKASSA_BUILD)?PAY_LINK_ROBOKASSA_BUILD:'';
   if(plink&&paid){window.open(plink,'_blank','noopener');return;}
   const url=TG_ME+'?text='+encodeURIComponent(orderText(paid));
   try{localStorage.setItem('ds_order',JSON.stringify({offer:chosenOffer,paid,ts:Date.now(),goals,device,monthly:(estimate()||{}).monthly}));}catch(e){}
@@ -972,11 +977,15 @@ function copyTxt(row){
 }
 
 /* ========== PAY LINK SOCKET (Robokassa/Tribute) ==========
-   PAY_LINK_ROBOKASSA — платёжная ссылка Robokassa на гайд 3000 (из ЛК Robokassa).
-   PAY_LINK_TRIBUTE  — ссылка Tribute на «подбор 5000».
-   Пусто = кнопки ведут в личку t.me/soulvictor (текущий режим). Заполнить и задеплоить. */
-var PAY_LINK_ROBOKASSA = '';
-var PAY_LINK_TRIBUTE   = '';
+   Разовые продукты (гайд и персональная сборка) — только Robokassa.
+   Подписочные продукты — только Tribute, в отдельной карточке продукта.
+   Пока ссылки пусты, текущий текст и переход в личку сохраняются до одобрения Robokassa. */
+var PAY_LINK_ROBOKASSA_GUIDE   = '';  /* гайд 3 000 */
+var PAY_LINK_ROBOKASSA_BUILD   = '';  /* персональная сборка 5 000 */
+var PAY_LINK_ROBOKASSA_INSTALL_PC    = '';  /* установка ПК 7 000 */
+var PAY_LINK_ROBOKASSA_INSTALL_VPS   = '';  /* установка VPS 10 000 */
+var PAY_LINK_ROBOKASSA_INSTALL_INTEG = '';  /* установка интеграция 15 000 */
+/* Подписки — Tribute, отдельные ссылки; в разовые сокеты не попадают. Пока ссылки пусты — кнопки ведут в Telegram. */
 /* ========== INIT ========== */
 renderCards();
 renderSteps();

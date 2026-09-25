@@ -20,7 +20,7 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-nav.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов.","founder":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/clarity.html#author","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem"]},"license":"https://creativecommons.org/licenses/by/4.0/"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Discovery System","item":"https://discovery-system.ru/"},{"@type":"ListItem","position":2,"name":"Ясность","item":"https://discovery-system.ru/clarity.html"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"А если у меня нет GPU и нет сервера?","acceptedAnswer":{"@type":"Answer","text":"Не нужен. Работает через API РФ-провайдеров, оплата СБП. GPU — только если хочешь локально."}},{"@type":"Question","name":"После 30 дней поддержки что дальше — подписка?","acceptedAnswer":{"@type":"Answer","text":"За агента — нет. Платишь только провайдерам: локально 0–1,4К, на VPS 24/7 — 2–4К. Подписки две, обе по желанию: разборы рынка — 1 500 ₽/мес, моя поддержка — 5 000 ₽/мес. Отменил — связка работает и без них."}},{"@type":"Question","name":"Чем персональная сборка отличается от гайда?","acceptedAnswer":{"@type":"Answer","text":"Гайд — 20 шаблонов, выбираешь сам. Сборка — подбираю 1 связку под твою рутину, промпты под сценарии, 30 дней чиню. Гайд включён."}},{"@type":"Question","name":"Данные и 152-ФЗ?","acceptedAnswer":{"@type":"Answer","text":"По умолчанию РФ-хостинг или локально. Можем гибрид: чувствительное — локально, тяжёлое — в облаке."}},{"@type":"Question","name":"Можно начать с бесплатного и докупить позже?","acceptedAnswer":{"@type":"Answer","text":"Да. Гайд 3К → доплата 2К до персоналки. Установка включает персоналку — переплаты нет."}},{"@type":"Question","name":"Студия берёт помесячно — почему у тебя разово?","acceptedAnswer":{"@type":"Answer","text":"Платишь за систему, не за меня. Отдаю связку и ухожу. Помесячно — только провайдерам, без наценки за «обслуживание»."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"А если у меня нет GPU и нет сервера?","acceptedAnswer":{"@type":"Answer","text":"Не нужен. Работает через API РФ-провайдеров, оплата СБП. GPU — только если хочешь локально."}},{"@type":"Question","name":"После 30 дней правок что дальше?","acceptedAnswer":{"@type":"Answer","text":"Обязательной подписки нет. Связка остаётся у тебя и работает без меня — платишь только провайдерам модели и хостинга. Отдельно есть подписки Tribute: разборы рынка — 1 500 ₽/мес (1–2 материала в месяц) и поддержка — 5 000 ₽/мес (ответ до 4 часов); отмена — в карточке Tribute."}},{"@type":"Question","name":"Чем персональная сборка отличается от гайда?","acceptedAnswer":{"@type":"Answer","text":"Гайд — 20 шаблонов, выбираешь сам. Сборка — подбираю 1 связку под твою рутину, промпты под сценарии, 30 дней чиню. Гайд включён."}},{"@type":"Question","name":"Данные и 152-ФЗ?","acceptedAnswer":{"@type":"Answer","text":"По умолчанию РФ-хостинг или локально. Можем гибрид: чувствительное — локально, тяжёлое — в облаке."}},{"@type":"Question","name":"Можно начать с бесплатного и докупить позже?","acceptedAnswer":{"@type":"Answer","text":"Да. Гайд 3К → доплата 2К до персоналки. Установка включает персоналку — переплаты нет."}},{"@type":"Question","name":"Студия берёт помесячно — почему у тебя разово?","acceptedAnswer":{"@type":"Answer","text":"Платишь за систему, не за меня. Отдаю связку и ухожу. Помесячно — только провайдерам, без наценки за «обслуживание»."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -87,6 +87,15 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .pay-bar{margin-top:24px;padding:14px 20px;border:1px solid var(--line-soft);border-radius:12px;background:rgba(255,255,255,.012);font-family:var(--mono);font-size:13px;color:var(--meta);display:flex;gap:10px;flex-wrap:wrap;align-items:center;line-height:1.5}
 .pay-bar .k{color:var(--accent);font-weight:600}
 .pay-bar .v2{color:var(--body)}
+/* subscriptions — отдельный продуктовый контур, не обязательная абонентка */
+.sub-products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px}
+.sub-card{border:1px solid var(--line-soft);border-radius:12px;padding:22px;background:rgba(255,255,255,.018)}
+.sub-card .sub-price{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:12px}
+.sub-card h3{color:var(--ink);font-family:var(--display);font-size:1.15rem;margin:0 0 10px}
+.sub-card p{font-size:15px;color:var(--body);line-height:1.6;margin:0 0 12px}
+.sub-card .sub-limit{font-family:var(--mono);font-size:12px;color:var(--meta);margin:0}
+.sub-note{font-size:14px;color:var(--meta);line-height:1.6;margin:16px 0 0}
+@media(max-width:760px){.sub-products{grid-template-columns:1fr}.sub-card{padding:20px}}
 /* faq */
 .faq{margin-top:20px}
 .faq details{border:1px solid var(--line-soft);border-radius:12px;margin-bottom:10px;background:transparent;overflow:hidden;transition:background .2s var(--ease),border-color .2s var(--ease)}
@@ -285,8 +294,18 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 
 <div class="pay-bar rv">
 <span class="k">оплата:</span>
-<span class="v2">СБП или карта РФ · чек самозанятого в «Мой налог» · <a href="oferta.html" style="color:var(--accent);text-decoration:underline">условия</a></span>
+<span class="v2">разовые услуги — Robokassa после подключения · подписки — Tribute · чек самозанятого в «Мой налог» · <a href="oferta.html" style="color:var(--accent);text-decoration:underline">условия</a></span>
 </div>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow rv">отдельно · по желанию · Tribute</p>
+<h2 class="rv">Подписки — не плата за право пользоваться своей связкой</h2>
+<p class="rv" style="max-width:64ch;font-size:16px;color:var(--body)">Сборка и установка — разовые продукты. Подписки нужны только если тебе нужен регулярный внешний контур после запуска: рынок или помощь по работе связки. Их можно подключить отдельно и отменить без блокировки уже переданного результата.</p>
+<div class="sub-products rv">
+<div class="sub-card"><p class="sub-price">1 500 ₽ / мес</p><h3>Разборы рынка</h3><p>1–2 уникальных материала в месяц: сигналы, источники, даты и выводы, которые можно проверить и забрать в работу.</p><p class="sub-limit">Оформление и отмена — в карточке Tribute.</p></div>
+<div class="sub-card"><p class="sub-price">5 000 ₽ / мес</p><h3>Поддержка</h3><p>Окно поддержки на месяц: вопросы и разборы по работе с приобретённой или собранной связкой. Максимальный срок ответа — 4 часа. Новая разработка и интеграции сюда не входят.</p><p class="sub-limit">Оформление и отмена — в карточке Tribute.</p></div>
+</div>
+<p class="sub-note rv">После отмены остаются твоя связка и оплаченные материалы. Платёж и отмена проходят в Tribute; разовые продукты оформляются отдельно через Robokassa.</p>
 </div></section>
 <section><div class="wrap">
 <p class="eyebrow rv">частые сомнения</p>
@@ -296,8 +315,8 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <p>Не нужен. Работает через API РФ-провайдеров, оплата СБП. GPU — только если хочешь локально.</p>
 </details>
 <details>
-<summary>После 30 дней поддержки что дальше — подписка?</summary>
-<p>За агента — нет. Платишь только провайдерам: локально 0–1,4К, на VPS 24/7 — 2–4К. Подписки две, обе по желанию: разборы рынка — 1 500 ₽/мес, моя поддержка — 5 000 ₽/мес. Отменил — связка работает и без них.</p>
+<summary>После 30 дней правок что дальше?</summary>
+<p>Обязательной подписки нет. Связка остаётся у тебя и работает без меня — платишь только провайдерам модели и хостинга. Если нужен регулярный внешний контур, отдельно есть подписки Tribute: разборы рынка — 1 500 ₽/мес (1–2 материала в месяц) и поддержка — 5 000 ₽/мес (ответ до 4 часов). Отмена — в карточке Tribute, связка и материалы при этом не блокируются.</p>
 </details>
 <details>
 <summary>Чем персональная сборка отличается от гайда?</summary>
@@ -337,7 +356,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div>
 </div>
 <p class="sig-c">Discovery System · 2026 · <a href="oferta.html">оферта</a> · <a href="policy.html">политика ПД</a> · <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a> · <a href="https://vc.ru/id6099688">VC</a></p>
-<p class="sig-c" style="margin-top:8px">Зайцев Виктор, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a> · <a href="tel:+79119950712">+7 911 995-07-12</a></p>
+<p class="sig-c" style="margin-top:8px">Зайцев Виктор Павлович, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></p>
 </div>
 </footer>
 <script>(function(){var d=document;if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}else{d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});}})();</script>
