@@ -30,7 +30,7 @@ jobs:
       - name: Collect live prices
         run: |
           set -euo pipefail
-          python market-intel/tokenomics-monitor.py
+          python scripts/tokenomics-monitor.py
           ls -la market-intel/
 
       - name: Price-shift guard (landing constants vs models.dev)
