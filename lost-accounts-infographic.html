@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script>document.documentElement.className+=' js';</script>
 <style>
-:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--warn:#e0605e;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#111524;--ink:#eef2f9;--body:#c6d0e2;--meta:#a3aec4;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--warn:#e0605e;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{overflow-x:hidden}
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;position:relative}
@@ -28,12 +28,12 @@ h1 em{font-style:normal;color:var(--accent)}
 header p{margin-top:14px;max-width:660px;color:var(--meta);font-size:16px}
 .grid{display:grid;gap:14px;padding:22px 40px 34px}
 .trio{grid-template-columns:repeat(3,1fr)}
-.two{grid-template-columns:1.35fr 1fr}
+.two{grid-template-columns:1.35fr 1fr;gap:14px}
 .one{grid-template-columns:1fr}
-.card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:22px 22px 20px;position:relative}
+.card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:28px 26px 26px;position:relative}
 .card.hi{border-color:rgba(123,196,168,.42);background:rgba(123,196,168,.055)}
 .card.warn{border-color:rgba(224,96,94,.35);background:rgba(224,96,94,.05)}
-.k{font-family:var(--mono);font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--meta);margin-bottom:10px}
+.k{font-family:var(--mono);font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--meta);margin-bottom:10px}
 .k.acc{color:var(--accent)}
 .v{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5.4vw,2.8rem);color:var(--ink);letter-spacing:-.02em;line-height:1;margin:2px 0 6px}
 .v small{font-size:.4em;color:var(--accent);font-weight:700;letter-spacing:0}
@@ -43,19 +43,19 @@ header p{margin-top:14px;max-width:660px;color:var(--meta);font-size:16px}
 .v.red{color:#f0a09e}
 .loss-line{border:1px solid rgba(224,96,94,.4);background:rgba(224,96,94,.06);border-radius:14px;padding:18px 24px;font-family:var(--display);font-weight:700;font-size:clamp(1.05rem,2.4vw,1.35rem);color:#f3b9b7;line-height:1.45;letter-spacing:-.01em}
 /* личный счёт */
-.ms-row{display:flex;align-items:baseline;gap:12px;margin:18px 0 14px;flex-wrap:wrap}
+.ms-row{display:flex;align-items:center;gap:14px;margin:20px 0 16px;flex-wrap:wrap}
 .ms-input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.16);border-radius:10px;color:var(--ink);font-family:var(--mono);font-size:22px;font-weight:600;padding:12px 16px;width:170px;outline:none;transition:border-color .15s}
 .ms-input:focus{border-color:var(--accent)}
 .ms-input::-webkit-outer-spin-button,.ms-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .ms-input[type=number]{-moz-appearance:textfield;appearance:textfield}
-.ms-per{font-family:var(--mono);font-size:14px;color:var(--meta)}
+.ms-per{font-family:var(--mono);font-size:13px;color:#a6b0c5;letter-spacing:.04em;padding-bottom:2px}
 .ms-src{font-family:var(--mono);font-size:12px;color:var(--meta);margin-top:-6px}
 .ms-out{margin-top:16px;font-family:var(--display);font-weight:600;font-size:clamp(1.1rem,2.6vw,1.45rem);color:var(--ink);line-height:1.5;letter-spacing:-.01em}
 .ms-out b{color:#f0a09e;font-weight:800}
 .msub{display:block;font-family:var(--sans);font-weight:400;font-size:13px;color:var(--meta);margin-top:8px}
-.c{font-size:13.5px;color:#9aa5b8}
+.c{font-size:13.5px;color:#a6b1c4}
 h2{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--ink);letter-spacing:-.01em;margin-bottom:6px}
-.sub{color:#9aa5b8;font-size:14.5px;margin-bottom:16px}
+.sub{color:#a6b1c4;font-size:14.5px;margin-bottom:22px}
 /* переключатель перцентилей */
 .seg{display:inline-flex;gap:4px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:11px;padding:4px;font-family:var(--mono);font-size:12px}
 .seg button{appearance:none;background:none;border:none;color:var(--meta);font:inherit;padding:8px 13px;border-radius:8px;cursor:pointer;min-height:38px;transition:background .15s,color .15s}
@@ -64,7 +64,7 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.5r
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
 /* воронка */
 .funnel{margin-top:6px}
-.frow{display:grid;grid-template-columns:1fr 128px 92px;gap:14px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line-soft);cursor:pointer;transition:background .18s var(--ease)}
+.frow{display:grid;grid-template-columns:1fr 126px 96px;gap:20px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line-soft);cursor:pointer;transition:background .18s var(--ease)}
 .frow:last-child{border-bottom:none}
 .frow:hover,.frow.on{background:rgba(123,196,168,.05)}
 .frow .fl{font-size:14.5px;color:var(--body)}
@@ -85,7 +85,7 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.5r
 .wipe .p{padding:34px 24px;text-align:center}
 .wipe .top{position:absolute;inset:0;background:#0d1220;clip-path:inset(0 calc(100% - var(--split,50%)) 0 0);border-right:2px solid var(--accent)}
 .wipe .big{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,5.4vw,2.7rem);letter-spacing:-.02em;color:var(--ink);line-height:1}
-.wipe .lab{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.wipe .lab{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
 .wipe .top .lab{color:var(--accent)}
 .wipe .p:not(.top .p) .lab{color:var(--meta)}
 .wipe .d{color:var(--meta);font-size:13.5px;margin-top:8px}
@@ -95,7 +95,7 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.5r
 .split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:6px}
 .half{padding:20px 22px}
 .half:first-child{border-right:1px solid var(--line);background:rgba(123,196,168,.05)}
-.half .hh{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.half .hh{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
 .half:first-child .hh{color:var(--accent)}
 .half:last-child .hh{color:var(--meta)}
 .half ul{list-style:none;font-size:14.5px}
@@ -106,7 +106,7 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.5r
 .tl{margin-top:6px}
 .tl .it{border-bottom:1px solid var(--line-soft)}
 .tl .it:last-child{border-bottom:none}
-.tl button{width:100%;appearance:none;background:none;border:none;font:inherit;color:inherit;text-align:left;cursor:pointer;display:grid;grid-template-columns:104px 1fr 22px;gap:14px;align-items:center;padding:15px 4px;min-height:54px;transition:background .18s var(--ease);border-radius:8px}
+.tl button{width:100%;appearance:none;background:none;border:none;font:inherit;color:inherit;text-align:left;cursor:pointer;display:grid;grid-template-columns:104px 1fr 22px;gap:14px;align-items:center;padding:16px 8px;min-height:56px;transition:background .18s var(--ease);border-radius:8px}
 .tl button:hover{background:rgba(255,255,255,.03)}
 .tl .dt{font-family:var(--mono);font-size:13.5px;color:var(--accent);white-space:nowrap}
 .tl .tt{font-size:15.5px;color:var(--ink)}
@@ -142,7 +142,7 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.5r
 .btn:hover{background:#26895b;transform:translateY(-1px)}
 .btn.g{background:rgba(255,255,255,.04);color:var(--ink);border-color:rgba(255,255,255,.14)}
 .btn.g:hover{background:rgba(255,255,255,.08)}
-footer{padding:22px 40px 30px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:12px;color:var(--meta);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+footer{padding:26px 40px 34px;border-top:1px solid var(--line-soft);font-family:var(--mono);font-size:12px;color:#a6b0c5;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
 footer a{color:var(--meta);text-decoration:none}
 .js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
@@ -324,14 +324,14 @@ if(msi){msi.addEventListener('input',msCalc);msCalc();}
 /* ---------- воронка ---------- */
 var F=[
  {l:'<b>Баны Anthropic</b>, H1 2026, весь мир', v:11400000, m:'Это официальная цифра из Transparency Hub. Почти все баны — за нарушения правил: спам, дистилляция, скам. Регион и обход доступа — лишь часть.', w:100, f:'11 400 000'},
- {l:'Оставляем только <b>регион и обход доступа</b>', v:1710000, m:'Отсеиваем волну за нарушения. Остаётся enforcement по региональной политике — те баны, что задевают людей за гео, номер и VPN.', w:15, f:'× 5–25%'},
- {l:'Доля <b>России</b> среди этих банов', v:395000, m:'Россия — неподдерживаемый регион, поэтому формально нарушает с первой секунды. Долю восстанавливаем косвенно, через три индикатора.', w:3.5, f:'× 12–45%'},
- {l:'Убираем <b>повторные баны</b> одного аккаунта', v:264000, m:'В отчёте «заблокированные аккаунты» могут считаться как действия антифрода: одна волна чистит один аккаунт несколько раз. Дедуп — вилка от 1 до 2.', w:2.3, f:'÷ 1,0–2,0'},
- {l:'Оставляем <b>живых людей</b>, не ботов и фермы', v:119000, m:'Антифрод в первую очередь косит бот-фермы и серые кластеры. Живых пользователей среди банов — меньше половины.', w:1.0, f:'× 30–60%'},
- {l:'Делим на <b>аккаунтов на человека</b>', v:34000, m:'Один человек из России нередко держит два-три аккаунта: основной, резервный, купленный. Баны считают аккаунты, а вопрос — про людей.', w:0.30, f:'÷ 2,5–5,0'},
- {l:'Старый аккаунт <b>мёртв навсегда</b>', v:30500, m:'Апелляция спасает меньше одного процента от всех банов. Даже если человек завёл новый аккаунт, старый он не вернул — а вопрос именно про потерю.', w:0.27, f:'× 80–97%'},
- {l:'Второе полугодие <b>тяжелее первого</b>', v:69000, m:'Волна нарастала: май, июль, сентябрь. Здесь начинается оценка, а не факт из документа — мы это признаём открыто.', w:0.61, f:'× 2,0–2,5'},
- {l:'Плюс потери <b>ChatGPT</b> за год', v:86000, m:'OpenAI не публикует баны по странам вообще, поэтому добавляем оценку. Вместе с предыдущим шагом эти две оценки дают около 45% итога.', w:0.76, f:'≈ 86 000', fin:true}
+ {l:'Оставляем только <b>регион и обход доступа</b>', v:1710000, m:'Отсеиваем волну за нарушения. Остаётся enforcement по региональной политике — те баны, что задевают людей за гео, номер и VPN.', w:39, f:'× 5–25%'},
+ {l:'Доля <b>России</b> среди этих банов', v:395000, m:'Россия — неподдерживаемый регион, поэтому формально нарушает с первой секунды. Долю восстанавливаем косвенно, через три индикатора.', w:24, f:'× 12–45%'},
+ {l:'Убираем <b>повторные баны</b> одного аккаунта', v:264000, m:'В отчёте «заблокированные аккаунты» могут считаться как действия антифрода: одна волна чистит один аккаунт несколько раз. Дедуп — вилка от 1 до 2.', w:22, f:'÷ 1,0–2,0'},
+ {l:'Оставляем <b>живых людей</b>, не ботов и фермы', v:119000, m:'Антифрод в первую очередь косит бот-фермы и серые кластеры. Живых пользователей среди банов — меньше половины.', w:17, f:'× 30–60%'},
+ {l:'Делим на <b>аккаунтов на человека</b>', v:34000, m:'Один человек из России нередко держит два-три аккаунта: основной, резервный, купленный. Баны считают аккаунты, а вопрос — про людей.', w:11, f:'÷ 2,5–5,0'},
+ {l:'Старый аккаунт <b>мёртв навсегда</b>', v:30500, m:'Апелляция спасает меньше одного процента от всех банов. Даже если человек завёл новый аккаунт, старый он не вернул — а вопрос именно про потерю.', w:10.7, f:'× 80–97%'},
+ {l:'Второе полугодие <b>тяжелее первого</b>', v:69000, m:'Волна нарастала: май, июль, сентябрь. Здесь начинается оценка, а не факт из документа — мы это признаём открыто.', w:17.8, f:'× 2,0–2,5'},
+ {l:'Плюс потери <b>ChatGPT</b> за год', v:86000, m:'OpenAI не публикует баны по странам вообще, поэтому добавляем оценку. Вместе с предыдущим шагом эти две оценки дают около 45% итога.', w:20, f:'≈ 86 000', fin:true}
 ];
 var fw=d.getElementById('funnel'), fs=d.getElementById('fs'), note=d.getElementById('fn2');
 if(fw){
@@ -349,7 +349,7 @@ var s=F[i];
 d.querySelectorAll('.frow').forEach(function(r,k){
 r.classList.toggle('on',k===i);
 var bar=r.querySelector('.fb i');
-if(bar)bar.style.width=Math.max(F[k].w,0.5)+'%';
+if(bar)bar.style.width=F[k].w+'%';
 });
 note.innerHTML='<b>'+s.f+'</b> · '+s.m;
 }
