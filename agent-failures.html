@@ -253,7 +253,7 @@ nav.top a.home{flex-basis:100%;justify-content:center}
 <p id="verdictText"></p>
 <ul id="todo"></ul>
 <div class="vcta">
-<a class="btn btn-primary sm" href="https://t.me/discoverysystem" target="_blank" rel="noopener" id="verdictCta">Разобрать мой случай ↗</a>
+<a class="btn btn-primary sm" href="clarity.html#optimization" id="verdictCta">Оптимизировать мой агент ↗</a>
 <button class="btn btn-ghost sm" id="clearSel">Сбросить</button>
 </div>
 </div>
@@ -300,6 +300,13 @@ nav.top a.home{flex-basis:100%;justify-content:center}
 <button class="btn btn-ghost sm" id="copyCheck">Скопировать</button>
 <button class="btn btn-ghost sm" id="dlCheck">Скачать .md</button>
 </div>
+<div class="conflict rv" style="margin-top:32px">
+<p class="q">Агент уже стоит, но приёмки не было?</p>
+<p>Тогда это не внедрение, а оптимизация. Аудит связки: где утекают токены и время, пересборка промптов, модели и логики, замер «до / после». Старт — <b class="accent">от 20 000 ₽</b>, точная цена после аудита.</p>
+<div class="cta-row" style="margin-top:22px;justify-content:flex-start">
+<a class="btn btn-primary sm" href="clarity.html#optimization">Оптимизировать мой агент ↗</a>
+</div>
+</div>
 </div></section>
 
 <section id="sources"><div class="wrap">
@@ -321,12 +328,12 @@ nav.top a.home{flex-basis:100%;justify-content:center}
 
 <section id="start"><div class="wrap">
 <div class="conflict rv">
-<p class="q">Вывод простой: агент умирает не от технологии. Он умирает там, где не было приёмки, метрики и ответственного после сдачи.</p>
-<p>Поэтому я сдаю проект по списку из восьми пунктов выше — не «оплата после результата» без определения результата, а приёмка по пунктам. Если хочешь посмотреть, как это выглядит на живом примере, — покажу.</p>
+<p class="q">Агент умирает не от технологии. Он умирает там, где не было приёмки, метрики и ответственного после сдачи.</p>
+<p>Если агент у тебя уже есть — и он врёт, тормозит или жжёт токены — начинать с нуля не нужно. Это чинится: аудит связки, пересборка промптов и логики, замер «до / после». Старт — от 20 000 ₽.</p>
 </div>
 <div class="cta-row rv">
-<a class="btn btn-primary" href="calculator.html">Посчитать свою связку ↗</a>
-<a class="btn btn-ghost" href="clarity.html">Как я провожу внедрение →</a>
+<a class="btn btn-primary" href="clarity.html#optimization">Оптимизировать мой агент ↗</a>
+<a class="btn btn-ghost" href="calculator.html">Посчитать, сколько он жжёт →</a>
 </div>
 </div></section>
 
@@ -347,7 +354,7 @@ nav.top a.home{flex-basis:100%;justify-content:center}
 </div>
 </footer>
 
-<div class="sticky-cta" id="stickyCta"><a href="https://t.me/discoverysystem" target="_blank" rel="noopener">Разобрать мой случай ↗</a></div>
+<div class="sticky-cta" id="stickyCta"><a href="clarity.html#optimization">Оптимизировать мой агент ↗</a></div>
 
 <script>
 var CORPUS_TOTAL = 96;
@@ -400,7 +407,7 @@ v.style.display="block";
 var txt;
 if(n<=2)txt="Несколько признаков. Повод проговорить условия до оплаты, а не после.";
 else if(n<=4)txt="Половина схем. Такой проект с высокой вероятностью встанет — уточни приёмку и метрику сейчас.";
-else txt="Большинство признаков. Это профиль проекта, который не доходит до результата. Ничего не плати, пока не закроешь пункты из приёмки.";
+else txt="Большинство признаков. Это профиль проекта, который не доходит до результата. Если агент уже стоит — не начинай с нуля, начни с аудита и оптимизации.";
 document.getElementById("verdictText").textContent=txt;
 var ul=document.getElementById("todo");ul.innerHTML="";
 Object.keys(SCHEMA_CASES).forEach(function(k){
@@ -511,9 +518,11 @@ function goal(name){try{if(typeof window.ym==="function"&&window.__ymId)window.y
 (function(){
 function on(sel,fn){document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest(sel);if(t)fn(t);},true);}
 on('a[href*="calculator.html"]',function(){goal("cta_calculator");});
-on('a[href*="clarity.html"]',function(){goal("cta_clarity");});
+on('a[href*="clarity.html"]',function(){goal("cta_optimization");});
 on('a[href*="t.me/"]',function(){goal("tg_click");});
 on(".scheme",function(){goal("selfcheck_click");});
+on("#copyCheck",function(){goal("checklist_copy");});
+on("#dlCheck",function(){goal("checklist_download");});
 })();
 
 document.addEventListener("DOMContentLoaded",boot);
