@@ -116,17 +116,10 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.5r
 .tl .it.open .dtl{max-height:130px}
 .tl .dtl p{padding:0 4px 16px 118px}
 /* тумблер */
-.sw{display:inline-flex;gap:4px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:11px;padding:4px;font-family:var(--mono);font-size:12px;margin-bottom:14px}
-.sw button{appearance:none;background:none;border:none;color:var(--meta);font:inherit;padding:8px 14px;border-radius:8px;cursor:pointer;min-height:38px}
-.sw button[aria-pressed=true]{background:rgba(123,196,168,.16);color:var(--accent);font-weight:600;border:1px solid rgba(123,196,168,.4)}
 .cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:12px}
 .cmp .cc{border:1px solid var(--line);border-radius:12px;padding:16px 18px;transition:opacity .3s var(--ease),border-color .3s var(--ease)}
 .cmp .cc .ct{font-size:14.5px;color:var(--ink);font-weight:600;margin-bottom:6px}
 .cmp .cc .cd{font-size:13.5px;color:var(--meta)}
-.cmp.dim-mine .cc.mine{opacity:.32}
-.cmp.dim-foreign .cc.foreign{opacity:.32}
-.cmp.hi-foreign .cc.foreign{border-color:rgba(224,96,94,.4)}
-.cmp.hi-mine .cc.mine{border-color:rgba(123,196,168,.45);background:rgba(123,196,168,.05)}
 /* уравнение */
 .eq{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:6px}
 .er{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:baseline;padding:11px 18px;border-bottom:1px solid var(--line-soft);font-size:14.5px}
@@ -175,12 +168,21 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <div class="card rv"><div class="k">верхняя граница</div><div class="v"><span data-count="170">170</span> <small>тыс. человек</small></div><div class="money">≈ 4,3 <small>млрд ₽/год</small></div><div class="c">90-й перцентиль честного интервала</div></div>
 </div>
 <div class="grid one"><div class="loss-line rv">1–4,3 млрд ₽ в год платят российские пользователи за аккаунты, которые сгорают без предупреждения. Платежи невозвратны по условиям и Anthropic, и OpenAI — работу и данные не возместит никто.</div></div>
+<div class="grid one">
+<div class="card rv">
+<div class="k">проверка заголовков</div>
+<h2>Заголовки против расчёта</h2>
+<p class="sub">Сотри заголовок — увидь расчёт.</p>
+<div class="wipe" id="wide"><div class="p"><div class="lab">так пишут в заголовках</div><div class="big">1,5 млн</div><div class="d">глобальные баны Anthropic за полгода, подписанные «россияне»</div></div>
+<div class="top"><div class="p"><div class="lab">так посчитали мы</div><div class="big">39–170 тыс.</div><div class="d">честный интервал, рабочая оценка 86 тыс.</div></div></div></div>
+<div class="wctl"><span>заголовки</span><input id="ws" type="range" min="0" max="100" value="50" aria-label="Сравнение оценок"/><span>расчёт</span></div>
+</div>
 
 <div class="grid one">
 <div class="card rv">
-<div class="k">интерактив · воронка</div>
+<div class="k">методика · воронка</div>
 <h2>Как 11,4 млн банов превращаются в 86 тысяч</h2>
-<p class="sub">Тяни ползунок или жми на строку — где оседает число.</p>
+<p class="sub">Ползунок или клик по строке — деталь шага.</p>
 <div class="funnel" id="funnel"></div>
 <input class="slider" id="fs" type="range" min="0" max="8" value="8" aria-label="Стадия воронки"/>
 <div class="sl-hint"><span>старт · все баны</span><span>итог · живые люди в России</span></div>
@@ -188,15 +190,6 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 </div>
 </div>
 
-<div class="grid one">
-<div class="card rv">
-<div class="k">интерактив · проверка</div>
-<h2>Заголовки против расчёта</h2>
-<p class="sub">Потяни вправо — сотри заголовок, увидь расчёт.</p>
-<div class="wipe" id="wide"><div class="p"><div class="lab">так пишут в заголовках</div><div class="big">1,5 млн</div><div class="d">глобальные баны Anthropic за полгода, подписанные «россияне»</div></div>
-<div class="top"><div class="p"><div class="lab">так посчитали мы</div><div class="big">39–170 тыс.</div><div class="d">честный интервал, рабочая оценка 86 тыс.</div></div></div></div>
-<div class="wctl"><span>заголовки</span><input id="ws" type="range" min="0" max="100" value="50" aria-label="Сравнение оценок"/><span>расчёт</span></div>
-</div>
 </div>
 
 <div class="grid one">
@@ -222,9 +215,9 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 </div>
 </div>
 
-<div class="grid two">
+<div class="grid one">
 <div class="card rv">
-<div class="k">интерактив · таймлайн</div>
+<div class="k">хронология</div>
 <h2>Как это происходило</h2>
 <p class="sub">Клик по дате — деталь волны.</p>
 <div class="tl" id="tl">
@@ -236,34 +229,12 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 <div class="it"><button aria-expanded="false"><span class="dt">07.09.2026</span><span class="tt">chatgpt.com не открывается: обрыв на TLS-рукопожатии</span><span class="ar">›</span></button><div class="dtl"><p>Смена DNS не помогает, атрибуция открыта. Источник: The Moscow Times, hi-tech.mail.</p></div></div>
 </div>
 </div>
-<div class="card rv">
-<div class="k">уравнение</div>
-<h2>Прозрачная цепочка</h2>
-<p class="sub">Каждый шаг оспорим.</p>
-<div class="eq">
-<div class="er"><span>Баны Anthropic, H1 2026</span><span class="f">факт</span><span class="n">11 400 000</span></div>
-<div class="er"><span>За регион и обход доступа</span><span class="f">× 5–25%</span><span class="n">570K – 2,85M</span></div>
-<div class="er"><span>Доля России</span><span class="f">× 12–45%</span><span class="n">~ 395 000</span></div>
-<div class="er"><span>Повторные баны аккаунта</span><span class="f">÷ 1,0–2,0</span><span class="n">~ 264 000</span></div>
-<div class="er"><span>Живые, не боты и фермы</span><span class="f">× 30–60%</span><span class="n">~ 119 000</span></div>
-<div class="er"><span>Аккаунтов на человека</span><span class="f">÷ 2,5–5,0</span><span class="n">~ 34 000</span></div>
-<div class="er"><span>Мёртв навсегда</span><span class="f">× 80–97%</span><span class="n">~ 30 500</span></div>
-<div class="er"><span>Второе полугодие тяжелее</span><span class="f">× 2,0–2,5</span><span class="n">~ 69 000</span></div>
-<div class="er fin"><span>Плюс потери ChatGPT</span><span class="f">× 1,15–1,40</span><span class="n">≈ 86 000</span></div>
 </div>
-</div>
-</div>
-
 <div class="grid one">
 <div class="card rv">
 <div class="k">интерактив · выбор</div>
 <h2>Где стоит твоя система</h2>
-<p class="sub">Что теряешь и что сохраняешь.</p>
-<div class="sw" role="group" aria-label="Сравнение инфраструктур">
-<button data-c="foreign" aria-pressed="false">чужая</button>
-<button data-c="mine" aria-pressed="false">своя</button>
-<button data-c="all" aria-pressed="true">обе</button>
-</div>
+
 <div class="cmp" id="cmp">
 <div class="cc foreign"><div class="ct">Рубильник у них</div><div class="cd">Платформа решает, когда закрыть доступ. Гео и проверка личности — достаточная причина.</div></div>
 <div class="cc foreign"><div class="ct">Данные уходят с аккаунтом</div><div class="cd">Чаты, проекты и код удаляются вместе с профилем. Подписку при блокировке обычно не возвращают, работу — тем более.</div></div>
@@ -277,9 +248,9 @@ h1,h2{text-wrap:balance}p,li{text-wrap:pretty}
 
 <div class="grid one">
 <div class="card rv" id="personal">
-<div class="k">интерактив · личный счёт</div>
+<div class="k">твой счёт</div>
 <h2>Сколько в этом твоих денег</h2>
-<p class="sub">Одна цифра — та, что платишь каждый месяц.</p>
+<p class="sub">Впиши свою месячную сумму.</p>
 <div class="ms-row">
 <input class="ms-input" id="ms-in" type="number" min="0" step="100" value="2000" inputmode="numeric" aria-label="Сколько ты платишь за ИИ-сервисы в месяц"/>
 <span class="ms-per">₽ в месяц за ChatGPT / Claude / прочее</span>
@@ -373,18 +344,6 @@ d.querySelectorAll('#tl .it button').forEach(function(b){
 b.addEventListener('click',function(){
 var it=b.parentElement, open=it.classList.toggle('open');
 b.setAttribute('aria-expanded',String(open));
-});
-});
-/* ---------- тумблер сравнения ---------- */
-var cmp=d.getElementById('cmp');
-d.querySelectorAll('.sw button').forEach(function(b){
-b.addEventListener('click',function(){
-d.querySelectorAll('.sw button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
-var m=b.getAttribute('data-c');
-if(!cmp)return;
-cmp.className='cmp';
-if(m==='foreign')cmp.classList.add('dim-mine','hi-foreign');
-else if(m==='mine')cmp.classList.add('dim-foreign','hi-mine');
 });
 });
 /* ---------- reveal + счётчики ---------- */
