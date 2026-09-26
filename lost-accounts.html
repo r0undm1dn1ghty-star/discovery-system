@@ -66,6 +66,48 @@ nav.top a.cur{color:var(--accent)}
 .sc .c{font-size:13.5px;color:var(--meta)}
 .track{height:6px;border-radius:3px;background:rgba(255,255,255,.06);margin-top:14px;overflow:hidden}
 .fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),rgba(123,196,168,.45))}
+.money{font-family:var(--mono);font-weight:600;font-size:14px;color:#f0a09e;letter-spacing:.04em;margin:2px 0 8px}
+.money.acc{color:#f0a09e}
+.tl2{margin:28px 0}
+.tl2 .it{border-bottom:1px solid var(--line-soft)}
+.tl2 .it:last-child{border-bottom:none}
+.tl2 button{width:100%;appearance:none;background:none;border:none;font:inherit;color:inherit;text-align:left;cursor:pointer;display:grid;grid-template-columns:104px 1fr 22px;gap:14px;align-items:center;padding:16px 4px;min-height:56px;transition:background .18s var(--ease)}
+.tl2 button:hover{background:rgba(255,255,255,.03)}
+.tl2 .dt{font-family:var(--mono);font-size:13.5px;color:var(--accent);white-space:nowrap}
+.tl2 .tt{font-size:16px;color:var(--body)}
+.tl2 .ar{color:var(--meta);font-family:var(--mono);transition:transform .25s var(--ease);text-align:right}
+.tl2 .it.open .ar{transform:rotate(90deg)}
+.tl2 .dtl{max-height:0;overflow:hidden;transition:max-height .35s var(--ease);color:var(--meta);font-size:15px}
+.tl2 .it.open .dtl{max-height:200px}
+.tl2 .dtl p{padding:0 4px 16px 118px;margin:0}
+@media(max-width:760px){.tl2 button{grid-template-columns:88px 1fr 18px;gap:10px}.tl2 .dtl p{padding-left:0}}
+.funnel-box{margin:34px 0 8px;border:1px solid var(--line);border-radius:14px;padding:26px 28px;background:rgba(255,255,255,.02)}
+.funnel{margin-top:6px}
+.frow{display:grid;grid-template-columns:1fr 118px 96px;gap:18px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line-soft);cursor:pointer;transition:background .18s var(--ease)}
+.frow:last-child{border-bottom:none}
+.frow:hover,.frow.on{background:rgba(123,196,168,.05)}
+.frow .fl{font-size:15px;color:var(--body);padding-right:8px}
+.frow .fl b{color:var(--ink);font-weight:600}
+.frow .fb{height:10px;border-radius:5px;background:rgba(255,255,255,.07);overflow:hidden;min-width:6px}
+.frow .fb i{display:block;height:100%;background:var(--accent);border-radius:5px;transition:width .5s var(--ease)}
+.frow .fn{font-family:var(--mono);font-size:13.5px;color:var(--ink);text-align:right;white-space:nowrap;padding-right:2px}
+.frow.fin .fl b{color:var(--accent)}
+.frow.fin .fn{color:var(--accent);font-weight:600}
+.slider{width:100%;accent-color:#7bc4a8;height:34px;margin-top:14px}
+.sl-hint{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--meta);display:flex;justify-content:space-between;margin-top:-2px}
+.stage-note{font-size:15px;color:var(--body);border-left:3px solid var(--accent);background:rgba(123,196,168,.05);padding:14px 18px;margin-top:16px;min-height:20px}
+.stage-note b{font-family:var(--mono);font-size:14px;color:var(--accent);letter-spacing:.04em}
+@media(max-width:760px){.frow{grid-template-columns:1fr 74px;gap:10px}.frow .fb{display:none}}
+.personal{margin:36px 0;border:1px solid var(--line);border-radius:14px;padding:26px 28px;background:rgba(255,255,255,.02)}
+.ms-row{display:flex;align-items:center;gap:14px;margin:4px 0 10px;flex-wrap:wrap}
+.ms-input{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:var(--mono);font-size:24px;font-weight:600;padding:12px 16px;width:170px;outline:none;transition:border-color .15s}
+.ms-input:focus{border-color:var(--accent)}
+.ms-input::-webkit-outer-spin-button,.ms-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.ms-input[type=number]{-moz-appearance:textfield;appearance:textfield}
+.ms-per{font-family:var(--mono);font-size:13px;color:#a6b0c5;letter-spacing:.03em;padding-bottom:2px}
+.ms-src{font-family:var(--mono);font-size:12px;color:#a6b0c5}
+.ms-out{margin-top:14px;font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--ink);line-height:1.5}
+.ms-out b{color:#f0a09e;font-weight:800}
 table.data{width:100%;border-collapse:collapse;font-size:15.5px;margin:28px 0}
 table.data th{font-family:var(--mono);font-size:12.5px;color:var(--meta);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);letter-spacing:.06em;text-transform:uppercase}
 table.data td{padding:12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
@@ -128,7 +170,22 @@ footer{padding:70px 0 60px;border-top:1px solid var(--line-soft)}
 .sig-c a{color:var(--meta);text-decoration:none}
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
-@media(max-width:760px){body{font-size:17px}section{padding:80px 0}.hero{padding:110px 0 70px}nav.top{padding:14px 0}nav.top .wrap{gap:0 10px}nav.top a{font-size:13px;min-height:38px}nav.top a.home{flex-basis:100%;justify-content:center}table.data{font-size:14px}.tl .row{grid-template-columns:1fr;gap:4px}.cta-row .btn{width:100%}.stat3{grid-template-columns:1fr}.er{grid-template-columns:1fr;gap:2px}.er .f,.er .n{text-align:left}.own{grid-template-columns:1fr}.conflict{padding:24px 22px}}
+@media(max-width:760px){body{font-size:17px}section{padding:80px 0}.hero{padding:110px 0 70px}nav.top{padding:14px 0}nav.top .wrap{gap:0 10px}nav.top a{font-size:13px;min-height:38px}nav.top a.home{flex-basis:100%;justify-content:center}.money{font-family:var(--mono);font-weight:600;font-size:14px;color:#f0a09e;letter-spacing:.04em;margin:2px 0 8px}
+.money.acc{color:#f0a09e}
+.tl2{margin:28px 0}
+.tl2 .it{border-bottom:1px solid var(--line-soft)}
+.tl2 .it:last-child{border-bottom:none}
+.tl2 button{width:100%;appearance:none;background:none;border:none;font:inherit;color:inherit;text-align:left;cursor:pointer;display:grid;grid-template-columns:104px 1fr 22px;gap:14px;align-items:center;padding:16px 4px;min-height:56px;transition:background .18s var(--ease)}
+.tl2 button:hover{background:rgba(255,255,255,.03)}
+.tl2 .dt{font-family:var(--mono);font-size:13.5px;color:var(--accent);white-space:nowrap}
+.tl2 .tt{font-size:16px;color:var(--body)}
+.tl2 .ar{color:var(--meta);font-family:var(--mono);transition:transform .25s var(--ease);text-align:right}
+.tl2 .it.open .ar{transform:rotate(90deg)}
+.tl2 .dtl{max-height:0;overflow:hidden;transition:max-height .35s var(--ease);color:var(--meta);font-size:15px}
+.tl2 .it.open .dtl{max-height:200px}
+.tl2 .dtl p{padding:0 4px 16px 118px;margin:0}
+@media(max-width:760px){.tl2 button{grid-template-columns:88px 1fr 18px;gap:10px}.tl2 .dtl p{padding-left:0}}
+table.data{font-size:14px}.tl .row{grid-template-columns:1fr;gap:4px}.cta-row .btn{width:100%}.stat3{grid-template-columns:1fr}.er{grid-template-columns:1fr;gap:2px}.er .f,.er .n{text-align:left}.own{grid-template-columns:1fr}.conflict{padding:24px 22px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
 h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 </style>
@@ -142,9 +199,9 @@ h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 <h1 class="rv" style="transition-delay:.06s">Твой доступ к ИИ — не твой</h1>
 <p class="lead rv" style="transition-delay:.12s">Ты платишь за подписку, держишь в чатах проекты и код. Но рубильник — не у тебя. Мы посчитали, сколько людей в России уже это почувствовали.</p>
 <div class="stat3 rv" id="stat3" style="transition-delay:.18s">
-<div class="sc"><div class="k">нижняя граница</div><div class="v"><span data-count="39">39</span> <small>тыс.</small></div><div class="c">10-й перцентиль честного интервала</div><div class="track"><div class="fill" style="width:23%"></div></div></div>
-<div class="sc mid"><div class="k">центр</div><div class="v"><span data-count="86">86</span> <small>тыс.</small></div><div class="c">медиана — рабочая оценка</div><div class="track"><div class="fill" style="width:51%"></div></div></div>
-<div class="sc"><div class="k">верхняя граница</div><div class="v"><span data-count="170">170</span> <small>тыс.</small></div><div class="c">90-й перцентиль честного интервала</div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+<div class="sc"><div class="k">нижняя граница</div><div class="v"><span data-count="39">39</span> <small>тыс.</small></div><div class="money">≈ 1 <small>млрд ₽/год</small></div><div class="c">10-й перцентиль честного интервала</div><div class="track"><div class="fill" style="width:23%"></div></div></div>
+<div class="sc mid"><div class="k">центр</div><div class="v"><span data-count="86">86</span> <small>тыс.</small></div><div class="money acc">≈ 2,2 <small>млрд ₽/год</small></div><div class="c">медиана — рабочая оценка</div><div class="track"><div class="fill" style="width:51%"></div></div></div>
+<div class="sc"><div class="k">верхняя граница</div><div class="v"><span data-count="170">170</span> <small>тыс.</small></div><div class="money">≈ 4,3 <small>млрд ₽/год</small></div><div class="c">90-й перцентиль честного интервала</div><div class="track"><div class="fill" style="width:100%"></div></div></div>
 </div>
 <p class="hero-cap rv" style="transition-delay:.22s">потеряли аккаунт и не вернули старый за 2026 · это около четверти платящей аудитории</p>
 <div class="cta-row rv" style="transition-delay:.26s">
@@ -178,13 +235,13 @@ h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 <section><div class="wrap">
 <p class="eyebrow rv">хроника</p>
 <h2 class="rv">Как это происходило в 2026</h2>
-<div class="tl rv">
-<div class="row"><span class="d">08.05.2026</span><span class="e">Anthropic массово блокирует аккаунты из России — сотни пострадавших по данным Baza.<span>RBC, CNews, 08–12.05.2026 · профили удаляют вместе с данными, деньги за подписку возвращают</span></span></div>
-<div class="row"><span class="d">21.05.2026</span><span class="e">OpenAI усиливает защиту и бьёт по серому рынку перепродажи доступа.<span>Газета.ру, 21.05.2026 · цены у перекупов выросли</span></span></div>
-<div class="row"><span class="d">08.07.2026</span><span class="e">Claude вводит проверку личности через Persona: паспорт и селфи для помеченных аккаунтов.<span>Хабр, fillikam, theplanettools · провал проверки = перманентный лок без повтора</span></span></div>
-<div class="row"><span class="d">26.07.2026</span><span class="e">OpenRouter начинает отказывать части пользователей из России.<span>Хабр, 26.07.2026 · закрылся и маршрут через агрегатор</span></span></div>
-<div class="row"><span class="d">26.08.2026</span><span class="e">OpenAI блокирует группу аккаунтов за скрытую кампанию дезинформации.<span>The Moscow Times, CNews · это бан за нарушение, не за гео — путать нельзя</span></span></div>
-<div class="row"><span class="d">07.09.2026</span><span class="e">Жалобы на недоступность chatgpt.com: соединение рвётся на TLS-рукопожатии, смена DNS не помогает.<span>The Moscow Times, hi-tech.mail · атрибуция открыта</span></span></div>
+<div class="tl2 rv" id="tl">
+<div class="it"><button aria-expanded="false"><span class="dt">08.05.2026</span><span class="tt">Anthropic массово блокирует аккаунты из России</span><span class="ar">›</span></button><div class="dtl"><p>Сотни пострадавших по данным Baza. Профили удаляют вместе с данными; единичные возвраты за подписку — жест платформы, по условиям сервиса при блокировке рефанда нет. Источник: RBC, CNews.</p></div></div>
+<div class="it"><button aria-expanded="false"><span class="dt">21.05.2026</span><span class="tt">OpenAI бьёт по серому рынку перепродажи</span><span class="ar">›</span></button><div class="dtl"><p>Усиленная защита, цены у перекупов выросли. Источник: Газета.ру.</p></div></div>
+<div class="it"><button aria-expanded="false"><span class="dt">08.07.2026</span><span class="tt">Claude вводит проверку личности через Persona</span><span class="ar">›</span></button><div class="dtl"><p>Паспорт и селфи для помеченных аккаунтов. Провал проверки — перманентный лок без повтора. Источник: Хабр, fillikam.</p></div></div>
+<div class="it"><button aria-expanded="false"><span class="dt">26.07.2026</span><span class="tt">OpenRouter отказывает части пользователей из России</span><span class="ar">›</span></button><div class="dtl"><p>Закрывается маршрут и через агрегатор. Источник: Хабр.</p></div></div>
+<div class="it"><button aria-expanded="false"><span class="dt">26.08.2026</span><span class="tt">OpenAI блокирует группу аккаунтов за дезинформацию</span><span class="ar">›</span></button><div class="dtl"><p>Это бан за нарушение, не за гео — путать нельзя. Источник: The Moscow Times, CNews.</p></div></div>
+<div class="it"><button aria-expanded="false"><span class="dt">07.09.2026</span><span class="tt">chatgpt.com не открывается: обрыв на TLS-рукопожатии</span><span class="ar">›</span></button><div class="dtl"><p>Смена DNS не помогает, атрибуция открыта. Источник: The Moscow Times, hi-tech.mail.</p></div></div>
 </div>
 </div></section>
 <section><div class="wrap">
@@ -192,16 +249,13 @@ h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 <h2 class="rv">Сколько людей это уже задело</h2>
 <p class="rv">Опорная цифра — официальная: <b style="color:var(--ink)">11,4 млн заблокированных аккаунтов</b> за первое полугодие 2026 во всём мире, 398 тысяч апелляций, 42 тысячи отмен. Это данные самого Anthropic, открытые в Transparency Hub. Россия в разбивке не фигурирует — платформа не публикует баны по странам.</p>
 <p class="rv">Поэтому дальше — реконструкция. Мы прогнали 200 тысяч сценариев, где каждый шаг задан вилкой, а не одним числом, и учли, что шаги связаны между собой: когда волна блокировок сильнее, вместе растут и доля региональных банов, и доля России в них. Итог — честный интервал <span class="accent">от 39 до 170 тысяч человек</span>, рабочая оценка около 86 тысяч.</p>
-<div class="eq rv">
-<div class="er"><span>Баны Anthropic за первое полугодие 2026, весь мир</span><span class="f">Transparency Hub</span><span class="n">11 400 000</span></div>
-<div class="er"><span>Доля банов за регион и обход доступа</span><span class="f">× 5–25%</span><span class="n">570 000 – 2 850 000</span></div>
-<div class="er"><span>Доля России среди них</span><span class="f">× 12–45%</span><span class="n">~ 395 000</span></div>
-<div class="er"><span>Повторные баны одного аккаунта</span><span class="f">÷ 1,0–2,0</span><span class="n">~ 264 000</span></div>
-<div class="er"><span>Живые люди, а не боты и фермы</span><span class="f">× 30–60%</span><span class="n">~ 119 000</span></div>
-<div class="er"><span>Аккаунтов на одного человека</span><span class="f">÷ 2,5–5,0</span><span class="n">~ 34 000</span></div>
-<div class="er"><span>Старый аккаунт мёртв навсегда</span><span class="f">× 80–97%</span><span class="n">~ 30 500</span></div>
-<div class="er"><span>Второе полугодие тяжелее первого</span><span class="f">× 2,0–2,5</span><span class="n">~ 69 000</span></div>
-<div class="er fin"><span>Плюс потери ChatGPT за год</span><span class="f">× 1,15–1,40</span><span class="n">≈ 86 000</span></div>
+
+<div class="funnel-box rv">
+<p class="eyebrow" style="margin-bottom:14px">методика · воронка</p>
+<div class="funnel" id="funnel"></div>
+<input class="slider" id="fs" type="range" min="0" max="8" value="8" aria-label="Стадия воронки"/>
+<div class="sl-hint"><span>старт · все баны</span><span>итог · живые люди в России</span></div>
+<div class="stage-note" id="fn2" aria-live="polite"></div>
 </div>
 <p class="src rv">Оценка согласована с рынком: по независимой модели платящих подписчиков в России около 362 тысяч, и вероятность того, что потери превысят их число, — меньше 1%. Две модели не противоречат друг другу.</p>
 </div></section>
@@ -227,6 +281,15 @@ h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 <div class="risk rv"><span class="sev mid">средний</span><p><b>Серый рынок живёт недолго.</b> Готовые аккаунты продают за 25–200 долларов с коротким сроком жизни. Алгоритмы видят входы из разных точек планеты и банят мгновенно. Покупка аккаунта — аренда на недели.</p></div>
 <div class="risk rv"><span class="sev mid">средний</span><p><b>Верификатор сам тёк.</b> В феврале 2026 в сеть ушло 53 МБ исходного кода правительственного контура Persona — 2 456 файлов. Отдавать паспорт сервису с такой историей — отдельный риск.</p></div>
 <div class="risk rv"><span class="sev mid">средний</span><p><b>Обходные маршруты закрывают один за другим.</b> С 26.07.2026 OpenRouter начал отказывать части пользователей из России. Агрегатор — тоже чужая инфраструктура с тем же рубильником.</p></div>
+<div class="personal rv" id="personal">
+<p class="eyebrow" style="margin-bottom:14px">твой счёт</p>
+<div class="ms-row">
+<input class="ms-input" id="ms-in" type="number" min="0" step="100" value="2000" inputmode="numeric" aria-label="Сколько ты платишь за ИИ-сервисы в месяц"/>
+<span class="ms-per">₽ в месяц за ChatGPT / Claude / прочее</span>
+</div>
+<div class="ms-src">2 000 ₽ — медиана трат на ИИ в России · ТАСС / ППВМ, 09.2026</div>
+<div class="ms-out" id="ms-out" aria-live="polite"></div>
+</div>
 <div class="conflict rv">
 <p class="q">Вывод простой: пока твоя система стоит на чужой земле, ты не решаешь, когда она работает.</p>
 <p>Своя связка на российских провайдерах — это доступ, который не отключат за гео, и данные, которые остаются у тебя. Считается за минуту, собирается без студий и курсов.</p>
@@ -314,6 +377,49 @@ ioC.observe(el);
 }
 setTimeout(finalize,1500);
 }else{finalize();}
+/* ---------- личный счёт ---------- */
+var msi=d.getElementById('ms-in'), mso=d.getElementById('ms-out');
+function msCalc(){
+if(!msi||!mso)return;
+var m=parseFloat(String(msi.value).replace(',','.'));
+if(isNaN(m)||m<0){mso.innerHTML='';return;}
+m=Math.min(m,999999);
+var y=m*12;
+mso.innerHTML='За год это <b>'+Math.round(y).toLocaleString('ru-RU')+' ₽</b> — и вся история чатов, проекты, память. Блокировка приходит без предупреждения'+(m>0?' — и это не возвращается.':'.');
+}
+if(msi){msi.addEventListener('input',msCalc);msCalc();}
+/* ---------- воронка ---------- */
+var F=[
+ {l:'<b>Баны Anthropic</b>, H1 2026, весь мир', m:'Официальная цифра Transparency Hub. Почти все баны — за нарушения правил: спам, дистилляция, скам. Регион и обход доступа — лишь часть.', w:100, f:'11 400 000'},
+ {l:'Оставляем только <b>регион и обход доступа</b>', m:'Отсеиваем волну за нарушения. Остаётся enforcement по региональной политике — те баны, что задевают людей за гео, номер и VPN.', w:39, f:'× 5–25%'},
+ {l:'Доля <b>России</b> среди этих банов', m:'Россия — неподдерживаемый регион, поэтому формально нарушает с первой секунды. Долю восстанавливаем косвенно, через три индикатора.', w:24, f:'× 12–45%'},
+ {l:'Убираем <b>повторные баны</b> одного аккаунта', m:'В отчёте «заблокированные аккаунты» могут считаться как действия антифрода: одна волна чистит один аккаунт несколько раз. Дедуп — вилка от 1 до 2.', w:22, f:'÷ 1,0–2,0'},
+ {l:'Оставляем <b>живых людей</b>, не ботов и фермы', m:'Антифрод в первую очередь косит бот-фермы и серые кластеры. Живых пользователей среди банов — меньше половины.', w:17, f:'× 30–60%'},
+ {l:'Делим на <b>аккаунтов на человека</b>', m:'Один человек из России нередко держит два-три аккаунта: основной, резервный, купленный. Баны считают аккаунты, а вопрос — про людей.', w:11, f:'÷ 2,5–5,0'},
+ {l:'Старый аккаунт <b>мёртв навсегда</b>', m:'Апелляция спасает меньше одного процента от всех банов. Даже если человек завёл новый аккаунт, старый он не вернул — а вопрос именно про потерю.', w:10.7, f:'× 80–97%'},
+ {l:'Второе полугодие <b>тяжелее первого</b>', m:'Волна нарастала: май, июль, сентябрь. Здесь начинается оценка, а не факт из документа — мы это признаём открыто.', w:17.8, f:'× 2,0–2,5'},
+ {l:'Плюс потери <b>ChatGPT</b> за год', m:'OpenAI не публикует баны по странам вообще, поэтому добавляем оценку. Вместе с предыдущим шагом эти две оценки дают около 45% итога.', w:20, f:'≈ 86 000', fin:true}
+];
+var fw=d.getElementById('funnel'), fs=d.getElementById('fs'), note=d.getElementById('fn2');
+if(fw){
+F.forEach(function(st,i){
+var r=d.createElement('div');
+r.className='frow'+(st.fin?' fin':'');
+r.innerHTML='<span class="fl">'+st.l+'</span><span class="fb"><i style="width:0"></i></span><span class="fn">'+st.f+'</span>';
+r.addEventListener('click',function(){fs.value=i;upd(i);});
+fw.appendChild(r);
+});
+}
+function upd(i){
+var st=F[i];
+d.querySelectorAll('.frow').forEach(function(r,k){
+r.classList.toggle('on',k===i);
+var bar=r.querySelector('.fb i');
+if(bar)bar.style.width=F[k].w+'%';
+});
+note.innerHTML='<b>'+st.f+'</b> · '+st.m;
+}
+if(fs){fs.addEventListener('input',function(){upd(+fs.value);});upd(8);}
 var wr=d.getElementById('wipeRange'),wp=d.getElementById('wipe');
 if(wr&&wp){var set=function(){wp.style.setProperty('--split',wr.value+'%');};wr.addEventListener('input',set);set();}
 })();
