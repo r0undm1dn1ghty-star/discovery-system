@@ -398,5 +398,26 @@ window.addEventListener('scroll',upd,{passive:true});
 upd();
 })();
 </script>
-</body>
+<script>
+/* goal instrumentation — инертно до подключения счётчика: ym вызовется сам, dataLayer пишется всегда */
+function goal(name){
+  try{if(typeof window.ym==='function'&&window.__ymId)window.ym(window.__ymId,'reachGoal',name);
+  window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:name});}catch(e){}
+}
+</script><script>
+/* goal wiring: cta_calculator / tg_click / personal_calc / funnel_view */
+(function(){
+function on(sel,ev,fn){document.addEventListener(ev,function(e){var t=e.target.closest&&e.target.closest(sel);if(t)fn(t);},true);}
+on('a[href*="calculator.html"]','click',function(){goal('cta_calculator');});
+on('a[href*="t.me/"]','click',function(){goal('tg_click');});
+document.querySelectorAll('input[type=number],input[type=range]').forEach(function(inp){
+  inp.addEventListener('change',function(){goal('personal_calc');});
+});
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){goal('funnel_view');io.disconnect();}});},{threshold:.3});
+  var target=document.querySelector('.cache-calc,.vc-next,#benchmark,.conflict-grid')||document.querySelector('main');
+  if(target)io.observe(target);
+}else{goal('funnel_view');}
+})();
+</script></body>
 </html>
