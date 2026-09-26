@@ -6,7 +6,7 @@
 - [Главная — Discovery System](https://discovery-system.ru/): Герой-калькулятор «Сколько забирает твоя рутина», метод Шум→Экономика, вход в систему
 - [Рынок](https://discovery-system.ru/market.html): Что продают вместо системы — разбор альтернатив
 - [Система](https://discovery-system.ru/system.html): Пять открытых скиллов — warm-lead-parser, spiral-maturity, market-evidence-diagnostic, pnl-check, geo-audit-skill
-- [Ясность — форматы внедрения](https://discovery-system.ru/clarity.html): 0₽ калькулятор → 3К гайд 20 связок → 5К персональная сборка → 7/10/15К установка → оптимизация ИИ-агента от 20К (Tribute); подписки Tribute 2К/мес и 15К/мес
+- [Ясность — форматы внедрения](https://discovery-system.ru/clarity.html): 0₽ калькулятор → 3К гайд 20 связок → 5К персональная сборка → 7/10/15К установка → оптимизация ИИ-агента от 20К (Robokassa); подписки Tribute 2К/мес и 15К/мес
 - [Канал — сигналы](https://discovery-system.ru/channel.html): 10 сигналов с источниками и датами (Коммерсантъ, VK WorkSpace × Hi-Tech Mail, Т-Бизнес секреты, Gartner, Data Insight, Яндекс)
 - [Калькулятор](https://discovery-system.ru/calculator.html): 7 вопросов, считает часы и рубли — твоя рутина vs агент
 
