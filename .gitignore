@@ -1,0 +1,10 @@
+market-intel/
+_see_*.py
+_make_probe*.py
+_ocr_*.py
+_update_prices.py
+
+# локальные артефакты
+_shot_*.png
+_probe*.html
+_sw*.html

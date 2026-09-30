@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>Оплата получена — Discovery System</title>
+<link rel="icon" href="favicon-32.png" sizes="32x32"/>
+
+
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--ok:#5ed9a8;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;background-image:radial-gradient(900px 600px at 88% -6%,rgba(123,196,168,.10),transparent 60%),radial-gradient(700px 500px at 50% 106%,rgba(123,196,168,.05),transparent 60%);background-attachment:fixed;min-height:100vh}
+.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+main{padding:64px 0 40px}
+.mark{width:64px;height:64px;border-radius:50%;border:2px solid rgba(var(--accent-rgb),.5);background:rgba(var(--accent-rgb),.1);display:flex;align-items:center;justify-content:center;margin-bottom:28px}
+.mark svg{width:30px;height:30px;stroke:var(--ok);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+h1{color:var(--ink);font-family:var(--display);font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:700;letter-spacing:-.01em;margin:0 0 18px;text-wrap:balance}
+.lead{font-size:19px;color:var(--body);margin:0 0 32px;max-width:60ch}
+.sum-box{border:1px solid rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.05);border-radius:14px;padding:22px 24px;margin:0 0 36px;display:flex;gap:20px;align-items:baseline;flex-wrap:wrap}
+.sum-box .k{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);flex:0 0 auto}
+.sum-box .v{font-family:var(--mono);font-size:1.5rem;color:var(--ink);font-weight:600}
+.sum-box .p{flex:1 1 100%;font-size:15px;color:var(--body);margin:0}
+h2{color:var(--ink);font-family:var(--display);font-size:1.2rem;font-weight:600;margin:0 0 16px}
+.steps{list-style:none;border-top:1px solid var(--line-soft);margin:0 0 32px}
+.steps li{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid var(--line-soft);align-items:baseline;flex-wrap:wrap}
+.steps .n{font-family:var(--mono);font-size:12.5px;color:var(--accent);flex:0 0 26px}
+.steps .t{flex:1;min-width:200px;font-size:15.5px}
+.steps .t b{color:var(--ink)}
+.steps .s{font-family:var(--mono);font-size:12.5px;color:var(--meta);white-space:nowrap}
+.prep{border-left:2px solid rgba(var(--accent-rgb),.4);padding:2px 0 2px 18px;margin:0 0 32px}
+.prep .k{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
+.prep p{font-size:15.5px;color:var(--body);margin:0}
+.nxt{border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 32px;background:rgba(255,255,255,.02)}
+.nxt .k{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--meta);display:block;margin-bottom:10px}
+.nxt p{font-size:15.5px;color:var(--body);margin:0}
+.nxt b{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14);transition:background .15s,transform .15s}
+.btn:hover{background:#26895b;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line);margin-left:12px}
+.btn-ghost:hover{border-color:rgba(var(--accent-rgb),.4);background:rgba(var(--accent-rgb),.06);transform:none}
+.note{font-size:14px;color:var(--meta);margin:24px 0 0;line-height:1.65}
+.note a{color:var(--accent);text-decoration:underline}
+footer{border-top:1px solid var(--line-soft);margin-top:48px;padding:28px 0 56px}
+footer p{font-size:12.5px;color:var(--faint);margin:0 0 6px}
+footer a{color:var(--meta);text-decoration:underline}
+.tga{border:1px solid rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.05);border-radius:14px;padding:22px 24px;margin:0 0 14px}
+.tga .k{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px}
+.tga label{display:block;font-size:14.5px;color:var(--body);margin-bottom:8px}
+.tga input{width:100%;min-height:48px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);font-family:var(--sans);font-size:16px;margin-bottom:14px}
+.tga input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.tga .btn{width:100%}
+.tga-note{font-size:13.5px;color:var(--meta);margin:14px 0 0;line-height:1.6}
+.tga-note a{color:var(--accent);text-decoration:underline}
+@media(max-width:640px){.wrap{padding:0 18px}main{padding:44px 0 32px}.btn{width:100%;margin-left:0}.btn-ghost{margin:10px 0 0}}
+</style>
+<script src="ym-slot.js" defer></script>
+</head>
+<body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<main><div class="wrap">
+<div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+<h1>Оплата получена. Спасибо.</h1>
+<p class="lead">Платёж прошёл. Ниже — что происходит дальше <b style="color:var(--ink)">по твоему продукту</b>: что делаю я, что нужно от тебя и в какой срок.</p>
+
+<div class="sum-box" id="sumBox" hidden>
+<span class="k">сумма</span><span class="v" id="sumVal">—</span>
+<p class="p" id="sumProd"></p>
+</div>
+
+<div id="detail">
+<h2>Что дальше</h2>
+<ul class="steps" id="steps"></ul>
+
+<div class="prep" id="prepBox">
+<span class="k">что нужно от тебя</span>
+<p id="prepText">Ничего. Дальше веду я.</p>
+</div>
+
+<div class="nxt" id="nxtBox">
+<span class="k">следующий шаг по желанию</span>
+<p id="nxtText"></p>
+</div>
+</div>
+
+<div class="tga">
+<span class="k">чтобы я сразу отдал результат</span>
+<label for="tgIn">Твой Telegram</label>
+<input id="tgIn" type="text" inputmode="text" autocomplete="off" placeholder="@username или ссылка t.me/…"/>
+<button class="btn" id="tgBtn" type="button">Отправить мне заявку в Telegram →</button>
+<p class="tga-note">Одна кнопка: откроется чат со мной, где уже будет сумма, продукт и твой ник. Тебе останется только нажать «отправить». Если Telegram не под рукой — напиши на <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>.</p>
+</div>
+<a class="btn btn-ghost" href="services.html">Все услуги →</a>
+
+<p class="note">Не видишь оплату у себя в банке? Иногда банк показывает списание с задержкой до нескольких минут — это нормально. Если что-то не так: <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a> или <a href="https://t.me/soulvictor" target="_blank" rel="noopener">Telegram</a>. Возврат до передачи материала — полная сумма, без вычетов.</p>
+</div></main>
+
+<footer><div class="wrap">
+<p>Discovery System · Зайцев Виктор Павлович, самозанятый (НПД) · ИНН 780627413110</p>
+<p><a href="oferta.html">оферта</a> · <a href="policy.html">политика обработки данных</a> · <a href="services.html">услуги</a></p>
+</div></footer>
+
+<script>
+/* Что показать после оплаты. Продукт определяется по сумме (Robokassa → OutSum),
+   либо по параметру ?p= (на случай прямого перехода). У каждого продукта — свой
+   следующий шаг по CJM: что делаю я, что нужно от клиента, чем логично продолжить.
+   Если не распознали — общий текст, клиент пишет в Telegram. */
+(function(){
+  var P=[
+    {k:'guide', v:3000, n:'Гайд «20 конфигураций»',
+     d:'Цифровой материал. Доступ приходит в течение 15 минут в рабочие часы (не позднее 24 часов) — ссылку пришлю в Telegram.',
+     steps:[['01','Пришлю доступ в Telegram — оттуда заберёшь гайд','15 мин'],['02','Собираешь связку по таблице за 3–4 часа, без кода','сам'],['03','Упрёшься в вопрос — пиши, отвечу без доплаты','по желанию']],
+     prep:'Готовить ничего не нужно. Проверь, что Telegram открыт — туда придёт доступ.',
+     nxt:'Хочешь, чтобы связку собрал я под твою рутину? Персональная сборка — <b>5 000 ₽</b>, гайд уже оплачен, доплата <b>2 000 ₽</b>.'},
+
+    {k:'build', v:5000, n:'Персональная сборка',
+     d:'Связка под твою рутину. Сначала короткий созвон, потом собираю и правлю, пока не заработает у тебя.',
+     steps:[['01','Договоримся о созвоне — 30 минут, разберём твою рутину','в течение дня'],['02','Собираю связку под твой процесс','24 часа'],['03','Проверяешь на своих задачах. Не работает — правлю до приёмки','до приёмки']],
+     prep:'Нужны: 30 минут на созвон, доступы к Telegram и таблицам, обратная связь по сценариям. Всё скажу на созвоне — по шагам.',
+     nxt:'Когда связка заработает, её можно поставить «под ключ» и забыть про настройку: <b>установка от 7 000 ₽</b> (сборка входит в цену).'},
+
+    {k:'pc', v:7000, n:'Установка на ПК',
+     d:'Ставлю агента на твоё устройство — данные остаются локально, без VPS и аренды. Работает, пока включён ПК.',
+     steps:[['01','Договоримся о времени — работаю по AnyDesk, при тебе','по согласованию'],['02','Устанавливаю и настраиваю связку','~2 часа'],['03','Тестируем на твоих задачах, пока не заработает как надо','до приёмки']],
+     prep:'Нужны: включённый ПК, доступ по AnyDesk и токены ботов, если они есть. Проверю на месте.',
+     nxt:'Понадобится работа 24/7 без включённого ПК — переедем на VPS: <b>10 000 ₽</b>.'},
+
+    {k:'vps', v:10000, n:'Установка на VPS',
+     d:'Развёртываю агента на РФ-сервере: работает 24/7, доступен с ПК, телефона и из Telegram.',
+     steps:[['01','Договоримся о времени, подключусь по AnyDesk','по согласованию'],['02','Разворачиваю на VPS и подключаю каналы','~2 часа'],['03','Тестируем на твоих задачах до приёмки','до приёмки']],
+     prep:'Нужны: доступы к VPS и Telegram. Сервер оплачиваешь провайдеру напрямую — около <b>400 ₽/мес</b>, мне за хостинг ничего.',
+     nxt:'Нужно связать агента с CRM, Авито или потоком заявок? Это <b>интеграция, 15 000 ₽</b>.'},
+
+    {k:'integ', v:15000, n:'Интеграция для МСБ/самозанятых',
+     d:'ИИ-ассистент и автоматизация одного бизнес-процесса: подключаю Telegram, CRM или поток заявок из Авито.',
+     steps:[['01','Созвон: разберём процесс и точки, где теряются заявки','в течение дня'],['02','Подключаю агента к твоим системам','по согласованию'],['03','Тест на 5 реальных заявках — смотрим, что дошло и что нет','до приёмки']],
+     prep:'Нужны: токены ботов, доступ к CRM или Авито, доступ к VPS. Всё соберём на созвоне — я скажу, что именно.',
+     nxt:'Процесс запущен. Если захочешь регулярный разбор и помощь по связке — <b>поддержка 15 000 ₽/мес</b>.'},
+
+    {k:'opt', v:20000, n:'Оптимизация ИИ-агента',
+     d:'Аудит текущей связки, пересборка промптов, модели и логики, замер «до / после». Старт от 3 дней — точный срок назову после аудита.',
+     steps:[['01','Аудит: смотрю, где утекают токены, время и качество','2–3 дня'],['02','Пересобираю связку под задачу','после аудита'],['03','Замер «до / после»: расход, скорость, качество ответов','по объёму']],
+     prep:'Нужны: доступ к текущей связке и статистика расходов. Объём и цену согласуем до начала работ.',
+     nxt:'Если после оптимизации понадобится регулярная помощь — <b>поддержка 15 000 ₽/мес</b>, ответ до 4 часов.'},
+
+    {k:'insights', v:2000, n:'Инсайты Discovery System',
+     d:'Подписка активна. Материалы приходят в Telegram — 1–2 в месяц: сигналы с источниками и датами.',
+     steps:[['01','Доступ к закрытому каналу открылся автоматически','сразу'],['02','Материалы приходят 1–2 раза в месяц','весь период'],['03','Отмена — в любой момент, доступ сохраняется до конца периода','когда угодно']],
+     prep:'Ничего. Проверь Telegram — канал уже доступен.',
+     nxt:'Понадобится разбор конкретно твоей связки — это <b>персональная поддержка 15 000 ₽/мес</b>.'}
+  ];
+
+  var q=new URLSearchParams(location.search);
+  var raw=q.get('OutSum')||q.get('outsum')||'';
+  var sum=parseFloat(String(raw).replace(',','.'));
+  var pk=(q.get('p')||'').toLowerCase();
+  var hit=null;
+
+  if(pk){for(var j=0;j<P.length;j++){if(P[j].k===pk){hit=P[j];break;}}}
+  if(!hit&&!isNaN(sum)&&sum>0){
+    for(var i=0;i<P.length;i++){if(Math.abs(P[i].v-sum)<1){hit=P[i];break;}}
+  }
+
+  if(!isNaN(sum)&&sum>0){
+    var box=document.getElementById('sumBox');
+    if(box) box.hidden=false;
+    var val=document.getElementById('sumVal');
+    if(val) val.textContent=sum.toLocaleString('ru-RU')+' ₽';
+  }
+
+  if(hit){
+    var prod=document.getElementById('sumProd');
+    if(prod) prod.innerHTML='<b style="color:var(--ink)">'+hit.n+'</b> — '+hit.d;
+    var box2=document.getElementById('sumBox'); if(box2) box2.hidden=false;
+    var val2=document.getElementById('sumVal'); if(val2&&!(sum>0)) val2.textContent=hit.v.toLocaleString('ru-RU')+' ₽';
+    var ul=document.getElementById('steps'); if(ul){ul.innerHTML=hit.steps.map(function(s){return '<li><span class="n">'+s[0]+'</span><span class="t">'+s[1]+'</span><span class="s">'+s[2]+'</span></li>';}).join('');}
+    var pt=document.getElementById('prepText'); if(pt) pt.textContent=hit.prep;
+    var nt=document.getElementById('nxtText'); if(nt) nt.innerHTML=hit.nxt;
+  } else {
+    var d2=document.getElementById('detail'); if(d2) d2.hidden=true;
+    var pb=document.getElementById('prepBox'); if(pb) pb.hidden=true;
+    var nb=document.getElementById('nxtBox'); if(nb) nb.hidden=true;
+    var sb=document.getElementById('sumBox');
+    if(sb){sb.hidden=false;var sp=document.getElementById('sumProd');if(sp)sp.textContent='Сумму не распознали автоматически — напиши в Telegram, что оплатил, и я сразу отдам результат.';}
+  }
+
+  /* ── Заявка в Telegram без сервера ──
+     Robokassa возвращает только сумму (OutSum). Контакт клиента мы не знаем.
+     Решение: клиент вводит свой ник на этой странице — кнопка открывает чат
+     с Виктором, где уже подставлены сумма, продукт и ник. Клиенту остаётся
+     нажать «отправить», Виктору — сразу видеть, кто оплатил и что. */
+  var TG='https://t.me/soulvictor';
+  var btn=document.getElementById('tgBtn');
+  var inp=document.getElementById('tgIn');
+  function buildOrder(){
+    var lines=['Оплата прошла.'];
+    if(hit) lines.push('Продукт: '+hit.n);
+    if(!isNaN(sum)&&sum>0) lines.push('Сумма: '+sum.toLocaleString('ru-RU')+' ₽');
+    var nick=(inp&&inp.value||'').trim().replace(/^https?:\/\/t\.me\//i,'').replace(/^@/,'');
+    if(nick) lines.push('Мой Telegram: @'+nick);
+    lines.push('Отдайте, пожалуйста, результат — жду.');
+    return lines.join('\n');
+  }
+  if(btn){
+    btn.addEventListener('click',function(){
+      var nick=(inp&&inp.value||'').trim();
+      if(!nick){
+        if(inp){inp.focus();inp.style.borderColor='rgba(224,164,88,.6)';}
+        btn.textContent='Сначала укажи свой ник ↑';
+        setTimeout(function(){btn.textContent='Отправить мне заявку в Telegram →';},2200);
+        return;
+      }
+      window.open(TG+'?text='+encodeURIComponent(buildOrder()),'_blank','noopener');
+    });
+  }
+  if(inp){inp.addEventListener('input',function(){inp.style.borderColor='';});}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Что сделано — Discovery System</title>
+<meta name="description" content="Один кейс, разобранный по цифрам: что было до, что стало после, сколько стоит содержание. Плюс открытые инструменты, которые можно проверить."/>
+<link rel="canonical" href="https://discovery-system.ru/proof.html"/>
+<meta property="og:title" content="Что сделано — Discovery System"/>
+<meta property="og:description" content="До и после на реальном кейсе. Инструменты открыты — можно проверить."/>
+<meta property="og:url" content="https://discovery-system.ru/proof.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Discovery System"/>
+<link rel="icon" href="favicon-32.png" sizes="32x32"/>
+
+
+<link href="fonts/fonts.css" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--ok:#5ed9a8;--warn:#e0a458;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;background-image:radial-gradient(900px 600px at 88% -6%,rgba(123,196,168,.08),transparent 60%),radial-gradient(700px 500px at 50% 106%,rgba(123,196,168,.04),transparent 60%);background-attachment:fixed}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+section{padding:64px 0}
+h1,h2{color:var(--ink);font-family:var(--display);line-height:1.14;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 24px}
+h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 14px}
+h3{color:var(--ink);font-family:var(--display);font-weight:600;font-size:1.2rem;margin:0 0 10px}
+p{margin:0 0 20px;text-wrap:pretty}
+a{color:var(--ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+nav.top{padding:28px 0}
+nav.top .wrap{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:center}
+nav.top a{color:var(--meta);text-decoration:none;font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+nav.top a:hover{color:var(--ink)}
+nav.top img{height:28px;width:auto;border-radius:4px}
+nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
+nav.top a.cur{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.hero{padding:56px 0 20px;text-align:center}
+.hero .sub{color:var(--accent);font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;font-family:var(--mono)}
+.hero .lead{max-width:660px;margin:0 auto;font-size:19px;color:var(--body)}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
+.lead-block{font-size:16px;color:var(--body);max-width:70ch;margin:0 0 26px}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 22px}
+.ba-col{border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;background:rgba(255,255,255,.03)}
+.ba-col.before{border-color:rgba(224,164,88,.22)}
+.ba-col.after{border-color:rgba(123,196,168,.42);background:rgba(123,196,168,.05)}
+.ba-h{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.ba-col.before .ba-h{color:var(--warn)}
+.ba-col.after .ba-h{color:var(--accent)}
+.ba-col ul{list-style:none}
+.ba-col li{font-size:15px;color:var(--body);padding:7px 0 7px 20px;position:relative;border-bottom:1px solid var(--line-soft)}
+.ba-col li:last-child{border-bottom:none}
+.ba-col li:before{content:'';position:absolute;left:0;top:15px;width:6px;height:6px;border-radius:50%}
+.ba-col.before li:before{background:var(--warn)}
+.ba-col.after li:before{background:var(--accent)}
+.ba-col li b{color:var(--ink)}
+.money{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:0 0 18px}
+.m-item{border:1px solid var(--line-soft);border-radius:12px;padding:16px 16px 14px;background:rgba(255,255,255,.02)}
+.m-item .n{display:block;font-family:var(--display);font-size:1.5rem;font-weight:700;color:var(--ink);line-height:1.2}
+.m-item .n.accent{color:var(--accent)}
+.m-item .t{font-size:13px;color:var(--meta);line-height:1.5}
+.story{border-left:2px solid rgba(var(--accent-rgb),.4);padding:2px 0 2px 20px;margin:0 0 22px}
+.story p{font-size:15.5px;margin:0 0 12px}
+.story p:last-child{margin:0}
+.story b{color:var(--ink)}
+.tool{border:1px solid var(--line-soft);border-radius:12px;padding:18px 20px;background:rgba(255,255,255,.02);margin-bottom:12px}
+.tool .t-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.tool .t-n{color:var(--ink);font-family:var(--mono);font-weight:600;font-size:15px}
+.tool .t-s{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.tool p{font-size:14.5px;color:var(--body);margin:0}
+.tool p b{color:var(--ink)}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;transition:background .15s,transform .15s,border-color .15s}
+.btn-primary{background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14)}
+.btn-primary:hover{background:#26895b;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:rgba(var(--accent-rgb),.4);background:rgba(var(--accent-rgb),.06)}
+footer{border-top:1px solid var(--line-soft);margin-top:40px;padding:40px 0 64px}
+.sig{display:flex;gap:16px;align-items:center;margin-bottom:20px}
+.sig-photo{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.sig-text{display:flex;flex-direction:column;gap:3px}
+.sig-name{color:var(--ink);font-weight:600;font-size:16px}
+.sig-role{color:var(--meta);font-size:14px}
+.sig-tg{color:var(--accent);text-decoration:none;font-size:14.5px}
+.sig-c{font-size:13px;color:var(--faint);margin:0 0 6px}
+.sig-c a{color:var(--meta);text-decoration:underline}
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+@media(max-width:760px){
+.wrap{padding:0 18px}
+section{padding:48px 0}
+.ba{grid-template-columns:1fr}
+.btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*{animation:none!important;transition:none!important}
+.js .rv{opacity:1;transform:none}
+}
+</style>
+<script src="ym-slot.js" defer></script>
+</head>
+<body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<nav class="top" aria-label="Основная навигация"><div class="wrap">
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="services.html">услуги</a><a class="cur" href="proof.html">что сделано</a><a href="channel.html">канал</a><a href="calculator.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:4px">Калькулятор</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<p class="sub rv">что сделано · на реальных цифрах</p>
+<h1 class="rv" style="transition-delay:.06s">Учёт перестал зависеть<br>от одного человека</h1>
+<p class="lead rv" style="transition-delay:.12s">Один кейс, разобранный до цифр: что было до, что стало после, сколько стоит содержание. Плюс открытые инструменты, которые можно проверить самому.</p>
+</div></header>
+
+<main>
+<section><div class="wrap">
+<p class="eyebrow rv">кейс · закрыт 11.09.2026</p>
+<h2 class="rv">До и после</h2>
+<p class="lead-block rv">Владелец нескольких направлений. Учёт — в Google Таблицах, работа — из Telegram, в ИИ до этого ноль. Пришёл с задачей «не тонуть в записях и сводках».</p>
+<div class="ba rv">
+<div class="ba-col before">
+<div class="ba-h">до · руками</div>
+<ul>
+<li>Каждый приход и расход — вручную в таблицу</li>
+<li>Сотрудники диктуют цифры голосом в чат — он переносит сам</li>
+<li>Сводки по сменам собирает вечером, вручную</li>
+<li>«Что мы решили вчера?» — листает переписку</li>
+<li>Учёт работает, только когда он за компьютером</li>
+</ul>
+</div>
+<div class="ba-col after">
+<div class="ba-h">после · агент</div>
+<ul>
+<li>Диктует голосом — строка сама падает в таблицу</li>
+<li>Сотрудники пишут боту — записи с их именами, без него</li>
+<li>Сводка приходит сама: утром 9:00 и вечером 21:00</li>
+<li>Помнит вчерашние разговоры — отвечает фактами</li>
+<li>Работает 24/7 на его сервере, доступ с телефона</li>
+</ul>
+</div>
+</div>
+<div class="story rv">
+<p><b>Что было главным.</b> Он не «хотел попробовать ИИ». Он хотел, чтобы рутина перестала зависеть от него лично — и чтобы это не сломалось через неделю.</p>
+<p><b>Что получилось.</b> Связка работает на его сервере, данные у него. Через неделю он вернулся и попросил личный чат с агентом — собрали за час. Через месяц — гайд, как размножить агента на новые задачи. <b>Три оплаты за месяц — потому что результат работал, а не потому что я продал.</b></p>
+</div>
+<div class="money rv">
+<div class="m-item"><span class="n accent">17 000 ₽</span><span class="t">итого по кейсу, тремя платежами</span></div>
+<div class="m-item"><span class="n">~2 ч</span><span class="t">работы на приёмку</span></div>
+<div class="m-item"><span class="n">3 400–5 400 ₽</span><span class="t">сервис клиента/мес — провайдерам, не мне</span></div>
+<div class="m-item"><span class="n">0 ₽</span><span class="t">абонентка мне — связка работает без меня</span></div>
+</div>
+<p class="rv" style="font-size:14px;color:var(--meta)">Сборка 12 500 ₽ (11.09) · личный чат 1 500 ₽ (02.09) · гайд «Размножение 1→4» 3 000 ₽ (06.09). Имя и стек клиента не публикую — это его контур.</p>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow rv">не на слово — проверь</p>
+<h2 class="rv">Пять инструментов, открытых на GitHub</h2>
+<p class="lead-block rv">Помимо услуг я делаю рабочие инструменты — и выкладываю их открыто. Не «мы лучшие», а конкретный замер: что измеряет, с каким результатом, против чего. Можно склонировать и прогнать самому.</p>
+<div class="rv">
+<div class="tool"><div class="t-h"><span class="t-n">warm-lead-parser</span><span class="t-s">63% точности</span></div><p>Читает 57 Telegram-каналов и 7 бирж, отсеивает вакансии и резюме, отдаёт заказы с оценкой готовности платить. <b>Против 47% у поиска по словам</b>; на FL.ru — 79% на 286 постах.</p></div>
+<div class="tool"><div class="t-h"><span class="t-n">geo-audit-skill</span><span class="t-s">AUC 0.81</span></div><p>Проверяет 92 правила технической готовности и 6 измерений контента: найдёт ли ChatGPT/Perplexity сайт. Score 0–100 за 10 минут. <b>Против 0.48 — случайного угадывания.</b></p></div>
+<div class="tool"><div class="t-h"><span class="t-n">market-evidence-diagnostic</span><span class="t-s">5/5 вердиктов</span></div><p>Отделяет реальный спрос от вежливых лайков. Каждое утверждение о рынке — с источником и датой; чего данные не доказывают — так и написано.</p></div>
+<div class="tool"><div class="t-h"><span class="t-n">pnl-check</span><span class="t-s">3/3 ловушки</span></div><p>Сверяет прибыль с деньгами, дебиторку, долг — показывает, где цифры подтверждены, а где догадка. Годится ли принимать решение на этой таблице.</p></div>
+<div class="tool"><div class="t-h"><span class="t-n">spiral-maturity</span><span class="t-s">4/4 ступени</span></div><p>Ставит две оценки: на каком уровне ценностей живёт компания и на какой ступени агентной лестницы стоит A0–A4. Из пересечения — формат внедрения, который переживёт пилот.</p></div>
+</div>
+<p class="rv" style="font-size:14px;color:var(--meta)">Источник — EVAL.md в репозитории каждого инструмента, прогон 26.09.2026. Где инструмент проигрывает — написано в его же файле.</p>
+<div class="cta-row rv">
+<a class="btn btn-primary" href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">Открыть на GitHub →</a>
+<a class="btn btn-ghost" href="system.html">Как они работают →</a>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow rv">почему этому можно верить</p>
+<h2 class="rv">Три причины, а не обещания</h2>
+<div class="rv">
+<div class="tool"><h3>Работаю на этой же системе сам</h3><p>Discovery System — не витрина под продажу, а мой рабочий контур: агент, память, скиллы, рыночная разведка. Кейс выше — из моего окружения: я собирал ему то же, что собираю тебе. Продукт, которым не пользуешься сам, продавать нельзя — это чувствуется.</p></div>
+<div class="tool"><h3>Показываю грабли, а не только результат</h3><p>Витрины показывают успех. Я называю то, что ломалось: OAuth Google Sheets не доезжает (решение — сервисный аккаунт); 4 ГБ VPS мало под голос (стандарт — 8 ГБ); VK-боты требуют верификации бизнеса. По этим граблям видно, что путь реально пройден.</p></div>
+<div class="tool"><h3>Один кейс с цифрами вместо двадцати без них</h3><p>«19 кейсов из 80+» проверить нельзя — ни цифр, ни сроков, ни того, что осталось у клиента. Один разобранный кейс с экономикой и сроками говорит больше, чем двадцать логотипов.</p></div>
+</div>
+<div class="cta-row rv">
+<a class="btn btn-primary" href="calculator.html">Посчитать свою рутину →</a>
+<a class="btn btn-ghost" href="services.html">Все услуги →</a>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="sig">
+<img src="viktor.jpg" alt="Виктор Зайцев" loading="lazy" class="sig-photo"/>
+<div class="sig-text">
+<span class="sig-name">Виктор Зайцев</span>
+<span class="sig-role">отвечаю сам · без отдела продаж</span>
+<a href="https://t.me/discoverysystem" target="_blank" rel="noopener" class="sig-tg">Telegram →</a>
+</div>
+</div>
+<p class="sig-c">Discovery System · 2026 · <a href="oferta.html">оферта</a> · <a href="policy.html">политика ПД</a> · <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a> · <a href="https://vc.ru/id6099688">VC</a></p>
+<p class="sig-c" style="margin-top:8px">Зайцев Виктор Павлович, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></p>
+</div></footer>
+
+<script>
+(function(){var d=document;if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}else{d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});}})();
+</script>
+</body>
+</html>
