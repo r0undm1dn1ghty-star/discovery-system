@@ -8,3 +8,12 @@ _update_prices.py
 _shot_*.png
 _probe*.html
 _sw*.html
+
+# тест-харнессы калькулятора (локальные)
+_calc_test*.js
+_dbg*.js
+_inspect*.py
+_check_bm.py
+node_modules/
+package.json
+package-lock.json
