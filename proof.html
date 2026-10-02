@@ -81,6 +81,13 @@ nav.top a.cur{color:var(--ink);text-decoration:underline;text-underline-offset:4
 .res-name{display:block;color:var(--ink);font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.3;margin-bottom:8px}
 .res-take{display:block;font-size:14px;color:var(--body);line-height:1.55;margin-bottom:12px}
 .res-go{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.acc-list{border-top:1px solid var(--line-soft);margin-top:8px}
+.acc-item{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line-soft);align-items:baseline;flex-wrap:wrap}
+.acc-n{font-family:var(--mono);font-size:12.5px;color:var(--accent);flex:0 0 28px;padding-top:2px}
+.acc-body{flex:1;min-width:220px}
+.acc-t{display:block;font-size:15.5px;color:var(--ink);font-weight:600;margin-bottom:4px;line-height:1.4}
+.acc-d{display:block;font-size:14px;color:var(--body);line-height:1.55}
+.acc-check{font-family:var(--mono);font-size:12px;color:var(--meta);white-space:nowrap;padding-top:2px}
 @media(max-width:760px){.res-grid{grid-template-columns:1fr}}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;transition:background .15s,transform .15s,border-color .15s}
@@ -164,23 +171,7 @@ html{scroll-behavior:auto}
 <p class="rv" style="font-size:14px;color:var(--meta)">Установка для МСБ 12 500 ₽ (11.09) · личный чат 1 500 ₽ (02.09) · гайд «Размножение 1→4» 3 000 ₽ (06.09). Имя и стек клиента не публикую — это его контур.</p>
 </div></section>
 
-<section><div class="wrap">
-<p class="eyebrow rv">не на слово — проверь</p>
-<h2 class="rv">Пять инструментов, открытых на GitHub</h2>
-<p class="lead-block rv">Помимо услуг я делаю рабочие инструменты — и выкладываю их открыто. Не «мы лучшие», а конкретный замер: что измеряет, с каким результатом, против чего. Можно склонировать и прогнать самому.</p>
-<div class="rv">
-<div class="tool"><div class="t-h"><span class="t-n">warm-lead-parser</span><span class="t-s">63% точности</span></div><p>Читает 57 Telegram-каналов и 7 бирж, отсеивает вакансии и резюме, отдаёт заказы с оценкой готовности платить. <b>Против 47% у поиска по словам</b>; на FL.ru — 79% на 286 постах.</p></div>
-<div class="tool"><div class="t-h"><span class="t-n">geo-audit-skill</span><span class="t-s">AUC 0.81</span></div><p>Проверяет 92 правила технической готовности и 6 измерений контента: найдёт ли ChatGPT/Perplexity сайт. Score 0–100 за 10 минут. <b>Против 0.48 — случайного угадывания.</b></p></div>
-<div class="tool"><div class="t-h"><span class="t-n">market-evidence-diagnostic</span><span class="t-s">5/5 вердиктов</span></div><p>Отделяет реальный спрос от вежливых лайков. Каждое утверждение о рынке — с источником и датой; чего данные не доказывают — так и написано.</p></div>
-<div class="tool"><div class="t-h"><span class="t-n">pnl-check</span><span class="t-s">3/3 ловушки</span></div><p>Сверяет прибыль с деньгами, дебиторку, долг — показывает, где цифры подтверждены, а где догадка. Годится ли принимать решение на этой таблице.</p></div>
-<div class="tool"><div class="t-h"><span class="t-n">spiral-maturity</span><span class="t-s">4/4 ступени</span></div><p>Ставит две оценки: на каком уровне ценностей живёт компания и на какой ступени агентной лестницы стоит A0–A4. Из пересечения — формат внедрения, который переживёт пилот.</p></div>
-</div>
-<p class="rv" style="font-size:14px;color:var(--meta)">Источник — EVAL.md в репозитории каждого инструмента, прогон 26.09.2026. Где инструмент проигрывает — написано в его же файле.</p>
-<div class="cta-row rv">
-<a class="btn btn-primary" href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">Открыть на GitHub →</a>
-<a class="btn btn-ghost" href="system.html">Как они работают →</a>
-</div>
-</div></section>
+
 
 <section><div class="wrap">
 <p class="eyebrow rv">исследования · открыто</p>
@@ -212,6 +203,38 @@ html{scroll-behavior:auto}
 <span class="res-go">Проверить свой случай →</span>
 </a>
 </div>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow rv">не на слово — проверь</p>
+<h2 class="rv">Пять инструментов, открытых на GitHub</h2>
+<p class="lead-block rv">Помимо услуг я делаю рабочие инструменты — и выкладываю их открыто. Не «мы лучшие», а конкретный замер: что измеряет, с каким результатом, против чего. Можно склонировать и прогнать самому.</p>
+<div class="rv">
+<div class="tool"><div class="t-h"><span class="t-n">warm-lead-parser</span><span class="t-s">63% точности</span></div><p>Читает 57 Telegram-каналов и 7 бирж, отсеивает вакансии и резюме, отдаёт заказы с оценкой готовности платить. <b>Против 47% у поиска по словам</b>; на FL.ru — 79% на 286 постах.</p></div>
+<div class="tool"><div class="t-h"><span class="t-n">geo-audit-skill</span><span class="t-s">AUC 0.81</span></div><p>Проверяет 92 правила технической готовности и 6 измерений контента: найдёт ли ChatGPT/Perplexity сайт. Score 0–100 за 10 минут. <b>Против 0.48 — случайного угадывания.</b></p></div>
+<div class="tool"><div class="t-h"><span class="t-n">market-evidence-diagnostic</span><span class="t-s">5/5 вердиктов</span></div><p>Отделяет реальный спрос от вежливых лайков. Каждое утверждение о рынке — с источником и датой; чего данные не доказывают — так и написано.</p></div>
+<div class="tool"><div class="t-h"><span class="t-n">pnl-check</span><span class="t-s">3/3 ловушки</span></div><p>Сверяет прибыль с деньгами, дебиторку, долг — показывает, где цифры подтверждены, а где догадка. Годится ли принимать решение на этой таблице.</p></div>
+<div class="tool"><div class="t-h"><span class="t-n">spiral-maturity</span><span class="t-s">4/4 ступени</span></div><p>Ставит две оценки: на каком уровне ценностей живёт компания и на какой ступени агентной лестницы стоит A0–A4. Из пересечения — формат внедрения, который переживёт пилот.</p></div>
+</div>
+<p class="rv" style="font-size:14px;color:var(--meta)">Источник — EVAL.md в репозитории каждого инструмента, прогон 26.09.2026. Где инструмент проигрывает — написано в его же файле.</p>
+<div class="cta-row rv">
+<a class="btn btn-primary" href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">Открыть на GitHub →</a>
+<a class="btn btn-ghost" href="system.html">Как они работают →</a>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow rv">приёмка · что ты получаешь за оплату вперёд</p>
+<h2 class="rv">Платишь вперёд. Поэтому довожу, пока не заработает у тебя.</h2>
+<p class="lead-block rv">Назову риск честно: деньги уходят до работы — риск на тебе. Студия за 49–290К показывает демо и уходит. Я не ухожу, пока агент не сделает то, за что заплатил.</p>
+<div class="acc-list rv">
+<div class="acc-item"><span class="acc-n">01</span><span class="acc-body"><span class="acc-t">Пишешь боту как клиент — заявка падает тебе в ТГ</span><span class="acc-d">Не в демо, не в скриншот. На твоём телефоне, с твоей заявкой.</span></span><span class="acc-check">на твоей заявке</span></div>
+<div class="acc-item"><span class="acc-n">02</span><span class="acc-body"><span class="acc-t">Отвечает за минуты — замеряем трижды, не на слово</span><span class="acc-d">В рабочее время. Три замера подряд, а не один удачный.</span></span><span class="acc-check">замеряем 3 раза</span></div>
+<div class="acc-item"><span class="acc-n">03</span><span class="acc-body"><span class="acc-t">Пишешь вторым чатом — помнит первый</span><span class="acc-d">Проверяем вживую: контекст не теряется между разговорами.</span></span><span class="acc-check">проверяем вживую</span></div>
+<div class="acc-item"><span class="acc-n">04</span><span class="acc-body"><span class="acc-t">Спрашиваешь «а если упадёт?» — показываю рубильник</span><span class="acc-d">Откат на заглушку. Ты видишь, где он, и сможешь нажать сам.</span></span><span class="acc-check">показываю где</span></div>
+<div class="acc-item"><span class="acc-n">05</span><span class="acc-body"><span class="acc-t">Забираешь лог первых пяти задач</span><span class="acc-d">Что агент сделал сам, а что не смог. Без прикрас — чтобы ты видел границы.</span></span><span class="acc-check">отдаю тебе</span></div>
+</div>
+<p style="font-family:var(--mono);font-size:14px;color:var(--meta);margin-top:20px">Связка остаётся у тебя. Уходишь — работает дальше.</p>
 </div></section>
 
 <section><div class="wrap">
