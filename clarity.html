@@ -177,6 +177,25 @@ html{scroll-behavior:auto}
 
 
 .choose-hint{font-size:15px;color:var(--meta);margin:0 0 28px;padding:14px 20px;border-left:2px solid var(--accent);background:rgba(123,196,168,.04);border-radius:0 8px 8px 0}
+/* чипы точки входа */
+.start-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px}
+.start-chips button{font-family:var(--sans);font-size:14px;color:var(--body);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:999px;padding:9px 16px;min-height:40px;cursor:pointer;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease)}
+.start-chips button:hover{border-color:rgba(var(--accent-rgb),.4);color:var(--ink)}
+.start-chips button[aria-pressed="true"]{background:rgba(123,196,168,.12);border-color:rgba(123,196,168,.5);color:var(--accent)}
+.node.dim{opacity:.42;transition:opacity .25s var(--ease)}
+.node.lit .dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px rgba(123,196,168,.12)}
+.node.lit{background:rgba(123,196,168,.03)}
+/* карточки установки */
+.install-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:4px 0 16px}
+.ic{border:1px solid var(--line-soft);border-radius:12px;padding:18px 18px 16px;background:rgba(255,255,255,.02);display:flex;flex-direction:column;gap:8px}
+.ic-top{display:flex;flex-direction:column;gap:4px}
+.ic b{color:var(--ink);font-size:15.5px;font-weight:600}
+.ic .ic-if{font-family:var(--mono);font-size:11.5px;color:var(--meta)}
+.ic .ic-price{font-family:var(--display);font-size:21px;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-top:2px}
+.ic .ic-price small{font-family:var(--mono);font-size:11px;color:var(--meta);font-weight:400;display:block;margin-top:3px}
+.ic p{font-size:13.5px;color:var(--body);line-height:1.5;margin:0}
+.ic .ic-v{font-family:var(--mono);font-size:11.5px;color:var(--meta);line-height:1.5;margin-top:auto}
+@media(max-width:760px){.install-cards{grid-template-columns:1fr}}
 .choose-hint a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 
 /* sticky CTA — сопровождает пользователя (WIM) */
@@ -227,9 +246,16 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <main>
 <section><div class="wrap">
 <p class="choose-hint rv">Не знаешь, что выбрать? Начни с <a href="calculator.html">калькулятора</a> — он покажет твою цифру. Дальше видно.</p>
+<div class="start-chips rv" id="startChips" role="group" aria-label="Выбери точку входа — подсветим подходящий формат">
+<button type="button" aria-pressed="false" data-target="node2">Ничего нет — с нуля</button>
+<button type="button" aria-pressed="false" data-target="node3">Плачу за подписку</button>
+<button type="button" aria-pressed="false" data-target="node4">Есть связка — дорогая</button>
+<button type="button" aria-pressed="false" data-target="node1">Есть железо</button>
+<button type="button" aria-pressed="false" data-target="node2">Плачу людям за рутину</button>
+</div>
 <div class="stack">
 
-<div class="node rv">
+<div class="node rv" id="node0">
 <span class="dot" aria-hidden="true"></span>
 <div class="n-head"><span class="n">0</span><h3>Бесплатно — примерить</h3><span class="price">0 ₽</span></div>
 <p class="n-arg">Увидеть чек до разговора. <em>Без звонков и «оставь телефон».</em></p>
@@ -241,7 +267,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <p class="n-meta">60 сек · 7 ответов · без доступов · без давления</p>
 </div>
 
-<div class="node rv" style="transition-delay:.05s">
+<div class="node rv" id="node1" style="transition-delay:.05s">
 <span class="dot" aria-hidden="true"></span>
 <div class="n-head"><span class="n">1</span><h3>Гайд — собрать самому</h3><span class="price">3 000 ₽ <small>разово</small></span></div>
 <p class="n-arg">Недели исследования — <em>в одной таблице.</em></p>
@@ -254,7 +280,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="n-cta"><a class="btn btn-primary" href="pay.html">Купить гайд 3 000 ₽ →</a><p class="n-meta" style="margin:10px 0 0">оплата СБП/картой · чек самозанятого · доступ навсегда</p></div>
 </div>
 
-<div class="node star rv" style="transition-delay:.1s">
+<div class="node star rv" id="node2" style="transition-delay:.1s">
 <span class="dot" aria-hidden="true"></span>
 <div class="n-head"><span class="n">★</span><h3>Персональная сборка</h3><span class="price">5 000 ₽ <small>разово</small></span></div>
 <p class="n-arg">Связка под твою рутину — <em>с проверкой на твоих данных.</em></p>
@@ -268,19 +294,19 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="n-cta"><a class="btn btn-ok" href="calculator.html">Собрать мою связку →</a></div>
 </div>
 
-<div class="node rv" style="transition-delay:.15s">
+<div class="node rv" id="node3" style="transition-delay:.15s">
 <span class="dot" aria-hidden="true"></span>
 <div class="n-head"><span class="n">↗</span><h3>Установка под ключ</h3><span class="price">7 / 10 / 15К <small>разово</small></span></div>
 <p class="n-arg">Пришёл — <em>работает.</em> Агент отвечает в твоём ТГ/CRM.</p>
-<div class="n-opts">
-<div class="opt"><div class="opt-top"><b>На твоём ПК</b><span class="opt-if">если ПК всегда включён</span><span class="opt-price">7 000 ₽</span></div><p class="opt-desc">Без VPS, данные локально.</p><p class="opt-v">вклад: доступ к ПК (AnyDesk) · 2 часа</p></div>
-<div class="opt"><div class="opt-top"><b>VPS · РФ-хостинг</b><span class="opt-if">если нужен 24/7</span><span class="opt-price">10 000 ₽ <small>+ ~400 ₽/мес VPS</small></span></div><p class="opt-desc">РФ-хостинг, оплата СБП/картой.</p><p class="opt-v">вклад: доступы к VPS/ТГ · 2 часа, дальше без участия</p></div>
-<div class="opt"><div class="opt-top"><b>С интеграцией</b><span class="opt-if">если есть CRM/Авито-поток</span><span class="opt-price">15 000 ₽</span></div><p class="opt-desc">ТГ-бот + CRM/Авито, память между чатами.</p><p class="opt-v">вклад: токены ботов/CRM · тест на 5 заявках</p></div>
+<div class="install-cards">
+<div class="ic"><div class="ic-top"><b>На твоём ПК</b><span class="ic-if">если ПК всегда включён</span></div><span class="ic-price">7 000 ₽</span><p>Без VPS, данные локально.</p><span class="ic-v">вклад: доступ к ПК · 2 часа</span></div>
+<div class="ic"><div class="ic-top"><b>VPS · РФ-хостинг</b><span class="ic-if">если нужен 24/7</span></div><span class="ic-price">10 000 ₽<small>+ ~400 ₽/мес VPS</small></span><p>РФ-хостинг, оплата СБП/картой.</p><span class="ic-v">вклад: доступы · 2 часа</span></div>
+<div class="ic"><div class="ic-top"><b>С интеграцией</b><span class="ic-if">если есть CRM/Авито</span></div><span class="ic-price">15 000 ₽</span><p>ТГ-бот + CRM/Авито, память между чатами.</p><span class="ic-v">вклад: токены · тест на 5 заявках</span></div>
 </div>
 <p class="n-meta">сборка 5К включена · без абонентки</p>
 </div>
 
-<div class="node rv" id="optimization">
+<div class="node rv" id="node4">
 <span class="dot" aria-hidden="true"></span>
 <div class="n-head"><span class="n">✦</span><h3>Оптимизация ИИ-агента</h3><span class="price">от 20 000 ₽ <small>разово</small></span></div>
 <p class="n-arg">Агент есть, но <em>работает дорого, медленно или криво.</em></p>
@@ -397,6 +423,27 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div>
 </footer>
 <script src="pay-links.js"></script>
+<script>
+/* точка входа: чип подсвечивает подходящий формат, остальные притухают */
+(function(){
+var chips=document.getElementById('startChips');
+if(!chips)return;
+var nodes=[].slice.call(document.querySelectorAll('.stack .node'));
+chips.addEventListener('click',function(e){
+  var b=e.target.closest('button[data-target]');
+  if(!b)return;
+  var id=b.getAttribute('data-target');
+  var wasOn=b.getAttribute('aria-pressed')==='true';
+  chips.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false');});
+  nodes.forEach(function(n){n.classList.remove('dim','lit');});
+  if(wasOn)return;
+  b.setAttribute('aria-pressed','true');
+  nodes.forEach(function(n){ if(n.id===id){n.classList.add('lit');} else {n.classList.add('dim');} });
+  var t=document.getElementById(id);
+  if(t&&t.scrollIntoView){t.scrollIntoView({behavior:'smooth',block:'center'});}
+});
+})();
+</script>
 <script>(function(){var d=document;if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}else{d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});}})();</script>
 <script>
 /* оптимизация: ссылка Robokassa из pay-links.js; пока пусто — TG (href уже стоит) */

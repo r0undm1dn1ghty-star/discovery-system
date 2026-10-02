@@ -72,6 +72,16 @@ nav.top a.cur{color:var(--ink);text-decoration:underline;text-underline-offset:4
 .tool .t-s{font-family:var(--mono);font-size:13px;color:var(--accent)}
 .tool p{font-size:14.5px;color:var(--body);margin:0}
 .tool p b{color:var(--ink)}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res{display:block;border:1px solid var(--line-soft);border-radius:14px;padding:20px 20px 18px;background:rgba(255,255,255,.02);text-decoration:none;transition:border-color .2s var(--ease),background .2s var(--ease)}
+.res:hover{border-color:rgba(var(--accent-rgb),.4);background:rgba(var(--accent-rgb),.05)}
+.res-meta{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.res-date{font-family:var(--mono);font-size:12px;color:var(--meta)}
+.res-tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(var(--accent-rgb),.3);border-radius:5px;padding:2px 7px}
+.res-name{display:block;color:var(--ink);font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.3;margin-bottom:8px}
+.res-take{display:block;font-size:14px;color:var(--body);line-height:1.55;margin-bottom:12px}
+.res-go{font-family:var(--mono);font-size:13px;color:var(--accent)}
+@media(max-width:760px){.res-grid{grid-template-columns:1fr}}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;transition:background .15s,transform .15s,border-color .15s}
 .btn-primary{background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14)}
@@ -169,6 +179,38 @@ html{scroll-behavior:auto}
 <div class="cta-row rv">
 <a class="btn btn-primary" href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">Открыть на GitHub →</a>
 <a class="btn btn-ghost" href="system.html">Как они работают →</a>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<p class="eyebrow rv">исследования · открыто</p>
+<h2 class="rv">Что я выяснил про этот рынок</h2>
+<p class="lead-block rv">Кейс — один, но разведка рынка — глубокая. Четыре исследования с источниками, цифрами и датами: каждое можно проверить, каждое меняет то, как я собираю связки.</p>
+<div class="res-grid rv">
+<a class="res" href="agent-failures.html">
+<span class="res-meta"><span class="res-date">26.09.2026</span><span class="res-tag">провалы</span></span>
+<span class="res-name">ИИ-агент, который не заработал: 96 провалов 2026</span>
+<span class="res-take">Семь схем, из которых умирает агент: обещали и не сделали, бот сломал доверие, настроили и бросили. Каждый случай — источник, цифра, дата.</span>
+<span class="res-go">Проверить свой случай →</span>
+</a>
+<a class="res" href="nacenka.html">
+<span class="res-meta"><span class="res-date">26.09.2026</span><span class="res-tag">токеномика</span></span>
+<span class="res-name">Одна модель, пять касс: за наценку платишь ты</span>
+<span class="res-take">Живой замер одной модели у вендора, OpenRouter, AITunnel и ProxyAPI — плюс наценка на cache-read, второй счёт агентных воркфлоу.</span>
+<span class="res-go">Читать замер →</span>
+</a>
+<a class="res" href="value-chain.html">
+<span class="res-meta"><span class="res-date">09.2026</span><span class="res-tag">экономика</span></span>
+<span class="res-name">Мастер-карта цепочки ценности ИИ-агентов</span>
+<span class="res-take">Кто на чём зарабатывает в агентном стеке: полная цена владения за год и издержки трёх классов систем.</span>
+<span class="res-go">Открыть карту →</span>
+</a>
+<a class="res" href="lost-accounts.html">
+<span class="res-meta"><span class="res-date">08.2026</span><span class="res-tag">риск</span></span>
+<span class="res-name">Твой доступ к ИИ — не твой</span>
+<span class="res-take">Сколько россиян потеряли аккаунты в 2026: цена аренды чужого доступа вместо своего контура, без рефанда.</span>
+<span class="res-go">Проверить свой случай →</span>
+</a>
 </div>
 </div></section>
 

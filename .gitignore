@@ -14,6 +14,13 @@ _calc_test*.js
 _dbg*.js
 _inspect*.py
 _check_bm.py
+_measure_market.js
+_test_pages*.js
+_shots*.js
+_shot_*.js
+shot-*.png
+_check_res.js
+_struct.py
 node_modules/
 package.json
 package-lock.json
