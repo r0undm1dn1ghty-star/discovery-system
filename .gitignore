@@ -24,3 +24,17 @@ _struct.py
 node_modules/
 package.json
 package-lock.json
+
+# UX-аудит калькулятора (локальные)
+_calc_*.js
+_calc_*.py
+_calc_*.log
+_test_*.js
+_shot_*.js
+_shot_*.png
+_merge*.js
+_syntax_check.js
+_mine/
+*.bak-uxaudit
+*.html.mine
+_t[0-9]*.log

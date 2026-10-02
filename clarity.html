@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Ясность — форматы работы и цены — Discovery System</title>
-<meta name="description" content="Цена видна до разговора: калькулятор 0 ₽ → гайд 3К → персональная сборка 5К → установка 7–15К. Каждый формат — своя суть и честный вклад."/>
+<meta name="description" content="Пять шагов от бесплатного расчёта до агента под ключ: гайд 3 000 ₽, сборка 5 000 ₽, установка 7/10/15 000 ₽, оптимизация от 20 000 ₽. Оплата картой РФ или СБП, чек самозанятого сразу."/>
 <link rel="canonical" href="https://discovery-system.ru/clarity.html"/>
 <meta property="og:title" content="Discovery System — Ясность"/>
 <meta property="og:description" content="Цена видна до разговора. Калькулятор бесплатный, без регистрации. Дальше — только если захочешь."/>
@@ -89,6 +89,11 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 /* proof */
 .proof-wrap{margin-top:0}
 /* payment bar */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.g-card{border:1px solid var(--line-soft);border-radius:14px;padding:20px 20px 16px;background:rgba(255,255,255,.02)}
+.g-card h3{font-size:1rem;margin:0 0 8px;color:var(--ink);font-family:var(--display);font-weight:600}
+.g-card p{font-size:14.5px;color:var(--meta);margin:0;line-height:1.6}
+.g-card p b{color:var(--ink)}
 .pay-bar{margin-top:24px;padding:14px 20px;border:1px solid var(--line-soft);border-radius:12px;background:rgba(255,255,255,.012);font-family:var(--mono);font-size:13px;color:var(--meta);display:flex;gap:10px;flex-wrap:wrap;align-items:center;line-height:1.5}
 .pay-bar .k{color:var(--accent);font-weight:600}
 .pay-bar .v2{color:var(--body)}
@@ -235,13 +240,14 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <nav class="top" aria-label="Основная навигация"><div class="wrap">
-<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="services.html">услуги</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
 </div></nav>
 <header class="hero"><div class="wrap">
 <p class="sub rv">ясность · форматы работы</p>
 <h1 class="rv" style="transition-delay:.06s">ИИ-агент под твою рутину — от 0 до 15К</h1>
 <p class="lead rv" style="transition-delay:.12s"><a href="calculator.html">Узнай стоимость за 60 сек — остальное по желанию.</a> Калькулятор бесплатный, без регистрации. Дальше — только если захочешь: шаг за шагом от гайда к установке под ключ.</p>
 <p class="fine rv" style="transition-delay:.18s">Не подписка на чужое — <span class="chrome-text">своя связка</span> 2–4К/мес — потребительская связка. Эти деньги идут провайдерам модели и хостинга, не мне.</p>
+<p class="fine rv" style="transition-delay:.22s">Сроки: гайд — до 15 минут · сборка — 24 часа · установка — 2 часа · оптимизация — от 3 дней. Чек самозанятого сразу после платежа.</p>
 </div></header>
 <main>
 <section><div class="wrap">
@@ -341,6 +347,16 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <span class="k">оплата:</span>
 <span class="v2">разовые услуги — Robokassa (карта РФ или СБП) · подписки — Tribute · чек самозанятого в «Мой налог» · <a href="oferta.html" style="color:var(--accent);text-decoration:underline">условия</a></span>
 </div>
+</div></section>
+<section><div class="wrap">
+<p class="eyebrow rv">заказ, оплата, доставка, возврат</p>
+<div class="grid2 rv">
+<div class="g-card"><h3>Как оформить</h3><p>Нажимаешь кнопку на нужном шаге — открывается платёжная страница. Оплата картой РФ или СБП. <b>Заказ считается оформленным после успешной оплаты</b>, отдельно ничего заполнять не нужно.</p></div>
+<div class="g-card"><h3>Сроки передачи</h3><p>Гайд — цифровой материал, доступ бессрочно, передача <b>до 15 минут</b> в рабочие часы (не позднее 24 часов). Сборка — 24 часа. Установка — ~2 часа по согласованию. Оптимизация — от 3 дней после аудита.</p></div>
+<div class="g-card"><h3>Отказ до передачи</h3><p>До момента передачи материалов или начала работ ты вправе отказаться <b>в любое время</b> — деньги вернутся в полной сумме, без вычета комиссий.</p></div>
+<div class="g-card"><h3>Возврат после передачи</h3><p>После передачи доступа возврат не производится: материал получен в полном объёме. Если материал не передан в срок более 48 часов — <b>полный возврат по требованию</b>.</p></div>
+</div>
+<p class="pay-meta rv" style="margin-top:20px">Полные условия — в <a href="oferta.html" style="color:var(--accent)">оферте</a> и <a href="policy.html" style="color:var(--accent)">политике обработки данных</a>.</p>
 </div></section>
 <section><div class="wrap">
 <p class="eyebrow rv">первый кейс · август 2026</p>
