@@ -57,13 +57,13 @@ nav.top a.cur{color:var(--accent)}
 .accent{color:var(--accent);font-weight:700}
 .eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:20px}
 .stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:52px auto 0;max-width:760px;text-align:left}
-.sc{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:22px 22px 20px;display:flex;flex-direction:column}
+.sc{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px 26px 24px;display:flex;flex-direction:column;box-shadow:0 24px 60px -38px rgba(0,0,0,.6)}
 .sc .c{flex:1}
 .sc.mid{border-color:rgba(123,196,168,.45);background:rgba(123,196,168,.05)}
 .sc .k{font-family:var(--mono);font-size:12px;color:var(--meta);letter-spacing:.1em;text-transform:uppercase}
 .sc .v{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,5vw,2.6rem);color:var(--ink);letter-spacing:-.02em;margin:6px 0 2px}
 .sc .v small{font-size:.48em;color:var(--accent);font-weight:700}
-.sc .c{font-size:13.5px;color:var(--meta)}
+.sc .c{font-size:13.5px;color:#a6b0c5}
 .track{height:6px;border-radius:3px;background:rgba(255,255,255,.06);margin-top:14px;overflow:hidden}
 .fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),rgba(123,196,168,.45))}
 .money{font-family:var(--mono);font-weight:600;font-size:14px;color:#f0a09e;letter-spacing:.04em;margin:2px 0 8px}
@@ -108,9 +108,9 @@ nav.top a.cur{color:var(--accent)}
 .ms-src{font-family:var(--mono);font-size:12px;color:#a6b0c5}
 .ms-out{margin-top:14px;font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--ink);line-height:1.5}
 .ms-out b{color:#f0a09e;font-weight:800}
-.rk .dt{padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.16);font-size:12px;letter-spacing:.06em}
-.rk .dt.hi{border-color:rgba(224,96,94,.55);color:#f0a09e}
-.rk .dt.mid{border-color:rgba(123,196,168,.5);color:var(--accent)}
+.rk .dt{padding:5px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:12px;letter-spacing:.06em;color:#dfe6f2}
+.rk .dt.hi{border-color:rgba(224,96,94,.55);color:#f6b8b6;background:rgba(224,96,94,.08)}
+.rk .dt.mid{border-color:rgba(123,196,168,.5);color:#9fd9c4;background:rgba(123,196,168,.08)}
 .wipe{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:28px 0 8px}
 .wipe .base{padding:40px 28px;text-align:center}
 .wipe .top{position:absolute;inset:0;background:#0d1220;clip-path:inset(0 calc(100% - var(--split,50%)) 0 0);border-right:2px solid var(--accent)}
@@ -178,10 +178,118 @@ footer{padding:70px 0 60px;border-top:1px solid var(--line-soft)}
 table.data{font-size:14px}.tl .row{grid-template-columns:1fr;gap:4px}.cta-row .btn{width:100%}.stat3{grid-template-columns:1fr}.own{grid-template-columns:1fr}.conflict{padding:24px 22px}.own{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
 h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
+
+/* ===== premium pass ===== */
+/* ============================================================
+   LOST ACCOUNTS — Premium pass (high-end-visual-design)
+   Archetype: Modern Dark Cinema (вектора Linear) + Editorial Grid
+   Не трогает: контент, JS-логику, id, структуру секций, шрифты URL
+   ============================================================ */
+
+/* --- Типографика: Outfit остаётся дисплейным, Editorial Serif для pull-фактов --- */
+/* Newsreader не подключён (локальные шрифты РФ-хостинга) — editorial-голос через Outfit */
+
+/* --- 1. Фон: cinematic depth вместо плоского #111524 --- */
+body{background:linear-gradient(180deg,#131829 0%,#111524 34%,#0f1322 100%)}
+body:after{opacity:.045}
+
+/* --- Ambient light: один дышащий ореол за hero (fixed, GPU-safe) --- */
+.hero-aura{position:fixed;inset:0;pointer-events:none;z-index:0;
+background:radial-gradient(860px 560px at 50% -160px,rgba(123,196,168,.16),rgba(123,196,168,.05) 44%,transparent 70%)}
+main{position:relative;z-index:1}
+
+/* --- 2. Секции: воздух (macro-whitespace) --- */
+section{padding:96px 0}
+section+section{border-top:1px solid rgba(255,255,255,.05)}
+@media(max-width:760px){section{padding:64px 0}}
+
+/* --- 3. Hero: типографический масштаб + старт-анимация --- */
+.hero h1{font-size:clamp(2.3rem,6vw,4.1rem);letter-spacing:-.025em;line-height:1.06;max-width:900px;margin:0 auto 26px}
+.hero .lead{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--body);max-width:640px;margin:0 auto 34px}
+.hero .sub{color:var(--meta)}
+
+/* счётчики — tabular figures, чтобы не прыгали */
+.sc .v{font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.sc{transition:transform .45s cubic-bezier(.32,.72,0,1),border-color .3s,background .3s}
+.sc:hover{transform:translateY(-3px);border-color:rgba(123,196,168,.32)}
+.sc.mid{box-shadow:0 0 0 1px rgba(123,196,168,.12),0 24px 70px -38px rgba(123,196,168,.28)}
+
+/* --- 4. Двойной обод (double-bezel) на ключевых карточках --- */
+.wipe,.funnel-box,.personal,.now{position:relative;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 30px 80px -50px rgba(0,0,0,.55)}
+.wipe{overflow:hidden}
+
+/* --- 5. Wipe: дорогое перо и глубина --- */
+.wipe .top{border-right:2px solid var(--accent);background:linear-gradient(90deg,rgba(13,18,32,.97),rgba(13,18,32,.88))}
+.wipe .big{letter-spacing:-.03em}
+.wipe .top .big{color:var(--accent);text-shadow:0 0 34px rgba(123,196,168,.35)}
+.wipe .lab{letter-spacing:.16em}
+
+/* --- 6. Риски-аккордеон: hover-отклик и плавное раскрытие --- */
+.tl2 button{border-radius:12px;transition:background .25s cubic-bezier(.32,.72,0,1),transform .25s cubic-bezier(.32,.72,0,1)}
+.tl2 button:hover{background:rgba(255,255,255,.045);transform:translateX(2px)}
+.tl2 .it.open .dtl{max-height:260px}
+.tl2 .dt{font-variant-numeric:tabular-nums}
+.tl2 .dt.hi{box-shadow:0 0 18px -6px rgba(224,96,94,.5)}
+.tl2 .dt.mid{box-shadow:0 0 18px -6px rgba(123,196,168,.4)}
+
+/* --- 7. Воронка: полосы с ярусным свечением, числа tabular --- */
+.frow{border-radius:10px;padding-left:10px;padding-right:10px;margin-left:-10px;margin-right:-10px;transition:background .25s cubic-bezier(.32,.72,0,1)}
+.frow:hover{background:rgba(123,196,168,.06)}
+.frow .fn{font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.frow .fb{height:11px}
+.frow .fb i{background:linear-gradient(90deg,var(--accent),rgba(123,196,168,.55));box-shadow:0 0 14px -4px rgba(123,196,168,.55)}
+.frow.fin .fb i{box-shadow:0 0 22px -5px rgba(123,196,168,.75)}
+
+/* --- 8. Личный счёт: инпут как прибор --- */
+.ms-input{border-radius:14px;background:rgba(255,255,255,.05);box-shadow:0 1px 0 rgba(255,255,255,.06) inset;font-variant-numeric:tabular-nums}
+.ms-input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(123,196,168,.14)}
+.ms-out b{text-shadow:0 0 26px rgba(224,96,94,.35)}
+
+/* --- 9. Кнопки: магнитный ховер (scale + внутренняя стрелка) --- */
+.btn{border-radius:999px;padding:14px 26px;transition:transform .35s cubic-bezier(.32,.72,0,1),background .2s,box-shadow .35s cubic-bezier(.32,.72,0,1)}
+.btn-primary{box-shadow:0 14px 40px -16px rgba(31,122,77,.55),0 1px 0 rgba(255,255,255,.12) inset}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -18px rgba(31,122,77,.65),0 1px 0 rgba(255,255,255,.14) inset}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.06)}
+
+/* --- 10. Pull-цитата конфликта: editorial voice --- */
+.conflict{border-radius:20px;background:linear-gradient(180deg,rgba(123,196,168,.06),rgba(123,196,168,.02));border:1px solid rgba(123,196,168,.22);padding:36px 38px;box-shadow:0 30px 80px -56px rgba(0,0,0,.6)}
+.conflict .q{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,3vw,1.75rem);line-height:1.4;letter-spacing:-.015em}
+.conflict .q:first-letter{color:var(--accent)}
+
+/* --- 11. Таблица источников: журнальная плотность --- */
+table.data td{padding:14px 12px}
+table.data tr{transition:background .2s}
+table.data tr:hover td{background:rgba(255,255,255,.022)}
+table.data td.n{font-variant-numeric:tabular-nums}
+
+/* --- 12. Eyebrow: pill-бейдж как в журнале --- */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:12px;background:rgba(255,255,255,.03)}
+.eyebrow:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(123,196,168,.8)}
+
+/* --- 13. Reveal-хореография: глубже и мягче (только transform+opacity) --- */
+.js .rv{opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
+.js .rv.in{opacity:1;transform:none;filter:blur(0)}
+
+/* --- 14. Скроллбар и выделение --- */
+::selection{background:rgba(123,196,168,.28);color:#fff}
+@media(min-width:900px){
+ body::-webkit-scrollbar{width:10px}
+ body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:999px;border:2px solid #111524}
+ body::-webkit-scrollbar-track{background:transparent}
+}
+
+/* --- 15. Доступность: reduced-motion глушит всё --- */
+@media (prefers-reduced-motion:reduce){
+ .js .rv{filter:none;transition:none}
+ .sc:hover,.tl2 button:hover{transform:none}
+}
+
 </style>
 <script src="ym-slot.js" defer></script>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<div class="hero-aura" aria-hidden="true"></div>
 <nav class="top" aria-label="Основная навигация"><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"><span>Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a></div></nav>
 <header class="hero"><div class="wrap">
 <p class="sub rv">исследование · сентябрь 2026</p>
