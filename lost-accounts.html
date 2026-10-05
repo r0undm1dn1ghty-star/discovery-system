@@ -127,6 +127,8 @@ nav.top a.cur{color:var(--accent)}
 .now li{padding:5px 0}
 .now .cap{font-size:15px;color:var(--meta);margin:14px 0 0}
 .now .cap a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(123,196,168,.4)}
+.tscroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:28px 0}
+.tscroll table.data{margin:0;min-width:560px}
 table.data{width:100%;border-collapse:collapse;font-size:15.5px;margin:28px 0}
 table.data th{font-family:var(--mono);font-size:12.5px;color:var(--meta);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);letter-spacing:.06em;text-transform:uppercase}
 table.data td{padding:13px 12px;border-bottom:1px solid var(--line-soft);vertical-align:top}
@@ -180,17 +182,15 @@ h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 <script src="ym-slot.js" defer></script>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<nav class="top" aria-label="Основная навигация"><div class="wrap">
-<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="services.html">услуги</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
-</div></nav>
+<nav class="top" aria-label="Основная навигация"><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"><span>Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a></div></nav>
 <header class="hero"><div class="wrap">
 <p class="sub rv">исследование · сентябрь 2026</p>
 <h1 class="rv" style="transition-delay:.06s">Claude и ChatGPT <em>не принадлежат тебе</em> — сколько россиян потеряли аккаунты в 2026</h1>
 <p class="lead rv" style="transition-delay:.12s">Ты платишь за подписку, держишь в чатах проекты и код. Но рубильник — не у тебя. Мы посчитали масштаб потерь.</p>
 <div class="stat3 rv" id="stat3" style="transition-delay:.18s">
-<div class="sc"><div class="k">нижняя граница</div><div class="v"><span data-count="39">39</span> <small>тыс.</small></div><div class="money">≈ 1 <small>млрд ₽/год</small></div><div class="c">10-й перцентиль расчёта</div><div class="track"><div class="fill" style="width:23%"></div></div></div>
-<div class="sc mid"><div class="k">центр</div><div class="v"><span data-count="86">86</span> <small>тыс.</small></div><div class="money acc">≈ 2,2 <small>млрд ₽/год</small></div><div class="c">медиана — рабочая оценка</div><div class="track"><div class="fill" style="width:51%"></div></div></div>
-<div class="sc"><div class="k">верхняя граница</div><div class="v"><span data-count="170">170</span> <small>тыс.</small></div><div class="money">≈ 4,3 <small>млрд ₽/год</small></div><div class="c">90-й перцентиль расчёта</div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+<div class="sc"><div class="k">нижняя граница</div><div class="v"><span data-count="39">39</span> <small>тыс.</small></div><div class="money">≈ 1 <small>млрд ₽/год</small></div><div class="c">в 9 из 10 сценариев потерь больше</div><div class="track"><div class="fill" style="width:23%"></div></div></div>
+<div class="sc mid"><div class="k">центр</div><div class="v"><span data-count="86">86</span> <small>тыс.</small></div><div class="money acc">≈ 2,2 <small>млрд ₽/год</small></div><div class="c">середина расчёта — рабочая оценка</div><div class="track"><div class="fill" style="width:51%"></div></div></div>
+<div class="sc"><div class="k">верхняя граница</div><div class="v"><span data-count="170">170</span> <small>тыс.</small></div><div class="money">≈ 4,3 <small>млрд ₽/год</small></div><div class="c">в 9 из 10 сценариев потерь меньше</div><div class="track"><div class="fill" style="width:100%"></div></div></div>
 </div>
 <p class="hero-cap rv" style="transition-delay:.22s">потеряли аккаунт и не вернули старый за 2026 · это около четверти платящей аудитории</p>
 <div class="cta-row rv" style="transition-delay:.26s">
@@ -216,17 +216,17 @@ h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 <p>Это не страх, это механика. Россия — неподдерживаемый регион: аккаунт формально нарушает правила с первой секунды. Платформа вправе забрать доступ в любой момент, и апелляция почти не помогает. А если в этих чатах рабочие процессы твоего дела — это уже не «личные файлы», это часть бизнеса.</p>
 </div>
 <div class="tl2 acc rv" id="rk">
-<div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Проверка личности закрывает дверь навсегда</span><span class="ar">›</span></button><div class="dtl"><p>Persona требует паспорт и селфи. Провалил проверку — аккаунт блокируют навсегда, без второго шанса. Номер не «исправить», личность не подделать. С лета 2026 это главный способ потерять аккаунт окончательно. Источник: Хабр, support.claude.com.</p></div></div>
+<div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Проверка личности закрывает дверь навсегда</span><span class="ar">›</span></button><div class="dtl"><p>Persona — сторонний сервис проверки личности, который подключили платформы, — требует паспорт и селфи. Провалил проверку — аккаунт блокируют навсегда, без второго шанса. Номер не «исправить», личность не подделать. С лета 2026 это главный способ потерять аккаунт окончательно. Источник: Хабр, support.claude.com.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Аккаунт удаляют вместе с данными</span><span class="ar">›</span></button><div class="dtl"><p>Майская волна сносила профили целиком: чаты, проекты, код — по данным CNews и cisoclub. Подписку при блокировке обычно не возвращают — так записано в условиях и Anthropic, и OpenAI.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Апелляция почти не работает</span><span class="ar">›</span></button><div class="dtl"><p>В первом полугодии 2026 успешными были 10,6% апелляций — 0,37% от всех банов. Девять из десяти подавших теряют аккаунт. Источник: Anthropic Transparency Hub.</p></div></div>
-<div class="it"><button aria-expanded="false"><span class="dt mid">средний</span><span class="tt">Доступ может пропасть на уровне сети</span><span class="ar">›</span></button><div class="dtl"><p>В сентябре соединение с chatgpt.com рвалось на TLS-рукопожатии, смена DNS не помогала. Причина может лежать с любой стороны — итог для тебя один. Источник: The Moscow Times, hi-tech.mail.</p></div></div>
+<div class="it"><button aria-expanded="false"><span class="dt mid">средний</span><span class="tt">Доступ может пропасть на уровне сети</span><span class="ar">›</span></button><div class="dtl"><p>В сентябре соединение с chatgpt.com обрывалось на старте, ещё до загрузки страницы, и смена сетевых настроек не помогала. Причина может лежать с любой стороны — итог для тебя один. Источник: The Moscow Times, hi-tech.mail.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt mid">средний</span><span class="tt">Серый рынок живёт недолго</span><span class="ar">›</span></button><div class="dtl"><p>Готовые аккаунты продают за 25–200 долларов и живут недели: алгоритмы видят входы из разных точек планеты и банят мгновенно. Покупка аккаунта — аренда, не владение.</p></div></div>
 </div>
 </div></section>
 <section id="masshtab"><div class="wrap">
 <p class="eyebrow rv">масштаб</p>
 <h2 class="rv">Сколько людей это уже задело</h2>
-<p class="rv">Опорная цифра — официальная: <b style="color:var(--ink)">11,4 млн заблокированных аккаунтов</b> за первое полугодие 2026 во всём мире, 398 тысяч апелляций, 42 тысячи отмен. Это данные самого Anthropic, открытые в Transparency Hub. Россия в разбивке не фигурирует — платформа не публикует баны по странам.</p>
+<p class="rv">Опорная цифра — официальная: <b style="color:var(--ink)">11,4 млн заблокированных аккаунтов</b> за первое полугодие 2026 во всём мире, 398 тысяч апелляций, 42 тысячи отмен. Это данные самого Anthropic из его открытого отчёта о блокировках (Transparency Hub). Россия в разбивке не фигурирует — платформа не публикует баны по странам.</p>
 <p class="rv">Поэтому дальше — реконструкция. Мы прогнали 200 тысяч сценариев: каждый шаг — вилка, а не одно число, и шаги связаны. Жёстче волна — больше региональных банов и выше доля России в них. Итог — интервал <span class="accent">от 39 до 170 тысяч человек</span>, рабочая оценка около 86 тысяч.</p>
 <div class="funnel-box rv">
 <p class="eyebrow" style="margin-bottom:14px">методика · воронка</p>
@@ -246,7 +246,7 @@ h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 <input class="ms-input" id="ms-in" type="number" min="0" step="100" value="2000" inputmode="numeric" aria-label="Сколько ты платишь за ИИ-сервисы в месяц"/>
 <span class="ms-per">₽ в месяц за ChatGPT / Claude / прочее</span>
 </div>
-<div class="ms-src">2 000 ₽ — медиана трат на ИИ в России · ТАСС / ППВМ, 09.2026</div>
+<div class="ms-src">2 000 ₽ — типичные траты на ИИ в России (медиана) · ТАСС / ППВМ, 09.2026</div>
 <div class="ms-out" id="ms-out" aria-live="polite"></div>
 </div>
 <div class="now rv">
@@ -262,7 +262,7 @@ h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 </div>
 <div class="conflict rv">
 <p class="q">Вывод простой: пока твоя система стоит на чужой земле, ты не решаешь, когда она работает.</p>
-<p>Слово для этого одно — <b style="color:var(--accent)">владение</b>. Своя связка на российских провайдерах: доступ, который не отключат за гео, данные, которые остаются у тебя. Считается за минуту, собирается без студий и курсов.</p>
+<p>Слово для этого одно — <b style="color:var(--accent)">владение</b>. Своя связка на российских провайдерах: доступ, который не отключат из-за страны входа, данные, которые остаются у тебя. Считается за минуту, собирается без студий и курсов.</p>
 </div>
 <div class="cta-row rv">
 <a class="btn btn-primary" href="calculator.html">Посчитать свою связку ↗</a>
@@ -272,18 +272,18 @@ h1,h2,h3{text-wrap:balance}p,li,.lead{text-wrap:pretty}
 <section><div class="wrap">
 <p class="eyebrow rv">источники</p>
 <h2 class="rv">Опорные данные с датами</h2>
-<table class="data rv">
+<div class="tscroll rv"><table class="data">
 <tr><th>Показатель</th><th>Значение</th><th>Источник · дата</th></tr>
-<tr><td>Баны Anthropic, H2 2025</td><td class="n">1,45 млн</td><td class="s">Transparency Hub · 29.01.2026</td></tr>
-<tr><td>Баны / апелляции / отмены, H1 2026</td><td class="n">11,4 млн / 398 тыс. / 42 тыс.</td><td class="s">Transparency Hub · 07.2026 · подтверждает vc.ru 06.08.2026</td></tr>
+<tr><td>Баны Anthropic, 2-е полугодие 2025</td><td class="n">1,45 млн</td><td class="s">Transparency Hub · 29.01.2026</td></tr>
+<tr><td>Баны / апелляции / отмены, 1-е полугодие 2026</td><td class="n">11,4 млн / 398 тыс. / 42 тыс.</td><td class="s">Transparency Hub · 07.2026 · подтверждает vc.ru 06.08.2026</td></tr>
 <tr><td>Оборот ИИ в подписках, 08.2026</td><td class="n">66%</td><td class="s">Плати по всему миру · 09.2026</td></tr>
 <tr><td>Типичные траты на ИИ, в месяц</td><td class="n">2 097 ₽ · один сервис</td><td class="s">ТАСС / Плати по всему миру · 09.2026</td></tr>
-<tr><td>Пользуются нейросетями, в месяц</td><td class="n">26% · weekly 5%</td><td class="s">Mediascope · 10.2025</td></tr>
-<tr><td>ChatGPT в мире</td><td class="n">900 млн / нед · 50 млн платных</td><td class="s">OpenAI · 27.02.2026 · конверсия 5,6%</td></tr>
-<tr><td>Claude в мире, MAU</td><td class="n">18,9 млн (вилка 18–30 млн)</td><td class="s">SaaStr · TechCrunch 03.2026</td></tr>
-<tr><td>Рынок ИИ России, выручка 2025</td><td class="n">316,1 млрд ₽ · +29,7%</td><td class="s">AIANA / Forbes · 08.2026 · B2B-база, серые подписки не входят</td></tr>
-</table>
-<p class="src rv">Материал собран из 40+ источников: пресса, кейсы пользователей на Хабре и vc.ru, англоязычный OSINT, жалобы, серый рынок аккаунтов.</p>
+<tr><td>Пользуются нейросетями, в месяц</td><td class="n">26% · каждую неделю 5%</td><td class="s">Mediascope · 10.2025</td></tr>
+<tr><td>ChatGPT в мире</td><td class="n">900 млн / нед · 50 млн платных</td><td class="s">OpenAI · 27.02.2026 · платят 5,6%</td></tr>
+<tr><td>Claude в мире, в месяц</td><td class="n">18,9 млн (вилка 18–30 млн)</td><td class="s">SaaStr · TechCrunch 03.2026</td></tr>
+<tr><td>Рынок ИИ России, выручка 2025</td><td class="n">316,1 млрд ₽ · +29,7%</td><td class="s">AIANA / Forbes · 08.2026 · продажи бизнесу, серые подписки не входят</td></tr>
+</table></div>
+<p class="src rv">Материал собран из 40+ источников: пресса, кейсы пользователей на Хабре и vc.ru, открытые англоязычные источники, жалобы, серый рынок аккаунтов.</p>
 </div></section>
 </main>
 <footer>
@@ -371,11 +371,11 @@ mso.innerHTML='За год это <b>'+Math.round(y).toLocaleString('ru-RU')+' �
 if(msi){msi.addEventListener('input',msCalc);msCalc();}
 /* ---------- воронка ---------- */
 var F=[
- {l:'<b>Баны Anthropic</b>, H1 2026, весь мир', m:'Официальная цифра Transparency Hub. Почти все баны — за нарушения правил: спам, дистилляция, скам. Регион и обход доступа — лишь часть.', w:100, f:'11 400 000'},
+ {l:'<b>Баны Anthropic</b>, 1-е полугодие 2026, весь мир', m:'Официальная цифра Transparency Hub. Почти все баны — за нарушения правил: спам, выкачивание ответов для обучения чужих моделей, мошенничество. Регион и обход доступа — лишь часть.', w:100, f:'11 400 000'},
  {l:'Оставляем только <b>регион и обход доступа</b>', m:'Отсеиваем волну за нарушения. Остаётся региональная политика: баны за гео, номер и VPN.', w:39, f:'× 5–25%'},
  {l:'Доля <b>России</b> среди этих банов', m:'Россия — неподдерживаемый регион, поэтому формально нарушает с первой секунды. Долю восстанавливаем косвенно, через три индикатора.', w:24, f:'× 12–45%'},
- {l:'Убираем <b>повторные баны</b> одного аккаунта', m:'В отчёте «заблокированные аккаунты» — это действия антифрода: одна волна может чистить один аккаунт несколько раз. Поэтому делим на 1–2.', w:22, f:'÷ 1,0–2,0'},
- {l:'Оставляем <b>живых людей</b>, не ботов и фермы', m:'Антифрод в первую очередь косит бот-фермы и серые кластеры. Живых пользователей среди банов — меньше половины.', w:17, f:'× 30–60%'},
+ {l:'Убираем <b>повторные баны</b> одного аккаунта', m:'В отчёте «заблокированные аккаунты» — это срабатывания автоматической защиты от мошенничества: одна волна может чистить один аккаунт несколько раз. Поэтому делим на 1–2.', w:22, f:'÷ 1,0–2,0'},
+ {l:'Оставляем <b>живых людей</b>, не ботов и фермы', m:'Защита в первую очередь косит бот-фермы и серые сети перепродаваемых аккаунтов. Живых пользователей среди банов — меньше половины.', w:17, f:'× 30–60%'},
  {l:'Делим на <b>аккаунтов на человека</b>', m:'Один человек из России нередко держит два-три аккаунта: основной, резервный, купленный. Баны считают аккаунты, а вопрос — про людей.', w:11, f:'÷ 2,5–5,0'},
  {l:'Старый аккаунт <b>мёртв навсегда</b>', m:'Апелляция спасает меньше одного процента от всех банов. Даже если человек завёл новый аккаунт, старый он не вернул — а вопрос именно про потерю.', w:10.7, f:'× 80–97%'},
  {l:'Второе полугодие <b>тяжелее первого</b>', m:'Волна нарастала: май, июль, сентябрь. Здесь начинается оценка, а не факт из документа — мы это признаём открыто.', w:17.8, f:'× 2,0–2,5'},
