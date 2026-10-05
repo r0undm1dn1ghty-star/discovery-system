@@ -227,6 +227,16 @@ nav.top{padding:14px 0}nav.top .wrap{gap:0 12px}nav.top a{font-size:13.5px;min-h
 .laws details{padding:6px 16px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+/* premium uplift */
+.hover-lift{transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s cubic-bezier(.22,1,.36,1)}
+.hover-lift:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.shock-counter{font-variant-numeric:tabular-nums;font-weight:700;background:linear-gradient(135deg,var(--loss),#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-family:var(--mono)}
+.counter-value{font-weight:800;background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.law-law-key{border-color:rgba(239,90,80,.3)!important;background:rgba(239,90,80,.05)!important}
+.pp-d.positive{color:var(--loss);text-shadow:0 0 20px rgba(239,90,80,.3)}.pp-d.negative{color:var(--accent);text-shadow:0 0 20px rgba(123,196,168,.3)}
+.law-card-glass{border-radius:20px;background:rgba(255,255,255,.03);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s cubic-bezier(.22,1,.36,1)}
+.law-card-glass:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(123,196,168,.15)}
+.bento-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.bento-wide{grid-column:span 2}@media(max-width:900px){.bento-grid{grid-template-columns:1fr}.bento-wide{grid-column:span 1!important}}
 </style>
 <script src="ym-slot.js" defer></script>
 </head>
@@ -269,16 +279,16 @@ nav.top{padding:14px 0}nav.top .wrap{gap:0 12px}nav.top a{font-size:13.5px;min-h
 </div></section>
 <section id="detail"><div class="wrap"><div class="section-head"><div><p class="eyebrow rv">что это стоит тебе · за год</p><h2 class="rv">На твоих 10 млн/день: где дороже</h2></div><p>База — 10 млн токенов входа в день. Типичный агент на каждые 2 токена входа читает 7 из кэша и пишет 1 в ответ (профиль 7:2:1): кэш ≈ 3,5× входа, выход ≈ 0,5×. В месяц: вход 300 млн, кэш 1 050 млн, выход 150 млн.</p></div><div class="tscroll" role="table" aria-label="Годовой расклад платформ на топ-моделях при 10M входных токенов в день">
 <div class="pp-row head" role="row"><div>модель</div><div>платформа</div><div>вендор · год</div><div>платформа · год</div><div>разница в год</div><div>≈ внедрений<small>по 49 990 ₽</small></div></div>
-<div class="pp-row pp-hot" role="row"><div class="pp-m" title="deepseek-v4-flash">DeepSeek V4 Flash</div><div class="pp-p">Яндекс AI Studio</div><div class="pp-v">279 684 ₽</div><div class="pp-pl">2 925 000 ₽</div><div class="pp-d">+2 645 316 ₽</div><div class="pp-i">+53</div><div class="pp-n">кэш в прайсе отдельной строкой</div></div>
+<div class="pp-row pp-hot" role="row"><div class="pp-m" title="deepseek-v4-flash">DeepSeek V4 Flash</div><div class="pp-p">Яндекс AI Studio</div><div class="pp-v">279 684 ₽</div><div class="pp-pl">2 925 000 ₽</div><div class="pp-d"><span class="shock-counter" data-target="2645316">+2 645 316</span> ₽</div><div class="pp-i">+53</div><div class="pp-n">кэш в прайсе отдельной строкой</div></div>
 <div class="pp-row" role="row"><div class="pp-m" title="deepseek-v4-flash">DeepSeek V4 Flash</div><div class="pp-p">Cloud.ru</div><div class="pp-v">279 684 ₽</div><div class="pp-pl">311 724 ₽</div><div class="pp-d">+32 040 ₽</div><div class="pp-i">—</div><div class="pp-n">кэша отдельной строкой нет — переплата занижена</div></div>
-<div class="pp-row" role="row"><div class="pp-m" title="deepseek-v4-pro">DeepSeek V4 Pro</div><div class="pp-p">Cloud.ru</div><div class="pp-v">1 048 716 ₽</div><div class="pp-pl">1 976 400 ₽</div><div class="pp-d">+927 684 ₽</div><div class="pp-i">+19</div><div class="pp-n">по юридическому тарифу Cloud.ru; кэша в прайсе нет</div></div>
+<div class="pp-row" role="row"><div class="pp-m" title="deepseek-v4-pro">DeepSeek V4 Pro</div><div class="pp-p">Cloud.ru</div><div class="pp-v">1 048 716 ₽</div><div class="pp-pl">1 976 400 ₽</div><div class="pp-d"><span class="shock-counter" data-target="927684">+927 684</span> ₽</div><div class="pp-i">+19</div><div class="pp-n">по юридическому тарифу Cloud.ru; кэша в прайсе нет</div></div>
 <div class="pp-row" role="row"><div class="pp-m" title="kimi-k2.6">Kimi K2.6</div><div class="pp-p">Cloud.ru</div><div class="pp-v">1 065 672 ₽</div><div class="pp-pl">1 939 068 ₽</div><div class="pp-d">+873 396 ₽</div><div class="pp-i">+17</div><div class="pp-n">кэша отдельной строкой нет — переплата занижена</div></div>
-<div class="pp-row" role="row"><div class="pp-m" title="claude-haiku-4.5">Claude Haiku 4.5</div><div class="pp-p">Cloud.ru</div><div class="pp-v">1 168 920 ₽</div><div class="pp-pl">2 722 356 ₽</div><div class="pp-d">+1 553 436 ₽</div><div class="pp-i">+31</div><div class="pp-n">чтение кэша — 19,64 ₽/1 млн</div></div>
+<div class="pp-row" role="row"><div class="pp-m" title="claude-haiku-4.5">Claude Haiku 4.5</div><div class="pp-p">Cloud.ru</div><div class="pp-v">1 168 920 ₽</div><div class="pp-pl">2 722 356 ₽</div><div class="pp-d"><span class="shock-counter" data-target="1553436">+1 553 436</span> ₽</div><div class="pp-i">+31</div><div class="pp-n">чтение кэша — 19,64 ₽/1 млн</div></div>
 <div class="pp-row" role="row"><div class="pp-m" title="glm-5.3">GLM 5.3</div><div class="pp-p">МТС MWS</div><div class="pp-v">1 369 386 ₽</div><div class="pp-pl">1 985 184 ₽</div><div class="pp-d">+615 798 ₽</div><div class="pp-i">+12</div><div class="pp-n">модель помечена как устаревшая (Deprecated)</div></div>
 <div class="pp-row" role="row"><div class="pp-m" title="kimi-k2.6">Kimi K2.6</div><div class="pp-p">МТС MWS</div><div class="pp-v">1 065 672 ₽</div><div class="pp-pl">1 741 428 ₽</div><div class="pp-d">+675 756 ₽</div><div class="pp-i">+14</div></div>
 <div class="pp-row" role="row"><div class="pp-m" title="qwen3.6-35b-a3b">Qwen3.6 35B</div><div class="pp-p">МТС MWS</div><div class="pp-v">455 454 ₽</div><div class="pp-pl">764 208 ₽</div><div class="pp-d">+308 754 ₽</div><div class="pp-i">+6</div></div>
 <div class="pp-row pp-cheap" role="row"><div class="pp-m" title="deepseek-v4-flash">DeepSeek V4 Flash · контроль</div><div class="pp-p">Selectel ИИ-роутер</div><div class="pp-v">279 684 ₽</div><div class="pp-pl">112 680 ₽</div><div class="pp-d pp-cheap">-167 004 ₽</div><div class="pp-i">−3</div><div class="pp-n">дешевле вендора</div></div>
-<div class="pp-row pp-cheap" role="row"><div class="pp-m" title="deepseek-v4-pro">DeepSeek V4 Pro · контроль</div><div class="pp-p">Selectel ИИ-роутер</div><div class="pp-v">1 048 716 ₽</div><div class="pp-pl">572 724 ₽</div><div class="pp-d pp-cheap">-475 992 ₽</div><div class="pp-i">−10</div><div class="pp-n">дешевле вендора</div></div>
+<div class="pp-row pp-cheap" role="row"><div class="pp-m" title="deepseek-v4-pro">DeepSeek V4 Pro · контроль</div><div class="pp-p">Selectel ИИ-роутер</div><div class="pp-v">1 048 716 ₽</div><div class="pp-pl">572 724 ₽</div><div class="pp-d pp-cheap"><span class="shock-counter" data-target="475992" data-prefix="−">−475 992</span> ₽</div><div class="pp-i">−10</div><div class="pp-n">дешевле вендора</div></div>
 </div><p class="pp-foot"><b>≈ внедрений</b> — сколько внедрений ИИ-агента у студии по 49 990 ₽ можно оплатить годовой переплатой. <b>Разница в год</b> — годовой счёт платформы минус годовой счёт вендора на той же модели. Зелёные строки — платформы дешевле вендора (контроль), красная — годовой разрыв ≥ 2 млн ₽. У Яндекса и Selectel кэш в прайсе, поэтому разница полная. У остальных в разницу вошли только вход и выход — реальная наценка выше.</p><p class="sources-inline">Цены платформ — из открытых прайсов с НДС (Cloud.ru — юридический тариф; МТС MWS — документация; Selectel — промо-страница роутера). Вендор — USD за 1 млн токенов по курсу ЦБ 84,3414 ₽/$ от 27.09.2026. Цены Яндекса 300/75/500 ₽ подтверждены панелью тарифа.</p>
 <p class="bridge">Это бигтех. <b>А теперь — дешёвые кассы-перекупы</b>: OpenRouter, AITunnel, ProxyAPI. Наценка у них меньше, но тоже есть — и снова сильнее всего на кэше.</p>
 </div></section>
@@ -369,12 +379,41 @@ if('IntersectionObserver' in window){
 })();
 </script><script>
 /* reveal: показываем блоки при прокрутке; без IO и при reduced-motion — сразу */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);will-change:transform,opacity}.reveal.in{opacity:1;transform:none}.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
 (function(){
 var els=document.querySelectorAll('.rv');
 var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(rm||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
 els.forEach(function(e){io.observe(e)});
+
+// Animated counters for shock numbers
+function animateCounter(el){
+  if(el.dataset.animated) return;
+  el.dataset.animated = 'true';
+  var target = parseInt(el.dataset.target, 10);
+  var prefix = el.dataset.prefix || '+';
+  var duration = 1600;
+  var start = performance.now();
+  function step(now){
+    var progress = Math.min((now - start) / duration, 1);
+    var ease = 1 - Math.pow(1 - progress, 3);
+    var current = Math.floor(ease * target);
+    el.textContent = prefix + current.toLocaleString('ru-RU').replace(/\,/g, ' ');
+    if(progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+var counters = document.querySelectorAll('.shock-counter[data-target]');
+var cObs = new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(e.isIntersecting){
+      animateCounter(e.target);
+      cObs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.5});
+counters.forEach(function(c){ cObs.observe(c); });
 })();
 </script></body>
 </html>
