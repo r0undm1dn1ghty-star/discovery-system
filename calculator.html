@@ -253,8 +253,32 @@ background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:
   .opt:active,.task:active,.conn:active{transform:scale(.98)}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-/* grain — текстура поверх фона */body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}.seg-badge{display:none;margin-top:14px;padding:12px 16px;border:1px solid var(--primary-line);border-radius:10px;background:var(--primary-dim);font-size:13.5px;line-height:1.55;color:var(--muted)}.seg-badge b{color:var(--txt)}.seg-badge .seg-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--primary-l);margin-bottom:4px}.hero-paths{margin-top:14px;display:grid;gap:6px;max-width:660px}.hero-paths div{font-size:13.5px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative}.hero-paths div:before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--primary)}.hero-paths b{color:var(--txt);font-weight:600}</style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization", "name": "Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "logo": {"@type": "ImageObject", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 конфигураций, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem", "https://vc.ru/id6099688", "https://x.com/d1sc0v3rysyst3m"], "license": "https://creativecommons.org/licenses/by/4.0/"}</script>
+/* grain — текстура поверх фона */body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}.seg-badge{display:none;margin-top:14px;padding:12px 16px;border:1px solid var(--primary-line);border-radius:10px;background:var(--primary-dim);font-size:13.5px;line-height:1.55;color:var(--muted)}.seg-badge b{color:var(--txt)}.seg-badge .seg-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--primary-l);margin-bottom:4px}.hero-paths{margin-top:14px;display:grid;gap:6px;max-width:660px}.hero-paths div{font-size:13.5px;color:var(--muted);line-height:1.5;padding-left:14px;position:relative}.hero-paths div:before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--primary)}.hero-paths b{color:var(--txt);font-weight:600}
+/* ── деньги в год + ограничения ── */
+.year{margin:14px 0 0}
+.year .y-head,.limits .lim-head{font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.6;margin:0 0 8px}
+.year .brow span{opacity:.75}
+.year .brow.total span{opacity:1}
+.year .brow.total b{color:#5ed9a8}
+.limits{margin:16px 0 0;padding:14px 16px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.02)}
+.lim-row{display:flex;gap:10px;font-size:13.5px;line-height:1.5;padding:5px 0;align-items:flex-start}
+.lim-row .m{flex:0 0 auto;font-weight:600}
+.lim-row.in .m{color:#5ed9a8}
+.lim-row.out .m{color:#e0a458}
+.lim-row.out{opacity:.92}
+
+/* ── чек-лист приёмки ── */
+.accept{margin:16px 0 0;padding:16px 18px;border:1px solid rgba(94,217,168,.22);border-radius:14px;background:rgba(94,217,168,.05)}
+.accept .acc-head{font-size:13px;font-weight:600;margin:0 0 4px}
+.accept .acc-sub{font-size:12.5px;opacity:.7;margin:0 0 12px}
+.accept ol{margin:0;padding:0;list-style:none;counter-reset:a}
+.accept li{position:relative;padding:6px 0 6px 30px;font-size:13.5px;line-height:1.45;border-bottom:1px solid rgba(255,255,255,.06)}
+.accept li:last-child{border-bottom:0}
+.accept li::before{counter-increment:a;content:counter(a,decimal-leading-zero);position:absolute;left:0;top:6px;font-size:11px;opacity:.5;font-weight:600}
+.accept .acc-foot{font-size:12.5px;opacity:.72;margin:12px 0 0}
+.accept .acc-foot b{opacity:1}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization", "name": "Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "logo": {"@type": "ImageObject", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 конфигураций, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem", "https://vc.ru/id6099688", "https://x.com/d1sc0v3rysyst3m"], "license": "https://creativecommons.org/licenses/by/4.0/","priceRange":"3 000–25 000 ₽","areaServed":{"@type":"Country","name":"Россия"},"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"knowsAbout":["ИИ-агенты","внедрение ИИ в МСБ","локальные LLM","152-ФЗ","автоматизация рутины"],"makesOffer":[{"@type":"Offer","name":"Гайд 20 конфигураций","price":"3000","priceCurrency":"RUB"},{"@type":"Offer","name":"Персональная сборка","price":"5000","priceCurrency":"RUB"},{"@type":"Offer","name":"Установка под ключ","priceSpecification":{"@type":"PriceSpecification","minPrice":"7000","maxPrice":"15000","priceCurrency":"RUB"}},{"@type":"Offer","name":"Оптимизация ИИ-агента","price":"20000","priceCurrency":"RUB"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Discovery System", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятор", "item": "https://discovery-system.ru/calculator.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "@id": "https://discovery-system.ru/calculator.html#app", "name": "Калькулятор стоимости ИИ-агента — Discovery System", "url": "https://discovery-system.ru/calculator.html", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "3 вопроса — сколько часов и рублей стоит твоя рутина (Руками vs С агентом). Считает экономию до старта, без регистрации.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB", "availability": "https://schema.org/InStock"}, "author": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}, "isAccessibleForFree": true}</script>
 
@@ -395,6 +419,9 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
           <div class="pb-res" id="pbRes"></div>
           <div class="pb-note" id="pbNote"></div>
         </div>
+        <div class="year" id="yearBox" style="display:none"></div>
+        <div class="limits" id="limitsBox" style="display:none"></div>
+        <div class="accept" id="acceptBox" style="display:none"></div>
       </div>
       <div class="diag" id="diagBox" style="display:none">
         <div class="diag-tag">Начнём с диагностики</div>
@@ -982,7 +1009,65 @@ function recalcPayback(){
     res.innerHTML='\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u044f <b>'+netMonthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b> \u00b7 '+st.short+' '+st.cost.toLocaleString('ru-RU')+' \u20bd '+paybackTxt;
   }
   document.getElementById('pbNote').textContent='\u0421\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0435\u0441\u0442\u043d\u043e: \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u044f = \u0447\u0430\u0441\u044b \u0430\u0433\u0435\u043d\u0442\u0430 \u00d7 \u0442\u0432\u043e\u044f \u0446\u0435\u043d\u0430 \u0447\u0430\u0441\u0430'+(e.base>0?' + \u0443\u0445\u043e\u0434 \u0441 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432':'')+' \u2212 \u0432\u043b\u0430\u0434\u0435\u043d\u0438\u0435.';
+  updateYearBox(e,netMonthly,st);
 }
+function updateYearBox(e,net,st){
+  var box=document.getElementById('yearBox'); if(!box)return;
+  if(!net||net<=0){
+    box.innerHTML='<div class="y-head">Деньги и окупаемость</div>'
+      +'<div class="brow"><span>При этих вводных агент не окупается</span><b>смени режим на шаге 05</b></div>';
+    box.style.display='block'; updateLimits(e); updateAcceptance(e,net); return;
+  }
+  var year=net*12, months=st.cost/net;
+  var pay=(months<=1)?'первый месяц':'за '+Math.ceil(months)+' мес';
+  var rows='<div class="brow"><span>Экономия в месяц</span><b>'+net.toLocaleString('ru-RU')+' ₽</b></div>'
+    +'<div class="brow"><span>Экономия в год</span><b>'+year.toLocaleString('ru-RU')+' ₽</b></div>'
+    +'<div class="brow total"><span>Окупаемость сборки ('+st.cost.toLocaleString('ru-RU')+' ₽)</span><b>'+pay+'</b></div>';
+  if(start==='people'){
+    rows+='<div class="brow"><span>Менеджер с налогами (рынок 2026)</span><b>80 000–140 000 ₽/мес</b></div>';
+  }
+  box.innerHTML='<div class="y-head">Деньги и окупаемость · МСБ</div>'+rows
+    +'<div class="pb-note">Считаем честно: экономия = освобождённые часы × твоя цена часа'+(e.base>0?' + уход с текущих расходов':'')+' − владение. Год — та же экономия × 12.</div>';
+  box.style.display='block';
+  updateLimits(e);
+  updateAcceptance(e,net);
+}
+function updateLimits(e){
+  var box=document.getElementById('limitsBox'); if(!box)return;
+  var rows=[
+    ['in','Входит','сборка под твои сценарии, промпты, приёмка по чек-листу'],
+    ['out','Не входит','токены модели, хостинг, VPS — платишь провайдерам напрямую'+(e&&e.monthly?(' (~'+e.monthly.toLocaleString('ru-RU')+' ₽/мес)'):'')],
+    ['out','Агент не берёт','спорные и денежные решения — только с твоим «да» (human approval)'],
+    ['out','Нужно от тебя','доступы (Telegram, таблицы) и ~2 ч на приёмку — без них срок не стартует']
+  ];
+  box.innerHTML='<div class="lim-head">Что входит и где границы</div>'
+    +rows.map(function(r){return '<div class="lim-row '+r[0]+'"><span class="m">'+r[1]+':</span><span>'+r[2]+'</span></div>';}).join('');
+  box.style.display='block';
+}
+
+function updateAcceptance(e,net){
+  var box=document.getElementById('acceptBox'); if(!box)return;
+  var items=[];
+  var g=goals.slice();
+  if(g.includes('repeat')) items.push('Агент отвечает на повторяющиеся вопросы по твоей базе — проверяем на 3 живых примерах');
+  if(g.includes('leads')) items.push('Заявка доходит до тебя в Telegram; замер ответа 3 раза в рабочее время');
+  if(g.includes('report')) items.push('Регулярный отчёт приходит по расписанию — сверяем с твоим ручным за день');
+  if(g.includes('scan')) items.push('Сбор и проверка информации по источникам — выжимка со ссылками, без выдумок');
+  if(g.includes('write')) items.push('Черновики текстов в твоём тоне — 3 прогона, правишь на месте');
+  if(g.includes('paper')) items.push('Разбор документов/выписок — классификация на твоём образце');
+  if(goal==='unsure'||items.length===0) items.push('Сначала диагностика: находим процесс, который автоматизируем первым');
+  if(conns.includes('mem')) items.push('Помнит контекст между чатами — проверяем вживую');
+  if(data==='local'||data==='ru'||data==='hybrid') items.push('Данные на твоём устройстве или РФ-сервере — показываю, где именно');
+  items.push('Откат на заглушку, если агент упал — показываю, как');
+  items.push('Лог первых задач: что сделал, что нет — отдаю тебе');
+  var pay=(net&&net>0)?('Окупается за '+( (STARTS.find(x=>x.id===start)||STARTS[0]).cost/Math.max(net,1)<=1?'первый месяц':Math.ceil((STARTS.find(x=>x.id===start)||STARTS[0]).cost/Math.max(net,1))+' мес' )):'не окупается — не начинаем';
+  box.innerHTML='<div class="acc-head">Чек-лист приёмки твоей сборки</div>'
+    +'<div class="acc-sub">Это то, что ты примешь до оплаты. Пункт не работает — довожу без доплат (до 10 рабочих дней).</div>'
+    +'<ol>'+items.map(function(t){return '<li>'+t+'</li>';}).join('')+'</ol>'
+    +'<div class="acc-foot">Оплата вперёд, но риск снят: <b>критерии зафиксированы здесь и в оферте</b>, а не «оплатишь — разберёмся». '+pay+'.</div>';
+  box.style.display='block';
+}
+
 function calculate(){
   const e=estimate(); if(!e)return;
   const g=GOALS.find(x=>x.id===goal)||GOALS.find(x=>x.id===goals[0])||null;

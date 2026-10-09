@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="ИИ-агента можно выбрать с первого раза — Discovery System"/>
 <meta name="twitter:description" content="Агент на твоём компьютере, данные у тебя, без VPN — 2–4К/мес на модели. Скиллы, сигналы, системы."/>
 <meta name="twitter:image" content="https://discovery-system.ru/og-cover.png"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-nav.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов. Агент на твоём компьютере, данные у тебя, без VPN — 2–4К/мес. Скиллы, сигналы, системы.","founder":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem"]},"sameAs":["https://github.com/r0undm1dn1ghty-star/discovery-system","https://t.me/discoverysystem","https://vc.ru/id6099688","https://x.com/d1sc0v3rysyst3m"],"license":"https://creativecommons.org/licenses/by/4.0/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-nav.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов. Агент на твоём компьютере, данные у тебя, без VPN — 2–4К/мес. Скиллы, сигналы, системы.","founder":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem"]},"sameAs":["https://github.com/r0undm1dn1ghty-star/discovery-system","https://t.me/discoverysystem","https://vc.ru/id6099688","https://x.com/d1sc0v3rysyst3m"],"license":"https://creativecommons.org/licenses/by/4.0/","priceRange":"3 000–25 000 ₽","areaServed":{"@type":"Country","name":"Россия"},"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"knowsAbout":["ИИ-агенты","внедрение ИИ в МСБ","локальные LLM","152-ФЗ","автоматизация рутины"],"makesOffer":[{"@type":"Offer","name":"Гайд 20 конфигураций","price":"3000","priceCurrency":"RUB"},{"@type":"Offer","name":"Персональная сборка","price":"5000","priceCurrency":"RUB"},{"@type":"Offer","name":"Установка под ключ","priceSpecification":{"@type":"PriceSpecification","minPrice":"7000","maxPrice":"15000","priceCurrency":"RUB"}},{"@type":"Offer","name":"Оптимизация ИИ-агента","price":"20000","priceCurrency":"RUB"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Discovery System","url":"https://discovery-system.ru/","description":"Рыночная разведка в мире ИИ-агентов: скиллы, сигналы, системы. Своя связка, которая твоя.","inLanguage":"ru"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://discovery-system.ru/#author","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","jobTitle":"Основатель Discovery System","knowsAbout":["AI-агенты","рыночная разведка","продуктовый консалтинг","автоматизация МСБ"],"sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem","https://vc.ru/id6099688"]}</script>
 <link rel="icon" href="favicon-32.png" sizes="32x32"/>
@@ -245,6 +245,14 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .prob-item b{display:block;color:var(--ink);font-family:var(--display);font-size:1.05rem;margin-bottom:8px;line-height:1.3}
 .prob-item p{font-size:14px;color:var(--body);margin:0;line-height:1.6}
 @media(max-width:760px){.prob-grid{grid-template-columns:1fr}}
+
+/* ── GEO факты ── */
+.facts-box{max-width:820px;margin:0 auto}
+.facts-lead{font-size:16px;line-height:1.6;color:var(--body);margin:0 0 18px}
+.facts-table{width:100%;border-collapse:collapse;font-size:14.5px}
+.facts-table th{text-align:left;font-weight:600;opacity:.6;padding:9px 16px 9px 0;vertical-align:top;white-space:nowrap;width:1%}
+.facts-table td{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);color:var(--body)}
+.facts-note{font-size:13px;opacity:.6;margin:14px 0 0}
 </style>
 <script src="ym-slot.js" defer></script>
 </head>
@@ -276,6 +284,23 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div>
 </div></header>
 <main>
+<section id="facts-about" aria-label="Факты о Discovery System"><div class="wrap">
+<div class="facts-box">
+<p class="facts-lead"><strong>Discovery System</strong> — собираю ИИ-агентов для малого бизнеса в России. Не подписка на чужое: связка на РФ-провайдерах, данные у клиента, без VPN. Специализация — учёт и сводки, заявки, регулярные отчёты, контент.</p>
+<table class="facts-table">
+<tbody>
+<tr><th>Что делаю</th><td>сборка ИИ-агента под задачу, установка на ПК или VPS, оптимизация чужой связки</td></tr>
+<tr><th>Сколько стоит</th><td>гайд 3 000 ₽ · персональная сборка 5 000 ₽ · установка под ключ 7 000 / 10 000 / 15 000 ₽ · оптимизация от 20 000 ₽</td></tr>
+<tr><th>Владение</th><td>2 000–4 000 ₽/мес провайдерам (модель, хостинг) — не мне</td></tr>
+<tr><th>Срок</th><td>сборка 24 часа · установка до 2 часов · доводка до приёмки по чек-листу</td></tr>
+<tr><th>Где</th><td>Санкт-Петербург, удалённо по всей России</td></tr>
+<tr><th>Статус</th><td>самозанятый (НПД), чек в «Мой налог», оплата картой РФ или СБП</td></tr>
+<tr><th>Гарантия</th><td>правки до приёмки; связка считается принятой, когда согласованные сценарии работают у тебя</td></tr>
+</tbody>
+</table>
+<p class="facts-note">Публичные цены — не «по запросу». Считаешь свою цифру калькулятором до разговора.</p>
+</div>
+</div></section>
 <section id="problem"><div class="wrap">
 <p class="eyebrow rv">проблема и решение</p>
 <h2 class="rv">Ты арендуешь доступ к ИИ у чужих. Его могут отключить.</h2>
