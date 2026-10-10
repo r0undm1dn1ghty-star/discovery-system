@@ -13,10 +13,11 @@
    ============================================================ */
 var PAY_LINK_ROBOKASSA_GUIDE         = 'https://auth.robokassa.ru/merchant/Invoice/cckSfDB22k2PQtri5TVSnw'; /* гайд «20 конфигураций» · 3 000 ₽ */
 var PAY_LINK_ROBOKASSA_BUILD         = 'https://auth.robokassa.ru/merchant/Invoice/4iIqaJEDUkqvFXmDN46HVw'; /* персональная сборка · 5 000 ₽ */
-var PAY_LINK_ROBOKASSA_INSTALL_PC    = 'https://auth.robokassa.ru/merchant/Invoice/KgLCbRoMKUCVzCZ0_0ROlA'; /* установка на ПК · 7 000 ₽ */
-var PAY_LINK_ROBOKASSA_INSTALL_VPS   = 'https://auth.robokassa.ru/merchant/Invoice/OY1jS0GqG02bvkffIKxuPQ'; /* установка на VPS РФ · 10 000 ₽ */
-var PAY_LINK_ROBOKASSA_INSTALL_INTEG = 'https://auth.robokassa.ru/merchant/Invoice/TMcj5y7inUyuEOHnGaC-dg'; /* интеграция МСБ/самозанятые · 15 000 ₽ */
-var PAY_LINK_ROBOKASSA_OPTIMIZATION  = 'https://auth.robokassa.ru/merchant/Invoice/biGOMDdi3EavbVcNFpARTA'; /* оптимизация ИИ-агента · от 20 000 ₽ */
+var PAY_LINK_ROBOKASSA_INSTALL_PC    = 'https://auth.robokassa.ru/merchant/Invoice/KgLCbRoMKUCVzCZ0_0ROlA'; /* личный агент на ПК · 15 000 ₽ */
+var PAY_LINK_ROBOKASSA_INSTALL_VPS   = 'https://auth.robokassa.ru/merchant/Invoice/OY1jS0GqG02bvkffIKxuPQ'; /* самозанятый · 20 000 ₽ */
+var PAY_LINK_ROBOKASSA_INSTALL_INTEG = 'https://auth.robokassa.ru/merchant/Invoice/TMcj5y7inUyuEOHnGaC-dg'; /* микро- и малый бизнес (ИП) · 30 000 ₽ */
+var PAY_LINK_ROBOKASSA_INSTALL_MID   = ''; /* средний бизнес · 60 000 ₽ — ссылка не создана, ведём в Telegram */
+var PAY_LINK_ROBOKASSA_OPTIMIZATION  = 'https://auth.robokassa.ru/merchant/Invoice/biGOMDdi3EavbVcNFpARTA'; /* оптимизация чужого ИИ-агента · от 25 000 ₽ */
 
 /* ------------------------------------------------------------
    Подписки — РЕШЕНИЕ 29.09: продаём через Tribute, Robokassa

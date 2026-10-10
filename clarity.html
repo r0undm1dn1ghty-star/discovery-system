@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Ясность — форматы работы и цены — Discovery System</title>
-<meta name="description" content="Пять шагов от бесплатного расчёта до агента под ключ: гайд 3 000 ₽, сборка 5 000 ₽, установка 7/10/15 000 ₽, оптимизация от 20 000 ₽. Оплата картой РФ или СБП, чек самозанятого сразу."/>
+<meta name="description" content="Пять шагов от бесплатного расчёта до агента под ключ: гайд 3 000 ₽, подбор 5 000 ₽, внедрение 15/20/30/60 000 ₽, оптимизация от 25 000 ₽. Оплата картой РФ или СБП, чек самозанятого сразу."/>
 <link rel="canonical" href="https://discovery-system.ru/clarity.html"/>
 <meta property="og:title" content="Discovery System — Ясность"/>
 <meta property="og:description" content="Цена видна до разговора. Калькулятор бесплатный, без регистрации. Дальше — только если захочешь."/>
@@ -190,7 +190,9 @@ html{scroll-behavior:auto}
 .node.lit .dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px rgba(123,196,168,.12)}
 .node.lit{background:rgba(123,196,168,.03)}
 /* карточки установки */
-.install-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:4px 0 16px}
+.install-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:4px 0 16px}
+.install-cards.four{grid-template-columns:repeat(2,1fr)}
+@media(min-width:1100px){.install-cards.four{grid-template-columns:repeat(4,1fr)}}
 .ic{border:1px solid var(--line-soft);border-radius:12px;padding:18px 18px 16px;background:rgba(255,255,255,.02);display:flex;flex-direction:column;gap:8px}
 .ic-top{display:flex;flex-direction:column;gap:4px}
 .ic b{color:var(--ink);font-size:15.5px;font-weight:600}
@@ -245,10 +247,10 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div></nav>
 <header class="hero"><div class="wrap">
 <p class="sub rv">ясность · форматы работы</p>
-<h1 class="rv" style="transition-delay:.06s">ИИ-агент под твою рутину — от 0 до 15К</h1>
+<h1 class="rv" style="transition-delay:.06s">ИИ-агент под твою рутину — от 0 до 60К</h1>
 <p class="lead rv" style="transition-delay:.12s"><a href="calculator.html">Узнай стоимость за 60 сек — остальное по желанию.</a> Калькулятор бесплатный, без регистрации. Дальше — только если захочешь: шаг за шагом от гайда к установке под ключ.</p>
 <p class="fine rv" style="transition-delay:.18s">Не подписка на чужое — <span class="chrome-text">своя связка</span> 2–4К/мес — потребительская связка. Эти деньги идут провайдерам модели и хостинга, не мне.</p>
-<p class="fine rv" style="transition-delay:.22s">Сроки: гайд — до 15 минут · сборка — 24 часа · установка — 2 часа · оптимизация — от 3 дней. Чек самозанятого сразу после платежа.</p>
+<p class="fine rv" style="transition-delay:.22s">Сроки: гайд — до 15 минут · подбор — 24 часа · установка — <b>1–3 рабочих дня</b> · внедрение в МСБ — <b>1–10 рабочих дней</b> · оптимизация — от 3 дней. Чек самозанятого сразу после платежа.</p>
 </div></header>
 <main>
 <section><div class="wrap">
@@ -289,44 +291,57 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 
 <div class="node star rv" id="node2" style="transition-delay:.1s">
 <span class="dot" aria-hidden="true"></span>
-<div class="n-head"><span class="n">★</span><h3>Персональная сборка</h3><span class="price">5 000 ₽ <small>разово</small></span></div>
-<p class="n-arg">Персональный гайд: ставишь и отлаживаешь <em>сам, на своём компьютере.</em></p>
+<div class="n-head"><span class="n">★</span><h3>Подбор конфигурации под ключ</h3><span class="price">5 000 ₽ <small>разово</small></span></div>
+<p class="n-arg">Разбираю твою задачу и отдаю <em>готовую конфигурацию + инструкцию по установке.</em></p>
 <ul class="n-list">
 <li>Всё из гайда 3К включено</li>
 <li>Решаю твои риски: оплата, данные, устройства, сценарии</li>
 <li>Промпты под твои сценарии</li>
 <li>Правки по сценариям — до приёмки: пока не работает у тебя, не считается сделанным</li>
 </ul>
-<p class="n-meta">созвон 30 мин · сборка 24 часа · после приёмки — сам · забота дальше — подписка, не «бесплатно»</p>
+<p class="n-meta">созвон 30 мин · готово за 24 часа · ставишь сам · гайд 3К включён</p>
 <div class="n-cta"><a class="btn btn-ok" href="calculator.html">Собрать мою связку →</a></div>
 </div>
 
 <div class="node rv" id="node3" style="transition-delay:.15s">
 <span class="dot" aria-hidden="true"></span>
-<div class="n-head"><span class="n">↗</span><h3>Установка под ключ</h3><span class="price">7 / 10 / 15К <small>разово</small></span></div>
-<p class="n-arg">Пришёл — <em>работает.</em> Агент отвечает в твоём ТГ/CRM.</p>
-<div class="install-cards">
-<div class="ic"><div class="ic-top"><b>На твоём ПК</b><span class="ic-if">если ПК всегда включён</span></div><span class="ic-price">7 000 ₽</span><p>Без VPS, данные локально.</p><span class="ic-v">вклад: доступ к ПК · 2 часа</span></div>
-<div class="ic"><div class="ic-top"><b>VPS · РФ-хостинг</b><span class="ic-if">если нужен 24/7</span></div><span class="ic-price">10 000 ₽<small>+ ~400 ₽/мес VPS</small></span><p>РФ-хостинг, оплата СБП/картой.</p><span class="ic-v">вклад: доступы · 2 часа</span></div>
-<div class="ic"><div class="ic-top"><b>С интеграцией</b><span class="ic-if">если есть CRM/Авито</span></div><span class="ic-price">15 000 ₽</span><p>ТГ-бот + CRM/Авито, память между чатами.</p><span class="ic-v">вклад: токены · тест на 5 заявках</span></div>
+<div class="n-head"><span class="n">↗</span><h3>Внедрение под ключ</h3><span class="price">15 / 20 / 30 / 60К <small>разово</small></span></div>
+<p class="n-arg">Пришёл — <em>работает.</em> Агент забирает рутину: план дня, отчёты, переписки, база знаний по проектам.</p>
+<div class="install-cards four">
+<div class="ic"><div class="ic-top"><b>Личный агент на ПК</b><span class="ic-if">данные у тебя</span></div><span class="ic-price">15 000 ₽</span><p>Удалённая установка, база знаний, приёмка на твоих задачах.</p><span class="ic-v">консультация · расчёт экономики · 2 бесплатных API-ключа · срок 1–3 дня</span></div>
+<div class="ic"><div class="ic-top"><b>Самозанятый</b><span class="ic-if">несколько задач сразу</span></div><span class="ic-price">20 000 ₽</span><p>Агенты под клиентов, заявки и контент.</p><span class="ic-v">всё из установки на ПК · несколько агентов · срок 1–3 дня</span></div>
+<div class="ic"><div class="ic-top"><b>Микро- и малый бизнес</b><span class="ic-if">ИП, есть CRM</span></div><span class="ic-price">30 000 ₽</span><p>ТГ-бот, интеграция CRM/Авито/таблиц, память между чатами.</p><span class="ic-v">вклад: доступы · тест на твоих заявках · срок 1–10 дней</span></div>
+<div class="ic"><div class="ic-top"><b>Средний бизнес</b><span class="ic-if">несколько процессов</span></div><span class="ic-price">60 000 ₽</span><p>Несколько агентов на процессы, приёмка с твоим участием.</p><span class="ic-v">месяц сопровождения включён · срок 1–10 дней</span></div>
 </div>
-<p class="n-meta">сборка 5К включена · без абонентки</p>
+<p class="n-meta">гайд 3К включён · без абонентки · выездная установка +3 000 ₽ · приёмка по чек-листу до оплаты</p>
 </div>
 
 <div class="node rv" id="node4">
 <span class="dot" aria-hidden="true"></span>
-<div class="n-head"><span class="n">✦</span><h3>Оптимизация ИИ-агента</h3><span class="price">от 20 000 ₽ <small>разово</small></span></div>
+<div class="n-head"><span class="n">✦</span><h3>Оптимизация чужого ИИ-агента</h3><span class="price">от 25 000 ₽ <small>разово</small></span></div>
 <p class="n-arg">Агент есть, но <em>работает дорого, медленно или криво.</em></p>
 <ul class="n-list">
 <li>Аудит текущей связки: где утекают токены и время</li>
 <li>Пересборка промптов, модели и логики под задачу</li>
 <li>Замер «до / после»: расход, скорость, качество ответов</li>
 </ul>
-<p class="n-meta">для тех, у кого связка уже запущена · без переезда с нуля · старт — от 20 000 ₽, точная цена после аудита</p>
+<p class="n-meta">для тех, у кого связка уже запущена · без переезда с нуля · старт — от 25 000 ₽, точная цена после аудита</p>
 <div class="n-cta"><a class="btn btn-primary" id="buyOptClarity" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Заказать оптимизацию →</a><p class="n-meta" style="margin:10px 0 0">оплата картой или СБП · чек самозанятого · объём работ согласуем до старта</p></div>
 </div>
 
+<div class="node rv" id="node5">
+<span class="dot" aria-hidden="true"></span>
+<div class="n-head"><span class="n">+</span><h3>Дополнительные решения</h3><span class="price">от 15 000 ₽</span></div>
+<p class="n-arg">Когда рутину уже забрали, <em>остаётся производство контента и команда агентов.</em></p>
+<div class="install-cards four">
+<div class="ic"><div class="ic-top"><b>Контент-завод: фото</b><span class="ic-if">карточки и баннеры</span></div><span class="ic-price">15 000 ₽</span><p>Карточки товаров и картинки для соцсетей из твоего материала.</p><span class="ic-v">сборка 6–10 ч</span></div>
+<div class="ic"><div class="ic-top"><b>Контент-завод: видео</b><span class="ic-if">рилсы</span></div><span class="ic-price">30 000 ₽</span><p>Рилсы из твоих съёмок, выход по расписанию.</p><span class="ic-v">сборка 10–16 ч</span></div>
+<div class="ic"><div class="ic-top"><b>Офис ИИ-агентов</b><span class="ic-if">отдел из 5 человек</span></div><span class="ic-price">25 000 ₽</span><p>Несколько агентов на сотрудников: у каждого своя зона.</p><span class="ic-v">за отдел из 5 · добавление сотрудника = строка в чеке</span></div>
+<div class="ic"><div class="ic-top"><b>Выездная установка</b><span class="ic-if">физически, на месте</span></div><span class="ic-price">+3 000 ₽</span><p>Доплата к любой установке, если нужен выезд.</p><span class="ic-v">удалённо — бесплатно, по умолчанию</span></div>
 </div>
+<p class="n-meta">оптимизация чужого агента — от 25 000 ₽ · объём согласуем до старта</p>
+</div>
+
 <div class="pay-bar rv">
 <span class="k">оплата:</span>
 <span class="v2">разовые услуги — Robokassa (карта РФ или СБП) · подписки — Tribute · чек самозанятого в «Мой налог» · <a href="oferta.html" style="color:var(--accent);text-decoration:underline">условия</a></span>
@@ -361,6 +376,10 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sub-card"><p class="sub-price">2 000 ₽ / мес</p><h3>Инсайты Discovery System</h3><p>1–2 уникальных материала в месяц: сигналы, источники, даты и выводы, которые можно проверить и забрать в работу.</p><a class="btn btn-ok" id="subInsights" href="https://web.tribute.tg/s/16eU" target="_blank" rel="noopener">Оформить в Tribute →</a><p class="sub-limit">Доступ к закрытому каналу открывается автоматически · отмена — в карточке Tribute.</p></div>
 <div class="sub-card"><p class="sub-price">15 000 ₽ / мес <small style="color:var(--meta);font-size:12px">· 144 000 ₽/год</small></p><h3>Персональная поддержка</h3><p>Окно поддержки на месяц: вопросы и разборы по работе с приобретённой или собранной связкой. Максимальный срок ответа — 4 часа. Новая разработка и интеграции сюда не входят.</p><a class="btn btn-primary" id="subSupport" href="https://web.tribute.tg/s/16eW" target="_blank" rel="noopener">Оформить в Tribute →</a><p class="sub-limit">Оплата за месяц или год · отмена и продление — в карточке Tribute.</p></div>
 </div>
+<div class="sub-products three rv" style="margin-top:14px">
+<div class="sub-card"><p class="sub-price">25 000 ₽ / мес</p><h3>Поддержка микро- и малого бизнеса</h3><p>Агенты на бизнес-задачах, интеграции CRM и таблиц, окно поддержки. Для тех, у кого связка уже работает на процессах.</p><a class="btn btn-primary" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Обсудить →</a><p class="sub-limit">Оплата за месяц · отмена в любой момент.</p></div>
+<div class="sub-card"><p class="sub-price">40 000 ₽ / мес</p><h3>Продуктовый отдел</h3><p>Несколько агентов, приоритет, еженедельные сводки. Замена штатного продуктового специалиста на постоянной основе.</p><a class="btn btn-primary" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Обсудить →</a><p class="sub-limit">Оплата за месяц · состав согласуем до старта.</p></div>
+</div>
 <p class="sub-note rv">После отмены остаются твоя связка и оплаченные материалы. Обе подписки оформляются в Tribute (доступ и продление — автоматически); разовые продукты — Robokassa. Отмена не блокирует уже переданный результат.</p>
 </div></section>
 <section><div class="wrap">
@@ -372,7 +391,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </details>
 <details>
 <summary>Что после сборки — сидеть с тобой месяц?</summary>
-<p>Нет. Правки по согласованным сценариям идут до приёмки: связка считается сделанной, когда работает у тебя, — не по календарю. После приёмки связка остаётся у тебя и работает без меня — платишь только провайдерам модели и хостинга. Если нужен регулярный внешний контур, отдельно есть подписки Tribute: инсайты Discovery System — 2 000 ₽/мес (1–2 материала в месяц) и персональная поддержка — 15 000 ₽/мес (ответ до 4 часов). Отмена — в карточке Tribute, связка и материалы при этом не блокируются.</p>
+<p>Нет. Правки по согласованным сценариям идут до приёмки: связка считается сделанной, когда работает у тебя, — не по календарю. После приёмки связка остаётся у тебя и работает без меня — платишь только провайдерам модели и хостинга. Если нужен регулярный внешний контур, отдельно есть подписки Tribute: инсайты Discovery System — 2 000 ₽/мес (1–2 материала в месяц) и персональная поддержка — 15 000 ₽/мес (ответ до 4 часов), для бизнеса — 25 000 и 40 000 ₽/мес. Отмена — в карточке Tribute, связка и материалы при этом не блокируются.</p>
 </details>
 <details>
 <summary>Чем персональная сборка отличается от гайда?</summary>

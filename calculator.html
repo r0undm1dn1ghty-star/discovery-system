@@ -498,12 +498,12 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <button class="btn-cta btn-cta-ghost" onclick="goCheckout('table')">Взять гайд →</button>
       </div>
       <div class="offer-opt" data-prod="install" style="border-color:rgba(242,182,101,.22)">
-        <div class="o-top"><div class="o-name">Установка под ключ — 7 / 10 / 15К</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">2 часа до запуска · GPU/хостинг решим</span></div>
-        <div class="o-desc">На твоём ПК (7К), на VPS РФ без VPN (10К) или с интеграцией ТГ/CRM/Авито (15К). Включает персоналку 5К. <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в ясности →</a></div>
-        <div class="o-price">7 / 10 / 15К <small>разово · 2 часа</small></div>
-        <button class="btn-cta btn-cta-ghost" onclick="goInstall('pc')" style="width:100%">Установка на ПК — 7 000 ₽ →</button>
-        <button class="btn-cta btn-cta-ghost" onclick="goInstall('vps')" style="width:100%;margin-top:8px">Установка на VPS — 10 000 ₽ →</button>
-        <button class="btn-cta btn-cta-ghost" onclick="goInstall('integ')" style="width:100%;margin-top:8px">С интеграцией ТГ/CRM/Авито — 15 000 ₽ →</button>
+        <div class="o-top"><div class="o-name">Внедрение под ключ — 15 / 20 / 30 / 60К</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">2 часа до запуска · GPU/хостинг решим</span></div>
+        <div class="o-desc">Личный агент на ПК (15К), системa для самозанятого (20К), для ИП с CRM/Авито (30К) или для среднего бизнеса с сопровождением (60К). Гайд 3К включён. <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в ясности →</a></div>
+        <div class="o-price">15 / 20 / 30 / 60К <small>разово · 1–3 дня</small></div>
+        <button class="btn-cta btn-cta-ghost" onclick="goInstall('pc')" style="width:100%">Личный агент на ПК — 15 000 ₽ →</button>
+        <button class="btn-cta btn-cta-ghost" onclick="goInstall('vps')" style="width:100%;margin-top:8px">Самозанятый — 20 000 ₽ →</button>
+        <button class="btn-cta btn-cta-ghost" onclick="goInstall('integ')" style="width:100%;margin-top:8px">Микро/малый бизнес (ИП) — 30 000 ₽ →</button>
       </div>
       <div class="offer-opt" data-prod="optimization" style="border-color:rgba(242,182,101,.22)">
         <div class="o-top"><div class="o-name">Оптимизация ИИ-агента — от 20 000 ₽</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">старт от 3 дней · замер до/после</span></div>
@@ -828,7 +828,7 @@ const PERSONA_COPY={
       title:'Агент, который <em>нельзя отключить</em>',
       desc:'Данные и агент — на твоём железе. Никто не может закрыть аккаунт и отобрать доступ: это не обещание, а архитектура. Оплата рублями, без VPN.',
       spec:['Агент и данные физически у тебя','Оплата картой РФ / СБП','Работает без VPN'],
-      best:'install',why:'Тебе важнее всего, чтобы контур был твой. Установка на своё устройство (7 000 ₽) — данные остаются на диске; VPS (10 000 ₽) — если нужен доступ 24/7.'},
+      best:'install',why:'Тебе важнее всего, чтобы контур был твой. Внедрение на своё устройство (15 000 ₽) — данные остаются на диске; для бизнеса (30 000 ₽) — если нужны CRM и заявки.'},
   P2:{tag:'Твой путь — результат под ключ',
       title:'Связка, которая <em>работает без тебя</em>',
       desc:'Ты покупаешь результат, а не инструмент. Соберу под твой процесс и отдам работающим — правки до приёмки, тебе не нужно быть техзаказчиком.',
@@ -1228,7 +1228,7 @@ function goInstall(kind){
 }
 function openInstallChat(kind){
   const est=estimate()||{};
-  const k=kind==='pc'?'на ПК (7 000 ₽)':kind==='vps'?'на VPS РФ (10 000 ₽)':kind==='integ'?'с интеграцией ТГ/CRM/Авито (15 000 ₽)':'(7 / 10 / 15К)';
+  const k=kind==='pc'?'Личный агент на ПК (15 000 ₽)':kind==='vps'?'для самозанятого (20 000 ₽)':kind==='integ'?'для микро/малого бизнеса (30 000 ₽)':'(15 / 20 / 30 / 60К)';
   const lines=['Здравствуйте! Интересует установка под ключ '+k+'.'];
   if(goal)lines.push('Задачи: '+goalLabel());
   if(device)lines.push('Железо: '+deviceLabel());
