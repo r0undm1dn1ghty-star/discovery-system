@@ -200,7 +200,14 @@ html{scroll-behavior:auto}
 .ic .ic-price{font-family:var(--display);font-size:21px;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-top:2px}
 .ic .ic-price small{font-family:var(--mono);font-size:11px;color:var(--meta);font-weight:400;display:block;margin-top:3px}
 .ic p{font-size:13.5px;color:var(--body);line-height:1.5;margin:0}
-.ic .ic-v{font-family:var(--mono);font-size:11.5px;color:var(--meta);line-height:1.5;margin-top:auto}
+.ic .ic-v{font-family:var(--mono);font-size:11.5px;color:var(--meta);line-height:1.5;margin-bottom:2px}
+.btn-buy{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 16px;margin-top:auto;border-radius:9px;background:#1f7a4d;color:#f2fbf5;text-decoration:none;font-weight:600;font-size:13.5px;border:1px solid rgba(255,255,255,.12);transition:background .15s,transform .15s;white-space:nowrap}
+.btn-buy:hover{background:#26895b;transform:translateY(-1px)}
+.btn-buy:active{transform:none}
+.btn-buy-lg{min-height:44px;font-size:14.5px}
+.btn-buy.buy-pending{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.14);color:var(--ink)}
+.btn-buy.buy-pending:hover{background:rgba(255,255,255,.07)}
+
 @media(max-width:760px){.install-cards{grid-template-columns:1fr}}
 .choose-hint a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 
@@ -280,6 +287,8 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <span class="dot" aria-hidden="true"></span>
 <div class="n-head"><span class="n">1</span><h3>Гайд — собрать самому</h3><span class="price">3 000 ₽ <small>разово</small></span></div>
 <p class="n-arg">Недели исследования — <em>в одной таблице.</em></p>
+<div class="n-cta"><a class="btn btn-primary" data-buy="guide" data-buy-label="Оплатить 3 000 ₽ →" href="#">Оплатить 3 000 ₽ →</a></div>
+
 <ul class="n-list">
 <li>20 конфигураций: модель, хостинг, интеграции</li>
 <li>Промпты и установка для каждой</li>
@@ -300,6 +309,8 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <li>Правки по сценариям — до приёмки: пока не работает у тебя, не считается сделанным</li>
 </ul>
 <p class="n-meta">созвон 30 мин · готово за 24 часа · ставишь сам · гайд 3К включён</p>
+<div class="n-cta"><a class="btn btn-primary" data-buy="build" data-buy-label="Оплатить 5 000 ₽ →" href="#">Оплатить 5 000 ₽ →</a></div>
+
 <div class="n-cta"><a class="btn btn-ok" href="calculator.html">Собрать мою связку →</a></div>
 </div>
 
@@ -308,10 +319,18 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="n-head"><span class="n">↗</span><h3>Внедрение под ключ</h3><span class="price">15 / 20 / 30 / 60К <small>разово</small></span></div>
 <p class="n-arg">Пришёл — <em>работает.</em> Агент забирает рутину: план дня, отчёты, переписки, база знаний по проектам.</p>
 <div class="install-cards four">
-<div class="ic"><div class="ic-top"><b>Личный агент на ПК</b><span class="ic-if">данные у тебя</span></div><span class="ic-price">15 000 ₽</span><p>Удалённая установка, база знаний, приёмка на твоих задачах.</p><span class="ic-v">консультация · расчёт экономики · 2 бесплатных API-ключа · срок 1–3 дня</span></div>
-<div class="ic"><div class="ic-top"><b>Самозанятый</b><span class="ic-if">несколько задач сразу</span></div><span class="ic-price">20 000 ₽</span><p>Агенты под клиентов, заявки и контент.</p><span class="ic-v">всё из установки на ПК · несколько агентов · срок 1–3 дня</span></div>
-<div class="ic"><div class="ic-top"><b>Микро- и малый бизнес</b><span class="ic-if">ИП, есть CRM</span></div><span class="ic-price">30 000 ₽</span><p>ТГ-бот, интеграция CRM/Авито/таблиц, память между чатами.</p><span class="ic-v">вклад: доступы · тест на твоих заявках · срок 1–10 дней</span></div>
-<div class="ic"><div class="ic-top"><b>Средний бизнес</b><span class="ic-if">несколько процессов</span></div><span class="ic-price">60 000 ₽</span><p>Несколько агентов на процессы, приёмка с твоим участием.</p><span class="ic-v">месяц сопровождения включён · срок 1–10 дней</span></div>
+<div class="ic"><div class="ic-top"><b>Личный агент на ПК</b><span class="ic-if">данные у тебя</span></div><span class="ic-price">15 000 ₽</span><p>Удалённая установка, база знаний, приёмка на твоих задачах.</p><span class="ic-v">консультация · расчёт экономики · 2 бесплатных API-ключа · срок 1–3 дня</span>
+<a class="btn-buy btn-buy-lg" data-buy="pc" data-buy-label="Оплатить 15 000 ₽ →" href="#">Оплатить 15 000 ₽ →</a>
+</div>
+<div class="ic"><div class="ic-top"><b>Самозанятый</b><span class="ic-if">несколько задач сразу</span></div><span class="ic-price">20 000 ₽</span><p>Агенты под клиентов, заявки и контент.</p><span class="ic-v">всё из установки на ПК · несколько агентов · срок 1–3 дня</span>
+<a class="btn-buy btn-buy-lg" data-buy="self" data-buy-label="Оплатить 20 000 ₽ →" href="#">Оплатить 20 000 ₽ →</a>
+</div>
+<div class="ic"><div class="ic-top"><b>Микро- и малый бизнес</b><span class="ic-if">ИП, есть CRM</span></div><span class="ic-price">30 000 ₽</span><p>ТГ-бот, интеграция CRM/Авито/таблиц, память между чатами.</p><span class="ic-v">вклад: доступы · тест на твоих заявках · срок 1–10 дней</span>
+<a class="btn-buy btn-buy-lg" data-buy="smb" data-buy-label="Оплатить 30 000 ₽ →" href="#">Оплатить 30 000 ₽ →</a>
+</div>
+<div class="ic"><div class="ic-top"><b>Средний бизнес</b><span class="ic-if">несколько процессов</span></div><span class="ic-price">60 000 ₽</span><p>Несколько агентов на процессы, приёмка с твоим участием.</p><span class="ic-v">месяц сопровождения включён · срок 1–10 дней</span>
+<a class="btn-buy btn-buy-lg" data-buy="mid" data-buy-label="Оплатить 60 000 ₽ →" href="#">Оплатить 60 000 ₽ →</a>
+</div>
 </div>
 <p class="n-meta">гайд 3К включён · без абонентки · выездная установка +3 000 ₽ · приёмка по чек-листу до оплаты</p>
 </div>
@@ -326,7 +345,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <li>Замер «до / после»: расход, скорость, качество ответов</li>
 </ul>
 <p class="n-meta">для тех, у кого связка уже запущена · без переезда с нуля · старт — от 25 000 ₽, точная цена после аудита</p>
-<div class="n-cta"><a class="btn btn-primary" id="buyOptClarity" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Заказать оптимизацию →</a><p class="n-meta" style="margin:10px 0 0">оплата картой или СБП · чек самозанятого · объём работ согласуем до старта</p></div>
+<div class="n-cta"><a class="btn btn-primary" data-buy="optimize" data-buy-label="Оплатить от 25 000 ₽ →" href="#">Оплатить от 25 000 ₽ →</a><p class="n-meta" style="margin:10px 0 0">оплата картой или СБП · чек самозанятого · объём работ согласуем до старта</p></div>
 </div>
 
 <div class="node rv" id="node5">
@@ -334,10 +353,18 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="n-head"><span class="n">+</span><h3>Дополнительные решения</h3><span class="price">от 15 000 ₽</span></div>
 <p class="n-arg">Когда рутину уже забрали, <em>остаётся производство контента и команда агентов.</em></p>
 <div class="install-cards four">
-<div class="ic"><div class="ic-top"><b>Контент-завод: фото</b><span class="ic-if">карточки и баннеры</span></div><span class="ic-price">15 000 ₽</span><p>Карточки товаров и картинки для соцсетей из твоего материала.</p><span class="ic-v">сборка 6–10 ч</span></div>
-<div class="ic"><div class="ic-top"><b>Контент-завод: видео</b><span class="ic-if">рилсы</span></div><span class="ic-price">30 000 ₽</span><p>Рилсы из твоих съёмок, выход по расписанию.</p><span class="ic-v">сборка 10–16 ч</span></div>
-<div class="ic"><div class="ic-top"><b>Офис ИИ-агентов</b><span class="ic-if">отдел из 5 человек</span></div><span class="ic-price">25 000 ₽</span><p>Несколько агентов на сотрудников: у каждого своя зона.</p><span class="ic-v">за отдел из 5 · добавление сотрудника = строка в чеке</span></div>
-<div class="ic"><div class="ic-top"><b>Выездная установка</b><span class="ic-if">физически, на месте</span></div><span class="ic-price">+3 000 ₽</span><p>Доплата к любой установке, если нужен выезд.</p><span class="ic-v">удалённо — бесплатно, по умолчанию</span></div>
+<div class="ic"><div class="ic-top"><b>Контент-завод: фото</b><span class="ic-if">карточки и баннеры</span></div><span class="ic-price">15 000 ₽</span><p>Карточки товаров и картинки для соцсетей из твоего материала.</p><span class="ic-v">сборка 6–10 ч</span>
+<a class="btn-buy" data-buy="factory_photo" data-buy-label="Оплатить 15 000 ₽ →" href="#">Оплатить 15 000 ₽ →</a>
+</div>
+<div class="ic"><div class="ic-top"><b>Контент-завод: видео</b><span class="ic-if">рилсы</span></div><span class="ic-price">30 000 ₽</span><p>Рилсы из твоих съёмок, выход по расписанию.</p><span class="ic-v">сборка 10–16 ч</span>
+<a class="btn-buy" data-buy="factory_video" data-buy-label="Оплатить 30 000 ₽ →" href="#">Оплатить 30 000 ₽ →</a>
+</div>
+<div class="ic"><div class="ic-top"><b>Офис ИИ-агентов</b><span class="ic-if">отдел из 5 человек</span></div><span class="ic-price">25 000 ₽</span><p>Несколько агентов на сотрудников: у каждого своя зона.</p><span class="ic-v">за отдел из 5 · добавление сотрудника = строка в чеке</span>
+<a class="btn-buy" data-buy="office" data-buy-label="Оплатить 25 000 ₽ →" href="#">Оплатить 25 000 ₽ →</a>
+</div>
+<div class="ic"><div class="ic-top"><b>Выездная установка</b><span class="ic-if">физически, на месте</span></div><span class="ic-price">+3 000 ₽</span><p>Доплата к любой установке, если нужен выезд.</p><span class="ic-v">удалённо — бесплатно, по умолчанию</span>
+<a class="btn-buy" data-buy="visit" data-buy-label="Оплатить +3 000 ₽ →" href="#">Оплатить +3 000 ₽ →</a>
+</div>
 </div>
 <p class="n-meta">оптимизация чужого агента — от 25 000 ₽ · объём согласуем до старта</p>
 </div>
@@ -377,8 +404,8 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sub-card"><p class="sub-price">15 000 ₽ / мес <small style="color:var(--meta);font-size:12px">· 144 000 ₽/год</small></p><h3>Персональная поддержка</h3><p>Окно поддержки на месяц: вопросы и разборы по работе с приобретённой или собранной связкой. Максимальный срок ответа — 4 часа. Новая разработка и интеграции сюда не входят.</p><a class="btn btn-primary" id="subSupport" href="https://web.tribute.tg/s/16eW" target="_blank" rel="noopener">Оформить в Tribute →</a><p class="sub-limit">Оплата за месяц или год · отмена и продление — в карточке Tribute.</p></div>
 </div>
 <div class="sub-products three rv" style="margin-top:14px">
-<div class="sub-card"><p class="sub-price">25 000 ₽ / мес</p><h3>Поддержка микро- и малого бизнеса</h3><p>Агенты на бизнес-задачах, интеграции CRM и таблиц, окно поддержки. Для тех, у кого связка уже работает на процессах.</p><a class="btn btn-primary" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Обсудить →</a><p class="sub-limit">Оплата за месяц · отмена в любой момент.</p></div>
-<div class="sub-card"><p class="sub-price">40 000 ₽ / мес</p><h3>Продуктовый отдел</h3><p>Несколько агентов, приоритет, еженедельные сводки. Замена штатного продуктового специалиста на постоянной основе.</p><a class="btn btn-primary" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Обсудить →</a><p class="sub-limit">Оплата за месяц · состав согласуем до старта.</p></div>
+<div class="sub-card"><p class="sub-price">25 000 ₽ / мес</p><h3>Поддержка микро- и малого бизнеса</h3><p>Агенты на бизнес-задачах, интеграции CRM и таблиц, окно поддержки. Для тех, у кого связка уже работает на процессах.</p><a class="btn btn-primary" data-buy="support_smb" data-buy-label="Оформить 25 000 ₽ →" href="#">Оформить 25 000 ₽ →</a><p class="sub-limit">Оплата за месяц · отмена в любой момент.</p></div>
+<div class="sub-card"><p class="sub-price">40 000 ₽ / мес</p><h3>Продуктовый отдел</h3><p>Несколько агентов, приоритет, еженедельные сводки. Замена штатного продуктового специалиста на постоянной основе.</p><a class="btn btn-primary" data-buy="support_dept" data-buy-label="Оформить 40 000 ₽ →" href="#">Оформить 40 000 ₽ →</a><p class="sub-limit">Оплата за месяц · состав согласуем до старта.</p></div>
 </div>
 <p class="sub-note rv">После отмены остаются твоя связка и оплаченные материалы. Обе подписки оформляются в Tribute (доступ и продление — автоматически); разовые продукты — Robokassa. Отмена не блокирует уже переданный результат.</p>
 </div></section>
@@ -431,7 +458,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sig-text">
 <span class="sig-name">Виктор Зайцев</span>
 <span class="sig-role">отвечаю сам · без отдела продаж</span>
-<a href="https://t.me/discoverysystem" target="_blank" rel="noopener" class="sig-tg">Telegram →</a>
+<a href="https://t.me/discoverysystem" target="_blank" rel="noopener" class="sig-tg">Telegram →</a> <a href="https://vk.com/discoverysystem" target="_blank" rel="noopener" class="sig-tg">ВК →</a>
 </div>
 </div>
 <p class="sig-c">Discovery System · 2026 · <a href="oferta.html">оферта</a> · <a href="policy.html">политика ПД</a> · <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a> · <a href="https://vc.ru/id6099688">VC</a></p>
@@ -462,11 +489,9 @@ chips.addEventListener('click',function(e){
 </script>
 <script>(function(){var d=document;if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}else{d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});}})();</script>
 <script>
-/* оптимизация: ссылка Robokassa из pay-links.js; пока пусто — TG (href уже стоит) */
-(function(){var el=document.getElementById('buyOptClarity');
-if(el&&typeof PAY_LINK_ROBOKASSA_OPTIMIZATION!=='undefined'&&PAY_LINK_ROBOKASSA_OPTIMIZATION){el.href=PAY_LINK_ROBOKASSA_OPTIMIZATION;el.setAttribute('rel','noopener');}})();
-/* подписки остаются в Tribute (решение 29.09): Robokassa для подписок требует ResultUrl —
-   серверный POST, которого у статичного сайта нет. Разовые продукты — Robokassa. */
+/* Все кнопки оплаты подставляются автоматически из pay-links.js
+   по атрибуту data-buy="ключ". Ссылки создаются в ЛК Robokassa и
+   вставляются только в pay-links.js — здесь дублировать не нужно. */
 </script>
 <div class="sticky-cta" id="stickyCta"><a href="calculator.html">Цена твоей связки ↗</a></div>
 <script>

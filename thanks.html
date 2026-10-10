@@ -52,6 +52,10 @@ footer a{color:var(--meta);text-decoration:underline}
 .tga input{width:100%;min-height:48px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);font-family:var(--sans);font-size:16px;margin-bottom:14px}
 .tga input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
 .tga .btn{width:100%}
+.msgr{display:flex;flex-direction:column;gap:10px}
+.msgr .btn{margin:0}
+.btn-vk{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.14);color:var(--ink)}
+.btn-vk:hover{background:rgba(255,255,255,.07)}
 .tga-note{font-size:13.5px;color:var(--meta);margin:14px 0 0;line-height:1.6}
 .tga-note a{color:var(--accent);text-decoration:underline}
 @media(max-width:640px){.wrap{padding:0 18px}main{padding:44px 0 32px}.btn{width:100%;margin-left:0}.btn-ghost{margin:10px 0 0}}
@@ -86,10 +90,13 @@ footer a{color:var(--meta);text-decoration:underline}
 
 <div class="tga">
 <span class="k">чтобы я сразу отдал результат</span>
-<label for="tgIn">Твой Telegram</label>
+<label for="tgIn">Твой ник (Telegram или ВК)</label>
 <input id="tgIn" type="text" inputmode="text" autocomplete="off" placeholder="@username или ссылка t.me/…"/>
-<button class="btn" id="tgBtn" type="button">Отправить мне заявку в Telegram →</button>
-<p class="tga-note">Одна кнопка: откроется чат со мной, где уже будет сумма, продукт и твой ник. Тебе останется только нажать «отправить». Если Telegram не под рукой — напиши на <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>.</p>
+<div class="msgr">
+<button class="btn" id="tgBtn" type="button">Отправить заявку в Telegram →</button>
+<button class="btn btn-vk" id="vkBtn" type="button">Отправить заявку ВКонтакте →</button>
+</div>
+<p class="tga-note">Одна кнопка: откроется чат со мной, где уже будет продукт, сумма и твой ник. Тебе останется только нажать «отправить». Принимаю заявки в Telegram и ВКонтакте. Если оба не под рукой — <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>.</p>
 </div>
 <a class="btn btn-ghost" href="clarity.html">Все услуги →</a>
 
@@ -101,117 +108,189 @@ footer a{color:var(--meta);text-decoration:underline}
 <p><a href="oferta.html">оферта</a> · <a href="policy.html">политика обработки данных</a> · </p>
 </div></footer>
 
+<script src="pay-links.js"></script>
 <script>
-/* Что показать после оплаты. Продукт определяется по сумме (Robokassa → OutSum),
-   либо по параметру ?p= (на случай прямого перехода). У каждого продукта — свой
-   следующий шаг по CJM: что делаю я, что нужно от клиента, чем логично продолжить.
-   Если не распознали — общий текст, клиент пишет в Telegram. */
+/* Что показать после оплаты. Продукт берём по ?p=<ключ> (его задаёт сама ссылка
+   Robokassa) и подтверждаем суммой OutSum. Суммы повторяются — 15 000 это и агент
+   на ПК, и контент-завод фото, — поэтому ключ главный, сумма только проверка.
+   Если не распознали, клиент сам выбирает продукт: пустой страницы не бывает.
+   Справочник продуктов DS_PAY — в pay-links.js. */
+/* Следующий шаг для каждого продукта: что делаю я / что нужно от тебя / срок.
+   Ключи совпадают с DS_PAY в pay-links.js. */
+var NEXT = {
+  guide:{d:'Цифровой материал. Доступ приходит в течение 15 минут в рабочие часы (не позднее 24 часов) — пришлю в Telegram или ВК, как удобнее.',
+   steps:[['01','Пришлю доступ — заберёшь гайд, 20 конфигураций с инструкциями','15 мин'],['02','Собираешь связку по таблице за 3–4 часа, без кода','сам'],['03','Упрёшься в вопрос — пиши, отвечу без доплаты','по желанию']],
+   prep:'Готовить ничего не нужно. Проверь, что Telegram или ВК открыты — туда придёт доступ.',
+   nxt:'Хочешь, чтобы связку собрал я под твою рутину? Подбор конфигурации под ключ — <b>5 000 ₽</b>, гайд уже оплачен, доплата <b>2 000 ₽</b>.'},
+
+  build:{d:'Связка под твою рутину. Сначала короткий созвон, потом собираю и правлю, пока не заработает у тебя.',
+   steps:[['01','Договоримся о созвоне: 30 минут, разберём твою рутину','в течение дня'],['02','Собираю связку под твой процесс','24 часа'],['03','Проверяешь на своих задачах. Не работает — правлю до приёмки','до приёмки']],
+   prep:'Нужны: 30 минут на созвон, доступы к Telegram и таблицам, обратная связь по сценариям. Всё скажу на созвоне, по шагам.',
+   nxt:'Когда связка заработает, её можно поставить «под ключ»: <b>внедрение от 15 000 ₽</b> — гайд и подбор входят в цену.'},
+
+  pc:{d:'Ставлю агента на твоё устройство: данные остаются локально, без VPS и аренды.',
+   steps:[['01','Чек-лист приёмки — что именно проверяем на твоих задачах','сразу'],['02','Согласуем время установки — работаю при тебе, удалённо','1–3 дня'],['03','Ставлю и настраиваю связку','1–3 дня'],['04','Тестируем на твоих задачах, приёмка по чек-листу','до приёмки']],
+   prep:'Нужны: включённый ПК, доступ для удалённого подключения и токены ботов, если они есть. Проверю на месте.',
+   nxt:'Понадобится работа 24/7 без включённого ПК — переедем на отдельный контур: <b>для самозанятого, 20 000 ₽</b>.'},
+
+  self:{d:'Агенты под клиентов, заявки и контент. Ставлю конфигурацию под несколько задач сразу.',
+   steps:[['01','Чек-лист приёмки под твои задачи','сразу'],['02','Согласуем время установки','1–3 дня'],['03','Ставлю связку и проверяем на реальных задачах','до приёмки']],
+   prep:'Нужны: перечень задач, которые забирает агент, и доступы к сервисам, где ты работаешь.',
+   nxt:'Если появится поток заявок и CRM — это <b>внедрение для микро- и малого бизнеса, 30 000 ₽</b>.'},
+
+  smb:{d:'Подключаю агента к твоим системам: Telegram, CRM, Авито, таблицы. Срок — 1–10 рабочих дней.',
+   steps:[['01','Чек-лист приёмки и доступы','сразу'],['02','Разбираю процесс: где теряются заявки и время','1–3 дня'],['03','Собираю и подключаю интеграции','до 10 дней'],['04','Тест на реальных заявках, приёмка по чек-листу','до приёмки']],
+   prep:'Нужны: токены ботов, доступ к CRM или Авито, доступ к серверу, если есть. Всё соберу по шагам.',
+   nxt:'Процесс запущен. Захочешь регулярный разбор и помощь по связке — <b>поддержка микро- и малого бизнеса, 25 000 ₽/мес</b>.'},
+
+  mid:{d:'Несколько агентов на процессы компании, приёмка с твоим участием. Месяц сопровождения включён.',
+   steps:[['01','Согласуем процессы и чек-лист приёмки','сразу'],['02','Собираю агентов по процессам','1–10 дней'],['03','Приёмка по чек-листу с твоим участием','до приёмки'],['04','Месяц сопровождения: правки и разборы','30 дней']],
+   prep:'Нужны: список процессов и людей, доступы к системам. Состав согласуем до старта.',
+   nxt:'Дальше можно расширить на другие отделы: <b>офис ИИ-агентов, 25 000 ₽ за отдел из 5 человек</b>.'},
+
+  factory_photo:{d:'Карточки товаров и картинки для соцсетей из твоего материала.',
+   steps:[['01','Соберу твой материал: фото, описания, стиль','в течение дня'],['02','Настрою завод: шаблоны карточек и баннеров','6–10 ч'],['03','Покажу первую партию, поправим стиль','до приёмки']],
+   prep:'Нужны: исходные фото и примеры того, как должно выглядеть.',
+   nxt:'Понадобятся видео — это <b>контент-завод для видео, 30 000 ₽</b>.'},
+
+  factory_video:{d:'Рилсы и короткие видео из твоих съёмок, выход по расписанию.',
+   steps:[['01','Разберём формат: длина, подача, частота','в течение дня'],['02','Настрою сборку и монтаж','10–16 ч'],['03','Проверим на первой партии роликов','до приёмки']],
+   prep:'Нужны: исходные съёмки и примеры роликов, которые нравятся.',
+   nxt:'Чтобы производство шло постоянно без тебя — <b>поддержка 25 000 ₽/мес</b>.'},
+
+  office:{d:'Офис ИИ-агентов: несколько агентов на сотрудников, у каждого своя зона.',
+   steps:[['01','Разберём роли: кто что делает','1–2 дня'],['02','Соберу агентов под каждую роль','до 10 дней'],['03','Обучим команду пользоваться','до приёмки']],
+   prep:'Нужны: список сотрудников и их задач. Отдел из 5 человек — базовая единица; больше — по строкам.',
+   nxt:'Можно добавить сопровождение отдела: <b>продуктовый отдел, 40 000 ₽/мес</b>.'},
+
+  visit:{d:'Доплата к установке: приеду физически, если нужен выезд.',
+   steps:[['01','Согласуем адрес и дату','в течение дня'],['02','Приезжаю и ставлю агента на месте','1–3 дня']],
+   prep:'Нужны: адрес, удобное время и доступ к устройству.',
+   nxt:'Сама установка оплачивается отдельно — по выбранному варианту.'},
+
+  optimize:{d:'Аудит текущей связки, пересборка промптов, модели и логики, замер «до / после».',
+   steps:[['01','Аудит: смотрю, где утекают токены, время и качество','2–3 дня'],['02','Пересобираю связку под задачу','после аудита'],['03','Замер «до / после»: расход, скорость, качество ответов','по объёму']],
+   prep:'Нужны: доступ к текущей связке и статистика расходов. Точную цену назову после аудита.',
+   nxt:'Понадобится регулярная помощь — <b>поддержка 15 000 ₽/мес</b>, ответ до 4 часов.'},
+
+  insights:{d:'Подписка активна. Материалы приходят 1–2 раза в месяц: сигналы с источниками и датами.',
+   steps:[['01','Доступ к закрытому каналу открылся автоматически','сразу'],['02','Материалы приходят 1–2 раза в месяц','весь период'],['03','Отмена — в любой момент, доступ до конца периода','когда угодно']],
+   prep:'Ничего. Проверь Telegram — канал уже доступен.',
+   nxt:'Понадобится разбор конкретно твоей связки — это <b>персональная поддержка 15 000 ₽/мес</b>.'},
+
+  support:{d:'Окно поддержки на месяц: вопросы и разборы по твоей связке. Ответ — до 4 часов.',
+   steps:[['01','Доступ открыт: пиши вопросы по связке','сразу'],['02','Отвечаю в течение 4 часов в рабочие дни','весь месяц'],['03','Отмена — в любой момент, месяц доигрывает','когда угодно']],
+   prep:'Ничего. Просто напиши, с чем помочь.',
+   nxt:'Если это уже бизнес-процессы и команда — есть <b>поддержка микро- и малого бизнеса, 25 000 ₽/мес</b>.'},
+
+  support_smb:{d:'Поддержка бизнес-процессов: агенты на задачах, интеграции CRM и таблиц, окно поддержки.',
+   steps:[['01','Согласуем список процессов и задач на месяц','1–2 дня'],['02','Работаю по задачам, отчитываюсь','весь месяц'],['03','Отмена — в любой момент','когда угодно']],
+   prep:'Нужны: доступы к системам и список задач на месяц.',
+   nxt:'Для постоянного продуктового контура — <b>продуктовый отдел, 40 000 ₽/мес</b>.'},
+
+  support_dept:{d:'Продуктовый отдел: несколько агентов, приоритет, еженедельные сводки.',
+   steps:[['01','Согласуем состав и процессы отдела','1–3 дня'],['02','Работа отдела, приоритетная поддержка','весь месяц'],['03','Еженедельная сводка по результатам','каждую неделю']],
+   prep:'Нужны: процессы, доступы и ответственный с твоей стороны.',
+   nxt:'Дальше — масштабирование на другие отделы через <b>офис ИИ-агентов</b>.'}
+};
 (function(){
-  var P=[
-    {k:'guide', v:3000, n:'Гайд «20 конфигураций»',
-     d:'Цифровой материал. Доступ приходит в течение 15 минут в рабочие часы (не позднее 24 часов) — ссылку пришлю в Telegram.',
-     steps:[['01','Пришлю доступ в Telegram — оттуда заберёшь гайд','15 мин'],['02','Собираешь связку по таблице за 3–4 часа, без кода','сам'],['03','Упрёшься в вопрос — пиши, отвечу без доплаты','по желанию']],
-     prep:'Готовить ничего не нужно. Проверь, что Telegram открыт — туда придёт доступ.',
-     nxt:'Хочешь, чтобы связку собрал я под твою рутину? Персональная сборка — <b>5 000 ₽</b>, гайд уже оплачен, доплата <b>2 000 ₽</b>.'},
-
-    {k:'build', v:5000, n:'Персональная сборка',
-     d:'Связка под твою рутину. Сначала короткий созвон, потом собираю и правлю, пока не заработает у тебя.',
-     steps:[['01','Договоримся о созвоне — 30 минут, разберём твою рутину','в течение дня'],['02','Собираю связку под твой процесс','24 часа'],['03','Проверяешь на своих задачах. Не работает — правлю до приёмки','до приёмки']],
-     prep:'Нужны: 30 минут на созвон, доступы к Telegram и таблицам, обратная связь по сценариям. Всё скажу на созвоне — по шагам.',
-     nxt:'Когда связка заработает, её можно поставить «под ключ» и забыть про настройку: <b>установка от 15 000 ₽</b> (гайд и подбор входят в цену).'},
-
-    {k:'pc', v:7000, n:'Установка на ПК',
-     d:'Ставлю агента на твоё устройство — данные остаются локально, без VPS и аренды. Работает, пока включён ПК.',
-     steps:[['01','Договоримся о времени — работаю по AnyDesk, при тебе','по согласованию'],['02','Устанавливаю и настраиваю связку','~2 часа'],['03','Тестируем на твоих задачах, пока не заработает как надо','до приёмки']],
-     prep:'Нужны: включённый ПК, доступ по AnyDesk и токены ботов, если они есть. Проверю на месте.',
-     nxt:'Понадобится работа 24/7 без включённого ПК — переедем на отдельный контур: <b>от 20 000 ₽</b>.'},
-
-    {k:'vps', v:10000, n:'Установка на VPS',
-     d:'Развёртываю агента на РФ-сервере: работает 24/7, доступен с ПК, телефона и из Telegram.',
-     steps:[['01','Договоримся о времени, подключусь по AnyDesk','по согласованию'],['02','Разворачиваю на VPS и подключаю каналы','~2 часа'],['03','Тестируем на твоих задачах до приёмки','до приёмки']],
-     prep:'Нужны: доступы к VPS и Telegram. Сервер оплачиваешь провайдеру напрямую — около <b>400 ₽/мес</b>, мне за хостинг ничего.',
-     nxt:'Нужно связать агента с CRM, Авито или потоком заявок? Это <b>внедрение для ИП, 30 000 ₽</b>.'},
-
-    {k:'integ', v:15000, n:'Интеграция для МСБ/самозанятых',
-     d:'ИИ-ассистент и автоматизация одного бизнес-процесса: подключаю Telegram, CRM или поток заявок из Авито.',
-     steps:[['01','Созвон: разберём процесс и точки, где теряются заявки','в течение дня'],['02','Подключаю агента к твоим системам','по согласованию'],['03','Тест на 5 реальных заявках — смотрим, что дошло и что нет','до приёмки']],
-     prep:'Нужны: токены ботов, доступ к CRM или Авито, доступ к VPS. Всё соберём на созвоне — я скажу, что именно.',
-     nxt:'Процесс запущен. Если захочешь регулярный разбор и помощь по связке — <b>поддержка 15 000 ₽/мес</b>.'},
-
-    {k:'opt', v:20000, n:'Оптимизация ИИ-агента',
-     d:'Аудит текущей связки, пересборка промптов, модели и логики, замер «до / после». Старт от 3 дней — точный срок назову после аудита.',
-     steps:[['01','Аудит: смотрю, где утекают токены, время и качество','2–3 дня'],['02','Пересобираю связку под задачу','после аудита'],['03','Замер «до / после»: расход, скорость, качество ответов','по объёму']],
-     prep:'Нужны: доступ к текущей связке и статистика расходов. Объём и цену согласуем до начала работ.',
-     nxt:'Если после оптимизации понадобится регулярная помощь — <b>поддержка 15 000 ₽/мес</b>, ответ до 4 часов.'},
-
-    {k:'insights', v:2000, n:'Инсайты Discovery System',
-     d:'Подписка активна. Материалы приходят в Telegram — 1–2 в месяц: сигналы с источниками и датами.',
-     steps:[['01','Доступ к закрытому каналу открылся автоматически','сразу'],['02','Материалы приходят 1–2 раза в месяц','весь период'],['03','Отмена — в любой момент, доступ сохраняется до конца периода','когда угодно']],
-     prep:'Ничего. Проверь Telegram — канал уже доступен.',
-     nxt:'Понадобится разбор конкретно твоей связки — это <b>персональная поддержка 15 000 ₽/мес</b>.'}
-  ];
 
   var q=new URLSearchParams(location.search);
   var raw=q.get('OutSum')||q.get('outsum')||'';
   var sum=parseFloat(String(raw).replace(',','.'));
-  var pk=(q.get('p')||'').toLowerCase();
-  var hit=null;
+  var pk=(q.get('p')||q.get('P')||'').toLowerCase().trim();
+  var hit=null, byKey=null, bySum=null;
 
-  if(pk){for(var j=0;j<P.length;j++){if(P[j].k===pk){hit=P[j];break;}}}
-  if(!hit&&!isNaN(sum)&&sum>0){
-    for(var i=0;i<P.length;i++){if(Math.abs(P[i].v-sum)<1){hit=P[i];break;}}
+  /* 1. ключ продукта — главный источник (суммы повторяются!) */
+  if(pk && DS_PAY[pk]) byKey=pk;
+  /* 2. сумма — только подтверждение */
+  if(!isNaN(sum)&&sum>0){
+    var keys=Object.keys(DS_PAY);
+    for(var i=0;i<keys.length;i++){ if(DS_PAY[keys[i]].price===sum){ bySum=keys[i]; break; } }
   }
+  var key = byKey || bySum;
+  if(key && NEXT[key]){ hit={k:key, p:DS_PAY[key], n:NEXT[key]}; }
 
   if(!isNaN(sum)&&sum>0){
-    var box=document.getElementById('sumBox');
-    if(box) box.hidden=false;
-    var val=document.getElementById('sumVal');
-    if(val) val.textContent=sum.toLocaleString('ru-RU')+' ₽';
+    var box=document.getElementById('sumBox'); if(box) box.hidden=false;
+    var val=document.getElementById('sumVal'); if(val) val.textContent=sum.toLocaleString('ru-RU')+' ₽';
   }
 
   if(hit){
     var prod=document.getElementById('sumProd');
-    if(prod) prod.innerHTML='<b style="color:var(--ink)">'+hit.n+'</b> — '+hit.d;
+    if(prod) prod.innerHTML='<b style="color:var(--ink)">'+hit.p.name+'</b> — '+hit.n.d;
     var box2=document.getElementById('sumBox'); if(box2) box2.hidden=false;
-    var val2=document.getElementById('sumVal'); if(val2&&!(sum>0)) val2.textContent=hit.v.toLocaleString('ru-RU')+' ₽';
-    var ul=document.getElementById('steps'); if(ul){ul.innerHTML=hit.steps.map(function(s){return '<li><span class="n">'+s[0]+'</span><span class="t">'+s[1]+'</span><span class="s">'+s[2]+'</span></li>';}).join('');}
-    var pt=document.getElementById('prepText'); if(pt) pt.textContent=hit.prep;
-    var nt=document.getElementById('nxtText'); if(nt) nt.innerHTML=hit.nxt;
+    var val2=document.getElementById('sumVal'); if(val2&&!(sum>0)) val2.textContent=hit.p.price.toLocaleString('ru-RU')+' ₽';
+    var ul=document.getElementById('steps');
+    if(ul) ul.innerHTML=hit.n.steps.map(function(s){return '<li><span class="n">'+s[0]+'</span><span class="t">'+s[1]+'</span><span class="s">'+s[2]+'</span></li>';}).join('');
+    var pt=document.getElementById('prepText'); if(pt) pt.textContent=hit.n.prep;
+    var nt=document.getElementById('nxtText'); if(nt) nt.innerHTML=hit.n.nxt;
   } else {
-    var d2=document.getElementById('detail'); if(d2) d2.hidden=true;
-    var pb=document.getElementById('prepBox'); if(pb) pb.hidden=true;
-    var nb=document.getElementById('nxtBox'); if(nb) nb.hidden=true;
+    /* не распознали: клиент сам выбирает продукт — пустой страницы нет */
+    var d0=document.getElementById('detail'); if(d0) d0.hidden=true;
+    var p0=document.getElementById('prepBox'); if(p0) p0.hidden=true;
+    var n0=document.getElementById('nxtBox'); if(n0) n0.hidden=true;
     var sb=document.getElementById('sumBox');
-    if(sb){sb.hidden=false;var sp=document.getElementById('sumProd');if(sp)sp.textContent='Сумму не распознали автоматически — напиши в Telegram, что оплатил, и я сразу отдам результат.';}
+    if(sb){
+      sb.hidden=false;
+      var sp=document.getElementById('sumProd');
+      if(sp){
+        var opts=Object.keys(NEXT).map(function(k){
+          return '<option value="'+k+'">'+DS_PAY[k].name+' — '+DS_PAY[k].price.toLocaleString('ru-RU')+' ₽</option>';
+        }).join('');
+        sp.innerHTML='Какой продукт ты оплатил? Выбери — покажу следующий шаг.<br>'+
+          '<select id="prodPick" style="margin-top:12px;min-height:48px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);font-family:var(--sans);font-size:16px;width:100%;max-width:460px">'+
+          '<option value="">— выбери из списка —</option>'+opts+'</select>';
+        var pick=document.getElementById('prodPick');
+        if(pick) pick.addEventListener('change',function(){
+          var k=pick.value; if(!k||!NEXT[k])return;
+          var P=DS_PAY[k], N=NEXT[k];
+          d0.hidden=false;
+          document.getElementById('sumProd').innerHTML='<b style="color:var(--ink)">'+P.name+'</b> — '+N.d;
+          document.getElementById('steps').innerHTML=N.steps.map(function(s){return '<li><span class="n">'+s[0]+'</span><span class="t">'+s[1]+'</span><span class="s">'+s[2]+'</span></li>';}).join('');
+          p0.hidden=false; document.getElementById('prepText').textContent=N.prep;
+          n0.hidden=false; document.getElementById('nxtText').innerHTML=N.nxt;
+        });
+      }
+    }
   }
 
-  /* ── Заявка в Telegram без сервера ──
-     Robokassa возвращает только сумму (OutSum). Контакт клиента мы не знаем.
-     Решение: клиент вводит свой ник на этой странице — кнопка открывает чат
-     с Виктором, где уже подставлены сумма, продукт и ник. Клиенту остаётся
-     нажать «отправить», Виктору — сразу видеть, кто оплатил и что. */
-  var TG='https://t.me/soulvictor';
-  var btn=document.getElementById('tgBtn');
+  /* ── Заявка мне: Telegram и ВК, без сервера ──
+     Robokassa возвращает только сумму, контакт клиента не знает.
+     Клиент оставляет ник и жмёт кнопку — чат открывается с готовым
+     текстом: продукт, сумма, ник. Останется нажать «отправить». */
   var inp=document.getElementById('tgIn');
+  var btnTg=document.getElementById('tgBtn');
+  var btnVk=document.getElementById('vkBtn');
+
+  function nick(){ return (inp&&inp.value||'').trim().replace(/^https?:\/\/(t\.me|vk\.com|vk\.ru)\//i,'').replace(/^@/,''); }
   function buildOrder(){
     var lines=['Оплата прошла.'];
-    if(hit) lines.push('Продукт: '+hit.n);
+    var k=(hit&&hit.k)||(pk&&DS_PAY[pk]?pk:'')||((document.getElementById('prodPick')||{}).value)||'';
+    if(k&&DS_PAY[k]) lines.push('Продукт: '+DS_PAY[k].name);
     if(!isNaN(sum)&&sum>0) lines.push('Сумма: '+sum.toLocaleString('ru-RU')+' ₽');
-    var nick=(inp&&inp.value||'').trim().replace(/^https?:\/\/t\.me\//i,'').replace(/^@/,'');
-    if(nick) lines.push('Мой Telegram: @'+nick);
+    var n=nick();
+    if(n) lines.push('Мой ник: '+n);
     lines.push('Отдайте, пожалуйста, результат — жду.');
     return lines.join('\n');
   }
-  if(btn){
-    btn.addEventListener('click',function(){
-      var nick=(inp&&inp.value||'').trim();
-      if(!nick){
-        if(inp){inp.focus();inp.style.borderColor='rgba(224,164,88,.6)';}
-        btn.textContent='Сначала укажи свой ник ↑';
-        setTimeout(function(){btn.textContent='Отправить мне заявку в Telegram →';},2200);
-        return;
+
+  if(btnTg){
+    btnTg.addEventListener('click',function(){
+      if(!nick()){ if(inp){inp.focus();inp.style.borderColor='rgba(240,178,74,.6)';} btnTg.textContent='Сначала укажи ник ↑'; setTimeout(function(){btnTg.textContent='Отправить заявку в Telegram →';},2200); return; }
+      window.open('https://t.me/soulvictor?text='+encodeURIComponent(buildOrder()),'_blank','noopener');
+    });
+  }
+  if(btnVk){
+    btnVk.addEventListener('click',function(){
+      if(!nick()){ if(inp){inp.focus();inp.style.borderColor='rgba(240,178,74,.6)';} return; }
+      var txt=encodeURIComponent(buildOrder());
+      if(DS_VK_DIRECT){ window.open(DS_VK_DIRECT+(DS_VK_DIRECT.indexOf('?')>-1?'&':'?')+'text='+txt,'_blank','noopener'); }
+      else {
+        if(navigator.clipboard) navigator.clipboard.writeText(decodeURIComponent(txt));
+        btnVk.textContent='Текст скопирован — вставь в ВК ✓';
+        setTimeout(function(){btnVk.textContent='Отправить заявку ВКонтакте →';},3200);
       }
-      window.open(TG+'?text='+encodeURIComponent(buildOrder()),'_blank','noopener');
     });
   }
   if(inp){inp.addEventListener('input',function(){inp.style.borderColor='';});}
