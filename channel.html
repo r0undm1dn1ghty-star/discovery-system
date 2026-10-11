@@ -46,6 +46,7 @@ radial-gradient(560px 420px at 55% 112%,rgba(150,118,84,.06),transparent 72%)}
 @media(max-width:760px){body:before{background:radial-gradient(420px 320px at 88% -4%,rgba(123,196,168,.09),transparent 70%)}}
 .wrap{max-width:880px;margin:0 auto;padding:0 24px}
 section{padding:110px 0}
+section:first-of-type{padding:40px 0 76px}
 h1,h2{color:var(--ink);font-family:var(--display);line-height:1.15;font-weight:700;letter-spacing:-.01em}
 h1{font-size:clamp(2.2rem,5.5vw,3.4rem);margin:0 0 36px}
 h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 44px}
@@ -60,8 +61,8 @@ nav.top a:hover{color:var(--ink)}
 nav.top img{height:28px;width:auto;border-radius:4px}nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
 nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
 /* hero */
-.hero{padding:110px 0 40px}
-.hero .sub{color:var(--meta);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px}
+.hero{padding:74px 0 12px}
+.hero .sub{color:var(--meta);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px}
 /* формат: 3 колонки, компактно, без карточных рамок */
 .eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:24px}
 .fmt{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:64px}
@@ -234,6 +235,33 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 #g-tip a{color:var(--accent)}
 #g-tip b{color:var(--ink)}
 @media(max-width:640px){.g-canvas{height:56vh}}
+/* ── focus-in: страница «наводится на резкость», фокус уходит на ленту ── */
+@keyframes ds-focus{from{opacity:0;transform:scale(1.05);filter:blur(5px)}
+  to{opacity:1;transform:scale(1);filter:blur(0)}}
+@keyframes ds-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero .sub{animation:ds-focus .9s cubic-bezier(.22,.61,.36,1) both}
+.hero h1{animation:ds-focus .95s cubic-bezier(.22,.61,.36,1) .06s both}
+.hero p{animation:ds-focus 1s cubic-bezier(.22,.61,.36,1) .12s both}
+.feed-head{animation:ds-focus 1.05s cubic-bezier(.22,.61,.36,1) .2s both}
+.month-body{animation:ds-rise .45s cubic-bezier(.22,.61,.36,1) both}
+
+/* сигнал: плавный масштаб вместо простого сдвига */
+.feed .sig{transition:opacity .6s cubic-bezier(.22,.61,.36,1),
+  transform .6s cubic-bezier(.22,.61,.36,1),background .4s var(--ease)}
+.feed .sig:not(.in){transform:translateY(12px) scale(.982)}
+.feed .sig.in{transform:none}
+.feed .sig.in:hover{transform:translateY(-2px) scale(1.013)}
+
+/* заголовок активного месяца прилипает под навбаром */
+.month>summary{position:sticky;top:54px;z-index:6;
+  background:linear-gradient(180deg,var(--bg) 76%,rgba(14,18,32,.88));
+  backdrop-filter:blur(6px)}
+.month>summary.cur .m-name{color:var(--ink)}
+.month>summary.cur .m-cnt{background:rgba(123,196,255,.15);border-color:rgba(123,196,255,.45);color:var(--ink)}
+
+@media(prefers-reduced-motion:reduce){
+  .hero .sub,.hero h1,.hero p,.feed-head,.month-body{animation:none!important;filter:none!important}
+}
 /* luminance steps — глубина через уровни темноты, не тени */
 :root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
 </style>
@@ -552,7 +580,23 @@ if('IntersectionObserver' in window){
 var io=new IntersectionObserver(function(es){
 es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
 },{threshold:.12});
-d.querySelectorAll('.rv,.sig').forEach(function(el){io.observe(el);});
+// всё, кроме сигналов ленты — обычное появление (без rootMargin:
+// отрицательный нижний отступ навсегда скрывал бы подпись автора в футере)
+d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+var feedsig=[].slice.call(d.querySelectorAll('.feed .sig'));
+d.querySelectorAll('.sig:not(.feed .sig)').forEach(function(el){io.observe(el);});
+// сигналы ленты — каскадом, с мягкими границами кадра
+feedsig.forEach(function(el,i){
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.style.transitionDelay=((i%6)*55)+'ms';
+      e.target.classList.add('in');
+      obs.unobserve(e.target);
+    });
+  },{rootMargin:'-6% 0px -8% 0px',threshold:.12});
+  obs.observe(el);
+});
 }else{
 d.querySelectorAll('.rv,.sig').forEach(function(el){el.classList.add('in');});
 }
@@ -675,5 +719,19 @@ if('IntersectionObserver' in window){
   }
 })();
 </script>
-</body>
+<script>
+/* активный месяц: подсветка заголовка, у которого сейчас лента в кадре */
+(function(){
+  var ms=[].slice.call(document.querySelectorAll('details.month'));
+  if(!ms.length || !('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var s=e.target.querySelector(':scope > summary');
+      if(!s) return;
+      s.classList.toggle('cur', e.isIntersecting);
+    });
+  },{rootMargin:'-14% 0px -60% 0px'});
+  ms.forEach(function(m){io.observe(m);});
+})();
+</script></body>
 </html>
