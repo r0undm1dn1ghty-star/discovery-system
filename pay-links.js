@@ -23,32 +23,34 @@
 var DS_PAY = {
 
   /* ── Разовые: цифровые материалы ───────────────────────── */
-  guide:   {price:3000,  name:'Гайд «20 конфигураций»',
-            url:'https://auth.robokassa.ru/merchant/Invoice/cckSfDB22k2PQtri5TVSnw'},
-  build:   {price:5000,  name:'Подбор конфигурации под ключ',
-            url:'https://auth.robokassa.ru/merchant/Invoice/4iIqaJEDUkqvFXmDN46HVw'},
+  guide:   {price:5000,  name:'Гайд «20 сборок»',
+            url:'https://auth.robokassa.ru/merchant/Invoice/GEV6reyqiEWXzYG_Mkulbw'},
+  build:   {price:7000,  name:'Гайд персональной сборки',
+            url:'https://auth.robokassa.ru/merchant/Invoice/RjF3Mh-GhUmFIiCWVxkMFA'},
 
   /* ── Разовые: внедрение (лестница 15/20/30/60) ─────────── */
+  personal:{price:15000, name:'ИИ-агент для личных целей (не-бизнес)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/xp2UNX65i0GBewjBqkgJOw'},
   pc:      {price:15000, name:'Личный агент на ПК',
-            url:'https://auth.robokassa.ru/merchant/Invoice/KgLCbRoMKUCVzCZ0_0ROlA'},
-  self:    {price:20000, name:'Самозанятый',
-            url:'https://auth.robokassa.ru/merchant/Invoice/OY1jS0GqG02bvkffIKxuPQ'},
-  smb:     {price:30000, name:'Микро- и малый бизнес (ИП)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/TMcj5y7inUyuEOHnGaC-dg'},
-  mid:     {price:60000, name:'Средний бизнес',
-            url:''},
+            url:'https://auth.robokassa.ru/merchant/Invoice/xp2UNX65i0GBewjBqkgJOw'},
+  self:    {price:20000, name:'ИИ-агент для самозанятых и микробизнеса',
+            url:'https://auth.robokassa.ru/merchant/Invoice/AuPs4sLt3USvwXypMewUDw'},
+  smb:     {price:30000, name:'ИИ-агент для ИП и малого бизнеса',
+            url:'https://auth.robokassa.ru/merchant/Invoice/jjPrDM9xSkK1qKCLSGB-MA'},
+  mid:     {price:60000, name:'ИИ-агент для среднего бизнеса',
+            url:'https://auth.robokassa.ru/merchant/Invoice/ga2H8Nr6zUadphD3DvygDQ'},
 
   /* ── Разовые: дополнительные решения ───────────────────── */
-  factory_photo: {price:15000, name:'Контент-завод: фото',
-            url:''},
+  factory_photo: {price:25000, name:'Контент-завод: фото',
+            url:'https://auth.robokassa.ru/merchant/Invoice/DkLlmgasJUSlcEP4qFsS8w'},
   factory_video: {price:30000, name:'Контент-завод: видео',
-            url:''},
+            url:'https://auth.robokassa.ru/merchant/Invoice/mckApiXe0kSeCp7YLTkIWw'},
   office:  {price:25000, name:'Офис ИИ-агентов (отдел из 5)',
-            url:''},
+            url:'https://auth.robokassa.ru/merchant/Invoice/OUoEK8kSYEWUW05bDAhlVg'},
   visit:   {price:3000,  name:'Выездная установка (доплата)',
             url:''},
-  optimize:{price:25000, name:'Оптимизация чужого ИИ-агента',
-            url:'https://auth.robokassa.ru/merchant/Invoice/biGOMDdi3EavbVcNFpARTA'},
+  optimize:{price:25000, name:'Оптимизация ИИ-агента (не работает/сломан/дорогой)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og'},
 
   /* ── Подписки: Tribute (Robokassa не используем) ───────── */
   insights:   {price:2000,  name:'Инсайты Discovery System',
