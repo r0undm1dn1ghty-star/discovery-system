@@ -70,9 +70,6 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .fmt h3{color:var(--ink);font-size:15px;margin-bottom:6px;font-weight:600}
 .fmt p{font-size:14px;color:var(--meta);line-height:1.55;margin:0}
 /* feed header */
-.feed-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
-.graph-link{font-family:var(--mono);font-size:13px;color:var(--accent);text-decoration:none;border:1px solid rgba(123,196,168,.3);border-radius:8px;padding:8px 14px;min-height:38px;display:inline-flex;align-items:center;gap:6px;transition:background .15s,border-color .15s}
-.graph-link:hover{background:rgba(123,196,168,.08);border-color:rgba(123,196,168,.6)}
 .feed-head{font-family:var(--mono);font-size:13px;color:var(--meta);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
 .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:fpulse 2s ease infinite}
 @keyframes fpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
@@ -211,6 +208,32 @@ body{position:relative}
 body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;
 background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
 @media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
+/* граф сигналов — внутри канала, сворачиваемая секция */
+.g-month .month-body{padding-top:4px}
+.g-wrap{display:flex;flex-direction:column;gap:14px}
+.g-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.g-chip{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;
+  padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03);
+  color:var(--meta);cursor:pointer;min-height:34px;display:inline-flex;align-items:center;
+  transition:background .15s,border-color .15s,color .15s}
+.g-chip:hover{background:rgba(255,255,255,.07);color:var(--ink)}
+.g-chip.on{background:rgba(123,196,255,.14);border-color:rgba(123,196,255,.5);color:var(--ink)}
+.g-chip b{font-variant-numeric:tabular-nums;opacity:.7;margin-left:5px}
+.g-canvas{height:min(62vh,620px);min-height:380px;border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.018),transparent 42%)}
+.g-foot{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;
+  color:var(--steel);letter-spacing:.03em}
+.g-foot span{display:inline-flex;align-items:center;gap:7px}
+.g-key{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.g-key.hex{width:10px;height:10px;transform:rotate(45deg);border-radius:2px}
+.g-key.ell{border-radius:50%;width:11px;height:11px}
+.g-hint{font-family:var(--mono);font-size:11.5px;color:var(--steel);opacity:.7;letter-spacing:.03em}
+#g-tip{position:fixed;pointer-events:none;background:rgba(14,18,32,.97);border:1px solid var(--line);
+  border-radius:9px;padding:11px 13px;font-size:12.5px;color:var(--meta);max-width:340px;
+  display:none;z-index:60;line-height:1.5;box-shadow:0 8px 28px rgba(0,0,0,.55)}
+#g-tip a{color:var(--accent)}
+#g-tip b{color:var(--ink)}
+@media(max-width:640px){.g-canvas{height:56vh}}
 /* luminance steps — глубина через уровни темноты, не тени */
 :root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
 </style>
@@ -218,7 +241,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <nav class="top" aria-label="Основная навигация"><div class="wrap">
-<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="proof.html">доказательства</a><a href="channel-graph.html">граф</a><a class="calc" href="calculator.html">Калькулятор</a>
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="proof.html">доказательства</a><a class="calc" href="calculator.html">Калькулятор</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
@@ -230,7 +253,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <main>
 <section><div class="wrap">
 <div class="feed">
-<div class="feed-top rv"><p class="feed-head" id="feed" style="margin-bottom:0"><span class="pulse"></span> LIVE · сигналы по месяцам</p><a class="graph-link" href="channel-graph.html">Граф сигналов →</a></div>
+<p class="feed-head rv" id="feed"><span class="pulse"></span> LIVE · сигналы по месяцам</p>
 
 <details class="month" open>
 <summary><span class="m-name">октябрь 2026</span><span class="m-cnt">7</span><span class="m-chev">▾</span></summary>
@@ -449,6 +472,23 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div>
 </div>
 </details>
+<details class="month g-month" id="graph-months">
+<summary><span class="m-name">граф сигналов</span><span class="m-cnt">18</span><span class="m-chev">▾</span></summary>
+<div class="month-body">
+<div class="g-wrap">
+<div class="g-bar" id="g-filter"></div>
+<div class="g-canvas" id="sig-graph"></div>
+<div class="g-foot">
+<span><i class="g-key" style="background:rgba(22,27,48,.95);border:2px solid #7bc4ff"></i>сигнал</span>
+<span><i class="g-key hex" style="background:#232a3f;border:1px solid #8fa3c8"></i>источник</span>
+<span><i class="g-key ell" style="background:#7bc4ff"></i>тема</span>
+<span class="g-hint">наведи на узел — дата, вывод и ссылка · колесо — зум</span>
+</div>
+</div>
+<div id="g-tip"></div>
+</div>
+</details>
+
 </div>
 
 <div class="geo-summary rv">
@@ -556,5 +596,84 @@ if('IntersectionObserver' in window){
   if(target)io.observe(target);
 }else{goal('funnel_view');}
 })();
-</script></body>
+</script><script src="graph/vis-network.min.js"></script>
+<script>
+(function(){
+  var DATA = {"nodes": [{"id": "s0", "label": "МСБ присматривается к мультиагентному ИИ…", "group": "signal", "title": "<b>11.10.2026</b><br>МСБ присматривается к мультиагентному ИИ, но массовым это ещё не стало: сегмент агентов оценивают в 15–25 млрд ₽<br><br><i>для ИП важны три вещи: низкий порог входа, локальное развёртывание и независимость от внешних провайдеров — ровно то, что я собираю</i><br><a href=\"https://www1.ru/articles/2026/10/11/malyi-i-srednii-biznes-v-rossii-prismatrivaetsia-k-multiagentnomu-ii.html\" target=\"_blank\">Первый технический</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "11.10.2026", "type": "спрос", "topics": ["Рынок и рост", "МСБ и спрос"]}, {"id": "src0", "label": "Первый технический", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s1", "label": "КАМАЗ разложил агентов на 4 уровня…", "group": "signal", "title": "<b>08.10.2026</b><br>КАМАЗ разложил агентов на 4 уровня автономности — от чат-ассистента до действия без человека; на DFMEA согласование сжалось с 6–10 дней до 2–3<br><br><i>та же лестница применима к МСБ: начинать с ассистента, а не с «пусть решает сам»</i><br><a href=\"https://www1.ru/news/2026/10/08/kamaz-stroit-ii-agentov-po-lestnice-avtonomnosti-ot-assistenta-do-resenii-bez-celoveka.html\" target=\"_blank\">Первый технический</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#5ed9a8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "08.10.2026", "type": "кейс", "topics": ["МСБ и спрос", "Внедрение и практика"]}, {"id": "s2", "label": "ИИ-агент зашёл внутрь 1С: работает по…", "group": "signal", "title": "<b>07.10.2026</b><br>ИИ-агент зашёл внутрь 1С: работает по правам пользователя, чувствительные операции — с подтверждением, действия в журнале аудита<br><br><i>вот как выглядит «агент в контуре»: доступ по правам, подтверждение на критичном, аудит — это и есть безопасная сборка</i><br><a href=\"https://www.cnews.ru/news/line/2026-10-07_k2teh_zapustil_ii-agenta\" target=\"_blank\">CNews</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#5ed9a8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "07.10.2026", "type": "кейс", "topics": ["Внедрение и практика"]}, {"id": "src1", "label": "CNews", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s3", "label": "От ИИ больше не ждут демонстрации — ждут…", "group": "signal", "title": "<b>07.10.2026</b><br>От ИИ больше не ждут демонстрации — ждут экономику: сколько стоит внедрение и когда окупится<br><br><i>экономику считаю до оплаты. «Внедрим, а потом посмотрим» больше не проходит</i><br><a href=\"https://www.vedomosti.ru/technologies/industries_and_markets/articles/2026/10/07/1234845-ot-pilotov-k-prodakshenu-kak-rossiiskii-biznes-uchitsya-schitat-effekt-ot-ii\" target=\"_blank\">Ведомости</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "07.10.2026", "type": "рынок", "topics": ["Внедрение и практика"]}, {"id": "src2", "label": "Ведомости", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s4", "label": "Новая волна блокировок Claude: 1 октября…", "group": "signal", "title": "<b>02.10.2026</b><br>Новая волна блокировок Claude: 1 октября режут аккаунты россиян, включая плативших $200/мес; в письме — «подозрительные сигналы»<br><br><i>даже с зарубежным VPS и оплатой картой — доступ отзывают. Подписка не твоя, доступ не твой</i><br><a href=\"https://ru.themoscowtimes.com/2026/10/02/polzovateli-ii-ot-claude-v-rossii-pozhalovalis-na-blokirovku-akkauntov-a207652\" target=\"_blank\">The Moscow Times</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "02.10.2026", "type": "рынок", "topics": ["Владение и доступ"]}, {"id": "src3", "label": "The Moscow Times", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s5", "label": "Замер доступности 25 ИИ-сервисов с…", "group": "signal", "title": "<b>01.10.2026</b><br>Замер доступности 25 ИИ-сервисов с домашнего IP: живых 9, не пускают 15; OpenAI, Anthropic и Google отвечают 403 unsupported_country<br><br><i>половина запасного списка сидит между двумя регуляторами: бэкап модели — не паранойя, а гигиена</i><br><a href=\"https://habr.com/ru/articles/1089656/\" target=\"_blank\">Habr</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "01.10.2026", "type": "рынок", "topics": ["Владение и доступ"]}, {"id": "src4", "label": "Habr", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s6", "label": "ChatGPT перестал открываться в России на…", "group": "signal", "title": "<b>01.10.2026</b><br>ChatGPT перестал открываться в России на сетевом уровне: с 6 сентября соединение обрывается до обращения к серверам OpenAI, смена DNS больше не помогает<br><br><i>два замка разом: региональный отказ OpenAI и сетевой фильтр. Локальная сборка эти замки не замечает</i><br><a href=\"https://habr.com/ru/companies/study_ai/articles/1085756/\" target=\"_blank\">Habr</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "01.10.2026", "type": "рынок", "topics": ["Владение и доступ"]}, {"id": "s7", "label": "Рынок генеративного ИИ в РФ достиг 60…", "group": "signal", "title": "<b>23.09.2026</b><br>Рынок генеративного ИИ в РФ достиг 60 млрд ₽ и вышел из стадии экспериментов — агенты названы главным направлением роста<br><br><i>через API Yandex AI Studio за полгода — 597 млрд токенов (×18 за год) и 30 тыс. агентов: встрою, а не покажу демо</i><br><a href=\"https://www.kommersant.ru/doc/8973433\" target=\"_blank\">Коммерсантъ</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "23.09.2026", "type": "рынок", "topics": ["Рынок и рост", "Цена и наценка"]}, {"id": "src5", "label": "Коммерсантъ", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s8", "label": "Только 23% МСБ пробуют ИИ, и главный…", "group": "signal", "title": "<b>23.09.2026</b><br>Только 23% МСБ пробуют ИИ, и главный барьер — не цена: 38% не видят понятной пользы, 9% готовы доверить агенту автономные решения<br><br><i>внедрение ломается не на технологии — на «что это мне даёт»: мой калькулятор отвечает ровно на этот вопрос</i><br><a href=\"https://runet.news/news/80850\" target=\"_blank\">VK WorkSpace × Hi-Tech Mail</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "23.09.2026", "type": "спрос", "topics": ["МСБ и спрос", "Внедрение и практика", "Цена и наценка"]}, {"id": "src6", "label": "VK WorkSpace × Hi-Tech Mail", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s9", "label": "49% предпринимателей уже применяют ИИ…", "group": "signal", "title": "<b>07.09.2026</b><br>49% предпринимателей уже применяют ИИ, траты большинства платящих — до 3 000 ₽/мес, средний чек внедрения у малого бизнеса — 6 000 ₽<br><br><i>своя связка 2–4К ₽/мес лежит внутри рыночной нормы: платишь провайдерам, не посреднику</i><br><a href=\"https://secrets.tbank.ru/trendy/kak-predprinimateli-i-sotrudniki-ispolzuyut-ii/\" target=\"_blank\">Т-Бизнес секреты</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#8fa3c8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "07.09.2026", "type": "цена", "topics": ["МСБ и спрос", "Внедрение и практика", "Цена и наценка"]}, {"id": "src7", "label": "Т-Бизнес секреты", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s10", "label": "Рынок автономных ИИ-агентов вырастет ×4,5…", "group": "signal", "title": "<b>09.2026</b><br>Рынок автономных ИИ-агентов вырастет ×4,5 к 2028: 46% компаний уже пилотируют, 74% упираются в разрыв компетенций<br><br><i>бутылочное горлышко — не модель, а умение встроить: ровно то, за что платят на установке</i><br><a href=\"https://companies.rbc.ru/amp/news/dbe9214a-7698-43e5-9b4e-90d32f5f4029/\" target=\"_blank\">«Яков и Партнёры» × Яндекс</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "09.2026", "type": "рынок", "topics": ["Рынок и рост"]}, {"id": "src8", "label": "«Яков и Партнёры» × Яндекс", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s11", "label": "Яндекс вывел Hermes Agent в Marketplace…", "group": "signal", "title": "<b>02.09.2026</b><br>Яндекс вывел Hermes Agent в Marketplace — от 3 642 ₽/мес, без оплаты за API-ключи<br><br><i>цена VPS для агента стала решённой: рубли, без VPN, из одного окна</i><br><a href=\"https://yandex.cloud/ru/marketplace/products/yc/hermes-agent\" target=\"_blank\">Yandex Cloud Marketplace</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "02.09.2026", "type": "рынок", "topics": ["Владение и доступ", "Цена и наценка"]}, {"id": "src9", "label": "Yandex Cloud Marketplace", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s12", "label": "Сбер: 350 млрд ₽ в ИИ + «ГигаАгент» на…", "group": "signal", "title": "<b>02.09.2026</b><br>Сбер: 350 млрд ₽ в ИИ + «ГигаАгент» на ВЭФ — автономный агент на GigaChat<br><br><i>чем отличается «автономный агент» платформы от агента под твою задачу</i><br><a href=\"https://modelora.ru/news/sber-350-mlrd-gigaagent-vef-2025\" target=\"_blank\">modelora.ru</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "02.09.2026", "type": "рынок", "topics": ["Рынок и рост"]}, {"id": "src10", "label": "modelora.ru", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s13", "label": "Личный ассистент на VPS — 6 600 ₽, без…", "group": "signal", "title": "<b>30.08.2026</b><br>Личный ассистент на VPS — 6 600 ₽, без VPN на телефоне: считает смены, приходы/уходы и время сотрудников<br><br><i>живой пример связки, которая работает в МСБ-рутине прямо сейчас</i><br><a href=\"https://t.me/discoverysystem\" target=\"_blank\">кейс клиента</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#5ed9a8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "30.08.2026", "type": "кейс", "topics": ["Владение и доступ", "МСБ и спрос", "Личный кейс"]}, {"id": "src11", "label": "кейс клиента", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s14", "label": "Доля МСП с ИИ выросла с 17% до 53% за год…", "group": "signal", "title": "<b>03.08.2026</b><br>Доля МСП с ИИ выросла с 17% до 53% за год — при дорогом найме ИИ позволяет расти без расширения штата<br><br><i>барьер уже не «зачем», а «кто встроит»: компетенции и понятные сценарии — ровно то, что продаётся установкой</i><br><a href=\"https://iz.ru/2142702/2026-08-03/polovina-msp-ispolzuet-ii-dlia-sokrasheniia-izderzhek\" target=\"_blank\">Известия × ПСБ</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "03.08.2026", "type": "спрос", "topics": ["Рынок и рост", "МСБ и спрос", "Цена и наценка"]}, {"id": "src12", "label": "Известия × ПСБ", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s15", "label": "400–850 млрд ₽ — агентная коммерция к…", "group": "signal", "title": "<b>24.08.2026</b><br>400–850 млрд ₽ — агентная коммерция к 2028–29, до 2–3 трлн к 2030–32<br><br><i>окно спроса открыто 2–3 года, не один сезон</i><br><a href=\"https://datainsight.ru/\" target=\"_blank\">Data Insight</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "24.08.2026", "type": "спрос", "topics": ["Рынок и рост"]}, {"id": "src13", "label": "Data Insight", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s16", "label": "55 млрд ₽/год — расходы Яндекса на Алису…", "group": "signal", "title": "<b>27.07.2026</b><br>55 млрд ₽/год — расходы Яндекса на Алису AI · 24 млн человек в неделю решают в ней задачи<br><br><i>привычка решать задачи с ИИ уже сформирована — вопрос в инструментах</i><br><a href=\"https://vc.ru/services/1800000-55-mlrd-alice-ai-2025\" target=\"_blank\">vc.ru</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "27.07.2026", "type": "спрос", "topics": ["Рынок и рост"]}, {"id": "src14", "label": "vc.ru", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s17", "label": "Запросы о digital-услугах выросли на 17%…", "group": "signal", "title": "<b>01.07.2026</b><br>Запросы о digital-услугах выросли на 17% г/г — весь рост дала формулировка «внедрение ИИ»: без неё категория упала бы на 28%<br><br><i>спрос сместился от «посмотреть демо» к «внедрить»</i><br><a href=\"https://elama.ru/blog/digital-uslugi-17-procent-2025/\" target=\"_blank\">eLama</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "01.07.2026", "type": "спрос", "topics": ["Рынок и рост", "Внедрение и практика"]}, {"id": "src15", "label": "eLama", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "t:Владение и доступ", "label": "Владение и доступ", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Рынок и рост", "label": "Рынок и рост", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:МСБ и спрос", "label": "МСБ и спрос", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Внедрение и практика", "label": "Внедрение и практика", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Цена и наценка", "label": "Цена и наценка", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Личный кейс", "label": "Личный кейс", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}], "edges": [{"from": "s0", "to": "src0", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s1", "to": "src0", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s2", "to": "src1", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s3", "to": "src2", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s4", "to": "src3", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s5", "to": "src4", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s6", "to": "src4", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s7", "to": "src5", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s8", "to": "src6", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s9", "to": "src7", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s10", "to": "src8", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s11", "to": "src9", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s12", "to": "src10", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s13", "to": "src11", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s14", "to": "src12", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s15", "to": "src13", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s16", "to": "src14", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s17", "to": "src15", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s0", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s0", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s1", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s1", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s2", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s3", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s4", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s5", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s6", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s7", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s7", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s8", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s8", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s8", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s9", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s9", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s9", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s10", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s11", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s11", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s12", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s13", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s13", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s13", "to": "t:Личный кейс", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s14", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s14", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s14", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s15", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s16", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s17", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s17", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}]};
+  var net = null, nodes = null, edges = null;
+  var activeType = null;
+
+  function initGraph(){
+    if(net) return;
+    nodes = new vis.DataSet(DATA.nodes);
+    edges = new vis.DataSet(DATA.edges);
+    net = new vis.Network(document.getElementById('sig-graph'), {nodes:nodes, edges:edges}, {
+      nodes:{borderWidth:2, font:{color:'#eef1f8', size:13}, scaling:{min:10,max:30}},
+      edges:{smooth:{type:'continuous'}, color:{color:'rgba(143,163,200,.3)'}},
+      physics:{forceAtlas2Based:{gravitationalConstant:-62, centralGravity:.012,
+        springLength:135, springConstant:.075, damping:.5, avoidOverlap:.55},
+        solver:'forceAtlas2Based', stabilization:{iterations:200, fit:true}},
+      interaction:{hover:true, tooltipDelay:120, navigationButtons:false, keyboard:false}
+    });
+    net.once('stabilizationIterationsDone', function(){ net.fit({animation:{duration:600}}); });
+
+    net.on('hoverNode', function(p){
+      var n = nodes.get(p.node);
+      var t = document.getElementById('g-tip');
+      if(n && n.title && t){ t.innerHTML = n.title; t.style.display = 'block'; }
+    });
+    net.on('blurNode', function(){
+      var t = document.getElementById('g-tip');
+      if(t) t.style.display = 'none';
+    });
+    document.addEventListener('mousemove', function(e){
+      var t = document.getElementById('g-tip');
+      if(!t || t.style.display !== 'block') return;
+      t.style.left = Math.min(e.clientX + 16, window.innerWidth - 356) + 'px';
+      t.style.top  = Math.min(e.clientY + 14, window.innerHeight - 150) + 'px';
+    });
+    buildFilter();
+  }
+
+  var COLORS = {"рынок": "#7bc4ff", "спрос": "#f0b24a", "кейс": "#5ed9a8", "цена": "#8fa3c8"};
+
+  function buildFilter(){
+    var box = document.getElementById('g-filter');
+    if(!box || box.dataset.done) return;
+    box.dataset.done = '1';
+    var opts = [['все', null]].concat(Object.keys({"спрос": 6, "кейс": 3, "рынок": 8, "цена": 1}).map(function(t){ return [t, t]; }));
+    opts.forEach(function(o){
+      var b = document.createElement('button');
+      b.className = 'g-chip' + (o[1]===null ? ' on' : '');
+      b.textContent = o[0] === 'все' ? 'все' : o[0];
+      if(o[1] !== null){ var s=document.createElement('b'); s.textContent={"спрос": 6, "кейс": 3, "рынок": 8, "цена": 1}[o[1]]; b.appendChild(s); }
+      b.onclick = function(){
+        activeType = o[1];
+        [].forEach.call(box.children, function(c){ c.classList.remove('on'); });
+        b.classList.add('on');
+        var vis = {};
+        DATA.nodes.forEach(function(n){
+          if(n.group!=='signal') return;
+          if(!activeType || n.type===activeType) vis[n.id]=1;
+        });
+        nodes.update(DATA.nodes.map(function(n){
+          return n.group==='signal' ? {id:n.id, hidden:!vis[n.id]} : {id:n.id};
+        }));
+        net.fit({animation:{duration:450}});
+      };
+      box.appendChild(b);
+    });
+  }
+
+  // инициализация при первом раскрытии: в закрытом <details> у контейнера нет размеров
+  var det = document.getElementById('graph-months');
+  if(det){
+    det.addEventListener('toggle', function(){
+      if(det.open) setTimeout(initGraph, 60);
+    });
+    if(det.open) setTimeout(initGraph, 120);
+  }
+})();
+</script>
+</body>
 </html>
