@@ -70,6 +70,9 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .fmt h3{color:var(--ink);font-size:15px;margin-bottom:6px;font-weight:600}
 .fmt p{font-size:14px;color:var(--meta);line-height:1.55;margin:0}
 /* feed header */
+.feed-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.graph-link{font-family:var(--mono);font-size:13px;color:var(--accent);text-decoration:none;border:1px solid rgba(123,196,168,.3);border-radius:8px;padding:8px 14px;min-height:38px;display:inline-flex;align-items:center;gap:6px;transition:background .15s,border-color .15s}
+.graph-link:hover{background:rgba(123,196,168,.08);border-color:rgba(123,196,168,.6)}
 .feed-head{font-family:var(--mono);font-size:13px;color:var(--meta);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
 .pulse{width:8px;height:8px;border-radius:50%;background:var(--ok);animation:fpulse 2s ease infinite}
 @keyframes fpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
@@ -215,7 +218,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <nav class="top" aria-label="Основная навигация"><div class="wrap">
-<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="proof.html">доказательства</a><a href="channel-graph.html">граф</a><a class="calc" href="calculator.html">Калькулятор</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
@@ -227,7 +230,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <main>
 <section><div class="wrap">
 <div class="feed">
-<p class="feed-head rv" id="feed"><span class="pulse"></span> LIVE · сигналы по месяцам</p>
+<div class="feed-top rv"><p class="feed-head" id="feed" style="margin-bottom:0"><span class="pulse"></span> LIVE · сигналы по месяцам</p><a class="graph-link" href="channel-graph.html">Граф сигналов →</a></div>
 
 <details class="month" open>
 <summary><span class="m-name">октябрь 2026</span><span class="m-cnt">7</span><span class="m-chev">▾</span></summary>
