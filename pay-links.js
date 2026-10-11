@@ -41,14 +41,12 @@ var DS_PAY = {
             url:'https://auth.robokassa.ru/merchant/Invoice/ga2H8Nr6zUadphD3DvygDQ'},
 
   /* ── Разовые: дополнительные решения ───────────────────── */
-  factory_photo: {price:25000, name:'Контент-завод: фото',
+  factory_photo: {price:15000, name:'Контент-завод: фото',
             url:'https://auth.robokassa.ru/merchant/Invoice/DkLlmgasJUSlcEP4qFsS8w'},
   factory_video: {price:30000, name:'Контент-завод: видео',
             url:'https://auth.robokassa.ru/merchant/Invoice/mckApiXe0kSeCp7YLTkIWw'},
   office:  {price:25000, name:'Офис ИИ-агентов (отдел из 5)',
             url:'https://auth.robokassa.ru/merchant/Invoice/OUoEK8kSYEWUW05bDAhlVg'},
-  visit:   {price:3000,  name:'Выездная установка (доплата, наличные на месте)',
-            url:'', cash:true},
   optimize:{price:25000, name:'Оптимизация ИИ-агента (не работает/сломан/дорогой)',
             url:'https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og'},
 
@@ -112,11 +110,6 @@ var DS_TRIBUTE_SUPPORT  = DS_PAY.support.url;
           if(isLink){ el.setAttribute('href',prod.url); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
           el.classList.add('buy-ready');
           el.setAttribute('data-ready','1');
-        } else if (prod.cash) {
-          /* наличные — не «оплатить», а договориться в личке */
-          var txtCash='Хочу выездную установку (+3 000 ₽ наличными на месте). Согласуем дату и адрес.';
-          if(isLink){ el.setAttribute('href',DS_TG_DIRECT+'?text='+encodeURIComponent(txtCash)); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
-          el.classList.add('buy-cash');
         } else {
           /* ссылки нет — собираем заказ текстом */
           var txt='Хочу: '+prod.name+' ('+prod.price.toLocaleString('ru-RU')+' ₽). Подскажите, как оплатить.';

@@ -10,67 +10,103 @@
 
 <link href="fonts/fonts.css" rel="stylesheet">
 <style>
-:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--ok:#5ed9a8;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#0e1220;--panel:#141a2c;--panel-2:#171e33;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--ok:#5ed9a8;--ok-rgb:94,217,168;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;background-image:radial-gradient(900px 600px at 88% -6%,rgba(123,196,168,.10),transparent 60%),radial-gradient(700px 500px at 50% 106%,rgba(123,196,168,.05),transparent 60%);background-attachment:fixed;min-height:100vh}
-.wrap{max-width:720px;margin:0 auto;padding:0 24px}
-main{padding:64px 0 40px}
-.mark{width:64px;height:64px;border-radius:50%;border:2px solid rgba(var(--accent-rgb),.5);background:rgba(var(--accent-rgb),.1);display:flex;align-items:center;justify-content:center;margin-bottom:28px}
-.mark svg{width:30px;height:30px;stroke:var(--ok);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
-h1{color:var(--ink);font-family:var(--display);font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;font-weight:700;letter-spacing:-.01em;margin:0 0 18px;text-wrap:balance}
-.lead{font-size:19px;color:var(--body);margin:0 0 32px;max-width:60ch}
-.sum-box{border:1px solid rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.05);border-radius:14px;padding:22px 24px;margin:0 0 36px;display:flex;gap:20px;align-items:baseline;flex-wrap:wrap}
-.sum-box .k{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);flex:0 0 auto}
-.sum-box .v{font-family:var(--mono);font-size:1.5rem;color:var(--ink);font-weight:600}
-.sum-box .p{flex:1 1 100%;font-size:15px;color:var(--body);margin:0}
-h2{color:var(--ink);font-family:var(--display);font-size:1.2rem;font-weight:600;margin:0 0 16px}
-.steps{list-style:none;border-top:1px solid var(--line-soft);margin:0 0 32px}
-.steps li{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid var(--line-soft);align-items:baseline;flex-wrap:wrap}
-.steps .n{font-family:var(--mono);font-size:12.5px;color:var(--accent);flex:0 0 26px}
-.steps .t{flex:1;min-width:200px;font-size:15.5px}
-.steps .t b{color:var(--ink)}
-.steps .s{font-family:var(--mono);font-size:12.5px;color:var(--meta);white-space:nowrap}
-.prep{border-left:2px solid rgba(var(--accent-rgb),.4);padding:2px 0 2px 18px;margin:0 0 32px}
-.prep .k{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
-.prep p{font-size:15.5px;color:var(--body);margin:0}
-.nxt{border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 32px;background:rgba(255,255,255,.02)}
-.nxt .k{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--meta);display:block;margin-bottom:10px}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;background-image:radial-gradient(1000px 640px at 50% -10%,rgba(94,217,168,.13),transparent 62%),radial-gradient(760px 520px at 88% 8%,rgba(123,196,168,.07),transparent 60%);background-attachment:fixed;min-height:100vh}
+.wrap{max-width:680px;margin:0 auto;padding:0 24px}
+main{padding:56px 0 40px}
+.mark{position:relative;width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;background:radial-gradient(circle at 50% 40%,rgba(var(--ok-rgb),.22),rgba(var(--ok-rgb),.04) 70%);border:1.5px solid rgba(var(--ok-rgb),.45)}
+.mark:before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(var(--ok-rgb),.16)}
+.mark svg{width:40px;height:40px;stroke:var(--ok);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.mark svg path{stroke-dasharray:32;stroke-dashoffset:32;animation:draw .6s var(--ease) .15s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.mark{opacity:0;transform:scale(.86);animation:pop .5s var(--ease) forwards}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+h1{color:var(--ink);font-family:var(--display);font-size:clamp(1.9rem,5vw,2.7rem);line-height:1.1;font-weight:700;letter-spacing:-.015em;margin:0 0 16px;text-align:center;text-wrap:balance}
+.lead{font-size:18px;color:var(--body);margin:0 auto 34px;max-width:52ch;text-align:center;text-wrap:pretty}
+.lead b{color:var(--ink)}
+.receipt{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--panel),var(--panel-2));margin:0 0 36px;overflow:hidden;box-shadow:0 24px 60px -30px rgba(0,0,0,.7)}
+.receipt .rh{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 24px;border-bottom:1px dashed var(--line);background:rgba(255,255,255,.015)}
+.receipt .rh .st{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ok)}
+.receipt .rh .st i{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px rgba(var(--ok-rgb),.8)}
+.receipt .rh .dt{font-family:var(--mono);font-size:12px;color:var(--meta)}
+.receipt .rb{padding:22px 24px}
+.receipt .amt{font-family:var(--display);font-size:clamp(2rem,6vw,2.7rem);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1;margin:0 0 4px}
+.receipt .amt-l{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--meta);margin:0 0 16px}
+.receipt .prod{font-size:16px;color:var(--body);border-top:1px solid var(--line-soft);padding-top:16px}
+.receipt .prod b{color:var(--ink);font-weight:600}
+h2{color:var(--ink);font-family:var(--display);font-size:1.18rem;font-weight:600;margin:0 0 18px;letter-spacing:-.01em}
+.steps{list-style:none;position:relative;margin:0 0 30px;padding:0}
+.steps li{position:relative;display:flex;gap:16px;padding:0 0 22px 34px;align-items:flex-start}
+.steps li:last-child{padding-bottom:0}
+.steps li:before{content:"";position:absolute;left:9px;top:22px;bottom:0;width:1px;background:linear-gradient(180deg,rgba(var(--accent-rgb),.5),var(--line-soft))}
+.steps li:last-child:before{display:none}
+.steps .n{position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;border:1.5px solid rgba(var(--accent-rgb),.5);background:var(--bg);color:var(--accent);font-family:var(--mono);font-size:9.5px;font-weight:600;display:flex;align-items:center;justify-content:center;line-height:1}
+.steps .t{flex:1;min-width:0;font-size:15.5px;color:var(--ink);line-height:1.55}
+.steps .s{flex:0 0 auto;font-family:var(--mono);font-size:12px;color:var(--meta);white-space:nowrap;padding-top:2px}
+.prep{position:relative;border:1px solid var(--line-soft);border-radius:14px;background:rgba(255,255,255,.02);padding:18px 20px 18px 22px;margin:0 0 30px}
+.prep:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:2px;border-radius:2px;background:rgba(var(--accent-rgb),.55)}
+.prep .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:7px}
+.prep p{font-size:15px;color:var(--body);margin:0}
+.nxt{border:1px solid rgba(var(--accent-rgb),.24);border-radius:14px;background:linear-gradient(180deg,rgba(var(--accent-rgb),.06),rgba(var(--accent-rgb),.015));padding:20px 22px;margin:0 0 34px}
+.nxt .k{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.nxt .k:before{content:"\2197";font-size:13px}
 .nxt p{font-size:15.5px;color:var(--body);margin:0}
 .nxt b{color:var(--ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14);transition:background .15s,transform .15s}
-.btn:hover{background:#26895b;transform:translateY(-1px)}
-.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line);margin-left:12px}
-.btn-ghost:hover{border-color:rgba(var(--accent-rgb),.4);background:rgba(var(--accent-rgb),.06);transform:none}
-.note{font-size:14px;color:var(--meta);margin:24px 0 0;line-height:1.65}
+.tga{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,var(--panel-2),var(--panel));padding:26px 24px;margin:0 0 26px;box-shadow:0 20px 50px -32px rgba(0,0,0,.75)}
+.tga .k{display:block;font-family:var(--display);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.tga .sub{font-size:14px;color:var(--meta);margin:0 0 18px}
+.tga label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--meta);margin-bottom:8px}
+.tga input{width:100%;min-height:52px;padding:13px 16px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);font-family:var(--sans);font-size:16px;margin-bottom:14px;transition:border-color .15s}
+.tga input::placeholder{color:var(--faint)}
+.tga input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:600;font-size:16px;border:1px solid transparent;background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.16);cursor:pointer;transition:background .15s,transform .15s,box-shadow .15s;box-shadow:0 1px 0 rgba(255,255,255,.18) inset}
+.btn:hover{background:#26895b;transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 6px 18px -6px rgba(38,137,91,.6)}
+.btn:active{transform:none}
+.btn-ghost{background:rgba(255,255,255,.03);color:var(--ink);border-color:var(--line);box-shadow:none;font-weight:500;min-height:48px;font-size:15px}
+.btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(var(--accent-rgb),.4);transform:none;box-shadow:none}
+.msgr{display:flex;flex-direction:column;gap:10px}
+.msgr .btn{width:100%}
+.btn-vk{background:rgba(255,255,255,.03);border-color:var(--line);color:var(--ink);box-shadow:none;font-weight:500}
+.btn-vk:hover{background:rgba(255,255,255,.07);box-shadow:none}
+.tga-note{font-size:13px;color:var(--meta);margin:16px 0 0;line-height:1.6}
+.tga-note a{color:var(--accent);text-decoration:underline}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 30px;font-size:13px;color:var(--meta)}
+.trust span{display:inline-flex;align-items:center;gap:7px}
+.trust span:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.7}
+.note{font-size:14px;color:var(--meta);margin:22px 0 0;line-height:1.65}
 .note a{color:var(--accent);text-decoration:underline}
-footer{border-top:1px solid var(--line-soft);margin-top:48px;padding:28px 0 56px}
+footer{border-top:1px solid var(--line-soft);margin-top:44px;padding:26px 0 54px}
 footer p{font-size:12.5px;color:var(--faint);margin:0 0 6px}
 footer a{color:var(--meta);text-decoration:underline}
-.tga{border:1px solid rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.05);border-radius:14px;padding:22px 24px;margin:0 0 14px}
-.tga .k{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:12px}
-.tga label{display:block;font-size:14.5px;color:var(--body);margin-bottom:8px}
-.tga input{width:100%;min-height:48px;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);font-family:var(--sans);font-size:16px;margin-bottom:14px}
-.tga input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
-.tga .btn{width:100%}
-.msgr{display:flex;flex-direction:column;gap:10px}
-.msgr .btn{margin:0}
-.btn-vk{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.14);color:var(--ink)}
-.btn-vk:hover{background:rgba(255,255,255,.07)}
-.tga-note{font-size:13.5px;color:var(--meta);margin:14px 0 0;line-height:1.6}
-.tga-note a{color:var(--accent);text-decoration:underline}
-@media(max-width:640px){.wrap{padding:0 18px}main{padding:44px 0 32px}.btn{width:100%;margin-left:0}.btn-ghost{margin:10px 0 0}}
+@media(max-width:640px){
+.wrap{padding:0 18px}main{padding:40px 0 30px}
+.steps li{padding-left:30px}
+.receipt .rb,.tga{padding-left:18px;padding-right:18px}
+}
+@media(prefers-reduced-motion:reduce){
+.mark,.mark svg path{animation:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important}
+}
 </style>
 <script src="ym-slot.js" defer></script>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <main><div class="wrap">
-<div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-<h1>Оплата получена. Спасибо.</h1>
-<p class="lead">Платёж прошёл. Ниже — что происходит дальше <b style="color:var(--ink)">по твоему продукту</b>: что делаю я, что нужно от тебя и в какой срок.</p>
 
-<div class="sum-box" id="sumBox" hidden>
-<span class="k">сумма</span><span class="v" id="sumVal">—</span>
-<p class="p" id="sumProd"></p>
+<div class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+<h1>Оплата получена.<br>Спасибо.</h1>
+<p class="lead">Платёж прошёл. Ниже — <b>что происходит дальше по твоему продукту</b>: что делаю я, что нужно от тебя и в какой срок.</p>
+
+<div class="receipt" id="sumBox" hidden>
+<div class="rh">
+<span class="st"><i></i>оплата подтверждена</span>
+<span class="dt" id="recDate"></span>
+</div>
+<div class="rb">
+<div class="amt" id="sumVal">—</div>
+<div class="amt-l">сумма платежа</div>
+<div class="prod" id="sumProd"></div>
+</div>
 </div>
 
 <div id="detail">
@@ -89,23 +125,31 @@ footer a{color:var(--meta);text-decoration:underline}
 </div>
 
 <div class="tga">
-<span class="k">чтобы я сразу отдал результат</span>
+<span class="k">Чтобы я сразу отдал результат</span>
+<p class="sub">Оставь ник — откроется чат со мной, где уже будет продукт, сумма и твой ник. Останется нажать «отправить».</p>
 <label for="tgIn">Твой ник (Telegram или ВК)</label>
-<input id="tgIn" type="text" inputmode="text" autocomplete="off" placeholder="@username или ссылка t.me/…"/>
+<input id="tgIn" type="text" inputmode="text" autocomplete="off" placeholder="@username или ссылка t.me/..."/>
 <div class="msgr">
 <button class="btn" id="tgBtn" type="button">Отправить заявку в Telegram →</button>
 <button class="btn btn-vk" id="vkBtn" type="button">Отправить заявку ВКонтакте →</button>
 </div>
-<p class="tga-note">Одна кнопка: откроется чат со мной, где уже будет продукт, сумма и твой ник. Тебе останется только нажать «отправить». Принимаю заявки в Telegram и ВКонтакте. Если оба не под рукой — <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>.</p>
+<p class="tga-note">Принимаю заявки в Telegram и ВКонтакте. Если оба не под рукой — <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>.</p>
 </div>
+
+<div class="trust">
+<span>Чек самозанятого — сразу после оплаты</span>
+<span>Возврат до передачи — полная сумма</span>
+<span>Правки до приёмки по чек-листу</span>
+</div>
+
 <a class="btn btn-ghost" href="clarity.html">Все услуги →</a>
 
-<p class="note">Не видишь оплату у себя в банке? Иногда банк показывает списание с задержкой до нескольких минут — это нормально. Если что-то не так: <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a> или <a href="https://t.me/soulvictor" target="_blank" rel="noopener">Telegram</a>. Возврат до передачи материала — полная сумма, без вычетов.</p>
+<p class="note">Не видишь оплату у себя в банке? Иногда банк показывает списание с задержкой до нескольких минут — это нормально. Если что-то не так: <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a> или <a href="https://t.me/soulvictor" target="_blank" rel="noopener">Telegram</a>.</p>
 </div></main>
 
 <footer><div class="wrap">
 <p>Discovery System · Зайцев Виктор Павлович, самозанятый (НПД) · ИНН 780627413110</p>
-<p><a href="oferta.html">оферта</a> · <a href="policy.html">политика обработки данных</a> · </p>
+<p><a href="oferta.html">оферта</a> · <a href="policy.html">политика обработки данных</a></p>
 </div></footer>
 
 <script src="pay-links.js"></script>
@@ -121,7 +165,7 @@ var NEXT = {
   guide:{d:'Цифровой материал. Доступ приходит в течение 15 минут в рабочие часы (не позднее 24 часов) — пришлю в Telegram или ВК, как удобнее.',
    steps:[['01','Пришлю доступ — заберёшь гайд, 20 конфигураций с инструкциями','15 мин'],['02','Собираешь связку по таблице за 3–4 часа, без кода','сам'],['03','Упрёшься в вопрос — пиши, отвечу без доплаты','по желанию']],
    prep:'Готовить ничего не нужно. Проверь, что Telegram или ВК открыты — туда придёт доступ.',
-   nxt:'Хочешь, чтобы связку собрал я под твою рутину? Подбор конфигурации под ключ — <b>5 000 ₽</b>, гайд уже оплачен, доплата <b>2 000 ₽</b>.'},
+   nxt:'Хочешь, чтобы связку собрал я под твою рутину? Подбор конфигурации под ключ — <b>7 000 ₽</b>, гайд уже оплачен, доплата <b>2 000 ₽</b>.'},
 
   build:{d:'Связка под твою рутину. Сначала короткий созвон, потом собираю и правлю, пока не заработает у тебя.',
    steps:[['01','Договоримся о созвоне: 30 минут, разберём твою рутину','в течение дня'],['02','Собираю связку под твой процесс','24 часа'],['03','Проверяешь на своих задачах. Не работает — правлю до приёмки','до приёмки']],
@@ -163,10 +207,6 @@ var NEXT = {
    prep:'Нужны: список сотрудников и их задач. Отдел из 5 человек — базовая единица; больше — по строкам.',
    nxt:'Можно добавить сопровождение отдела: <b>продуктовый отдел, 40 000 ₽/мес</b>.'},
 
-  visit:{d:'Доплата к установке: приеду физически, если нужен выезд.',
-   steps:[['01','Согласуем адрес и дату','в течение дня'],['02','Приезжаю и ставлю агента на месте','1–3 дня']],
-   prep:'Нужны: адрес, удобное время и доступ к устройству.',
-   nxt:'Сама установка оплачивается отдельно — по выбранному варианту.'},
 
   optimize:{d:'Аудит текущей связки, пересборка промптов, модели и логики, замер «до / после».',
    steps:[['01','Аудит: смотрю, где утекают токены, время и качество','2–3 дня'],['02','Пересобираю связку под задачу','после аудита'],['03','Замер «до / после»: расход, скорость, качество ответов','по объёму']],
@@ -211,6 +251,8 @@ var NEXT = {
   var key = byKey || bySum;
   if(key && NEXT[key]){ hit={k:key, p:DS_PAY[key], n:NEXT[key]}; }
 
+  var rd=document.getElementById('recDate');
+  if(rd){ try{ rd.textContent=new Date().toLocaleDateString('ru-RU',{day:'numeric',month:'long'}); }catch(e){} }
   if(!isNaN(sum)&&sum>0){
     var box=document.getElementById('sumBox'); if(box) box.hidden=false;
     var val=document.getElementById('sumVal'); if(val) val.textContent=sum.toLocaleString('ru-RU')+' ₽';
