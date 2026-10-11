@@ -97,6 +97,25 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .sig-head a.src{font-weight:500}
 .sig-take{font-size:14px;color:var(--meta);line-height:1.55}
 .sig-take .arrow{color:var(--accent);font-family:var(--mono);margin-right:4px}
+
+/* ── месяцы-аккордеон: страница не требует длинного скролла ── */
+.month{border-top:1px solid var(--line-soft)}
+.month:last-child{border-bottom:1px solid var(--line-soft)}
+.month>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;
+  padding:16px 4px;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--meta);transition:color .2s var(--ease);min-height:52px}
+.month>summary::-webkit-details-marker{display:none}
+.month>summary:hover{color:var(--ink)}
+.month[open]>summary{color:var(--ink)}
+.m-name{flex:1}
+.m-cnt{font-size:12px;color:var(--meta);border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:2px 9px;line-height:1.4;background:rgba(255,255,255,.03)}
+.month[open] .m-cnt{color:var(--accent);border-color:rgba(123,196,168,.3)}
+.m-chev{font-size:12px;color:var(--meta);transition:transform .25s var(--ease)}
+.month[open] .m-chev{transform:rotate(180deg)}
+.month-body{padding:2px 0 10px}
+.month:not([open]) .month-body{display:none}
+@media(max-width:760px){.month>summary{padding:14px 2px}}
+
 /* summary */
 .geo-summary{max-width:780px;margin:56px auto 0;padding:0}
 .geo-summary h3{color:var(--ink);font-size:1.05rem;margin-bottom:10px;font-weight:600}
@@ -129,6 +148,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .js .rv.in{opacity:1;transform:none}
 .js .sig{opacity:0;transform:translateY(12px)}
 .js .sig.in{opacity:1;transform:none}
+.month:not([open]) .sig{opacity:1!important;transform:none!important}
 @media (max-width:760px){
 body{font-size:17px}
 section{padding:72px 0}
@@ -199,7 +219,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div></nav>
 
 <header class="hero"><div class="wrap">
-<p class="sub rv">канал · сигналы рынка · сентябрь 2026</p>
+<p class="sub rv">канал · сигналы рынка · октябрь 2026</p>
 <h1 class="rv" style="transition-delay:.06s">Наблюдай за рынком<br/>и выбирай свои возможности</h1>
 <p class="rv" style="transition-delay:.12s">Короткие разборы: что заметить, что проверить и что забрать в работу.</p>
 </div></header>
@@ -207,8 +227,93 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <main>
 <section><div class="wrap">
 <div class="feed">
-<p class="feed-head rv" id="feed"><span class="pulse"></span> LIVE · последние сигналы</p>
+<p class="feed-head rv" id="feed"><span class="pulse"></span> LIVE · сигналы по месяцам</p>
 
+<details class="month" open>
+<summary><span class="m-name">октябрь 2026</span><span class="m-cnt">7</span><span class="m-chev">▾</span></summary>
+<div class="month-body">
+<div class="sig" data-type="спрос">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">11.10.2026</span>
+<a class="sig-src" href="https://www1.ru/articles/2026/10/11/malyi-i-srednii-biznes-v-rossii-prismatrivaetsia-k-multiagentnomu-ii.html" target="_blank" rel="noopener">Первый технический ↗</a>
+<span class="sig-type">спрос</span>
+</div>
+<div class="sig-head"><b>МСБ присматривается к мультиагентному ИИ</b>, но массовым это ещё не стало: сегмент агентов оценивают в 15–25 млрд ₽</div>
+<div class="sig-take"><span class="arrow">▸</span>для ИП важны три вещи: низкий порог входа, локальное развёртывание и независимость от внешних провайдеров — ровно то, что я собираю</div>
+</div>
+
+<div class="sig" data-type="кейс">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">08.10.2026</span>
+<a class="sig-src" href="https://www1.ru/news/2026/10/08/kamaz-stroit-ii-agentov-po-lestnice-avtonomnosti-ot-assistenta-do-resenii-bez-celoveka.html" target="_blank" rel="noopener">Первый технический ↗</a>
+<span class="sig-type">кейс</span>
+</div>
+<div class="sig-head"><b>КАМАЗ разложил агентов на 4 уровня автономности</b> — от чат-ассистента до действия без человека; на DFMEA согласование сжалось с 6–10 дней до 2–3</div>
+<div class="sig-take"><span class="arrow">▸</span>та же лестница применима к МСБ: начинать с ассистента, а не с «пусть решает сам»</div>
+</div>
+
+<div class="sig" data-type="кейс">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">07.10.2026</span>
+<a class="sig-src" href="https://www.cnews.ru/news/line/2026-10-07_k2teh_zapustil_ii-agenta" target="_blank" rel="noopener">CNews ↗</a>
+<span class="sig-type">кейс</span>
+</div>
+<div class="sig-head"><b>ИИ-агент зашёл внутрь 1С</b>: работает по правам пользователя, чувствительные операции — с подтверждением, действия в журнале аудита</div>
+<div class="sig-take"><span class="arrow">▸</span>вот как выглядит «агент в контуре»: доступ по правам, подтверждение на критичном, аудит — это и есть безопасная сборка</div>
+</div>
+
+<div class="sig" data-type="рынок">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">07.10.2026</span>
+<a class="sig-src" href="https://www.vedomosti.ru/technologies/industries_and_markets/articles/2026/10/07/1234845-ot-pilotov-k-prodakshenu-kak-rossiiskii-biznes-uchitsya-schitat-effekt-ot-ii" target="_blank" rel="noopener">Ведомости ↗</a>
+<span class="sig-type">рынок</span>
+</div>
+<div class="sig-head"><b>От ИИ больше не ждут демонстрации — ждут экономику</b>: сколько стоит внедрение и когда окупится</div>
+<div class="sig-take"><span class="arrow">▸</span>экономику считаю до оплаты. «Внедрим, а потом посмотрим» больше не проходит</div>
+</div>
+
+<div class="sig" data-type="рынок">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">02.10.2026</span>
+<a class="sig-src" href="https://ru.themoscowtimes.com/2026/10/02/polzovateli-ii-ot-claude-v-rossii-pozhalovalis-na-blokirovku-akkauntov-a207652" target="_blank" rel="noopener">The Moscow Times ↗</a>
+<span class="sig-type">рынок</span>
+</div>
+<div class="sig-head"><b>Новая волна блокировок Claude</b>: 1 октября режут аккаунты россиян, включая плативших $200/мес; в письме — «подозрительные сигналы»</div>
+<div class="sig-take"><span class="arrow">▸</span>даже с зарубежным VPS и оплатой картой — доступ отзывают. Подписка не твоя, доступ не твой</div>
+</div>
+
+<div class="sig" data-type="рынок">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">01.10.2026</span>
+<a class="sig-src" href="https://habr.com/ru/articles/1089656/" target="_blank" rel="noopener">Habr ↗</a>
+<span class="sig-type">рынок</span>
+</div>
+<div class="sig-head"><b>Замер доступности 25 ИИ-сервисов с домашнего IP</b>: живых 9, не пускают 15; OpenAI, Anthropic и Google отвечают 403 unsupported_country</div>
+<div class="sig-take"><span class="arrow">▸</span>половина запасного списка сидит между двумя регуляторами: бэкап модели — не паранойя, а гигиена</div>
+</div>
+
+<div class="sig" data-type="рынок">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">01.10.2026</span>
+<a class="sig-src" href="https://habr.com/ru/companies/study_ai/articles/1085756/" target="_blank" rel="noopener">Habr ↗</a>
+<span class="sig-type">рынок</span>
+</div>
+<div class="sig-head"><b>ChatGPT перестал открываться в России на сетевом уровне</b>: с 6 сентября соединение обрывается до обращения к серверам OpenAI, смена DNS больше не помогает</div>
+<div class="sig-take"><span class="arrow">▸</span>два замка разом: региональный отказ OpenAI и сетевой фильтр. Локальная сборка эти замки не замечает</div>
+</div>
+</div>
+</details>
+
+<details class="month">
+<summary><span class="m-name">сентябрь 2026</span><span class="m-cnt">6</span><span class="m-chev">▾</span></summary>
+<div class="month-body">
 <div class="sig rv" data-type="рынок">
 <span class="sig-bar"></span>
 <div class="sig-meta">
@@ -274,7 +379,12 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sig-head"><b>Сбер: <a class="src" href="https://modelora.ru/news/sber-350-mlrd-gigaagent-vef-2025" target="_blank" rel="noopener">350 млрд ₽ в ИИ</a> + «ГигаАгент» на ВЭФ</b> — автономный агент на GigaChat</div>
 <div class="sig-take"><span class="arrow">▸</span>чем отличается «автономный агент» платформы от агента под твою задачу</div>
 </div>
+</div>
+</details>
 
+<details class="month">
+<summary><span class="m-name">август 2026</span><span class="m-cnt">3</span><span class="m-chev">▾</span></summary>
+<div class="month-body">
 <div class="sig rv" data-type="кейс">
 <span class="sig-bar"></span>
 <div class="sig-meta">
@@ -307,7 +417,12 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sig-head"><b><a class="src" href="https://datainsight.ru/" target="_blank" rel="noopener">400–850 млрд ₽ — агентная коммерция к 2028–29</a></b>, до 2–3 трлн к 2030–32</div>
 <div class="sig-take"><span class="arrow">▸</span>окно спроса открыто 2–3 года, не один сезон</div>
 </div>
+</div>
+</details>
 
+<details class="month">
+<summary><span class="m-name">июль 2026</span><span class="m-cnt">2</span><span class="m-chev">▾</span></summary>
+<div class="month-body">
 <div class="sig rv" data-type="спрос">
 <span class="sig-bar"></span>
 <div class="sig-meta">
@@ -329,7 +444,8 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sig-head"><b>Запросы о digital-услугах выросли на 17% г/г</b> — весь рост дала формулировка «внедрение ИИ»: без неё категория упала бы на 28%</div>
 <div class="sig-take"><span class="arrow">▸</span>спрос сместился от «посмотреть демо» к «внедрить»</div>
 </div>
-
+</div>
+</details>
 </div>
 
 <div class="geo-summary rv">
