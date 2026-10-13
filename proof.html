@@ -22,13 +22,13 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;background-image:radial-gradient(900px 600px at 88% -6%,rgba(123,196,168,.08),transparent 60%),radial-gradient(700px 500px at 50% 106%,rgba(123,196,168,.04),transparent 60%);background-attachment:fixed}
-.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
 section{padding:64px 0}
 h1,h2{color:var(--ink);font-family:var(--display);line-height:1.14;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
-h1{font-size:clamp(2rem,5vw,3rem);margin:0 0 24px}
-h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 14px}
+h1{font-size:clamp(2.2rem,5.5vw,3.4rem);margin:0 0 24px}
+h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 20px}
 h3{color:var(--ink);font-family:var(--display);font-weight:600;font-size:1.2rem;margin:0 0 10px}
-p{margin:0 0 20px;text-wrap:pretty}
+p{margin:0 0 24px;text-wrap:pretty}
 a{color:var(--ink)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 nav.top{padding:28px 0}
@@ -38,7 +38,7 @@ nav.top a:hover{color:var(--ink)}
 nav.top img{height:28px;width:auto;border-radius:4px}
 nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
 nav.top a.cur{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
-.hero{padding:56px 0 20px;text-align:center}
+.hero{padding:104px 0 0;text-align:center}
 .hero .sub{color:var(--accent);font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;font-family:var(--mono)}
 .hero .lead{max-width:660px;margin:0 auto;font-size:19px;color:var(--body)}
 .eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
@@ -93,6 +93,12 @@ nav.top a.cur{color:var(--ink);text-decoration:underline;text-underline-offset:4
 .acc-d{display:block;font-size:14px;color:var(--body);line-height:1.55}
 .acc-check{font-family:var(--mono);font-size:12px;color:var(--meta);white-space:nowrap;padding-top:2px}
 @media(max-width:760px){.res-grid{grid-template-columns:1fr}}
+/* grain — единый слой фона, как на остальных страницах */
+body{position:relative}
+body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
+
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;transition:background .15s,transform .15s,border-color .15s}
 .btn-primary{background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14)}
