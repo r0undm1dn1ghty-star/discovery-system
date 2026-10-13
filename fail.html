@@ -60,6 +60,11 @@ footer a{color:var(--meta);text-decoration:underline}
 
 <div class="calm-wrap"><span class="calm"><i></i>деньги с тебя не списаны</span></div>
 
+<div class="sum-box" id="failSum" hidden>
+<span class="k">попытка оплаты</span><span class="v" id="failVal">—</span>
+<p class="p">Оплата не завершилась — сумма не спишется. Повторить можно сразу кнопкой ниже.</p>
+</div>
+
 <h2>Частые причины</h2>
 <ul class="reasons">
 <li><span class="b">банк</span><span class="t">Банк отклонил операцию — часто помогает <b>подтвердить платёж в приложении банка</b> или оплатить картой другого банка.</span></li>
@@ -69,7 +74,7 @@ footer a{color:var(--meta);text-decoration:underline}
 </ul>
 
 <div class="acts">
-<a class="btn" href="clarity.html">Попробовать снова →</a>
+<a class="btn" id="retryBtn" href="clarity.html">Попробовать снова →</a>
 <a class="btn btn-ghost" href="https://t.me/soulvictor" target="_blank" rel="noopener">Написать в Telegram →</a>
 </div>
 
@@ -80,5 +85,34 @@ footer a{color:var(--meta);text-decoration:underline}
 <p>Discovery System · Зайцев Виктор Павлович, самозанятый (НПД) · ИНН 780627413110</p>
 <p><a href="oferta.html">оферта</a> · <a href="policy.html">политика обработки данных</a></p>
 </div></footer>
+
+<script src="pay-links.js"></script>
+<script>
+/* FailURL: Robokassa возвращает OutSum (и InvId). Показываем сумму и,
+   если сумма однозначно указывает на один продукт, кнопку «повторить»
+   прямо на его инвойс — клиенту не надо заново искать услугу.
+   Суммы 15/25/30К соответствуют нескольким продуктам: ведём в каталог. */
+(function(){
+  var q=new URLSearchParams(location.search);
+  var raw=q.get('OutSum')||q.get('outsum')||'';
+  var sum=parseFloat(String(raw).replace(',','.'));
+  if(!(sum>0)) return;
+
+  var box=document.getElementById('failSum');
+  var val=document.getElementById('failVal');
+  if(box) box.hidden=false;
+  if(val) val.textContent=sum.toLocaleString('ru-RU')+' ₽';
+
+  var same=Object.keys(DS_PAY).filter(function(k){return DS_PAY[k].price===sum && DS_PAY[k].url;});
+  var btn=document.getElementById('retryBtn');
+  if(btn && same.length===1){
+    btn.href=DS_PAY[same[0]].url;
+    btn.textContent='Повторить оплату '+sum.toLocaleString('ru-RU')+' ₽ →';
+  } else if(btn){
+    btn.href='clarity.html';
+    btn.textContent='Выбрать услугу и оплатить →';
+  }
+})();
+</script>
 </body>
 </html>
