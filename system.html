@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Система — что именно я ставлю: 6 агентов и форматы работы — Discovery System</title>
-<meta name="description" content="Шесть агентов под конкретную рутину — из реальных внедрений: заказы, заявки, 1С, контент, разведка, поиск работы. Смена каждого — в Telegram. Форматы: калькулятор 0 ₽, гайд 5 000 ₽, сборка 7 000 ₽, внедрение под ключ. Метод открыт на GitHub."/>
+<title>Система — ИИ-агента под конкретную рутину — Discovery System</title>
+<meta name="description" content="ИИ-агента под конкретную рутину: смена агента в Telegram — демо из реальных внедрений. Форматы: калькулятор 0 ₽, гайд 5 000 ₽, сборка 7 000 ₽, внедрение под ключ. Метод открыт на GitHub."/>
 <link rel="canonical" href="https://discovery-system.ru/system.html"/>
-<meta property="og:title" content="Система — что именно я ставлю"/>
+<meta property="og:title" content="Система — ИИ-агента под конкретную рутину"/>
 <meta property="og:description" content="Шесть агентов под конкретную рутину — из реальных внедрений. Смена каждого в Telegram. Форматы: 0 ₽ / 5 000 / 7 000 / внедрение под ключ."/>
 <meta property="og:url" content="https://discovery-system.ru/system.html"/>
 <meta property="og:type" content="article"/>
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="ru_RU"/>
 <meta property="og:site_name" content="Discovery System"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Система — что именно я ставлю"/>
+<meta name="twitter:title" content="Система — ИИ-агента под конкретную рутину"/>
 <meta name="twitter:description" content="Шесть агентов под конкретную рутину. Смена каждого в Telegram. Форматы: 0 ₽ / 5 000 / 7 000 / внедрение под ключ."/>
 <meta name="twitter:image" content="https://discovery-system.ru/og-cover.png"/>
 <link rel="icon" href="favicon-32.png" sizes="32x32"/>
@@ -52,16 +52,6 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .lead{font-size:19px;color:var(--body);max-width:70ch}
 .note{font-size:14px;color:var(--meta);line-height:1.6}
 
-/* ── каталог агентов ── */
-.ag-list{border-top:1px solid var(--line)}
-.ag{display:grid;grid-template-columns:1fr auto;gap:10px 24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.ag b{color:var(--ink);font-family:var(--display);font-weight:600;font-size:1.1rem;line-height:1.35}
-.ag .ag-sub{grid-column:1;color:var(--body);font-size:15.5px;line-height:1.55}
-.ag .ag-src{grid-column:1;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
-.ag .ag-ic{grid-column:2;grid-row:1/4;align-self:center;width:30px;height:30px;color:var(--accent);opacity:.85}
-.ag .ag-ic svg{width:100%;height:100%;display:block}
-@media(max-width:760px){.ag{grid-template-columns:1fr}.ag .ag-ic{display:none}}
-
 /* ── демо в Telegram ── */
 .demo-stage{display:grid;grid-template-columns:240px 1fr;gap:14px;margin-top:34px;align-items:start}
 .demo-tabs{display:flex;flex-direction:column;gap:6px}
@@ -97,8 +87,7 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .typing i:nth-child(3){animation-delay:.36s}
 @keyframes tp{0%,60%,100%{opacity:.3}30%{opacity:1}}
 .tg-input{display:flex;align-items:center;justify-content:space-between;margin:0 12px 12px;background:#1c2434;border-radius:18px;padding:10px 15px;font-size:13.5px;color:var(--meta)}
-.tg-input .mic{width:14px;height:14px;border:1.6px solid var(--meta);border-radius:50%;display:inline-block;position:relative}
-.tg-input .mic:after{content:'';position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:8px;height:8px;border:1.6px solid var(--meta);border-bottom:none;border-radius:8px 8px 0 0}
+.tg-input .clip{width:17px;height:17px;color:var(--meta);flex:none}
 .tg-foot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 16px;border-top:1px solid var(--line-soft)}
 .tg-foot .result{font-size:14px;color:var(--body)}
 .tg-foot .result b{color:var(--ink);font-weight:600}
@@ -202,24 +191,10 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div></nav>
 <header class="hero"><div class="wrap">
 <p class="sub rv">система · что именно я ставлю</p>
-<h1 class="rv" style="transition-delay:.06s">Шесть агентов —<br/>под конкретную рутину</h1>
-<p class="lead rv" style="transition-delay:.12s">Каждый — из реального внедрения: заказы на фрилансе, заявки и счета, 1С, контент, разведка рынка, поиск работы. Названия моделей и сервисов подбираю под твою задачу — на разведке, а не из каталога. Ниже — смена каждого агента в Telegram: так будет выглядеть твоя рутина.</p>
+<h1 class="rv" style="transition-delay:.06s">ИИ-агента<br/>под конкретную рутину</h1>
+<p class="lead rv" style="transition-delay:.12s">Названия моделей и сервисов подбираю под твою задачу — на разведке, а не из каталога. Ниже — смена агента в Telegram: кликни сценарий и посмотри, как это выглядит в работе.</p>
 </div></header>
 <main>
-<section id="agents"><div class="wrap">
-<p class="eyebrow rv">каталог · из шести внедрений</p>
-<h2 class="rv">Что агент делает у тебя</h2>
-<div class="ag-list rv">
-<div class="ag"><b>Агент, который ищет заказы</b><span class="ag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg></span><span class="ag-sub">Мониторит биржи и Telegram-каналы, отсекает вакансии и резюме, приносит тёплых лидов с оценкой готовности платить — пока ты работаешь.</span><span class="ag-src">внедрение: дизайнер — фриланс-заказы и геймдев</span></div>
-<div class="ag"><b>Агент, который ведёт клиентов</b><span class="ag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 1 1-4-6.9"/><path d="M9 11l3 3 8-9"/></svg></span><span class="ag-sub">Отвечает в переписке по твоему прайсу, собирает вводные, ведёт заявку до счёта — входящие не теряются в трёх каналах.</span><span class="ag-src">внедрение: владелец нескольких направлений — заявки из Авито и Telegram</span></div>
-<div class="ag"><b>Агент, который разгребает 1С и счета</b><span class="ag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h5"/></svg></span><span class="ag-sub">Сверяет входящие счета с договорами, раскладывает подтверждённое по учёту, расхождения — коротким списком на твоё решение.</span><span class="ag-src">внедрение: бухгалтер — 1С и клиенты</span></div>
-<div class="ag"><b>Агент, который делает контент</b><span class="ag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span><span class="ag-sub">Собирает заготовки постов из твоих заметок и сигналов рынка — по твоему голосу, без нейросеточных клише. Ты правишь, а не пишешь с нуля.</span><span class="ag-src">внедрение: канал и медиа — от черновика до напоминания о публикации</span></div>
-<div class="ag"><b>Агент, который делает разведку рынка</b><span class="ag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 12h17"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></svg></span><span class="ag-sub">Выгружает тысячи постов по нише, фильтрует, отдаёт сигналы карточками: факт — что значит для тебя — источник с датой.</span><span class="ag-src">внедрение: руководитель проектов — исследования рынков</span></div>
-<div class="ag"><b>Агент, который ищет работу за тебя</b><span class="ag-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span><span class="ag-sub">Утренний обход hh, каналов и шортлиста компаний: новые вакансии под профиль, черновики сопроводительных из твоих кейсов, статусы в таблице.</span><span class="ag-src">внедрение: маркетолог — поиск работы</span></div>
-</div>
-<p class="note rv" style="margin-top:18px">Твоей задачи нет в списке? Она почти наверняка собирается из этих шести — назови её в Telegram, отвечу за минуту.</p>
-</div></section>
-
 <section id="demo"><div class="wrap">
 <p class="eyebrow rv">демо · смена агента</p>
 <h2 class="rv">Выбери агента — посмотри его смену в Telegram</h2>
@@ -236,11 +211,11 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="tg" role="tabpanel" aria-label="Смена агента в Telegram">
 <div class="tg-head"><div class="tg-ava">D</div><div><div class="tg-name">Discovery Agent</div><div class="tg-status"><span class="on">● онлайн</span> · агент</div></div></div>
 <div class="tg-body" id="chat"><div class="typing" id="typing"><i></i><i></i><i></i></div></div>
-<div class="tg-input"><span>Сообщение</span><span class="mic" aria-hidden="true"></span></div>
+<div class="tg-input"><span>Сообщение</span><svg class="clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.4 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.2-9.19a4 4 0 0 1 5.65 5.66L9.4 17.4a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></div>
 <div class="tg-foot"><span class="result" id="demoResult"></span><a href="calculator.html">посчитать свою рутину →</a></div>
 </div>
 </div>
-<p class="demo-cap rv">Сценарии — из реальных внедрений, состав и названия сервисов подбираются на разведке под твою задачу.</p>
+<p class="demo-cap rv">Сценарии — из реальных внедрений, состав и названия сервисов подбираются на разведке. Твоей задачи нет в списке? Назови её в Telegram — отвечу за минуту.</p>
 </div></section>
 
 <section id="formats"><div class="wrap">
@@ -248,9 +223,9 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <h2 class="rv">Четыре способа забрать систему себе</h2>
 <p class="lead rv">Один и тот же объект — твоя связка. Разница — в глубине передачи.</p>
 <div class="fmt rv">
-<div class="fmt-row"><span class="f-name"><a href="calculator.html">Стоимость ИИ-агента в месяц</a></span><span class="f-price">0 ₽ · 60 сек</span><span class="f-out">Цена твоей рутины в часах и рублях: до того, как что-то решил.</span></div>
-<div class="fmt-row"><span class="f-name"><a href="clarity.html">Гайд: 20 конфигураций ИИ-агента</a></span><span class="f-price">5 000 ₽</span><span class="f-out">Соберёшь сам: таблица связок, промпты, провайдеры РФ — без недель исследования.</span></div>
-<div class="fmt-row"><span class="f-name"><a href="clarity.html">Персональная сборка</a></span><span class="f-price">7 000 ₽</span><span class="f-out">Ставлю с тобой: под твои задачи и железо, правки до приёмки.</span></div>
+<div class="fmt-row"><span class="f-name">Стоимость ИИ-агента в месяц</span><span class="f-price">0 ₽ · 60 сек</span><span class="f-out">Цена твоей рутины в часах и рублях: до того, как что-то решил.</span></div>
+<div class="fmt-row"><span class="f-name">Гайд: 20 конфигураций ИИ-агента</span><span class="f-price">5 000 ₽</span><span class="f-out">Соберёшь сам: таблица связок, промпты, провайдеры РФ — без недель исследования.</span></div>
+<div class="fmt-row"><span class="f-name">Персональная сборка</span><span class="f-price">7 000 ₽</span><span class="f-out">Ставлю с тобой: под твои задачи и железо, правки до приёмки.</span></div>
 <div class="fmt-row no-link"><span class="f-name">Внедрение под ключ</span><span class="f-price">15 000 / 20 000 / 30 000 / 60 000 ₽</span><span class="f-out">ПК / самозанятый / ИП / средний бизнес. Ставлю и довожу до приёмки — связка остаётся у тебя.</span></div>
 </div>
 <div class="accept rv">
@@ -325,44 +300,44 @@ var SCEN = {
 orders:{res:'К 22:00 — <b>3 тёплых лида в Telegram</b>, ты их просто открыл',ev:[
 ['div','Вторник'],
 ['a','Пока тебя не было, нашёл на бирже:','<div class="mcard"><div class="ct">Kwork · Лендинг для стоматологии</div><div class="cm">бюджет 25 000 ₽ · заказчик платил 4 раза · дедлайн 2 нед</div><div class="cs">скоринг 87/100</div></div>','21:47'],
-['a','Черновик отклика приложил. Отправлять?','<div class="kb"><span>Откликнуться</span><span>Пропустить</span></div>','21:47'],
+['a','Черновик отклика уже написал. Отправлять?','<div class="kb"><span>Откликнуться</span><span>Пропустить</span></div>','21:47'],
 ['u','Откликайся','21:48'],
 ['a','Отправил. Ты потратил меньше минуты.','21:48']
 ]},
-clients:{res:'Заявка не потеряна, счёт ушёл — <b>8 минут вместо вечера переписки</b>',ev:[
+clients:{res:'Заявка дошла до оплаты — <b>8 минут вместо вечера переписки</b>',ev:[
 ['div','Среда'],
-['a','Клиент из Авито: «аудит сколько стоит, какие сроки?»','10:03'],
-['a','Ответил по прайсу, спросил объём и что уже пробовал.','10:04'],
-['a','Вводные собрал: 3 продукта, воронка на Авито. Готов к счёту №12.','10:07'],
-['u','Ставь 28 000, не 25','10:08'],
-['a','Счёт поправлен и отправлен. Напомню проверить оплату завтра.','10:08']
+['a','Клиент с Авито: «сколько стоит агент и что умеет?»','10:03'],
+['a','Ответил по прайсу и про приёмку: чек-лист, полная предоплата, правки до сдачи. Спросил, какая рутина жмёт.','10:04'],
+['a','Вводные есть: заявки и сводки, железа нет — подойдёт свой ПК. Заявку собрал.','10:07'],
+['u','Веди к оплате, без скидок','10:08'],
+['a','Отправил заявку на оплату. Напомню проверить завтра.','10:08']
 ]},
-docs:{res:'48 счетов разобраны, <b>3 с расхождением — в списке на твоё решение</b>',ev:[
+docs:{res:'48 счетов разобраны, <b>3 с расхождением — один с риском по 402-ФЗ</b>, на твоё решение',ev:[
 ['div','Понедельник'],
 ['a','Входящих за выходные: 48 счетов. Сверил с договорами.','09:40'],
-['a','45 сошлись и уже разложены по 1С. Смотри:','<div class="mcard"><div class="ct">Расхождения — 3</div><div class="cm">счёт №214 — договор на 4 200, пришли на 5 000<br>счёт №219 — нет договора в базе<br>счёт №222 — дата поставки съехала</div></div>','09:41'],
-['u','214 — ок, 219 — запрошу договор, 222 — вернуть','09:45'],
-['a','Принял. 219 — черновик запроса поставщику готов.','09:45']
+['a','45 сошлись и уже разложены по 1С. Смотри:','<div class="mcard"><div class="ct">Расхождения — 3</div><div class="cm">счёт №214 — договор на 4 200, пришли на 5 000<br>счёт №219 — нет договора в базе<br>счёт №227 — расход не сходится с внутренней отчётностью — риск по 402-ФЗ</div></div>','09:41'],
+['u','214 — ок, 219 — запрошу договор, 227 — покажу юристу','09:45'],
+['a','Принял. 219 — черновик запроса поставщику готов, 227 — выписка для юриста собрана.','09:45']
 ]},
 content:{res:'5 заготовок на неделю — <b>ты правишь голосом, а не пишешь с нуля</b>',ev:[
 ['div','Пятница'],
-['a','Канал пустой, неделя закончилась. Собрал 5 заготовок из твоих заметок и 4 сигналов рынка — по твоему голосу.','18:31'],
+['a','Неделя закончилась, в блоге пусто. Собрал 5 заготовок для твоей кофейни — из твоих фото, отзывов и меню.','18:31'],
 ['u','Покажи','18:35'],
-['a','<div class="mcard"><div class="ct">На неделю</div><div class="cm">01 сигнал: агенты в 1С — что это значит для бухгалтера<br>02 разбор: сколько стоит рутина приёма заявок<br>03 тейк: почему «под ключ» без чек-листа = кот в мешке<br>04 вопрос подписчикам + черновик ответа<br>05 пост про цену владения</div></div>','18:35'],
-['u','01 и 03 оставь, 02 переписать под мой кейс','18:40'],
+['a','<div class="mcard"><div class="ct">На неделю</div><div class="cm">01 новое меню недели — карточка<br>02 отзыв гостьи — скрин и ответ<br>03 утро в кофейне — три кадра<br>04 опрос: какой десерт вернуть<br>05 пост про нового бариста</div></div>','18:35'],
+['u','01 и 04 оставь, 02 перепиши под наш тон','18:40'],
 ['a','Готово. Публикация 01 — напомню в четверг в 19:00.','18:41']
 ]},
-research:{res:'1 414 постов → 27 в нише → <b>58 сигналов карточками, вместо недели чтения</b>',ev:[
+research:{res:'Виральный формат недели и ключевики — <b>к следующему ролику, а не через месяц наблюдений</b>',ev:[
 ['div','Вторник'],
-['a','Задача: «что в нише за последний месяц». Выгрузил 1 414 постов, отфильтровал по признакам ниши.','11:20'],
-['a','27 релевантных → 58 сигналов. Каждый: факт / что значит для тебя / источник с датой.','<div class="mcard"><div class="cm">выгрузка → signals_nisha.csv · 58 строк · источники внутри</div></div>','11:26'],
-['u','Забрал. Топ-5 какие?','11:30'],
-['a','Скинул первыми пятью карточками — по силе сигнала, не по дате.','11:30']
+['a','Задача: «какой формат видео стал виральным за последнюю неделю». Выгрузил 1 400+ роликов и постов по нише.','11:20'],
+['a','3 формата с ростом охватов + ключевики, по которым в них попасть:','<div class="mcard"><div class="cm">выгрузка → video_trends_week.csv · 58 роликов · ключевики и охваты внутри</div></div>','11:26'],
+['u','Забрал. Какие ключевики топ?','11:30'],
+['a','Скинул первыми пятью — по росту охвата, не по дате.','11:30']
 ]},
-jobs:{res:'<b>9 новых вакансий, 3 с прямым контактом</b> — отклики до твоего кофе',ev:[
+jobs:{res:'<b>8 новых вакансий маркетолога, 3 с прямым контактом</b> — отклики до твоего кофе',ev:[
 ['div','Вторник'],
-['a','Утренний обход: hh, Telegram-каналы, шортлист компаний. 9 новых под твой профиль.','08:15'],
-['a','Три — с прямым контактом нанимателя, без HR-цепочки:','<div class="mcard"><div class="ct">Топ за утро</div><div class="cm">продакт · финтех · 180–250К · контакт: фаундер<br>продакт · маркетплейс · 200К+ · контакт: СТО<br>вед. продакт · edtech · гибрид · контакт: СОО</div></div>','08:16'],
+['a','Утренний обход: hh, Telegram-каналы, шортлист компаний. 8 новых вакансий маркетолога под твой профиль.','08:15'],
+['a','Три — с прямым контактом, без HR-цепочки:','<div class="mcard"><div class="ct">Топ за утро</div><div class="cm">интернет-маркетолог · e-com · 150–200К · контакт: СМО<br>трафик-менеджер · сервис · 120–180К · контакт: фаундер<br>бренд-маркетолог · ритейл · гибрид · контакт: СОО</div></div>','08:16'],
 ['a','Черновики сопроводительных собрал из твоих кейсов.','08:16'],
 ['u','Первые две отправляй, третью гляну вечером','08:20'],
 ['a','Ушло. Статусы всех откликов — в таблице, напомню через 3 дня.','08:20']
