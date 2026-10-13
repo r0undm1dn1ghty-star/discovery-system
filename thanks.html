@@ -109,6 +109,12 @@ footer a{color:var(--meta);text-decoration:underline}
 </div>
 </div>
 
+<div class="tga" id="claimBox" hidden>
+<span class="k">файл — сразу в telegram</span>
+<p style="font-size:15.5px;color:var(--body);margin:0 0 14px">Кнопка отдаст материал прямо в чат — без ожидания и переписок. Ссылка одноразовая: работает для тебя и сгорает после выдачи.</p>
+<a class="btn" id="claimBtn" href="#" target="_blank" rel="noopener">Получить гайд в Telegram →</a>
+</div>
+
 <div id="detail">
 <h2>Что дальше</h2>
 <ul class="steps" id="steps"></ul>
@@ -256,6 +262,25 @@ var NEXT = {
   if(!isNaN(sum)&&sum>0){
     var box=document.getElementById('sumBox'); if(box) box.hidden=false;
     var val=document.getElementById('sumVal'); if(val) val.textContent=sum.toLocaleString('ru-RU')+' ₽';
+  }
+
+  /* ── Автовыдача гайда: Robokassa вернула подпись SuccessURL2 ──
+     Подпись проверяет воркер (MD5 sum:inv:пароль№1) — подделать нельзя.
+     Валидная подпись → одноразовая ссылка в бота. Кнопка показывается
+     только для цифровых продуктов (5 000 = гайд, 7 000 = сборка):
+     услуги выдаются созвоном, файл им не нужен. Любой сбой — блок
+     просто скрыт, работает ручная выдача ниже. */
+  var inv=(q.get('InvId')||q.get('invid')||'').replace(/\D/g,'');
+  var sig=(q.get('SignatureValue')||q.get('signaturevalue')||'');
+  if(inv&&sig&&(sum===5000||sum===7000)){
+    fetch('https://ds-delivery.r0undm1dn1ghty.workers.dev/claim-token?inv='+encodeURIComponent(inv)+'&sum='+encodeURIComponent(raw)+'&sig='+encodeURIComponent(sig))
+      .then(function(r){return r.json();})
+      .then(function(j){
+        if(j&&j.link){
+          var cb=document.getElementById('claimBox'); if(cb) cb.hidden=false;
+          var lb=document.getElementById('claimBtn'); if(lb) lb.href=j.link;
+        }
+      }).catch(function(){});
   }
 
   if(hit){
