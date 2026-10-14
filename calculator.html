@@ -483,7 +483,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       <div class="offer-tag">Забрать результат</div>
       <p class="persona-why" id="personaWhy" style="display:none"></p>
       <div class="offer-opt" data-prod="build" style="border-color:rgba(94,217,168,.28);background:rgba(94,217,168,.06)">
-        <div class="o-top"><div class="o-name">Персональная сборка — твоя связка</div><span class="o-badge" style="background:rgba(94,217,168,.14);border-color:rgba(94,217,168,.28);color:#5ed9a8">сборка 24 часа · правки до приёмки</span></div>
+        <div class="o-top"><div class="o-name">Персональная сборка — твоя связка</div><span class="o-badge" style="background:rgba(94,217,168,.14);border-color:rgba(94,217,168,.28);color:#5ed9a8">сборка 1–3 дня · правки до приёмки</span></div>
                 <div class="o-desc">Гайд (20 конфигураций) включён + разбор твоих рисков + готовая инструкция по установке и отладке под твой случай + правки по сценариям до приёмки. Вклад: 30 мин + доступы по выбору.</div>
         <div class="o-price">7 000 ₽ <small>разово · <a href="clarity.html" style="color:var(--muted);text-decoration:underline">что входит в 7К →</a></small></div>
         <button class="btn-cta" onclick="goCheckout('config')">Собрать мою связку →</button>
@@ -717,8 +717,8 @@ function renderCards(){
   var so=document.getElementById('startOpts');
   if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="start='${s.id}';pickOption();">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
   const showUnsure=goals.length===0||goals.includes('unsure');
-  document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">+${days(g.econ)}</div></div></div>`).join('');
-  document.getElementById('taskOpts').innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">+${days(t.econ)}</div></div></div>`).join('');
+  document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">до ${days(g.econ)}</div></div></div>`).join('');
+  document.getElementById('taskOpts').innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
   document.getElementById('budgetOpts').innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
   a11y();
 }
@@ -835,7 +835,7 @@ const PERSONA_COPY={
       title:'Считай, <em>прежде чем платить</em>',
       desc:'Ниже — часы и деньги до старта. Если цифра не сойдётся — честно скажу «не надо». Решение на доказательствах, а не на обещаниях.',
       spec:['Расчёт до оплаты','Честный вердикт — можно и «не надо»','Границы данных названы'],
-      best:'build',why:'Ты решаешь на цифрах. Сборка 7 000 ₽ — ограниченный эксперимент с приёмкой: не подпишешь, не заплатишь.'},
+      best:'build',why:'Ты решаешь на цифрах. Сборка 7 000 ₽ — ограниченный эксперимент с приёмкой.'},
   P4:{tag:'Твой путь — собрать самому',
       title:'Собери <em>своими руками</em>',
       desc:'У тебя есть железо и желание разобраться. Гайд — 20 конфигураций с моделями, промптами и ценами запуска: соберёшь сам за 3–4 часа.',
@@ -871,7 +871,7 @@ function toggleConn(id){conns=conns.includes(id)?conns.filter(x=>x!==id):[...con
 function goalLabel(){return goals.map(id=>{const g=GOALS.find(x=>x.id===id);return g?(g.sn||g.t):'';}).filter(Boolean).join(' + ')||'';}
 function deviceLabel(){const d=device?DEVICES.find(x=>x.id===device):null;return d?d.t:(device||'');}
 function budgetLabel(){const b=budget?BUDGETS.find(x=>x.id===budget):null;return b?b.label:'';}
-function days(h){const d=h/8;return d>=1?(d%1===0?d.toFixed(0):d.toFixed(1))+' дн/мес':Math.round(d*8)+' ч/мес';}
+function days(h){return h+' ч/мес';}
 
 /* ========== LIVE PRICE ========== */
 function mcHint(){ try{ const m=JSON.parse(sessionStorage.getItem('ds_mc')||'null'); if(!m) return null; return m; }catch(e){ return null; } }
@@ -921,7 +921,7 @@ function updateLive(){
   if(b&&b.max!==Infinity&&e.monthly>b.max){
     document.getElementById('liveHint').textContent='⚠ превышает бюджет '+b.max.toLocaleString('ru-RU')+' ₽ — убери подключения';
   }else{
-    document.getElementById('liveHint').textContent='сейчас уходит '+e.handsHours+' ч/мес · агент освободит ~'+e.hours+' ч · '+e.cat;
+    document.getElementById('liveHint').textContent='сейчас уходит '+e.handsHours+' ч/мес · агент освободит ~'+e.hours+' ч — '+e.cat;
   }
 }
 
@@ -1172,7 +1172,7 @@ const TG_ME='https://t.me/soulvictor';
 let chosenOffer=null;
 
 function payConfig(){
-  if(chosenOffer==='config')return{amount:'7 000 ₽',title:'Персональная сборка — оплата',sub:'Переведи 7 000 ₽ и напиши мне: соберу связку под твои задачи за 24 часа.',btn:'Я оплатил — начать сборку →'};
+  if(chosenOffer==='config')return{amount:'7 000 ₽',title:'Персональная сборка — оплата',sub:'Переведи 7 000 ₽ и напиши мне: соберу связку под твои задачи за 1–3 дня.',btn:'Я оплатил — начать сборку →'};
   if(chosenOffer==='optimization')return{amount:'от 20 000 ₽',title:'Оптимизация агента — заявка',sub:'Напиши мне: сначала аудит связки, потом назову точную цену до начала работ.',btn:'Обсудить аудит →'};
   return{amount:'5 000 ₽',title:'Гайд: 20 конфигураций — оплата',sub:'Переведи 5 000 ₽ и напиши мне: отправлю таблицу сразу после подтверждения.',btn:'Я оплатил — получить гайд →'};
 }
