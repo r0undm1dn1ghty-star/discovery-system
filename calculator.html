@@ -687,11 +687,11 @@ const BUDGETS=[
   {id:'b6',label:'до 6 000 ₽/мес',max:6000},
   {id:'b',label:'сколько нужно',max:Infinity}
 ];
-const MODELS={
-  qwen:{cost:300,name:'Qwen 3.5 (облако, РФ)',cat:'Облако',dets:['30\u00a0\u20bd/1M вход · 94\u00a0\u20bd/1M выход — AITUNNEL','~0.9–3.5M токенов/мес на рутину','Без VPN, рубли']},
+const MODELS={ /* замеры 21.10.2026: qwen 66–260 (бленд 74₽/1M × 0.9–3.5M), виз-класс 285, расчётная 500 — порядок цен = монотонность */
+  qwen:{cost:260,name:'Qwen 3.5 (облако, РФ)',cat:'Облако',dets:['30\u00a0\u20bd/1M вход · 94\u00a0\u20bd/1M выход — РФ-туннель','~0.9–3.5M токенов/мес на рутину','Без VPN, рубли']},
   deepseek:{cost:500,name:'DeepSeek V4 (облако)',cat:'Облако',dets:['$0.66/1M вход · $1.98/1M выход','Кэш-хит в 10\u00d7 дешевле входа','Силен в расчётах и сверках']},
-  multimodal:{cost:250,name:'Qwen-VL (мультимодальная)',cat:'Облако',dets:['Картинки и брифы','~1M токенов/мес на профиль','Оплата в рублях']},
-  open:{cost:150,name:'OpenRouter / Flash-класс',cat:'Облако',dets:['Дешёвый вход для старта','Лимиты на бесплатных тарифах','Апгрейд в один клик']},
+  multimodal:{cost:285,name:'Qwen-VL (мультимодальная)',cat:'Облако',dets:['Картинки и брифы','~1M токенов/мес на профиль','Оплата в рублях']},
+  open:{cost:150,name:'Flash-класс (старт)',cat:'Облако',dets:['Дешёвый вход для старта','Лимиты на бесплатных тарифах','Апгрейд в один клик']},
   local:{cost:0,name:'Локальная модель (твоё железо)',cat:'Локально',dets:['Электричество и железо — твои','Настройка ~20–40 ч или сборкой 7 000 ₽','Данные никуда не уходят']},
   hybrid:{cost:400,name:'Гибрид: локально + API',cat:'Гибрид',dets:['Черновики локально','Сложное — через API','Безопасный контур']}
 };
@@ -904,10 +904,10 @@ function estimate(){
   /* Экономика владения: свой сервер — 0 (уже платит); облако провайдера — VPS 2–4 ГБ.
      Telegram из дата-центров РФ не работает — на РФ-сервере боту нужен шлюз. */
   const tgNeeded=conns.includes('tg')||conns.includes('bot');
-  const hosted=(device==='host'||data==='cloud');
+  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')); /* свой VPS — 0 аренды (уже платит), аренда только если сервера нет; фикс двойного счёта 21.10 */
   const rfColo=hosted||data==='ru'||device==='vps';
   const gateway=(tgNeeded&&rfColo)?300:0;
-  const hosting=(hosted?1000:0)+gateway;
+  const hosting=(hosted?2190:0)+gateway; /* рабочая конфигурация 6 ГБ+IP, снято 21.10 после скачка цен 8–14.10; 2 ГБ базу не тянут */
   const connCost=conns.reduce((s,c)=>s+CONNS.find(x=>x.id===c).cost,0);
   let handsHours=gs.reduce((s,g)=>s+g.econ,0); tasks.forEach(t=>{const tt=TASKS.find(x=>x.id===t); if(tt)handsHours+=tt.econ;});
   // токены масштабируются с объёмом задач (autonomy) и числом сценариев; хостинг и подключения — нет
