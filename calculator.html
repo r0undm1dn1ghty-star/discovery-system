@@ -335,7 +335,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <div class="wrap">
 
-  <nav class="top" aria-label="Основная навигация"><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"/><span style="font-weight:600;color:var(--txt)">Discovery System</span></a><a href="market.html">рынок</a><a href="system.html">система</a><a href="clarity.html">ясность</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a></div></nav><div class="hero">
+  <nav class="top" aria-label="Основная навигация"><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"/><span style="font-weight:600;color:var(--txt)">Discovery System</span></a><a href="market.html">Рынок ИИ</a><a href="system.html">система</a><a href="clarity.html">Цены</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a></div></nav><div class="hero">
     <h1>Сколько забирает <em>твоя рутина</em></h1>
     <p id="heroLead">3 вопроса — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.</p>
   </div>
@@ -662,8 +662,10 @@ const AUTONOMY=[
 const CONNS=[
   {id:'tg',label:'Telegram',d:'общение, уведомления',cost:0,ic:'bot',grp:'Общение'},
   {id:'bot',label:'Чат-бот для аудитории',d:'отвечает 24/7',cost:450,ic:'bot',grp:'Общение'},
+  {id:'wa',label:'WhatsApp',d:'клиенты через Wazzup/TextBack',cost:5000,ic:'bot',grp:'Общение'},
   {id:'pub',label:'Публикация постов',d:'соцсети, канал',cost:400,ic:'megaphone',grp:'Общение'},
   {id:'crm',label:'CRM и рассылки',d:'клиенты, воронки',cost:550,ic:'users',grp:'Клиенты'},
+  {id:'avito',label:'Авито-переписка',d:'нужен тариф Авито',cost:5000,ic:'search',grp:'Клиенты'},
   {id:'analytics',label:'Аналитика',d:'метрики, отчёты',cost:400,ic:'chart',grp:'Клиенты'},
   {id:'sheets',label:'Таблицы и документы',d:'Sheets, Notion',cost:250,ic:'doc',grp:'Данные'},
   {id:'obs',label:'Заметки и база знаний',d:'Obsidian',cost:0,ic:'book',grp:'Данные'},
@@ -672,7 +674,7 @@ const CONNS=[
 const DATA=[
   {id:'local',t:'Локально — на моём устройстве',d:'полный контроль, никуда не уходит',ic:'lock'},
   {id:'cloud',t:'В облаке — не у меня',d:'доступ откуда угодно, хостинг +цена',ic:'cloud'},
-  {id:'ru',t:'На РФ-сервере',d:'данные в России, 242-ФЗ',ic:'shield'},
+  {id:'ru',t:'На РФ-сервере',d:'данные в России · для Telegram-бота нужен шлюз (+300₽/мес)',ic:'shield'},
   {id:'hybrid',t:'Гибрид — чувствительное локально',d:'контроль + скорость',ic:'refresh'}
 ];
 const PAY=[
@@ -690,7 +692,7 @@ const MODELS={
   deepseek:{cost:500,name:'DeepSeek V4 (облако)',cat:'Облако',dets:['$0.66/1M вход · $1.98/1M выход','Кэш-хит в 10\u00d7 дешевле входа','Силен в расчётах и сверках']},
   multimodal:{cost:250,name:'Qwen-VL (мультимодальная)',cat:'Облако',dets:['Картинки и брифы','~1M токенов/мес на профиль','Оплата в рублях']},
   open:{cost:150,name:'OpenRouter / Flash-класс',cat:'Облако',dets:['Дешёвый вход для старта','Лимиты на бесплатных тарифах','Апгрейд в один клик']},
-  local:{cost:0,name:'Локальная модель (твоё железо)',cat:'Локально',dets:['Электричество и железо — твои','Настройка ~20–40 ч или 5\u00a0\u20bd сборкой','Данные никуда не уходят']},
+  local:{cost:0,name:'Локальная модель (твоё железо)',cat:'Локально',dets:['Электричество и железо — твои','Настройка ~20–40 ч или сборкой 7 000 ₽','Данные никуда не уходят']},
   hybrid:{cost:400,name:'Гибрид: локально + API',cat:'Гибрид',dets:['Черновики локально','Сложное — через API','Безопасный контур']}
 };
 
@@ -882,8 +884,12 @@ function estimate(){
   const aut=AUTONOMY.find(x=>x.id===autonomy);
   const autoMult=aut.mult;
   let base='qwen';
-  if(tasks.includes('design')||tasks.includes('video'))base='multimodal';
-  else if(tasks.includes('docs')||tasks.includes('data')||tasks.includes('sales'))base='deepseek';
+  /* класс модели = МАКСИМУМ по выбранным задачам (решение 10.10: самый требовательный
+     выигрывает; приоритет расчёта над картинкой — иначе «Дизайн» обрушивал цену) */
+  const needCompute=tasks.some(t=>['docs','data','sales'].includes(t));
+  const needVision=tasks.some(t=>['design','video'].includes(t));
+  if(needVision)base='multimodal';
+  if(needCompute)base='deepseek'; /* расчётная всегда не дешевле визуальной — перекрывает */
   let modelKey,cat;
   if(device==='gpu12'||device==='gpu24'){modelKey='local';cat='Локально';}
   else if(device==='vps'){modelKey='hybrid';cat='Гибрид';}
@@ -895,7 +901,13 @@ function estimate(){
     else {modelKey=base;}
   }
   const m=MODELS[modelKey];
-  const hosting=(device==='host'||data==='cloud')?350:0;
+  /* Экономика владения: свой сервер — 0 (уже платит); облако провайдера — VPS 2–4 ГБ.
+     Telegram из дата-центров РФ не работает — на РФ-сервере боту нужен шлюз. */
+  const tgNeeded=conns.includes('tg')||conns.includes('bot');
+  const hosted=(device==='host'||data==='cloud');
+  const rfColo=hosted||data==='ru'||device==='vps';
+  const gateway=(tgNeeded&&rfColo)?300:0;
+  const hosting=(hosted?1000:0)+gateway;
   const connCost=conns.reduce((s,c)=>s+CONNS.find(x=>x.id===c).cost,0);
   let handsHours=gs.reduce((s,g)=>s+g.econ,0); tasks.forEach(t=>{const tt=TASKS.find(x=>x.id===t); if(tt)handsHours+=tt.econ;});
   // токены масштабируются с объёмом задач (autonomy) и числом сценариев; хостинг и подключения — нет
@@ -909,7 +921,7 @@ function estimate(){
   const agentHours=Math.round(handsHours*(1-agentShare(autonomy))*1);
   const handsTotal=handsHours;
   const startMoney=startBase();
-  return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost,hostCost,connTotal,modelName:m.name,base:startMoney};
+  return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost,hostCost,connTotal,gateway,modelName:m.name,base:startMoney};
 }
 function updateLive(){
   const lb=document.getElementById('livebar');
@@ -1097,7 +1109,7 @@ function calculate(){
       document.getElementById('vsHands').style.width=Math.round(e.handsHours/max*100)+'%';
       document.getElementById('vsAgent').style.width=Math.round((e.handsHours-e.hours)/max*100)+'%';
     },60);
-    const rows=[['\u041c\u043e\u0434\u0435\u043b\u044c \u2014 '+e.modelName,e.modelCost],['\u0425\u043e\u0441\u0442\u0438\u043d\u0433 (\u0420\u0424, \u0431\u0435\u0437 VPN)',e.hostCost],['\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f',e.connTotal]];
+    const rows=[['\u041c\u043e\u0434\u0435\u043b\u044c \u2014 '+e.modelName,e.modelCost],['\u0425\u043e\u0441\u0442\u0438\u043d\u0433'+(e.gateway?' (\u0441 \u0448\u043b\u044e\u0437\u043e\u043c \u0434\u043b\u044f Telegram)':''),e.hostCost],['\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f',e.connTotal]];
     document.getElementById('brkTable').innerHTML=
       rows.filter(r=>r[1]>0).map(r=>'<div class="brow"><span>'+r[0]+'</span><b>'+r[1].toLocaleString('ru-RU')+' \u20bd</b></div>').join('')
       +(e.monthly===0?'<div class="brow"><span>\u0418\u0442\u043e\u0433\u043e</span><b>0 \u20bd \u2014 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439 \u0441\u0442\u0430\u0440\u0442</b></div>':'<div class="brow total"><span>\u0418\u0442\u043e\u0433\u043e</span><b>'+e.monthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b></div>');
@@ -1282,5 +1294,6 @@ var _sc=document.getElementById('stepsCount'); if(_sc)_sc.textContent='1 / '+N;
 
 
 
+<script src="ds-plasma.js" defer></script>
 </body>
 </html>
