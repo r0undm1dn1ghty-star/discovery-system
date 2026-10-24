@@ -45,8 +45,13 @@ setTimeout(() => {
   const evps = scenario('свой VPS + TG', base + 'device="vps"; data="ru"; goals=["repeat"]; conns=["tg"];');
 
   if (e1 && e5) {
-    const p1 = e1.modelCost, p5 = e5.modelCost / 5;
-    out.push('цена модели за функцию: 1→' + p1 + '₽, 5→' + p5.toFixed(0) + '₽ ' + (p5 >= p1 * 0.85 ? '✓ без скидки' : '✗ СКИДКА'));
+    // прирост при добавлении функции, а не средняя (сценарии разного объёма)
+    const soloRepeat = (() => { run(base + 'device="cpu"; data="local"; goals=["repeat"];'); return run('estimate()'); })();
+    const soloReport = (() => { run(base + 'device="cpu"; data="local"; goals=["report"];'); return run('estimate()'); })();
+    const both = (() => { run(base + 'device="cpu"; data="local"; goals=["repeat","report"];'); return run('estimate()'); })();
+    const marginal = both.modelCost - soloRepeat.modelCost;
+    out.push('прирост от второй функции: ' + marginal + '₽ против ' + soloReport.modelCost + '₽ отдельно ' +
+      (Math.abs(marginal - soloReport.modelCost) <= Math.max(2, soloReport.modelCost * 0.05) ? '✓ аддитивно' : '✗ скидка'));
     out.push('хостинг растёт: ' + (e5.hostCost > e1.hostCost ? '✓ ' + e1.hostCost + '→' + e5.hostCost : '✗ не растёт'));
   }
   if (evps) out.push('свой VPS не бесплатный: ' + (evps.hostCost > 0 ? '✓ ' + evps.hostCost + '₽' : '✗ 0₽'));

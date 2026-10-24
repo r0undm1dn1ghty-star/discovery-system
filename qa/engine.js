@@ -125,12 +125,12 @@ const BUDGETS=[
   {id:'b6',label:'до 6 000 ₽/мес',max:6000},
   {id:'b',label:'сколько нужно',max:Infinity}
 ];
-const MODELS={ /* замеры 21.10.2026: qwen 66–260 (бленд 74₽/1M × 0.9–3.5M), виз-класс 285, расчётная 500 — порядок цен = монотонность */
-  qwen:{cost:260,name:'Qwen 3.5 (облако, РФ)',cat:'Облако',dets:['30\u00a0\u20bd/1M вход · 94\u00a0\u20bd/1M выход — РФ-туннель','~0.9–3.5M токенов/мес на рутину','Без VPN, рубли']},
-  deepseek:{cost:500,name:'DeepSeek V4 (облако)',cat:'Облако',dets:['$0.66/1M вход · $1.98/1M выход','Кэш-хит в 10\u00d7 дешевле входа','Силен в расчётах и сверках']},
-  multimodal:{cost:285,name:'Qwen-VL (мультимодальная)',cat:'Облако',dets:['Картинки и брифы','~1M токенов/мес на профиль','Оплата в рублях']},
-  open:{cost:150,name:'Flash-класс (старт)',cat:'Облако',dets:['Дешёвый вход для старта','Лимиты на бесплатных тарифах','Апгрейд в один клик']},
-  local:{cost:0,name:'Локальная модель (твоё железо)',cat:'Локально',dets:['Электричество и железо — твои','Настройка ~20–40 ч или сборкой 7 000 ₽','Данные никуда не уходят']},
+const MODELS={ /* подписи — нейтральные классы, без вендоров: тариф считается в estimate() по реальным ставкам */
+  qwen:{cost:260,name:'Базовая модель (Lite-класс)',cat:'Облако',dets:['Простые ответы, классификация, FAQ','Тариф считается по объёму токенов','Без VPN, рубли']},
+  deepseek:{cost:500,name:'Усиленная модель (Pro-класс)',cat:'Облако',dets:['Сложные ответы, документы, расчёты','Дороже базовой в 5–8 раз за токен','Без VPN, рубли']},
+  multimodal:{cost:285,name:'Мультимодальная (Pro-класс)',cat:'Облако',dets:['Картинки, брифы, распознавание','Оплата за изображение отдельно','Без VPN, рубли']},
+  open:{cost:150,name:'Эконом-класс (старт)',cat:'Облако',dets:['Дешёвый вход для пилота','Ниже качество на сложном','Апгрейд в один клик']},
+  local:{cost:0,name:'Локальная модель (твоё железо)',cat:'Локально',dets:['Провайдеру не платишь','Настройка ~20–40 ч или сборкой 7 000 ₽','Данные никуда не уходят']},
   hybrid:{cost:400,name:'Гибрид: локально + API',cat:'Гибрид',dets:['Черновики локально','Сложное — через API','Безопасный контур']}
 };
 
@@ -329,34 +329,54 @@ function estimate(){
   if(needVision)base='multimodal';
   if(needCompute)base='deepseek'; /* расчётная всегда не дешевле визуальной — перекрывает */
   let modelKey,cat;
-  if(device==='gpu12'||device==='gpu24'){modelKey='local';cat='Локально';}
-  else if(device==='vps'){modelKey='hybrid';cat='Гибрид';}
+  /* локальная модель возможна только с видеокартой; на CPU/телефоне честно уходим в облако */
+  const canRunLocal=(device==='gpu8'||device==='gpu12'||device==='gpu24');
+  if(canRunLocal&&(data==='local'||data==='hybrid')){modelKey=data==='hybrid'?'hybrid':'local';cat=data==='hybrid'?'Гибрид':'Локально';}
+  else if(device==='gpu12'||device==='gpu24'){modelKey='local';cat='Локально';}
+  else if(data==='hybrid'){modelKey='hybrid';cat='Гибрид';}
   else {
     cat='Облако';
-    const baseCost=MODELS[base].cost;
-    if(budget==='b3'&&baseCost>1500){modelKey='open';}
-    else if(budget==='b6'&&baseCost>5000){modelKey='open';}
-    else {modelKey=base;}
+    /* Бюджет больше не подменяет модель: раньше стоял гейт по m.cost (260/500 ₽) —
+       константе, не связанной с реальным расходом токенов. Теперь модель выбирается
+       по задаче, а бюджет только предупреждает (см. updateLive). */
+    modelKey=base;
   }
   const m=MODELS[modelKey];
-  /* ── ЭКОНОМИКА ВЛАДЕНИЯ (источник: calc-econ/scenario-map-v3-FINAL.md) ──
-     Токены считаются ПО СЦЕНАРИЮ и складываются: каждая новая функция = свой расход.
-     Раньше стояло m.cost*(0.6+0.4n) — 6 функций выходили по 145 ₽ вместо 291 ₽ (скидка ×1.9),
-     то есть клиент с шестью процессами платил как за полтора. Убрано 24.10. */
-  const TOK_PER_GOAL={repeat:150,leads:150,report:150,scan:100,write:120,paper:120,unsure:0};
-  const TOK_PER_TASK={text:100,design:70,docs:120,data:120,web:80,social:80,sales:120,research:80};
-  const MODEL_FACTOR={qwen:1,deepseek:1.6,multimodal:1.2,open:0.6,local:0,hybrid:0.8};
-  const AUTO_FACTOR={draft:0.8,review:1,auto:1.5,full:2.2};
-  const tokenBase=gs.reduce((s,g)=>s+(TOK_PER_GOAL[g.id]||100),0)
-                 +tasks.reduce((s,t)=>s+(TOK_PER_TASK[t]||80),0);
-  const modelCost=Math.round(tokenBase*(MODEL_FACTOR[modelKey]||1)*(AUTO_FACTOR[autonomy]||1));
+  /* ── ЭКОНОМИКА ВЛАДЕНИЯ (источник: research/01-gigachat.md, 02-yandex.md) ──
+     Считаем ТОКЕНЫ × ТАРИФ, а не «стоимость за функцию».
+     Раньше стояло m.cost*(0.6+0.4n) — плоская цена: 6 функций по 145 ₽ (скидка ×1.9),
+     а против Pro-тарифа недосчёт в 5–10 раз. Заменено 24.10.
+
+     Тарифы GigaChat async, ₽ за 1 млн токенов (официальный прайс developers.sber.ru):
+       Lite 32,5 · Pro 250 · Max 325.
+     Объёмы — допущения из типовой рутины МСБ; калибровать на живых клиентах. */
+  const TARIFF={lite:32.5,pro:250,max:325};
+  const TOK_MONTH={repeat:3.6e6, leads:2.25e6, report:1.2e5, scan:1.8e6, write:1.6e5, paper:1.5e5, unsure:0};
+  const TIER_OF={repeat:'lite', leads:'lite', scan:'lite', report:'pro', write:'pro', paper:'pro'};
+  const TASK_TOK={text:1.2e5,design:6e4,docs:1.8e5,data:1.5e5,web:1.2e5,social:8e4,sales:1.5e5,research:1.2e5};
+  const AUTO_TOK={draft:0.8,review:1,auto:1.4,full:2.0};
+  let tokenCost=0;
+  gs.forEach(g=>{ if(g.id==='unsure')return;
+    const tok=TOK_MONTH[g.id]||0;
+    tokenCost+=tok/1e6*TARIFF[TIER_OF[g.id]||'lite'];
+  });
+  tasks.forEach(t=>{ tokenCost+=(TASK_TOK[t]||1e5)/1e6*TARIFF.pro; });
+  tokenCost=tokenCost*(AUTO_TOK[autonomy]||1);
+  /* локальная модель — расход провайдера 0 (электричество не считаем);
+     гибрид — половина уходит в API */
+  const MODEL_SHARE={qwen:1,deepseek:1,multimodal:1,open:0.8,local:0,hybrid:0.5};
+  const modelCost=Math.round(tokenCost*(MODEL_SHARE[modelKey]??1));
 
   /* ── ХОСТИНГ ПО ЧИСЛУ АГЕНТОВ ──
      Плоские 2190 на любое число функций = 6 агентов на одной VPS по цене одного.
-     Тир по факту RAM: 2 ГБ одного не тянет, 8 ГБ = 2–3 агента, 16 ГБ = 4–5, дальше 32 ГБ.
-     Средний тир 2190 — замер 21.10 (после скачка цен 8–14.10). */
+     Тиры по факту RAM (research/03-hosting-gpu.md, Timeweb MSK, цены после 08–14.10):
+       1 агент  → Cloud-50  4 ГБ  ≈ 1 100
+       2–3      → Cloud-80  8 ГБ  ≈ 2 190
+       4–5      → Cloud-160 16 ГБ ≈ 4 300
+       6+       → 2×8 ГБ / 32 ГБ  ≈ 4 800
+     2 ГБ одного агента не тянет (кейс Николая: 4 ГБ уже тупит с голосом). */
   const nAgents=Math.max(1, gs.filter(g=>g.id!=='unsure').length + Math.ceil(tasks.length/2));
-  const HOST_TIERS=[[1,1100],[3,2190],[5,3400],[999,4800]];
+  const HOST_TIERS=[[1,1100],[3,2190],[5,4300],[999,4800]];
   const hostBase=(HOST_TIERS.find(t=>nAgents<=t[0])||[999,4800])[1];
 
   const tgNeeded=conns.includes('tg')||conns.includes('bot');
@@ -599,7 +619,9 @@ function calculate(){
   if(conns.includes('bot'))dets.push('Telegram-\u0431\u043e\u0442 \u0434\u043b\u044f \u0430\u0443\u0434\u0438\u0442\u043e\u0440\u0438\u0438 24/7');
   if(conns.includes('obs'))dets.push('Obsidian \u2014 \u0431\u0430\u0437\u0430 \u0437\u043d\u0430\u043d\u0438\u0439 \u043e \u0436\u0438\u0437\u043d\u0438');
   if(data==='ru')dets.push('\u0414\u0430\u043d\u043d\u044b\u0435 \u043d\u0430 \u0420\u0424-\u0441\u0435\u0440\u0432\u0435\u0440\u0435 \u2014 \u043b\u043e\u043a\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f (242-\u0424\u0417)');
-  if(data==='local')dets.push('\u0414\u0430\u043d\u043d\u044b\u0435 \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u043e \u2014 \u043f\u043e\u043b\u043d\u044b\u0439 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c');
+  if(data==='local')dets.push((device==='gpu8'||device==='gpu12'||device==='gpu24')
+    ? 'Данные локально — полный контроль'
+    : 'Локальная модель требует GPU 8 ГБ+ — на этом железе пойдёт облако');
   if(pay==='rucard')dets.push('\u041e\u043f\u043b\u0430\u0442\u0430 \u043a\u0430\u0440\u0442\u043e\u0439 \u0420\u0424 / \u0421\u0411\u041f \u2014 \u0431\u0435\u0437 VPN');
   if(pay==='crypto')dets.push('\u041e\u043f\u043b\u0430\u0442\u0430 \u043a\u0440\u0438\u043f\u0442\u043e\u0439 (USDT)');
   if(pay==='proxy')dets.push('\u041e\u043f\u043b\u0430\u0442\u0430 \u0447\u0435\u0440\u0435\u0437 \u043f\u043e\u0441\u0440\u0435\u0434\u043d\u0438\u043a\u043e\u0432');

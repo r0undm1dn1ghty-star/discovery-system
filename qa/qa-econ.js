@@ -42,20 +42,23 @@ const taskIds = TASKS.map(t => t.id);
 const est = (o) => { Q.set(Object.assign({ budget: 'b' }, o)); return Q.estimate(); };
 
 // ── R6: НЕТ СКИДКИ ЗА ОБЪЁМ ──
-// Цена модели за функцию не должна падать при добавлении функций.
-// Раньше было m.cost*(0.6+0.4n): 1 функция = 291 ₽, 6 функций = 145 ₽/шт (скидка ×1.9).
+// Проверяем ПРИРОСТ цены при добавлении функции: он должен быть > 0 и равен
+// стоимости этой функции отдельно. Средняя «₽ за функцию» для этого не годится —
+// сценарии разного объёма (ответы 3,6M против отчёта 0,12M), средняя падает законно.
 for (const dv of ['cpu', 'host', 'vps']) {
   for (const au of AUTONOMY.map(a => a.id)) {
-    let prevPerFn = null;
     for (let n = 1; n <= goalIds.length; n++) {
-      const e = est({ device: dv, data: dv === 'vps' ? 'ru' : 'local', autonomy: au, goals: goalIds.slice(0, n) });
-      if (!e || !e.modelCost) continue;
-      const perFn = e.modelCost / n;
-      if (prevPerFn !== null && perFn < prevPerFn * 0.85) {
-        fails.push(`R6 СКИДКА ЗА ОБЪЁМ: ${dv}/${au} n=${n} — ${perFn.toFixed(0)} ₽/функция против ${prevPerFn.toFixed(0)} ₽ на n-1`);
-        break;
+      const prev = n === 1 ? null : est({ device: dv, data: dv === 'vps' ? 'ru' : 'local', autonomy: au, goals: goalIds.slice(0, n - 1) });
+      const cur = est({ device: dv, data: dv === 'vps' ? 'ru' : 'local', autonomy: au, goals: goalIds.slice(0, n) });
+      if (!cur) continue;
+      const solo = est({ device: dv, data: dv === 'vps' ? 'ru' : 'local', autonomy: au, goals: [goalIds[n - 1]] });
+      const marginal = prev ? cur.modelCost - prev.modelCost : cur.modelCost;
+      const own = solo ? solo.modelCost : 0;
+      if (marginal <= 0) {
+        fails.push(`R6 ФУНКЦИЯ БЕСПЛАТНА: ${dv}/${au} +${goalIds[n - 1]} даёт прирост ${marginal}₽`);
+      } else if (Math.abs(marginal - own) > Math.max(2, own * 0.05)) {
+        fails.push(`R6 СКИДКА ЗА ОБЪЁМ: ${dv}/${au} +${goalIds[n - 1]} прирост ${marginal}₽ против ${own}₽ отдельно`);
       }
-      prevPerFn = perFn;
     }
   }
 }
