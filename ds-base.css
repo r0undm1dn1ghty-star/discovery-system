@@ -181,3 +181,34 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
     min-height: var(--tap) !important;
   }
 }
+
+/* ═══ ЛЕГАСИ-ФИКС 24.10: карточки услуг не сжимались ═══
+   Замер: clarity.html и services.html уезжали на 499px при экране 390 (+109px).
+   Причина: страничное `.install-cards.four{grid-template-columns:repeat(2,1fr)}` (2 класса)
+   перебивало мобильное `.install-cards{grid-template-columns:1fr}` (1 класс), а содержимое
+   карточек имело min-content ~223px → сетка не схлопывалась. Здесь чиним раз и навсегда:
+   на мобилке такие сетки обязаны быть в одну колонку, а содержимое — иметь право сжиматься. */
+@media (max-width: 760px) {
+  .install-cards,
+  .install-cards.two,
+  .install-cards.three,
+  .install-cards.four { grid-template-columns: 1fr; }
+  .install-cards > * { min-width: 0; }
+  .install-cards .btn-buy,
+  .install-cards .ic-price,
+  .install-cards .ic-v,
+  .install-cards .ic-top { white-space: normal; overflow-wrap: anywhere; }
+}
+
+/* ═══ ЛЕГАСИ-ФИКС 24.10: коллизия класса .sig ═══
+   На channel.html и market.html один и тот же класс .sig описывает ДВЕ разные вещи:
+   карточку автора (фото + имя, нужен flex) и карточку сигнала в фиде (нужен вертикальный
+   поток). Из-за общей `.sig{display:flex}` карточки сигналов сжимались в строку —
+   содержимое вылезало на 2px при 360px и читалось как каша. Разводим по составу. */
+.sig { display: block; }
+.sig:has(.sig-photo) { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.sig:has(.sig-text) { display: flex; align-items: center; gap: 16px; }
+@media (max-width: 760px) {
+  .sig-meta { row-gap: 4px; }
+  .sig-src, .sig-head, .sig-take { min-width: 0; overflow-wrap: anywhere; }
+}
