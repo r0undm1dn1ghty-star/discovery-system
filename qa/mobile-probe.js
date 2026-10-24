@@ -143,7 +143,14 @@ async function main() {
       if (data && data.overflow > 1) problems.push({ page, w: vp[0], kind: 'OVERFLOW', v: data.overflow, by: (data.offenders || []).slice(0, 3).map(o => o.sel + ' (' + o.w + 'px)').join(' | ') });
       if (data && (data.offenders || []).length > 3) problems.push({ page, w: vp[0], kind: 'OFFENDERS', v: data.offenders.length, by: data.offenders.slice(0, 2).map(o => o.sel).join(' | ') });
       if (data && (data.taps || []).length) problems.push({ page, w: vp[0], kind: 'TAP<44', v: data.taps.length, by: data.taps.slice(0, 2).map(t => t.sel + ' ' + t.h + 'px').join(' | ') });
-      if (data && data.padVariants > 8) problems.push({ page, w: vp[0], kind: 'PAD-РАЗНОБОЙ', v: data.padVariants, by: (data.sectPads || []).slice(0, 3).map(s => s.sel + ' ' + s.pt).join(' | ') });
+      // ритм секций: допустимы ровно два значения вертикали (mobile 56 / desktop 96) + hero 84
+      if (data && data.sectPads && data.sectPads.length) {
+        const vals = [...new Set(data.sectPads.map(s => s.pt))].filter(v => v !== '84px');
+        const expect = vp[0] < 760 ? '56px' : '96px';
+        const bad = vals.filter(v => v !== expect);
+        if (bad.length) problems.push({ page, w: vp[0], kind: 'РИТМ', v: bad.join(','), by: 'ожидалось ' + expect + ' на ' + data.sectPads.length + ' секциях' });
+      }
+      if (data && (data.taps || []).length > 12) problems.push({ page, w: vp[0], kind: 'TAP-МНОГО', v: data.taps.length, by: (data.taps || []).slice(0, 2).map(t => t.sel).join(' | ') });
       await sleep(120);
     }
   }

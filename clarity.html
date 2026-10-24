@@ -26,7 +26,7 @@
 <link href="fonts/fonts.css" rel="stylesheet">
 <script>document.documentElement.className+=' js';</script>
 <style>
-:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--ok:#5ed9a8;--accent-rgb:123,196,168;--ok-rgb:94,217,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--ok:#5ed9a8;--accent-rgb:123,196,168;--ok-rgb:94,217,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Onest',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;position:relative}
@@ -183,7 +183,7 @@ html{scroll-behavior:auto}
 .choose-hint{font-size:15px;color:var(--meta);margin:0 0 28px;padding:14px 20px;border-left:2px solid var(--accent);background:rgba(123,196,168,.04);border-radius:0 8px 8px 0}
 /* чипы точки входа */
 .start-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px}
-.start-chips button{font-family:var(--sans);font-size:14px;color:var(--body);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:999px;padding:9px 16px;min-height:40px;cursor:pointer;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease)}
+.start-chips button{font-family:var(--sans);font-size:14px;color:var(--body);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:9px 16px;min-height:40px;cursor:pointer;transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease)}
 .start-chips button:hover{border-color:rgba(var(--accent-rgb),.4);color:var(--ink)}
 .start-chips button[aria-pressed="true"]{background:rgba(123,196,168,.12);border-color:rgba(123,196,168,.5);color:var(--accent)}
 .node.dim{opacity:.42;transition:opacity .25s var(--ease)}
@@ -247,6 +247,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 
 </style>
 <script src="ym-slot.js" defer></script>
+<link rel="stylesheet" href="ds-base.css"/>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <nav class="top" aria-label="Основная навигация"><div class="wrap">
@@ -489,7 +490,7 @@ chips.addEventListener('click',function(e){
    по атрибуту data-buy="ключ". Ссылки создаются в ЛК Robokassa и
    вставляются только в pay-links.js — здесь дублировать не нужно. */
 </script>
-<div class="sticky-cta" id="stickyCta"><a href="calculator.html">Цена твоей связки ↗</a></div>
+<div class="sticky-cta" id="stickyCta"><a href="calculator.html">Посчитать мою цену</a></div>
 <script>
 /* sticky CTA: показывается после первого экрана */
 (function(){

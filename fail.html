@@ -10,7 +10,7 @@
 
 <link href="fonts/fonts.css" rel="stylesheet">
 <style>
-:root{--bg:#0e1220;--panel:#141a2c;--panel-2:#171e33;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--warn:#f2b665;--warn-rgb:242,182,101;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#0e1220;--panel:#141a2c;--panel-2:#171e33;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--warn:#f2b665;--warn-rgb:242,182,101;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Onest',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;background-image:radial-gradient(1000px 640px at 50% -10%,rgba(var(--warn-rgb),.09),transparent 62%);background-attachment:fixed;min-height:100vh}
 .wrap{max-width:680px;margin:0 auto;padding:0 24px}
@@ -23,7 +23,7 @@ main{padding:56px 0 40px}
 h1{color:var(--ink);font-family:var(--display);font-size:clamp(1.8rem,5vw,2.5rem);line-height:1.12;font-weight:700;letter-spacing:-.015em;margin:0 0 16px;text-align:center;text-wrap:balance}
 .lead{font-size:18px;color:var(--body);margin:0 auto 32px;max-width:52ch;text-align:center;text-wrap:pretty}
 .lead b{color:var(--ink)}
-.calm{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.05);border-radius:999px;padding:8px 16px;margin:0 auto 30px;justify-content:center}
+.calm{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.05);border-radius:10px;padding:8px 16px;margin:0 auto 30px;justify-content:center}
 .calm i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(var(--accent-rgb),.7)}
 .calm-wrap{display:flex;justify-content:center}
 h2{color:var(--ink);font-family:var(--display);font-size:1.18rem;font-weight:600;margin:0 0 18px;letter-spacing:-.01em}
@@ -50,6 +50,7 @@ footer a{color:var(--meta);text-decoration:underline}
 @media(prefers-reduced-motion:reduce){.mark{animation:none!important;opacity:1!important;transform:none!important}}
 </style>
 <script src="ym-slot.js" defer></script>
+<link rel="stylesheet" href="ds-base.css"/>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <main><div class="wrap">

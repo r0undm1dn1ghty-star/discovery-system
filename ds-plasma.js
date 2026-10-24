@@ -1,8 +1,11 @@
 /**
  * DS Plasma — процедурный фон (оригинальная палитра Closing Plasma: #0d0d14 / #1f2540 / #4a6191).
  * Vanilla JS + Canvas 2D, без зависимостей. Fixed-слой за контентом, pointer-reactive.
- * Правила: reduced-motion → статичный кадр; мобильные (<720px) → статичный кадр;
+ * Правила: reduced-motion → статичный кадр; мобильные → ЖИВОЙ экономный режим
+ * (меньше сетка, dpr 1, 16 fps — анимированный фон работает и на телефоне);
  * kill-switch: localStorage 'ds-plasma=off'. Вкладка скрыта → анимация паркуется.
+ * Размер берётся от clientWidth/clientHeight (адресная строка не дёргает кадр),
+ * сам CSS-размер закреплён в ds-base.css.
  */
 (function () {
   'use strict';
@@ -11,8 +14,12 @@
   } catch (e) {}
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var small = window.matchMedia('(max-width: 719px)').matches;
-  var STATIC = reduced || small;
+  var mqSmall = window.matchMedia('(max-width: 760px)');
+  var LITE = mqSmall.matches;          // экономный режим для телефона
+  var STATIC = reduced;                // статичный кадр — только по просьбе системы
+  var FPS = LITE ? 16 : 24;
+  var DPR_CAP = LITE ? 1 : 2;
+  var CELL_BASE = LITE ? 34 : 26;      // крупнее сетка = меньше работы на кадр
 
   var A = [13, 13, 20];    // #0d0d14 dark base
   var B = [31, 37, 64];    // #1f2540 mid
@@ -29,19 +36,32 @@
   document.head.appendChild(style);
 
   var ctx = cv.getContext('2d');
-  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
+  var W = 0, H = 0;
 
+  function metrics() {
+    // clientWidth/Height стабильнее innerWidth/Height: адресная строка не дёргает кадр
+    var w = document.documentElement.clientWidth || innerWidth || 320;
+    var h = document.documentElement.clientHeight || innerHeight || 480;
+    return [Math.max(1, w), Math.max(1, h)];
+  }
+  var resizeQueued = false;
   function resize() {
-    W = cv.width = Math.floor(innerWidth * dpr);
-    H = cv.height = Math.floor(innerHeight * dpr);
-    cv.style.width = innerWidth + 'px';
-    cv.style.height = innerHeight + 'px';
-    if (STATIC) drawStatic();
+    if (resizeQueued) return;
+    resizeQueued = true;
+    requestAnimationFrame(function () {
+      resizeQueued = false;
+      var m = metrics();
+      W = cv.width = Math.floor(m[0] * dpr);
+      H = cv.height = Math.floor(m[1] * dpr);
+      // CSS-размер закреплён в ds-base.css (100%/inset:0) — здесь не трогаем
+      if (STATIC) drawStatic();
+    });
   }
 
   var px = 0.5, py = 0.5, tx = 0.5, ty = 0.5; // указатель (норм.)
   var t = 0;
-  var CELL = 26 * dpr; // сетка плазмы
+  var CELL = CELL_BASE * dpr; // сетка плазмы (режим задаёт плотность)
 
   // value-noise: 3 октавы, быстрый hash-based
   function hash(x, y, s) {
@@ -111,7 +131,7 @@
   var running = false, raf = 0, last = 0;
   function loop(ts) {
     if (!running) return;
-    if (ts - last > 1000 / 24) { // 24 fps — экономно
+    if (ts - last > 1000 / FPS) { // fps по режиму: 24 desktop / 16 mobile
       last = ts;
       t += 0.012;
       px += (tx - px) * 0.04; py += (ty - py) * 0.04;
@@ -123,6 +143,14 @@
   function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
 
   window.addEventListener('resize', resize, { passive: true });
+  window.addEventListener('orientationchange', resize, { passive: true });
+  if (mqSmall.addEventListener) {
+    mqSmall.addEventListener('change', function (e) {
+      LITE = e.matches; FPS = LITE ? 16 : 24; DPR_CAP = LITE ? 1 : 2;
+      CELL_BASE = LITE ? 34 : 26; CELL = CELL_BASE * (dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP));
+      resize();
+    });
+  }
   if (!STATIC) {
     window.addEventListener('pointermove', function (e) {
       tx = e.clientX / innerWidth; ty = e.clientY / innerHeight;
@@ -134,4 +162,11 @@
 
   resize();
   if (STATIC) drawStatic(); else start();
+  // статус для QA-замера: живая ли анимация и в каком режиме (без данных пользователя)
+  window.__dsPlasma = {
+    get mode() { return STATIC ? 'static' : (LITE ? 'lite' : 'full'); },
+    get running() { return running; },
+    get fps() { return FPS; },
+    get size() { return [W, H]; }
+  };
 })();

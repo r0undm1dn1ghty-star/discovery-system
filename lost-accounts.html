@@ -23,7 +23,7 @@
 <link href="fonts/fonts.css" rel="stylesheet">
 <script>document.documentElement.className+=' js';</script>
 <style>
-:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Outfit',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Onest',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{overflow-x:hidden}
@@ -110,7 +110,7 @@ nav.top a.cur{color:var(--accent)}
 .ms-src{font-family:var(--mono);font-size:12px;color:#a6b0c5}
 .ms-out{margin-top:14px;font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--ink);line-height:1.5}
 .ms-out b{color:#f0a09e;font-weight:800}
-.rk .dt{padding:5px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:12px;letter-spacing:.06em;color:#dfe6f2}
+.rk .dt{padding:5px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.16);font-size:12px;letter-spacing:.06em;color:#dfe6f2}
 .rk .dt.hi{border-color:rgba(224,96,94,.55);color:#f6b8b6;background:rgba(224,96,94,.08)}
 .rk .dt.mid{border-color:rgba(123,196,168,.5);color:#9fd9c4;background:rgba(123,196,168,.08)}
 .wipe{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:28px 0 8px}
@@ -248,7 +248,7 @@ section+section{border-top:1px solid rgba(255,255,255,.05)}
 .ms-out b{text-shadow:0 0 26px rgba(224,96,94,.35)}
 
 /* --- 9. Кнопки: магнитный ховер (scale + внутренняя стрелка) --- */
-.btn{border-radius:999px;padding:14px 26px;transition:transform .35s cubic-bezier(.32,.72,0,1),background .2s,box-shadow .35s cubic-bezier(.32,.72,0,1)}
+.btn{border-radius:10px;padding:14px 26px;transition:transform .35s cubic-bezier(.32,.72,0,1),background .2s,box-shadow .35s cubic-bezier(.32,.72,0,1)}
 .btn-primary{box-shadow:0 14px 40px -16px rgba(31,122,77,.55),0 1px 0 rgba(255,255,255,.12) inset}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -18px rgba(31,122,77,.65),0 1px 0 rgba(255,255,255,.14) inset}
 .btn:active{transform:translateY(0) scale(.98)}
@@ -266,7 +266,7 @@ table.data tr:hover td{background:rgba(255,255,255,.022)}
 table.data td.n{font-variant-numeric:tabular-nums}
 
 /* --- 12. Eyebrow: pill-бейдж как в журнале --- */
-.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:12px;background:rgba(255,255,255,.03)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:12px;background:rgba(255,255,255,.03)}
 .eyebrow:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(123,196,168,.8)}
 
 /* --- 13. Reveal-хореография: глубже и мягче (только transform+opacity) --- */
@@ -277,7 +277,7 @@ table.data td.n{font-variant-numeric:tabular-nums}
 ::selection{background:rgba(123,196,168,.28);color:#fff}
 @media(min-width:900px){
  body::-webkit-scrollbar{width:10px}
- body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:999px;border:2px solid #111524}
+ body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:10px;border:2px solid #111524}
  body::-webkit-scrollbar-track{background:transparent}
 }
 
@@ -289,6 +289,7 @@ table.data td.n{font-variant-numeric:tabular-nums}
 
 </style>
 <script src="ym-slot.js" defer></script>
+<link rel="stylesheet" href="ds-base.css"/>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <div class="hero-aura" aria-hidden="true"></div>
@@ -304,7 +305,7 @@ table.data td.n{font-variant-numeric:tabular-nums}
 </div>
 <p class="hero-cap rv" style="transition-delay:.22s">потеряли аккаунт и не вернули старый за 2026 · это около четверти платящей аудитории · проверено 19.09.2026 · нашёл ошибку — напиши, поправлю с датой</p>
 <div class="cta-row rv" style="transition-delay:.26s">
-<a class="btn btn-primary" href="#chto-delat">Что с этим делать ↗</a>
+<a class="btn btn-primary" href="#chto-delat">Что с этим делать</a>
 <a class="btn btn-ghost" href="#masshtab">Как считали →</a>
 </div>
 </div></header>
@@ -375,7 +376,7 @@ table.data td.n{font-variant-numeric:tabular-nums}
 <p>Слово для этого одно — <b style="color:var(--accent)">владение</b>. Своя связка на российских провайдерах: доступ, который не отключат из-за страны входа, данные, которые остаются у тебя. Считается за минуту, собирается без студий и курсов.</p>
 </div>
 <div class="cta-row rv">
-<a class="btn btn-primary" href="calculator.html">Посчитать свою связку ↗</a>
+<a class="btn btn-primary" href="calculator.html">Посчитать мою цену</a>
 <a class="btn btn-ghost" href="system.html">Как это устроено →</a>
 </div>
 </div></section>
