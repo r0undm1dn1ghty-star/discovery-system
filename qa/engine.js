@@ -1,6 +1,4 @@
 
-
-
 /* ========== SVG ICONS ========== */
 const ICONS={
   laptop:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg>',
@@ -341,18 +339,38 @@ function estimate(){
     else {modelKey=base;}
   }
   const m=MODELS[modelKey];
-  /* Экономика владения: свой сервер — 0 (уже платит); облако провайдера — VPS 2–4 ГБ.
-     Telegram из дата-центров РФ не работает — на РФ-сервере боту нужен шлюз. */
+  /* ── ЭКОНОМИКА ВЛАДЕНИЯ (источник: calc-econ/scenario-map-v3-FINAL.md) ──
+     Токены считаются ПО СЦЕНАРИЮ и складываются: каждая новая функция = свой расход.
+     Раньше стояло m.cost*(0.6+0.4n) — 6 функций выходили по 145 ₽ вместо 291 ₽ (скидка ×1.9),
+     то есть клиент с шестью процессами платил как за полтора. Убрано 24.10. */
+  const TOK_PER_GOAL={repeat:150,leads:150,report:150,scan:100,write:120,paper:120,unsure:0};
+  const TOK_PER_TASK={text:100,design:70,docs:120,data:120,web:80,social:80,sales:120,research:80};
+  const MODEL_FACTOR={qwen:1,deepseek:1.6,multimodal:1.2,open:0.6,local:0,hybrid:0.8};
+  const AUTO_FACTOR={draft:0.8,review:1,auto:1.5,full:2.2};
+  const tokenBase=gs.reduce((s,g)=>s+(TOK_PER_GOAL[g.id]||100),0)
+                 +tasks.reduce((s,t)=>s+(TOK_PER_TASK[t]||80),0);
+  const modelCost=Math.round(tokenBase*(MODEL_FACTOR[modelKey]||1)*(AUTO_FACTOR[autonomy]||1));
+
+  /* ── ХОСТИНГ ПО ЧИСЛУ АГЕНТОВ ──
+     Плоские 2190 на любое число функций = 6 агентов на одной VPS по цене одного.
+     Тир по факту RAM: 2 ГБ одного не тянет, 8 ГБ = 2–3 агента, 16 ГБ = 4–5, дальше 32 ГБ.
+     Средний тир 2190 — замер 21.10 (после скачка цен 8–14.10). */
+  const nAgents=Math.max(1, gs.filter(g=>g.id!=='unsure').length + Math.ceil(tasks.length/2));
+  const HOST_TIERS=[[1,1100],[3,2190],[5,3400],[999,4800]];
+  const hostBase=(HOST_TIERS.find(t=>nAgents<=t[0])||[999,4800])[1];
+
   const tgNeeded=conns.includes('tg')||conns.includes('bot');
-  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')); /* свой VPS — 0 аренды (уже платит), аренда только если сервера нет; фикс двойного счёта 21.10 */
+  /* Свой VPS — это тоже деньги каждый месяц, а не «бесплатно». Раньше device='vps' давал
+     hostCost=0 и клиент видел связку на 2190 ₽ дешевле, чем она стоит. Считаем как есть,
+     а в интерфейсе помечаем «сервер уже оплачен». */
+  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')||device==='vps');
   const rfColo=hosted||data==='ru'||device==='vps';
+  /* Шлюз для Telegram на РФ-хостинге: api.telegram.org из дата-центров РФ не отвечает (ТСПУ).
+     MTProxy/реверс-прокси на дешёвом VPS — 200–400 ₽/мес, берём середину. */
   const gateway=(tgNeeded&&rfColo)?300:0;
-  const hosting=(hosted?2190:0)+gateway; /* рабочая конфигурация 6 ГБ+IP, снято 21.10 после скачка цен 8–14.10; 2 ГБ базу не тянут */
+  const hosting=(hosted?hostBase:0)+gateway;
   const connCost=conns.reduce((s,c)=>s+CONNS.find(x=>x.id===c).cost,0);
   let handsHours=gs.reduce((s,g)=>s+g.econ,0); tasks.forEach(t=>{const tt=TASKS.find(x=>x.id===t); if(tt)handsHours+=tt.econ;});
-  // токены масштабируются с объёмом задач (autonomy) и числом сценариев; хостинг и подключения — нет
-  const nScen=Math.max(1,gs.length);
-  const modelCost=Math.round(m.cost*(0.6+0.4*nScen)*Math.sqrt(autoMult));
   const hostCost=hosting;
   const connTotal=connCost;
   const monthly=Math.round(modelCost+hostCost+connTotal);
@@ -730,4 +748,3 @@ renderSteps();
 updateLive();
 a11y();
 var _sc=document.getElementById('stepsCount'); if(_sc)_sc.textContent='1 / '+N;
-

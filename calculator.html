@@ -30,7 +30,7 @@
     --primary:#7bc4a8; --primary-l:#9ad4be; --primary-dim:rgba(123,196,168,.12); --primary-line:rgba(123,196,168,.25);
     --emerald:#1f7a4d; --emerald-l:#2a9a63;
     --up:#5ed9a8; --mid:#f2b665; --down:#ff5c5c;
-    --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace; --display:'Outfit',var(--sans);
+    --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace; --display:'Onest',var(--sans);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
@@ -288,16 +288,16 @@ background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:
 body{background:var(--bg)}
 .wrap{max-width:920px;padding-top:76px}
 nav.top .wrap{padding-top:0 !important}
-.hero h1{font-family:'Outfit',var(--sans);font-weight:800;letter-spacing:-.03em;line-height:1.1}
-.card{font-family:'Outfit','IBM Plex Sans',sans-serif}
-.card h2{font-family:'Outfit',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.18}
+.hero h1{font-family:'Onest',var(--sans);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.card{font-family:'Onest','IBM Plex Sans',sans-serif}
+.card h2{font-family:'Onest',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.18}
 .head{display:none}
 .term-bar-like,.livebar{background:var(--panel);border:1px solid var(--line);border-radius:12px}
 .livebar{position:sticky;top:70px}
 .opt,.task,.conn{background:var(--paper-bg,rgba(255,255,255,.03));border:1px solid var(--line)}
 .opt,.task,.conn{background:rgba(255,255,255,.03)}
 .opt.selected .ic,.task.selected .ic,.conn.selected .ic{background:var(--primary);border-color:var(--primary)}
-.btn-primary,.btn-cta{font-family:'Outfit',sans-serif}
+.btn-primary,.btn-cta{font-family:'Onest',sans-serif}
 .pill{border-radius:8px}
 footer.foot,.foot{font-family:'IBM Plex Mono',monospace}
 
@@ -331,6 +331,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 </style>
 
 <script src="ym-slot.js" defer></script>
+<link rel="stylesheet" href="ds-base.css"/>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <div class="wrap">
@@ -514,7 +515,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="o-price">0 ₽ <small>Telegram · бесплатно</small></div>
         <a class="btn-cta btn-cta-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">Подписаться на канал →</a>
       </div>
-      <div class="sub-copy">Модель и сервер оплачиваешь провайдерам напрямую: ~200–900 ₽/мес по живым тарифам. В сборке — настройки, промпты и приёмка, которые нельзя скопировать из чата. Разовые услуги оформляются через Robokassa, подписочные — через Tribute (подробнее в <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">ясности</a>).</div>
+      <div class="sub-copy">Модель и сервер оплачиваешь провайдерам напрямую: модель 150–800 ₽/мес на типовую рутину, сервер 1 100–4 800 ₽/мес по числу агентов (Telegram на РФ-хостинге требует шлюза +300 ₽). В сборке — настройки, промпты и приёмка, которые нельзя скопировать из чата. Разовые услуги оформляются через Robokassa, подписочные — через Tribute (подробнее в <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">ясности</a>).</div>
     </div>
 
     <div class="leadform" id="payPanel" style="display:none">
@@ -901,18 +902,38 @@ function estimate(){
     else {modelKey=base;}
   }
   const m=MODELS[modelKey];
-  /* Экономика владения: свой сервер — 0 (уже платит); облако провайдера — VPS 2–4 ГБ.
-     Telegram из дата-центров РФ не работает — на РФ-сервере боту нужен шлюз. */
+  /* ── ЭКОНОМИКА ВЛАДЕНИЯ (источник: calc-econ/scenario-map-v3-FINAL.md) ──
+     Токены считаются ПО СЦЕНАРИЮ и складываются: каждая новая функция = свой расход.
+     Раньше стояло m.cost*(0.6+0.4n) — 6 функций выходили по 145 ₽ вместо 291 ₽ (скидка ×1.9),
+     то есть клиент с шестью процессами платил как за полтора. Убрано 24.10. */
+  const TOK_PER_GOAL={repeat:150,leads:150,report:150,scan:100,write:120,paper:120,unsure:0};
+  const TOK_PER_TASK={text:100,design:70,docs:120,data:120,web:80,social:80,sales:120,research:80};
+  const MODEL_FACTOR={qwen:1,deepseek:1.6,multimodal:1.2,open:0.6,local:0,hybrid:0.8};
+  const AUTO_FACTOR={draft:0.8,review:1,auto:1.5,full:2.2};
+  const tokenBase=gs.reduce((s,g)=>s+(TOK_PER_GOAL[g.id]||100),0)
+                 +tasks.reduce((s,t)=>s+(TOK_PER_TASK[t]||80),0);
+  const modelCost=Math.round(tokenBase*(MODEL_FACTOR[modelKey]||1)*(AUTO_FACTOR[autonomy]||1));
+
+  /* ── ХОСТИНГ ПО ЧИСЛУ АГЕНТОВ ──
+     Плоские 2190 на любое число функций = 6 агентов на одной VPS по цене одного.
+     Тир по факту RAM: 2 ГБ одного не тянет, 8 ГБ = 2–3 агента, 16 ГБ = 4–5, дальше 32 ГБ.
+     Средний тир 2190 — замер 21.10 (после скачка цен 8–14.10). */
+  const nAgents=Math.max(1, gs.filter(g=>g.id!=='unsure').length + Math.ceil(tasks.length/2));
+  const HOST_TIERS=[[1,1100],[3,2190],[5,3400],[999,4800]];
+  const hostBase=(HOST_TIERS.find(t=>nAgents<=t[0])||[999,4800])[1];
+
   const tgNeeded=conns.includes('tg')||conns.includes('bot');
-  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')); /* свой VPS — 0 аренды (уже платит), аренда только если сервера нет; фикс двойного счёта 21.10 */
+  /* Свой VPS — это тоже деньги каждый месяц, а не «бесплатно». Раньше device='vps' давал
+     hostCost=0 и клиент видел связку на 2190 ₽ дешевле, чем она стоит. Считаем как есть,
+     а в интерфейсе помечаем «сервер уже оплачен». */
+  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')||device==='vps');
   const rfColo=hosted||data==='ru'||device==='vps';
+  /* Шлюз для Telegram на РФ-хостинге: api.telegram.org из дата-центров РФ не отвечает (ТСПУ).
+     MTProxy/реверс-прокси на дешёвом VPS — 200–400 ₽/мес, берём середину. */
   const gateway=(tgNeeded&&rfColo)?300:0;
-  const hosting=(hosted?2190:0)+gateway; /* рабочая конфигурация 6 ГБ+IP, снято 21.10 после скачка цен 8–14.10; 2 ГБ базу не тянут */
+  const hosting=(hosted?hostBase:0)+gateway;
   const connCost=conns.reduce((s,c)=>s+CONNS.find(x=>x.id===c).cost,0);
   let handsHours=gs.reduce((s,g)=>s+g.econ,0); tasks.forEach(t=>{const tt=TASKS.find(x=>x.id===t); if(tt)handsHours+=tt.econ;});
-  // токены масштабируются с объёмом задач (autonomy) и числом сценариев; хостинг и подключения — нет
-  const nScen=Math.max(1,gs.length);
-  const modelCost=Math.round(m.cost*(0.6+0.4*nScen)*Math.sqrt(autoMult));
   const hostCost=hosting;
   const connTotal=connCost;
   const monthly=Math.round(modelCost+hostCost+connTotal);
