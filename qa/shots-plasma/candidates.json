@@ -1,0 +1,27 @@
+[
+  {
+    "name": "A amp9 tone .72/.92/1.30 dimMax.55 dimK.5 pow.8",
+    "mode": "brand", "brand": [17, 21, 36], "amp": 9, "tone": [0.72, 0.92, 1.3],
+    "dimMax": 0.55, "dimK": 0.5, "pow": 0.8, "edgeAmp": 0
+  },
+  {
+    "name": "B amp11 tone .65/.85/1.05 dimMax.55 dimK.5 pow.8",
+    "mode": "brand", "brand": [17, 21, 36], "amp": 11, "tone": [0.65, 0.85, 1.05],
+    "dimMax": 0.55, "dimK": 0.5, "pow": 0.8, "edgeAmp": 0
+  },
+  {
+    "name": "C amp11.5 tone .55/.75/1.00 dimMax.55 dimK.5 pow.8",
+    "mode": "brand", "brand": [17, 21, 36], "amp": 11.5, "tone": [0.55, 0.75, 1.0],
+    "dimMax": 0.55, "dimK": 0.5, "pow": 0.8, "edgeAmp": 0
+  },
+  {
+    "name": "D amp11 tone .65/.85/1.05 dimMax.40 dimK.45 pow1.0",
+    "mode": "brand", "brand": [17, 21, 36], "amp": 11, "tone": [0.65, 0.85, 1.05],
+    "dimMax": 0.4, "dimK": 0.45, "pow": 1.0, "edgeAmp": 0
+  },
+  {
+    "name": "E amp10 tone .7/.9/1.1 dimMax.55 dimK.5 pow.65",
+    "mode": "brand", "brand": [17, 21, 36], "amp": 10, "tone": [0.7, 0.9, 1.1],
+    "dimMax": 0.55, "dimK": 0.5, "pow": 0.65, "edgeAmp": 0
+  }
+]

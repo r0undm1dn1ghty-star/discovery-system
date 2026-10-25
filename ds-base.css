@@ -393,7 +393,7 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
 .c-term{margin:auto 0 0;border-radius:10px;border:1px solid var(--line-soft);background:rgba(0,0,0,.34);overflow:hidden}
 .c-term-bar{display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid var(--line-soft);background:rgba(255,255,255,.02)}
 .c-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)}
-.c-term-name{margin-left:6px;font-family:var(--mono);font-size:11.5px;color:var(--faint);letter-spacing:.06em}
+.c-term-name{margin-left:6px;font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.06em}
 .c-screen{margin:0;padding:11px 12px;font-family:var(--mono);font-size:12.5px;line-height:1.72;
   color:#c6d1e3;white-space:pre-wrap;overflow:hidden}
 .c-screen .hl{color:var(--accent);font-weight:600}
@@ -419,7 +419,7 @@ nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);f
 nav.top a.home img{border-radius:4px}
 nav.top a.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--accent)}
 nav.top a.calc{color:var(--ink);text-decoration:none;border:1px solid rgba(var(--accent-rgb),.5);
-  border-radius:8px;padding:0 12px;display:inline-flex;align-items:center;min-height:36px;
+  border-radius:8px;padding:0 12px;display:inline-flex;align-items:center;min-height:44px;
   transition:background .18s,border-color .18s}
 nav.top a.calc:hover{background:rgba(var(--accent-rgb),.1)}
 nav.top a.calc.on{background:rgba(var(--accent-rgb),.12);box-shadow:none}
@@ -430,5 +430,8 @@ nav.top a.calc.on{background:rgba(var(--accent-rgb),.12);box-shadow:none}
     scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
   .nav-items::-webkit-scrollbar{display:none}
   .nav-items > a{flex:0 0 auto;font-size:13.5px;min-height:var(--tap);white-space:nowrap}
-  nav.top a.calc{min-height:36px;padding:0 10px}
+  nav.top a.calc{min-height:44px;padding:0 12px}
 }
+
+/* =d0=b5=d1=80=d0=b2=d0=b5=d0=b1=d0=bd=d1=8b=d0=b9 =d1=82=d0=b5=d0=ba=d1=81=d1=82: 12.5px =d0=bd=d0=b0 =d0=b2=d1=81=d0=b5=d1=85 =d1=88=d0=b8=d1=80=d0=b8=d0=bd=d0=b0=d1=85 */
+.op-kicker-note, .pi-t { font-size: 12.5px; }

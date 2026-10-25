@@ -11,6 +11,13 @@
  *   • на мобилке — одна прокручиваемая строка (не рвётся на три этажа);
  *   • последний пункт — целевое действие (калькулятор), визуально выделено.
  *
+ * РЕШЕНИЕ 24.10.2026 (разбор пути клиента, см. market-intel/IA-РЕШЕНИЕ-2026-10-24.md):
+ *   5 пунктов → 4. Убран «Канал». Причина: это лента сигналов, а не шаг покупки, и его
+ *   подпись спорила с кнопкой «Сигналы в канале», которая ведёт в Telegram. «Рынок ИИ»
+ *   переехал за «Цены»: сначала «что это» → «почему верить» → «сколько», и только потом
+ *   контекст рынка для тех, кто копает. channel.html остаётся живой страницей — вход из
+ *   market.html и из бесплатного узла clarity.html; в наве он прилипает к «Рынку ИИ».
+ *
  * НЕ СТАВИТЬ НА: thanks.html, fail.html — это возвраты с Робокассы,
  * там одна задача: получить оплаченное или повторить платёж.
  */
@@ -20,9 +27,8 @@
   var NAV = [
     { key: 'system',   href: 'system.html',   label: 'Система' },
     { key: 'cases',    href: 'proof.html',    label: 'Внедрения' },
-    { key: 'market',   href: 'market.html',   label: 'Рынок ИИ' },
     { key: 'prices',   href: 'clarity.html',  label: 'Цены' },
-    { key: 'channel',  href: 'channel.html',  label: 'Канал' }
+    { key: 'market',   href: 'market.html',   label: 'Рынок ИИ' }
   ];
   var CTA = { key: 'calc', href: 'calculator.html', label: 'Посчитать свою связку' };
 
@@ -32,7 +38,7 @@
     'system.html': 'system',
     'proof.html': 'cases',
     'market.html': 'market',
-    'channel.html': 'channel',
+    'channel.html': 'market',
     'clarity.html': 'prices',
     'calculator.html': 'calc',
     // подстраницы прилипают к своему разделу
@@ -65,15 +71,24 @@
       if (nav.dataset.ready) return;
       nav.dataset.ready = '1';
 
-      var wrap = document.createElement('div');
-      wrap.className = 'wrap';
-
-      var home = document.createElement('a');
-      home.className = 'home';
-      home.href = 'index.html';
-      home.innerHTML = '<img src="logo-nav.png" alt="Discovery System" height="28"/>' +
-        '<span>Discovery System</span>';
-      wrap.appendChild(home);
+      /* Каркас берём из разметки страницы. Раньше build() всегда создавал свой .wrap
+         с логотипом — рядом со статичным <a class="home"> из HTML, поэтому на каждой
+         странице было ДВА «Discovery System» подряд: дубль в таб-порядке и лишняя
+         строка нава на мобилке (проверка 24.10.2026: 390px, y=6 и y=56). */
+      var wrap = nav.querySelector('.wrap');
+      if (!wrap) {
+        wrap = document.createElement('div');
+        wrap.className = 'wrap';
+        nav.appendChild(wrap);
+      }
+      if (!wrap.querySelector('a.home')) {
+        var home = document.createElement('a');
+        home.className = 'home';
+        home.href = 'index.html';
+        home.innerHTML = '<img src="logo-nav.png" alt="Discovery System" height="28"/>' +
+          '<span>Discovery System</span>';
+        wrap.appendChild(home);
+      }
 
       var items = document.createElement('div');
       items.className = 'nav-items';
@@ -93,7 +108,6 @@
       items.appendChild(cta);
 
       wrap.appendChild(items);
-      nav.appendChild(wrap);
     });
   }
 

@@ -26,7 +26,7 @@
 <link href="fonts/fonts.css" rel="stylesheet">
 <script>document.documentElement.className+=' js';</script>
 <style>
-:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--line:rgba(255,255,255,.12);--faint:#5a6275;--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Onest',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--line:rgba(255,255,255,.12);--faint:#5a6275;--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Onest',var(--sans);--ease:cubic-bezier(.22,1,.36,1);--card:#161c30;--deep:#0d1120;--btn:#1f7a4d;--btn-h:#26895b;--btn-text:#f2fbf5;--r-card:14px;--r-sm:10px;--gut:24px;--gut-m:18px;--tap:44px;--txt:'IBM Plex Sans','Onest',system-ui,sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;position:relative}
@@ -234,6 +234,84 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .op-more a{color:var(--accent);font-weight:600}
 @media(max-width:760px){.own-price{max-width:100%;padding:24px 20px 20px}.op-row{font-size:15px}.op-val{font-size:14px}.op-them .th b{font-size:13px}}
 
+/* ═══ КОНСОЛЬ ЖИВОГО АГЕНТА В ГЕРОЕ (ds-hero.js) ═══
+   Токены из :root; ширина героя 1160 под две колонки; скрипт — ds-hero.js. */
+.hero .wrap{max-width:1160px}
+.hero{padding:84px 0 64px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.06fr);gap:40px;align-items:start}
+.copy .lead{margin:16px 0 0;font-size:18px;line-height:1.65;color:var(--body);max-width:52ch}
+.kicker{margin:0 0 12px;font:500 12.5px/1.4 var(--mono);color:var(--meta);text-transform:uppercase;letter-spacing:.13em}
+.cta-note{font:400 13px/1.4 var(--mono);color:var(--meta)}
+.hero-meta{margin:18px 0 0;font:400 12.5px/1.6 var(--mono);color:var(--faint)}
+.agent{border:1px solid var(--line);border-radius:var(--r-card);background:var(--card);overflow:hidden;display:flex;flex-direction:column}
+.ag-head{display:flex;align-items:center;gap:11px;padding:12px 14px;border-bottom:1px solid var(--line-soft)}
+.ag-ava{width:34px;height:34px;flex:none;border-radius:var(--r-sm);background:var(--accent);color:var(--bg);display:flex;align-items:center;justify-content:center;font:700 15px/1 var(--display)}
+.ag-id{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ag-id b{font:600 14.5px/1.3 var(--sans);color:var(--ink)}
+.ag-st{font:400 12px/1.4 var(--mono);color:var(--meta);display:flex;align-items:center;gap:6px}
+.dot{width:6px;height:6px;border-radius:3px;background:var(--accent);flex:none}
+.ag-rec{margin-left:auto;font:500 12px/1 var(--mono);color:var(--meta);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.ag-rec.on{color:var(--accent)}
+.ag-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line-soft)}
+.ag-tab{display:flex;flex-direction:column;gap:3px;min-height:56px;padding:10px 12px;background:none;border:0;border-top:2px solid transparent;border-left:1px solid var(--line-soft);text-align:left;cursor:pointer;font-family:var(--sans);color:var(--meta);transition:color .15s,border-color .15s;min-width:0}
+.ag-tab:first-child{border-left:0}
+.ag-tab .i{font:500 12px/1 var(--mono);color:var(--faint);letter-spacing:.08em}
+.ag-tab b{font:600 14px/1.25 var(--sans);color:var(--body);overflow-wrap:anywhere}
+.ag-tab .s{font:400 12px/1.3 var(--sans);color:var(--meta)}
+.ag-tab:hover{color:var(--ink)}
+.ag-tab:hover b{color:var(--ink)}
+.ag-tab[aria-selected="true"]{border-top-color:var(--accent)}
+.ag-tab[aria-selected="true"] b{color:var(--accent)}
+.ag-body{height:340px;overflow-y:auto;overscroll-behavior:contain;background:var(--deep);padding:14px 13px 16px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
+.ag-body::-webkit-scrollbar{width:8px}
+.ag-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:10px}
+.l-day{align-self:center;font:400 12px/1.4 var(--mono);color:var(--meta);background:rgba(255,255,255,.04);padding:3px 11px;border-radius:var(--r-sm)}
+.l-log{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:10px;padding:3px 0 3px 10px;border-left:1px solid var(--line-soft);font:400 12.5px/1.55 var(--mono)}
+.l-log .t{color:var(--faint);white-space:nowrap}
+.l-log .x{color:var(--body);overflow-wrap:anywhere}
+.l-log .x b{color:var(--accent);font-weight:600}
+.l-file{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;padding:10px 11px;border:1px solid var(--line-soft);border-radius:var(--r-sm);background:rgba(0,0,0,.28)}
+.l-file svg{width:18px;height:18px;color:var(--accent);margin-top:1px}
+.l-file .n{font:500 13px/1.4 var(--mono);color:var(--ink);overflow-wrap:anywhere}
+.l-file .m{font:400 12px/1.5 var(--mono);color:var(--meta);margin-top:2px}
+.l-file .add{font:400 12px/1.5 var(--mono);color:var(--accent);margin-top:4px}
+.msg{max-width:90%;padding:9px 12px;border-radius:12px;font-size:14px;line-height:1.5}
+.msg.agent{align-self:flex-start;background:#1c2434;border-bottom-left-radius:4px;color:#dbe4f0}
+.msg.user{align-self:flex-end;background:rgba(var(--accent-rgb),.14);border:1px solid rgba(var(--accent-rgb),.22);border-bottom-right-radius:4px;color:var(--ink)}
+.msg .meta{display:block;margin-top:4px;font:400 12px/1.4 var(--mono);color:var(--meta)}
+.l-res{position:relative;align-self:stretch;padding:12px 13px;border-radius:12px;border:1px solid rgba(var(--accent-rgb),.32);background:rgba(123,196,168,.05)}
+.l-res::before{content:"";position:absolute;left:12px;right:12px;top:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.7),transparent);transform:scaleX(.2);transform-origin:left center;transition:transform .5s ease}
+.l-res.in::before{transform:scaleX(1)}
+.l-res .rt{font:600 14.5px/1.4 var(--sans);color:var(--ink)}
+.l-res .rr{display:flex;justify-content:space-between;gap:12px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line-soft);font:400 12.5px/1.5 var(--mono)}
+.l-res .rr:first-of-type{border-top:0;padding-top:0;margin-top:6px}
+.l-res .rr .k{color:var(--meta)}
+.l-res .rr .v{color:var(--accent);text-align:right}
+.typing{align-self:flex-start;background:#1c2434;border-radius:12px;border-bottom-left-radius:4px;padding:10px 13px;display:flex;gap:5px;align-items:center}
+.typing[hidden]{display:none}
+.typing i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.42);animation:tp 1s infinite}
+.typing i:nth-child(2){animation-delay:.18s}
+.typing i:nth-child(3){animation-delay:.36s}
+@keyframes tp{0%,60%,100%{opacity:.28}30%{opacity:1}}
+.line-in{opacity:1}
+@media (prefers-reduced-motion:no-preference){.line-in{animation:lif .28s ease-out both}@keyframes lif{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}}
+.ag-input{display:flex;align-items:center;gap:10px;margin:12px 12px 0;padding:12px 14px;border-radius:var(--r-sm);background:#1c2434;font:400 13px/1.4 var(--txt);color:var(--meta)}
+.ag-input svg{width:18px;height:18px;flex:none;color:var(--meta)}
+.ag-input span{min-width:0;overflow-wrap:anywhere}
+.ag-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 14px 14px;border-top:1px solid var(--line-soft);margin-top:12px}
+.ag-foot .res{font:400 13px/1.5 var(--sans);color:var(--body);min-width:0}
+.ag-foot .res b{color:var(--ink);font-weight:600}
+.ag-acts{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ag-again{min-height:var(--tap);padding:0;background:none;border:0;border-bottom:1px solid var(--line);color:var(--meta);font:400 12.5px/1 var(--mono);cursor:pointer}
+.ag-again:hover{color:var(--ink);border-bottom-color:rgba(var(--accent-rgb),.5)}
+.ag-link{display:inline-flex;align-items:center;min-height:var(--tap);font:400 12.5px/1 var(--mono);color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(var(--accent-rgb),.4)}
+.ag-link:hover{border-bottom-color:var(--accent)}
+@media (max-width:860px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:24px}.hero{padding:56px 0 44px}.copy .lead{font-size:17px;margin-top:13px}.cta-row{margin-top:20px}.ag-body{height:300px}}
+@media (max-width:760px){.hero-meta{display:none}.ag-tab{padding:9px 9px}.ag-tab .s{display:none}.ag-foot{flex-direction:column;align-items:flex-start}.ag-foot .ag-acts{width:100%}}
+@media (max-width:400px){.ag-tab b{font-size:13px}.l-log{gap:8px;padding-left:8px}.ag-body{padding:12px 11px 14px}}
+@media (min-width:761px){.ag-body{height:356px}}
+@media (prefers-reduced-motion:reduce){.agent,.agent *{animation:none !important;transition:none !important}.ag-body{scroll-behavior:auto}.l-res::before{transform:scaleX(1)}.typing{display:none !important}.msg,.l-log,.l-file,.l-day,.l-res{opacity:1;transform:none}}
+
 
 /* ── проблема → решение ── */
 .prob-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -331,15 +409,63 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <nav class="top" aria-label="Основная навигация" data-ds-nav><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"/><span>Discovery System</span></a></div></nav>
-<header class="hero"><div class="wrap">
-<p class="sub rv">устали от подписок на чужие обещания</p>
-<h1 class="rv" style="transition-delay:.06s">ИИ-агента можно выбрать с первого раза — и не ошибиться</h1>
-<p class="lead rv" style="transition-delay:.12s">Ошибиться дороже, чем заплатить: неверный выбор стоит не 50 000 ₽, а месяцев рутины. Поэтому сначала видно, <span class="chrome-text">сколько агент стоит в месяц</span> и какую рутину он снимает — то, за счёт чего окупается. Внедряю конкретную сборку своими руками, только если тебе это нужно.</p>
+<header class="hero"><div class="wrap hero-grid">
+
+<div class="copy">
+<p class="kicker rv">живой агент · смена</p>
+<h1 class="rv" style="transition-delay:.06s">Вот как ИИ-агент ведёт рутину</h1>
+<p class="lead rv" style="transition-delay:.12s">Он сам забирает данные, сводит их и присылает готовый файл. Переключай сборку и смотри строки работы.</p>
 <div class="cta-row rv" style="transition-delay:.24s">
-<a class="btn btn-primary" href="calculator.html">Посчитать мою цену</a>
-<a class="btn btn-ghost" href="https://t.me/discoverysystem">Сигналы в канале →</a>
+<a class="btn btn-primary" href="calculator.html">Посчитать свою связку</a>
+<span class="cta-note">7 вопросов · без регистрации</span>
 </div>
-<div class="own-price rv" style="transition-delay:.3s">
+<p class="hero-meta">связка на твоём сервере · данные у тебя · без VPN</p>
+</div>
+
+<div class="agent" id="agent">
+
+<div class="ag-head">
+<span class="ag-ava" aria-hidden="true">D</span>
+<span class="ag-id">
+<b>Discovery Agent</b>
+<span class="ag-st"><i class="dot" aria-hidden="true"></i> онлайн · <span id="agShift">смена идёт</span></span>
+</span>
+<span class="ag-rec" id="agRec">запись</span>
+</div>
+
+<div class="ag-tabs" role="tablist" aria-label="Сборки агента">
+<button class="ag-tab" role="tab" id="tab-shift" aria-controls="stream" aria-selected="true" data-asm="shift">
+<span class="i">01</span><b>Учёт и смены</b><span class="s">диктовка → таблица</span>
+</button>
+<button class="ag-tab" role="tab" id="tab-radar" aria-controls="stream" aria-selected="false" tabindex="-1" data-asm="radar">
+<span class="i">02</span><b>Радар ниши</b><span class="s">выгрузка → выбросы</span>
+</button>
+<button class="ag-tab" role="tab" id="tab-orders" aria-controls="stream" aria-selected="false" tabindex="-1" data-asm="orders">
+<span class="i">03</span><b>Поиск заказов</b><span class="s">площадки → отбор</span>
+</button>
+</div>
+
+<div class="ag-body" id="stream" role="log" aria-live="polite" aria-relevant="additions" aria-label="Строки работы агента">
+<div class="typing" id="typing" hidden><i></i><i></i><i></i></div>
+</div>
+
+<div class="ag-input" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10a3.5 3.5 0 0 0 7 0"/><path d="M5 11.5a7 7 0 0 0 7 7 7 7 0 0 0 7-7"/><path d="M12 18.5V21"/><path d="M8.5 21h7"/></svg>
+<span>Сотрудник диктует голосом — как в Telegram</span>
+</div>
+
+<div class="ag-foot">
+<span class="res" id="agRes"></span>
+<span class="ag-acts">
+<button class="ag-again" id="agAgain" type="button">запустить снова</button>
+<a class="ag-link" href="calculator.html">посчитать свою связку</a>
+</span>
+</div>
+
+</div>
+</div>
+
+<div class="own-price rv" style="transition-delay:.3s;margin-top:56px">
 <div class="op-kicker">ежемесячное владение своей связкой<span class="op-kicker-note">не сравнение с курсами — только за что реально платишь</span></div>
 <div class="op-row" style="--delay:.08s"><div class="op-name">модель / API<small>считается по числу задач и автономности агента</small></div><div class="op-val">0–5 500 ₽</div></div>
 <div class="op-row" style="--delay:.18s"><div class="op-name">сервер, если нужен 24/7<small>локально — 0 ₽; сервер 1 100–4 800 ₽ + 300 ₽ шлюз для Telegram из РФ</small></div><div class="op-val">0–5 100 ₽</div></div>
@@ -354,7 +480,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <p class="op-note">Точная сумма зависит от твоей задачи. Калькулятор покажет её после 7 коротких вопросов — без регистрации и СМС.</p>
 <p class="op-more"><a href="calculator.html">Сверить со своей рутиной →</a></p>
 </div>
-</div></header>
+</header>
 <main>
 <section id="problem"><div class="wrap">
 <p class="eyebrow rv">проблема и решение</p>
@@ -382,7 +508,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <h2 class="rv">Что я выяснил про этот рынок</h2>
 <div class="res-strip rv">
 <a class="rs" href="agent-failures.html"><span class="rs-t">провалы · 76</span><b>Заплатил за ИИ-агента — он не работает: 76 провалов</b><span class="rs-a">→</span></a>
-<a class="rs" href="nacenka.html"><span class="rs-t">токеномика · ×148</span><b>Claude и DeepSeek: переплата до ×148 — спрятана в кэше</b><span class="rs-a">→</span></a>
+<a class="rs" href="nacenka.html"><span class="rs-t">токеномика · ×148</span><b>Claude и DeepSeek: одна модель — разница в цене до ×148 из-за кэша</b><span class="rs-a">→</span></a>
 <a class="rs" href="value-chain.html"><span class="rs-t">экономика</span><b>Карта создания ценности рынка ИИ-агентов: где твой сегмент</b><span class="rs-a">→</span></a>
 <a class="rs" href="lost-accounts.html"><span class="rs-t">риск · 39–170 тыс.</span><b>Claude и ChatGPT не принадлежат тебе: сколько аккаунтов потеряно</b><span class="rs-a">→</span></a>
 </div>
@@ -570,5 +696,6 @@ else{slide(1);}
 </script>
 <script src="ds-cases.js" defer></script>
 <script src="ds-nav.js" defer></script>
+<script src="ds-hero.js" defer></script>
 </body>
 </html>

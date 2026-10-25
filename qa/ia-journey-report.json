@@ -1,0 +1,125 @@
+{
+ "report": {
+  "390": {
+   "vw": 390,
+   "scrollW": 390,
+   "bodyScrollW": 390,
+   "overflow": 0,
+   "offenders": [],
+   "wideVisible": false,
+   "narrowVisible": true,
+   "wideBox": {
+    "w": 0,
+    "h": 0
+   },
+   "narrowBox": {
+    "w": 358,
+    "h": 1209
+   },
+   "pageH": 3331,
+   "svgViewBox": [
+    358,
+    1209
+   ],
+   "scale": 1,
+   "texts": 60,
+   "outOfBox": [],
+   "outOfBand": [],
+   "collisions": [],
+   "fonts": {
+    "onest": true,
+    "plex": true,
+    "mono": true,
+    "size": 45
+   },
+   "h1": {
+    "ff": "Onest, \"IBM Plex Sans\", system-ui, sans-serif",
+    "fs": "27.2px"
+   },
+   "svgCount": 2,
+   "minSvgFont": 8,
+   "title": "Информационная архитектура: путь клиента — Discovery System"
+  },
+  "768": {
+   "vw": 768,
+   "scrollW": 768,
+   "bodyScrollW": 768,
+   "overflow": 0,
+   "offenders": [],
+   "wideVisible": false,
+   "narrowVisible": true,
+   "wideBox": {
+    "w": 0,
+    "h": 0
+   },
+   "narrowBox": {
+    "w": 560,
+    "h": 1891
+   },
+   "pageH": 3597,
+   "svgViewBox": [
+    358,
+    1209
+   ],
+   "scale": 1.564,
+   "texts": 60,
+   "outOfBox": [],
+   "outOfBand": [],
+   "collisions": [],
+   "fonts": {
+    "onest": true,
+    "plex": true,
+    "mono": true,
+    "size": 45
+   },
+   "h1": {
+    "ff": "Onest, \"IBM Plex Sans\", system-ui, sans-serif",
+    "fs": "35.328px"
+   },
+   "svgCount": 2,
+   "minSvgFont": 8,
+   "title": "Информационная архитектура: путь клиента — Discovery System"
+  },
+  "1440": {
+   "vw": 1440,
+   "scrollW": 1440,
+   "bodyScrollW": 1440,
+   "overflow": 0,
+   "offenders": [],
+   "wideVisible": true,
+   "narrowVisible": false,
+   "wideBox": {
+    "w": 1144,
+    "h": 716
+   },
+   "narrowBox": {
+    "w": 0,
+    "h": 0
+   },
+   "pageH": 2125,
+   "svgViewBox": [
+    1144,
+    716
+   ],
+   "scale": 1,
+   "texts": 61,
+   "outOfBox": [],
+   "outOfBand": [],
+   "collisions": [],
+   "fonts": {
+    "onest": true,
+    "plex": true,
+    "mono": true,
+    "size": 45
+   },
+   "h1": {
+    "ff": "Onest, \"IBM Plex Sans\", system-ui, sans-serif",
+    "fs": "43.2px"
+   },
+   "svgCount": 2,
+   "minSvgFont": 8,
+   "title": "Информационная архитектура: путь клиента — Discovery System"
+  }
+ },
+ "problems": []
+}

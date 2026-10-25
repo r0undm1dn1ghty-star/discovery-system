@@ -1,5 +1,10 @@
 /**
- * DS Plasma — процедурный фон (оригинальная палитра Closing Plasma: #0d0d14 / #1f2540 / #4a6191).
+ * DS Plasma — процедурный фон. Поле шума центрируется на бренд-тоне страницы
+ * (#111524 = rgb(17,21,36)): средний тон кадра равен бренду ПО ПОСТРОЕНИЮ,
+ * плазма — только мягкие отклонения от него (небо-синяя дымка), поэтому фон
+ * читается тёмно-синим, а не чёрным. Отклонение ограничено ±9*TONE (≤11.7 на
+ * канал) — фон не уходит за бренд-допуск. Виньетка больше НЕ затемняет края,
+ * а сжимает контраст плазмы к бренду (фокус в центре без чёрных углов).
  * Vanilla JS + Canvas 2D, без зависимостей. Fixed-слой за контентом, pointer-reactive.
  * Правила: reduced-motion → статичный кадр; мобильные → ЖИВОЙ экономный режим
  * (меньше сетка, dpr 1, 16 fps — анимированный фон работает и на телефоне);
@@ -21,9 +26,28 @@
   var DPR_CAP = LITE ? 1 : 2;
   var CELL_BASE = LITE ? 34 : 26;      // крупнее сетка = меньше работы на кадр
 
-  var A = [13, 13, 20];    // #0d0d14 dark base
-  var B = [31, 37, 64];    // #1f2540 mid
-  var C = [74, 97, 145];   // #4a6191 highlight
+  // База фона = токен страницы --bg (#111524). Это не «ещё один цвет темы»,
+  // а точка привязки: кадр плазмы центрируется на неё каждый кадр.
+  // Читаем её у самой страницы, чтобы плазма не разъехалась с фоном при смене
+  // темы; если прочитать не удалось или вышло почти чёрным — константа #111524.
+  var BRAND = (function () {
+    var FALLBACK = [17, 21, 36], els = [document.body, document.documentElement];
+    for (var i = 0; i < els.length; i++) {
+      if (!els[i]) continue;
+      var m = /rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:[,/\s]+([\d.]+))?\s*\)/.exec(
+        getComputedStyle(els[i]).backgroundColor);
+      if (!m) continue;
+      var a = (m[4] === undefined) ? 1 : parseFloat(m[4]);
+      var c = [+m[1], +m[2], +m[3]];
+      if (a > 0.99 && Math.max(c[0], c[1], c[2]) >= 20) return c; // не прозрачный и не чёрный
+    }
+    return FALLBACK;
+  })();
+  var AMP = 9;                    // амплитуда отклонения от BRAND
+  var TONE = [0.72, 0.92, 1.3];   // синий уклон: подсветка уходит в синий, тень — в нейтрально-тёмный
+  var MID_CURVE = 0.8;            // мягкая кривая середины — дымка шире, крайние значения реже
+  var EDGE_MAX = 0.55;            // максимум сжатия контраста на самых углах (0.45 остаётся)
+  var EDGE_K = 0.5;               // как быстро включается виньетка от центра
 
   var cv = document.createElement('canvas');
   cv.setAttribute('aria-hidden', 'true');
@@ -85,36 +109,53 @@
     }
     return n;
   }
-  // палитра: n∈[0,1] → A→B→C
-  function mix(a, b, k) { return [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k]; }
-  function shade(n) {
-    var base = mix(A, B, Math.min(1, n * 1.6));
-    var hi = (n > 0.62) ? (n - 0.62) / 0.38 : 0; // highlights редко
-    var c = mix(base, C, hi * 0.8);
-    return c;
-  }
-
-  var buf = null, bufCtx = null;
+  // палитра убрана: кадр считается прямо от бренд-тона (BRAND) — см. drawFrame
+  var buf = null, bufCtx = null, field = null;
   function drawFrame() {
+    if (!W || !H) return; // размер ещё не посчитан (reduced-motion рисует первый кадр до rAF resize)
     if (!buf) { buf = document.createElement('canvas'); bufCtx = buf.getContext('2d'); }
     if (buf.width !== W || buf.height !== H) { buf.width = W; buf.height = H; }
     var cols = Math.ceil(W / CELL) + 1, rows = Math.ceil(H / CELL) + 1;
+    var cells = cols * rows;
+    if (!field || field.length !== cells) field = new Float64Array(cells);
     var img = bufCtx.createImageData(cols, rows);
     var data = img.data;
-    var p = 0;
     var ox = (px - 0.5) * 0.9, oy = (py - 0.5) * 0.9; // pointer distortion
-    for (var j = 0; j < rows; j++) {
-      for (var i = 0; i < cols; i++) {
-        var nx = i * 0.028 + ox * 1.6, ny = j * 0.028 + oy * 1.6;
-        var n = fbm(nx, ny, t);
-        // виньетка к краям — фокус в центре
+    var i, j, v;
+    // ── проход 1: поле шума + среднее/размах кадра ───────────────────────────
+    var sum = 0;
+    for (j = 0; j < rows; j++) {
+      for (i = 0; i < cols; i++) {
+        v = fbm(i * 0.028 + ox * 1.6, j * 0.028 + oy * 1.6, t);
+        field[j * cols + i] = v;
+        sum += v;
+      }
+    }
+    var mean = sum / cells, maxdev = 1e-6;
+    for (i = 0; i < cells; i++) {
+      var dd = field[i] - mean; if (dd < 0) dd = -dd;
+      if (dd > maxdev) maxdev = dd;
+    }
+    var sSum = 0;
+    for (i = 0; i < cells; i++) {
+      var sv = (field[i] - mean) / maxdev;             // [-1..1] — размах кадра всегда используется
+      sv = (sv < 0 ? -1 : 1) * Math.pow(sv < 0 ? -sv : sv, MID_CURVE);
+      field[i] = sv; sSum += sv;
+    }
+    var sMean = sSum / cells;                          // центрируем ещё раз → средний тон кадра = BRAND
+    // ── проход 2: цвет = BRAND + AMP*s*TONE, к краям контраст сжимается ──────
+    var p = 0;
+    for (j = 0; j < rows; j++) {
+      for (i = 0; i < cols; i++) {
+        // виньетка: фокус в центре через сжатие контраста плазмы, БЕЗ затемнения фона
         var vx = Math.abs(i / cols - 0.5) * 2, vy = Math.abs(j / rows - 0.5) * 2;
         var edge = Math.max(0, (vx * vx + vy * vy) - 0.42) * 1.4;
-        var c = shade(n + edge * 0.35);
-        var dim = 1 - Math.min(0.55, edge); // затемнение краёв
-        data[p++] = c[0] * dim;
-        data[p++] = c[1] * dim;
-        data[p++] = c[2] * dim;
+        var k = 1 - Math.min(EDGE_MAX, edge * EDGE_K);
+        var s = field[j * cols + i] - sMean;
+        if (s > 1) s = 1; else if (s < -1) s = -1;     // |отклонение| ≤ AMP*TONE < 12
+        data[p++] = BRAND[0] + AMP * s * TONE[0] * k;
+        data[p++] = BRAND[1] + AMP * s * TONE[1] * k;
+        data[p++] = BRAND[2] + AMP * s * TONE[2] * k;
         data[p++] = 255;
       }
     }
@@ -167,6 +208,7 @@
     get mode() { return STATIC ? 'static' : (LITE ? 'lite' : 'full'); },
     get running() { return running; },
     get fps() { return FPS; },
-    get size() { return [W, H]; }
+    get size() { return [W, H]; },
+    get brand() { return BRAND.slice(); } // база фона, к которой привязан кадр (для QA-замера)
   };
 })();

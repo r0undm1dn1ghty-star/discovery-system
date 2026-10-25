@@ -18,7 +18,7 @@
 <meta name="twitter:description" content="Что заметить, что проверить, что забрать. Каждый сигнал — источник и дата."/>
 <meta name="twitter:image" content="https://discovery-system.ru/og-cover.png"/>
 <link rel="icon" href="favicon-32.png" sizes="32x32"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-nav.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов.","founder":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/clarity.html#author","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem"]},"license":"https://creativecommons.org/licenses/by/4.0/","priceRange":"5 000–60 000 ₽","areaServed":{"@type":"Country","name":"Россия"},"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"knowsAbout":["ИИ-агенты","внедрение ИИ в МСБ","локальные LLM","152-ФЗ","автоматизация рутины"],"makesOffer":[{"@type":"Offer","name":"Гайд 20 конфигураций","price":"5000","priceCurrency":"RUB"},{"@type":"Offer","name":"Персональная сборка","price":"7000","priceCurrency":"RUB"},{"@type":"Offer","name":"Установка под ключ","priceSpecification":{"@type":"PriceSpecification","minPrice":"15000","maxPrice":"60000","priceCurrency":"RUB"}},{"@type":"Offer","name":"Оптимизация ИИ-агента","priceSpecification":{"@type":"PriceSpecification","minPrice":"25000","priceCurrency":"RUB"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-nav.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов.","founder":{"@type":"Person","@id":"https://discovery-system.ru/#author-viktor"},"license":"https://creativecommons.org/licenses/by/4.0/","priceRange":"5 000–60 000 ₽","areaServed":{"@type":"Country","name":"Россия"},"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"knowsAbout":["ИИ-агенты","внедрение ИИ в МСБ","локальные LLM","152-ФЗ","автоматизация рутины"],"makesOffer":[{"@type":"Offer","name":"Гайд 20 конфигураций","price":"5000","priceCurrency":"RUB"},{"@type":"Offer","name":"Персональная сборка","price":"7000","priceCurrency":"RUB"},{"@type":"Offer","name":"Установка под ключ","priceSpecification":{"@type":"PriceSpecification","minPrice":"15000","maxPrice":"60000","priceCurrency":"RUB"}},{"@type":"Offer","name":"Оптимизация ИИ-агента","priceSpecification":{"@type":"PriceSpecification","minPrice":"25000","priceCurrency":"RUB"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Discovery System","item":"https://discovery-system.ru/"},{"@type":"ListItem","position":2,"name":"Канал","item":"https://discovery-system.ru/channel.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Сигналы рынка ИИ-агентов","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Article","headline":"Яндекс вывел Hermes Agent в Marketplace — от 3 642 ₽/мес","datePublished":"2026-09-02","author":{"@id":"https://discovery-system.ru/#organization"}}},{"@type":"ListItem","position":2,"item":{"@type":"Article","headline":"Сбер: 350 млрд ₽ в ИИ + ГигаАгент на ВЭФ","datePublished":"2026-09-02","author":{"@id":"https://discovery-system.ru/#organization"}}},{"@type":"ListItem","position":3,"item":{"@type":"Article","headline":"Личный ассистент на VPS — 6 600 ₽, без VPN","datePublished":"2026-08-30","author":{"@id":"https://discovery-system.ru/#organization"}}},{"@type":"ListItem","position":4,"item":{"@type":"Article","headline":"400–850 млрд ₽ — агентная коммерция к 2028–29","datePublished":"2026-08-24","author":{"@id":"https://discovery-system.ru/#organization"}}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://discovery-system.ru/#author-viktor","name":"Виктор Зайцев","description":"Продукт-менеджер, рыночная разведка ИИ. Кейс WorkWay 20→80% точность AI-скоринга (n=30).","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem"],"knowsAbout":["AI agents","product management","market research"],"jobTitle":"Founder, Discovery System"}</script>
@@ -98,6 +98,18 @@ nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:
 .sig-head a.src{font-weight:500}
 .sig-take{font-size:14px;color:var(--meta);line-height:1.55}
 .sig-take .arrow{color:var(--accent);font-family:var(--mono);margin-right:4px}
+
+/* сигналы сгруппированы по решению читателя, а не по дате */
+.grp{margin:0 0 34px}
+.grp-head{display:flex;align-items:center;gap:10px;margin:0 0 6px;padding-top:18px;border-top:1px solid var(--line-soft);
+  font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.grp-head .grp-c{margin-left:auto;font-size:12px;color:var(--meta);border:1px solid rgba(255,255,255,.14);
+  border-radius:8px;padding:2px 9px;line-height:1.4;background:rgba(255,255,255,.03)}
+.grp-why{font-size:14.5px;color:var(--meta);line-height:1.6;margin:0 0 14px}
+.month-lead{font-size:14.5px;color:var(--meta);line-height:1.6;margin:0 0 14px;max-width:760px}
+.res-more{margin:34px 0 0;font-size:15px}
+.res-more a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(123,196,168,.45)}
+.res-more a:hover{text-decoration-color:var(--accent)}
 
 /* ── месяцы-аккордеон: страница не требует длинного скролла ── */
 .month{border-top:1px solid var(--line-soft)}
@@ -272,112 +284,21 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <nav class="top" aria-label="Основная навигация" data-ds-nav><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"/><span>Discovery System</span></a></div></nav>
 
 <header class="hero"><div class="wrap">
-<p class="sub rv">канал · сигналы рынка · октябрь 2026</p>
+<p class="sub rv">канал · сигналы рынка · июль — октябрь 2026</p>
 <h1 class="rv" style="transition-delay:.06s">Что происходит на рынке ИИ —<br/>и что из этого делать тебе</h1>
 <p class="rv" style="transition-delay:.12s">Короткие разборы: что заметить, что проверить и что забрать в работу.</p>
 </div></header>
 
 <main>
 <section><div class="wrap">
+
+<p class="feed-head rv" id="feed"><span class="pulse"></span> LIVE · сигналы — по решению, а не по дате</p>
+
 <div class="feed">
-<div class="sig rv" data-type="кейс" data-date="2026-10-13">
-<div class="sig-bar"></div>
-<div class="sig-head"><b>Разработал агента конкурентного анализа для ювелирной ниши — 151 видео</b>: дома снимают рекламу (3 300 просмотров в среднем), внеконкурентный слой — процессные мастерские (до 20 млн); агент открывает этот слой в любой нише</div>
-<div class="sig-meta"><span class="sig-date">13.10.26</span> · <a class="sig-src" href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener">ds_content-radar · замер</a><span class="sig-type">кейс</span></div>
-</div>
 
-<p class="feed-head rv" id="feed"><span class="pulse"></span> LIVE · сигналы по месяцам</p>
-
-<details class="month" open>
-<summary><span class="m-name">октябрь 2026</span><span class="m-cnt">11</span><span class="m-chev">▾</span></summary>
-<div class="month-body">
-<div class="sig" data-type="конкуренты">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">14.10.2026</span>
-<a class="sig-src" href="https://dare.ru" target="_blank" rel="noopener">Дарэ · оффер ↗</a>
-<span class="sig-type">конкуренты</span>
-</div>
-<div class="sig-head"><b>Дарэ выкатил «100% возврат»</b> — сетка 49 990 / 99 990 / 199 990 ₽: страховка вместо результата. Кейс-замер снят 14.10</div>
-<div class="sig-take"><span class="arrow">▸</span>Требуй в оффере то, что можно проверить: состав цены и критерии приёмки до оплаты. Возврат — не замена приёмке.</div>
-</div>
-
-<div class="sig" data-type="цена">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">14.10.2026</span>
-<a class="sig-src" href="https://yandex.cloud/ru/marketplace" target="_blank" rel="noopener">Yandex Cloud Marketplace ↗</a>
-<span class="sig-type">цена</span>
-</div>
-<div class="sig-head"><b>Найми.ИИ — первый агент-маркетплейс в нашей зоне</b>: 3 650 / 7 350 / 18 350 / 61 000 ₽/мес. Аренда чужой системы вместо владения своей</div>
-<div class="sig-take"><span class="arrow">▸</span>Сравнивай аренду и владение: 3 650–61 000 ₽/мес против своей связки на 990–1 800 ₽/мес провайдерам. Считай год, а не месяц.</div>
-</div>
-
-<div class="sig" data-type="рынок">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">13.10.2026</span>
-<a class="sig-src" href="https://www.avito.ru" target="_blank" rel="noopener">Авито · срез поля ↗</a>
-<span class="sig-type">рынок</span>
-</div>
-<div class="sig-head"><b>Срез поля Авито 13–14.10: 30 живых карточек</b>, 4 этажа — демпинг &lt;5К (11), середина 5–15К (8), бизнес 15–45К (7), enterprise до 90К (4). Гарантий результата почти ни у кого</div>
-<div class="sig-take"><span class="arrow">▸</span>Смотри не на цену, а на состав: где в чеке видно, что именно ты получаешь и по каким критериям принимаешь работу.</div>
-</div>
-
-<div class="sig" data-type="кейс">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">17.10.2026</span>
-<a class="sig-src" href="https://auth.robokassa.ru/Merchant/Invoice/xp2UNX65i0GBewjBqkgJOw" target="_blank" rel="noopener">Авито · отзыв ↗</a>
-<span class="sig-type">кейс</span>
-</div>
-<div class="sig-head"><b>Недвижимость: большой объём координат перенесён с текстового документа на интерактивную карту</b> — сделка состоялась, отзыв: «быстро, качественно и по привлекательной стоимости»</div>
-<div class="sig-take"><span class="arrow">▸</span>Проверяемая задача и измеримый результат — так выглядит заказ, за который не стыдно показать отзыв.</div>
-</div>
-
-<div class="sig" data-type="спрос">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">11.10.2026</span>
-<a class="sig-src" href="https://www1.ru/articles/2026/10/11/malyi-i-srednii-biznes-v-rossii-prismatrivaetsia-k-multiagentnomu-ii.html" target="_blank" rel="noopener">Первый технический ↗</a>
-<span class="sig-type">спрос</span>
-</div>
-<div class="sig-head"><b>МСБ присматривается к мультиагентному ИИ</b>, но массовым это ещё не стало: сегмент агентов оценивают в 15–25 млрд ₽</div>
-<div class="sig-take"><span class="arrow">▸</span>Порог входа решает: локальный запуск и независимость от чужого провайдера обходятся дешевле подписки.</div>
-</div>
-
-<div class="sig" data-type="кейс">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">08.10.2026</span>
-<a class="sig-src" href="https://www1.ru/news/2026/10/08/kamaz-stroit-ii-agentov-po-lestnice-avtonomnosti-ot-assistenta-do-resenii-bez-celoveka.html" target="_blank" rel="noopener">Первый технический ↗</a>
-<span class="sig-type">кейс</span>
-</div>
-<div class="sig-head"><b>КАМАЗ разложил агентов на 4 уровня автономности</b> — от чат-ассистента до действия без человека; на DFMEA согласование сжалось с 6–10 дней до 2–3</div>
-<div class="sig-take"><span class="arrow">▸</span>Лестница автономности работает и в малом: начинай с ассистента, а не с «пусть решает сам».</div>
-</div>
-
-<div class="sig" data-type="кейс">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">07.10.2026</span>
-<a class="sig-src" href="https://www.cnews.ru/news/line/2026-10-07_k2teh_zapustil_ii-agenta" target="_blank" rel="noopener">CNews ↗</a>
-<span class="sig-type">кейс</span>
-</div>
-<div class="sig-head"><b>ИИ-агент зашёл внутрь 1С</b>: работает по правам пользователя, чувствительные операции — с подтверждением, действия в журнале аудита</div>
-<div class="sig-take"><span class="arrow">▸</span>Внедряй по правам и с подтверждением на критичном: доступ по ролям и журнал действий — базовое требование, а не опция.</div>
-</div>
-
-<div class="sig" data-type="рынок">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">07.10.2026</span>
-<a class="sig-src" href="https://www.vedomosti.ru/technologies/industries_and_markets/articles/2026/10/07/1234845-ot-pilotov-k-prodakshenu-kak-rossiiskii-biznes-uchitsya-schitat-effekt-ot-ii" target="_blank" rel="noopener">Ведомости ↗</a>
-<span class="sig-type">рынок</span>
-</div>
-<div class="sig-head"><b>От ИИ больше не ждут демонстрации — ждут экономику</b>: сколько стоит внедрение и когда окупится</div>
-<div class="sig-take"><span class="arrow">▸</span>До оплаты должно быть видно: сколько стоит в месяц и когда окупится. Нет этого в оффере — это риск.</div>
-</div>
+<div class="grp">
+<p class="grp-head rv">доступ, который могут отозвать<span class="grp-c">3</span></p>
+<p class="grp-why rv">Что проверить у себя: чем ты пользуешься каждый день — и что останется, если доступ отзовут завтра.</p>
 
 <div class="sig" data-type="рынок">
 <span class="sig-bar"></span>
@@ -412,34 +333,99 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sig-take"><span class="arrow">▸</span>Если сервис отваливается на сетевом уровне, настройки не помогут. Считай это условием задачи, а не помехой.</div>
 </div>
 </div>
-</details>
 
-<details class="month">
-<summary><span class="m-name">сентябрь 2026</span><span class="m-cnt">6</span><span class="m-chev">▾</span></summary>
-<div class="month-body">
-<div class="sig rv" data-type="рынок">
+<div class="grp">
+<p class="grp-head rv">что предлагают и за сколько<span class="grp-c">5</span></p>
+<p class="grp-why rv">Что проверить до оплаты: состав цены, критерии приёмки и счёт за год, а не за месяц.</p>
+
+<div class="sig" data-type="конкуренты">
 <span class="sig-bar"></span>
 <div class="sig-meta">
-<span class="sig-date">23.09.2026</span>
-<a class="sig-src" href="https://www.kommersant.ru/doc/8973433" target="_blank" rel="noopener">Коммерсантъ ↗</a>
+<span class="sig-date">14.10.2026</span>
+<a class="sig-src" href="https://dare.ru" target="_blank" rel="noopener">Дарэ · оффер ↗</a>
+<span class="sig-type">конкуренты</span>
+</div>
+<div class="sig-head"><b>Дарэ выкатил «100% возврат»</b> — сетка 49 990 / 99 990 / 199 990 ₽: страховка вместо результата. Кейс-замер снят 14.10</div>
+<div class="sig-take"><span class="arrow">▸</span>Требуй в оффере то, что можно проверить: состав цены и критерии приёмки до оплаты. Возврат — не замена приёмке.</div>
+</div>
+
+<div class="sig" data-type="цена">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">14.10.2026</span>
+<a class="sig-src" href="https://yandex.cloud/ru/marketplace" target="_blank" rel="noopener">Yandex Cloud Marketplace ↗</a>
+<span class="sig-type">цена</span>
+</div>
+<div class="sig-head"><b>Найми.ИИ — первый агент-маркетплейс в нашей зоне</b>: 3 650 / 7 350 / 18 350 / 61 000 ₽/мес. Аренда чужой системы вместо владения своей</div>
+<div class="sig-take"><span class="arrow">▸</span>Сравнивай аренду и владение: 3 650–61 000 ₽/мес против своей связки на 990–1 800 ₽/мес провайдерам. Считай год, а не месяц.</div>
+</div>
+
+<div class="sig" data-type="рынок">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">13.10.2026</span>
+<a class="sig-src" href="https://www.avito.ru" target="_blank" rel="noopener">Авито · срез поля ↗</a>
 <span class="sig-type">рынок</span>
 </div>
-<div class="sig-head"><b>Рынок генеративного ИИ в РФ достиг 60 млрд ₽ и вышел из стадии экспериментов</b> — агенты названы главным направлением роста</div>
-<div class="sig-take"><span class="arrow">▸</span>Рынок вышел из экспериментов: покупают не демо, а работающий контур с понятной ценой владения.</div>
+<div class="sig-head"><b>Срез поля Авито 13–14.10: 30 живых карточек</b>, 4 этажа — демпинг &lt;5К (11), середина 5–15К (8), бизнес 15–45К (7), enterprise до 90К (4). Гарантий результата почти ни у кого</div>
+<div class="sig-take"><span class="arrow">▸</span>Смотри не на цену, а на состав: где в чеке видно, что именно ты получаешь и по каким критериям принимаешь работу.</div>
 </div>
 
-<div class="sig rv" style="transition-delay:.04s" data-type="спрос">
+<div class="sig" data-type="рынок">
 <span class="sig-bar"></span>
 <div class="sig-meta">
-<span class="sig-date">23.09.2026</span>
-<a class="sig-src" href="https://runet.news/news/80850" target="_blank" rel="noopener">VK WorkSpace × Hi-Tech Mail ↗</a>
-<span class="sig-type">спрос</span>
+<span class="sig-date">07.10.2026</span>
+<a class="sig-src" href="https://www.vedomosti.ru/technologies/industries_and_markets/articles/2026/10/07/1234845-ot-pilotov-k-prodakshenu-kak-rossiiskii-biznes-uchitsya-schitat-effekt-ot-ii" target="_blank" rel="noopener">Ведомости ↗</a>
+<span class="sig-type">рынок</span>
 </div>
-<div class="sig-head"><b>Только 23% МСБ пробуют ИИ</b>, и главный барьер — не цена: 38% не видят понятной пользы, 9% готовы доверить агенту автономные решения</div>
-<div class="sig-take"><span class="arrow">▸</span>Начни не с модели, а с задачи: что именно делается руками каждую неделю и сколько это стоит в часах.</div>
+<div class="sig-head"><b>От ИИ больше не ждут демонстрации — ждут экономику</b>: сколько стоит внедрение и когда окупится</div>
+<div class="sig-take"><span class="arrow">▸</span>До оплаты должно быть видно: сколько стоит в месяц и когда окупится. Нет этого в оффере — это риск.</div>
 </div>
 
-<div class="sig rv" style="transition-delay:.08s" data-type="цена">
+<div class="sig" data-type="рынок">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">02.09.2026</span>
+<a class="sig-src" href="https://yandex.cloud/ru/marketplace/products/yc/hermes-agent" target="_blank" rel="noopener">Yandex Cloud Marketplace ↗</a>
+<span class="sig-type">рынок</span>
+</div>
+<div class="sig-head"><b>Яндекс вывел Hermes Agent в Marketplace</b> — <a class="src" href="https://yandex.cloud/ru/marketplace/products/yc/hermes-agent" target="_blank" rel="noopener">от 3 642 ₽/мес</a>, без оплаты за API-ключи</div>
+<div class="sig-take"><span class="arrow">▸</span>Цены на запуск агента в РФ уже в рублях и без VPN — сравнивай с ними, а не с курсом.</div>
+</div>
+</div>
+
+<div class="grp">
+<p class="grp-head rv">агент внутри твоих систем<span class="grp-c">2</span></p>
+<p class="grp-why rv">Что проверить: под какой ролью работает агент, что требует подтверждения и где лежит журнал действий.</p>
+
+<div class="sig" data-type="кейс">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">07.10.2026</span>
+<a class="sig-src" href="https://www.cnews.ru/news/line/2026-10-07_k2teh_zapustil_ii-agenta" target="_blank" rel="noopener">CNews ↗</a>
+<span class="sig-type">кейс</span>
+</div>
+<div class="sig-head"><b>ИИ-агент зашёл внутрь 1С</b>: работает по правам пользователя, чувствительные операции — с подтверждением, действия в журнале аудита</div>
+<div class="sig-take"><span class="arrow">▸</span>Внедряй по правам и с подтверждением на критичном: доступ по ролям и журнал действий — базовое требование, а не опция.</div>
+</div>
+
+<div class="sig" data-type="кейс">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">08.10.2026</span>
+<a class="sig-src" href="https://www1.ru/news/2026/10/08/kamaz-stroit-ii-agentov-po-lestnice-avtonomnosti-ot-assistenta-do-resenii-bez-celoveka.html" target="_blank" rel="noopener">Первый технический ↗</a>
+<span class="sig-type">кейс</span>
+</div>
+<div class="sig-head"><b>КАМАЗ разложил агентов на 4 уровня автономности</b> — от чат-ассистента до действия без человека; на DFMEA согласование сжалось с 6–10 дней до 2–3</div>
+<div class="sig-take"><span class="arrow">▸</span>Лестница автономности работает и в малом: начинай с ассистента, а не с «пусть решает сам».</div>
+</div>
+</div>
+
+<div class="grp">
+<p class="grp-head rv">сколько платят другие МСБ<span class="grp-c">3</span></p>
+<p class="grp-why rv">Что проверить: попадает ли твоя трата в рыночную норму — и за что именно ты платишь.</p>
+
+<div class="sig" data-type="цена">
 <span class="sig-bar"></span>
 <div class="sig-meta">
 <span class="sig-date">07.09.2026</span>
@@ -450,45 +436,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sig-take"><span class="arrow">▸</span>Проверь свою норму: большинство платящих тратит до 3 000 ₽/мес — связка должна попадать в эти рамки.</div>
 </div>
 
-<div class="sig rv" style="transition-delay:.12s" data-type="рынок">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">09.2026</span>
-<a class="sig-src" href="https://companies.rbc.ru/amp/news/dbe9214a-7698-43e5-9b4e-90d32f5f4029/" target="_blank" rel="noopener">«Яков и Партнёры» × Яндекс ↗</a>
-<span class="sig-type">рынок</span>
-</div>
-<div class="sig-head"><b>Рынок автономных ИИ-агентов вырастет ×4,5 к 2028</b>: 46% компаний уже пилотируют, 74% упираются в разрыв компетенций</div>
-<div class="sig-take"><span class="arrow">▸</span>Разрыв не в модели, а во внедрении: планируй работу по встраиванию в свои процессы, а не подписку.</div>
-</div>
-
-<div class="sig rv" data-type="рынок">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">02.09.2026</span>
-<a class="sig-src" href="https://yandex.cloud/ru/marketplace/products/yc/hermes-agent" target="_blank" rel="noopener">Yandex Cloud Marketplace ↗</a>
-<span class="sig-type">рынок</span>
-</div>
-<div class="sig-head"><b>Яндекс вывел Hermes Agent в Marketplace</b> — <a class="src" href="https://yandex.cloud/ru/marketplace/products/yc/hermes-agent" target="_blank" rel="noopener">от 3 642 ₽/мес</a>, без оплаты за API-ключи</div>
-<div class="sig-take"><span class="arrow">▸</span>Цены на запуск агента в РФ уже в рублях и без VPN — сравнивай с ними, а не с курсом.</div>
-</div>
-
-<div class="sig rv" data-type="рынок">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">02.09.2026</span>
-<a class="sig-src" href="https://modelora.ru/news/sber-350-mlrd-gigaagent-vef-2025" target="_blank" rel="noopener">modelora.ru ↗</a>
-<span class="sig-type">рынок</span>
-</div>
-<div class="sig-head"><b>Сбер: <a class="src" href="https://modelora.ru/news/sber-350-mlrd-gigaagent-vef-2025" target="_blank" rel="noopener">350 млрд ₽ в ИИ</a> + «ГигаАгент» на ВЭФ</b> — автономный агент на GigaChat</div>
-<div class="sig-take"><span class="arrow">▸</span>чем отличается «автономный агент» платформы от агента под твою задачу</div>
-</div>
-</div>
-</details>
-
-<details class="month">
-<summary><span class="m-name">август 2026</span><span class="m-cnt">3</span><span class="m-chev">▾</span></summary>
-<div class="month-body">
-<div class="sig rv" data-type="кейс">
+<div class="sig" data-type="кейс">
 <span class="sig-bar"></span>
 <div class="sig-meta">
 <span class="sig-date">30.08.2026</span>
@@ -499,7 +447,45 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sig-take"><span class="arrow">▸</span>Смотри на живой пример: агент считает смены и время сотрудников без VPN — это повторяемо у тебя.</div>
 </div>
 
-<div class="sig rv" data-type="спрос">
+<div class="sig" data-type="кейс">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">17.10.2026</span>
+<a class="sig-src" href="https://auth.robokassa.ru/Merchant/Invoice/xp2UNX65i0GBewjBqkgJOw" target="_blank" rel="noopener">Авито · отзыв ↗</a>
+<span class="sig-type">кейс</span>
+</div>
+<div class="sig-head"><b>Недвижимость: большой объём координат перенесён с текстового документа на интерактивную карту</b> — сделка состоялась, отзыв: «быстро, качественно и по привлекательной стоимости»</div>
+<div class="sig-take"><span class="arrow">▸</span>Проверяемая задача и измеримый результат — так выглядит заказ, за который не стыдно показать отзыв.</div>
+</div>
+</div>
+
+<div class="grp">
+<p class="grp-head rv">внедрение ломается не на модели<span class="grp-c">4</span></p>
+<p class="grp-why rv">Что проверить: какая рутина съедает больше 10 часов в неделю — и кто доведёт внедрение до приёмки.</p>
+
+<div class="sig" data-type="спрос">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">11.10.2026</span>
+<a class="sig-src" href="https://www1.ru/articles/2026/10/11/malyi-i-srednii-biznes-v-rossii-prismatrivaetsia-k-multiagentnomu-ii.html" target="_blank" rel="noopener">Первый технический ↗</a>
+<span class="sig-type">спрос</span>
+</div>
+<div class="sig-head"><b>МСБ присматривается к мультиагентному ИИ</b>, но массовым это ещё не стало: сегмент агентов оценивают в 15–25 млрд ₽</div>
+<div class="sig-take"><span class="arrow">▸</span>Порог входа решает: локальный запуск и независимость от чужого провайдера обходятся дешевле подписки.</div>
+</div>
+
+<div class="sig" data-type="спрос">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">23.09.2026</span>
+<a class="sig-src" href="https://runet.news/news/80850" target="_blank" rel="noopener">VK WorkSpace × Hi-Tech Mail ↗</a>
+<span class="sig-type">спрос</span>
+</div>
+<div class="sig-head"><b>Только 23% МСБ пробуют ИИ</b>, и главный барьер — не цена: 38% не видят понятной пользы, 9% готовы доверить агенту автономные решения</div>
+<div class="sig-take"><span class="arrow">▸</span>Начни не с модели, а с задачи: что именно делается руками каждую неделю и сколько это стоит в часах.</div>
+</div>
+
+<div class="sig" data-type="спрос">
 <span class="sig-bar"></span>
 <div class="sig-meta">
 <span class="sig-date">03.08.2026</span>
@@ -510,34 +496,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sig-take"><span class="arrow">▸</span>Вопрос уже не «зачем», а «кто встроит»: выбирай исполнителя по приёмке, а не по демо.</div>
 </div>
 
-<div class="sig rv" data-type="спрос">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">24.08.2026</span>
-<a class="sig-src" href="https://datainsight.ru/" target="_blank" rel="noopener">Data Insight ↗</a>
-<span class="sig-type">спрос</span>
-</div>
-<div class="sig-head"><b><a class="src" href="https://datainsight.ru/" target="_blank" rel="noopener">400–850 млрд ₽ — агентная коммерция к 2028–29</a></b>, до 2–3 трлн к 2030–32</div>
-<div class="sig-take"><span class="arrow">▸</span>Это фон рынка, а не твоя задача: цифра говорит о горизонте, а не о том, что делать в понедельник.</div>
-</div>
-</div>
-</details>
-
-<details class="month">
-<summary><span class="m-name">июль 2026</span><span class="m-cnt">2</span><span class="m-chev">▾</span></summary>
-<div class="month-body">
-<div class="sig rv" data-type="спрос">
-<span class="sig-bar"></span>
-<div class="sig-meta">
-<span class="sig-date">27.07.2026</span>
-<a class="sig-src" href="https://vc.ru/services/1800000-55-mlrd-alice-ai-2025" target="_blank" rel="noopener">vc.ru ↗</a>
-<span class="sig-type">спрос</span>
-</div>
-<div class="sig-head"><b>55 млрд ₽/год — расходы Яндекса на Алису AI</b> · 24 млн человек в неделю решают в ней задачи</div>
-<div class="sig-take"><span class="arrow">▸</span>Привычка решать задачи через ИИ уже массовая — вопрос только в инструменте под твой процесс.</div>
-</div>
-
-<div class="sig rv" data-type="спрос">
+<div class="sig" data-type="спрос">
 <span class="sig-bar"></span>
 <div class="sig-meta">
 <span class="sig-date">01.07.2026</span>
@@ -548,7 +507,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sig-take"><span class="arrow">▸</span>Спрос сместился от «покажите демо» к «внедрите»: предложение без внедрения сейчас не покупают.</div>
 </div>
 </div>
-</details>
+
 <details class="month g-month" id="graph-months">
 <summary><span class="m-name">граф сигналов</span><span class="m-cnt">18</span><span class="m-chev">▾</span></summary>
 <div class="month-body">
@@ -566,40 +525,76 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div>
 </details>
 
+<details class="month">
+<summary><span class="m-name">фон рынка · цифры, не про твою задачу</span><span class="m-cnt">5</span><span class="m-chev">▾</span></summary>
+<div class="month-body">
+<p class="month-lead">Объёмы и прогнозы по рынку целиком — с датами и источниками. Нужны, чтобы понимать горизонт; что делать в своей рутине — в блоках выше.</p>
+
+<div class="sig" data-type="рынок">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">23.09.2026</span>
+<a class="sig-src" href="https://www.kommersant.ru/doc/8973433" target="_blank" rel="noopener">Коммерсантъ ↗</a>
+<span class="sig-type">рынок</span>
+</div>
+<div class="sig-head"><b>Рынок генеративного ИИ в РФ достиг 60 млрд ₽ и вышел из стадии экспериментов</b> — агенты названы главным направлением роста</div>
+<div class="sig-take"><span class="arrow">▸</span>Рынок вышел из экспериментов: покупают не демо, а работающий контур с понятной ценой владения.</div>
+</div>
+
+<div class="sig" data-type="рынок">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">02.09.2026</span>
+<a class="sig-src" href="https://modelora.ru/news/sber-350-mlrd-gigaagent-vef-2025" target="_blank" rel="noopener">modelora.ru ↗</a>
+<span class="sig-type">рынок</span>
+</div>
+<div class="sig-head"><b>Сбер: <a class="src" href="https://modelora.ru/news/sber-350-mlrd-gigaagent-vef-2025" target="_blank" rel="noopener">350 млрд ₽ в ИИ</a> + «ГигаАгент» на ВЭФ</b> — автономный агент на GigaChat</div>
+<div class="sig-take"><span class="arrow">▸</span>Чем отличается «автономный агент» платформы от агента под твою задачу — вопрос, который стоит задать до оплаты.</div>
+</div>
+
+<div class="sig" data-type="спрос">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">24.08.2026</span>
+<a class="sig-src" href="https://datainsight.ru/" target="_blank" rel="noopener">Data Insight ↗</a>
+<span class="sig-type">спрос</span>
+</div>
+<div class="sig-head"><b><a class="src" href="https://datainsight.ru/" target="_blank" rel="noopener">400–850 млрд ₽ — агентная коммерция к 2028–29</a></b>, до 2–3 трлн к 2030–32</div>
+<div class="sig-take"><span class="arrow">▸</span>Это фон рынка, а не твоя задача: цифра говорит о горизонте, а не о том, что делать в понедельник.</div>
+</div>
+
+<div class="sig" data-type="спрос">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">27.07.2026</span>
+<a class="sig-src" href="https://vc.ru/services/1800000-55-mlrd-alice-ai-2025" target="_blank" rel="noopener">vc.ru ↗</a>
+<span class="sig-type">спрос</span>
+</div>
+<div class="sig-head"><b>55 млрд ₽/год — расходы Яндекса на Алису AI</b> · 24 млн человек в неделю решают в ней задачи</div>
+<div class="sig-take"><span class="arrow">▸</span>Привычка решать задачи через ИИ уже массовая — вопрос только в инструменте под твой процесс.</div>
+</div>
+
+<div class="sig" data-type="рынок">
+<span class="sig-bar"></span>
+<div class="sig-meta">
+<span class="sig-date">09.2026</span>
+<a class="sig-src" href="https://companies.rbc.ru/amp/news/dbe9214a-7698-43e5-9b4e-90d32f5f4029/" target="_blank" rel="noopener">«Яков и Партнёры» × Яндекс ↗</a>
+<span class="sig-type">рынок</span>
+</div>
+<div class="sig-head"><b>Рынок автономных ИИ-агентов вырастет ×4,5 к 2028</b>: 46% компаний уже пилотируют, 74% упираются в разрыв компетенций</div>
+<div class="sig-take"><span class="arrow">▸</span>Разрыв не в модели, а во внедрении: планируй работу по встраиванию в свои процессы, а не подписку.</div>
+</div>
+</div>
+</details>
+
 </div>
 
 <div class="geo-summary rv">
 <h3>Как читать сигналы</h3>
-<p>Каждый сигнал — факт с датой, источником и проверкой — пробуем опровергнуть 3 раза. Пример: «400–850 млрд ₽ — агентная коммерция к 2028–29, до 2–3 трлн к 2030–32» (Data Insight, 24.08.2026). Полная лента — в Telegram <a class="src" href="https://t.me/discoverysystem" target="_blank" rel="noopener">@discoverysystem</a>.</p>
+<p>Каждый сигнал — факт с датой, источником и проверкой — пробуем опровергнуть 3 раза. Пример: «Замер доступности 25 ИИ-сервисов с домашнего IP: живых 9, не пускают 15» (Habr, 01.10.2026). Полная лента — в Telegram <a class="src" href="https://t.me/discoverysystem" target="_blank" rel="noopener">@discoverysystem</a>.</p>
 </div>
 
-<div class="res-block">
-<p class="feed-head rv">· мои исследования</p>
-<a class="res rv" href="agent-failures.html">
-<span class="res-meta"><span class="res-date">26.09.2026</span><span class="res-tag">провалы</span></span>
-<span class="res-name">ИИ-агент, который не заработал: 76 провалов 2026</span>
-<span class="res-take">Семь схем, из которых умирает агент: обещали и не сделали, бот сломал доверие, настроили и бросили. Под каждым случаем — «что это значит для тебя». Плюс 8 пунктов приёмки.</span>
-<span class="res-go">Проверить свой случай →</span>
-</a>
-<a class="res rv" style="transition-delay:.06s" href="nacenka.html">
-<span class="res-meta"><span class="res-date">26.09.2026</span><span class="res-tag">токеномика</span></span>
-<span class="res-name">Платишь бигтеху за ИИ — и не знаешь, сколько</span>
-<span class="res-take">Одна и та же модель у вендора и у платформы бигтеха: наценка до ×148, и спрятана она в чтении из кэша — второй строке счёта, которую не считает почти никто.</span>
-<span class="res-go">Читать замер →</span>
-</a>
-<a class="res rv" style="transition-delay:.12s" href="value-chain.html">
-<span class="res-meta"><span class="res-date">09.2026</span><span class="res-tag">экономика</span></span>
-<span class="res-name">Микробизнесу и среднему бизнесу нужен разный агент</span>
-<span class="res-take">Найди свой сегмент на карте рынка: у микробизнеса и среднего бизнеса разные деньги, поводы и цена ошибки — а продают им одинаково. Плюс полная цена агента за год.</span>
-<span class="res-go">Открыть карту →</span>
-</a>
-<a class="res rv" style="transition-delay:.18s" href="lost-accounts.html">
-<span class="res-meta"><span class="res-date">08.2026</span><span class="res-tag">риск</span></span>
-<span class="res-name">Твой доступ к ИИ — не твой</span>
-<span class="res-take">Сколько россиян потеряли аккаунты в 2026: цена аренды чужого доступа вместо своего контура, без рефанда.</span>
-<span class="res-go">Проверить свой случай →</span>
-</a>
-</div>
+<p class="res-more rv"><a href="market.html#research">Все замеры и разборы — на «Рынке ИИ» →</a></p>
 
 <div class="cta-row rv">
 <a class="btn btn-primary" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Подписаться на канал →</a>
@@ -692,7 +687,7 @@ if('IntersectionObserver' in window){
 </script><script src="graph/vis-network.min.js"></script>
 <script>
 (function(){
-  var DATA = {"nodes": [{"id": "s0", "label": "МСБ присматривается к мультиагентному ИИ…", "group": "signal", "title": "<b>11.10.2026</b><br>МСБ присматривается к мультиагентному ИИ, но массовым это ещё не стало: сегмент агентов оценивают в 15–25 млрд ₽<br><br><i>для ИП важны три вещи: низкий порог входа, локальное развёртывание и независимость от внешних провайдеров — ровно то, что я собираю</i><br><a href=\"https://www1.ru/articles/2026/10/11/malyi-i-srednii-biznes-v-rossii-prismatrivaetsia-k-multiagentnomu-ii.html\" target=\"_blank\">Первый технический</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "11.10.2026", "type": "спрос", "topics": ["Рынок и рост", "МСБ и спрос"]}, {"id": "src0", "label": "Первый технический", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s1", "label": "КАМАЗ разложил агентов на 4 уровня…", "group": "signal", "title": "<b>08.10.2026</b><br>КАМАЗ разложил агентов на 4 уровня автономности — от чат-ассистента до действия без человека; на DFMEA согласование сжалось с 6–10 дней до 2–3<br><br><i>та же лестница применима к МСБ: начинать с ассистента, а не с «пусть решает сам»</i><br><a href=\"https://www1.ru/news/2026/10/08/kamaz-stroit-ii-agentov-po-lestnice-avtonomnosti-ot-assistenta-do-resenii-bez-celoveka.html\" target=\"_blank\">Первый технический</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#5ed9a8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "08.10.2026", "type": "кейс", "topics": ["МСБ и спрос", "Внедрение и практика"]}, {"id": "s2", "label": "ИИ-агент зашёл внутрь 1С: работает по…", "group": "signal", "title": "<b>07.10.2026</b><br>ИИ-агент зашёл внутрь 1С: работает по правам пользователя, чувствительные операции — с подтверждением, действия в журнале аудита<br><br><i>вот как выглядит «агент в контуре»: доступ по правам, подтверждение на критичном, аудит — это и есть безопасная сборка</i><br><a href=\"https://www.cnews.ru/news/line/2026-10-07_k2teh_zapustil_ii-agenta\" target=\"_blank\">CNews</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#5ed9a8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "07.10.2026", "type": "кейс", "topics": ["Внедрение и практика"]}, {"id": "src1", "label": "CNews", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s3", "label": "От ИИ больше не ждут демонстрации — ждут…", "group": "signal", "title": "<b>07.10.2026</b><br>От ИИ больше не ждут демонстрации — ждут экономику: сколько стоит внедрение и когда окупится<br><br><i>экономику считаю до оплаты. «Внедрим, а потом посмотрим» больше не проходит</i><br><a href=\"https://www.vedomosti.ru/technologies/industries_and_markets/articles/2026/10/07/1234845-ot-pilotov-k-prodakshenu-kak-rossiiskii-biznes-uchitsya-schitat-effekt-ot-ii\" target=\"_blank\">Ведомости</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "07.10.2026", "type": "рынок", "topics": ["Внедрение и практика"]}, {"id": "src2", "label": "Ведомости", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s4", "label": "Новая волна блокировок Claude: 1 октября…", "group": "signal", "title": "<b>02.10.2026</b><br>Новая волна блокировок Claude: 1 октября режут аккаунты россиян, включая плативших $200/мес; в письме — «подозрительные сигналы»<br><br><i>даже с зарубежным VPS и оплатой картой — доступ отзывают. Подписка не твоя, доступ не твой</i><br><a href=\"https://ru.themoscowtimes.com/2026/10/02/polzovateli-ii-ot-claude-v-rossii-pozhalovalis-na-blokirovku-akkauntov-a207652\" target=\"_blank\">The Moscow Times</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "02.10.2026", "type": "рынок", "topics": ["Владение и доступ"]}, {"id": "src3", "label": "The Moscow Times", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s5", "label": "Замер доступности 25 ИИ-сервисов с…", "group": "signal", "title": "<b>01.10.2026</b><br>Замер доступности 25 ИИ-сервисов с домашнего IP: живых 9, не пускают 15; OpenAI, Anthropic и Google отвечают 403 unsupported_country<br><br><i>половина запасного списка сидит между двумя регуляторами: бэкап модели — не паранойя, а гигиена</i><br><a href=\"https://habr.com/ru/articles/1089656/\" target=\"_blank\">Habr</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "01.10.2026", "type": "рынок", "topics": ["Владение и доступ"]}, {"id": "src4", "label": "Habr", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s6", "label": "ChatGPT перестал открываться в России на…", "group": "signal", "title": "<b>01.10.2026</b><br>ChatGPT перестал открываться в России на сетевом уровне: с 6 сентября соединение обрывается до обращения к серверам OpenAI, смена DNS больше не помогает<br><br><i>два замка разом: региональный отказ OpenAI и сетевой фильтр. Локальная сборка эти замки не замечает</i><br><a href=\"https://habr.com/ru/companies/study_ai/articles/1085756/\" target=\"_blank\">Habr</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "01.10.2026", "type": "рынок", "topics": ["Владение и доступ"]}, {"id": "s7", "label": "Рынок генеративного ИИ в РФ достиг 60…", "group": "signal", "title": "<b>23.09.2026</b><br>Рынок генеративного ИИ в РФ достиг 60 млрд ₽ и вышел из стадии экспериментов — агенты названы главным направлением роста<br><br><i>через API Yandex AI Studio за полгода — 597 млрд токенов (×18 за год) и 30 тыс. агентов: встрою, а не покажу демо</i><br><a href=\"https://www.kommersant.ru/doc/8973433\" target=\"_blank\">Коммерсантъ</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "23.09.2026", "type": "рынок", "topics": ["Рынок и рост", "Цена и наценка"]}, {"id": "src5", "label": "Коммерсантъ", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s8", "label": "Только 23% МСБ пробуют ИИ, и главный…", "group": "signal", "title": "<b>23.09.2026</b><br>Только 23% МСБ пробуют ИИ, и главный барьер — не цена: 38% не видят понятной пользы, 9% готовы доверить агенту автономные решения<br><br><i>внедрение ломается не на технологии — на «что это мне даёт»: мой калькулятор отвечает ровно на этот вопрос</i><br><a href=\"https://runet.news/news/80850\" target=\"_blank\">VK WorkSpace × Hi-Tech Mail</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "23.09.2026", "type": "спрос", "topics": ["МСБ и спрос", "Внедрение и практика", "Цена и наценка"]}, {"id": "src6", "label": "VK WorkSpace × Hi-Tech Mail", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s9", "label": "49% предпринимателей уже применяют ИИ…", "group": "signal", "title": "<b>07.09.2026</b><br>49% предпринимателей уже применяют ИИ, траты большинства платящих — до 3 000 ₽/мес, средний чек внедрения у малого бизнеса — 6 000 ₽<br><br><i>своя связка 2–4К ₽/мес лежит внутри рыночной нормы: платишь провайдерам, не посреднику</i><br><a href=\"https://secrets.tbank.ru/trendy/kak-predprinimateli-i-sotrudniki-ispolzuyut-ii/\" target=\"_blank\">Т-Бизнес секреты</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#8fa3c8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "07.09.2026", "type": "цена", "topics": ["МСБ и спрос", "Внедрение и практика", "Цена и наценка"]}, {"id": "src7", "label": "Т-Бизнес секреты", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s10", "label": "Рынок автономных ИИ-агентов вырастет ×4,5…", "group": "signal", "title": "<b>09.2026</b><br>Рынок автономных ИИ-агентов вырастет ×4,5 к 2028: 46% компаний уже пилотируют, 74% упираются в разрыв компетенций<br><br><i>бутылочное горлышко — не модель, а умение встроить: ровно то, за что платят на установке</i><br><a href=\"https://companies.rbc.ru/amp/news/dbe9214a-7698-43e5-9b4e-90d32f5f4029/\" target=\"_blank\">«Яков и Партнёры» × Яндекс</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "09.2026", "type": "рынок", "topics": ["Рынок и рост"]}, {"id": "src8", "label": "«Яков и Партнёры» × Яндекс", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s11", "label": "Яндекс вывел Hermes Agent в Marketplace…", "group": "signal", "title": "<b>02.09.2026</b><br>Яндекс вывел Hermes Agent в Marketplace — от 3 642 ₽/мес, без оплаты за API-ключи<br><br><i>цена VPS для агента стала решённой: рубли, без VPN, из одного окна</i><br><a href=\"https://yandex.cloud/ru/marketplace/products/yc/hermes-agent\" target=\"_blank\">Yandex Cloud Marketplace</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "02.09.2026", "type": "рынок", "topics": ["Владение и доступ", "Цена и наценка"]}, {"id": "src9", "label": "Yandex Cloud Marketplace", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s12", "label": "Сбер: 350 млрд ₽ в ИИ + «ГигаАгент» на…", "group": "signal", "title": "<b>02.09.2026</b><br>Сбер: 350 млрд ₽ в ИИ + «ГигаАгент» на ВЭФ — автономный агент на GigaChat<br><br><i>чем отличается «автономный агент» платформы от агента под твою задачу</i><br><a href=\"https://modelora.ru/news/sber-350-mlrd-gigaagent-vef-2025\" target=\"_blank\">modelora.ru</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "02.09.2026", "type": "рынок", "topics": ["Рынок и рост"]}, {"id": "src10", "label": "modelora.ru", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s13", "label": "Личный ассистент на VPS — 6 600 ₽, без…", "group": "signal", "title": "<b>30.08.2026</b><br>Личный ассистент на VPS — 6 600 ₽, без VPN на телефоне: считает смены, приходы/уходы и время сотрудников<br><br><i>живой пример связки, которая работает в МСБ-рутине прямо сейчас</i><br><a href=\"https://t.me/discoverysystem\" target=\"_blank\">кейс клиента</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#5ed9a8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "30.08.2026", "type": "кейс", "topics": ["Владение и доступ", "МСБ и спрос", "Личный кейс"]}, {"id": "src11", "label": "кейс клиента", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s14", "label": "Доля МСП с ИИ выросла с 17% до 53% за год…", "group": "signal", "title": "<b>03.08.2026</b><br>Доля МСП с ИИ выросла с 17% до 53% за год — при дорогом найме ИИ позволяет расти без расширения штата<br><br><i>барьер уже не «зачем», а «кто встроит»: компетенции и понятные сценарии — ровно то, что продаётся установкой</i><br><a href=\"https://iz.ru/2142702/2026-08-03/polovina-msp-ispolzuet-ii-dlia-sokrasheniia-izderzhek\" target=\"_blank\">Известия × ПСБ</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "03.08.2026", "type": "спрос", "topics": ["Рынок и рост", "МСБ и спрос", "Цена и наценка"]}, {"id": "src12", "label": "Известия × ПСБ", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s15", "label": "400–850 млрд ₽ — агентная коммерция к…", "group": "signal", "title": "<b>24.08.2026</b><br>400–850 млрд ₽ — агентная коммерция к 2028–29, до 2–3 трлн к 2030–32<br><br><i>окно спроса открыто 2–3 года, не один сезон</i><br><a href=\"https://datainsight.ru/\" target=\"_blank\">Data Insight</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "24.08.2026", "type": "спрос", "topics": ["Рынок и рост"]}, {"id": "src13", "label": "Data Insight", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s16", "label": "55 млрд ₽/год — расходы Яндекса на Алису…", "group": "signal", "title": "<b>27.07.2026</b><br>55 млрд ₽/год — расходы Яндекса на Алису AI · 24 млн человек в неделю решают в ней задачи<br><br><i>привычка решать задачи с ИИ уже сформирована — вопрос в инструментах</i><br><a href=\"https://vc.ru/services/1800000-55-mlrd-alice-ai-2025\" target=\"_blank\">vc.ru</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "27.07.2026", "type": "спрос", "topics": ["Рынок и рост"]}, {"id": "src14", "label": "vc.ru", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s17", "label": "Запросы о digital-услугах выросли на 17%…", "group": "signal", "title": "<b>01.07.2026</b><br>Запросы о digital-услугах выросли на 17% г/г — весь рост дала формулировка «внедрение ИИ»: без неё категория упала бы на 28%<br><br><i>спрос сместился от «посмотреть демо» к «внедрить»</i><br><a href=\"https://elama.ru/blog/digital-uslugi-17-procent-2025/\" target=\"_blank\">eLama</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "01.07.2026", "type": "спрос", "topics": ["Рынок и рост", "Внедрение и практика"]}, {"id": "src15", "label": "eLama", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "t:Владение и доступ", "label": "Владение и доступ", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Рынок и рост", "label": "Рынок и рост", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:МСБ и спрос", "label": "МСБ и спрос", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Внедрение и практика", "label": "Внедрение и практика", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Цена и наценка", "label": "Цена и наценка", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Личный кейс", "label": "Личный кейс", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}], "edges": [{"from": "s0", "to": "src0", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s1", "to": "src0", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s2", "to": "src1", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s3", "to": "src2", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s4", "to": "src3", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s5", "to": "src4", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s6", "to": "src4", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s7", "to": "src5", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s8", "to": "src6", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s9", "to": "src7", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s10", "to": "src8", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s11", "to": "src9", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s12", "to": "src10", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s13", "to": "src11", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s14", "to": "src12", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s15", "to": "src13", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s16", "to": "src14", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s17", "to": "src15", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s0", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s0", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s1", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s1", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s2", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s3", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s4", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s5", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s6", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s7", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s7", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s8", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s8", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s8", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s9", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s9", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s9", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s10", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s11", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s11", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s12", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s13", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s13", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s13", "to": "t:Личный кейс", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s14", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s14", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s14", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s15", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s16", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s17", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s17", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}]};
+  var DATA = {"nodes": [{"id": "s0", "label": "МСБ присматривается к мультиагентному ИИ…", "group": "signal", "title": "<b>11.10.2026</b><br>МСБ присматривается к мультиагентному ИИ, но массовым это ещё не стало: сегмент агентов оценивают в 15–25 млрд ₽<br><br><i>для ИП важны три вещи: низкий порог входа, локальное развёртывание и независимость от внешних провайдеров — проверь, что твоя связка это выдерживает</i><br><a href=\"https://www1.ru/articles/2026/10/11/malyi-i-srednii-biznes-v-rossii-prismatrivaetsia-k-multiagentnomu-ii.html\" target=\"_blank\">Первый технический</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "11.10.2026", "type": "спрос", "topics": ["Рынок и рост", "МСБ и спрос"]}, {"id": "src0", "label": "Первый технический", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s1", "label": "КАМАЗ разложил агентов на 4 уровня…", "group": "signal", "title": "<b>08.10.2026</b><br>КАМАЗ разложил агентов на 4 уровня автономности — от чат-ассистента до действия без человека; на DFMEA согласование сжалось с 6–10 дней до 2–3<br><br><i>та же лестница применима к МСБ: начинать с ассистента, а не с «пусть решает сам»</i><br><a href=\"https://www1.ru/news/2026/10/08/kamaz-stroit-ii-agentov-po-lestnice-avtonomnosti-ot-assistenta-do-resenii-bez-celoveka.html\" target=\"_blank\">Первый технический</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#5ed9a8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "08.10.2026", "type": "кейс", "topics": ["МСБ и спрос", "Внедрение и практика"]}, {"id": "s2", "label": "ИИ-агент зашёл внутрь 1С: работает по…", "group": "signal", "title": "<b>07.10.2026</b><br>ИИ-агент зашёл внутрь 1С: работает по правам пользователя, чувствительные операции — с подтверждением, действия в журнале аудита<br><br><i>вот как выглядит «агент в контуре»: доступ по правам, подтверждение на критичном, аудит — это три вещи, которые стоит требовать в своём контуре</i><br><a href=\"https://www.cnews.ru/news/line/2026-10-07_k2teh_zapustil_ii-agenta\" target=\"_blank\">CNews</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#5ed9a8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "07.10.2026", "type": "кейс", "topics": ["Внедрение и практика"]}, {"id": "src1", "label": "CNews", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s3", "label": "От ИИ больше не ждут демонстрации — ждут…", "group": "signal", "title": "<b>07.10.2026</b><br>От ИИ больше не ждут демонстрации — ждут экономику: сколько стоит внедрение и когда окупится<br><br><i>экономику считай до оплаты: «внедрим, а потом посмотрим» больше не проходит</i><br><a href=\"https://www.vedomosti.ru/technologies/industries_and_markets/articles/2026/10/07/1234845-ot-pilotov-k-prodakshenu-kak-rossiiskii-biznes-uchitsya-schitat-effekt-ot-ii\" target=\"_blank\">Ведомости</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "07.10.2026", "type": "рынок", "topics": ["Внедрение и практика"]}, {"id": "src2", "label": "Ведомости", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s4", "label": "Новая волна блокировок Claude: 1 октября…", "group": "signal", "title": "<b>02.10.2026</b><br>Новая волна блокировок Claude: 1 октября режут аккаунты россиян, включая плативших $200/мес; в письме — «подозрительные сигналы»<br><br><i>даже с зарубежным VPS и оплатой картой — доступ отзывают. Подписка не твоя, доступ не твой</i><br><a href=\"https://ru.themoscowtimes.com/2026/10/02/polzovateli-ii-ot-claude-v-rossii-pozhalovalis-na-blokirovku-akkauntov-a207652\" target=\"_blank\">The Moscow Times</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "02.10.2026", "type": "рынок", "topics": ["Владение и доступ"]}, {"id": "src3", "label": "The Moscow Times", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s5", "label": "Замер доступности 25 ИИ-сервисов с…", "group": "signal", "title": "<b>01.10.2026</b><br>Замер доступности 25 ИИ-сервисов с домашнего IP: живых 9, не пускают 15; OpenAI, Anthropic и Google отвечают 403 unsupported_country<br><br><i>половина запасного списка сидит между двумя регуляторами: бэкап модели — не паранойя, а гигиена</i><br><a href=\"https://habr.com/ru/articles/1089656/\" target=\"_blank\">Habr</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "01.10.2026", "type": "рынок", "topics": ["Владение и доступ"]}, {"id": "src4", "label": "Habr", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s6", "label": "ChatGPT перестал открываться в России на…", "group": "signal", "title": "<b>01.10.2026</b><br>ChatGPT перестал открываться в России на сетевом уровне: с 6 сентября соединение обрывается до обращения к серверам OpenAI, смена DNS больше не помогает<br><br><i>два замка разом: региональный отказ OpenAI и сетевой фильтр. Локальный контур этих замков не замечает</i><br><a href=\"https://habr.com/ru/companies/study_ai/articles/1085756/\" target=\"_blank\">Habr</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "01.10.2026", "type": "рынок", "topics": ["Владение и доступ"]}, {"id": "s7", "label": "Рынок генеративного ИИ в РФ достиг 60…", "group": "signal", "title": "<b>23.09.2026</b><br>Рынок генеративного ИИ в РФ достиг 60 млрд ₽ и вышел из стадии экспериментов — агенты названы главным направлением роста<br><br><i>через API Yandex AI Studio за полгода — 597 млрд токенов (×18 за год) и 30 тыс. агентов: покупают встроенное, а не демо</i><br><a href=\"https://www.kommersant.ru/doc/8973433\" target=\"_blank\">Коммерсантъ</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "23.09.2026", "type": "рынок", "topics": ["Рынок и рост", "Цена и наценка"]}, {"id": "src5", "label": "Коммерсантъ", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s8", "label": "Только 23% МСБ пробуют ИИ, и главный…", "group": "signal", "title": "<b>23.09.2026</b><br>Только 23% МСБ пробуют ИИ, и главный барьер — не цена: 38% не видят понятной пользы, 9% готовы доверить агенту автономные решения<br><br><i>внедрение ломается не на технологии — на «что это мне даёт»: ответ на него нужен до оплаты, а не после</i><br><a href=\"https://runet.news/news/80850\" target=\"_blank\">VK WorkSpace × Hi-Tech Mail</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "23.09.2026", "type": "спрос", "topics": ["МСБ и спрос", "Внедрение и практика", "Цена и наценка"]}, {"id": "src6", "label": "VK WorkSpace × Hi-Tech Mail", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s9", "label": "49% предпринимателей уже применяют ИИ…", "group": "signal", "title": "<b>07.09.2026</b><br>49% предпринимателей уже применяют ИИ, траты большинства платящих — до 3 000 ₽/мес, средний чек внедрения у малого бизнеса — 6 000 ₽<br><br><i>своя связка 2–4К ₽/мес лежит внутри рыночной нормы: платишь провайдерам, не посреднику</i><br><a href=\"https://secrets.tbank.ru/trendy/kak-predprinimateli-i-sotrudniki-ispolzuyut-ii/\" target=\"_blank\">Т-Бизнес секреты</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#8fa3c8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "07.09.2026", "type": "цена", "topics": ["МСБ и спрос", "Внедрение и практика", "Цена и наценка"]}, {"id": "src7", "label": "Т-Бизнес секреты", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s10", "label": "Рынок автономных ИИ-агентов вырастет ×4,5…", "group": "signal", "title": "<b>09.2026</b><br>Рынок автономных ИИ-агентов вырастет ×4,5 к 2028: 46% компаний уже пилотируют, 74% упираются в разрыв компетенций<br><br><i>бутылочное горлышко — не модель, а умение встроить в свои процессы: это и есть узкое место</i><br><a href=\"https://companies.rbc.ru/amp/news/dbe9214a-7698-43e5-9b4e-90d32f5f4029/\" target=\"_blank\">«Яков и Партнёры» × Яндекс</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "09.2026", "type": "рынок", "topics": ["Рынок и рост"]}, {"id": "src8", "label": "«Яков и Партнёры» × Яндекс", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s11", "label": "Яндекс вывел Hermes Agent в Marketplace…", "group": "signal", "title": "<b>02.09.2026</b><br>Яндекс вывел Hermes Agent в Marketplace — от 3 642 ₽/мес, без оплаты за API-ключи<br><br><i>цена VPS для агента стала решённой: рубли, без VPN, из одного окна</i><br><a href=\"https://yandex.cloud/ru/marketplace/products/yc/hermes-agent\" target=\"_blank\">Yandex Cloud Marketplace</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "02.09.2026", "type": "рынок", "topics": ["Владение и доступ", "Цена и наценка"]}, {"id": "src9", "label": "Yandex Cloud Marketplace", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s12", "label": "Сбер: 350 млрд ₽ в ИИ + «ГигаАгент» на…", "group": "signal", "title": "<b>02.09.2026</b><br>Сбер: 350 млрд ₽ в ИИ + «ГигаАгент» на ВЭФ — автономный агент на GigaChat<br><br><i>чем отличается «автономный агент» платформы от агента под твою задачу</i><br><a href=\"https://modelora.ru/news/sber-350-mlrd-gigaagent-vef-2025\" target=\"_blank\">modelora.ru</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#7bc4ff"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "02.09.2026", "type": "рынок", "topics": ["Рынок и рост"]}, {"id": "src10", "label": "modelora.ru", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s13", "label": "Личный ассистент на VPS — 6 600 ₽, без…", "group": "signal", "title": "<b>30.08.2026</b><br>Личный ассистент на VPS — 6 600 ₽, без VPN на телефоне: считает смены, приходы/уходы и время сотрудников<br><br><i>живой пример связки, которая работает в МСБ-рутине прямо сейчас</i><br><a href=\"https://t.me/discoverysystem\" target=\"_blank\">кейс клиента</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#5ed9a8"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "30.08.2026", "type": "кейс", "topics": ["Владение и доступ", "МСБ и спрос", "Личный кейс"]}, {"id": "src11", "label": "кейс клиента", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s14", "label": "Доля МСП с ИИ выросла с 17% до 53% за год…", "group": "signal", "title": "<b>03.08.2026</b><br>Доля МСП с ИИ выросла с 17% до 53% за год — при дорогом найме ИИ позволяет расти без расширения штата<br><br><i>барьер уже не «зачем», а «кто встроит»: компетенции и понятные сценарии решают, кто доведёт внедрение до конца</i><br><a href=\"https://iz.ru/2142702/2026-08-03/polovina-msp-ispolzuet-ii-dlia-sokrasheniia-izderzhek\" target=\"_blank\">Известия × ПСБ</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "03.08.2026", "type": "спрос", "topics": ["Рынок и рост", "МСБ и спрос", "Цена и наценка"]}, {"id": "src12", "label": "Известия × ПСБ", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s15", "label": "400–850 млрд ₽ — агентная коммерция к…", "group": "signal", "title": "<b>24.08.2026</b><br>400–850 млрд ₽ — агентная коммерция к 2028–29, до 2–3 трлн к 2030–32<br><br><i>окно спроса открыто 2–3 года, не один сезон</i><br><a href=\"https://datainsight.ru/\" target=\"_blank\">Data Insight</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "24.08.2026", "type": "спрос", "topics": ["Рынок и рост"]}, {"id": "src13", "label": "Data Insight", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s16", "label": "55 млрд ₽/год — расходы Яндекса на Алису…", "group": "signal", "title": "<b>27.07.2026</b><br>55 млрд ₽/год — расходы Яндекса на Алису AI · 24 млн человек в неделю решают в ней задачи<br><br><i>привычка решать задачи с ИИ уже сформирована — вопрос в инструментах</i><br><a href=\"https://vc.ru/services/1800000-55-mlrd-alice-ai-2025\" target=\"_blank\">vc.ru</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "27.07.2026", "type": "спрос", "topics": ["Рынок и рост"]}, {"id": "src14", "label": "vc.ru", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "s17", "label": "Запросы о digital-услугах выросли на 17%…", "group": "signal", "title": "<b>01.07.2026</b><br>Запросы о digital-услугах выросли на 17% г/г — весь рост дала формулировка «внедрение ИИ»: без неё категория упала бы на 28%<br><br><i>спрос сместился от «посмотреть демо» к «внедрить»</i><br><a href=\"https://elama.ru/blog/digital-uslugi-17-procent-2025/\" target=\"_blank\">eLama</a>", "shape": "box", "color": {"background": "rgba(22,27,48,.95)", "border": "#f0b24a"}, "font": {"color": "#eef1f8", "size": 13, "face": "IBM Plex Sans"}, "borderWidth": 2, "margin": 10, "date": "01.07.2026", "type": "спрос", "topics": ["Рынок и рост", "Внедрение и практика"]}, {"id": "src15", "label": "eLama", "group": "source", "shape": "hexagon", "color": {"background": "rgba(35,42,63,.9)", "border": "#8fa3c8"}, "font": {"color": "#aab4c8", "size": 12}, "margin": 8}, {"id": "t:Владение и доступ", "label": "Владение и доступ", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Рынок и рост", "label": "Рынок и рост", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:МСБ и спрос", "label": "МСБ и спрос", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Внедрение и практика", "label": "Внедрение и практика", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Цена и наценка", "label": "Цена и наценка", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}, {"id": "t:Личный кейс", "label": "Личный кейс", "group": "topic", "shape": "ellipse", "color": {"background": "#7bc4ff", "border": "#7bc4ff"}, "font": {"color": "#0e1220", "size": 14, "bold": true}, "margin": 10}], "edges": [{"from": "s0", "to": "src0", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s1", "to": "src0", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s2", "to": "src1", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s3", "to": "src2", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s4", "to": "src3", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s5", "to": "src4", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s6", "to": "src4", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s7", "to": "src5", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s8", "to": "src6", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s9", "to": "src7", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s10", "to": "src8", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s11", "to": "src9", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s12", "to": "src10", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s13", "to": "src11", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s14", "to": "src12", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s15", "to": "src13", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s16", "to": "src14", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s17", "to": "src15", "color": {"color": "rgba(143,163,200,.35)"}, "width": 1}, {"from": "s0", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s0", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s1", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s1", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s2", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s3", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s4", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s5", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s6", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s7", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s7", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s8", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s8", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s8", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s9", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s9", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s9", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s10", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s11", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s11", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s12", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s13", "to": "t:Владение и доступ", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s13", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s13", "to": "t:Личный кейс", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s14", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s14", "to": "t:МСБ и спрос", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s14", "to": "t:Цена и наценка", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s15", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s16", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s17", "to": "t:Рынок и рост", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}, {"from": "s17", "to": "t:Внедрение и практика", "color": {"color": "rgba(123,196,255,.45)"}, "width": 2, "dashes": true}]};
   var net = null, nodes = null, edges = null;
   var activeType = null;
 
