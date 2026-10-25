@@ -261,9 +261,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <link rel="stylesheet" href="ds-base.css"/>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<nav class="top" aria-label="Основная навигация"><div class="wrap">
-<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">Рынок ИИ</a><a href="system.html">система</a><a href="clarity.html">Цены</a><a href="proof.html">Внедрения</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
-</div></nav>
+<nav class="top" aria-label="Основная навигация" data-ds-nav><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"/><span>Discovery System</span></a></div></nav>
 
 <header class="hero"><div class="wrap">
 <p class="sub rv">рынок · сентябрь 2026 · каждый факт = источник + дата</p>
@@ -534,5 +532,6 @@ if('IntersectionObserver' in window){
   window.addEventListener('scroll', function(){ if (window.scrollY > 200) setTimeout(revealAll, 600); }, { passive: true, once: true });
 })();
 </script>
+<script src="ds-nav.js" defer></script>
 </body>
 </html>
