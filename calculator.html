@@ -438,6 +438,10 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="year" id="yearBox" style="display:none"></div>
         <div class="limits" id="limitsBox" style="display:none"></div>
         <div class="accept" id="acceptBox" style="display:none"></div>
+        <div class="order-cta" id="orderCta" style="display:none;margin-top:18px">
+          <button class="btn-cta" id="orderBtn" style="width:100%">У меня заказ — хочу решить сейчас →</button>
+          <p class="oc-note" style="font:400 12.5px/1.55 var(--sans);color:var(--meta);margin:10px 0 0">Откроется диалог со мной: сообщение уже заполнено твоим расчётом и формой запроса — допиши своими словами или сотри и напиши как есть.</p>
+        </div>
       </div>
       <div class="diag" id="diagBox" style="display:none">
         <div class="diag-tag">Начнём с диагностики</div>
@@ -1197,7 +1201,26 @@ function recalcPayback(){
   }
   document.getElementById('pbNote').textContent='\u0421\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0435\u0441\u0442\u043d\u043e: \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u044f = \u0447\u0430\u0441\u044b \u0430\u0433\u0435\u043d\u0442\u0430 \u00d7 \u0442\u0432\u043e\u044f \u0446\u0435\u043d\u0430 \u0447\u0430\u0441\u0430'+(e.base>0?' + \u0443\u0445\u043e\u0434 \u0441 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432':'')+' \u2212 \u0432\u043b\u0430\u0434\u0435\u043d\u0438\u0435.';
   updateYearBox(e,netMonthly,st);
+  showOrderCta(e);
 }
+function showOrderCta(e){
+  var box=document.getElementById('orderCta'); if(!box) return;
+  if(e&&e.monthly) box.style.display='block';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var b=document.getElementById('orderBtn'); if(!b) return;
+  b.addEventListener('click',function(){
+    var e=estimate();
+    var monthly=(e&&e.monthly)?e.monthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441':'\u0435\u0449\u0451 \u043d\u0435 \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u043d\u043e';
+    var msg='\u0412\u0438\u043a\u0442\u043e\u0440, \u043f\u0440\u0438\u0432\u0435\u0442! \u0425\u043e\u0447\u0443 \u0432\u043d\u0435\u0434\u0440\u0438\u0442\u044c \u0430\u0433\u0435\u043d\u0442\u0430 \u2014 \u0440\u0430\u0441\u0447\u0451\u0442 \u0438\u0437 \u043a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440\u0430 \u043f\u0440\u0438\u043b\u0430\u0433\u0430\u044e.\n\n'
+      +'\u0427\u0442\u043e \u0437\u0430 \u0440\u0443\u0442\u0438\u043d\u0430: [\u0434\u0432\u0443\u043c\u044f \u0441\u043b\u043e\u0432\u0430\u043c\u0438]\n'
+      +'\u0427\u0442\u043e \u0434\u0435\u043b\u0430\u0435\u0442\u0441\u044f \u0440\u0443\u043a\u0430\u043c\u0438: [\u0447\u0442\u043e \u0437\u0430\u0431\u0440\u0430\u0442\u044c \u0443 \u0430\u0433\u0435\u043d\u0442\u0430]\n'
+      +'\u041a\u043e\u0433\u0434\u0430 \u043d\u0443\u0436\u043d\u043e: [\u0441\u0440\u043e\u043a]\n'
+      +'\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0430 \u0437\u0430\u043f\u0443\u0441\u043a: [\u0435\u0441\u0442\u044c / \u043d\u0435\u0442]\n\n'
+      +'\u0420\u0430\u0441\u0447\u0451\u0442 \u0438\u0437 \u043a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440\u0430: '+monthly;
+    window.open('https://t.me/soulvictor?text='+encodeURIComponent(msg),'_blank','noopener');
+  });
+});
 function updateYearBox(e,net,st){
   var box=document.getElementById('yearBox'); if(!box)return;
   if(!net||net<=0){

@@ -409,6 +409,13 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
 .cases-dots i.on{background:var(--accent)}
 @media (max-width:760px){.cases-foot{justify-content:center}}
 
+/* кнопка «написать мне по услуге» — рядом с оплатой (два пути: диалог или ускоренная оплата) */
+.btn-tg{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  padding:0 18px;border:1px solid var(--line);border-radius:10px;
+  background:transparent;color:var(--ink);font:500 14px/1 var(--sans);text-decoration:none;
+  transition:border-color .18s,background .18s}
+.btn-tg:hover{border-color:rgba(123,196,168,.5);background:rgba(123,196,168,.08)}
+
 /* ═══ СИСТЕМА НАВА (ds-nav.js) ═══
    Нав рендерится из одного конфига: единый регистр, верный активный пункт.
    На мобилке — домашний логотип строкой, пункты одной прокручиваемой строкой

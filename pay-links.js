@@ -25,7 +25,7 @@ var DS_PAY = {
   /* ── Разовые: цифровые материалы ───────────────────────── */
   guide:   {price:5000,  name:'Гайд «20 сборок»',
             url:'https://auth.robokassa.ru/merchant/Invoice/GEV6reyqiEWXzYG_Mkulbw'},
-  build:   {price:7000,  name:'Гайд персональной сборки',
+  build:   {price:7000,  name:'Архитектура агента (консультация + готовая конфигурация)',
             url:'https://auth.robokassa.ru/merchant/Invoice/RjF3Mh-GhUmFIiCWVxkMFA'},
 
   /* ── Разовые: внедрение (лестница 15/20/30/60) ─────────── */
@@ -99,27 +99,38 @@ var DS_TRIBUTE_SUPPORT  = DS_PAY.support.url;
 (function(){
   function ready(fn){ if(document.readyState!=='loading'){fn();} else {document.addEventListener('DOMContentLoaded',fn);} }
   ready(function(){
-    var nodes=document.querySelectorAll('[data-buy]');
-    for(var i=0;i<nodes.length;i++){
-      (function(el){
-        var key=el.getAttribute('data-buy');
-        var prod=DS_PAY[key];
-        if(!prod) return;
-        var isLink=el.tagName==='A';
-        if(prod.url){
-          if(isLink){ el.setAttribute('href',prod.url); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
-          el.classList.add('buy-ready');
-          el.setAttribute('data-ready','1');
-        } else {
-          /* ссылки нет — собираем заказ текстом */
-          var txt='Хочу: '+prod.name+' ('+prod.price.toLocaleString('ru-RU')+' ₽). Подскажите, как оплатить.';
-          if(isLink){ el.setAttribute('href',DS_TG_DIRECT+'?text='+encodeURIComponent(txt)); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
-          el.classList.add('buy-pending');
-        }
-        var lbl=el.getAttribute('data-buy-label');
-        if(lbl) el.textContent=lbl;
-        /* на кнопке-ссылке без ссылки пишем «Написать →» */
-      })(nodes[i]);
-    }
-  });
-})();
+      var nodes=document.querySelectorAll('[data-buy]');
+      for(var i=0;i<nodes.length;i++){
+        (function(el){
+          var key=el.getAttribute('data-buy');
+          var prod=DS_PAY[key];
+          if(!prod) return;
+          var isLink=el.tagName==='A';
+          if(prod.url){
+            if(isLink){ el.setAttribute('href',prod.url); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
+            el.classList.add('buy-ready');
+            el.setAttribute('data-ready','1');
+          } else {
+            /* ссылки нет — собираем заказ текстом */
+            var txt='Хочу: '+prod.name+' ('+prod.price.toLocaleString('ru-RU')+' ₽). Подскажите, как оплатить.';
+            if(isLink){ el.setAttribute('href',DS_TG_DIRECT+'?text='+encodeURIComponent(txt)); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
+            el.classList.add('buy-pending');
+          }
+          var lbl=el.getAttribute('data-buy-label');
+          if(lbl) el.textContent=lbl;
+          /* на кнопке-ссылке без ссылки пишем «Написать →» */
+        })(nodes[i]);
+      }
+      /* кнопки «написать мне по услуге»: текст сообщения собирается из data-tg */
+      var tgs=document.querySelectorAll('[data-tg]');
+      for(var j=0;j<tgs.length;j++){
+        (function(el){
+          var t=el.getAttribute('data-tg');
+          if(!t) return;
+          var msg=t+'\n\nХочу решить сейчас — подскажи, что нужно от меня и какие сроки.';
+          el.setAttribute('href','https://t.me/soulvictor?text='+encodeURIComponent(msg));
+          el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
+        })(tgs[j]);
+      }
+    });
+  })();

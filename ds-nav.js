@@ -26,7 +26,6 @@
 
   var NAV = [
     { key: 'system',   href: 'system.html',   label: 'Система' },
-    { key: 'cases',    href: 'proof.html',    label: 'Внедрения' },
     { key: 'prices',   href: 'clarity.html',  label: 'Цены' },
     { key: 'market',   href: 'market.html',   label: 'Рынок ИИ' }
   ];
@@ -36,7 +35,7 @@
   var ACTIVE = {
     'index.html': null,
     'system.html': 'system',
-    'proof.html': 'cases',
+    'proof.html': 'system',
     'market.html': 'market',
     'channel.html': 'market',
     'clarity.html': 'prices',
