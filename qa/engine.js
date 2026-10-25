@@ -277,6 +277,48 @@ function recommendProduct(){
   if(budget==='b3') return 'table';                 // денег мало — входной продукт
   return teamScale()?'install':'build';
 }
+function recPrice(){
+  const k=recommendProduct();
+  if(k==='table') return 5000;
+  if(k==='build') return 7000;
+  if(k==='optimization') return 25000;
+  const team=(conns.includes('crm')||conns.includes('avito')||goals.filter(g=>g!=='unsure').length>=3);
+  return team?30000:((device==='vps'||device==='host')?20000:15000);
+}
+/* Сравнение под сценарий. Раньше все видели одинаковый экран: цена + часы.
+   Теперь каждый видит свою пару чисел — то, с чем он сравнивает. */
+function renderHeroCompare(e,rate){
+  const box=document.getElementById('heroCompare'); if(!box)return;
+  const st=STARTS.find(x=>x.id===start)||STARTS[0];
+  const M=e.monthly.toLocaleString('ru-RU');
+  const B=st.base?st.base.toLocaleString('ru-RU'):'0';
+  let leftL='Сейчас', leftV=B+' ₽', rightL='С владением', rightV=M+' ₽/мес', note='';
+  if(start==='people'){
+    leftL='Человек сейчас'; leftV=B+' ₽/мес'; rightL='Агент под ключ'; rightV=M+' ₽/мес';
+    note='Агент забирает рутину ('+e.hours+' ч/мес), человек остаётся на том, что требует головы. Разница '+Math.max(0,st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес.';
+  } else if(start==='sub'){
+    leftL='Подписка сейчас'; leftV=B+' ₽/мес'; rightL='Своя связка'; rightV=M+' ₽/мес';
+    note=(e.monthly<st.base
+      ? 'Дешевле на '+(st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес. '
+      : 'Дороже на '+(e.monthly-st.base).toLocaleString('ru-RU')+' ₽/мес — платишь за то, что контур твой: ')
+      +'аккаунт и данные у тебя, отключить не смогут.';
+  } else if(start==='legacy'){
+    leftL='Уходит сейчас'; leftV='~'+B+' ₽/мес'; rightL='После оптимизации'; rightV=M+' ₽/мес';
+    note='Сначала аудит: где именно утекают токены и время. Цена работ — после аудита, до старта.';
+  } else if(start==='hardware'){
+    leftL='Железо'; leftV='уже твоё'; rightL='Провайдеру'; rightV='0 ₽/мес';
+    note='Модель работает локально — за токены не платишь. Собираешь по гайду за 3–4 часа.';
+  } else {
+    leftL='Сейчас на ИИ'; leftV='0 ₽'; rightL='Владение'; rightV=M+' ₽/мес';
+    note='Первый шаг — '+recPrice().toLocaleString('ru-RU')+' ₽. Дальше платишь только провайдерам, без наценки.';
+  }
+  box.innerHTML=
+    '<div class="hc-cell"><small>'+leftL+'</small><b>'+leftV+'</b></div>'+
+    '<div class="hc-arrow">→</div>'+
+    '<div class="hc-cell after"><small>'+rightL+'</small><b>'+rightV+'</b></div>'+
+    '<div class="hc-note">'+note+'</div>';
+  box.style.display='block';
+}
 function recWhy(key){
   if(key==='optimization') return 'У тебя уже есть связка, и она мешает. Сначала аудит: где утекают токены и время, потом пересборка. Новое строить не надо.';
   if(key==='table') return 'Тебе дешевле собрать самому: 20 готовых конфигураций с промптами и ценами запуска. 3–4 часа — и агент работает.';
@@ -658,6 +700,7 @@ function calculate(){
   document.getElementById('ahaSaving').innerHTML='\u043e\u0441\u0432\u043e\u0431\u043e\u0436\u0434\u0430\u0435\u0442 ~'+days(e.hours)
     +' \u00b7 <b>\u2248 '+_saved.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b> \u043f\u043e \u0441\u0442\u0430\u0432\u043a\u0435 '+_rate.toLocaleString('ru-RU')+' \u20bd/\u0447';
   document.getElementById('ahaSavingNote').textContent='\u041d\u0430 \u00ab'+aut.label+'\u00bb \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0441\u0442\u0438 \u0430\u0433\u0435\u043d\u0442 \u0431\u0435\u0440\u0451\u0442 \u043d\u0430 \u0441\u0435\u0431\u044f \u0440\u0443\u0442\u0438\u043d\u0443, \u0430 \u0442\u044b \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0448\u044c \u0432\u0440\u0435\u043c\u044f. \u0421\u0442\u0430\u0432\u043a\u0443 \u043c\u0435\u043d\u044f\u0435\u0448\u044c \u043f\u043e\u043b\u0437\u0443\u043d\u043a\u043e\u043c \u043d\u0438\u0436\u0435.';
+  renderHeroCompare(e,_rate);
 
   const detail=document.getElementById('detailBox');
   detail.style.display='block';
