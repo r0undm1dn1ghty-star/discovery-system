@@ -298,7 +298,11 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
   }
   /* исключения, оставленные осознанно: номера шагов (.sn) — крупнее не нужны,
      метки внутри SVG остаются частью графики */
-  span.sn { font-size: 12px; }
+  span.sn { font-size: 12.5px; }
+  .stepname .sn,
+  button.stepname > span.sn,
+  .steps .stepname .sn,
+  .steps .stepname.done .sn { font-size: 12.5px; }
 
   /* остатки: подписи под ценой на странице наценки и мелкие строки в списках */
   small,
@@ -315,4 +319,31 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
 @media (max-width: 760px) {
   .screen-tabs { gap: 10px; flex-wrap: wrap; padding: 14px 16px; }
   .screen-tabs > * { font-size: 12.5px; padding-left: 0; padding-right: 0; }
+}
+
+/* ═══ ЛЕГАСИ-ФИКС 24.10 (точный): правила страниц, которые были специфичнее слоя ═══
+   Замер показал остатки мелкого текста, которые прошлые заходы не брали: страницы
+   задают размер через КОРОТКУЮ запись `font:` или двухклассовые селекторы, а такие
+   правила бьют однотеговые. Здесь повторяем их селекторы слово в слово — позиция
+   в конце файла даёт победу при равной специфичности. */
+@media (max-width: 760px) {
+  .seg-b dt,
+  dl.seg-b > div > dt { font-size: 12.5px; }
+
+  .head small { font-size: 12.5px; }
+
+  .prep .k,
+  .nxt .k,
+  .tga label { font-size: 12.5px; }
+
+  .msg .time,
+  .tdiv .time { font-size: 12.5px; }
+
+  /* адресно: статусы законов и разделитель дня в демо-чате */
+  .law-list li span,
+  .law-list > li > span { font-size: 12.5px; }
+  .msg .tdiv,
+  .chat .tdiv,
+  .tdiv.in,
+  .tdiv { font-size: 12.5px; }
 }
