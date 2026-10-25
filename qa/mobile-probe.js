@@ -150,6 +150,7 @@ async function main() {
         const bad = vals.filter(v => v !== expect);
         if (bad.length) problems.push({ page, w: vp[0], kind: 'РИТМ', v: bad.join(','), by: 'ожидалось ' + expect + ' на ' + data.sectPads.length + ' секциях' });
       }
+      if (data && (data.tiny || []).length >= 5) problems.push({ page, w: vp[0], kind: 'МЕЛКИЙ ТЕКСТ', v: data.tiny.length, by: data.tiny.slice(0, 3).map(t => t.fs + ' × ' + t.sel.split(' > ').pop()).join(' | ') });
       if (data && (data.taps || []).length > 12) problems.push({ page, w: vp[0], kind: 'TAP-МНОГО', v: data.taps.length, by: (data.taps || []).slice(0, 2).map(t => t.sel).join(' | ') });
       await sleep(120);
     }

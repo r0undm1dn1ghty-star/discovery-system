@@ -314,4 +314,14 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInter
 els.forEach(function(el){io.observe(el)});setTimeout(function(){els.forEach(function(el){el.classList.add('in')})},2500);})();
 </script>
 <script src="ds-plasma.js" defer></script>
+<script>
+/* страховка проявления: не даём контенту остаться невидимым из-за скролл-анимации */
+(function(){
+  function revealAll(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }
+  if (document.readyState === 'complete') setTimeout(revealAll, 1200);
+  else window.addEventListener('load', function(){ setTimeout(revealAll, 1200); });
+  // и на всякий случай — если пользователь уже пролистал дальше, чем успело проявиться
+  window.addEventListener('scroll', function(){ if (window.scrollY > 200) setTimeout(revealAll, 600); }, { passive: true, once: true });
+})();
+</script>
 </body></html>
