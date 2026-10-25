@@ -294,13 +294,29 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   .cs-nav{gap:8px}
 }
 @media (prefers-reduced-motion: reduce){ .cs-prog i{transition:none} }
+
+/* ── исследования на главной: сетка карточек, единый ритм ── */
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+.res-card{display:flex;flex-direction:column;gap:8px;padding:20px 20px 18px;border:1px solid var(--line);
+  border-radius:12px;background:rgba(255,255,255,.015);text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.res-card:hover{border-color:rgba(var(--accent-rgb),.45);transform:translateY(-2px)}
+.rc-top{display:flex;align-items:baseline;gap:10px}
+.rc-date{font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.04em}
+.rc-tag{font-family:var(--mono);font-size:12.5px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em}
+.rc-name{font-family:var(--display);font-size:16.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.rc-desc{font-size:14.5px;color:var(--body);line-height:1.55;flex:1}
+.rc-go{font-size:14px;color:var(--accent);margin-top:2px}
+@media (max-width:760px){
+  .res-grid{grid-template-columns:1fr;gap:12px;margin-top:20px}
+  .res-card{padding:18px}
+}
 </style>
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <nav class="top" aria-label="Основная навигация"><div class="wrap">
-<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">Рынок ИИ</a><a href="system.html">система</a><a href="clarity.html">Цены</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">Рынок ИИ</a><a href="system.html">система</a><a href="clarity.html">Цены</a><a href="proof.html">Внедрения</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
 </div></nav>
 <header class="hero"><div class="wrap">
 <p class="sub rv">устали от подписок на чужие обещания</p>
@@ -337,48 +353,36 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="prob-item good"><span class="pi-t">своё · discovery</span><b>Связка на твоём железе</b><p>от 150 ₽/мес провайдерам локально · от 1 500 ₽/мес с сервером 24/7 · данные у тебя · отключить нельзя — она твоя</p></div>
 </div>
 </div></section>
-<section id="product"><div class="wrap">
-<p class="eyebrow rv">скиллы · сигналы · системы — в одном окне</p>
-<h2 class="rv">Проверь сам за минуту — всё с ценой и ссылкой</h2>
-<div class="screen rv">
-<div class="screen-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-<div class="screen-tabs" role="tablist" aria-label="Что внутри">
-<button role="tab" id="tab-skills" aria-controls="p-skills" aria-selected="true" class="on">скиллы · 0 ₽</button>
-<button role="tab" id="tab-signals" aria-controls="p-signals" aria-selected="false" tabindex="-1">сигналы</button>
-<button role="tab" id="tab-research" aria-controls="p-research" aria-selected="false" tabindex="-1">исследования</button>
-<button role="tab" id="tab-systems" aria-controls="p-systems" aria-selected="false" tabindex="-1">системы</button>
+<section id="research"><div class="wrap">
+<p class="eyebrow rv">исследования · свои замеры, а не обещания</p>
+<h2 class="rv">Три месяца я считал чужой рынок — вот что видно</h2>
+<p class="lead rv">Это не курс и не «10 секретов ИИ». Это замеры с источниками и датами: где тебя переплата, где умирают агенты, чем твой сегмент отличается от соседнего.</p>
+<div class="res-grid rv">
+<a class="res-card" href="agent-failures.html">
+<span class="rc-top"><span class="rc-date">26.09.2026</span><span class="rc-tag">провалы</span></span>
+<b class="rc-name">ИИ-агент, который не заработал: 76 провалов 2026</b>
+<span class="rc-desc">Семь схем, из которых умирает агент: обещали и не сделали, бот сломал доверие, настроили и бросили.</span>
+<span class="rc-go">Проверить свой случай →</span>
+</a>
+<a class="res-card" href="nacenka.html">
+<span class="rc-top"><span class="rc-date">26.09.2026</span><span class="rc-tag">токеномика</span></span>
+<b class="rc-name">Платишь бигтеху за ИИ — и не знаешь, сколько</b>
+<span class="rc-desc">Одна и та же модель у вендора и у платформы: наценка до ×148, спрятана в чтении из кэша — второй строке счёта.</span>
+<span class="rc-go">Читать замер →</span>
+</a>
+<a class="res-card" href="value-chain.html">
+<span class="rc-top"><span class="rc-date">09.2026</span><span class="rc-tag">экономика</span></span>
+<b class="rc-name">Микробизнесу и среднему бизнесу нужен разный агент</b>
+<span class="rc-desc">Карта рынка: у микробизнеса и среднего бизнеса разные деньги и цена ошибки — а продают им одинаково.</span>
+<span class="rc-go">Открыть карту →</span>
+</a>
+<a class="res-card" href="lost-accounts.html">
+<span class="rc-top"><span class="rc-date">08.2026</span><span class="rc-tag">риск</span></span>
+<b class="rc-name">Твой доступ к ИИ — не твой</b>
+<span class="rc-desc">Сколько россиян потеряли аккаунты в 2026: цена аренды чужого доступа вместо своего контура, без рефанда.</span>
+<span class="rc-go">Проверить свой случай →</span>
+</a>
 </div>
-<div class="screen-body">
-<div class="panel on" id="p-skills" role="tabpanel" aria-labelledby="tab-skills">
-<a class="row" href="https://github.com/r0undm1dn1ghty-star/ds_spiral-maturity" target="_blank" rel="noopener"><span class="rl"><b>ds_spiral-maturity</b> — 16 индикаторов за 10 минут: где бизнес на лестнице агентов A0–A4 и что внедрять, чтобы пилот не умер</span><span class="rr">0 ₽ ↗</span></a>
-<a class="row" href="https://github.com/r0undm1dn1ghty-star/ds_market-evidence" target="_blank" rel="noopener"><span class="rl"><b>ds_market-evidence</b> — отделяет спрос от вежливых лайков: каждое утверждение о рынке — с источником и датой</span><span class="rr">0 ₽ ↗</span></a>
-<a class="row" href="https://github.com/r0undm1dn1ghty-star/ds_pnl-check" target="_blank" rel="noopener"><span class="rl"><b>ds_pnl-check</b> — можно ли принимать решение на этих цифрах: сверяет прибыль с деньгами и говорит, чего не хватает</span><span class="rr">0 ₽ ↗</span></a>
-<a class="row" href="https://github.com/r0undm1dn1ghty-star/ds_geo-audit" target="_blank" rel="noopener"><span class="rl"><b>ds_geo-audit</b> — найдёт ли ChatGPT твой сайт: 92 правила, score 0–100 за 10 минут</span><span class="rr">0 ₽ ↗</span></a>
-<a class="row" href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener"><span class="rl"><b>ds_warm-lead-parser</b> — кто прямо сейчас пишет «нужен бот»: 57 каналов и бирж, скоринг 0–100</span><span class="rr">0 ₽ ↗</span></a>
-</div>
-<div class="panel" id="p-signals" role="tabpanel" aria-labelledby="tab-signals">
-<a class="row" href="https://www.kommersant.ru/doc/8973433" target="_blank" rel="noopener"><span class="rl"><b>23.09</b> Рынок генИИ в РФ достиг 60 млрд ₽ — вышел из экспериментов, агенты — главный рост</span><span class="rr">рынок ↗</span></a>
-<a class="row" href="https://runet.news/news/80850" target="_blank" rel="noopener"><span class="rl"><b>23.09</b> Лишь 23% МСБ пробуют ИИ: 38% не видят понятной пользы — барьер не в цене</span><span class="rr">спрос ↗</span></a>
-<a class="row" href="https://yandex.cloud/ru/marketplace/products/yc/hermes-agent" target="_blank" rel="noopener"><span class="rl"><b>02.09</b> Яндекс вывел Hermes Agent в Marketplace — цена VPS решена</span><span class="rr">от 3 642 ₽/мес ↗</span></a>
-<a class="row" href="https://datainsight.ru/" target="_blank" rel="noopener"><span class="rl"><b>24.08</b> Data Insight: агентная коммерция 400–850 млрд ₽ к 2028–29</span><span class="rr">спрос ↗</span></a>
-<a class="row" href="channel.html"><span class="rl">вся лента — с источниками и датами</span><span class="rr">канал →</span></a>
-</div>
-<div class="panel" id="p-research" role="tabpanel" aria-labelledby="tab-research">
-<a class="row" href="agent-failures.html"><span class="rl"><b>26.09</b> ИИ-агент, который не заработал — 76 задокументированных провалов 2026: семь схем, из которых умирает агент, и 8 пунктов приёмки</span><span class="rr">провалы ↗</span></a>
-<a class="row" href="nacenka.html"><span class="rl"><b>27.09</b> Платишь бигтеху за ИИ — и не знаешь, сколько: наценка до ×148 за «законную архитектуру», спрятана в чтении из кэша</span><span class="rr">токеномика ↗</span></a>
-<a class="row" href="value-chain.html"><span class="rl"><b>09.2026</b> Микробизнесу и среднему бизнесу нужен разный агент — карта рынка, найди свой сегмент и полную цену агента за год</span><span class="rr">экономика ↗</span></a>
-<a class="row" href="lost-accounts.html"><span class="rl"><b>08.2026</b> Твой доступ к ИИ — не твой: сколько россиян потеряли аккаунты и чем кончается аренда чужого доступа</span><span class="rr">риск ↗</span></a>
-</div>
-<div class="panel" id="p-systems" role="tabpanel" aria-labelledby="tab-systems">
-<a class="row" href="calculator.html"><span class="rl"><b>Стоимость месячного обслуживания ИИ-агента</b> — цена и сэкономленное время за 60 секунд</span><span class="rr">0 ₽ →</span></a>
-<a class="row" href="clarity.html"><span class="rl"><b>Гайд: 20 конфигураций ИИ-агентов</b> — модель, хостинг, промпты для установки в одной таблице с рисками</span><span class="rr">5 000 ₽ →</span></a>
-<a class="row" href="clarity.html"><span class="rl"><b>Персональная сборка ИИ-агента</b> — персональный гайд по установке и отладке на твоём компьютере: решаю твои риски (оплата, данные, устройства), правки до приёмки</span><span class="rr">7 000 ₽ →</span></a>
-<a class="row" href="clarity.html"><span class="rl"><b>Внедрение под ключ</b> — ПК / самозанятый / ИП / средний бизнес</span><span class="rr">15–60К →</span></a>
-<a class="row" href="https://t.me/discoverysystem" target="_blank" rel="noopener"><span class="rl">спроси про любой формат — я отвечаю сам без ботов</span><span class="rr">Telegram →</span></a>
-</div>
-</div>
-</div>
-<p class="screen-cap rv">Переключай вкладки — увидишь всё с ценой и ссылками, без твоего телефона и почты.</p>
 </div></section>
 <section id="facts"><div class="wrap">
 <p class="eyebrow rv">рынок в цифрах</p>

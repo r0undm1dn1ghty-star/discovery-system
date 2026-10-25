@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Доказательства — Discovery System</title>
+<title>Внедрения и кейсы — Discovery System</title>
 <meta name="description" content="Пять слоёв доказательств: инструменты запускаются, исследования — по источникам и датам, приёмка — по критериям до оплаты, кейс разобран до цифр. Ничего на веру."/>
 <link rel="canonical" href="https://discovery-system.ru/proof.html"/>
 <meta property="og:title" content="Доказательства — Discovery System"/>
@@ -127,13 +127,22 @@ html{scroll-behavior:auto}
 *{animation:none!important;transition:none!important}
 .js .rv{opacity:1;transform:none}
 }
+
+/* ── кейсы в шоукейсе: факты замеров и отзыв ── */
+.case-facts{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:9px}
+.case-facts li{font-size:15px;color:var(--body);line-height:1.55;padding-left:16px;position:relative}
+.case-facts li:before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.case-facts b{color:var(--ink);font-weight:600}
+.avito{margin:16px 0 0;padding:18px 20px;border-left:2px solid var(--accent);background:rgba(123,196,168,.04);
+  border-radius:0 12px 12px 0;font-size:16.5px;color:var(--ink);line-height:1.6}
+.avito span{display:block;margin-top:10px;font-family:var(--mono);font-size:12.5px;color:var(--meta);line-height:1.5}
 </style>
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <nav class="top" aria-label="Основная навигация"><div class="wrap">
-<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">Рынок ИИ</a><a href="system.html">система</a><a href="clarity.html">Цены</a><a class="cur" href="proof.html">доказательства</a><a href="channel.html">канал</a><a href="calculator.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:4px">Калькулятор</a></div></nav>
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">Рынок ИИ</a><a href="system.html">система</a><a href="clarity.html">Цены</a><a class="cur" href="proof.html">Внедрения</a><a href="channel.html">канал</a><a href="calculator.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:4px">Калькулятор</a></div></nav>
 
 <header class="hero"><div class="wrap">
 <p class="sub rv">доказательства · пять слоёв</p>
@@ -158,36 +167,11 @@ html{scroll-behavior:auto}
 <a class="btn btn-primary" href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">Открыть на GitHub →</a>
 <a class="btn btn-ghost" href="system.html">Как это устроено →</a>
 </div>
-</div></section><section><div class="wrap">
-<p class="eyebrow rv">доказательство 02 · источники и даты</p>
-<h2 class="rv">Что я выяснил про этот рынок</h2>
-<p class="lead-block rv">Четыре исследования с источниками, цифрами и датами: каждое можно проверить, каждое меняет то, как я собираю связки. Где моя проверка ломает чужое заявление — переписано открыто.</p>
-<div class="res-grid rv">
-<a class="res" href="agent-failures.html">
-<span class="res-meta"><span class="res-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h5.5"/><path d="M16.5 12H22"/><path d="M10.6 10.6l2.8 2.8"/><path d="M13.4 10.6l-2.8 2.8"/></svg></span><span class="res-date">26.09.2026</span><span class="res-tag">провалы</span></span>
-<span class="res-name">ИИ-агент, который не заработал: 76 провалов 2026</span>
-<span class="res-take">Семь схем, из которых умирает агент: обещали и не сделали, бот сломал доверие, настроили и бросили. Каждый случай — источник, цифра, дата и «что это значит для тебя».</span>
-<span class="res-go">Проверить свой случай →</span>
-</a>
-<a class="res" href="nacenka.html">
-<span class="res-meta"><span class="res-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.2 15.2L21 21"/><path d="M8.7 8.7l3.6 3.6"/><path d="M12.3 8.7l-3.6 3.6"/></svg></span><span class="res-date">26.09.2026</span><span class="res-tag">токеномика</span></span>
-<span class="res-name">Платишь бигтеху за ИИ — и не знаешь, сколько</span>
-<span class="res-take">Одна и та же модель у вендора и у платформы бигтеха: наценка до ×148, и спрятана она в чтении из кэша — второй строке счёта.</span>
-<span class="res-go">Читать замер →</span>
-</a>
-<a class="res" href="value-chain.html">
-<span class="res-meta"><span class="res-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 14.5l5-5"/><path d="M6.8 17.2a4.6 4.6 0 0 1 0-6.5L9.3 8.2"/><path d="M17.2 6.8a4.6 4.6 0 0 1 0 6.5l-2.5 2.5"/></svg></span><span class="res-date">09.2026</span><span class="res-tag">экономика</span></span>
-<span class="res-name">Микробизнесу и среднему бизнесу нужен разный агент</span>
-<span class="res-take">Найди свой сегмент на карте рынка: у микробизнеса и среднего бизнеса разные деньги и цена ошибки — а продают им одинаково.</span>
-<span class="res-go">Открыть карту →</span>
-</a>
-<a class="res" href="lost-accounts.html">
-<span class="res-meta"><span class="res-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="9.5" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 7.7-1.5"/></svg></span><span class="res-date">08.2026</span><span class="res-tag">риск</span></span>
-<span class="res-name">Твой доступ к ИИ — не твой</span>
-<span class="res-take">Сколько россиян потеряли аккаунты в 2026: цена аренды чужого доступа вместо своего контура, без рефанда.</span>
-<span class="res-go">Проверить свой случай →</span>
-</a>
-</div>
+</div></section><section id="research-bridge"><div class="wrap">
+<p class="eyebrow rv">доказательство 02 · исследования</p>
+<h2 class="rv">Почему я собираю связки именно так</h2>
+<p class="lead-block rv">Четыре моих разбора рынка — с источниками, цифрами и датами. Там видно, где умирают агенты, где спрятана переплата и чем твой сегмент отличается от соседнего.</p>
+<p class="rv link-row"><a class="btn btn-ghost" href="market.html#research">Читать исследования на «Рынке ИИ» →</a></p>
 </div></section><section><div class="wrap">
 <p class="eyebrow rv">доказательство 03 · внедрения · 2026</p>
 <h2 class="rv">Учёт перестал зависеть<br>от одного человека</h2>
@@ -224,10 +208,15 @@ html{scroll-behavior:auto}
 <div class="m-item"><span class="n">0 ₽</span><span class="t">абонентка мне — связка работает без меня</span></div>
 </div>
 <p class="rv" style="font-size:14px;color:var(--meta)">Это одно из шести внедрений: ещё пять — бухгалтеру (1С и клиенты), дизайнеру (геймдев и фриланс-заказы), маркетологу (поиск работы), повару (монтаж видео), руководителю проектов (исследования рынков).</p>
-<p class="rv" style="font-size:14px;color:var(--meta)">Разработал агента конкурентного анализа под ювелирную нишу (13.10.2026, 151 видео). Вывод замера: дома снимают рекламу — 3 300 просмотров в среднем на ролик при миллионах подписчиков; внеконкурентный слой — мастерские, которые показывают процесс изготовления, — до 20 млн. Агент открывает этот слой в любой нише: аутлаеры, форматы, что копировать и что нет.</p>
-<div class="story rv" style="border-top:1px solid var(--line-soft);margin-top:20px;padding-top:18px">
-<p><b>Отзыв с Авито · Недвижимость · 17.10.2026.</b> «Нужно было перенести с текстового документа на интерактивную карту большой объём координат. Работа выполнена быстро, качественно и по привлекательной стоимости. Рекомендую исполнителя!» — сделка состоялась, внедрение ИИ-агента (СЗ/МСБ).</p>
-</div>
+<h3 class="rv">Ювелирная ниша · замер конкурентов, 13.10.2026</h3>
+<ul class="case-facts rv">
+<li><b>Собрал агента конкурентного анализа:</b> 151 видео по нише, аутлаеры и форматы — не на глаз, а замером</li>
+<li><b>Дома снимают рекламу:</b> в среднем 3 300 просмотров на ролик при миллионах подписчиков — деньги уходят в рекламу, а не в продукт</li>
+<li><b>Внеконкурентный слой:</b> мастерские, которые показывают процесс изготовления, — до 20 млн просмотров</li>
+<li><b>Что даёт:</b> агент открывает этот слой в любой нише — что копировать, а что нет</li>
+</ul>
+<h3 class="rv" style="margin-top:30px">Недвижимость · координаты на карту, 17.10.2026</h3>
+<blockquote class="avito rv">«Работа выполнена быстро, качественно и по привлекательной стоимости. Рекомендую исполнителя!»<span>отзыв с Авито · Недвижимость · 17.10.2026 · сделка состоялась · внедрение ИИ-агента (СЗ/МСБ)</span></blockquote>
 </div></section><section><div class="wrap">
 <p class="eyebrow rv">доказательство 04 · что получаешь после оплаты</p>
 <h2 class="rv">Платишь вперёд. Поэтому довожу, пока не заработает у тебя.</h2>

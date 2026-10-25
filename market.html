@@ -238,13 +238,31 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-style:normal}
 /* luminance steps — глубина через уровни темноты, не тени */
 :root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
+
+/* ── исследования: карточки (единый вид с главной) ── */
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+.res-card{display:flex;flex-direction:column;gap:8px;padding:20px 20px 18px;border:1px solid var(--line);
+  border-radius:12px;background:rgba(255,255,255,.015);text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.res-card:hover{border-color:rgba(var(--accent-rgb),.45);transform:translateY(-2px)}
+.rc-top{display:flex;align-items:baseline;gap:10px}
+.rc-date{font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.04em}
+.rc-tag{font-family:var(--mono);font-size:12.5px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em}
+.rc-name{font-family:var(--display);font-size:16.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.rc-desc{font-size:14.5px;color:var(--body);line-height:1.55;flex:1}
+.rc-go{font-size:14px;color:var(--accent);margin-top:2px}
+@media (max-width:760px){
+  .res-grid{grid-template-columns:1fr;gap:12px;margin-top:20px}
+  .res-card{padding:18px}
+}
+/* заглушка, если переменная accent-rgb не объявлена на странице */
+:root{--accent-rgb:123,196,168}
 </style>
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <nav class="top" aria-label="Основная навигация"><div class="wrap">
-<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">Рынок ИИ</a><a href="system.html">система</a><a href="clarity.html">Цены</a><a href="proof.html">доказательства</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
+<a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28" style="vertical-align:middle;margin-right:8px;border-radius:4px"/><span style="font-weight:600;color:var(--ink)">Discovery System</span></a><a href="market.html">Рынок ИИ</a><a href="system.html">система</a><a href="clarity.html">Цены</a><a href="proof.html">Внедрения</a><a href="channel.html">канал</a><a class="calc" href="calculator.html">Калькулятор</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
@@ -371,6 +389,39 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 </div></section>
 
 <!-- ════ thesis ════ -->
+<section id="research"><div class="wrap">
+<p class="eyebrow rv">исследования · замеры с источниками и датами</p>
+<h2 class="rv">Четыре разбора, которые показывают рынок изнутри</h2>
+<p class="lead rv">Это не мнение и не «тренды ИИ». Это разборы с цифрами, датами и источниками: где умирают агенты, где спрятана переплата, чем твой сегмент отличается от соседнего и что бывает, когда доступ к ИИ не твой.</p>
+<div class="res-grid rv">
+<a class="res-card" href="agent-failures.html">
+<span class="rc-top"><span class="rc-date">26.09.2026</span><span class="rc-tag">провалы</span></span>
+<b class="rc-name">ИИ-агент, который не заработал: 76 провалов 2026</b>
+<span class="rc-desc">Семь схем, из которых умирает агент: обещали и не сделали, бот сломал доверие, настроили и бросили. Каждый случай — с источником.</span>
+<span class="rc-go">Проверить свой случай →</span>
+</a>
+<a class="res-card" href="nacenka.html">
+<span class="rc-top"><span class="rc-date">26.09.2026</span><span class="rc-tag">токеномика</span></span>
+<b class="rc-name">Платишь бигтеху за ИИ — и не знаешь, сколько</b>
+<span class="rc-desc">Одна и та же модель у вендора и у платформы бигтеха: наценка до ×148, и спрятана она в чтении из кэша — второй строке счёта.</span>
+<span class="rc-go">Читать замер →</span>
+</a>
+<a class="res-card" href="value-chain.html">
+<span class="rc-top"><span class="rc-date">09.2026</span><span class="rc-tag">экономика</span></span>
+<b class="rc-name">Микробизнесу и среднему бизнесу нужен разный агент</b>
+<span class="rc-desc">Найди свой сегмент на карте рынка: у микробизнеса и среднего бизнеса разные деньги и цена ошибки — а продают им одинаково.</span>
+<span class="rc-go">Открыть карту →</span>
+</a>
+<a class="res-card" href="lost-accounts.html">
+<span class="rc-top"><span class="rc-date">08.2026</span><span class="rc-tag">риск</span></span>
+<b class="rc-name">Твой доступ к ИИ — не твой</b>
+<span class="rc-desc">Сколько россиян потеряли аккаунты в 2026: цена аренды чужого доступа вместо своего контура, без рефанда.</span>
+<span class="rc-go">Проверить свой случай →</span>
+</a>
+</div>
+<p class="rv link-row" style="margin-top:18px"><a class="btn btn-ghost" href="channel.html">Лента сигналов по месяцам →</a></p>
+</div></section>
+
 <section id="thesis" class="thesis"><div class="wrap">
 <p class="eyebrow rv">где тебя бросают</p>
 <h2 class="rv">До оплаты — их забота. После — сам.</h2>
