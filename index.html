@@ -246,6 +246,54 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 .prob-item p{font-size:14px;color:var(--body);margin:0;line-height:1.6}
 @media(max-width:760px){.prob-grid{grid-template-columns:1fr}}
 
+
+/* ═══ КЕЙСЫ: горизонтальный рельс внедрений (24.10.2026) ═══ */
+#cases .lead{max-width:72ch;font-size:17px;color:var(--body);margin:14px 0 0}
+.cs-railwrap{position:relative;margin-top:30px}
+.cs-rail{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;
+  padding:2px 0 6px;scrollbar-width:none;-ms-overflow-style:none;scroll-padding-left:0}
+.cs-rail::-webkit-scrollbar{display:none}
+.cs-rail:focus-visible{outline:2px solid rgba(var(--accent-rgb),.55);outline-offset:8px;border-radius:12px}
+.cs-card{flex:0 0 330px;scroll-snap-align:start;display:flex;flex-direction:column;
+  border:1px solid var(--line);border-radius:10px;background:var(--ink-1);padding:20px 20px 18px;
+  transition:border-color .2s var(--ease)}
+.cs-card:hover{border-color:rgba(var(--accent-rgb),.34)}
+.cs-top{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.cs-top h3{font-size:17px;line-height:1.3;color:var(--ink);font-weight:600}
+.cs-chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);border:1px solid rgba(var(--accent-rgb),.34);border-radius:10px;padding:4px 9px;
+  white-space:nowrap;flex:0 0 auto}
+.cs-chip.mute{color:var(--meta);border-color:var(--line)}
+.cs-task{font-size:14.5px;color:var(--body);line-height:1.5;min-height:46px;margin-bottom:14px}
+.cs-ba{border-top:1px solid var(--line-soft);padding-top:12px;margin-top:auto}
+.cs-row{display:flex;gap:10px;padding:4px 0;font-size:13.5px;line-height:1.45}
+.cs-row .lb{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--meta);flex:0 0 50px;padding-top:3px}
+.cs-row .vl{color:var(--body);flex:1}
+.cs-row.after .vl{color:var(--ink)}
+.cs-num{font-family:var(--mono);font-size:12.5px;color:var(--accent);line-height:1.55;
+  margin-top:12px;padding-top:12px;border-top:1px solid var(--line-soft)}
+.cs-shot{margin-top:14px;border:1px solid var(--line-soft);border-radius:8px;background:#0d1120;overflow:hidden}
+.cs-shot .bar{display:flex;gap:5px;padding:8px 10px;border-bottom:1px solid var(--line-soft)}
+.cs-shot .bar i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.14)}
+.cs-shot .body{padding:10px 11px;font-family:var(--mono);font-size:11px;color:var(--meta);line-height:1.7}
+.cs-shot .body .hl{color:var(--accent)}
+.cs-nav{display:flex;align-items:center;gap:10px;margin-top:14px}
+.cs-nav button{font-family:var(--mono);font-size:14px;width:40px;height:40px;border-radius:8px;
+  border:1px solid var(--line);background:transparent;color:var(--body);cursor:pointer;
+  transition:color .15s,border-color .15s}
+.cs-nav button:hover{color:var(--ink);border-color:rgba(255,255,255,.26)}
+.cs-hint{font-family:var(--mono);font-size:11px;color:var(--meta);letter-spacing:.06em}
+.cs-prog{flex:1;height:2px;background:var(--line-soft);border-radius:4px;overflow:hidden;margin-left:6px}
+.cs-prog i{display:block;height:100%;width:0;background:var(--accent);border-radius:4px;
+  transition:width .12s linear}
+@media (max-width:760px){
+  .cs-card{flex:0 0 min(302px,80vw)}
+  .cs-task{min-height:0}
+  .cs-hint{display:none}
+  .cs-nav{gap:8px}
+}
+@media (prefers-reduced-motion: reduce){ .cs-prog i{transition:none} }
 </style>
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
@@ -349,6 +397,21 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <a class="sys rv" href="clarity.html" style="transition-delay:.06s"><span class="l">20 конфигураций ИИ-агентов — гайд</span><span class="r">5 000 ₽ →</span></a>
 <a class="sys rv" href="clarity.html" style="transition-delay:.12s"><span class="l">Персональный гайд — установка и отладка</span><span class="r">7 000 ₽ · правки до приёмки →</span></a>
 <div class="sys rv" style="transition-delay:.18s"><span class="l">Внедрение по твоей форме и бюджету: ПК 15 000 ₽ · самозанятый 20 000 ₽ · ИП 30 000 ₽ · средний бизнес 60 000 ₽</span><span class="r">у ИП и у отдела разные риски по данным и разные бюджеты · чек-лист приёмки — <a href="https://t.me/discoverysystem">в канале</a></span></div>
+</div></section>
+
+<section id="cases"><div class="wrap">
+<p class="eyebrow rv">что уже собрано · внедрения</p>
+<h2 class="rv">Уже собрано — разными людьми, под разные задачи</h2>
+<p class="lead rv">Не «мы лучшие». Больше восьми внедрений под разные задачи: учёт и смены, бухгалтерия, дизайн и геймдев, ювелирный бренд, монтаж видео, поиск работы, исследования рынков. Плюс инструменты, которые можно склонировать и проверить самому. У части из них агент не просто снял рутину — расширил профессию.</p>
+<div class="cs-railwrap rv">
+<div class="cs-rail" id="casesRail" tabindex="0" role="region" aria-label="Внедрения — прокручивается по горизонтали"><article class="cs-card"><div class="cs-top"><h3>Учёт, смены и сметы</h3><span class="cs-chip mute">услуги</span></div><p class="cs-task">Владелец нескольких направлений: учёт по каждому вручную в таблицах, сводки вечером, CRM нет.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">приходы и расходы — вручную; сотрудники диктуют цифры в чат, он переносит сам</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">диктует голосом — строка сама падает в таблицу; сотрудники пишут боту под своими именами</span></div></div><p class="cs-num">сводка сама в 9:00 и 21:00 · работает 24/7 на его сервере · подписок нет, доступ с телефона</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">$ hermes gateway status<br>● gateway: running<br>vault/смены/2026-09-11.md<br>- [09:20] приход 12000 направление-1 Николай<br>- [09:22] расход 3400 направление-2 сотрудник<br><span class="hl">отчёт 21:00 · собрано автоматически</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Дизайн — и вход в разработку</h3><span class="cs-chip mute">креатив</span></div><p class="cs-task">Дизайнер: визуал под задачу. Дальше — то, что он давно хотел, но не тянул: своя игра.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">макеты вручную; разработка игры — не его зона, нужен был программист</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент собирает визуал и ведёт по проекту в Unity — дизайнер начал разработку видеоигры</span></div></div><p class="cs-num">от макетов — к собственной игре на Unity · то, для чего раньше нужен был программист</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; собираю сцену: меню + первый уровень<br>Unity 6 · 2D · проект заведён<br>скрипты: 4 из 12 сгенерированы<br>ассеты: из твоих макетов (не сток)<br>открыть проект: Unity Hub → myGame<br><span class="hl">дальше идёт сам — база собрана</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Радар ниши и чужие подписки</h3><span class="cs-chip">×40 дешевле</span></div><p class="cs-task">Ювелирный бренд: нужен радар ниши. Открытый скилл есть — но внутрь зашиты чужие платные подписки.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">три сторонних сервиса внутри: 5–6 000 ₽/мес за то, что делается своими руками</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">разобрал и заменил зависимости на свои: 150 ₽/мес расходников, тот же результат</span></div></div><p class="cs-num">5–6 000 ₽/мес → 150 ₽/мес · 251 видео разобрано · 8 аутлаеров: «How to make Gold band» — 20 млн против 2.7K средних у мастерской · инструмент открыт для всех</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; аудит открытого скилла<br>найдены зависимости:<br>  Apify      — подписка<br>  TubeLab    — подписка<br>  скрейпер   — подписка<br>заменено на: yt-dlp + свой код<br>расходники: ~150 ₽/мес<br><span class="hl">открыт для всех · проверяй сам</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Бухгалтерия: 12 компаний</h3><span class="cs-chip mute">12 компаний</span></div><p class="cs-task">Самозанятая главбух: 12 компаний в ручной работе. Время съедают сверка, первичка и актуализация клиентов.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">сверка, заполнение первичных документов и актуализация по каждой компании — руками</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент забирает сверку, первичку и актуализацию — обезличенно и с юридической защитой</span></div></div><p class="cs-num">12 компаний в работе · данные обезличиваются до попадания в модель (152-ФЗ, ст. 3 п. 9; основание — ст. 6) · первичка и регистры — 402-ФЗ, ст. 9–10 · подпись и проверка остаются за главбухом</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; сверка по 12 компаниям<br>первичка к заполнению: 47<br>обезличивание на входе:<br>  ИНН → ###  ·  ФИО → клиент-01<br>  юрлицо → ООО No7<br>  152-ФЗ, ст. 3 п. 9<br>на выходе: 3 расхождения<br><span class="hl">проверяет и подписывает человек</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Видео: нарезки и сценарии</h3><span class="cs-chip mute">контент</span></div><p class="cs-task">Повар: снимает много и подолгу. Разбирать часы сырья на нарезки — руками и вечерами.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">огромные материалы лежат неразобранными; монтаж — руками, сценарии — с нуля</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент режет первичные нарезки из длинных записей, пишет сценарии и предлагает варианты склеек — без платных сервисов</span></div></div><p class="cs-num">часы сырья → готовые нарезки · сценарии и варианты склеек · без подписок на монтажные сервисы</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; сырьё: 3 файла, 2 ч 40 мин<br>первичные нарезки: 14<br>  отобрано в работу: 5<br>сценарии: 3 варианта<br>предложения по склейкам: 6<br>сервисы: не нужны<br><span class="hl">дальше человек доводит и выкладывает</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Поиск работы: стратегия и инструмент</h3><span class="cs-chip mute">карьера</span></div><p class="cs-task">Маркетолог: работа не находилась. Отклики вручную, письмо под каждую вакансию — с нуля.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">месяцы поиска без результата: ручные отклики, шаблонные письма, мимо рынка</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">сначала брифинг и карьерная стратегия, потом сборка инструмента: парсинг вакансий из открытых источников + генерация сопроводительных под каждую</span></div></div><p class="cs-num">инструмент обошёлся ниже рыночных подписок · вакансии берутся из открытых источников · письмо собирается под конкретную вакансию, а не веером</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; брифинг: цель, рынок, сильные стороны<br>стратегия — 3 трека:<br>  1) продуктовая аналитика<br>  2) growth-маркетинг<br>  3) контент<br>инструмент: парсер открытых вакансий<br>  + сопроводительное под каждую<br><span class="hl">дешевле рыночных подписок</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Исследование рынков</h3><span class="cs-chip mute">B2B</span></div><p class="cs-task">Руководитель проектов: перед защитой решения нужен рынок — цифры, конкуренты, границы.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">ручной сбор по источникам, к концу недели часть данных устарела</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент собирает срез с источниками и датами, человек интерпретирует</span></div></div><p class="cs-num">14 источников с датами за один прогон · отдельно видно, что данные НЕ доказывают</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; рынок: агентная коммерция РФ<br>источников: 14 (у каждого дата)<br>что подтверждено: 9<br>что данные НЕ доказывают: 5<br><span class="hl">границы указаны честно, а не сглажены</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Поиск заказов без бюджета</h3><span class="cs-chip mute">инструмент</span></div><p class="cs-task">Маркетингового бюджета нет, зато заказы лежат открыто: платформы, форумы, чаты, сообщества.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">ручной обход площадок — часы каждый день, и всё равно мимо: половина заявок нерелевантна</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент собирает заявки со всех площадок и отсеивает мусор — время уходит на анализ, а не на поиск</span></div></div><p class="cs-num">время на поиск сократилось, точность выросла · 63% против 47% у поиска по словам · на FL.ru — 79% на 286 постах · код открыт на GitHub</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; скан: 57 каналов + 7 бирж<br>карточек собрано: 1106<br>разметка вручную: 110<br>точность скилла: 63% (F1 0.61)<br>наивный поиск: 47% (F1 0.39)<br><span class="hl">EVAL.md в репозитории · проверь сам</span></div></div></article></div>
+<div class="cs-nav">
+<button type="button" id="csPrev" aria-label="Предыдущее внедрение">←</button>
+<button type="button" id="csNext" aria-label="Следующее внедрение">→</button>
+<span class="cs-hint">пролистай — или стрелками</span>
+<span class="cs-prog" aria-hidden="true"><i id="csProg"></i></span>
+</div>
+</div>
 </div></section>
 
 <section id="who"><div class="wrap">
@@ -467,6 +530,47 @@ else if(y<h*0.3&&shown){sc.classList.remove('show');shown=false;}
 }
 window.addEventListener('scroll',upd,{passive:true});
 upd();
+})();
+</script>
+<script>
+/* кейсы: рельс внедрений — стрелки, автопрокрутка (до первого касания), прогресс */
+(function(){
+var rail=document.getElementById('casesRail');
+if(!rail)return;
+var bar=document.getElementById('csProg');
+var cards=[].slice.call(rail.querySelectorAll('.cs-card'));
+function step(){var c=cards[0];return c?c.getBoundingClientRect().width+14:344;}
+function slide(d){rail.scrollBy({left:d*step(),behavior:'smooth'});}
+var prev=document.getElementById('csPrev'),next=document.getElementById('csNext');
+if(prev)prev.addEventListener('click',function(){slide(-1);});
+if(next)next.addEventListener('click',function(){slide(1);});
+function prog(){
+var max=rail.scrollWidth-rail.clientWidth;
+if(bar)bar.style.width=(max>1?Math.min(rail.scrollLeft/max,1)*100:100)+'%';
+}
+rail.addEventListener('scroll',prog,{passive:true});
+window.addEventListener('resize',prog);
+setTimeout(prog,60);
+rail.addEventListener('keydown',function(e){
+if(e.key==='ArrowRight'){e.preventDefault();slide(1);}
+if(e.key==='ArrowLeft'){e.preventDefault();slide(-1);}
+});
+var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduced){
+var touched=false,paused=false;
+['pointerdown','wheel','touchstart'].forEach(function(ev){
+rail.addEventListener(ev,function(){touched=true;},{passive:true});
+});
+rail.addEventListener('mouseenter',function(){paused=true;});
+rail.addEventListener('mouseleave',function(){paused=false;});
+rail.addEventListener('focusin',function(){paused=true;});
+rail.addEventListener('focusout',function(){paused=false;});
+setInterval(function(){
+if(touched||paused||document.hidden)return;
+if(rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-6){rail.scrollTo({left:0,behavior:'smooth'});}
+else{slide(1);}
+},4200);
+}
 })();
 </script>
 <script src="ds-plasma.js" defer></script>
