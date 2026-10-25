@@ -879,6 +879,11 @@ function arrangeOffers(recKey){
     else more.appendChild(el);
   });
   /* внутри «внедрения» тоже была развилка 15/20/30 — поднимаем нужный масштаб первым */
+  if(recKey!=='install'){
+    /* сброс подсветки тарифа, если внедрение не рекомендовано (иначе класс липнет между сегментами) */
+    box.querySelectorAll('button[data-tier]').forEach(b=>{b.classList.remove('tier-primary');b.style.marginTop='8px';});
+    const h0=box.querySelector('.tier-hint'); if(h0)h0.remove();
+  }
   if(recKey==='install'){
     const inst=box.querySelector('.offer-opt[data-prod="install"]');
     const btns=[...inst.querySelectorAll('button[data-tier]')];
