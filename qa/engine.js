@@ -260,8 +260,77 @@ function persona(){
   if(lowAuto) return 'P4';                                  // сам делает черновики → гайд
   return 'P3';                                              // по умолчанию — считающий
 }
-const PERSONA_COPY={
-  P1:{tag:'Твой путь — свой контур',
+/* ====== РЕКОМЕНДАЦИЯ ПРОДУКТА ПО СЕГМЕНТУ ======
+   Раньше бралось pc.best из персоны: «хочет результат» → сборка 7К.
+   Из-за этого ИП с командой и CRM получал сборку вместо внедрения 30К.
+   Теперь смотрим на масштаб: сервер/команда/интеграции → внедрение. */
+function teamScale(){
+  return (device==='vps'||device==='host')
+    || conns.includes('crm') || conns.includes('avito')
+    || goals.filter(g=>g!=='unsure').length>=3;
+}
+function recommendProduct(){
+  if(start==='legacy') return 'optimization';       // связка есть и сломана — чинить, не строить
+  if(start==='hardware') return 'table';            // железо есть — собирает сам
+  if(start==='people') return teamScale()?'install':'build';
+  if(start==='sub') return teamScale()?'install':'build';
+  if(budget==='b3') return 'table';                 // денег мало — входной продукт
+  return teamScale()?'install':'build';
+}
+function recWhy(key){
+  if(key==='optimization') return 'У тебя уже есть связка, и она мешает. Сначала аудит: где утекают токены и время, потом пересборка. Новое строить не надо.';
+  if(key==='table') return 'Тебе дешевле собрать самому: 20 готовых конфигураций с промптами и ценами запуска. 3–4 часа — и агент работает.';
+  if(key==='install') return 'У тебя не один процесс и не один человек. Нужна связка на сервере с ролями и интеграциями — её ставим под ключ, с приёмкой по чек-листу.';
+  return 'Один-два процесса, один человек. Персональная сборка 7 000 ₽: разберу твой случай, дам готовую конфигурацию и инструкцию.';
+}
+/* Рекомендованный оффер — первым, остальные свёрнуты: пять карточек на выбор = перегруз */
+function arrangeOffers(recKey){
+  const box=document.getElementById('offerBox'); if(!box) return;
+  const why=document.getElementById('personaWhy');
+  const opts=[...box.querySelectorAll('.offer-opt[data-prod]')];
+  let more=box.querySelector('#offerMore');
+  if(!more){
+    more=document.createElement('details');
+    more.id='offerMore';
+    more.innerHTML='<summary class="offer-more-sum">Другие варианты, если это не то</summary>';
+    box.appendChild(more);
+  }
+  opts.forEach(el=>{
+    const isRec=el.getAttribute('data-prod')===recKey;
+    el.classList.toggle('recommended',isRec);
+    const badge=el.querySelector('.rec-badge');
+    if(isRec&&!badge){
+      const sp=document.createElement('span'); sp.className='rec-badge'; sp.textContent='тебе сюда';
+      (el.querySelector('.o-top')||el).appendChild(sp);
+    }
+    if(!isRec&&badge) badge.remove();
+    if(isRec){ (why&&why.parentNode===box) ? box.insertBefore(el,why.nextSibling) : box.insertBefore(el,box.firstChild); }
+    else more.appendChild(el);
+  });
+  /* внутри «внедрения» тоже была развилка 15/20/30 — поднимаем нужный масштаб первым */
+  if(recKey==='install'){
+    const inst=box.querySelector('.offer-opt[data-prod="install"]');
+    const btns=[...inst.querySelectorAll('button[data-tier]')];
+    const tier = (conns.includes('crm')||conns.includes('avito')||goals.filter(g=>g!=='unsure').length>=3) ? 'integ'
+               : (device==='vps'||device==='host') ? 'vps' : 'pc';
+    const pick=btns.find(b=>b.getAttribute('data-tier')===tier);
+    if(pick){
+      btns.forEach(b=>{b.classList.remove('tier-primary');b.style.marginTop='8px';});
+      pick.classList.add('tier-primary');
+      pick.style.marginTop='0';
+      /* физически первым: order не сработает, контейнер не flex */
+      const firstBtn=btns[0];
+      if(pick!==firstBtn) inst.insertBefore(pick,firstBtn);
+      if(!inst.querySelector('.tier-hint')){
+        const h=document.createElement('p'); h.className='tier-hint';
+        h.textContent='Твой масштаб — остальные варианты ниже';
+        pick.parentNode.insertBefore(h,pick);
+      }
+    }
+  }
+}
+
+const PERSONA_COPY={  P1:{tag:'Твой путь — свой контур',
       title:'Агент, который <em>нельзя отключить</em>',
       desc:'Данные и агент — на твоём железе. Никто не может закрыть аккаунт и отобрать доступ: это не обещание, а архитектура. Оплата рублями, без VPN.',
       spec:['Агент и данные физически у тебя','Оплата картой РФ / СБП','Работает без VPN'],
@@ -483,6 +552,9 @@ function recalcPayback(){
   document.getElementById('pbRate').textContent=rate.toLocaleString('ru-RU')+' \u20bd';
   const st=STARTS.find(x=>x.id===start)||STARTS[0];
   const timeMoney=e.hours*rate;              // сколько стоит освобождённое время
+  /* дублируем экономику в верхний блок, чтобы ползунок менял и её */
+  const _sv=document.getElementById('ahaSaving');
+  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч';
   const noDouble=(start==='people');         // зарплату уже платили за эти часы — не двоим
   const money=(noDouble?0:timeMoney)+e.base; // экономия = время + уход с текущих расходов
   const netMonthly=money-e.monthly;          // минус владение
@@ -574,8 +646,13 @@ function calculate(){
     :((scn?scn.note+' ':'')+'Из <b>'+e.handsHours+' ч/мес руками</b> агент забирает <b>'+e.hours+' ч</b> — тебе остаётся '+(e.handsHours-e.hours)+' ч на контроль. Автономность «'+aut.label+'». '
       +(pc?pc.desc:''));
   document.getElementById('ahaCost').innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>\u20bd/\u043c\u0435\u0441</span>';
-  document.getElementById('ahaSaving').textContent='освобождает ~'+days(e.hours);
-  document.getElementById('ahaSavingNote').textContent='\u041d\u0430 \u00ab'+aut.label+'\u00bb \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0441\u0442\u0438 \u0430\u0433\u0435\u043d\u0442 \u0431\u0435\u0440\u0451\u0442 \u043d\u0430 \u0441\u0435\u0431\u044f \u0440\u0443\u0442\u0438\u043d\u0443, \u0430 \u0442\u044b \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0448\u044c \u0432\u0440\u0435\u043c\u044f.';
+  /* Экономика сегмента сразу, а не за ползунком: часы × ставка клиента.
+     Ползунок остаётся, чтобы пересчитать под свою ставку. */
+  const _rate=+(document.getElementById('pbSlider')||{value:700}).value||700;
+  const _saved=Math.round(e.hours*_rate);
+  document.getElementById('ahaSaving').innerHTML='\u043e\u0441\u0432\u043e\u0431\u043e\u0436\u0434\u0430\u0435\u0442 ~'+days(e.hours)
+    +' \u00b7 <b>\u2248 '+_saved.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b> \u043f\u043e \u0441\u0442\u0430\u0432\u043a\u0435 '+_rate.toLocaleString('ru-RU')+' \u20bd/\u0447';
+  document.getElementById('ahaSavingNote').textContent='\u041d\u0430 \u00ab'+aut.label+'\u00bb \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e\u0441\u0442\u0438 \u0430\u0433\u0435\u043d\u0442 \u0431\u0435\u0440\u0451\u0442 \u043d\u0430 \u0441\u0435\u0431\u044f \u0440\u0443\u0442\u0438\u043d\u0443, \u0430 \u0442\u044b \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0448\u044c \u0432\u0440\u0435\u043c\u044f. \u0421\u0442\u0430\u0432\u043a\u0443 \u043c\u0435\u043d\u044f\u0435\u0448\u044c \u043f\u043e\u043b\u0437\u0443\u043d\u043a\u043e\u043c \u043d\u0438\u0436\u0435.';
 
   const detail=document.getElementById('detailBox');
   detail.style.display='block';
@@ -590,7 +667,7 @@ function calculate(){
     const rows=[['\u041c\u043e\u0434\u0435\u043b\u044c \u2014 '+e.modelName,e.modelCost],['\u0425\u043e\u0441\u0442\u0438\u043d\u0433'+(e.gateway?' (\u0441 \u0448\u043b\u044e\u0437\u043e\u043c \u0434\u043b\u044f Telegram)':''),e.hostCost],['\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f',e.connTotal]];
     document.getElementById('brkTable').innerHTML=
       rows.filter(r=>r[1]>0).map(r=>'<div class="brow"><span>'+r[0]+'</span><b>'+r[1].toLocaleString('ru-RU')+' \u20bd</b></div>').join('')
-      +(e.monthly===0?'<div class="brow"><span>\u0418\u0442\u043e\u0433\u043e</span><b>0 \u20bd \u2014 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439 \u0441\u0442\u0430\u0440\u0442</b></div>':'<div class="brow total"><span>\u0418\u0442\u043e\u0433\u043e</span><b>'+e.monthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b></div>');
+      +(e.monthly===0?'<div class="brow"><span>Итого</span><b>0 ₽ провайдеру — модель на твоём железе</b></div>':'<div class="brow total"><span>Итого</span><b>'+e.monthly.toLocaleString('ru-RU')+' ₽/мес</b></div>');
     recalcPayback();
   }
 
@@ -629,16 +706,11 @@ function calculate(){
   if(pc){ dets.unshift.apply(dets, pc.spec.map(s=>'<b>'+s+'</b>')); }
   document.getElementById('specList').innerHTML=dets.map(d=>'<li>'+ic('check')+d+'</li>').join('');
 
-  // подсветка рекомендованного продукта под персону
-  document.querySelectorAll('.offer-opt[data-prod]').forEach(function(el){
-    var on=(el.getAttribute('data-prod')===pc.best);
-    el.classList.toggle('recommended',on);
-    var b=el.querySelector('.rec-badge');
-    if(on&&!b){var sp=document.createElement('span');sp.className='rec-badge';sp.textContent='тебе сюда';el.querySelector('.o-top').appendChild(sp);}
-    if(!on&&b)b.remove();
-  });
+  // рекомендованный продукт: сегмент + масштаб, а не только «тип персоны»
+  const recKey=recommendProduct();
+  arrangeOffers(recKey);
   var why=document.getElementById('personaWhy');
-  if(why&&pc){why.innerHTML='<b>Почему именно так:</b> '+pc.why;why.style.display='block';}
+  if(why&&pc){why.innerHTML='<b>Почему именно так:</b> '+recWhy(recKey);why.style.display='block';}
   var pt=document.getElementById('personaTag');
   if(pt&&pc){pt.textContent=pc.tag;pt.style.display='inline-block';}
 
