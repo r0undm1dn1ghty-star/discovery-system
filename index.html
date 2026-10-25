@@ -310,6 +310,21 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   .res-grid{grid-template-columns:1fr;gap:12px;margin-top:20px}
   .res-card{padding:18px}
 }
+
+/* плотная строка исследований на главной: без стены одинаковых карточек */
+.res-strip{display:flex;flex-direction:column;border-top:1px solid var(--line-soft);margin-top:20px}
+.rs{display:grid;grid-template-columns:132px 1fr 20px;gap:14px;align-items:baseline;
+  padding:14px 2px;border-bottom:1px solid var(--line-soft);text-decoration:none;transition:background .18s}
+.rs:hover{background:rgba(255,255,255,.02)}
+.rs-t{font-family:var(--mono);font-size:12.5px;color:var(--accent);letter-spacing:.04em;white-space:nowrap}
+.rs b{font-family:var(--display);font-size:16px;font-weight:600;color:var(--ink);line-height:1.35}
+.rs-a{font-family:var(--mono);color:var(--meta);text-align:right;transition:color .18s,transform .18s}
+.rs:hover .rs-a{color:var(--accent);transform:translateX(2px)}
+@media (max-width:760px){
+  .rs{grid-template-columns:1fr;gap:6px;padding:14px 0}
+  .rs b{font-size:15.5px}
+  .rs-a{display:none}
+}
 </style>
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
@@ -365,35 +380,15 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="fact rv" style="transition-delay:.21s"><span class="n accent">×148</span><span class="t">наценка бигтеха на кэш той же модели DeepSeek — <a href="nacenka.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">вендор против платформы</a></span><br/><span class="s">Яндекс vs вендор, 27.09.2026</span></div>
 </div></section>
 <section id="research"><div class="wrap">
-<p class="eyebrow rv">исследования · свои замеры, а не обещания</p>
-<h2 class="rv">Три месяца я считал чужой рынок — вот что видно</h2>
-<p class="lead rv">Это не курс и не «10 секретов ИИ». Это замеры с источниками и датами: где тебя переплата, где умирают агенты, чем твой сегмент отличается от соседнего.</p>
-<div class="res-grid rv">
-<a class="res-card" href="agent-failures.html">
-<span class="rc-top"><span class="rc-date">26.09.2026</span><span class="rc-tag">провалы</span></span>
-<b class="rc-name">ИИ-агент, который не заработал: 76 провалов 2026</b>
-<span class="rc-desc">Семь схем, из которых умирает агент: обещали и не сделали, бот сломал доверие, настроили и бросили.</span>
-<span class="rc-go">Проверить свой случай →</span>
-</a>
-<a class="res-card" href="nacenka.html">
-<span class="rc-top"><span class="rc-date">26.09.2026</span><span class="rc-tag">токеномика</span></span>
-<b class="rc-name">Платишь бигтеху за ИИ — и не знаешь, сколько</b>
-<span class="rc-desc">Одна и та же модель у вендора и у платформы: наценка до ×148, спрятана в чтении из кэша — второй строке счёта.</span>
-<span class="rc-go">Читать замер →</span>
-</a>
-<a class="res-card" href="value-chain.html">
-<span class="rc-top"><span class="rc-date">09.2026</span><span class="rc-tag">экономика</span></span>
-<b class="rc-name">Микробизнесу и среднему бизнесу нужен разный агент</b>
-<span class="rc-desc">Карта рынка: у микробизнеса и среднего бизнеса разные деньги и цена ошибки — а продают им одинаково.</span>
-<span class="rc-go">Открыть карту →</span>
-</a>
-<a class="res-card" href="lost-accounts.html">
-<span class="rc-top"><span class="rc-date">08.2026</span><span class="rc-tag">риск</span></span>
-<b class="rc-name">Твой доступ к ИИ — не твой</b>
-<span class="rc-desc">Сколько россиян потеряли аккаунты в 2026: цена аренды чужого доступа вместо своего контура, без рефанда.</span>
-<span class="rc-go">Проверить свой случай →</span>
-</a>
+<p class="eyebrow rv">исследования · замеры с источниками</p>
+<h2 class="rv">Что я выяснил про этот рынок</h2>
+<div class="res-strip rv">
+<a class="rs" href="agent-failures.html"><span class="rs-t">провалы · 76</span><b>Заплатил за ИИ-агента — он не работает: 76 провалов</b><span class="rs-a">→</span></a>
+<a class="rs" href="nacenka.html"><span class="rs-t">токеномика · ×148</span><b>Claude и DeepSeek: переплата до ×148 — спрятана в кэше</b><span class="rs-a">→</span></a>
+<a class="rs" href="value-chain.html"><span class="rs-t">экономика</span><b>Карта создания ценности рынка ИИ-агентов: где твой сегмент</b><span class="rs-a">→</span></a>
+<a class="rs" href="lost-accounts.html"><span class="rs-t">риск · 39–170 тыс.</span><b>Claude и ChatGPT не принадлежат тебе: сколько аккаунтов потеряно</b><span class="rs-a">→</span></a>
 </div>
+<p class="rv link-row" style="margin-top:16px"><a class="btn btn-ghost" href="market.html#research">Все замеры на «Рынке ИИ» →</a></p>
 </div></section>
 <section id="systems"><div class="wrap">
 <p class="eyebrow rv">четыре входа</p>
@@ -404,20 +399,7 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="sys rv" style="transition-delay:.18s"><span class="l">Внедрение по твоей форме и бюджету: ПК 15 000 ₽ · самозанятый 20 000 ₽ · ИП 30 000 ₽ · средний бизнес 60 000 ₽</span><span class="r">у ИП и у отдела разные риски по данным и разные бюджеты · чек-лист приёмки — <a href="https://t.me/discoverysystem">в канале</a></span></div>
 </div></section>
 
-<section id="cases"><div class="wrap">
-<p class="eyebrow rv">что уже собрано · внедрения</p>
-<h2 class="rv">Уже собрано — разными людьми, под разные задачи</h2>
-<p class="lead rv">Не «мы лучшие». Больше восьми внедрений под разные задачи: учёт и смены, бухгалтерия, дизайн и геймдев, ювелирный бренд, монтаж видео, поиск работы, исследования рынков. Плюс инструменты, которые можно склонировать и проверить самому. У части из них агент не просто снял рутину — расширил профессию.</p>
-<div class="cs-railwrap rv">
-<div class="cs-rail" id="casesRail" tabindex="0" role="region" aria-label="Внедрения — прокручивается по горизонтали"><article class="cs-card"><div class="cs-top"><h3>Учёт, смены и сметы</h3><span class="cs-chip mute">услуги</span></div><p class="cs-task">Владелец нескольких направлений: учёт по каждому вручную в таблицах, сводки вечером, CRM нет.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">приходы и расходы — вручную; сотрудники диктуют цифры в чат, он переносит сам</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">диктует голосом — строка сама падает в таблицу; сотрудники пишут боту под своими именами</span></div></div><p class="cs-num">сводка сама в 9:00 и 21:00 · работает 24/7 на его сервере · подписок нет, доступ с телефона</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">$ hermes gateway status<br>● gateway: running<br>vault/смены/2026-09-11.md<br>- [09:20] приход 12000 направление-1 Николай<br>- [09:22] расход 3400 направление-2 сотрудник<br><span class="hl">отчёт 21:00 · собрано автоматически</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Дизайн — и вход в разработку</h3><span class="cs-chip mute">креатив</span></div><p class="cs-task">Дизайнер: визуал под задачу. Дальше — то, что он давно хотел, но не тянул: своя игра.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">макеты вручную; разработка игры — не его зона, нужен был программист</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент собирает визуал и ведёт по проекту в Unity — дизайнер начал разработку видеоигры</span></div></div><p class="cs-num">от макетов — к собственной игре на Unity · то, для чего раньше нужен был программист</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; собираю сцену: меню + первый уровень<br>Unity 6 · 2D · проект заведён<br>скрипты: 4 из 12 сгенерированы<br>ассеты: из твоих макетов (не сток)<br>открыть проект: Unity Hub → myGame<br><span class="hl">дальше идёт сам — база собрана</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Радар ниши и чужие подписки</h3><span class="cs-chip">×40 дешевле</span></div><p class="cs-task">Ювелирный бренд: нужен радар ниши. Открытый скилл есть — но внутрь зашиты чужие платные подписки.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">три сторонних сервиса внутри: 5–6 000 ₽/мес за то, что делается своими руками</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">разобрал и заменил зависимости на свои: 150 ₽/мес расходников, тот же результат</span></div></div><p class="cs-num">5–6 000 ₽/мес → 150 ₽/мес · 251 видео разобрано · 8 аутлаеров: «How to make Gold band» — 20 млн против 2.7K средних у мастерской · инструмент открыт для всех</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; аудит открытого скилла<br>найдены зависимости:<br>  Apify      — подписка<br>  TubeLab    — подписка<br>  скрейпер   — подписка<br>заменено на: yt-dlp + свой код<br>расходники: ~150 ₽/мес<br><span class="hl">открыт для всех · проверяй сам</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Бухгалтерия: 12 компаний</h3><span class="cs-chip mute">12 компаний</span></div><p class="cs-task">Самозанятая главбух: 12 компаний в ручной работе. Время съедают сверка, первичка и актуализация клиентов.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">сверка, заполнение первичных документов и актуализация по каждой компании — руками</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент забирает сверку, первичку и актуализацию — обезличенно и с юридической защитой</span></div></div><p class="cs-num">12 компаний в работе · данные обезличиваются до попадания в модель (152-ФЗ, ст. 3 п. 9; основание — ст. 6) · первичка и регистры — 402-ФЗ, ст. 9–10 · подпись и проверка остаются за главбухом</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; сверка по 12 компаниям<br>первичка к заполнению: 47<br>обезличивание на входе:<br>  ИНН → ###  ·  ФИО → клиент-01<br>  юрлицо → ООО No7<br>  152-ФЗ, ст. 3 п. 9<br>на выходе: 3 расхождения<br><span class="hl">проверяет и подписывает человек</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Видео: нарезки и сценарии</h3><span class="cs-chip mute">контент</span></div><p class="cs-task">Повар: снимает много и подолгу. Разбирать часы сырья на нарезки — руками и вечерами.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">огромные материалы лежат неразобранными; монтаж — руками, сценарии — с нуля</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент режет первичные нарезки из длинных записей, пишет сценарии и предлагает варианты склеек — без платных сервисов</span></div></div><p class="cs-num">часы сырья → готовые нарезки · сценарии и варианты склеек · без подписок на монтажные сервисы</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; сырьё: 3 файла, 2 ч 40 мин<br>первичные нарезки: 14<br>  отобрано в работу: 5<br>сценарии: 3 варианта<br>предложения по склейкам: 6<br>сервисы: не нужны<br><span class="hl">дальше человек доводит и выкладывает</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Поиск работы: стратегия и инструмент</h3><span class="cs-chip mute">карьера</span></div><p class="cs-task">Маркетолог: работа не находилась. Отклики вручную, письмо под каждую вакансию — с нуля.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">месяцы поиска без результата: ручные отклики, шаблонные письма, мимо рынка</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">сначала брифинг и карьерная стратегия, потом сборка инструмента: парсинг вакансий из открытых источников + генерация сопроводительных под каждую</span></div></div><p class="cs-num">инструмент обошёлся ниже рыночных подписок · вакансии берутся из открытых источников · письмо собирается под конкретную вакансию, а не веером</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; брифинг: цель, рынок, сильные стороны<br>стратегия — 3 трека:<br>  1) продуктовая аналитика<br>  2) growth-маркетинг<br>  3) контент<br>инструмент: парсер открытых вакансий<br>  + сопроводительное под каждую<br><span class="hl">дешевле рыночных подписок</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Исследование рынков</h3><span class="cs-chip mute">B2B</span></div><p class="cs-task">Руководитель проектов: перед защитой решения нужен рынок — цифры, конкуренты, границы.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">ручной сбор по источникам, к концу недели часть данных устарела</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент собирает срез с источниками и датами, человек интерпретирует</span></div></div><p class="cs-num">14 источников с датами за один прогон · отдельно видно, что данные НЕ доказывают</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; рынок: агентная коммерция РФ<br>источников: 14 (у каждого дата)<br>что подтверждено: 9<br>что данные НЕ доказывают: 5<br><span class="hl">границы указаны честно, а не сглажены</span></div></div></article><article class="cs-card"><div class="cs-top"><h3>Поиск заказов без бюджета</h3><span class="cs-chip mute">инструмент</span></div><p class="cs-task">Маркетингового бюджета нет, зато заказы лежат открыто: платформы, форумы, чаты, сообщества.</p><div class="cs-ba"><div class="cs-row"><span class="lb">было</span><span class="vl">ручной обход площадок — часы каждый день, и всё равно мимо: половина заявок нерелевантна</span></div><div class="cs-row after"><span class="lb">стало</span><span class="vl">агент собирает заявки со всех площадок и отсеивает мусор — время уходит на анализ, а не на поиск</span></div></div><p class="cs-num">время на поиск сократилось, точность выросла · 63% против 47% у поиска по словам · на FL.ru — 79% на 286 постах · код открыт на GitHub</p><div class="cs-shot"><div class="bar"><i></i><i></i><i></i></div><div class="body">&gt; скан: 57 каналов + 7 бирж<br>карточек собрано: 1106<br>разметка вручную: 110<br>точность скилла: 63% (F1 0.61)<br>наивный поиск: 47% (F1 0.39)<br><span class="hl">EVAL.md в репозитории · проверь сам</span></div></div></article></div>
-<div class="cs-nav">
-<button type="button" id="csPrev" aria-label="Предыдущее внедрение">←</button>
-<button type="button" id="csNext" aria-label="Следующее внедрение">→</button>
-<span class="cs-hint">пролистай — или стрелками</span>
-<span class="cs-prog" aria-hidden="true"><i id="csProg"></i></span>
-</div>
-</div>
-</div></section>
+<section id="cases"><div class="wrap" data-ds-cases></div></section>
 
 <section id="who"><div class="wrap">
 <p class="eyebrow rv">кто строит</p>
@@ -588,5 +570,6 @@ else{slide(1);}
   window.addEventListener('scroll', function(){ if (window.scrollY > 200) setTimeout(revealAll, 600); }, { passive: true, once: true });
 })();
 </script>
+<script src="ds-cases.js" defer></script>
 </body>
 </html>
