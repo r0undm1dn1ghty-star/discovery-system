@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Discovery System — цифры · 150 ₽/мес, ×40, 63%, 251 видео</title>
+<meta name="description" content="ИИ-агент в цифрах: 150 ₽/мес своя связка, 63% точности против 47%, 251 видео, 1106 карточек, восемь внедрений. Замеры с источниками."/>
+<link rel="icon" href="../../discovery-system-repo/favicon-32.png" sizes="32x32"/>
+<link href="../fonts/fonts.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#111524;--deep:#0d1120;--card:#161c30;
+  --ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#5a6275;
+  --line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);
+  --accent:#7bc4a8;--accent-rgb:123,196,168;
+  --btn:#1f7a4d;--btn-h:#26895b;--btn-text:#f2fbf5;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --display:'Onest',var(--sans);
+  --r:14px;--r-sm:10px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font:400 16.5px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);color:var(--ink);text-wrap:balance}
+a{color:var(--ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.num{font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.045em;line-height:.92}
+.k{font:500 12px/1.5 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--meta)}
+.src{font:400 12px/1.5 var(--mono);color:var(--faint);letter-spacing:.01em}
+
+/* nav */
+nav{border-bottom:1px solid var(--line-soft)}
+.nav-in{display:flex;align-items:center;gap:24px;padding:20px 0}
+.brand{display:flex;align-items:center;gap:9px;text-decoration:none;font:600 14px/1 var(--display);color:var(--ink);min-height:44px}
+.brand img{height:20px;width:auto;border-radius:3px}
+.nav-links{margin-left:auto;display:flex;gap:22px}
+.nav-links a{font:400 12.5px/1 var(--mono);color:var(--meta);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font:500 12.5px/1 var(--mono);color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(var(--accent-rgb),.45);min-height:44px;display:inline-flex;align-items:center}
+
+/* hero */
+.hero{padding:64px 0 0}
+.hero-top{display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.hero .k{width:100%}
+.hero h1{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:clamp(56px,11.5vw,150px)}
+.hero h1 .unit{font:500 clamp(20px,2.6vw,34px)/1 var(--mono);color:var(--accent);letter-spacing:-.01em}
+.hero .vs{font:500 clamp(17px,2.1vw,24px)/1.2 var(--display);color:var(--meta);letter-spacing:-.02em;margin-bottom:10px}
+.hero .vs s{color:var(--faint);text-decoration-color:rgba(255,255,255,.3)}
+.hero .line{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:baseline;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
+.hero .line p{font-size:15px;max-width:52ch;color:var(--body)}
+.hero .line .src{max-width:30ch;text-align:right}
+
+/* метрики */
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line-soft);margin-top:40px;border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden}
+.metric{background:var(--bg);padding:22px 20px 20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.metric .v{font-size:clamp(30px,3.6vw,46px)}
+.metric .v small{font:500 12px/1 var(--mono);color:var(--accent);letter-spacing:0;margin-left:4px}
+.metric .l{font:500 12px/1.45 var(--sans);color:var(--body)}
+.metric .src{margin-top:auto;padding-top:8px}
+
+/* доказательство */
+.proof{margin-top:28px;border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,.85fr)}
+.pf-left{display:flex;flex-direction:column;min-width:0;border-right:1px solid var(--line-soft)}
+.pf-head{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line-soft)}
+.pf-head .k{letter-spacing:.12em}
+.pf-head .live{margin-left:auto;font:500 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.pf-head .live i{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.ag-log{height:268px;overflow-y:auto;background:var(--deep);padding:12px 14px;display:flex;flex-direction:column;gap:6px;font:400 12px/1.5 var(--mono);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
+.ag-log::-webkit-scrollbar{width:7px}
+.ag-log::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:8px}
+.ln{display:grid;grid-template-columns:58px minmax(0,1fr);gap:9px;padding-left:8px;border-left:1px solid var(--line-soft);animation:lin .3s var(--ease) both}
+@keyframes lin{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.ln .t{color:var(--faint)}
+.ln .x{color:var(--body);overflow-wrap:anywhere}
+.ln b{color:var(--accent);font-weight:600}
+.ln.user{grid-template-columns:1fr;border-left-color:rgba(var(--accent-rgb),.4);background:rgba(var(--accent-rgb),.06);border-radius:7px;padding:8px 10px}
+.ln.user .x{color:var(--ink)}
+.ln.user .m{display:block;margin-top:3px;font-size:12px;color:var(--meta)}
+.ln.res{grid-template-columns:1fr;border-left:0;border:1px solid rgba(var(--accent-rgb),.3);background:rgba(var(--accent-rgb),.05);border-radius:8px;padding:9px 11px}
+.ln.res .rt{font:600 12.5px/1.4 var(--sans);color:var(--ink)}
+.ln.res .rr{display:flex;justify-content:space-between;gap:10px;margin-top:5px;font-size:12px}
+.ln.res .rr span:first-child{color:var(--meta)}
+.ln.res .rr span:last-child{color:var(--accent);text-align:right}
+.pf-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 16px;border-top:1px solid var(--line-soft);margin-top:auto}
+.pf-foot .src{flex:1;min-width:120px}
+.again{background:none;border:0;border-bottom:1px solid var(--line);color:var(--meta);font:400 12px/1 var(--mono);min-height:44px;cursor:pointer;padding:0}
+.again:hover{color:var(--ink);border-bottom-color:rgba(var(--accent-rgb),.5)}
+.pf-right{display:grid;grid-template-rows:repeat(4,1fr);min-width:0}
+.pr{padding:16px 18px;border-bottom:1px solid var(--line-soft);display:flex;flex-direction:column;gap:4px;justify-content:center}
+.pr:last-child{border-bottom:0}
+.pr .v{font-size:clamp(24px,2.8vw,34px)}
+.pr .l{font:400 12px/1.4 var(--mono);color:var(--meta)}
+
+/* секции */
+section{padding:76px 0;border-top:1px solid var(--line-soft);margin-top:64px}
+section:first-of-type{margin-top:0}
+.sec-h{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.sec-h h2{font-size:clamp(24px,3.2vw,38px);letter-spacing:-.025em;line-height:1.1}
+.sec-h .k{margin-left:auto}
+.sec-sub{font-size:14.5px;color:var(--meta);max-width:62ch;margin-bottom:26px}
+
+/* таблица рынка */
+.tbl{border-top:1px solid var(--line)}
+.trow{display:grid;grid-template-columns:minmax(0,1.35fr) 160px minmax(0,1.15fr) 130px;gap:20px;padding:16px 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+.trow.head{padding:10px 0;border-bottom:1px solid var(--line)}
+.trow.head span{font:500 12px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.trow .p{font:600 16px/1.3 var(--display);color:var(--ink);letter-spacing:-.01em}
+.trow .p small{display:block;margin-top:3px;font:400 12px/1.4 var(--sans);color:var(--meta)}
+.trow .in{font:500 14px/1.35 var(--mono);color:var(--body);font-variant-numeric:tabular-nums}
+.trow .out{font-size:13px;line-height:1.5;color:var(--meta)}
+.trow .yr{font:500 13.5px/1.3 var(--mono);color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.trow .yr small{display:block;margin-top:3px;font:400 12px/1.3 var(--mono);color:var(--faint)}
+.trow.disc{background:rgba(var(--accent-rgb),.06);margin:0 -16px;padding:16px;border-bottom:1px solid rgba(var(--accent-rgb),.3);border-radius:var(--r-sm)}
+.trow.disc .p,.trow.disc .yr{color:var(--accent)}
+.tbl-foot{display:flex;gap:24px;flex-wrap:wrap;margin-top:18px}
+.tbl-foot a{font:500 12px/1 var(--mono);color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(var(--accent-rgb),.4);min-height:44px;display:inline-flex;align-items:center}
+
+/* цена ошибки */
+.err{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.er{border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;display:flex;flex-direction:column;gap:8px;background:rgba(255,255,255,.015)}
+.er .v{font-size:clamp(32px,4.4vw,54px)}
+.er .v small{font:500 13px/1 var(--mono);color:var(--accent);margin-left:3px}
+.er .l{font:500 12.5px/1.45 var(--sans);color:var(--body)}
+.er .src{margin-top:auto;padding-top:10px}
+
+/* внедрения */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden}
+.c{background:var(--bg);padding:22px 22px 20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start;text-decoration:none;transition:background .2s var(--ease)}
+.c:hover{background:rgba(255,255,255,.025)}
+.c .n{font:500 12px/1.4 var(--mono);color:var(--faint);letter-spacing:.1em;padding-top:5px}
+.c .v{font:700 clamp(26px,3vw,34px)/1 var(--display);color:var(--accent);letter-spacing:-.03em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.c .v i{font-style:normal;font-size:.55em;letter-spacing:0;margin-left:2px;color:var(--body)}
+.c h3{font:600 15px/1.3 var(--sans);color:var(--ink);margin-top:8px;letter-spacing:0}
+.c p{font-size:12.5px;line-height:1.5;color:var(--meta);margin-top:4px}
+.cases-note{margin-top:14px;font:400 12px/1.6 var(--mono);color:var(--faint)}
+
+/* кто строит */
+.who{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:44px;align-items:center}
+.who img{width:100%;max-width:260px;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);border:1px solid var(--line);filter:grayscale(1);transition:filter .4s var(--ease)}
+.who:hover img{filter:none}
+.who h3{font-size:clamp(22px,2.6vw,30px);letter-spacing:-.02em;margin-bottom:10px}
+.who p{font-size:14px;max-width:46ch;margin-bottom:10px}
+.who .own{color:var(--ink)}
+.who .st{display:flex;gap:32px;flex-wrap:wrap;margin-top:20px;padding-top:18px;border-top:1px solid var(--line-soft)}
+.who .st b{display:block;font:700 22px/1.1 var(--display);color:var(--ink);letter-spacing:-.02em}
+.who .st span{font:400 12px/1.45 var(--mono);color:var(--meta)}
+.who .links{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px}
+.who .links a{font:400 12px/1 var(--mono);color:var(--body);text-decoration:none;border-bottom:1px solid var(--line);min-height:44px;display:inline-flex;align-items:center}
+
+/* финал */
+.end{padding:84px 0 76px;border-top:1px solid var(--line)}
+.end-in{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.end .big{font-size:clamp(44px,8vw,104px)}
+.end .big small{font:500 clamp(14px,1.8vw,22px)/1.2 var(--mono);color:var(--accent);display:block;margin-top:10px;letter-spacing:0}
+.end .act{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 30px;border-radius:var(--r-sm);text-decoration:none;font:600 15px/1 var(--sans);background:var(--btn);color:var(--btn-text);border:1px solid rgba(255,255,255,.14);transition:background .15s,transform .15s}
+.btn:hover{background:var(--btn-h);transform:translateY(-1px)}
+.end .note{font:400 12px/1.6 var(--mono);color:var(--meta)}
+.end .alt{font:500 12px/1 var(--mono);color:var(--body);text-decoration:none;border-bottom:1px solid var(--line);min-height:44px;display:inline-flex;align-items:center}
+.end .alt:hover{color:var(--accent);border-color:rgba(var(--accent-rgb),.5)}
+
+footer{border-top:1px solid var(--line-soft);padding:32px 0 48px}
+.f-in{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between;align-items:baseline}
+.f-name{font:600 13px/1.5 var(--display);color:var(--ink)}
+.f-name span{display:block;font:400 12px/1.6 var(--mono);color:var(--faint);margin-top:3px}
+.f-links{display:flex;gap:18px;flex-wrap:wrap;font:400 12px/1 var(--mono)}
+.f-links a{color:var(--meta);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.f-links a:hover{color:var(--ink)}
+
+@media (max-width:960px){
+  .proof{grid-template-columns:1fr}
+  .pf-left{border-right:0;border-bottom:1px solid var(--line-soft)}
+  .pf-right{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+  .pr:nth-child(odd){border-right:1px solid var(--line-soft)}
+  .trow{grid-template-columns:minmax(0,1.2fr) 130px minmax(0,1fr);gap:14px}
+  .trow .yr{grid-column:2/4;text-align:left}
+  .trow.head span:last-child{display:none}
+  .who{grid-template-columns:1fr;gap:26px}
+  .who img{max-width:160px}
+}
+@media (max-width:760px){
+  .wrap{padding:0 20px}
+  .nav-links a:not(.keep){display:none}
+  .hero{padding:44px 0 0}
+  .hero h1{font-size:clamp(52px,17vw,86px);gap:10px}
+  .hero h1 .unit{font-size:19px}
+  .hero .vs{font-size:16px;margin-bottom:4px}
+  .hero .line .src{text-align:left;max-width:none}
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}
+  .metric{padding:18px 16px}
+  .metric .v{font-size:clamp(28px,8vw,36px)}
+  .ag-log{height:240px;padding:11px 12px}
+  .ln{grid-template-columns:52px minmax(0,1fr);gap:8px}
+  section{padding:52px 0;margin-top:44px}
+  .sec-h h2{font-size:clamp(22px,6.6vw,30px)}
+  .sec-h .k{margin-left:0;width:100%}
+  .trow{grid-template-columns:1fr;gap:8px;padding:16px 0}
+  .trow.head{display:none}
+  .trow .in{font-size:13px}
+  .trow .out{font-size:12.5px}
+  .trow .yr{grid-column:auto;text-align:left;font-size:13px}
+  .trow .yr small{display:inline;margin-left:6px}
+  .trow.disc{margin:0 -10px;padding:16px 10px}
+  .err{grid-template-columns:1fr;gap:10px}
+  .er{padding:18px 16px}
+  .cases{grid-template-columns:1fr}
+  .c{padding:18px 16px;grid-template-columns:auto minmax(0,1fr)}
+  .end{padding:56px 0 52px}
+  .end .big{font-size:clamp(40px,12vw,64px)}
+  .end .act{width:100%}
+  .end .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Основная навигация">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html"><img src="../assets/logo-nav.png" alt=""/>Discovery System</a>
+    <div class="nav-links">
+      <a class="keep" href="#market">Рынок</a>
+      <a class="keep" href="#cases">Внедрения</a>
+      <a class="keep" href="#who">Кто строит</a>
+      <a class="nav-cta" href="../../discovery-system-repo/calculator.html">Посчитать →</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <p class="k">своя связка · локально + Telegram · замеры 2026</p>
+      <h1><span class="num">150</span><span class="unit">₽/мес</span></h1>
+      <p class="vs">против <s>49 990 ₽</s> за внедрение у студии</p>
+    </div>
+    <div class="line">
+      <p>Агент на твоём компьютере: данные у тебя, без VPN. Модель — по числу задач, сервер — только если нужен 24/7.</p>
+      <p class="src">РФ-провайдеры, 2026 · dare.ru, 14.10.2026 · замер наценок, 19–20.09.2026</p>
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <span class="v num">×40</span>
+        <span class="l">дешевле подписок на радар ниши</span>
+        <span class="src">5–6 000 → 150 ₽/мес</span>
+      </div>
+      <div class="metric">
+        <span class="v num">63<small>%</small></span>
+        <span class="l">точность отбора заказов против 47%</span>
+        <span class="src">F1 0.61 / 0.39 · EVAL.md</span>
+      </div>
+      <div class="metric">
+        <span class="v num">251</span>
+        <span class="l">видео разобрано за один прогон</span>
+        <span class="src">8 аутлаеров · 4 платформы</span>
+      </div>
+      <div class="metric">
+        <span class="v num">1106</span>
+        <span class="l">карточек заказов собрано с 7 площадок</span>
+        <span class="src">57 каналов + 7 бирж</span>
+      </div>
+    </div>
+
+    <div class="proof">
+      <div class="pf-left">
+        <div class="pf-head">
+          <span class="k">доказательство · смена 08:58 → 21:00</span>
+          <span class="live"><i></i>live</span>
+        </div>
+        <div class="ag-log" id="log" role="log" aria-live="polite" aria-label="Строки работы агента"></div>
+        <div class="pf-foot">
+          <span class="src">14 позиций · 1 строка таблицы · 0 ₽ абонентки</span>
+          <button class="again" id="again" type="button">запустить снова</button>
+        </div>
+      </div>
+      <div class="pf-right">
+        <div class="pr"><span class="v num">14</span><span class="l">позиций в строке учёта</span></div>
+        <div class="pr"><span class="v num">2</span><span class="l">сводки: 9:00 и 21:00</span></div>
+        <div class="pr"><span class="v num">0<small> ₽</small></span><span class="l">абонентка за агента</span></div>
+        <div class="pr"><span class="v num">3 400–5 400<small> ₽</small></span><span class="l">провайдер моделей в месяц</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="market">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Куда уходит клиент за агентом</h2>
+      <span class="k">6 путей + Discovery · 24–25.10.2026</span>
+    </div>
+    <p class="sec-sub">Цена входа и то, что остаётся через год. У каждой строки источник и дата — проверяй, а не верь.</p>
+
+    <div class="tbl">
+      <div class="trow head"><span>путь</span><span>вход</span><span>через 12 месяцев</span><span>источник</span></div>
+
+      <div class="trow">
+        <div class="p">Зарубежные подписки<small>Claude · ChatGPT · Perplexity</small></div>
+        <div class="in">$20–200/мес</div>
+        <div class="out">Перекупы закрыты: 403 по региону биллинга</div>
+        <div class="yr">0<small>доступа</small></div>
+      </div>
+
+      <div class="trow">
+        <div class="p">Студии «под ключ»<small>состав агента скрыт</small></div>
+        <div class="in">49 990–199 990 ₽</div>
+        <div class="out">Аренда навсегда: правки платные, код у студии</div>
+        <div class="yr">80 000<small>₽/год</small></div>
+      </div>
+
+      <div class="trow">
+        <div class="p">Маркетплейс-агенты<small>Найми.ИИ · Hermes · ГигаАгент</small></div>
+        <div class="in">от 3 642 ₽/мес</div>
+        <div class="out">Остановил оплату — агент остановился</div>
+        <div class="yr">732 000<small>₽/год макс.</small></div>
+      </div>
+
+      <div class="trow">
+        <div class="p">DIY по гайдам<small>свой контур</small></div>
+        <div class="in">3 000–5 000 ₽</div>
+        <div class="out">74% упираются в разрыв компетенций</div>
+        <div class="yr">74<small>% застревают</small></div>
+      </div>
+
+      <div class="trow">
+        <div class="p">Фрилансер с Авито<small>демпинг &lt; 5 000 ₽</small></div>
+        <div class="in">999–4 990 ₽</div>
+        <div class="out">Пропал: ~25% карточек снято с публикации</div>
+        <div class="yr">25<small>% исчезли</small></div>
+      </div>
+
+      <div class="trow">
+        <div class="p">Ничего не делать<small>продолжать руками</small></div>
+        <div class="in">0 ₽</div>
+        <div class="out">Доля МСП с ИИ: 17% → 53% за год</div>
+        <div class="yr">520<small>ч/год рутины</small></div>
+      </div>
+
+      <div class="trow disc">
+        <div class="p">Discovery System<small>сборка под ключ</small></div>
+        <div class="in">7–15 тыс. ₽</div>
+        <div class="out">Код, сервер и данные у клиента; рубли и УПД</div>
+        <div class="yr">53<small>₽/мес токены</small></div>
+      </div>
+    </div>
+
+    <div class="tbl-foot">
+      <a href="../../discovery-system-repo/karta-resheniy.html">Полная карта с источниками →</a>
+      <a href="../../discovery-system-repo/market.html">Все замеры →</a>
+    </div>
+  </div>
+</section>
+
+<section id="cost">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Цена ошибки</h2>
+      <span class="k">замеры · не оценки</span>
+    </div>
+    <div class="err">
+      <div class="er">
+        <span class="v num">76</span>
+        <span class="l">провалов: заплатил за агента — он не работает</span>
+        <span class="src">agent-failures.html · 2026</span>
+      </div>
+      <div class="er">
+        <span class="v num">39–170<small>тыс. ₽</small></span>
+        <span class="l">потеряно на аккаунтах Claude и ChatGPT</span>
+        <span class="src">lost-accounts.html · 2026</span>
+      </div>
+      <div class="er">
+        <span class="v num">×148</span>
+        <span class="l">наценка бигтеха на кэш той же модели</span>
+        <span class="src">nacenka.html · 27.09.2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Восемь внедрений — восемь чисел</h2>
+      <span class="k">ds-cases.js · снято 25.10.2026</span>
+    </div>
+    <p class="sec-sub">Каждая плитка — результат, а не обещание. Код и навыки открыты: проверь сам.</p>
+
+    <div class="cases">
+      <a class="c" href="../../discovery-system-repo/system.html">
+        <span class="n">01</span>
+        <div>
+          <div class="v">0<i> ₽</i></div>
+          <h3>Учёт и смены</h3>
+          <p>сводки в 9:00 и 21:00 сами · 24/7 на его сервере</p>
+        </div>
+      </a>
+      <a class="c" href="../../discovery-system-repo/system.html">
+        <span class="n">02</span>
+        <div>
+          <div class="v">0<i> ошибок</i></div>
+          <h3>Дизайн → геймдев</h3>
+          <p>Unity-проект собран: ассеты, сцены, сборка</p>
+        </div>
+      </a>
+      <a class="c" href="../../discovery-system-repo/system.html">
+        <span class="n">03</span>
+        <div>
+          <div class="v">×40</div>
+          <h3>Радар ниши</h3>
+          <p>5–6 000 → 150 ₽/мес · 251 видео · 8 аутлаеров</p>
+        </div>
+      </a>
+      <a class="c" href="../../discovery-system-repo/system.html">
+        <span class="n">04</span>
+        <div>
+          <div class="v">12</div>
+          <h3>Бухгалтерия</h3>
+          <p>компаний в работе · обезличивание до модели</p>
+        </div>
+      </a>
+      <a class="c" href="../../discovery-system-repo/system.html">
+        <span class="n">05</span>
+        <div>
+          <div class="v">14</div>
+          <h3>Видео и контент</h3>
+          <p>нарезок из 2 ч 40 мин сырья · 5 в работу</p>
+        </div>
+      </a>
+      <a class="c" href="../../discovery-system-repo/system.html">
+        <span class="n">06</span>
+        <div>
+          <div class="v">&lt;<i> подписок</i></div>
+          <h3>Поиск работы</h3>
+          <p>вакансии из открытых источников + письмо под каждую</p>
+        </div>
+      </a>
+      <a class="c" href="../../discovery-system-repo/system.html">
+        <span class="n">07</span>
+        <div>
+          <div class="v">14</div>
+          <h3>Исследование рынков</h3>
+          <p>источников с датами · 5 границ: что не доказано</p>
+        </div>
+      </a>
+      <a class="c" href="../../discovery-system-repo/system.html">
+        <span class="n">08</span>
+        <div>
+          <div class="v">63<i>%</i></div>
+          <h3>Поиск заказов</h3>
+          <p>против 47% у поиска по словам · 1106 карточек</p>
+        </div>
+      </a>
+    </div>
+    <p class="cases-note">EVAL.md в репозитории · внутренний замер, не обещание результата</p>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2>Кто строит</h2>
+      <span class="k">Санкт-Петербург · 3 года в продуктах</span>
+    </div>
+    <div class="who">
+      <img src="../assets/viktor.jpg" alt="Виктор Зайцев" loading="lazy"/>
+      <div>
+        <h3>Виктор Зайцев</h3>
+        <p>Разведка рынка, потом сборка под конкретную рутину. Связка остаётся у тебя: код, сервер и данные под твоим контролем.</p>
+        <p class="own">Ты знаешь, сколько стоит каждая часть — до оплаты.</p>
+        <div class="st">
+          <div><b>20→80%</b><span>точность AI-скоринга</span></div>
+          <div><b>+23%</b><span>выручка на единицу</span></div>
+          <div><b>×1.8</b><span>скорость релиза</span></div>
+        </div>
+        <div class="links">
+          <a href="https://t.me/discoverysystem">Telegram</a>
+          <a href="https://github.com/r0undm1dn1ghty-star">GitHub</a>
+          <a href="https://vc.ru/id6099688">VC</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="end" id="start">
+  <div class="wrap end-in">
+    <div>
+      <span class="k">7 вопросов · без регистрации</span>
+      <div class="big num" style="margin-top:14px">150 ₽<small>твоя цена — после 7 вопросов</small></div>
+    </div>
+    <div class="act">
+      <a class="btn" href="../../discovery-system-repo/calculator.html">Посчитать мою цену</a>
+      <a class="alt" href="https://t.me/discoverysystem">Сигналы рынка в канале →</a>
+      <span class="note">бесплатно · без СМС · минута</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap f-in">
+    <p class="f-name">Discovery System<span>Зайцев Виктор Павлович · самозанятый (НПД) · 2026</span></p>
+    <div class="f-links">
+      <a href="https://t.me/discoverysystem">Telegram</a>
+      <a href="https://github.com/r0undm1dn1ghty-star">GitHub</a>
+      <a href="https://vc.ru/id6099688">VC</a>
+      <a href="../../discovery-system-repo/oferta.html">оферта</a>
+      <a href="../../discovery-system-repo/policy.html">политика ПД</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var log = document.getElementById('log');
+  if(!log) return;
+  var btn = document.getElementById('again');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var LINES = [
+    {t:'day', h:'Понедельник · смена Ильи'},
+    {t:'log', time:'08:58:11', h:'смена открыта · <b>слушаю Telegram</b>'},
+    {t:'user', h:'Принял товар, 14 позиций. Накладную сфоткал.', m:'голосовое · 0:09 · Илья'},
+    {t:'log', time:'08:59:04', h:'речь разобрана в текст'},
+    {t:'log', time:'08:59:05', h:'<b>строка добавлена в таблицу</b>, фото вложено'},
+    {t:'log', time:'21:00:00', h:'<b>смена закрыта</b> · собрана сводка'},
+    {t:'res', h:'Сводка за день — прислал сам', rows:[['Позиций','14'],['Сводки','9:00 / 21:00'],['Абонентка','0 ₽']]}
+  ];
+  var timers = [];
+
+  function el(tag, cls, html){
+    var n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(html != null) n.innerHTML = html;
+    return n;
+  }
+
+  function add(line){
+    var node;
+    if(line.t === 'day'){
+      node = el('div','ln', '<span class="t"></span><span class="x">'+line.h+'</span>');
+      node.style.gridTemplateColumns = '1fr';
+      node.style.borderLeft = '0';
+    } else if(line.t === 'user'){
+      node = el('div','ln user', '<span class="x">'+line.h+'<span class="m">'+line.m+'</span></span>');
+    } else if(line.t === 'res'){
+      var rows = line.rows.map(function(r){
+        return '<div class="rr"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>';
+      }).join('');
+      node = el('div','ln res', '<div><span class="rt">'+line.h+'</span>'+rows+'</div>');
+    } else {
+      node = el('div','ln', '<span class="t">'+line.time+'</span><span class="x">'+line.h+'</span>');
+    }
+    log.appendChild(node);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function run(){
+    timers.forEach(clearTimeout);
+    timers = [];
+    log.innerHTML = '';
+    if(reduced){ LINES.forEach(add); return; }
+    LINES.forEach(function(line, i){
+      timers.push(setTimeout(function(){ add(line); }, 300 * i));
+    });
+  }
+
+  if(btn) btn.addEventListener('click', run);
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ io.disconnect(); run(); }
+      });
+    }, {threshold:.2});
+    io.observe(log);
+  } else {
+    run();
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+{
+ "cases-editorial/index.html": {
+  "360": {
+   "vw": 360,
+   "vh": 740,
+   "scrollW": 360,
+   "bodyScrollW": 360,
+   "overflow": 0,
+   "nodeCount": 278,
+   "offenders": [],
+   "tiny": [],
+   "taps": [],
+   "nowrap": [],
+   "wide": [],
+   "vhtrap": [],
+   "fixedBg": [],
+   "canvases": [],
+   "fonts": {
+    "loaded": 45,
+    "h1": "Onest, \"IBM Plex Sans\", sans-serif",
+    "h2": "Onest, \"IBM Plex Sans\", sans-serif",
+    "body": "\"IBM Plex Sans\", sans-serif",
+    "bodySize": 16
+   },
+   "aligns": {
+    "start": 124,
+    "left": 11,
+    "center": 4
+   },
+   "sectPads": [
+    {
+     "sel": "div.wrap > section",
+     "pt": "0px",
+     "pb": "0px",
+     "mt": "0px"
+    }
+   ],
+   "padVariants": 14,
+   "viewportMeta": "width=device-width, initial-scale=1",
+   "plasma": false,
+   "plasmaState": null,
+   "plasmaStatic": true,
+   "cyrDisplay": true,
+   "onestReady": true
+  },
+  "390": {
+   "vw": 390,
+   "vh": 844,
+   "scrollW": 390,
+   "bodyScrollW": 390,
+   "overflow": 0,
+   "nodeCount": 278,
+   "offenders": [],
+   "tiny": [],
+   "taps": [],
+   "nowrap": [],
+   "wide": [],
+   "vhtrap": [
+    {
+     "sel": "div.wrap > section > article.case.c1",
+     "h": 824
+    }
+   ],
+   "fixedBg": [],
+   "canvases": [],
+   "fonts": {
+    "loaded": 45,
+    "h1": "Onest, \"IBM Plex Sans\", sans-serif",
+    "h2": "Onest, \"IBM Plex Sans\", sans-serif",
+    "body": "\"IBM Plex Sans\", sans-serif",
+    "bodySize": 16
+   },
+   "aligns": {
+    "start": 124,
+    "left": 11,
+    "center": 4
+   },
+   "sectPads": [
+    {
+     "sel": "div.wrap > section",
+     "pt": "0px",
+     "pb": "0px",
+     "mt": "0px"
+    }
+   ],
+   "padVariants": 14,
+   "viewportMeta": "width=device-width, initial-scale=1",
+   "plasma": false,
+   "plasmaState": null,
+   "plasmaStatic": true,
+   "cyrDisplay": true,
+   "onestReady": true
+  },
+  "768": {
+   "vw": 768,
+   "vh": 1024,
+   "scrollW": 768,
+   "bodyScrollW": 768,
+   "overflow": 0,
+   "nodeCount": 278,
+   "offenders": [],
+   "tiny": [],
+   "taps": [],
+   "nowrap": [],
+   "wide": [],
+   "vhtrap": [],
+   "fixedBg": [],
+   "canvases": [],
+   "fonts": {
+    "loaded": 45,
+    "h1": "Onest, \"IBM Plex Sans\", sans-serif",
+    "h2": "Onest, \"IBM Plex Sans\", sans-serif",
+    "body": "\"IBM Plex Sans\", sans-serif",
+    "bodySize": 16
+   },
+   "aligns": {
+    "start": 124,
+    "left": 11,
+    "center": 4
+   },
+   "sectPads": [
+    {
+     "sel": "div.wrap > section",
+     "pt": "0px",
+     "pb": "0px",
+     "mt": "0px"
+    }
+   ],
+   "padVariants": 14,
+   "viewportMeta": "width=device-width, initial-scale=1",
+   "plasma": false,
+   "plasmaState": null,
+   "plasmaStatic": false,
+   "cyrDisplay": true,
+   "onestReady": true
+  },
+  "1440": {
+   "vw": 1440,
+   "vh": 900,
+   "scrollW": 1440,
+   "bodyScrollW": 1440,
+   "overflow": 0,
+   "nodeCount": 278,
+   "offenders": [],
+   "tiny": [],
+   "taps": [],
+   "nowrap": [],
+   "wide": [],
+   "vhtrap": [],
+   "fixedBg": [],
+   "canvases": [],
+   "fonts": {
+    "loaded": 45,
+    "h1": "Onest, \"IBM Plex Sans\", sans-serif",
+    "h2": "Onest, \"IBM Plex Sans\", sans-serif",
+    "body": "\"IBM Plex Sans\", sans-serif",
+    "bodySize": 16
+   },
+   "aligns": {
+    "start": 126,
+    "left": 6,
+    "center": 4,
+    "right": 4
+   },
+   "sectPads": [
+    {
+     "sel": "div.wrap > section",
+     "pt": "0px",
+     "pb": "0px",
+     "mt": "0px"
+    }
+   ],
+   "padVariants": 14,
+   "viewportMeta": "width=device-width, initial-scale=1",
+   "plasma": false,
+   "plasmaState": null,
+   "plasmaStatic": false,
+   "cyrDisplay": true,
+   "onestReady": true
+  }
+ }
+}

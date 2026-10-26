@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discovery System — восемь внедрений</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<style>
+:root{
+  --bg:#111524; --panel:#0d1120; --raise:#161c30;
+  --ink:#eef2f9; --body:#b8c3d6; --meta:#8893a8; --faint:#79839a;
+  --line:#232a40; --line-soft:#1c2236;
+  --accent:#7bc4a8; --accent-dim:rgba(123,196,168,.34); --accent-ghost:rgba(123,196,168,.09);
+  --btn:#1f7a4d;
+  --sans:'IBM Plex Sans',sans-serif; --display:'Onest','IBM Plex Sans',sans-serif; --mono:'IBM Plex Mono',monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--body);font:400 16px/1.6 var(--sans);
+  -webkit-font-smoothing:antialiased;overflow-x:clip}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+b,strong{font-weight:600;color:var(--ink)}
+
+/* ── шапка ─────────────────────────────────────────────── */
+.sec-head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding-top:clamp(56px,8vw,110px)}
+.kicker{grid-column:1/7;font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{grid-column:1/9;margin-top:24px;font-family:var(--display);font-weight:700;
+  font-size:clamp(33px,4.2vw,58px);line-height:1.07;letter-spacing:-.022em;color:var(--ink);text-wrap:balance}
+.intro{grid-column:9/13;grid-row:2;align-self:end;margin-top:24px;font-size:15.5px;line-height:1.65;color:var(--meta);max-width:34ch;text-wrap:pretty}
+.intro b{color:var(--ink);font-weight:500}
+.legend{grid-column:1/9;grid-row:3;margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 26px;
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;color:var(--faint)}
+.legend i{font-style:normal;color:var(--accent);margin-right:8px}
+
+/* ── глава: общая рамка, у каждой — своя сетка ─────────── */
+.case{position:relative;border-top:1px solid var(--line);padding:clamp(40px,5vw,72px) 0 clamp(44px,5.5vw,80px)}
+.case-tag{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent-dim);border-radius:10px;padding:4px 10px;margin-bottom:16px}
+.case-tag.alt{color:var(--meta);border-color:var(--line)}
+.case h2{font-family:var(--display);font-weight:600;font-size:clamp(21px,2vw,27px);line-height:1.25;
+  letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
+.ask{position:relative;margin-top:18px;padding-left:22px;color:var(--meta);font-size:15.5px;line-height:1.6;max-width:46ch;text-wrap:pretty}
+.ask::before{content:"";position:absolute;left:0;top:2px;bottom:2px;width:2px;background:var(--accent-dim);border-radius:2px}
+.ask b{color:var(--body);font-weight:500;font-style:normal}
+
+/* лог агента — инструментальный блок, один и тот же орган, но живёт в разных сетках */
+.log{background:var(--panel);border:1px solid var(--line-soft);border-radius:12px;
+  padding:18px 20px;font-family:var(--mono);font-size:12.5px;line-height:2.05;letter-spacing:.01em;color:var(--body)}
+.log .t{color:var(--faint);margin-right:12px}
+.log .p{color:var(--accent);margin-right:10px}
+.log .dim{color:var(--meta)}
+.log .bar{color:var(--line);letter-spacing:0}
+.log-h{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.log-h i{font-style:normal;color:var(--accent)}
+
+/* «освободилось» — итог главы */
+.free{font-family:var(--display);font-weight:600;color:var(--ink);font-size:clamp(18px,1.7vw,22px);line-height:1.35;letter-spacing:-.01em}
+.free .lb,.was-st .lb{font-family:var(--mono);font-weight:400;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-right:10px}
+.fine{font-family:var(--mono);font-size:12.5px;line-height:1.9;letter-spacing:.02em;color:var(--meta);max-width:60ch;text-wrap:pretty}
+.fine b{color:var(--accent);font-weight:500}
+
+/* выносная цифра */
+.stat{font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums;
+  line-height:.95;letter-spacing:-.02em;color:var(--ink)}
+.stat small{display:block;font-family:var(--mono);font-weight:400;font-size:12.5px;letter-spacing:.05em;
+  line-height:1.75;color:var(--meta);margin-top:12px;max-width:22ch;text-wrap:pretty}
+
+/* было/стало — компактный орган */
+.was-st{font-size:14.5px;line-height:1.65;text-wrap:pretty}
+.was-st .row{display:flex;gap:10px;align-items:baseline}
+.was-st .row + .row{margin-top:8px}
+.was-st .was{color:var(--meta)}
+.was-st .now{color:var(--ink)}
+
+/* призрачная цифра фоном */
+.ghost{position:absolute;font-family:var(--display);font-weight:700;color:var(--accent-ghost);
+  line-height:1;user-select:none;pointer-events:none;z-index:0}
+.case>*{position:relative;z-index:1}
+
+/* ══ 01 · учёт: лог на переднем плане, цифра справа ══ */
+.c1{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
+.c1 .head{grid-column:1/6}
+.c1 .log{grid-column:6/13;grid-row:1 / span 2;align-self:start;margin-top:6px}
+.c1 .free-wrap{grid-column:1/6;grid-row:2;align-self:end;margin-top:28px}
+.c1 .stat{grid-column:1/3;grid-row:3;font-size:clamp(56px,5vw,80px);margin-top:30px}
+.c1 .fine{grid-column:3/9;grid-row:3;align-self:end;margin-top:34px}
+
+/* ══ 02 · unity: призрачная единица слева, узкая колонка справа ══ */
+.c2{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
+.c2 .ghost{grid-column:1/4;grid-row:1 / span 2;font-size:clamp(140px,16vw,260px);align-self:start}
+.c2 .head{grid-column:5/13}
+.c2 .body{grid-column:5/10;margin-top:22px}
+.c2 .log{margin-top:20px}
+.c2 .free-wrap{grid-column:10/13;grid-row:1;align-self:end;text-align:left}
+.c2 .stat{font-size:clamp(52px,4.6vw,72px)}
+.c2 .fine{grid-column:5/13;margin-top:26px}
+
+/* ══ 03 · радар ниши: центрированный разворот с огромным ×40 ══ */
+.c3{max-width:820px;margin:0 auto;text-align:center}
+.c3 .case-tag{margin-bottom:20px}
+.c3 h2{max-width:24ch;margin:0 auto}
+.c3 .ask{margin:18px auto 0;text-align:left}
+.c3 .stat{font-size:clamp(88px,10vw,150px);margin-top:30px}
+.c3 .stat small{margin:14px auto 0;max-width:34ch}
+.c3 .log{margin-top:30px;text-align:left}
+.c3 .fine{margin:22px auto 0;max-width:52ch}
+
+/* ══ 04 · бухгалтерия: проводки-проводки, 12 ячеек, итог справа ══ */
+.c4{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
+.c4 .head{grid-column:1/7}
+.c4 .stat{grid-column:9/13;grid-row:1;align-self:start;font-size:clamp(56px,5.4vw,88px);text-align:right}
+.c4 .stat small{margin-left:auto}
+.c4 .ledger{grid-column:1/8;margin-top:26px}
+.c4 .ledger .row{display:flex;gap:14px;padding:11px 0;border-bottom:1px dashed var(--line-soft);
+  font-family:var(--mono);font-size:12.5px;line-height:1.7}
+.c4 .ledger .row:first-child{border-top:1px dashed var(--line-soft)}
+.c4 .ledger .op{color:var(--accent);min-width:9ch}
+.c4 .ledger .what{color:var(--body)}
+.c4 .chips{grid-column:8/13;grid-row:2;align-self:start;margin-top:30px;display:grid;
+  grid-template-columns:repeat(6,1fr);gap:7px;max-width:280px}
+.c4 .chips span{aspect-ratio:1;border:1px solid var(--accent-dim);border-radius:6px;background:var(--accent-ghost)}
+.c4 .chips-cap{grid-column:8/13;grid-row:2;align-self:end;margin-top:0;font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.04em;justify-self:end;text-align:right;padding-top:120px}
+.c4 .was-st{grid-column:1/7;grid-row:3;margin-top:30px}
+.c4 .fine{grid-column:1/9;grid-row:4;margin-top:22px}
+
+/* ══ 05 · контент: конвейер 2:40 → 14 → 5 ══ */
+.c5 .head{max-width:52ch}
+.c5 .flow{margin-top:34px;display:flex;align-items:stretch;gap:0;flex-wrap:wrap;row-gap:16px}
+.c5 .stage{border:1px solid var(--line);border-radius:12px;padding:16px 20px;min-width:150px;background:var(--raise)}
+.c5 .stage b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,38px);line-height:1.1;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.c5 .stage span{display:block;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--faint);margin-top:8px;max-width:18ch;text-wrap:pretty}
+.c5 .stage.hot{border-color:var(--accent-dim);background:var(--accent-ghost)}
+.c5 .stage.hot b{color:var(--accent)}
+.c5 .arr{align-self:center;font-family:var(--mono);color:var(--faint);padding:0 16px;font-size:15px}
+.c5 .chips{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+.c5 .chips span{font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:var(--body);
+  border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.c5 .free-wrap{margin-top:30px;max-width:52ch}
+.c5 .fine{margin-top:18px}
+
+/* ══ 06 · карьера: три шага с соединительной линией ══ */
+.c6{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
+.c6 .head{grid-column:1/8}
+.c6 .stat{grid-column:10/13;grid-row:1;align-self:start;font-size:clamp(52px,5vw,80px);text-align:right}
+.c6 .stat small{margin-left:auto}
+.c6 .steps{grid-column:1/9;margin-top:32px;border-left:1px solid var(--line);padding-left:0}
+.c6 .step{position:relative;display:grid;grid-template-columns:52px 1fr;gap:18px;padding:20px 0 22px 26px}
+.c6 .step + .step{border-top:1px solid var(--line-soft)}
+.c6 .step::before{content:"";position:absolute;left:-4px;top:30px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.c6 .step i{font-style:normal;font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--faint);padding-top:4px}
+.c6 .step h3{font-family:var(--display);font-weight:600;font-size:17px;color:var(--ink);letter-spacing:-.005em}
+.c6 .step p{margin-top:6px;font-size:14.5px;line-height:1.6;color:var(--meta);max-width:52ch;text-wrap:pretty}
+.c6 .was-st{grid-column:10/13;grid-row:2;align-self:start;margin-top:34px;padding:20px 22px;border:1px solid var(--line-soft);border-radius:12px;background:var(--raise)}
+.c6 .fine{grid-column:1/9;grid-row:3;margin-top:24px}
+
+/* ══ 07 · b2b: список источников против вердикта ══ */
+.c7{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
+.c7 .head{grid-column:1/7}
+.c7 .log{grid-column:1/7;margin-top:26px}
+.c7 .verdict{grid-column:8/13;grid-row:1;align-self:end;border-left:2px solid var(--accent);padding-left:24px}
+.c7 .stat{font-size:clamp(44px,4.6vw,68px);margin-top:22px}
+.c7 .stat small{max-width:26ch}
+.c7 .was-st{grid-column:8/13;grid-row:2;margin-top:30px}
+.c7 .fine{grid-column:1/9;grid-row:3;margin-top:24px}
+
+/* ══ 08 · заказы: финальный аккорд — панель с данными и шкалами ══ */
+.c8{background:var(--raise);border:1px solid var(--line-soft);border-radius:16px;
+  padding:clamp(26px,3.5vw,48px) clamp(22px,3.5vw,48px);margin-top:clamp(40px,5vw,72px)}
+.c8 .top{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
+.c8 .head{grid-column:1/8}
+.c8 .stat{grid-column:9/13;grid-row:1;align-self:start;font-size:clamp(52px,5.4vw,84px);text-align:right}
+.c8 .stat small{margin-left:auto}
+.c8 .mid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;margin-top:30px}
+.c8 .log{grid-column:1/6}
+.c8 .gauges{grid-column:7/13;align-self:center}
+.gauge{margin-top:16px}
+.gauge:first-child{margin-top:0}
+.gauge .cap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;color:var(--meta)}
+.gauge .cap b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.gauge .track{margin-top:8px;height:10px;border-radius:6px;background:var(--panel);overflow:hidden}
+.gauge .fill{height:100%;border-radius:6px;background:var(--line)}
+.gauge .fill.win{background:var(--accent)}
+.gauge .delta{font-family:var(--mono);font-size:12.5px;color:var(--faint);margin-top:16px;letter-spacing:.02em}
+.gauge .delta b{color:var(--accent);font-weight:500}
+.c8 .free-wrap{grid-column:1/8;margin-top:32px;max-width:56ch}
+.c8 .fine{grid-column:1/10;margin-top:18px}
+.c8 .fine b{color:var(--accent)}
+
+/* ── финал ─────────────────────────────────────────────── */
+.track-end{margin-top:clamp(48px,6vw,84px);display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;
+  border-top:2px solid var(--accent);padding:34px 0 24px}
+.end-label{grid-column:1/4;font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.end-copy{grid-column:4/10;font-family:var(--display);font-weight:600;font-size:clamp(22px,2.4vw,32px);
+  line-height:1.3;letter-spacing:-.015em;color:var(--ink);margin-top:18px;max-width:26ch;text-wrap:balance}
+.end-copy small{display:block;font-family:var(--sans);font-weight:400;font-size:15.5px;line-height:1.6;color:var(--meta);
+  letter-spacing:0;margin-top:16px;max-width:46ch;text-wrap:pretty}
+.end-cta{grid-column:10/13;grid-row:1;align-self:end}
+.btn{display:inline-block;font-weight:600;font-size:15.5px;color:#fff;background:var(--btn);
+  border-radius:12px;padding:15px 26px;text-decoration:none;transition:background .15s,transform .15s var(--ease)}
+.btn:hover{background:#26925e}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.foot{border-top:1px solid var(--line);padding:22px 0 56px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.06em}
+
+@media (prefers-reduced-motion:no-preference){
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+}
+
+/* ── 390–860: всё в один поток, крупные цифры сжимаются ── */
+@media (max-width:860px){
+  .sec-head{display:block;padding-top:44px}
+  .intro,.legend{margin-top:22px;max-width:none}
+  .legend{margin-top:26px;gap:8px 20px}
+  .case{padding:36px 0 40px}
+  .c1,.c2,.c4,.c6,.c7,.c8 .top,.c8 .mid{display:block}
+  .c1 .log,.c2 .body,.c4 .ledger,.c4 .was-st,.c6 .steps,.c6 .was-st,.c7 .log,.c7 .was-st,
+  .c5 .free-wrap,.c6 .fine,.c7 .fine,.c4 .fine,.c1 .fine{margin-top:24px;max-width:none}
+  .c1 .free-wrap,.c2 .free-wrap,.c4 .stat,.c6 .stat,.c7 .verdict{margin-top:24px}
+  .c2 .ghost{display:none}
+  .c2 .stat,.c4 .stat,.c6 .stat,.c7 .verdict .stat,.c8 .stat{text-align:left}
+  .c2 .stat small,.c4 .stat small,.c6 .stat small,.c8 .stat small{margin-left:0}
+  .c3{max-width:none}
+  .c4 .chips{grid-template-columns:repeat(6,1fr);max-width:222px;margin-top:26px}
+  .c4 .chips-cap{padding-top:12px;text-align:left;justify-self:start;margin-top:10px}
+  .c4 .was-st{margin-top:24px}
+  .c5 .flow{gap:10px}
+  .c5 .arr{padding:0 4px}
+  .c5 .stage{flex:1 1 140px;min-width:0}
+  .c6 .was-st{padding:18px}
+  .c7 .verdict{border-left:none;padding-left:0;border-top:1px solid var(--line-soft);padding-top:22px}
+  .c8{padding:26px 20px}
+  .c8 .gauges{margin-top:26px}
+  .c8 .free-wrap{margin-top:26px;max-width:none}
+  .c8 .fine{margin-top:16px}
+  .track-end{display:block;padding-top:26px}
+  .end-copy{margin-top:16px;max-width:none}
+  .end-cta{margin-top:24px}
+  .foot{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="sec-head">
+    <p class="kicker rv">Внедрения · восемь историй, одни руки</p>
+    <h1 class="rv">Клиент приходит с задачей. Агент забирает рутину. Дальше — цифры.</h1>
+    <p class="intro rv">Восемь рабочих мест, где агент уже работает. Не витрина: у каждого внедрения названо, <b>что было</b> и <b>что стало</b> — по логам и замерам, не по презентации.</p>
+    <p class="legend rv" aria-hidden="true"><span><i>→</i>задача клиента</span><span><i>&gt;</i>лог агента</span><span><i>■</i>что освободилось</span></p>
+  </header>
+
+  <div aria-label="Восемь внедрений">
+
+    <!-- 01 · учёт -->
+    <article class="case c1 rv">
+      <div class="head">
+        <span class="case-tag">01 · услуги</span>
+        <h2>Учёт, смены и сметы — голосом</h2>
+        <p class="ask">«Сотрудники скидывают цифры в чат, — говорит владелец ремонтной бригады. — <b>Я весь вечер переношу их в таблицу.</b>»</p>
+      </div>
+      <div class="log" role="img" aria-label="Лог агента учёта">
+        <p class="log-h">журнал агента <i>· день объекта</i></p>
+        <div><span class="t">09:14</span><span class="p">→</span>голос: «материалы 12 400, плиточникам 8 000»</div>
+        <div><span class="t">09:14</span><span class="p">→</span>строка добавлена: смета_объект7 · расход</div>
+        <div><span class="t">09:15</span><span class="dim">сотрудник пишет боту под своим именем — ок</span></div>
+        <div><span class="t">21:00</span><span class="p">→</span>сводка дня отправлена владельцу</div>
+      </div>
+      <div class="free-wrap"><p class="free"><span class="lb">освободилось</span>вечера владельца — учёт живёт без него</p></div>
+      <p class="stat">0<small>переносов руками: цифры падают в таблицу сами</small></p>
+      <p class="fine">сводка сама в <b>9:00 и 21:00</b> · работает 24/7 на его сервере · подписок нет, доступ с телефона</p>
+    </article>
+
+    <!-- 02 · unity -->
+    <article class="case c2 rv">
+      <span class="ghost" aria-hidden="true">1</span>
+      <div class="head">
+        <span class="case-tag alt">02 · креатив</span>
+        <h2>Дизайнер вошёл в разработку игры</h2>
+      </div>
+      <div class="body">
+        <p class="ask">«Игру хочу делать сам, — говорит дизайнер, — <b>но код — не моя территория.</b>»</p>
+        <div class="log" role="img" aria-label="Лог агента в Unity">
+          <p class="log-h">журнал агента <i>· Unity 6</i></p>
+          <div><span class="t">день 3</span><span class="p">→</span>скрипт движения сгенерирован</div>
+          <div><span class="t">день 5</span><span class="p">→</span>скрипт коллизий сгенерирован</div>
+          <div><span class="t">итог</span><span class="dim">4 из 12 скриптов — агент, ассеты из его макетов, не сток</span></div>
+        </div>
+      </div>
+      <div class="free-wrap">
+        <p class="stat">1<small>человек вместо пары «дизайнер + программист» на старте</small></p>
+      </div>
+      <p class="fine">агент собирает визуал и ведёт проект в Unity — дизайнер начал разработку собственной игры</p>
+    </article>
+
+    <!-- 03 · радар ниши -->
+    <article class="case c3 rv">
+      <span class="case-tag alt">03 · радар ниши</span>
+      <h2>Чужие подписки заменены своими руками</h2>
+      <p class="ask">«Эти платные сервисы, — замечает клиент, — <b>делают то, что по сути — скачать и разобрать видео.</b>»</p>
+      <p class="stat">×40<small>дешевле — при том же результате; инструмент открыт для всех</small></p>
+      <div class="log" role="img" aria-label="Лог радара ниши">
+        <div><span class="p">→</span>зависимости разобраны: yt-dlp + свой код</div>
+        <div><span class="p">→</span>видео разобрано: <span class="dim">251</span> · аутлаер найден: <span class="dim">20 млн просмотров против 2.7K средних</span></div>
+      </div>
+      <p class="fine"><b>5–6 000 ₽/мес → 150 ₽/мес</b> · тот же результат — без подписок</p>
+    </article>
+
+    <!-- 04 · бухгалтерия -->
+    <article class="case c4 rv">
+      <div class="head">
+        <span class="case-tag">04 · 12 компаний</span>
+        <h2>Бухгалтерия без переноса руками</h2>
+        <p class="ask">«Двенадцать компаний, — вздыхает главбух-самозанятая, — <b>и по каждой сверка и первичка — руками.</b>»</p>
+      </div>
+      <p class="stat">12<small>компаний в работе у одного самозанятого главбуха</small></p>
+      <div class="ledger" role="img" aria-label="Журнал проводок агента">
+        <p class="log-h">журнал агента <i>· контур октября</i></p>
+        <div class="row"><span class="op">сверка</span><span class="what">акты сверки по 12 компаниям — собраны и сверены</span></div>
+        <div class="row"><span class="op">обезличить</span><span class="what">персональные данные сняты до попадания в модель</span></div>
+        <div class="row"><span class="op">первичка</span><span class="what">накладные и регистры — разложены по компаниям</span></div>
+        <div class="row"><span class="op">актуализация</span><span class="what">справочники контрагентов — обновлены</span></div>
+      </div>
+      <div class="chips" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <p class="chips-cap">12 компаний — один контур</p>
+      <div class="was-st">
+        <div class="row"><span class="lb">было</span><span class="was">сверка, первичка и актуализация по каждой — руками</span></div>
+        <div class="row"><span class="lb">стало</span><span class="now">агент забирает рутину — подпись остаётся за главбухом</span></div>
+      </div>
+      <p class="fine">данные обезличиваются до попадания в модель — <b>152-ФЗ, ст. 3 п. 9</b> · первичка и регистры — 402-ФЗ, ст. 9–10</p>
+    </article>
+
+    <!-- 05 · контент -->
+    <article class="case c5 rv">
+      <div class="head">
+        <span class="case-tag alt">05 · контент</span>
+        <h2>Часы сырья — в нарезки и сценарии</h2>
+        <p class="ask">«Огромные записи лежат мёртвым грузом, — говорит автор. — <b>Смонтировать руки не доходят.</b>»</p>
+      </div>
+      <div class="flow" role="img" aria-label="Конвейер: два часа сорока минут сырья превращаются в нарезки">
+        <div class="stage"><b>2:40</b><span>часов сырых записей</span></div>
+        <span class="arr" aria-hidden="true">→</span>
+        <div class="stage hot"><b>14</b><span>нарезок нарезано агентом</span></div>
+        <span class="arr" aria-hidden="true">→</span>
+        <div class="stage"><b>5</b><span>отобраны в работу</span></div>
+      </div>
+      <div class="chips" aria-label="Что ещё сделал агент">
+        <span>3 варианта сценария</span><span>6 предложений по склейкам</span><span>без платных монтажных сервисов</span>
+      </div>
+      <div class="free-wrap"><p class="free"><span class="lb">освободилось</span>вечера монтажа — агент режет первичные нарезки и пишет сценарии</p></div>
+      <p class="fine">человек отбирает и утверждает — черновая рутина ушла машине</p>
+    </article>
+
+    <!-- 06 · карьера -->
+    <article class="case c6 rv">
+      <div class="head">
+        <span class="case-tag">06 · карьера</span>
+        <h2>Поиск работы: сначала стратегия, потом инструмент</h2>
+        <p class="ask">«Пишу сопроводительное с нуля под каждую вакансию, — признаётся соискатель. — <b>И всё равно мимо рынка.</b>»</p>
+      </div>
+      <p class="stat">3<small>трека стратегии: продуктовая аналитика, growth, контент</small></p>
+      <div class="steps" role="img" aria-label="Три шага внедрения">
+        <div class="step"><i>шаг 1</i><div><h3>Брифинг</h3><p>что умеет, куда хочет, где рынок платит — до всякого кода</p></div></div>
+        <div class="step"><i>шаг 2</i><div><h3>Стратегия в три трека</h3><p>продуктовая аналитика · growth · контент — выбраны вместе</p></div></div>
+        <div class="step"><i>шаг 3</i><div><h3>Инструмент</h3><p>парсер открытых вакансий + сопроводительное под каждую конкретную, а не веером</p></div></div>
+      </div>
+      <div class="was-st">
+        <div class="row"><span class="lb">было</span><span class="was">месяцы ручных откликов и письма с нуля</span></div>
+        <div class="row"><span class="lb">стало</span><span class="now">стратегия, затем инструмент под выбранную стратегию</span></div>
+      </div>
+      <p class="fine">источники — только открытые · <b>дешевле рыночных подписок</b></p>
+    </article>
+
+    <!-- 07 · b2b -->
+    <article class="case c7 rv">
+      <div class="head">
+        <span class="case-tag alt">07 · b2b</span>
+        <h2>Срез рынка перед защитой решения</h2>
+        <p class="ask">«К пятнице половина цифр в презентации, — жалуется аналитик, — <b>уже устаревает.</b>»</p>
+      </div>
+      <div class="log" role="img" aria-label="Лог сбора срезa рынка">
+        <p class="log-h">журнал агента <i>· один прогон</i></p>
+        <div><span class="t">прогон</span><span class="p">→</span>источников собрано: 14 · у каждого — дата</div>
+        <div><span class="t">проверка</span><span class="p">→</span>подтверждено: 9</div>
+        <div><span class="t">честность</span><span class="dim">отдельно названо, что данные НЕ доказывают</span></div>
+      </div>
+      <div class="verdict">
+        <p class="free"><span class="lb">освободилось</span>неделя ручного сбора — человек интерпретирует и защищает решение</p>
+        <p class="stat">14<small>источников за один прогон, у каждого дата</small></p>
+      </div>
+      <div class="was-st">
+        <div class="row"><span class="lb">было</span><span class="was">ручной сбор по источникам, к концу недели данные устарели</span></div>
+        <div class="row"><span class="lb">стало</span><span class="now">срез с источниками и датами по запросу</span></div>
+      </div>
+      <p class="fine">агент собирает — человек интерпретирует: роли не перепутаны</p>
+    </article>
+
+    <!-- 08 · заказы -->
+    <article class="case c8 rv">
+      <div class="top">
+        <div class="head">
+          <span class="case-tag">08 · инструмент</span>
+          <h2>Заказы без маркетингового бюджета</h2>
+          <p class="ask">«Обхожу площадки руками, — говорит фрилансер. — <b>Часы каждый день, и половина заявок мусор.</b>»</p>
+        </div>
+        <p class="stat">1106<small>карточек заказов собрано за прогон — 57 каналов + 7 бирж</small></p>
+      </div>
+      <div class="mid">
+        <div class="log" role="img" aria-label="Лог скилла поиска заказов">
+          <p class="log-h">журнал скилла <i>· EVAL.md, проверь сам</i></p>
+          <div><span class="t">скан</span><span class="p">→</span>57 каналов + 7 бирж</div>
+          <div><span class="t">сбор</span><span class="p">→</span>карточек собрано: 1106</div>
+          <div><span class="t">разметка</span><span class="p">→</span>вручную размечено: 110</div>
+          <div><span class="t">замер</span><span class="dim">точность скилла против наивного поиска — ниже, на шкалах</span></div>
+          <div><span class="t">код</span><span class="dim">открыт на GitHub</span></div>
+        </div>
+        <div class="gauges" role="img" aria-label="Точность скилла 63% против 47% у наивного поиска">
+          <div class="gauge">
+            <div class="cap"><span>скилл · с фильтром мусора</span><b>63%</b></div>
+            <div class="track"><div class="fill win" style="width:63%"></div></div>
+          </div>
+          <div class="gauge">
+            <div class="cap"><span>наивный поиск по словам</span><b>47%</b></div>
+            <div class="track"><div class="fill" style="width:47%"></div></div>
+          </div>
+          <p class="delta">F1 0.61 · замерено на 110 карточках ручной разметки · <b>+16 п.п.</b> к точности</p>
+        </div>
+      </div>
+      <div class="free-wrap"><p class="free"><span class="lb">освободилось</span>ежедневные часы обхода — время уходит на анализ, а не на поиск</p></div>
+      <p class="fine">агент собирает заявки со всех площадок и отсеивает мусор · <b>код открыт на GitHub</b> — EVAL.md проверь сам</p>
+    </article>
+  </section>
+
+  <section class="track-end rv" aria-label="Итог">
+    <p class="end-label rv">Восьмая из восьми — может быть девятой</p>
+    <p class="end-copy rv">Следующее рабочее место — твоё.<small>Внедрение по твоей форме и бюджету: ПК 15 000 ₽ · самозанятый 20 000 ₽ · ИП 30 000 ₽ · средний бизнес 60 000 ₽. Расходники — от 150 ₽/мес провайдерам.</small></p>
+    <p class="end-cta rv"><a class="btn" href="#">Собрать внедрение</a></p>
+  </section>
+
+  <footer class="foot"><span>Discovery System</span><span>внедрения · владение · открытый код</span></footer>
+</div>
+
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});return;
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){
+    el.style.transitionDelay=(el.closest('.track-end')?120:0)+'ms';io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
