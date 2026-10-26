@@ -168,6 +168,16 @@
   .o-desc{font-size:13.5px;color:var(--muted);line-height:1.55;margin-bottom:12px}
   .o-price{font-size:26px;font-weight:800;color:#fff;margin-bottom:14px}
   .o-price small{font-size:13px;font-weight:500;color:var(--muted)}
+  /* «Сколько это у других»: чужие цены открыто, с датой сверки — честность как видимый признак */
+  .others{margin-top:18px;padding:14px 16px;background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:12px}
+  .oth-h{font-size:13.5px;font-weight:700;color:var(--txt);margin-bottom:10px}
+  .oth-row{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .oth-row:last-of-type{border-bottom:none}
+  .oth-row span{flex:1;color:var(--muted)}
+  .oth-row b{color:var(--txt);font-weight:700;white-space:nowrap}
+  .oth-row a{color:var(--primary-l);text-decoration:none;font-size:12px;white-space:nowrap}
+  .oth-row a:hover{text-decoration:underline}
+  .oth-note{font-size:12px;color:var(--muted);line-height:1.5;margin-top:10px}
   .btn-cta-ghost{background:transparent;border:1px solid var(--line2);color:var(--txt)}
   .btn-cta-ghost:hover{background:var(--panel2)}
   .price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
@@ -525,7 +535,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       </div>
       <div class="offer-opt" data-prod="install" style="border-color:rgba(242,182,101,.22)">
         <div class="o-top"><div class="o-name">Внедрение под ключ — 15 / 20 / 30 / 60К</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">2 часа до запуска · GPU/хостинг решим</span></div>
-        <div class="o-desc">Личный агент на ПК (15К), система для самозанятого (20К), для ИП с CRM/Авито (30К) или для среднего бизнеса с сопровождением (60К). Гайд 5К включён. <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в ясности →</a></div>
+        <div class="o-desc">Личный агент на ПК (15К), система для самозанятого (20К), для ИП с CRM/Авито (30К) или для среднего бизнеса с сопровождением (60К). Гайд 5К включён. Состав и чек-лист приёмки фиксируем до старта — без «допов по ходу». <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в ясности →</a></div>
         <div class="o-price">15 / 20 / 30 / 60К <small>разово · 1–3 дня</small></div>
         <button class="btn-cta btn-cta-ghost" data-tier="pc" onclick="goInstall('pc')" style="width:100%">Личный агент на ПК — 15 000 ₽ →</button>
         <button class="btn-cta btn-cta-ghost" data-tier="vps" onclick="goInstall('vps')" style="width:100%;margin-top:8px">Самозанятый — 20 000 ₽ →</button>
@@ -544,7 +554,18 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="o-price">0 ₽ <small>Telegram · бесплатно</small></div>
         <a class="btn-cta btn-cta-ghost" href="https://t.me/discoverysystem" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">Подписаться на канал →</a>
       </div>
-      <div class="sub-copy">Модель и сервер оплачиваешь провайдерам напрямую: модель ≈100–800 ₽/мес на типовую рутину, сервер 1 100–2 200 ₽/мес в конструкторе (больше агентов — во внедрении, до 4 800 ₽), Telegram на РФ-хостинге требует шлюза +300 ₽. В сборке — настройки, промпты и приёмка, которые нельзя скопировать из чата. Разовые услуги оформляются через Robokassa, подписочные — через Tribute (подробнее в <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">ясности</a>).</div>
+      <div class="sub-copy">Модель и сервер оплачиваешь провайдерам напрямую: модель ≈100–800 ₽/мес на типовую рутину, сервер 1 100–2 200 ₽/мес в конструкторе (больше агентов — во внедрении, до 4 800 ₽), Telegram на РФ-хостинге требует шлюза +300 ₽. Тарифы моделей и хостинга сверены 26.10.2026. В сборке — настройки, промпты и приёмка, которые нельзя скопировать из чата. Разовые услуги оформляются через Robokassa, подписочные — через Tribute (подробнее в <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">ясности</a>).</div>
+
+      <div class="others">
+        <div class="oth-h">Сколько это стоит у других — цены с их сайтов, сверены 26.10.2026</div>
+        <div class="oth-row"><span>Aispirin — соло-практик, TG-ассистент</span><b>от 15 000 ₽</b><a href="https://aispirin.ru/" target="_blank" rel="noopener">сайт</a></div>
+        <div class="oth-row"><span>AI-Groups — агент на процесс</span><b>от 50 000 ₽</b><a href="https://ai-groups.ru/" target="_blank" rel="noopener">сайт</a></div>
+        <div class="oth-row"><span>DICOM TEAM — чат-бот на LLM (прайс-лист)</span><b>от 150 000 ₽</b><a href="https://dicom.team/" target="_blank" rel="noopener">сайт</a></div>
+        <div class="oth-row"><span>AVAT Studio — старт внедрения</span><b>от 150 000 ₽</b><a href="https://avat.studio/services/ai-implementation/" target="_blank" rel="noopener">сайт</a></div>
+        <div class="oth-row"><span>PrimexAI — нейросотрудник</span><b>200 000 ₽ + 25 000 ₽/мес</b><a href="https://primexai.ru/nejrosotrudnik" target="_blank" rel="noopener">сайт</a></div>
+        <div class="oth-row"><span>DoDigital — пилот</span><b>от 350 000 ₽</b><a href="https://dodigital.ru/aiagent" target="_blank" rel="noopener">сайт</a></div>
+        <p class="oth-note">Вилки «от N» без состава работ сравнивать нельзя — у каждого свой состав, финальные цены у них — за перепиской. У нас состав открыт в карточке: что входит и что платится провайдерам напрямую. Это то, чего нет ни у одного из них: расчёт под твои объёмы в рублях, до разговора.</p>
+      </div>
     </div>
 
     <div class="leadform" id="payPanel" style="display:none">
@@ -786,7 +807,7 @@ function renderConfig(){
     var groups={};
     CONNS.forEach(c=>{(groups[c.grp]=groups[c.grp]||[]).push(c);});
     ch.innerHTML=Object.keys(groups).map(g=>'<div class="chip-grp"><div class="chip-grp-t">'+g+'</div><div class="chip-grp-b">'+
-      groups[g].map(c=>'<button type="button" class="'+(conns.includes(c.id)?'on':'')+'" onclick="toggleConn(\''+c.id+'\')">'+c.label+(c.cost?' · +'+c.cost+'₽':'')+'</button>').join('')+
+      groups[g].map(c=>'<button type="button" class="'+(conns.includes(c.id)?'on':'')+'" onclick="toggleConn(\''+c.id+'\')">'+c.label+(c.cost?' · +'+c.cost+' ₽/мес':'')+'</button>').join('')+
       '</div></div>').join('');
   }
   var de=document.getElementById('deviceOpts');
@@ -807,6 +828,14 @@ function a11y(){
     if(el.tagName==='BUTTON'||el.tagName==='A')return;
     if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','0');
     if(!el.hasAttribute('role'))el.setAttribute('role','button');
+  });
+  /* aria-pressed: выбранность читается скринридером, не только глазами (аудит 15-audit-tech) */
+  document.querySelectorAll('.opt,.task,.pill,[data-tier]').forEach(el=>{
+    const on=el.classList.contains('selected')||el.classList.contains('on');
+    el.setAttribute('aria-pressed',on?'true':'false');
+  });
+  document.querySelectorAll('#connChips button').forEach(el=>{
+    el.setAttribute('aria-pressed',el.classList.contains('on')?'true':'false');
   });
 }
 document.addEventListener('keydown',function(ev){
@@ -1197,7 +1226,7 @@ function recalcPayback(){
   const timeMoney=e.hours*rate;              // сколько стоит освобождённое время
   /* дублируем экономику в верхний блок, чтобы ползунок менял и её */
   const _sv=document.getElementById('ahaSaving');
-  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч';
+  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч (до вычета владения)';
   const noDouble=(start==='people');         // зарплату уже платили за эти часы — не двоим
   /* «плачу людям»: экономим не всю зарплату, а долю рутины (аудит 10-audit-economics) */
   const hRate=Math.max(1,Math.round(st.base/160));

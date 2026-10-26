@@ -192,7 +192,7 @@ function renderConfig(){
     var groups={};
     CONNS.forEach(c=>{(groups[c.grp]=groups[c.grp]||[]).push(c);});
     ch.innerHTML=Object.keys(groups).map(g=>'<div class="chip-grp"><div class="chip-grp-t">'+g+'</div><div class="chip-grp-b">'+
-      groups[g].map(c=>'<button type="button" class="'+(conns.includes(c.id)?'on':'')+'" onclick="toggleConn(\''+c.id+'\')">'+c.label+(c.cost?' · +'+c.cost+'₽':'')+'</button>').join('')+
+      groups[g].map(c=>'<button type="button" class="'+(conns.includes(c.id)?'on':'')+'" onclick="toggleConn(\''+c.id+'\')">'+c.label+(c.cost?' · +'+c.cost+' ₽/мес':'')+'</button>').join('')+
       '</div></div>').join('');
   }
   var de=document.getElementById('deviceOpts');
@@ -213,6 +213,14 @@ function a11y(){
     if(el.tagName==='BUTTON'||el.tagName==='A')return;
     if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','0');
     if(!el.hasAttribute('role'))el.setAttribute('role','button');
+  });
+  /* aria-pressed: выбранность читается скринридером, не только глазами (аудит 15-audit-tech) */
+  document.querySelectorAll('.opt,.task,.pill,[data-tier]').forEach(el=>{
+    const on=el.classList.contains('selected')||el.classList.contains('on');
+    el.setAttribute('aria-pressed',on?'true':'false');
+  });
+  document.querySelectorAll('#connChips button').forEach(el=>{
+    el.setAttribute('aria-pressed',el.classList.contains('on')?'true':'false');
   });
 }
 document.addEventListener('keydown',function(ev){
@@ -603,7 +611,7 @@ function recalcPayback(){
   const timeMoney=e.hours*rate;              // сколько стоит освобождённое время
   /* дублируем экономику в верхний блок, чтобы ползунок менял и её */
   const _sv=document.getElementById('ahaSaving');
-  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч';
+  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч (до вычета владения)';
   const noDouble=(start==='people');         // зарплату уже платили за эти часы — не двоим
   /* «плачу людям»: экономим не всю зарплату, а долю рутины (аудит 10-audit-economics) */
   const hRate=Math.max(1,Math.round(st.base/160));
