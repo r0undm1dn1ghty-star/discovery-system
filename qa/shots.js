@@ -47,6 +47,15 @@ async function main() {
     await send('Page.navigate', { url: 'file:///' + path.join(REPO, page).replace(/\\/g, '/') });
     await Promise.race([loaded, sleep(9000)]);
     await sleep(1200);
+    // FIXREVEAL=1 — принудительно показываем всё, что скрыто анимацией появления:
+    // так отличаем реальную пустоту на странице от артефакта съёмки
+    if (process.env.FIXREVEAL) {
+      await send('Runtime.evaluate', { expression: `(() => {
+        const st = document.createElement('style');
+        st.textContent = '*{opacity:1 !important;transform:none !important;transition:none !important;animation:none !important}';
+        document.head.appendChild(st); })()` });
+      await sleep(300);
+    }
     // прокатываем страницу: иначе контент ниже сгиба остаётся в .rv (opacity:0)
     // и на снимке видны «пустоты», которых у живого пользователя нет
     await send('Runtime.evaluate', {
