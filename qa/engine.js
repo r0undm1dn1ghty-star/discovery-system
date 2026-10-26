@@ -138,14 +138,17 @@ const MODELS={ /* подписи — нейтральные классы, без
 let start=null,device='cpu',goal=null,goals=[],tasks=[],autonomy='review',conns=[],data='cloud',pay='rucard',budget=null;
 let _mc=null; try{_mc=JSON.parse(sessionStorage.getItem('ds_mc')||'null');}catch(e){}
 let _mcScenario=null; try{_mcScenario=sessionStorage.getItem('ds_mc_scenario');}catch(e){}
-let step=1; const N=3;
+let step=1; const N=2;
+/* Шаг 3 убран: задачи выводятся из целей (ux-research/02) */
+const GOAL_TASKS={repeat:[],leads:['sales'],report:['data','docs'],scan:['web','research'],write:['text'],paper:['docs'],unsure:[]};
+function deriveTasks(){ return [...new Set(goals.flatMap(g=>GOAL_TASKS[g]||[]))]; }
 
 /* ========== RENDER ========== */
 function renderBridge(){ const m=mcHint(); const el=document.getElementById('mcBridge'); if(!m||!el) return; const s=sessionStorage.getItem('ds_mc_scenario')||''; const label=s?(' · сценарий: '+s.toUpperCase()):''; el.textContent='с главной: '+Math.round(m.handsHours)+' ч руками → '+Math.round(m.agentHours)+' ч с агентом · экономия '+Math.round(m.saveHours)+' ч/мес'+label; el.style.display='block';
   // если много часов — подсказываем стек: высокая автономность выгоднее
   if(m.saveHours>60){ /* hint for autonomy selection */ }
 }
-const STEP_NAMES=['Откуда','Рутина','Задачи'];
+const STEP_NAMES=['Откуда','Рутина'];
 function renderSteps(){
   var h='';
   for(var i=1;i<=N;i++){
@@ -158,7 +161,9 @@ function renderCards(){
   if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="start='${s.id}';pickOption();">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
   const showUnsure=goals.length===0||goals.includes('unsure');
   document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">до ${days(g.econ)}</div></div></div>`).join('');
-  document.getElementById('taskOpts').innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
+  var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
+  var ao=document.getElementById('autoOpts');
+  if(ao)ao.innerHTML=AUTONOMY.map(a=>'<button type="button" class="'+(autonomy===a.id?'on':'')+'" onclick="setAuto(\''+a.id+'\')">'+a.label+'</button>').join('');
   document.getElementById('budgetOpts').innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
   a11y();
 }
@@ -222,11 +227,16 @@ document.addEventListener('keydown',function(ev){
 });
 function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();stepRender();renderBridge();}
 function toggleGoal(id){
-  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;renderCards();updateLive();stepRender();updateGoalMeta();return;}
+  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();stepRender();updateGoalMeta();return;}
   goals=goals.filter(x=>x!=='unsure');
   if(goals.includes(id)){goals=goals.filter(x=>x!==id);}
-  else{goals.push(id);}
+  else{
+    /* кап «до трёх»: снимает и паралич выбора, и завышение итоговой цифры (ux-research/02) */
+    if(goals.length>=3){toast('До трёх — выбери самое жрущее, остальное добавим после приёмки');renderCards();return;}
+    goals.push(id);
+  }
   goal=goals[0]||null;
+  tasks=deriveTasks();
   renderCards();updateLive();stepRender();updateGoalMeta();
 }
 function startBase(){ const s=STARTS.find(x=>x.id===start); return s?s.base:0; }
@@ -440,10 +450,9 @@ function estimate(){
   let base='qwen';
   /* класс модели = МАКСИМУМ по выбранным задачам (решение 10.10: самый требовательный
      выигрывает; приоритет расчёта над картинкой — иначе «Дизайн» обрушивал цену) */
-  const needCompute=tasks.some(t=>['docs','data','sales'].includes(t));
-  const needVision=tasks.some(t=>['design','video'].includes(t));
-  if(needVision)base='multimodal';
-  if(needCompute)base='deepseek'; /* расчётная всегда не дешевле визуальной — перекрывает */
+  /* класс модели — из целей (ux-research/02: задачи выведены из целей, шаг 3 убран) */
+  const needCompute=goals.some(g=>['report','paper','leads'].includes(g));
+  if(needCompute)base='deepseek'; /* Pro-тариф для сложных сценариев — совпадает с TIER_OF */
   let modelKey,cat;
   /* локальная модель возможна только с видеокартой; на CPU/телефоне честно уходим в облако */
   const canRunLocal=(device==='gpu8'||device==='gpu12'||device==='gpu24');
@@ -476,7 +485,7 @@ function estimate(){
     const tok=TOK_MONTH[g.id]||0;
     tokenCost+=tok/1e6*TARIFF[TIER_OF[g.id]||'lite'];
   });
-  tasks.forEach(t=>{ tokenCost+=(TASK_TOK[t]||1e5)/1e6*TARIFF.pro; });
+  /* задачи выведены из целей — их объёмы уже внутри TOK_MONTH, не суммируем повторно */
   tokenCost=tokenCost*(AUTO_TOK[autonomy]||1);
   /* локальная модель — расход провайдера 0 (электричество не считаем);
      гибрид — половина уходит в API */
@@ -491,7 +500,7 @@ function estimate(){
        4–5      → Cloud-160 16 ГБ ≈ 4 300
        6+       → 2×8 ГБ / 32 ГБ  ≈ 4 800
      2 ГБ одного агента не тянет (кейс Николая: 4 ГБ уже тупит с голосом). */
-  const nAgents=Math.max(1, gs.filter(g=>g.id!=='unsure').length + Math.ceil(tasks.length/2));
+  const nAgents=Math.max(1, gs.filter(g=>g.id!=='unsure').length);
   const HOST_TIERS=[[1,1100],[3,2190],[5,4300],[999,4800]];
   const hostBase=(HOST_TIERS.find(t=>nAgents<=t[0])||[999,4800])[1];
 
@@ -506,7 +515,7 @@ function estimate(){
   const gateway=(tgNeeded&&rfColo)?300:0;
   const hosting=(hosted?hostBase:0)+gateway;
   const connCost=conns.reduce((s,c)=>s+CONNS.find(x=>x.id===c).cost,0);
-  let handsHours=gs.reduce((s,g)=>s+g.econ,0); tasks.forEach(t=>{const tt=TASKS.find(x=>x.id===t); if(tt)handsHours+=tt.econ;});
+  let handsHours=gs.reduce((s,g)=>s+g.econ,0); /* задачи выведены из целей — их часы уже внутри g.econ */
   const hostCost=hosting;
   const connTotal=connCost;
   const monthly=Math.round(modelCost+hostCost+connTotal);
@@ -616,7 +625,26 @@ function recalcPayback(){
   }
   document.getElementById('pbNote').textContent='\u0421\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0435\u0441\u0442\u043d\u043e: \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u044f = \u0447\u0430\u0441\u044b \u0430\u0433\u0435\u043d\u0442\u0430 \u00d7 \u0442\u0432\u043e\u044f \u0446\u0435\u043d\u0430 \u0447\u0430\u0441\u0430'+(e.base>0?' + \u0443\u0445\u043e\u0434 \u0441 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432':'')+' \u2212 \u0432\u043b\u0430\u0434\u0435\u043d\u0438\u0435.';
   updateYearBox(e,netMonthly,st);
+  showOrderCta(e);
 }
+function showOrderCta(e){
+  var box=document.getElementById('orderCta'); if(!box) return;
+  if(e&&e.monthly) box.style.display='block';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var b=document.getElementById('orderBtn'); if(!b) return;
+  b.addEventListener('click',function(){
+    var e=estimate();
+    var monthly=(e&&e.monthly)?e.monthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441':'\u0435\u0449\u0451 \u043d\u0435 \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u043d\u043e';
+    var msg='\u0412\u0438\u043a\u0442\u043e\u0440, \u043f\u0440\u0438\u0432\u0435\u0442! \u0425\u043e\u0447\u0443 \u0432\u043d\u0435\u0434\u0440\u0438\u0442\u044c \u0430\u0433\u0435\u043d\u0442\u0430 \u2014 \u0440\u0430\u0441\u0447\u0451\u0442 \u0438\u0437 \u043a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440\u0430 \u043f\u0440\u0438\u043b\u0430\u0433\u0430\u044e.\n\n'
+      +'\u0427\u0442\u043e \u0437\u0430 \u0440\u0443\u0442\u0438\u043d\u0430: [\u0434\u0432\u0443\u043c\u044f \u0441\u043b\u043e\u0432\u0430\u043c\u0438]\n'
+      +'\u0427\u0442\u043e \u0434\u0435\u043b\u0430\u0435\u0442\u0441\u044f \u0440\u0443\u043a\u0430\u043c\u0438: [\u0447\u0442\u043e \u0437\u0430\u0431\u0440\u0430\u0442\u044c \u0443 \u0430\u0433\u0435\u043d\u0442\u0430]\n'
+      +'\u041a\u043e\u0433\u0434\u0430 \u043d\u0443\u0436\u043d\u043e: [\u0441\u0440\u043e\u043a]\n'
+      +'\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0430 \u0437\u0430\u043f\u0443\u0441\u043a: [\u0435\u0441\u0442\u044c / \u043d\u0435\u0442]\n\n'
+      +'\u0420\u0430\u0441\u0447\u0451\u0442 \u0438\u0437 \u043a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440\u0430: '+monthly;
+    window.open('https://t.me/soulvictor?text='+encodeURIComponent(msg),'_blank','noopener');
+  });
+});
 function updateYearBox(e,net,st){
   var box=document.getElementById('yearBox'); if(!box)return;
   if(!net||net<=0){
@@ -783,6 +811,59 @@ function calculate(){
 const TG_ME='https://t.me/soulvictor';
 let chosenOffer=null;
 
+/* ====== ЕДИНЫЙ БИЛДЕР TG-СООБЩЕНИЯ (ux-research/05) ======
+   Полный паспорт расчёта + лайнеры, которые клиент дополнит.
+   Раньше 4 точки выхода шл разный текст: orderBtn терял контекст целиком. */
+let installTier=null;
+function tgSnapshot(kind,paid){
+  const e=estimate()||{};
+  try{localStorage.setItem('ds_order',JSON.stringify({offer:kind,tier:installTier,paid:!!paid,ts:Date.now(),
+    goals:goals,tasks:tasks,device:device,data:data,autonomy:autonomy,conns:conns,budget:budget,start:start,
+    monthly:e.monthly,hours:e.hours}));}catch(err){}
+}
+function buildTgText(kind){
+  const e=estimate()||{};
+  const st=STARTS.find(x=>x.id===start)||{short:'—'};
+  const aut=(AUTONOMY.find(x=>x.id===autonomy)||{}).label||'—';
+  const connsLbl=conns.map(c=>{const x=CONNS.find(y=>y.id===c);return x?x.label:'';}).filter(Boolean).join(', ')||'—';
+  const dataLbl=(DATA.find(x=>x.id===data)||{}).t||'—';
+  const rate=+(document.getElementById('pbSlider')||{value:700}).value||700;
+  const saved=e.hours?Math.round(e.hours*rate):0;
+  const T={config:'Персональная сборка — 7 000 ₽',table:'Гайд: 20 конфигураций — 5 000 ₽',
+    optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — 0 ₽'};
+  let title=T[kind]||'Связка ИИ-агента';
+  if(kind==='install')title={pc:'Личный агент на ПК — 15 000 ₽',vps:'Агент для самозанятого — 20 000 ₽',integ:'ИП/малый бизнес — 30 000 ₽'}[installTier]||'Внедрение под ключ';
+  const L=[title+' — Discovery System','','Из калькулятора:'];
+  L.push('• Рутина: '+(goalLabel()||'—'));
+  L.push('• Старт: '+st.short);
+  L.push('• Автономность: '+aut);
+  if(conns.length)L.push('• Подключения: '+connsLbl);
+  L.push('• Данные: '+dataLbl);
+  if(e.hours)L.push('• Освобождает: ~'+e.hours+' ч/мес ≈ '+saved.toLocaleString('ru-RU')+' ₽/мес');
+  if(e.monthly)L.push('• Владение: ~'+e.monthly.toLocaleString('ru-RU')+' ₽/мес');
+  L.push('','Моё:');
+  const LINERS={
+    config:['Рутина двумя словами: [например, заявки с Авито]','Должно работать: [например, ответ в TG за 5 минут]','Когда нужно: [например, на этой неделе]'],
+    table:['Что соберу первым: [задача]','Вопрос по таблице: [если есть]'],
+    optimization:['Где болит: [с цифрой — сколько часов или рублей]','Что уже пробовал: [чтобы не повторять]','Метрика «до»: [например, 6 ч/мес]'],
+    install:['Процесс по шагам: [откуда данные → что делать → куда результат]','Доступы готов дать: [TG / таблица / CRM]','Приёмка пройдена, если: [например, заявка доходит в TG за 5 минут]'],
+    diagnostic:['Мой день по шагам: [утром... потом...]','Что бесит больше всего: [...]']
+  };
+  (LINERS[kind]||[]).forEach(l=>L.push('• '+l));
+  const NEXT={config:'оплачу 7 000 → скрин перевода → сборка 1–3 дня, приёмка по чек-листу',
+    table:'оплачу 5 000 → скрин → таблица сразу',
+    optimization:'дам доступ к связке → аудит → цена и счёт в тот же день',
+    diagnostic:'бесплатный разбор — покажешь, что автоматизировать первым',
+    install:'15-минутный созвон по архитектуре — или всё в переписке, как удобнее'};
+  L.push('','Дальше: '+(NEXT[kind]||''));
+  return L.join('\n');
+}
+function openTg(kind,tier){
+  if(tier)installTier=tier;
+  tgSnapshot(kind,false);
+  window.open(TG_ME+'?text='+encodeURIComponent(buildTgText(kind)),'_blank','noopener');
+}
+
 function payConfig(){
   if(chosenOffer==='config')return{amount:'7 000 ₽',title:'Персональная сборка — оплата',sub:'Переведи 7 000 ₽ и напиши мне: соберу связку под твои задачи за 1–3 дня.',btn:'Я оплатил — начать сборку →'};
   if(chosenOffer==='optimization')return{amount:'от 25 000 ₽',title:'Оптимизация агента — заявка',sub:'Напиши мне: сначала аудит связки, потом назову точную цену до начала работ.',btn:'Обсудить аудит →'};
@@ -835,35 +916,17 @@ function goInstall(kind){
   if(link){window.open(link,'_blank','noopener');return;}
   openInstallChat(kind);
 }
-function openInstallChat(kind){
-  const est=estimate()||{};
-  const k=kind==='pc'?'Личный агент на ПК (15 000 ₽)':kind==='vps'?'для самозанятого (20 000 ₽)':kind==='integ'?'для микро/малого бизнеса (30 000 ₽)':'(15 / 20 / 30 / 60К)';
-  const lines=['Здравствуйте! Интересует установка под ключ '+k+'.'];
-  if(goal)lines.push('Задачи: '+goalLabel());
-  if(device)lines.push('Железо: '+deviceLabel());
-  if(est.monthly)lines.push('Расчёт калькулятора: ~'+est.monthly+' ₽/мес');
-  lines.push('Какой вариант подойдёт и когда сможете сделать?');
-  try{localStorage.setItem('ds_order',JSON.stringify({offer:'install',paid:false,ts:Date.now(),goals,device,monthly:est.monthly}));}catch(e){}
-  window.open(TG_ME+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener');
-}
-
-function openDiagChat(){
-  const lines=['Здравствуйте! Прошёл калькулятор, но не могу назвать процесс, который надо автоматизировать.'];
-  const est=estimate()||{};
-  if(est.monthly)lines.push('Расчёт калькулятора: ~'+est.monthly+' ₽/мес');
-  if(device)lines.push('Железо: '+deviceLabel());
-  if(budget)lines.push('Бюджет: '+budgetLabel());
-  lines.push('Помогите разобраться, что автоматизировать первым.');
-  try{localStorage.setItem('ds_order',JSON.stringify({offer:'diagnostic',paid:false,ts:Date.now(),goals,device,monthly:est.monthly}));}catch(e){}
-  window.open(TG_ME+'?text='+encodeURIComponent(lines.join('\n')),'_blank','noopener');
-}
+/* Старые точки выхода — теперь через единый билдер */
+function openInstallChat(kind){openTg('install',kind);}
+function openDiagChat(){openTg('diagnostic');}
 
 function openChat(paid){
-  const plink=(chosenOffer==='table'&&PAY_LINK_ROBOKASSA_GUIDE)?PAY_LINK_ROBOKASSA_GUIDE:(chosenOffer==='config'&&PAY_LINK_ROBOKASSA_BUILD)?PAY_LINK_ROBOKASSA_BUILD:(chosenOffer==='optimization'&&typeof PAY_LINK_ROBOKASSA_OPTIMIZATION!=='undefined')?PAY_LINK_ROBOKASSA_OPTIMIZATION:'';
+  const plink=(chosenOffer==='table'&&typeof PAY_LINK_ROBOKASSA_GUIDE!=='undefined'&&PAY_LINK_ROBOKASSA_GUIDE)?PAY_LINK_ROBOKASSA_GUIDE:(chosenOffer==='config'&&typeof PAY_LINK_ROBOKASSA_BUILD!=='undefined'&&PAY_LINK_ROBOKASSA_BUILD)?PAY_LINK_ROBOKASSA_BUILD:(chosenOffer==='optimization'&&typeof PAY_LINK_ROBOKASSA_OPTIMIZATION!=='undefined'&&PAY_LINK_ROBOKASSA_OPTIMIZATION)?PAY_LINK_ROBOKASSA_OPTIMIZATION:'';
   if(plink&&paid){window.open(plink,'_blank','noopener');return;}
-  const url=TG_ME+'?text='+encodeURIComponent(orderText(paid));
-  try{localStorage.setItem('ds_order',JSON.stringify({offer:chosenOffer,paid,ts:Date.now(),goals,device,monthly:(estimate()||{}).monthly}));}catch(e){}
-  window.open(url,'_blank','noopener');
+  tgSnapshot(chosenOffer,paid);
+  let txt=buildTgText(chosenOffer);
+  if(paid)txt='Оплатил. Скрин перевода прилагаю.\n\n'+txt;
+  window.open(TG_ME+'?text='+encodeURIComponent(txt),'_blank','noopener');
 }
 
 /* Копирование реквизитов по тапу */
