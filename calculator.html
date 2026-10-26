@@ -470,8 +470,8 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
           <div class="am-r"><span class="no">нет</span>решать за тебя без правил и описания процесса</div>
           <div class="am-r"><span class="no">нет</span>заменять человека в договорах и деньгах</div>
         </div>
-        <p class="diag-note">Ничего не подошло — тоже нормально. Напиши, чем занят день, разберём вместе и посчитаем связку.</p>
-        <button class="btn-cta" onclick="openDiagChat()">Описать мой день →</button>
+        <p class="diag-note">Ничего не подошло — тоже нормально. Мини-бриф из 5 строк прямо в TG: чем занят день, сколько раз повторяется, чем делаешь сейчас. Верну разбор: что автоматизировать первым и сколько это стоит.</p>
+        <button class="btn-cta" onclick="openDiagChat()">Заполнить бриф — 5 строк в TG →</button>
       </div>
 
       <div class="spec" id="specBox">
@@ -515,8 +515,8 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       <div class="offer-tag">Забрать результат</div>
       <p class="persona-why" id="personaWhy" style="display:none"></p>
       <div class="offer-opt" data-prod="build" style="border-color:rgba(94,217,168,.28);background:rgba(94,217,168,.06)">
-        <div class="o-top"><div class="o-name">Персональная сборка — твоя связка</div><span class="o-badge" style="background:rgba(94,217,168,.14);border-color:rgba(94,217,168,.28);color:#5ed9a8">сборка 1–3 дня · правки до приёмки</span></div>
-                <div class="o-desc">Гайд (20 конфигураций) включён + разбор твоих рисков + готовая инструкция по установке и отладке под твой случай + правки по сценариям до приёмки. Вклад: 30 мин + доступы по выбору.</div>
+        <div class="o-top"><div class="o-name">Персональная сборка — твоя связка</div><span class="o-badge" style="background:rgba(94,217,168,.14);border-color:rgba(94,217,168,.28);color:#5ed9a8">архитектура + гайд установки и отладки · 1–3 дня</span></div>
+                <div class="o-desc">Гайд (20 конфигураций) включён + архитектура под твой кейс + полный гайд установки и отладки. Гарантия: если гайд что-то не покрыл — решаю до 3 твоих вопросов за свой счёт. Без демо и созвонов — всё в переписке. Вклад: 30 мин + доступы по выбору.</div>
         <div class="o-price">7 000 ₽ <small>разово · <a href="clarity.html" style="color:var(--muted);text-decoration:underline">что входит в 7К →</a></small></div>
         <button class="btn-cta" onclick="goCheckout('config')">Собрать мою связку →</button>
       </div>
@@ -533,7 +533,6 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <button class="btn-cta btn-cta-ghost" data-tier="pc" onclick="goInstall('pc')" style="width:100%">Личный агент на ПК — 15 000 ₽ →</button>
         <button class="btn-cta btn-cta-ghost" data-tier="vps" onclick="goInstall('vps')" style="width:100%;margin-top:8px">Самозанятый — 20 000 ₽ →</button>
         <button class="btn-cta btn-cta-ghost" data-tier="integ" onclick="goInstall('integ')" style="width:100%;margin-top:8px">Микро/малый бизнес (ИП) — 30 000 ₽ →</button>
-        <button class="btn-cta btn-cta-ghost" onclick="openTg('demo')" style="width:100%;margin-top:8px">Демо показываю на живой связке (после сборки) →</button>
       </div>
       <div class="offer-opt" data-prod="optimization" style="border-color:rgba(242,182,101,.22)">
         <div class="o-top"><div class="o-name">Оптимизация ИИ-агента — от 25 000 ₽</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">старт от 3 дней · замер до/после</span></div>
@@ -904,7 +903,7 @@ function renderHeroCompare(e,rate){
     const diff=Math.max(0,st.base-e.monthly);
     leftL='Человек на рутине'; leftV=B+' ₽/мес'; leftSub='≈ '+e.handsHours+' ч рутины · ставка полная (ФОТ × 1,3)';
     rightL='Агент под ключ'; rightV=M+' ₽/мес'; rightSub='';
-    note='Методика: объём твоих обращений × среднее время на одно. '+ctrl+' ч контроля остаются тебе — это не потеря, на них остаётся продажи и развитие бизнеса. Показываю на живой связке внутри сборки — не на слайдах.';
+    note='Методика: объём твоих обращений × среднее время на одно. '+ctrl+' ч контроля остаются тебе — это не потеря, на них остаётся продажи и развитие бизнеса. После оплаты отправляю архитектуру с гайдом установки и отладки — собираешь сам, вопросы сверх гайда решаем в переписке.';
     box.innerHTML=
       '<div class="hc-table">'+
       '<div class="hcr"><span>Человек на рутине</span><b>'+B+' ₽/мес</b><i>≈ '+e.handsHours+' ч</i></div>'+
@@ -943,7 +942,7 @@ function recWhy(key){
   if(key==='optimization') return 'У тебя уже есть связка, и она мешает. Сначала аудит: где утекают токены и время, потом пересборка. Новое строить не надо.';
   if(key==='table') return 'Тебе дешевле собрать самому: 20 готовых конфигураций с промптами и ценами запуска. 3–4 часа — и агент работает.';
   if(key==='install') return 'У тебя не один процесс и не один человек. Нужна связка на сервере с ролями и интеграциями — её ставим под ключ, с приёмкой по чек-листу.';
-  return 'Один-два процесса, один человек. Персональная сборка 7 000 ₽: разберу твой случай, дам готовую конфигурацию и инструкцию.';
+  return 'Один-два процесса, один человек. Персональная сборка 7 000 ₽: архитектура под твой случай + полный гайд установки и отладки. Что гайд не покрыл — решу до 3 вопросов.';
 }
 /* Рекомендованный оффер — первым, остальные свёрнуты: пять карточек на выбор = перегруз */
 function arrangeOffers(recKey){
@@ -1412,8 +1411,7 @@ function buildTgText(kind){
   const rate=+(document.getElementById('pbSlider')||{value:700}).value||700;
   const saved=e.hours?Math.round(e.hours*rate):0;
   const T={config:'Персональная сборка — 7 000 ₽',table:'Гайд: 20 конфигураций — 5 000 ₽',
-    optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — 0 ₽',
-    demo:'Запрос демо — 0 ₽'};
+    optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — бриф, 0 ₽'};
   let title=T[kind]||'Связка ИИ-агента';
   if(kind==='install')title={pc:'Личный агент на ПК — 15 000 ₽',vps:'Агент для самозанятого — 20 000 ₽',integ:'ИП/малый бизнес — 30 000 ₽'}[installTier]||'Внедрение под ключ';
   const L=[title+' — Discovery System','','Из калькулятора:'];
@@ -1430,21 +1428,20 @@ function buildTgText(kind){
     table:['Что соберу первым: [задача]','Вопрос по таблице: [если есть]'],
     optimization:['Где болит: [с цифрой — сколько часов или рублей]','Что уже пробовал: [чтобы не повторять]','Метрика «до»: [например, 6 ч/мес]'],
     install:['Процесс по шагам: [откуда данные → что делать → куда результат]','Доступы готов дать: [TG / таблица / CRM]','Приёмка пройдена, если: [например, заявка доходит в TG за 5 минут]'],
-    demo:['Процесс для демо: [например, заявка с почты → ответ клиенту]','Где смотреть: [TG / таблица / CRM]','Что главное покажи: [наприклад, скорость ответа]'],
-    diagnostic:['Мой день по шагам: [утром... потом...]','Что бесит больше всего: [...]']
+    diagnostic:['Мой день по шагам: [утром... потом...]','Сколько раз в день/неделю повторяется: [число]','Чем делаю сейчас: [руками / Excel / бот / помощник]','Куда должен приходить результат: [TG / таблица / CRM / почта]','Что бесит больше всего: [...]']
   };
   (LINERS[kind]||[]).forEach(l=>L.push('• '+l));
-  const NEXT={config:'оплачу 7 000 → скрин перевода → сборка 1–3 дня, приёмка по чек-листу',
+  const NEXT={config:'оплачу 7 000 → скрин перевода → архитектура + гайд установки и отладки за 1–3 дня',
     table:'оплачу 5 000 → скрин → таблица сразу',
     optimization:'дам доступ к связке → аудит → цена и счёт в тот же день',
-    diagnostic:'бесплатный разбор — покажешь, что автоматизировать первым',
-    demo:'Демо делаю на живой связке после сборки — на слайдах не показываю, враньё видно сразу. Сборка 7 000 ₽ (демо и правки до приёмки включены) или гайд 5 000 ₽ → своя сборка → разбор.',
+    diagnostic:'заполню бриф прямо здесь → разбор: что автоматизировать первым, сколько часов и рублей это стоит',
     install:'15-минутный созвон по архитектуре — или всё в переписке, как удобнее'};
   L.push('','Дальше: '+(NEXT[kind]||''));
   return L.join('\n');
 }
 function openTg(kind,tier){
   if(tier)installTier=tier;
+  if(kind==='demo')kind='config'; /* демо как продукт убрано: сборка = архитектура + гайд, без показов */
   tgSnapshot(kind,false);
   window.open(TG_ME+'?text='+encodeURIComponent(buildTgText(kind)),'_blank','noopener');
 }
