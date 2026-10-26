@@ -388,7 +388,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="ctor-h">03 · <b>Насколько агент самостоятелен</b><span class="ctor-cap">одно</span></div>
         <div class="row" id="autoOpts"></div>
       </div>
-      <p class="ctor-note">Оплата из РФ без VPN · данные твои · цифры пересчитываются на каждом тапе — дёргай их.</p>
+      <p class="ctor-note">Оплата из РФ без VPN · данные твои · цифры пересчитываются на каждом тапе — дёргай их.<br>6 внедрений под разные задачи — от монтажа видео до 1С. Один из них платный, остальные — друзьям.</p>
     </div>
     <aside class="ctor-result" id="ctorResult">
       <div class="ctor-empty" id="ctorEmpty">Тапай слева — расчёт соберётся здесь. Без регистрации, цифры живые и обновляются на глазах.</div>
@@ -887,7 +887,7 @@ function renderHeroCompare(e,rate){
   let leftL='Сейчас', leftV=B+' ₽', rightL='С владением', rightV=M+' ₽/мес', note='';
   if(start==='people'){
     leftL='Человек сейчас'; leftV=B+' ₽/мес'; rightL='Агент под ключ'; rightV=M+' ₽/мес';
-    note='Агент забирает рутину ('+e.hours+' ч/мес), человек остаётся на том, что требует головы. Разница '+Math.max(0,st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес.';
+    note='Агент забирает рутину ('+e.hours+' ч/мес), человек остаётся на том, что требует головы. Разница '+Math.max(0,st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес — это '+(Math.max(0,st.base-e.monthly)*12).toLocaleString('ru-RU')+' ₽ в год.';
   } else if(start==='sub'){
     leftL='Подписка сейчас'; leftV=B+' ₽/мес'; rightL='Своя связка'; rightV=M+' ₽/мес';
     note=(e.monthly<st.base

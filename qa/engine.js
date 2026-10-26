@@ -301,7 +301,7 @@ function renderHeroCompare(e,rate){
   let leftL='Сейчас', leftV=B+' ₽', rightL='С владением', rightV=M+' ₽/мес', note='';
   if(start==='people'){
     leftL='Человек сейчас'; leftV=B+' ₽/мес'; rightL='Агент под ключ'; rightV=M+' ₽/мес';
-    note='Агент забирает рутину ('+e.hours+' ч/мес), человек остаётся на том, что требует головы. Разница '+Math.max(0,st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес.';
+    note='Агент забирает рутину ('+e.hours+' ч/мес), человек остаётся на том, что требует головы. Разница '+Math.max(0,st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес — это '+(Math.max(0,st.base-e.monthly)*12).toLocaleString('ru-RU')+' ₽ в год.';
   } else if(start==='sub'){
     leftL='Подписка сейчас'; leftV=B+' ₽/мес'; rightL='Своя связка'; rightV=M+' ₽/мес';
     note=(e.monthly<st.base
