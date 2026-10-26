@@ -24,9 +24,9 @@ var DS_PAY = {
 
   /* ── Разовые: цифровые материалы ───────────────────────── */
   guide:   {price:5000,  name:'Гайд «20 сборок»',
-            url:'https://auth.robokassa.ru/merchant/Invoice/GEV6reyqiEWXzYG_Mkulbw'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/GEV6reyqiEWXzYG_Mkulbw?p=guide'},
   build:   {price:7000,  name:'Архитектура агента (консультация + готовая конфигурация)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/RjF3Mh-GhUmFIiCWVxkMFA'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/RjF3Mh-GhUmFIiCWVxkMFA?p=build'},
 
   /* ── Разовые: внедрение (лестница 15/20/30/60) ─────────── */
   personal:{price:15000, name:'ИИ-агент для личных целей (не-бизнес)',
@@ -34,21 +34,21 @@ var DS_PAY = {
   pc:      {price:15000, name:'Личный агент на ПК',
             url:'https://auth.robokassa.ru/merchant/Invoice/xp2UNX65i0GBewjBqkgJOw'},
   self:    {price:20000, name:'ИИ-агент для самозанятых и микробизнеса',
-            url:'https://auth.robokassa.ru/merchant/Invoice/AuPs4sLt3USvwXypMewUDw'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/AuPs4sLt3USvwXypMewUDw?p=self'},
   smb:     {price:30000, name:'ИИ-агент для ИП и малого бизнеса',
-            url:'https://auth.robokassa.ru/merchant/Invoice/jjPrDM9xSkK1qKCLSGB-MA'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/jjPrDM9xSkK1qKCLSGB-MA?p=smb'},
   mid:     {price:60000, name:'ИИ-агент для среднего бизнеса',
-            url:'https://auth.robokassa.ru/merchant/Invoice/ga2H8Nr6zUadphD3DvygDQ'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/ga2H8Nr6zUadphD3DvygDQ?p=mid'},
 
   /* ── Разовые: дополнительные решения ───────────────────── */
   factory_photo: {price:15000, name:'Контент-завод: фото',
-            url:'https://auth.robokassa.ru/merchant/Invoice/DkLlmgasJUSlcEP4qFsS8w'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/DkLlmgasJUSlcEP4qFsS8w?p=factory_photo'},
   factory_video: {price:30000, name:'Контент-завод: видео',
-            url:'https://auth.robokassa.ru/merchant/Invoice/mckApiXe0kSeCp7YLTkIWw'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/mckApiXe0kSeCp7YLTkIWw?p=factory_video'},
   office:  {price:25000, name:'Офис ИИ-агентов (отдел из 5)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/OUoEK8kSYEWUW05bDAhlVg'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/OUoEK8kSYEWUW05bDAhlVg?p=office'},
   optimize:{price:25000, name:'Оптимизация ИИ-агента (не работает/сломан/дорогой)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og?p=optimize'},
 
   /* ── Подписки: Tribute (Robokassa не используем) ───────── */
   insights:   {price:2000,  name:'Инсайты Discovery System',
