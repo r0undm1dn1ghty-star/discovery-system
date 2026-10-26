@@ -224,7 +224,7 @@ document.addEventListener('keydown',function(ev){
 });
 function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();renderBridge();}
 function toggleGoal(id){
-  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();return;}
+  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();if(estimate())calculate();return;}
   goals=goals.filter(x=>x!=='unsure');
   if(goals.includes(id)){goals=goals.filter(x=>x!==id);}
   else{
@@ -618,7 +618,9 @@ function recalcPayback(){
     const months=rc/netMonthly;
     const paybackTxt=(months<=1)?'\u043e\u043a\u0443\u043f\u0430\u0435\u0442\u0441\u044f \u0432 \u043f\u0435\u0440\u0432\u044b\u0439 \u0436\u0435 \u043c\u0435\u0441\u044f\u0446'
       :'\u043e\u043a\u0443\u043f\u0430\u0435\u0442\u0441\u044f \u0437\u0430 <em>'+Math.ceil(months)+' \u043c\u0435\u0441</em>';
-    res.innerHTML='\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u044f <b>'+netMonthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b> \u00b7 '+(st.cost?st.short+' '+st.cost.toLocaleString('ru-RU')+' \u20bd \u2014 ':'')+paybackTxt;
+    const _rk2=(typeof recommendProduct==='function')?recommendProduct():'build';
+    const _rn2={table:'гайда',build:'сборки',optimization:'аудита',install:'внедрения'}[_rk2]||'агента';
+    res.innerHTML='Экономия <b>'+netMonthly.toLocaleString('ru-RU')+' ₽/мес</b> · '+paybackTxt+' ('+_rn2+' '+rc.toLocaleString('ru-RU')+' ₽ разово)';
   }
   document.getElementById('pbNote').textContent='\u0421\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0435\u0441\u0442\u043d\u043e: \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u044f = \u043e\u0441\u0432\u043e\u0431\u043e\u0436\u0434\u0451\u043d\u043d\u044b\u0435 \u0447\u0430\u0441\u044b \u00d7 \u0442\u0432\u043e\u044f \u0446\u0435\u043d\u0430 \u0447\u0430\u0441\u0430'+(e.base>0?' + \u0443\u0445\u043e\u0434 \u0441 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432':'')+' \u2212 \u0432\u043b\u0430\u0434\u0435\u043d\u0438\u0435'+(noDouble?'. \u0415\u0441\u043b\u0438 \u043f\u043b\u0430\u0442\u0438\u0448\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0443 \u2014 \u0441\u0447\u0438\u0442\u0430\u0435\u0442\u0441\u044f \u0434\u043e\u043b\u044f \u0440\u0443\u0442\u0438\u043d\u044b, \u043d\u0435 \u0432\u0441\u044f \u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430':'')+'.';
   updateYearBox(e,netMonthly,st);
@@ -742,7 +744,7 @@ function calculate(){
     const rows=[['\u041c\u043e\u0434\u0435\u043b\u044c \u2014 '+e.modelName,e.modelCost],['\u0425\u043e\u0441\u0442\u0438\u043d\u0433'+(e.gateway?' (\u0441 \u0448\u043b\u044e\u0437\u043e\u043c \u0434\u043b\u044f Telegram)':''),e.hostCost],['\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f',e.connTotal]];
     document.getElementById('brkTable').innerHTML=
       rows.filter(r=>r[1]>0).map(r=>'<div class="brow"><span>'+r[0]+'</span><b>'+r[1].toLocaleString('ru-RU')+' \u20bd</b></div>').join('')
-      +(e.monthly===0?'<div class="brow"><span>Итого</span><b>0 ₽ провайдеру — модель на твоём железе</b></div>':'<div class="brow total"><span>Итого</span><b>'+e.monthly.toLocaleString('ru-RU')+' ₽/мес</b></div>');
+      +(e.monthly===0?(e.modelKey==='local'?'<div class="brow"><span>Итого</span><b>0 \u20bd провайдеру — модель на твоём железе</b></div>':'<div class="brow"><span>Итого</span><b>0 \u20bd сейчас — тариф модели включится после диагностики</b></div>'):'<div class="brow total"><span>Итого</span><b>'+e.monthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b></div>');
     recalcPayback();
   }
 
@@ -798,7 +800,7 @@ function calculate(){
   }
   const rcard=document.querySelector('.rcard');
   if(rcard){rcard.style.animation='none';rcard.offsetHeight;rcard.style.animation='';}
-  countUp(document.getElementById('ahaCost'),e.monthly,' \u20bd/\u043c\u0435\u0441');
+  if(!isUnsure)countUp(document.getElementById('ahaCost'),e.monthly,' \u20bd/\u043c\u0435\u0441'); /* «0 ₽ за разбор» не подменяем ценой владения (аудит 15-audit-tech) */
   if(!document.getElementById('result').classList.contains('show'))renderConfig();
   document.getElementById('result').classList.add('show');
   document.getElementById('offerBox').style.display='block';
@@ -912,10 +914,15 @@ function orderText(paid){
 
 /* Установка (15/20/30/60К): раздельная ссылка Robokassa на каждый вариант, пока пусто — личка с контекстом */
 function goInstall(kind){
-  const links={pc:PAY_LINK_ROBOKASSA_INSTALL_PC,vps:PAY_LINK_ROBOKASSA_INSTALL_VPS,integ:PAY_LINK_ROBOKASSA_INSTALL_INTEG,mid:PAY_LINK_ROBOKASSA_INSTALL_MID};
+  const links={
+    pc:(typeof PAY_LINK_ROBOKASSA_INSTALL_PC!=='undefined')?PAY_LINK_ROBOKASSA_INSTALL_PC:'',
+    vps:(typeof PAY_LINK_ROBOKASSA_INSTALL_VPS!=='undefined')?PAY_LINK_ROBOKASSA_INSTALL_VPS:'',
+    integ:(typeof PAY_LINK_ROBOKASSA_INSTALL_INTEG!=='undefined')?PAY_LINK_ROBOKASSA_INSTALL_INTEG:'',
+    mid:(typeof PAY_LINK_ROBOKASSA_INSTALL_MID!=='undefined')?PAY_LINK_ROBOKASSA_INSTALL_MID:''
+  };
   const link=links[kind]||'';
   if(link){window.open(link,'_blank','noopener');return;}
-  openInstallChat(kind);
+  openInstallChat(kind); /* pay-links.js не догрузился — не падаем, уводим в личку с контекстом (аудит 15-audit-tech) */
 }
 /* Старые точки выхода — теперь через единый билдер */
 function openInstallChat(kind){openTg('install',kind);}
