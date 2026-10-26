@@ -74,10 +74,12 @@ const DEVICES=[
 ];
 const GOALS=[
   {id:'repeat',t:'Отвечаю на одни и те же вопросы',sn:'Ответы на частые вопросы',d:'клиенты, заявки, переписка',econ:16,ic:'bot'},
-  {id:'leads',t:'Разгребаю заявки, пока не остыли',sn:'Разбор и квалификация заявок',d:'отклики, лиды, воронка',econ:14,ic:'search'},
+  {id:'leads',t:'Разгребаю заявки, пока не остыли',sn:'Заявки и отклики — со скринингом',d:'отклики, лиды, воронка',econ:14,ic:'search'},
+  {id:'remind',t:'Держу клиентов в курсе — напоминания и статусы',sn:'Напоминания и статусы',d:'записи, оплаты, заказы, доставки',econ:12,ic:'calendar'},
   {id:'report',t:'Каждую неделю собираю один и тот же отчёт',sn:'Регулярный отчёт',d:'выгрузки, сверки, таблицы',econ:14,ic:'doc'},
-  {id:'scan',t:'Ищу и проверяю информацию по кускам',sn:'Сбор и проверка информации',d:'сайты, сравнение, выжимки',econ:10,ic:'globe'},
+  {id:'scan',t:'Ищу информацию и слежу: цены, остатки, дедлайны',sn:'Сбор и мониторинг',d:'сайты, сравнение, выжимки, отслеживание',econ:10,ic:'globe'},
   {id:'write',t:'Пишу тексты с нуля каждый раз',sn:'Конвейер текстов',d:'посты, реклама, план',econ:18,ic:'pen'},
+  {id:'quote',t:'Считаю сметы и КП руками',sn:'Сметы и КП',d:'расчёты, предложения, тендеры',econ:14,ic:'chart'},
   {id:'paper',t:'Разбираю документы и выписки',sn:'Разбор документов',d:'сверки, письма, классификация',econ:12,ic:'chart'},
   {id:'unsure',t:'Пока не могу назвать — надо разобраться',sn:'Диагностика процесса',d:'опиши день, найдём повторяющееся',econ:10,ic:'sparkles'}
 ];
@@ -140,7 +142,7 @@ let _mc=null; try{_mc=JSON.parse(sessionStorage.getItem('ds_mc')||'null');}catch
 let _mcScenario=null; try{_mcScenario=sessionStorage.getItem('ds_mc_scenario');}catch(e){}
 const N=2;
 /* Шаг 3 убран: задачи выводятся из целей (ux-research/02) */
-const GOAL_TASKS={repeat:[],leads:['sales'],report:['data','docs'],scan:['web','research'],write:['text'],paper:['docs'],unsure:[]};
+const GOAL_TASKS={repeat:[],leads:['sales'],remind:['social'],report:['data','docs'],scan:['web','research'],write:['text'],quote:['docs'],paper:['docs'],unsure:[]};
 function deriveTasks(){ return [...new Set(goals.flatMap(g=>GOAL_TASKS[g]||[]))]; }
 
 /* ========== RENDER ========== */
@@ -154,7 +156,7 @@ function renderCards(){
   var so=document.getElementById('startOpts');
   if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="start='${s.id}';pickOption();">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
   const showUnsure=goals.length===0||goals.includes('unsure');
-  document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">до ${days(g.econ)}</div></div></div>`).join('');
+  document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">от ${days(g.econ)}</div></div></div>`).join('');
   var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
   var ao=document.getElementById('autoOpts');
   if(ao)ao.innerHTML=AUTONOMY.map(a=>'<button type="button" class="'+(autonomy===a.id?'on':'')+'" onclick="setAuto(\''+a.id+'\')">'+a.label+'</button>').join('');
@@ -190,7 +192,7 @@ function renderConfig(){
     var groups={};
     CONNS.forEach(c=>{(groups[c.grp]=groups[c.grp]||[]).push(c);});
     ch.innerHTML=Object.keys(groups).map(g=>'<div class="chip-grp"><div class="chip-grp-t">'+g+'</div><div class="chip-grp-b">'+
-      groups[g].map(c=>'<button type="button" class="'+(conns.includes(c.id)?'on':'')+'" onclick="toggleConn(\''+c.id+'\')">'+c.label+(c.cost?' · +'+c.cost+'₽':'')+'</button>').join('')+
+      groups[g].map(c=>'<button type="button" class="'+(conns.includes(c.id)?'on':'')+'" onclick="toggleConn(\''+c.id+'\')">'+c.label+(c.cost?' · +'+c.cost+' ₽/мес':'')+'</button>').join('')+
       '</div></div>').join('');
   }
   var de=document.getElementById('deviceOpts');
@@ -212,6 +214,14 @@ function a11y(){
     if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','0');
     if(!el.hasAttribute('role'))el.setAttribute('role','button');
   });
+  /* aria-pressed: выбранность читается скринридером, не только глазами (аудит 15-audit-tech) */
+  document.querySelectorAll('.opt,.task,.pill,[data-tier]').forEach(el=>{
+    const on=el.classList.contains('selected')||el.classList.contains('on');
+    el.setAttribute('aria-pressed',on?'true':'false');
+  });
+  document.querySelectorAll('#connChips button').forEach(el=>{
+    el.setAttribute('aria-pressed',el.classList.contains('on')?'true':'false');
+  });
 }
 document.addEventListener('keydown',function(ev){
   if(ev.key!=='Enter'&&ev.key!==' '&&ev.key!=='Spacebar')return;
@@ -222,7 +232,7 @@ document.addEventListener('keydown',function(ev){
 });
 function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();renderBridge();}
 function toggleGoal(id){
-  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();return;}
+  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();if(estimate())calculate();return;}
   goals=goals.filter(x=>x!=='unsure');
   if(goals.includes(id)){goals=goals.filter(x=>x!==id);}
   else{
@@ -298,11 +308,31 @@ function renderHeroCompare(e,rate){
   const st=STARTS.find(x=>x.id===start)||STARTS[0];
   const M=e.monthly.toLocaleString('ru-RU');
   const B=st.base?st.base.toLocaleString('ru-RU'):'0';
-  let leftL='Сейчас', leftV=B+' ₽', rightL='С владением', rightV=M+' ₽/мес', note='';
+  let leftL='Сейчас', leftV=B+' ₽', leftSub='', rightL='С владением', rightV=M+' ₽/мес', rightSub='', note='';
   if(start==='people'){
-    leftL='Человек сейчас'; leftV=B+' ₽/мес'; rightL='Агент под ключ'; rightV=M+' ₽/мес';
-    note='Агент забирает рутину ('+e.hours+' ч/мес), человек остаётся на том, что требует головы. Разница '+Math.max(0,st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес — это '+(Math.max(0,st.base-e.monthly)*12).toLocaleString('ru-RU')+' ₽ в год.';
-  } else if(start==='sub'){
+    /* Таблица Fin-стиля (ux-research/07) + честная доля рутины (аудит 10-audit-economics:
+       разница не «вся зарплата минус владение», а доля рутины по ставке часа минус владение) */
+    const tok=e.modelCost, host=e.hostCost;
+    const hRate=Math.max(1,Math.round(st.base/160));
+    const routineMoney=Math.round(e.handsHours*hRate);
+    const leftH=Math.max(0,e.handsHours-e.hours); /* агент забирает e.hours, контроль — остаток */
+    const diff=Math.max(0,routineMoney-e.monthly);
+    leftL='Человек на рутине'; leftV=B+' ₽/мес';
+    leftSub='полная зарплата; на рутину уходит ≈ '+e.handsHours+' ч из ~160';
+    rightL='Агент под ключ'; rightV=M+' ₽/мес'; rightSub='';
+    note='Человек остаётся в штате: агент забирает ≈ '+e.hours+' ч рутины, тебе остаётся ≈ '+leftH+' ч контроля. Освобождённая доля ≈ '+routineMoney.toLocaleString('ru-RU')+' ₽/мес (ставка ~'+hRate.toLocaleString('ru-RU')+' ₽/ч), владение — '+M+' ₽/мес. Разница '+diff.toLocaleString('ru-RU')+' ₽/мес ('+(diff*12).toLocaleString('ru-RU')+' ₽/год). Вся зарплата освобождается, только когда не нанимаешь следующего. После оплаты — архитектура с гайдом установки и отладки; вопросы сверх гайда решаем в переписке.';
+    box.innerHTML=
+      '<div class="hc-table">'+
+      '<div class="hcr"><span>Рутина человека</span><b>'+routineMoney.toLocaleString('ru-RU')+' ₽/мес</b><i>≈ '+e.handsHours+' ч × '+hRate.toLocaleString('ru-RU')+' ₽/ч (из зарплаты '+B+' ₽)</i></div>'+
+      '<div class="hcr"><span>Агент: токены</span><b>'+tok.toLocaleString('ru-RU')+' ₽</b><i>по тарифу выбранной модели</i></div>'+
+      '<div class="hcr"><span>Агент: хостинг'+(e.gateway?' (со шлюзом для TG)':'')+'</span><b>'+host.toLocaleString('ru-RU')+' ₽</b><i>работает 24/7, без отпусков</i></div>'+
+      '<div class="hcr"><span>Твоё время: контроль</span><b>0 ₽</b><i>≈ '+leftH+' ч — продажи и развитие</i></div>'+
+      '<div class="hcr total"><span>Разница</span><b>'+diff.toLocaleString('ru-RU')+' ₽/мес</b><i>'+(diff*12).toLocaleString('ru-RU')+' ₽ в год</i></div>'+
+      '</div><div class="hc-note">'+note+'</div>';
+    box.style.display='block';
+    return;
+  }
+  if(start==='sub'){
     leftL='Подписка сейчас'; leftV=B+' ₽/мес'; rightL='Своя связка'; rightV=M+' ₽/мес';
     note=(e.monthly<st.base
       ? 'Дешевле на '+(st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес. '
@@ -312,16 +342,19 @@ function renderHeroCompare(e,rate){
     leftL='Уходит сейчас'; leftV='~'+B+' ₽/мес'; rightL='После оптимизации'; rightV=M+' ₽/мес';
     note='Сначала аудит: где именно утекают токены и время. Цена работ — после аудита, до старта.';
   } else if(start==='hardware'){
-    leftL='Железо'; leftV='уже твоё'; rightL='Провайдеру'; rightV='0 ₽/мес';
-    note='Модель работает локально — за токены не платишь. Собираешь по гайду за 3–4 часа.';
+    leftL='Железо'; leftV='уже твоё'; rightL='Провайдерам'; rightV=M+' ₽/мес';
+    note=(e.modelCost>0
+      ? 'Модель в облаке — токены платишь как обычно. '
+      : 'Модель на твоём железе — за токены не платишь. ')
+      +'Платишь провайдерам за то, чтобы связка жила: хостинг'+(e.gateway?' и шлюз для Telegram':'')+', каналы. На домашнем ПК без сервера — меньше, но агент работает только пока компьютер включён.';
   } else {
     leftL='Сейчас на ИИ'; leftV='0 ₽'; rightL='Владение'; rightV=M+' ₽/мес';
     note='Первый шаг — '+recPrice().toLocaleString('ru-RU')+' ₽. Дальше платишь только провайдерам, без наценки.';
   }
   box.innerHTML=
-    '<div class="hc-cell"><small>'+leftL+'</small><b>'+leftV+'</b></div>'+
+    '<div class="hc-cell"><small>'+leftL+'</small><b>'+leftV+'</b>'+(leftSub?'<span class="hc-sub">'+leftSub+'</span>':'')+'</div>'+
     '<div class="hc-arrow">→</div>'+
-    '<div class="hc-cell after"><small>'+rightL+'</small><b>'+rightV+'</b></div>'+
+    '<div class="hc-cell after"><small>'+rightL+'</small><b>'+rightV+'</b>'+(rightSub?'<span class="hc-sub">'+rightSub+'</span>':'')+'</div>'+
     '<div class="hc-note">'+note+'</div>';
   box.style.display='block';
 }
@@ -329,7 +362,7 @@ function recWhy(key){
   if(key==='optimization') return 'У тебя уже есть связка, и она мешает. Сначала аудит: где утекают токены и время, потом пересборка. Новое строить не надо.';
   if(key==='table') return 'Тебе дешевле собрать самому: 20 готовых конфигураций с промптами и ценами запуска. 3–4 часа — и агент работает.';
   if(key==='install') return 'У тебя не один процесс и не один человек. Нужна связка на сервере с ролями и интеграциями — её ставим под ключ, с приёмкой по чек-листу.';
-  return 'Один-два процесса, один человек. Персональная сборка 7 000 ₽: разберу твой случай, дам готовую конфигурацию и инструкцию.';
+  return 'Один-два процесса, один человек. Персональная сборка 7 000 ₽: архитектура под твой случай + полный гайд установки и отладки. Что гайд не покрыл — решу до 3 вопросов.';
 }
 /* Рекомендованный оффер — первым, остальные свёрнуты: пять карточек на выбор = перегруз */
 function arrangeOffers(recKey){
@@ -418,7 +451,7 @@ function updateGoalMeta(){
     let tag='',txt='';
     if(p==='newbie'){
       tag='\u0422\u0432\u043e\u0439 \u043f\u0443\u0442\u044c \u2014 \u0434\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430';
-      txt='<b>\u041d\u0435 \u0437\u043d\u0430\u0442\u044c \u0441 \u0447\u0435\u0433\u043e \u043d\u0430\u0447\u0430\u0442\u044c \u2014 \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e: \u044d\u0442\u043e \u0443 43% \u0432\u043b\u0430\u0434\u0435\u043b\u044c\u0446\u0435\u0432</b>. '
+      txt='<b>\u041d\u0435 \u0437\u043d\u0430\u0442\u044c \u0441 \u0447\u0435\u0433\u043e \u043d\u0430\u0447\u0430\u0442\u044c \u2014 \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e, \u044d\u0442\u043e \u0447\u0430\u0441\u0442\u044b\u0439 \u043e\u0442\u0432\u0435\u0442</b>. '
         + '\u0412 \u043a\u043e\u043d\u0446\u0435 \u0440\u0430\u0441\u0447\u0451\u0442\u0430 \u043f\u043e\u043a\u0430\u0436\u0443 \u0440\u0430\u0437\u0431\u043e\u0440 \u0442\u0432\u043e\u0435\u0433\u043e \u0434\u043d\u044f \u2014 \u043d\u0430\u0439\u0434\u0435\u043c \u043f\u043e\u0432\u0442\u043e\u0440\u044f\u044e\u0449\u0435\u0435\u0441\u044f, \u0447\u0442\u043e \u043c\u043e\u0436\u043d\u043e \u043e\u0442\u0434\u0430\u0442\u044c \u0430\u0433\u0435\u043d\u0442\u0443. \u0411\u0435\u0437 \u043f\u0440\u043e\u0434\u0430\u0436\u0438 \u0432\u043e\u0437\u0434\u0443\u0445\u0430.';
     } else {
       tag='\u0422\u0432\u043e\u0439 \u043f\u0443\u0442\u044c \u2014 \u0441\u0432\u044f\u0437\u043a\u0430 \u043f\u043e\u0434 \u043f\u0440\u043e\u0446\u0435\u0441\u0441'+(multi?' \u00b7 \u043c\u0443\u043b\u044c\u0442\u0438\u0441\u0446\u0435\u043d\u0430\u0440\u0438\u0439':'');
@@ -472,8 +505,8 @@ function estimate(){
        Lite 32,5 · Pro 250 · Max 325.
      Объёмы — допущения из типовой рутины МСБ; калибровать на живых клиентах. */
   const TARIFF={lite:32.5,pro:250,max:325};
-  const TOK_MONTH={repeat:3.6e6, leads:2.25e6, report:1.2e5, scan:1.8e6, write:1.6e5, paper:1.5e5, unsure:0};
-  const TIER_OF={repeat:'lite', leads:'lite', scan:'lite', report:'pro', write:'pro', paper:'pro'};
+  const TOK_MONTH={repeat:3.6e6, leads:2.25e6, remind:6e5, report:1.2e5, scan:1.8e6, write:1.6e5, quote:1.2e5, paper:1.5e5, unsure:0};
+  const TIER_OF={repeat:'lite', leads:'lite', remind:'lite', scan:'lite', report:'pro', write:'pro', quote:'pro', paper:'pro'};
   const TASK_TOK={text:1.2e5,design:6e4,docs:1.8e5,data:1.5e5,web:1.2e5,social:8e4,sales:1.5e5,research:1.2e5};
   const AUTO_TOK={draft:0.8,review:1,auto:1.4,full:2.0};
   let tokenCost=0;
@@ -497,14 +530,14 @@ function estimate(){
        6+       → 2×8 ГБ / 32 ГБ  ≈ 4 800
      2 ГБ одного агента не тянет (кейс Николая: 4 ГБ уже тупит с голосом). */
   const nAgents=Math.max(1, gs.filter(g=>g.id!=='unsure').length);
-  const HOST_TIERS=[[1,1100],[3,2190],[5,4300],[999,4800]];
+  const HOST_TIERS=[[1,1100],[3,2190],[5,3400],[999,4800]];
   const hostBase=(HOST_TIERS.find(t=>nAgents<=t[0])||[999,4800])[1];
 
   const tgNeeded=conns.includes('tg')||conns.includes('bot');
   /* Свой VPS — это тоже деньги каждый месяц, а не «бесплатно». Раньше device='vps' давал
      hostCost=0 и клиент видел связку на 2190 ₽ дешевле, чем она стоит. Считаем как есть,
      а в интерфейсе помечаем «сервер уже оплачен». */
-  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')||device==='vps');
+  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')||device==='vps'||data==='ru');
   const rfColo=hosted||data==='ru'||device==='vps';
   /* Шлюз для Telegram на РФ-хостинге: api.telegram.org из дата-центров РФ не отвечает (ТСПУ).
      MTProxy/реверс-прокси на дешёвом VPS — 200–400 ₽/мес, берём середину. */
@@ -578,20 +611,26 @@ function recalcPayback(){
   const timeMoney=e.hours*rate;              // сколько стоит освобождённое время
   /* дублируем экономику в верхний блок, чтобы ползунок менял и её */
   const _sv=document.getElementById('ahaSaving');
-  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч';
+  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч (до вычета владения)';
   const noDouble=(start==='people');         // зарплату уже платили за эти часы — не двоим
-  const money=(noDouble?0:timeMoney)+e.base; // экономия = время + уход с текущих расходов
+  /* «плачу людям»: экономим не всю зарплату, а долю рутины (аудит 10-audit-economics) */
+  const hRate=Math.max(1,Math.round(st.base/160));
+  const routineMoney=Math.round((e.handsHours||0)*hRate);
+  const money=(noDouble?routineMoney:timeMoney+e.base); // экономия = время/доля рутины + уход с текущих расходов
   const netMonthly=money-e.monthly;          // минус владение
+  const rc=(typeof recPrice==='function')?recPrice():st.cost;
   const res=document.getElementById('pbRes');
   if(netMonthly<=0){
     res.innerHTML='\u041f\u0440\u0438 \u044d\u0442\u0438\u0445 \u0432\u0432\u043e\u0434\u043d\u044b\u0445 \u0430\u0433\u0435\u043d\u0442 \u043d\u0435 \u043e\u043a\u0443\u043f\u0430\u0435\u0442\u0441\u044f \u2014 <b>\u0441\u043c\u0435\u043d\u0438 \u0440\u0435\u0436\u0438\u043c</b> \u043d\u0430 \u0448\u0430\u0433\u0435 05 \u0438\u043b\u0438 \u0443\u0431\u0435\u0440\u0438 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f.';
   }else{
-    const months=st.cost/netMonthly;
+    const months=rc/netMonthly;
     const paybackTxt=(months<=1)?'\u043e\u043a\u0443\u043f\u0430\u0435\u0442\u0441\u044f \u0432 \u043f\u0435\u0440\u0432\u044b\u0439 \u0436\u0435 \u043c\u0435\u0441\u044f\u0446'
       :'\u043e\u043a\u0443\u043f\u0430\u0435\u0442\u0441\u044f \u0437\u0430 <em>'+Math.ceil(months)+' \u043c\u0435\u0441</em>';
-    res.innerHTML='\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u044f <b>'+netMonthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b> \u00b7 '+st.short+' '+st.cost.toLocaleString('ru-RU')+' \u20bd '+paybackTxt;
+    const _rk2=(typeof recommendProduct==='function')?recommendProduct():'build';
+    const _rn2={table:'гайда',build:'сборки',optimization:'аудита',install:'внедрения'}[_rk2]||'агента';
+    res.innerHTML='Экономия <b>'+netMonthly.toLocaleString('ru-RU')+' ₽/мес</b> · '+paybackTxt+' ('+_rn2+' '+rc.toLocaleString('ru-RU')+' ₽ разово)';
   }
-  document.getElementById('pbNote').textContent='\u0421\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0435\u0441\u0442\u043d\u043e: \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u044f = \u0447\u0430\u0441\u044b \u0430\u0433\u0435\u043d\u0442\u0430 \u00d7 \u0442\u0432\u043e\u044f \u0446\u0435\u043d\u0430 \u0447\u0430\u0441\u0430'+(e.base>0?' + \u0443\u0445\u043e\u0434 \u0441 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432':'')+' \u2212 \u0432\u043b\u0430\u0434\u0435\u043d\u0438\u0435.';
+  document.getElementById('pbNote').textContent='\u0421\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0435\u0441\u0442\u043d\u043e: \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u044f = \u043e\u0441\u0432\u043e\u0431\u043e\u0436\u0434\u0451\u043d\u043d\u044b\u0435 \u0447\u0430\u0441\u044b \u00d7 \u0442\u0432\u043e\u044f \u0446\u0435\u043d\u0430 \u0447\u0430\u0441\u0430'+(e.base>0?' + \u0443\u0445\u043e\u0434 \u0441 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432':'')+' \u2212 \u0432\u043b\u0430\u0434\u0435\u043d\u0438\u0435'+(noDouble?'. \u0415\u0441\u043b\u0438 \u043f\u043b\u0430\u0442\u0438\u0448\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0443 \u2014 \u0441\u0447\u0438\u0442\u0430\u0435\u0442\u0441\u044f \u0434\u043e\u043b\u044f \u0440\u0443\u0442\u0438\u043d\u044b, \u043d\u0435 \u0432\u0441\u044f \u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430':'')+'.';
   updateYearBox(e,netMonthly,st);
   showOrderCta(e);
 }
@@ -620,16 +659,18 @@ function updateYearBox(e,net,st){
       +'<div class="brow"><span>При этих вводных агент не окупается</span><b>смени режим на шаге 05</b></div>';
     box.style.display='block'; updateLimits(e); updateAcceptance(e,net); return;
   }
-  var year=net*12, months=st.cost/net;
+  var year=net*12, months=((typeof recPrice==='function')?recPrice():st.cost)/net;
   var pay=(months<=1)?'первый месяц':'за '+Math.ceil(months)+' мес';
+  var rk=(typeof recommendProduct==='function')?recommendProduct():'build';
+  var rn={table:'гайда',build:'сборки',optimization:'аудита',install:'внедрения'}[rk]||'агента';
   var rows='<div class="brow"><span>Экономия в месяц</span><b>'+net.toLocaleString('ru-RU')+' ₽</b></div>'
     +'<div class="brow"><span>Экономия в год</span><b>'+year.toLocaleString('ru-RU')+' ₽</b></div>'
-    +'<div class="brow total"><span>Окупаемость сборки ('+st.cost.toLocaleString('ru-RU')+' ₽)</span><b>'+pay+'</b></div>';
+    +'<div class="brow total"><span>Окупаемость '+rn+'</span><b>'+pay+'</b></div>';
   if(start==='people'){
-    rows+='<div class="brow"><span>Менеджер с налогами (рынок 2026)</span><b>80 000–140 000 ₽/мес</b></div>';
+    rows+='<div class="brow"><span>Доля рутины в зарплате</span><b>считается по ставке часа — не вся зарплата</b></div>';
   }
   box.innerHTML='<div class="y-head">Деньги и окупаемость · МСБ</div>'+rows
-    +'<div class="pb-note">Считаем честно: экономия = освобождённые часы × твоя цена часа'+(e.base>0?' + уход с текущих расходов':'')+' − владение. Год — та же экономия × 12.</div>';
+    +'<div class="pb-note">Считаем честно: экономия = освобождённые часы × твоя цена часа'+(e.base>0?' + уход с текущих расходов':'')+' − владение. Год — та же экономия × 12. Если платишь человеку за эти часы, учитывается только доля рутины, не вся зарплата.</div>';
   box.style.display='block';
   updateLimits(e);
   updateAcceptance(e,net);
@@ -711,7 +752,7 @@ function calculate(){
     const rows=[['\u041c\u043e\u0434\u0435\u043b\u044c \u2014 '+e.modelName,e.modelCost],['\u0425\u043e\u0441\u0442\u0438\u043d\u0433'+(e.gateway?' (\u0441 \u0448\u043b\u044e\u0437\u043e\u043c \u0434\u043b\u044f Telegram)':''),e.hostCost],['\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f',e.connTotal]];
     document.getElementById('brkTable').innerHTML=
       rows.filter(r=>r[1]>0).map(r=>'<div class="brow"><span>'+r[0]+'</span><b>'+r[1].toLocaleString('ru-RU')+' \u20bd</b></div>').join('')
-      +(e.monthly===0?'<div class="brow"><span>Итого</span><b>0 ₽ провайдеру — модель на твоём железе</b></div>':'<div class="brow total"><span>Итого</span><b>'+e.monthly.toLocaleString('ru-RU')+' ₽/мес</b></div>');
+      +(e.monthly===0?(e.modelKey==='local'?'<div class="brow"><span>Итого</span><b>0 \u20bd провайдеру — модель на твоём железе</b></div>':'<div class="brow"><span>Итого</span><b>0 \u20bd сейчас — тариф модели включится после диагностики</b></div>'):'<div class="brow total"><span>Итого</span><b>'+e.monthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441</b></div>');
     recalcPayback();
   }
 
@@ -767,7 +808,7 @@ function calculate(){
   }
   const rcard=document.querySelector('.rcard');
   if(rcard){rcard.style.animation='none';rcard.offsetHeight;rcard.style.animation='';}
-  countUp(document.getElementById('ahaCost'),e.monthly,' \u20bd/\u043c\u0435\u0441');
+  if(!isUnsure)countUp(document.getElementById('ahaCost'),e.monthly,' \u20bd/\u043c\u0435\u0441'); /* «0 ₽ за разбор» не подменяем ценой владения (аудит 15-audit-tech) */
   if(!document.getElementById('result').classList.contains('show'))renderConfig();
   document.getElementById('result').classList.add('show');
   document.getElementById('offerBox').style.display='block';
@@ -798,9 +839,9 @@ function buildTgText(kind){
   const rate=+(document.getElementById('pbSlider')||{value:700}).value||700;
   const saved=e.hours?Math.round(e.hours*rate):0;
   const T={config:'Персональная сборка — 7 000 ₽',table:'Гайд: 20 конфигураций — 5 000 ₽',
-    optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — 0 ₽'};
+    optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — бриф, 0 ₽'};
   let title=T[kind]||'Связка ИИ-агента';
-  if(kind==='install')title={pc:'Личный агент на ПК — 15 000 ₽',vps:'Агент для самозанятого — 20 000 ₽',integ:'ИП/малый бизнес — 30 000 ₽'}[installTier]||'Внедрение под ключ';
+  if(kind==='install')title={pc:'Личный агент на ПК — 15 000 ₽',vps:'Агент для самозанятого — 20 000 ₽',integ:'ИП/малый бизнес — 30 000 ₽',mid:'Средний бизнес — 60 000 ₽'}[installTier]||'Внедрение под ключ';
   const L=[title+' — Discovery System','','Из калькулятора:'];
   L.push('• Рутина: '+(goalLabel()||'—'));
   L.push('• Старт: '+st.short);
@@ -815,19 +856,20 @@ function buildTgText(kind){
     table:['Что соберу первым: [задача]','Вопрос по таблице: [если есть]'],
     optimization:['Где болит: [с цифрой — сколько часов или рублей]','Что уже пробовал: [чтобы не повторять]','Метрика «до»: [например, 6 ч/мес]'],
     install:['Процесс по шагам: [откуда данные → что делать → куда результат]','Доступы готов дать: [TG / таблица / CRM]','Приёмка пройдена, если: [например, заявка доходит в TG за 5 минут]'],
-    diagnostic:['Мой день по шагам: [утром... потом...]','Что бесит больше всего: [...]']
+    diagnostic:['Мой день по шагам: [утром... потом...]','Сколько раз в день/неделю повторяется: [число]','Чем делаю сейчас: [руками / Excel / бот / помощник]','Куда должен приходить результат: [TG / таблица / CRM / почта]','Что бесит больше всего: [...]']
   };
   (LINERS[kind]||[]).forEach(l=>L.push('• '+l));
-  const NEXT={config:'оплачу 7 000 → скрин перевода → сборка 1–3 дня, приёмка по чек-листу',
+  const NEXT={config:'посчитал связку в калькуляторе и хочу персональную сборку — подтвердите, что архитектура покроет мой случай, затем пришлю оплату 7 000 и скрин перевода; сборка нужна за 1–3 дня',
     table:'оплачу 5 000 → скрин → таблица сразу',
     optimization:'дам доступ к связке → аудит → цена и счёт в тот же день',
-    diagnostic:'бесплатный разбор — покажешь, что автоматизировать первым',
+    diagnostic:'заполню бриф прямо здесь → разбор: что автоматизировать первым, сколько часов и рублей это стоит',
     install:'15-минутный созвон по архитектуре — или всё в переписке, как удобнее'};
   L.push('','Дальше: '+(NEXT[kind]||''));
   return L.join('\n');
 }
 function openTg(kind,tier){
   if(tier)installTier=tier;
+  if(kind==='demo')kind='config'; /* демо как продукт убрано: сборка = архитектура + гайд, без показов */
   tgSnapshot(kind,false);
   window.open(TG_ME+'?text='+encodeURIComponent(buildTgText(kind)),'_blank','noopener');
 }
@@ -880,9 +922,15 @@ function orderText(paid){
 
 /* Установка (15/20/30/60К): раздельная ссылка Robokassa на каждый вариант, пока пусто — личка с контекстом */
 function goInstall(kind){
-  const link=kind==='pc'?PAY_LINK_ROBOKASSA_INSTALL_PC:kind==='vps'?PAY_LINK_ROBOKASSA_INSTALL_VPS:kind==='integ'?PAY_LINK_ROBOKASSA_INSTALL_INTEG:'';
+  const links={
+    pc:(typeof PAY_LINK_ROBOKASSA_INSTALL_PC!=='undefined')?PAY_LINK_ROBOKASSA_INSTALL_PC:'',
+    vps:(typeof PAY_LINK_ROBOKASSA_INSTALL_VPS!=='undefined')?PAY_LINK_ROBOKASSA_INSTALL_VPS:'',
+    integ:(typeof PAY_LINK_ROBOKASSA_INSTALL_INTEG!=='undefined')?PAY_LINK_ROBOKASSA_INSTALL_INTEG:'',
+    mid:(typeof PAY_LINK_ROBOKASSA_INSTALL_MID!=='undefined')?PAY_LINK_ROBOKASSA_INSTALL_MID:''
+  };
+  const link=links[kind]||'';
   if(link){window.open(link,'_blank','noopener');return;}
-  openInstallChat(kind);
+  openInstallChat(kind); /* pay-links.js не догрузился — не падаем, уводим в личку с контекстом (аудит 15-audit-tech) */
 }
 /* Старые точки выхода — теперь через единый билдер */
 function openInstallChat(kind){openTg('install',kind);}
