@@ -74,10 +74,12 @@ const DEVICES=[
 ];
 const GOALS=[
   {id:'repeat',t:'Отвечаю на одни и те же вопросы',sn:'Ответы на частые вопросы',d:'клиенты, заявки, переписка',econ:16,ic:'bot'},
-  {id:'leads',t:'Разгребаю заявки, пока не остыли',sn:'Разбор и квалификация заявок',d:'отклики, лиды, воронка',econ:14,ic:'search'},
+  {id:'leads',t:'Разгребаю заявки, пока не остыли',sn:'Заявки и отклики — со скринингом',d:'отклики, лиды, воронка',econ:14,ic:'search'},
+  {id:'remind',t:'Держу клиентов в курсе — напоминания и статусы',sn:'Напоминания и статусы',d:'записи, оплаты, заказы, доставки',econ:12,ic:'calendar'},
   {id:'report',t:'Каждую неделю собираю один и тот же отчёт',sn:'Регулярный отчёт',d:'выгрузки, сверки, таблицы',econ:14,ic:'doc'},
-  {id:'scan',t:'Ищу и проверяю информацию по кускам',sn:'Сбор и проверка информации',d:'сайты, сравнение, выжимки',econ:10,ic:'globe'},
+  {id:'scan',t:'Ищу информацию и слежу: цены, остатки, дедлайны',sn:'Сбор и мониторинг',d:'сайты, сравнение, выжимки, отслеживание',econ:10,ic:'globe'},
   {id:'write',t:'Пишу тексты с нуля каждый раз',sn:'Конвейер текстов',d:'посты, реклама, план',econ:18,ic:'pen'},
+  {id:'quote',t:'Считаю сметы и КП руками',sn:'Сметы и КП',d:'расчёты, предложения, тендеры',econ:14,ic:'chart'},
   {id:'paper',t:'Разбираю документы и выписки',sn:'Разбор документов',d:'сверки, письма, классификация',econ:12,ic:'chart'},
   {id:'unsure',t:'Пока не могу назвать — надо разобраться',sn:'Диагностика процесса',d:'опиши день, найдём повторяющееся',econ:10,ic:'sparkles'}
 ];
@@ -140,7 +142,7 @@ let _mc=null; try{_mc=JSON.parse(sessionStorage.getItem('ds_mc')||'null');}catch
 let _mcScenario=null; try{_mcScenario=sessionStorage.getItem('ds_mc_scenario');}catch(e){}
 const N=2;
 /* Шаг 3 убран: задачи выводятся из целей (ux-research/02) */
-const GOAL_TASKS={repeat:[],leads:['sales'],report:['data','docs'],scan:['web','research'],write:['text'],paper:['docs'],unsure:[]};
+const GOAL_TASKS={repeat:[],leads:['sales'],remind:['social'],report:['data','docs'],scan:['web','research'],write:['text'],quote:['docs'],paper:['docs'],unsure:[]};
 function deriveTasks(){ return [...new Set(goals.flatMap(g=>GOAL_TASKS[g]||[]))]; }
 
 /* ========== RENDER ========== */
@@ -154,7 +156,7 @@ function renderCards(){
   var so=document.getElementById('startOpts');
   if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="start='${s.id}';pickOption();">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
   const showUnsure=goals.length===0||goals.includes('unsure');
-  document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">до ${days(g.econ)}</div></div></div>`).join('');
+  document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">от ${days(g.econ)}</div></div></div>`).join('');
   var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
   var ao=document.getElementById('autoOpts');
   if(ao)ao.innerHTML=AUTONOMY.map(a=>'<button type="button" class="'+(autonomy===a.id?'on':'')+'" onclick="setAuto(\''+a.id+'\')">'+a.label+'</button>').join('');
@@ -300,11 +302,24 @@ function renderHeroCompare(e,rate){
   const B=st.base?st.base.toLocaleString('ru-RU'):'0';
   let leftL='Сейчас', leftV=B+' ₽', leftSub='', rightL='С владением', rightV=M+' ₽/мес', rightSub='', note='';
   if(start==='people'){
-    leftL='Человек на рутине'; leftV=B+' ₽/мес'; leftSub='≈ '+e.handsHours+' ч рутины в месяц';
-    rightL='Агент под ключ'; rightV=M+' ₽/мес';
-    rightSub='≈ '+e.hours+' ч контроля · '+e.modelCost.toLocaleString('ru-RU')+' ₽ токенов · хост '+((e.hostCost-(e.gateway||0))||0).toLocaleString('ru-RU')+' ₽';
-    note='Агент забирает рутину, человек остаётся на том, что требует головы. Разница '+Math.max(0,st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес — это '+(Math.max(0,st.base-e.monthly)*12).toLocaleString('ru-RU')+' ₽ в год. Демо — по запросу, покажу на твоём процессе.';
-  } else if(start==='sub'){
+    /* Таблица Fin-стиля (ux-research/07): каждая строка — своя статья */
+    const ctrl=e.hours, tok=e.modelCost, host=e.hostCost;
+    const diff=Math.max(0,st.base-e.monthly);
+    leftL='Человек на рутине'; leftV=B+' ₽/мес'; leftSub='≈ '+e.handsHours+' ч рутины · ставка полная (ФОТ × 1,3)';
+    rightL='Агент под ключ'; rightV=M+' ₽/мес'; rightSub='';
+    note='Методика: объём твоих обращений × среднее время на одно. '+ctrl+' ч контроля остаются тебе — это не потеря, на них остаётся продажи и развитие бизнеса. Показываю на живой связке внутри сборки — не на слайдах.';
+    box.innerHTML=
+      '<div class="hc-table">'+
+      '<div class="hcr"><span>Человек на рутине</span><b>'+B+' ₽/мес</b><i>≈ '+e.handsHours+' ч</i></div>'+
+      '<div class="hcr"><span>Агент: токены</span><b>'+tok.toLocaleString('ru-RU')+' ₽</b><i>по тарифу выбранной модели</i></div>'+
+      '<div class="hcr"><span>Агент: хостинг'+(e.gateway?' (со шлюзом для TG)':'')+'</span><b>'+host.toLocaleString('ru-RU')+' ₽</b><i>работает 24/7, без отпусков</i></div>'+
+      '<div class="hcr"><span>Твоё время: контроль</span><b>0 ₽</b><i>≈ '+ctrl+' ч — продажи и развитие</i></div>'+
+      '<div class="hcr total"><span>Разница</span><b>'+diff.toLocaleString('ru-RU')+' ₽/мес</b><i>'+(diff*12).toLocaleString('ru-RU')+' ₽ в год</i></div>'+
+      '</div><div class="hc-note">'+note+'</div>';
+    box.style.display='block';
+    return;
+  }
+  if(start==='sub'){
     leftL='Подписка сейчас'; leftV=B+' ₽/мес'; rightL='Своя связка'; rightV=M+' ₽/мес';
     note=(e.monthly<st.base
       ? 'Дешевле на '+(st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес. '
@@ -474,8 +489,8 @@ function estimate(){
        Lite 32,5 · Pro 250 · Max 325.
      Объёмы — допущения из типовой рутины МСБ; калибровать на живых клиентах. */
   const TARIFF={lite:32.5,pro:250,max:325};
-  const TOK_MONTH={repeat:3.6e6, leads:2.25e6, report:1.2e5, scan:1.8e6, write:1.6e5, paper:1.5e5, unsure:0};
-  const TIER_OF={repeat:'lite', leads:'lite', scan:'lite', report:'pro', write:'pro', paper:'pro'};
+  const TOK_MONTH={repeat:3.6e6, leads:2.25e6, remind:6e5, report:1.2e5, scan:1.8e6, write:1.6e5, quote:1.2e5, paper:1.5e5, unsure:0};
+  const TIER_OF={repeat:'lite', leads:'lite', remind:'lite', scan:'lite', report:'pro', write:'pro', quote:'pro', paper:'pro'};
   const TASK_TOK={text:1.2e5,design:6e4,docs:1.8e5,data:1.5e5,web:1.2e5,social:8e4,sales:1.5e5,research:1.2e5};
   const AUTO_TOK={draft:0.8,review:1,auto:1.4,full:2.0};
   let tokenCost=0;
@@ -826,7 +841,7 @@ function buildTgText(kind){
     table:'оплачу 5 000 → скрин → таблица сразу',
     optimization:'дам доступ к связке → аудит → цена и счёт в тот же день',
     diagnostic:'бесплатный разбор — покажешь, что автоматизировать первым',
-    demo:'15 минут на моих данных, без подготовки с моей стороны — когда удобно?',
+    demo:'Демо делаю на живой связке после сборки — на слайдах не показываю, враньё видно сразу. Сборка 7 000 ₽ (демо и правки до приёмки включены) или гайд 5 000 ₽ → своя сборка → разбор.',
     install:'15-минутный созвон по архитектуре — или всё в переписке, как удобнее'};
   L.push('','Дальше: '+(NEXT[kind]||''));
   return L.join('\n');
