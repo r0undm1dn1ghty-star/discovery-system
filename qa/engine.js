@@ -298,10 +298,12 @@ function renderHeroCompare(e,rate){
   const st=STARTS.find(x=>x.id===start)||STARTS[0];
   const M=e.monthly.toLocaleString('ru-RU');
   const B=st.base?st.base.toLocaleString('ru-RU'):'0';
-  let leftL='Сейчас', leftV=B+' ₽', rightL='С владением', rightV=M+' ₽/мес', note='';
+  let leftL='Сейчас', leftV=B+' ₽', leftSub='', rightL='С владением', rightV=M+' ₽/мес', rightSub='', note='';
   if(start==='people'){
-    leftL='Человек сейчас'; leftV=B+' ₽/мес'; rightL='Агент под ключ'; rightV=M+' ₽/мес';
-    note='Агент забирает рутину ('+e.hours+' ч/мес), человек остаётся на том, что требует головы. Разница '+Math.max(0,st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес — это '+(Math.max(0,st.base-e.monthly)*12).toLocaleString('ru-RU')+' ₽ в год.';
+    leftL='Человек на рутине'; leftV=B+' ₽/мес'; leftSub='≈ '+e.handsHours+' ч рутины в месяц';
+    rightL='Агент под ключ'; rightV=M+' ₽/мес';
+    rightSub='≈ '+e.hours+' ч контроля · '+e.modelCost.toLocaleString('ru-RU')+' ₽ токенов · хост '+((e.hostCost-(e.gateway||0))||0).toLocaleString('ru-RU')+' ₽';
+    note='Агент забирает рутину, человек остаётся на том, что требует головы. Разница '+Math.max(0,st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес — это '+(Math.max(0,st.base-e.monthly)*12).toLocaleString('ru-RU')+' ₽ в год. Демо — по запросу, покажу на твоём процессе.';
   } else if(start==='sub'){
     leftL='Подписка сейчас'; leftV=B+' ₽/мес'; rightL='Своя связка'; rightV=M+' ₽/мес';
     note=(e.monthly<st.base
@@ -319,9 +321,9 @@ function renderHeroCompare(e,rate){
     note='Первый шаг — '+recPrice().toLocaleString('ru-RU')+' ₽. Дальше платишь только провайдерам, без наценки.';
   }
   box.innerHTML=
-    '<div class="hc-cell"><small>'+leftL+'</small><b>'+leftV+'</b></div>'+
+    '<div class="hc-cell"><small>'+leftL+'</small><b>'+leftV+'</b>'+(leftSub?'<span class="hc-sub">'+leftSub+'</span>':'')+'</div>'+
     '<div class="hc-arrow">→</div>'+
-    '<div class="hc-cell after"><small>'+rightL+'</small><b>'+rightV+'</b></div>'+
+    '<div class="hc-cell after"><small>'+rightL+'</small><b>'+rightV+'</b>'+(rightSub?'<span class="hc-sub">'+rightSub+'</span>':'')+'</div>'+
     '<div class="hc-note">'+note+'</div>';
   box.style.display='block';
 }
@@ -798,7 +800,8 @@ function buildTgText(kind){
   const rate=+(document.getElementById('pbSlider')||{value:700}).value||700;
   const saved=e.hours?Math.round(e.hours*rate):0;
   const T={config:'Персональная сборка — 7 000 ₽',table:'Гайд: 20 конфигураций — 5 000 ₽',
-    optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — 0 ₽'};
+    optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — 0 ₽',
+    demo:'Запрос демо — 0 ₽'};
   let title=T[kind]||'Связка ИИ-агента';
   if(kind==='install')title={pc:'Личный агент на ПК — 15 000 ₽',vps:'Агент для самозанятого — 20 000 ₽',integ:'ИП/малый бизнес — 30 000 ₽'}[installTier]||'Внедрение под ключ';
   const L=[title+' — Discovery System','','Из калькулятора:'];
@@ -815,6 +818,7 @@ function buildTgText(kind){
     table:['Что соберу первым: [задача]','Вопрос по таблице: [если есть]'],
     optimization:['Где болит: [с цифрой — сколько часов или рублей]','Что уже пробовал: [чтобы не повторять]','Метрика «до»: [например, 6 ч/мес]'],
     install:['Процесс по шагам: [откуда данные → что делать → куда результат]','Доступы готов дать: [TG / таблица / CRM]','Приёмка пройдена, если: [например, заявка доходит в TG за 5 минут]'],
+    demo:['Процесс для демо: [например, заявка с почты → ответ клиенту]','Где смотреть: [TG / таблица / CRM]','Что главное покажи: [наприклад, скорость ответа]'],
     diagnostic:['Мой день по шагам: [утром... потом...]','Что бесит больше всего: [...]']
   };
   (LINERS[kind]||[]).forEach(l=>L.push('• '+l));
@@ -822,6 +826,7 @@ function buildTgText(kind){
     table:'оплачу 5 000 → скрин → таблица сразу',
     optimization:'дам доступ к связке → аудит → цена и счёт в тот же день',
     diagnostic:'бесплатный разбор — покажешь, что автоматизировать первым',
+    demo:'15 минут на моих данных, без подготовки с моей стороны — когда удобно?',
     install:'15-минутный созвон по архитектуре — или всё в переписке, как удобнее'};
   L.push('','Дальше: '+(NEXT[kind]||''));
   return L.join('\n');
