@@ -192,15 +192,24 @@
     stream.insertBefore(el, typing);
     if (step.k === 'res') { requestAnimationFrame(function () { el.classList.add('in'); }); }
     state.lines++;
-    if (state.mode === 'live') {
-      stream.scrollTop = stream.scrollHeight;
+    if (state.mode === 'live') reveal(el);
+  }
+
+  // держим в кадре ВЕСЬ новый блок, а не только его низ: иначе файл приходит обрезанным краем консоли
+  function reveal(el) {
+    var sr = stream.getBoundingClientRect();
+    var er = el.getBoundingClientRect();
+    if (er.bottom > sr.bottom - 6) {
+      stream.scrollTop += (er.bottom - sr.bottom) + 12;
+    } else if (er.top < sr.top + 6) {
+      stream.scrollTop -= (sr.top - er.top) + 12;
     }
   }
 
   function speak(step, done) {
     // «печатает» перед действием агента, кроме системных и пользовательских строк
     if (state.static) { done(); return; }
-    var d = { day: 420, log: 360, file: 420, agent: 620, user: 0, res: 520 }[step.k] || 300;
+    var d = { day: 240, log: 200, file: 240, agent: 340, user: 0, res: 280 }[step.k] || 200;
     if (d === 0) { done(); return; }
     typing.hidden = false;
     stream.scrollTop = stream.scrollHeight;
@@ -209,7 +218,7 @@
   }
 
   function gap(step) {
-    return { day: 620, log: 520, file: 620, agent: 900, user: 520, res: 900 }[step.k] || 500;
+    return { day: 320, log: 280, file: 340, agent: 460, user: 280, res: 520 }[step.k] || 300;
   }
 
   function render(key) {
@@ -250,6 +259,11 @@
         recEl.textContent = 'ожидание';
         recEl.classList.remove('on');
         resEl.innerHTML = asm.result;
+        // итог и последний файл — в кадре, без «недогруженного» хвоста
+        setTimeout(function () {
+          if (token !== seq) return;
+          stream.scrollTop = stream.scrollHeight;
+        }, 60);
         return;
       }
       var step = asm.steps[i++];
