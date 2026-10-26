@@ -43,6 +43,7 @@
     // подстраницы прилипают к своему разделу
     'agent-failures.html': 'market',
     'nacenka.html': 'market',
+    'karta-resheniy.html': 'market',
     'value-chain.html': 'market',
     'lost-accounts.html': 'market',
     'pay.html': 'prices',

@@ -1,0 +1,2889 @@
+{
+ "IA-JOURNEY.html": [
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.92,
+   "eff": 7.3,
+   "scroller": false,
+   "txt": "01"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.92,
+   "eff": 7.3,
+   "scroller": false,
+   "txt": "02"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.92,
+   "eff": 7.3,
+   "scroller": false,
+   "txt": "03"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.92,
+   "eff": 7.3,
+   "scroller": false,
+   "txt": "04"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.92,
+   "eff": 7.3,
+   "scroller": false,
+   "txt": "05"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "СТАДИЯ 01 · НАШЁЛ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "ниже нейтрали"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ДЕЛАЕТ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Видит два равных действия: кал"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "внешний Telegram. Нав — шесть "
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ГДЕ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 10.5,
+   "scale": 0.92,
+   "eff": 9.6,
+   "scroller": false,
+   "txt": "index.html · .hero · .sticky-c"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ВХОД В КАЛЬКУЛЯТОР"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 11.5,
+   "scale": 0.92,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "hero «Посчитать мою цену» · .s"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 11.5,
+   "scale": 0.92,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "«Посчитать за минуту»"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "СТАДИЯ 02 · ПОНЯЛ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "выше нейтрали"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ДЕЛАЕТ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Смотрит смену агента в Telegra"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "четыре формата работы."
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ГДЕ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 10.5,
+   "scale": 0.92,
+   "eff": 9.6,
+   "scroller": false,
+   "txt": "system.html · #demo · #formats"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ВХОД В КАЛЬКУЛЯТОР"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 11.5,
+   "scale": 0.92,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "ссылка под демо · блок #go «по"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 11.5,
+   "scale": 0.92,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "рутину»"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "СТАДИЯ 03 · ПРОВЕРИЛ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "низко"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ДЕЛАЕТ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Идёт по наву проверять: Внедре"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Канал — три равных раздела."
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ГДЕ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 10.5,
+   "scale": 0.92,
+   "eff": 9.6,
+   "scroller": false,
+   "txt": "proof.html · market.html · cha"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ВХОД В КАЛЬКУЛЯТОР"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 11.5,
+   "scale": 0.92,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "одна кнопка в конце proof.html"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 11.5,
+   "scale": 0.92,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "экранов от входа"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "три peer-раздела вместо пути"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "дубли: лестница ×3 · кейсы ×2"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "СТАДИЯ 04 · УВИДЕЛ ЦЕНУ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "нейтрально"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ДЕЛАЕТ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Сравнивает шесть форматов на о"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "ищет свою цифру в лестнице 0→6"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ГДЕ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 10.5,
+   "scale": 0.92,
+   "eff": 9.6,
+   "scroller": false,
+   "txt": "clarity.html · узлы 0–5"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ВХОД В КАЛЬКУЛЯТОР"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 11.5,
+   "scale": 0.92,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "лид · подсказка «начни с кальк"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 11.5,
+   "scale": 0.92,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "#node2 · финал"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "СТАДИЯ 05 · ОПЛАТИЛ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 9.5,
+   "scale": 0.92,
+   "eff": 8.7,
+   "scroller": false,
+   "txt": "высоко"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ДЕЛАЕТ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Семь ответов — расчёт в ₽/мес "
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 12,
+   "scale": 0.92,
+   "eff": 11,
+   "scroller": false,
+   "txt": "оффер, оплата."
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ГДЕ"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 10.5,
+   "scale": 0.92,
+   "eff": 9.6,
+   "scroller": false,
+   "txt": "calculator.html → pay.html"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "ВХОД В КАЛЬКУЛЯТОР"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 11.5,
+   "scale": 0.92,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "сам калькулятор — конечный узе"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "кривая настроения"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "провал пути"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "метка трения"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8.5,
+   "scale": 0.92,
+   "eff": 7.8,
+   "scroller": false,
+   "txt": "вход в калькулятор"
+  },
+  {
+   "svg": false,
+   "sel": "div.navrow>div>span",
+   "fs": 11.5,
+   "scale": 1,
+   "eff": 11.5,
+   "scroller": false,
+   "txt": "system.html"
+  },
+  {
+   "svg": false,
+   "sel": "div.navrow>div>span",
+   "fs": 11.5,
+   "scale": 1,
+   "eff": 11.5,
+   "scroller": false,
+   "txt": "proof.html"
+  },
+  {
+   "svg": false,
+   "sel": "div.navrow>div>span",
+   "fs": 11.5,
+   "scale": 1,
+   "eff": 11.5,
+   "scroller": false,
+   "txt": "clarity.html"
+  },
+  {
+   "svg": false,
+   "sel": "div.navrow>div>span",
+   "fs": 11.5,
+   "scale": 1,
+   "eff": 11.5,
+   "scroller": false,
+   "txt": "market.html"
+  },
+  {
+   "svg": false,
+   "sel": "div.navrow>div.cta>span",
+   "fs": 11.5,
+   "scale": 1,
+   "eff": 11.5,
+   "scroller": false,
+   "txt": "calculator.html"
+  },
+  {
+   "svg": false,
+   "sel": "div.wrap>section.decision>p.note",
+   "fs": 11.5,
+   "scale": 1,
+   "eff": 11.5,
+   "scroller": false,
+   "txt": "Высота нава на мобилке не меня"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Страница"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Роль в пути"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Вход в калькулятор"
+  }
+ ],
+ "SERVICE-BLUEPRINT.html": [
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "СТАДИЯ 01"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "СТАДИЯ 02"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "СТАДИЯ 03"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "СТАДИЯ 04"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "СТАДИЯ 05"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "СТАДИЯ 06"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "МАТЕРИАЛЫ"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Сайт: цифры и кейсы"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "index.html"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Калькулятор связки"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "calculator.html"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Чат с Виктором"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "t.me/soulvictor"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Чек-лист и оплата"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "ссылка на оплату"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Агент на железе"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "у клиента"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Бот агента в TG"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "работает 24/7"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "КЛИЕНТ ДЕЛАЕТ"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Читает цифры и кейсы"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Отвечает на 7 вопросов"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Пишет в Telegram"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Оплачивает по ссылке"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Проверяет по критериям"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Пишет в поддержку"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "НА ВИДУ"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Кейсы и исследования"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "с источниками и датами"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Расчёт связки с ценой"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "вилка, а не одна цифра"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Ответ с формой запроса"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "текст предзаполнен"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Чек-лист требований"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "гарантия возврата"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Демонстрация"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "агент остаётся у клиента"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Ответы в поддержке"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "15 / 25 / 40 тыс ₽ в мес"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "ЗА КУЛИСАМИ"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Контент и замеры рынка"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "market-intel"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Подбор связки под задачу"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "цены провайдеров"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Ответ в чате · без фиксации"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "нет срока ответа"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Готовит железо, сервер"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "план внедрения"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Сборка и приёмка"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "возврат при провале"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Подписка и контроль"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "Tribute · без абонентки"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "ИНФРАСТРУКТУРА"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "SEO, Авито, TG-канал"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "LLM API, хостинг"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "150–5 400 ₽ в мес"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Заявки в личку"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "фиксации нет"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Платёжка по ссылке"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Железо клиента"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "990–1 800 ₽ при 24/7"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 12,
+   "scale": 0.97,
+   "eff": 11.6,
+   "scroller": true,
+   "txt": "Провайдеры клиента"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "РАЗРЫВ 01"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 10.5,
+   "scale": 0.97,
+   "eff": 10.2,
+   "scroller": true,
+   "txt": "Посчитал и ушёл:"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 10.5,
+   "scale": 0.97,
+   "eff": 10.2,
+   "scroller": true,
+   "txt": "контакт не фиксируется"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 10,
+   "scale": 0.97,
+   "eff": 9.7,
+   "scroller": true,
+   "txt": "Кнопка «расчёт в Telegram»"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "РАЗРЫВ 02"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 10.5,
+   "scale": 0.97,
+   "eff": 10.2,
+   "scroller": true,
+   "txt": "Написал и ждёт: срок"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 10.5,
+   "scale": 0.97,
+   "eff": 10.2,
+   "scroller": true,
+   "txt": "ответа неизвестен"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 10,
+   "scale": 0.97,
+   "eff": 9.7,
+   "scroller": true,
+   "txt": "Автоответ и срок ответа"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "РАЗРЫВ 03"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 10.5,
+   "scale": 0.97,
+   "eff": 10.2,
+   "scroller": true,
+   "txt": "После оплаты тишина: этапы"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 10.5,
+   "scale": 0.97,
+   "eff": 10.2,
+   "scroller": true,
+   "txt": "внедрения не показаны"
+  },
+  {
+   "svg": true,
+   "sel": "svg>g>text",
+   "fs": 10,
+   "scale": 0.97,
+   "eff": 9.7,
+   "scroller": true,
+   "txt": "Показывать этапы и дату приёмк"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 8,
+   "scale": 0.97,
+   "eff": 7.8,
+   "scroller": true,
+   "txt": "ЛЕГЕНДА"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 10,
+   "scale": 0.97,
+   "eff": 9.7,
+   "scroller": true,
+   "txt": "линия видимости"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 10,
+   "scale": 0.97,
+   "eff": 9.7,
+   "scroller": true,
+   "txt": "работа за кулисами"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 10,
+   "scale": 0.97,
+   "eff": 9.7,
+   "scroller": true,
+   "txt": "точка доверия"
+  },
+  {
+   "svg": true,
+   "sel": "div.diagram>svg>text",
+   "fs": 10,
+   "scale": 0.97,
+   "eff": 9.7,
+   "scroller": true,
+   "txt": "разрыв пути"
+  },
+  {
+   "svg": false,
+   "sel": "div.wrap>p.diagram-hint",
+   "fs": 11.5,
+   "scale": 1,
+   "eff": 11.5,
+   "scroller": false,
+   "txt": "На телефоне диаграмма листаетс"
+  },
+  {
+   "svg": false,
+   "sel": "div.gaps>div.gap>p.kick",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Разрыв 01 · calculator.html"
+  },
+  {
+   "svg": false,
+   "sel": "div.gap>p.fix>b",
+   "fs": 10.5,
+   "scale": 1,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "Чем закрыть"
+  },
+  {
+   "svg": false,
+   "sel": "div.gaps>div.gap>p.kick",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Разрыв 02 · t.me/soulvictor"
+  },
+  {
+   "svg": false,
+   "sel": "div.gap>p.fix>b",
+   "fs": 10.5,
+   "scale": 1,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "Чем закрыть"
+  },
+  {
+   "svg": false,
+   "sel": "div.gaps>div.gap>p.kick",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Разрыв 03 · после оплаты"
+  },
+  {
+   "svg": false,
+   "sel": "div.gap>p.fix>b",
+   "fs": 10.5,
+   "scale": 1,
+   "eff": 10.5,
+   "scroller": false,
+   "txt": "Чем закрыть"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Стадия"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Что клиент видит"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Почему верит"
+  },
+  {
+   "svg": false,
+   "sel": "div.wrap>section>p.note",
+   "fs": 11.5,
+   "scale": 1,
+   "eff": 11.5,
+   "scroller": false,
+   "txt": "Разрыв 02 — самый дорогой: он "
+  }
+ ],
+ "agent-failures.html": [],
+ "calculator.html": [],
+ "channel.html": [],
+ "clarity.html": [],
+ "fail.html": [],
+ "index.html": [],
+ "karta-resheniy.html": [
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Путь"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Цена входа сейчас"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Через 1 месяц"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Через 3 месяца"
+  },
+  {
+   "svg": false,
+   "sel": "thead>tr>th",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Через 12 месяцев"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td.p>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Claude / ChatGPT / Perplexity"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Habr, 01.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "The Moscow Times, 02.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "методофлаг, 07.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "методофлаг, 07.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td.p>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "для сравнения: средний чек вне"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "dare.ru, 14.10.2026; прожарка,"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "верификация Дарэ, 05.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "замер состава, 05.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "агрегат конкурентов, 05.10.202"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td.p>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Найми.ИИ, Яндекс Hermes, ГигаА"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "кейс-замер, 14.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Yandex Cloud, 02.09.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "тарифы, 14.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "замер наценок, 19–20.09.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "расчёт × 12, 14.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td.p>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "свой контур"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "замер наценок, 19–20.09.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "developers.sber.ru, 19.09.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "«Яков и Партнёры» × Яндекс, 09"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "VK WorkSpace × Hi-Tech Mail, 2"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Habr, 01.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td.p>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "этаж демпинга <5 000 ₽"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "срез Авито, 13–14.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "срез Авито, 13–14.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "срез Авито, 13–14.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "срез Авито, 13–14.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td.p>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "продолжать руками"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "расчёт: 10 × 4,33 × 12"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "eLama, 01.07.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Известия × ПСБ, 03.08.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "допущение, ставку подставить"
+  },
+  {
+   "svg": false,
+   "sel": "tr.disc>td.p>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "сборка под ключ"
+  },
+  {
+   "svg": false,
+   "sel": "tr.disc>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "замер наценок, 19–20.09.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr.disc>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "Ведомости, 07.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr.disc>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "модель, 28.09.2026"
+  },
+  {
+   "svg": false,
+   "sel": "tr.disc>td>span.d",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": true,
+   "txt": "сигналы, 01–02.10.2026"
+  },
+  {
+   "svg": false,
+   "sel": "footer.src>div.wrap>div.k",
+   "fs": 11,
+   "scale": 1,
+   "eff": 11,
+   "scroller": false,
+   "txt": "Источники замеров"
+  }
+ ],
+ "lost-accounts-infographic.html": [],
+ "lost-accounts.html": [],
+ "market.html": [],
+ "nacenka.html": [],
+ "oferta.html": [],
+ "pay.html": [],
+ "policy.html": [],
+ "proof.html": [],
+ "services.html": [],
+ "system.html": [],
+ "thanks.html": [],
+ "value-chain.html": [
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 12,
+   "scale": 0.66,
+   "eff": 7.9,
+   "scroller": true,
+   "txt": "01  СПРОС"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 10,
+   "scale": 0.66,
+   "eff": 6.6,
+   "scroller": true,
+   "txt": "кто платит"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 12,
+   "scale": 0.66,
+   "eff": 7.9,
+   "scroller": true,
+   "txt": "02  ИНФРАСТРУКТУРА"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 10,
+   "scale": 0.66,
+   "eff": 6.6,
+   "scroller": true,
+   "txt": "чем собирают"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 12,
+   "scale": 0.66,
+   "eff": 7.9,
+   "scroller": true,
+   "txt": "03  СБОРКА"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 10,
+   "scale": 0.66,
+   "eff": 6.6,
+   "scroller": true,
+   "txt": "кто делает"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 12,
+   "scale": 0.66,
+   "eff": 7.9,
+   "scroller": true,
+   "txt": "04  ЭКСПЛУАТАЦИЯ"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 10,
+   "scale": 0.66,
+   "eff": 6.6,
+   "scroller": true,
+   "txt": "что происходит после"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 12,
+   "scale": 0.66,
+   "eff": 7.9,
+   "scroller": true,
+   "txt": "05  РЕЗУЛЬТАТ"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 10,
+   "scale": 0.66,
+   "eff": 6.6,
+   "scroller": true,
+   "txt": "что получил бизнес"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 11,
+   "scale": 0.66,
+   "eff": 7.2,
+   "scroller": true,
+   "txt": "РУКИ · кто собирает"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "3,2% занятых создают ИИ-решени"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "опрос 314 тыс.). Пул кандидато"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "сборщиков — число активных исп"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 11,
+   "scale": 0.66,
+   "eff": 7.2,
+   "scroller": true,
+   "txt": "СТЕК · чем собирают"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "n8n, RAG-шаблоны, MCP-протокол"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "интеграций по заявлению Octapi"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "сборку и одновременно усиливае"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 11,
+   "scale": 0.66,
+   "eff": 7.2,
+   "scroller": true,
+   "txt": "НАВЫК · где учат"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "Гос-переобучение: 64,5 тыс. за"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "ВСЕМ направлениям (×4,5), 77,5"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "не ИИ-специфично. Курсы: от бе"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Корпорации"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "100 из 150 крупнейших внедряют"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "платят больше всех"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Средний бизнес"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "46% пробуют агентов · бюджет с"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "3–15К в поле · прайс до 1,5 мл"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Микробизнес"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "6,76 млн фирм 3–15 чел. · 96,4"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "53% трогают нейросети"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Физлица и дом.хозяйства"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "75% заказов Авито-ИИ — физлица"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "чек ниже, объём больше"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Госсектор"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "закупает по регламенту"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "65,2 млрд · 99,95%"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Свичеры"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "новая профессия через ИИ"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "64,5К ×4,5 · 77,5% работают"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Модели и токены"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "GigaChat 0,50 ₽/1К · YandexGPT"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "токены дешевеют"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Облака и хостинг"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "запуск агента без своей инфры"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "Timeweb: до 12,5 млн токенов н"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Конструкторы"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "Salebot 490 ₽/мес · Aimylogic "
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "стек И конкурент нижнего этажа"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "ИИ-платформы"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "Yandex AI Studio: 30 000+ аген"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "самсервис становится массовым"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Установщики-демпинг"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "«настроил и ушёл»: OpenClaw за"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "1,5–2К ₽ разово"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Фриланс-этаж"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "Kwork: медиана 4К · 44% из 72 "
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "самый густой этаж рынка"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Студии и агентства"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "проектные команды под задачу, "
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "от 30К ₽ за проект"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Корп-интеграторы"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "длинный цикл · ответственность"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "от 100К ₽ · ИБ и старые систем"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Самсервис (клиент сам)"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "шаблоны юзкейсов вместо найма "
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "30 000+ агентов созданы сами"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Поддержка по договору (SLA)"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "поддержка — 10–58% полной цены"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "полная цена: эксплуатация ≠ но"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Обучение клиента"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "«обучение работе с ИИ» — топ B"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "бесплатный вход: Нетология, на"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Доработки и кастомы"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "доработки — скрытая часть полн"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "база знаний и промпты: 5–30К+"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Эффект у бизнеса"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "модель стоит 6–15К/мес, труд —"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "интеллект за ₽ ≠ цена модели"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Выжившие кейсы"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "Норникель: 100 агентов в 30+ п"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "победители прошли всю цепочку"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 13,
+   "scale": 0.66,
+   "eff": 8.5,
+   "scroller": true,
+   "txt": "Окупаемость у МСБ"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "окупаемость 0,3–12 мес — если "
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>g>text",
+   "fs": 9,
+   "scale": 0.66,
+   "eff": 5.9,
+   "scroller": true,
+   "txt": "но 85–93% до внедрения не дохо"
+  },
+  {
+   "svg": true,
+   "sel": "g>a>text",
+   "fs": 14,
+   "scale": 0.66,
+   "eff": 9.2,
+   "scroller": true,
+   "txt": "↗"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 10,
+   "scale": 0.66,
+   "eff": 6.6,
+   "scroller": true,
+   "txt": "ЗОНА РАЗРЫВА"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 11,
+   "scale": 0.66,
+   "eff": 7.2,
+   "scroller": true,
+   "txt": "ДЕНЬГИ ИДУТ ОБРАТНО: токены → "
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "подписки 490–2 750 ₽/мес · про"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 11,
+   "scale": 0.66,
+   "eff": 7.2,
+   "scroller": true,
+   "txt": "КТО КОМУ ПОМОГАЕТ И МЕШАЕТ"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "конструктор конкурирует за ниж"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "платформа кормит самсервис: ша"
+  },
+  {
+   "svg": true,
+   "sel": "svg#map>text",
+   "fs": 9.5,
+   "scale": 0.66,
+   "eff": 6.2,
+   "scroller": true,
+   "txt": "демпинг давит пол: медиана 4К "
+  }
+ ]
+}

@@ -1,0 +1,3967 @@
+{
+ "IA-JOURNEY.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 3272,
+  "nodes": 258,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "01"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "02"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "03"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "04"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "05"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "СТАДИЯ 01 · НАШЁЛ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "ниже нейтрали"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ДЕЛАЕТ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ГДЕ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "index.html · .hero · .sticky-cta"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ВХОД В КАЛЬКУЛЯТОР"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "hero «Посчитать мою цену» · .sticky-cta"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "«Посчитать за минуту»"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "СТАДИЯ 02 · ПОНЯЛ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "выше нейтрали"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ДЕЛАЕТ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ГДЕ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "system.html · #demo · #formats"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ВХОД В КАЛЬКУЛЯТОР"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "ссылка под демо · блок #go «посчитать св"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "рутину»"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "СТАДИЯ 03 · ПРОВЕРИЛ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "низко"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ДЕЛАЕТ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ГДЕ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "proof.html · market.html · channel.html"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ВХОД В КАЛЬКУЛЯТОР"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "одна кнопка в конце proof.html — пять"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "экранов от входа"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "три peer-раздела вместо пути"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "дубли: лестница ×3 · кейсы ×2"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "СТАДИЯ 04 · УВИДЕЛ ЦЕНУ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "нейтрально"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ДЕЛАЕТ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ГДЕ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "clarity.html · узлы 0–5"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ВХОД В КАЛЬКУЛЯТОР"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "лид · подсказка «начни с калькулятора» ·"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "#node2 · финал"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "СТАДИЯ 05 · ОПЛАТИЛ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "высоко"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ДЕЛАЕТ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ГДЕ"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "calculator.html → pay.html"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "ВХОД В КАЛЬКУЛЯТОР"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "сам калькулятор — конечный узел конверси"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "кривая настроения"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "провал пути"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "метка трения"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8.5px",
+    "lh": "14.28px",
+    "txt": "вход в калькулятор"
+   },
+   {
+    "sel": "section.decision > div.navrow > div > span",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "system.html"
+   },
+   {
+    "sel": "section.decision > div.navrow > div > span",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "proof.html"
+   },
+   {
+    "sel": "section.decision > div.navrow > div > span",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "clarity.html"
+   },
+   {
+    "sel": "section.decision > div.navrow > div > span",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "market.html"
+   },
+   {
+    "sel": "section.decision > div.navrow > div.cta > span",
+    "fs": "11.5px",
+    "lh": "19.32px",
+    "txt": "calculator.html"
+   },
+   {
+    "sel": "div.wrap > section.decision > p.note",
+    "fs": "11.5px",
+    "lh": "19.55px",
+    "txt": "Высота нава на мобилке не меняется: пунк"
+   },
+   {
+    "sel": "table.tbl > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Страница"
+   },
+   {
+    "sel": "table.tbl > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Роль в пути"
+   },
+   {
+    "sel": "table.tbl > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Вход в калькулятор"
+   }
+  ],
+  "taps": [
+   {
+    "sel": "div.wrap > footer > p > a",
+    "w": 130,
+    "h": 15,
+    "txt": "← на главную сайта"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 27
+ },
+ "SERVICE-BLUEPRINT.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 3237,
+  "nodes": 207,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "СТАДИЯ 01"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "СТАДИЯ 02"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "СТАДИЯ 03"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "СТАДИЯ 04"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "СТАДИЯ 05"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "СТАДИЯ 06"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "МАТЕРИАЛЫ"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "index.html"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "calculator.html"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "t.me/soulvictor"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "ссылка на оплату"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "у клиента"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "работает 24/7"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "КЛИЕНТ ДЕЛАЕТ"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "НА ВИДУ"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "с источниками и датами"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "вилка, а не одна цифра"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "текст предзаполнен"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "гарантия возврата"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "агент остаётся у клиента"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "15 / 25 / 40 тыс ₽ в мес"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "ЗА КУЛИСАМИ"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "market-intel"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "цены провайдеров"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "нет срока ответа"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "план внедрения"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "возврат при провале"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "Tribute · без абонентки"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "ИНФРАСТРУКТУРА"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "150–5 400 ₽ в мес"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "фиксации нет"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "990–1 800 ₽ при 24/7"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "РАЗРЫВ 01"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "Посчитал и ушёл:"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "контакт не фиксируется"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "Кнопка «расчёт в Telegram»"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "РАЗРЫВ 02"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "Написал и ждёт: срок"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "ответа неизвестен"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "Автоответ и срок ответа"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "РАЗРЫВ 03"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "После оплаты тишина: этапы"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "10.5px",
+    "lh": "17.64px",
+    "txt": "внедрения не показаны"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "Показывать этапы и дату приёмки"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "8px",
+    "lh": "13.44px",
+    "txt": "ЛЕГЕНДА"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "линия видимости"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "работа за кулисами"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "точка доверия"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "разрыв пути"
+   },
+   {
+    "sel": "div.wrap > p.diagram-hint",
+    "fs": "11.5px",
+    "lh": "19.55px",
+    "txt": "На телефоне диаграмма листается горизонт"
+   },
+   {
+    "sel": "section > div.gaps > div.gap > p.kick",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Разрыв 01 · calculator.html"
+   },
+   {
+    "sel": "div.gaps > div.gap > p.fix > b",
+    "fs": "10.5px",
+    "lh": "16.8px",
+    "txt": "Чем закрыть"
+   },
+   {
+    "sel": "section > div.gaps > div.gap.k > p.kick",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Разрыв 02 · t.me/soulvictor"
+   },
+   {
+    "sel": "div.gaps > div.gap.k > p.fix > b",
+    "fs": "10.5px",
+    "lh": "16.8px",
+    "txt": "Чем закрыть"
+   },
+   {
+    "sel": "section > div.gaps > div.gap > p.kick",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Разрыв 03 · после оплаты"
+   },
+   {
+    "sel": "div.gaps > div.gap > p.fix > b",
+    "fs": "10.5px",
+    "lh": "16.8px",
+    "txt": "Чем закрыть"
+   },
+   {
+    "sel": "table.tbl > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Стадия"
+   },
+   {
+    "sel": "table.tbl > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Что клиент видит"
+   },
+   {
+    "sel": "table.tbl > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Почему верит"
+   },
+   {
+    "sel": "div.wrap > section > p.note",
+    "fs": "11.5px",
+    "lh": "19.55px",
+    "txt": "Разрыв 02 — самый дорогой: он стоит на с"
+   }
+  ],
+  "taps": [
+   {
+    "sel": "div.wrap > footer > p > a",
+    "w": 130,
+    "h": 15,
+    "txt": "← на главную сайта"
+   }
+  ],
+  "wide": [],
+  "nowrap": [
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 409,
+    "txt": "СТАДИЯ 02"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 410,
+    "txt": "Считает"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 605,
+    "txt": "СТАДИЯ 03"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 618,
+    "txt": "Пишет в TG"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 801,
+    "txt": "СТАДИЯ 04"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 798,
+    "txt": "Платит"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 997,
+    "txt": "СТАДИЯ 05"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 1000,
+    "txt": "Приёмка"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 1193,
+    "txt": "СТАДИЯ 06"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 1206,
+    "txt": "Поддержка"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 439,
+    "txt": "Калькулятор связки"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 418,
+    "txt": "calculator.html"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 622,
+    "txt": "Чат с Виктором"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 614,
+    "txt": "t.me/soulvictor"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 825,
+    "txt": "Чек-лист и оплата"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 812,
+    "txt": "ссылка на оплату"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1016,
+    "txt": "Агент на железе"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 992,
+    "txt": "у клиента"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1209,
+    "txt": "Бот агента в TG"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1197,
+    "txt": "работает 24/7"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 449,
+    "txt": "Отвечает на 7 вопросов"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 628,
+    "txt": "Пишет в Telegram"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 837,
+    "txt": "Оплачивает по ссылке"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1041,
+    "txt": "Проверяет по критериям"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1222,
+    "txt": "Пишет в поддержку"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 445,
+    "txt": "Расчёт связки с ценой"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 435,
+    "txt": "вилка, а не одна цифра"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 647,
+    "txt": "Ответ с формой запроса"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 621,
+    "txt": "текст предзаполнен"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 835,
+    "txt": "Чек-лист требований"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 815,
+    "txt": "гарантия возврата"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1012,
+    "txt": "Демонстрация"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1028,
+    "txt": "агент остаётся у клиента"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1225,
+    "txt": "Ответы в поддержке"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1224,
+    "txt": "15 / 25 / 40 тыс ₽ в мес"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 457,
+    "txt": "Подбор связки под задачу"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 420,
+    "txt": "цены провайдеров"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 659,
+    "txt": "Ответ в чате · без фиксации"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 616,
+    "txt": "нет срока ответа"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 841,
+    "txt": "Готовит железо, сервер"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 808,
+    "txt": "план внедрения"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1021,
+    "txt": "Сборка и приёмка"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1016,
+    "txt": "возврат при провале"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1226,
+    "txt": "Подписка и контроль"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1221,
+    "txt": "Tribute · без абонентки"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 429,
+    "txt": "LLM API, хостинг"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 423,
+    "txt": "150–5 400 ₽ в мес"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 621,
+    "txt": "Заявки в личку"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 607,
+    "txt": "фиксации нет"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 832,
+    "txt": "Платёжка по ссылке"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1016,
+    "txt": "Железо клиента"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1018,
+    "txt": "990–1 800 ₽ при 24/7"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 1226,
+    "txt": "Провайдеры клиента"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 392,
+    "txt": "Посчитал и ушёл:"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 425,
+    "txt": "контакт не фиксируется"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 437,
+    "txt": "Кнопка «расчёт в Telegram»"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 554,
+    "txt": "РАЗРЫВ 02"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 609,
+    "txt": "Написал и ждёт: срок"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 594,
+    "txt": "ответа неизвестен"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 616,
+    "txt": "Автоответ и срок ответа"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 752,
+    "txt": "РАЗРЫВ 03"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 843,
+    "txt": "После оплаты тишина: этапы"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 819,
+    "txt": "внедрения не показаны"
+   },
+   {
+    "sel": "div.diagram > svg > g > text",
+    "sw": 861,
+    "txt": "Показывать этапы и дату приёмки"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 372,
+    "txt": "работа за кулисами"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 506,
+    "txt": "точка доверия"
+   },
+   {
+    "sel": "div.wrap > div.diagram > svg > text",
+    "sw": 630,
+    "txt": "разрыв пути"
+   }
+  ],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 27
+ },
+ "agent-failures.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 19609,
+  "nodes": 559,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "calculator.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 2461,
+  "nodes": 322,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "aside#ctorResult > div.foot > a",
+    "w": 68,
+    "h": 16,
+    "txt": "Внедрения"
+   },
+   {
+    "sel": "aside#ctorResult > div.foot > a",
+    "w": 259,
+    "h": 37,
+    "txt": "Оплата и возврат"
+   },
+   {
+    "sel": "aside#ctorResult > div.foot > a",
+    "w": 45,
+    "h": 16,
+    "txt": "оферта"
+   },
+   {
+    "sel": "aside#ctorResult > div.foot > a",
+    "w": 83,
+    "h": 16,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "aside#ctorResult > div.foot > a",
+    "w": 180,
+    "h": 16,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1.0",
+  "bodyFont": 17,
+  "h1": 24
+ },
+ "channel.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 7284,
+  "nodes": 333,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 137,
+    "h": 21,
+    "txt": "The Moscow Times ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 47,
+    "h": 21,
+    "txt": "Habr ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 46,
+    "h": 21,
+    "txt": "Habr ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 105,
+    "h": 21,
+    "txt": "Дарэ · оффер ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 193,
+    "h": 21,
+    "txt": "Yandex Cloud Marketplace ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 142,
+    "h": 21,
+    "txt": "Авито · срез поля ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 83,
+    "h": 21,
+    "txt": "Ведомости ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 193,
+    "h": 21,
+    "txt": "Yandex Cloud Marketplace ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-head > a.src",
+    "w": 110,
+    "h": 20,
+    "txt": "от 3 642 ₽/мес"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 53,
+    "h": 21,
+    "txt": "CNews ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 149,
+    "h": 21,
+    "txt": "Первый технический ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 134,
+    "h": 21,
+    "txt": "Т-Бизнес секреты ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 105,
+    "h": 21,
+    "txt": "кейс клиента ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 186,
+    "h": 21,
+    "txt": "отзыв заказчика с Авито ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 149,
+    "h": 21,
+    "txt": "Первый технический ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 215,
+    "h": 21,
+    "txt": "VK WorkSpace × Hi-Tech Mail ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 119,
+    "h": 21,
+    "txt": "Известия × ПСБ ↗"
+   },
+   {
+    "sel": "div.grp > div.sig > div.sig-meta > a.sig-src",
+    "w": 53,
+    "h": 21,
+    "txt": "eLama ↗"
+   },
+   {
+    "sel": "div.wrap > div.geo-summary > p > a.src",
+    "w": 121,
+    "h": 19,
+    "txt": "@discoverysystem"
+   },
+   {
+    "sel": "section > div.wrap > p.res-more > a",
+    "w": 300,
+    "h": 19,
+    "txt": "Все замеры и разборы — на «Рынке"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "clarity.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 12721,
+  "nodes": 320,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "section > div.wrap > p.choose-hint > a",
+    "w": 97,
+    "h": 19,
+    "txt": "калькулятора"
+   },
+   {
+    "sel": "div#node5 > div.pay-bar > span.v2 > a",
+    "w": 55,
+    "h": 17,
+    "txt": "условия"
+   },
+   {
+    "sel": "section > div.wrap > p.pay-meta > a",
+    "w": 58,
+    "h": 22,
+    "txt": "оферте"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "fail.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 1457,
+  "nodes": 52,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "main > div.wrap > p.note > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "main > div.wrap > p.note > a",
+    "w": 58,
+    "h": 18,
+    "txt": "Telegram"
+   },
+   {
+    "sel": "footer > div.wrap > p > a",
+    "w": 43,
+    "h": 16,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p > a",
+    "w": 167,
+    "h": 16,
+    "txt": "политика обработки данных"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "index.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 9090,
+  "nodes": 486,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "header.hero > div.own-price > p.op-more > a",
+    "w": 219,
+    "h": 20,
+    "txt": "Сверить со своей рутиной →"
+   },
+   {
+    "sel": "div.wrap > div.sys > span.l > a",
+    "w": 288,
+    "h": 27,
+    "txt": "Стоимость ИИ-агента в месяц"
+   },
+   {
+    "sel": "div.who > div > p.links > a",
+    "w": 67,
+    "h": 27,
+    "txt": "Telegram"
+   },
+   {
+    "sel": "div.who > div > p.links > a",
+    "w": 50,
+    "h": 27,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "div.who > div > p.links > a",
+    "w": 20,
+    "h": 27,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "karta-resheniy.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 6062,
+  "nodes": 238,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [
+   {
+    "sel": "table > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Путь"
+   },
+   {
+    "sel": "table > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Цена входа сейчас"
+   },
+   {
+    "sel": "table > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Через 1 месяц"
+   },
+   {
+    "sel": "table > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Через 3 месяца"
+   },
+   {
+    "sel": "table > thead > tr > th",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Через 12 месяцев"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Claude / ChatGPT / Perplexity"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Habr, 01.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "The Moscow Times, 02.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "методофлаг, 07.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "методофлаг, 07.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "для сравнения: средний чек внедрения МСБ"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "dare.ru, 14.10.2026; прожарка, 05.10.202"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "верификация Дарэ, 05.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "замер состава, 05.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "агрегат конкурентов, 05.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Найми.ИИ, Яндекс Hermes, ГигаАгент"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "кейс-замер, 14.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Yandex Cloud, 02.09.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "тарифы, 14.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "замер наценок, 19–20.09.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "расчёт × 12, 14.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "свой контур"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "замер наценок, 19–20.09.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "developers.sber.ru, 19.09.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "«Яков и Партнёры» × Яндекс, 09.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "VK WorkSpace × Hi-Tech Mail, 23.09.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Habr, 01.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "этаж демпинга <5 000 ₽"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "срез Авито, 13–14.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "срез Авито, 13–14.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "срез Авито, 13–14.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "срез Авито, 13–14.10.2026"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "продолжать руками"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "расчёт: 10 × 4,33 × 12"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "eLama, 01.07.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Известия × ПСБ, 03.08.2026"
+   },
+   {
+    "sel": "tbody > tr > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "допущение, ставку подставить"
+   },
+   {
+    "sel": "tbody > tr.disc > td.p > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "сборка под ключ"
+   },
+   {
+    "sel": "tbody > tr.disc > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "замер наценок, 19–20.09.2026"
+   },
+   {
+    "sel": "tbody > tr.disc > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "Ведомости, 07.10.2026"
+   },
+   {
+    "sel": "tbody > tr.disc > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "модель, 28.09.2026"
+   },
+   {
+    "sel": "tbody > tr.disc > td > span.d",
+    "fs": "11px",
+    "lh": "17.6px",
+    "txt": "сигналы, 01–02.10.2026"
+   },
+   {
+    "sel": "footer.src > div.wrap > div.k",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "Источники замеров"
+   }
+  ],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "div.wrap > p.stamp > a.src",
+    "w": 120,
+    "h": 16,
+    "txt": "Рынок ИИ-агентов"
+   },
+   {
+    "sel": "footer.foot > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer.foot > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer.foot > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer.foot > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer.foot > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [
+   {
+    "sel": "table > tbody > tr > td.p",
+    "sw": 499,
+    "txt": "Зарубежные подпискиClaude / ChatGPT / Pe"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "sw": 475,
+    "txt": "Claude / ChatGPT / Perplexity"
+   },
+   {
+    "sel": "table > tbody > tr > td.p",
+    "sw": 499,
+    "txt": "Студии «под ключ»для сравнения: средний "
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "sw": 475,
+    "txt": "для сравнения: средний чек внедрения МСБ"
+   },
+   {
+    "sel": "table > tbody > tr > td.p",
+    "sw": 499,
+    "txt": "Маркетплейс-агентыНайми.ИИ, Яндекс Herme"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "sw": 475,
+    "txt": "Найми.ИИ, Яндекс Hermes, ГигаАгент"
+   },
+   {
+    "sel": "table > tbody > tr > td.p",
+    "sw": 499,
+    "txt": "DIY по бесплатным гайдамсвой контур"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "sw": 475,
+    "txt": "свой контур"
+   },
+   {
+    "sel": "table > tbody > tr > td.p",
+    "sw": 499,
+    "txt": "Фрилансер с Авитоэтаж демпинга <5 000 ₽"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "sw": 475,
+    "txt": "этаж демпинга <5 000 ₽"
+   },
+   {
+    "sel": "table > tbody > tr > td.p",
+    "sw": 499,
+    "txt": "«Ничего не делать»продолжать руками"
+   },
+   {
+    "sel": "tbody > tr > td.p > span.d",
+    "sw": 475,
+    "txt": "продолжать руками"
+   },
+   {
+    "sel": "table > tbody > tr.disc > td.p",
+    "sw": 499,
+    "txt": "Discovery Systemсборка под ключ"
+   },
+   {
+    "sel": "tbody > tr.disc > td.p > span.d",
+    "sw": 475,
+    "txt": "сборка под ключ"
+   }
+  ],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "lost-accounts-infographic.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 9699,
+  "nodes": 286,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "div.wrap > div.now > p.cap > a",
+    "w": 147,
+    "h": 20,
+    "txt": "в Telegram-канале →"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 37
+ },
+ "lost-accounts.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 9699,
+  "nodes": 286,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "div.wrap > div.now > p.cap > a",
+    "w": 147,
+    "h": 20,
+    "txt": "в Telegram-канале →"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 37
+ },
+ "market.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 9048,
+  "nodes": 249,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "section#research > div.wrap > p > a.src",
+    "w": 107,
+    "h": 19,
+    "txt": "карта решений"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "nacenka.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 18207,
+  "nodes": 689,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "section#bigtech > div.wrap > p.sources-inline > a",
+    "w": 102,
+    "h": 17,
+    "txt": "Яндекс AI Studio"
+   },
+   {
+    "sel": "section#bigtech > div.wrap > p.sources-inline > a",
+    "w": 50,
+    "h": 17,
+    "txt": "Cloud.ru"
+   },
+   {
+    "sel": "section#bigtech > div.wrap > p.sources-inline > a",
+    "w": 30,
+    "h": 17,
+    "txt": "MWS"
+   },
+   {
+    "sel": "section#bigtech > div.wrap > p.sources-inline > a",
+    "w": 47,
+    "h": 17,
+    "txt": "Selectel"
+   },
+   {
+    "sel": "section#bigtech > div.wrap > p.sources-inline > a",
+    "w": 59,
+    "h": 17,
+    "txt": "DeepSeek"
+   },
+   {
+    "sel": "section#bigtech > div.wrap > p.sources-inline > a",
+    "w": 57,
+    "h": 17,
+    "txt": "Anthropic"
+   },
+   {
+    "sel": "section#cache > div.wrap > p.sources-inline > a",
+    "w": 59,
+    "h": 17,
+    "txt": "DeepSeek"
+   },
+   {
+    "sel": "section#cache > div.wrap > p.sources-inline > a",
+    "w": 57,
+    "h": 17,
+    "txt": "Anthropic"
+   },
+   {
+    "sel": "section#cache > div.wrap > p.sources-inline > a",
+    "w": 25,
+    "h": 17,
+    "txt": "Z.AI"
+   },
+   {
+    "sel": "section#cache > div.wrap > p.sources-inline > a",
+    "w": 26,
+    "h": 17,
+    "txt": "Kimi"
+   },
+   {
+    "sel": "section#cache > div.wrap > p.sources-inline > a",
+    "w": 49,
+    "h": 17,
+    "txt": "MiniMax"
+   },
+   {
+    "sel": "section#cache > div.wrap > p.sources-inline > a",
+    "w": 95,
+    "h": 17,
+    "txt": "OpenRouter API"
+   },
+   {
+    "sel": "section#cache > div.wrap > p.sources-inline > a",
+    "w": 103,
+    "h": 17,
+    "txt": "AITunnel каталог"
+   },
+   {
+    "sel": "section#cache > div.wrap > p.sources-inline > a",
+    "w": 304,
+    "h": 39,
+    "txt": "ProxyAPI: цены кэша на страницах"
+   },
+   {
+    "sel": "section#cache > div.wrap > p.sources-inline > a",
+    "w": 62,
+    "h": 17,
+    "txt": "llmoney.ru"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 106,
+    "h": 18,
+    "txt": "Яндекс AI Studio"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 111,
+    "h": 18,
+    "txt": "Cloud.ru Evolution"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 298,
+    "h": 38,
+    "txt": "MWS GPT Model Hub"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 120,
+    "h": 18,
+    "txt": "Selectel ИИ-роутер"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 80,
+    "h": 18,
+    "txt": "GigaChat API"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 62,
+    "h": 18,
+    "txt": "DeepSeek"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 59,
+    "h": 18,
+    "txt": "Anthropic"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 60,
+    "h": 18,
+    "txt": "z.ai (GLM)"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 93,
+    "h": 18,
+    "txt": "Alibaba (Qwen)"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 56,
+    "h": 18,
+    "txt": "ProxyAPI"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 55,
+    "h": 18,
+    "txt": "AITunnel"
+   },
+   {
+    "sel": "div.method > ul.source-list > li > a",
+    "w": 73,
+    "h": 18,
+    "txt": "OpenRouter"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 46,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 82,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 152,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "oferta.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 16150,
+  "nodes": 157,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "div.req > dl > dd > a",
+    "w": 150,
+    "h": 20,
+    "txt": "Telegram @soulvictor"
+   },
+   {
+    "sel": "div.req > dl > dd > a",
+    "w": 174,
+    "h": 20,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 78,
+    "h": 18,
+    "txt": "купить гайд"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 198,
+    "h": 42,
+    "txt": "на главную"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 58,
+    "h": 18,
+    "txt": "Telegram"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "pay.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 5270,
+  "nodes": 153,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "div.rk-grid > div > p.rk-d > a",
+    "w": 296,
+    "h": 19,
+    "txt": "политика обработки персональных "
+   },
+   {
+    "sel": "div.wrap > div.rk-block > p.rk-note > a",
+    "w": 108,
+    "h": 16,
+    "txt": "публичная оферта"
+   },
+   {
+    "sel": "div.faq > details > p > a",
+    "w": 50,
+    "h": 19,
+    "txt": "оферте"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "policy.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 2815,
+  "nodes": 49,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "div.wrap > nav > a",
+    "w": 47,
+    "h": 22,
+    "txt": "Главная"
+   },
+   {
+    "sel": "div.wrap > nav > a",
+    "w": 74,
+    "h": 22,
+    "txt": "Калькулятор"
+   },
+   {
+    "sel": "div.wrap > nav > a",
+    "w": 47,
+    "h": 22,
+    "txt": "Ясность"
+   },
+   {
+    "sel": "div.wrap > nav > a",
+    "w": 27,
+    "h": 22,
+    "txt": "Гайд"
+   },
+   {
+    "sel": "div.wrap > nav > a",
+    "w": 45,
+    "h": 22,
+    "txt": "Оферта"
+   },
+   {
+    "sel": "div.wrap > p > a",
+    "w": 167,
+    "h": 20,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div.wrap > p > a",
+    "w": 143,
+    "h": 20,
+    "txt": "Telegram @soulvictor"
+   },
+   {
+    "sel": "div.wrap > a",
+    "w": 162,
+    "h": 22,
+    "txt": "Telegram @soulvictor"
+   },
+   {
+    "sel": "div.wrap > a",
+    "w": 189,
+    "h": 22,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div.wrap > footer > a",
+    "w": 41,
+    "h": 16,
+    "txt": "оферта"
+   },
+   {
+    "sel": "div.wrap > footer > a",
+    "w": 67,
+    "h": 16,
+    "txt": "купить гайд"
+   },
+   {
+    "sel": "div.wrap > footer > a",
+    "w": 139,
+    "h": 16,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 55,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "proof.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 7140,
+  "nodes": 425,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "div.demo-stage > div.tg > div.tg-foot > a",
+    "w": 203,
+    "h": 29,
+    "txt": "посчитать свою рутину →"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 148,
+    "h": 17,
+    "txt": "ds_warm-lead-parser"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 140,
+    "h": 17,
+    "txt": "ds_spiral-maturity"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 140,
+    "h": 17,
+    "txt": "ds_market-evidence"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 94,
+    "h": 17,
+    "txt": "ds_pnl-check"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 125,
+    "h": 17,
+    "txt": "ds_content-radar"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 94,
+    "h": 17,
+    "txt": "ds_geo-audit"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "services.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 12721,
+  "nodes": 320,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "section > div.wrap > p.choose-hint > a",
+    "w": 97,
+    "h": 19,
+    "txt": "калькулятора"
+   },
+   {
+    "sel": "div#node5 > div.pay-bar > span.v2 > a",
+    "w": 55,
+    "h": 17,
+    "txt": "условия"
+   },
+   {
+    "sel": "section > div.wrap > p.pay-meta > a",
+    "w": 58,
+    "h": 22,
+    "txt": "оферте"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "system.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 7140,
+  "nodes": 425,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "div.demo-stage > div.tg > div.tg-foot > a",
+    "w": 203,
+    "h": 29,
+    "txt": "посчитать свою рутину →"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 148,
+    "h": 17,
+    "txt": "ds_warm-lead-parser"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 140,
+    "h": 17,
+    "txt": "ds_spiral-maturity"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 140,
+    "h": 17,
+    "txt": "ds_market-evidence"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 94,
+    "h": 17,
+    "txt": "ds_pnl-check"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 125,
+    "h": 17,
+    "txt": "ds_content-radar"
+   },
+   {
+    "sel": "div > div.m-row > span.m-t > a",
+    "w": 94,
+    "h": 17,
+    "txt": "ds_geo-audit"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "thanks.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 1776,
+  "nodes": 80,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [],
+  "taps": [
+   {
+    "sel": "div.wrap > div.tga > p.tga-note > a",
+    "w": 146,
+    "h": 17,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "main > div.wrap > p.note > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "main > div.wrap > p.note > a",
+    "w": 58,
+    "h": 18,
+    "txt": "Telegram"
+   },
+   {
+    "sel": "footer > div.wrap > p > a",
+    "w": 43,
+    "h": 16,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p > a",
+    "w": 167,
+    "h": 16,
+    "txt": "политика обработки данных"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [],
+  "traps": [],
+  "viewportMeta": "width=device-width, initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ },
+ "value-chain.html": {
+  "vw": 360,
+  "vh": 740,
+  "scrollW": 360,
+  "bodyScrollW": 360,
+  "overflow": 0,
+  "pageH": 13329,
+  "nodes": 691,
+  "offenders": [],
+  "fixedWide": [],
+  "tiny": [
+   {
+    "sel": "svg#map > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "кто платит"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "чем собирают"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "кто делает"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "что происходит после"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "что получил бизнес"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "РУКИ · кто собирает"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "3,2% занятых создают ИИ-решения (ВШЭ/Рос"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "опрос 314 тыс.). Пул кандидатов, не счёт"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "сборщиков — число активных исполнителей "
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "СТЕК · чем собирают"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "n8n, RAG-шаблоны, MCP-протокол (−80% вре"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "интеграций по заявлению Octapi). Стек уд"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "сборку и одновременно усиливает самсерви"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "НАВЫК · где учат"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "Гос-переобучение: 64,5 тыс. за 9 мес. 20"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "ВСЕМ направлениям (×4,5), 77,5% трудоуст"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "не ИИ-специфично. Курсы: от бесплатного "
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "100 из 150 крупнейших внедряют ИИ"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "платят больше всех"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "46% пробуют агентов · бюджет сильно разн"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "3–15К в поле · прайс до 1,5 млн"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "6,76 млн фирм 3–15 чел. · 96,4% МСП"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "53% трогают нейросети"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "75% заказов Авито-ИИ — физлица"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "чек ниже, объём больше"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "закупает по регламенту"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "65,2 млрд · 99,95%"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "новая профессия через ИИ"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "64,5К ×4,5 · 77,5% работают"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "GigaChat 0,50 ₽/1К · YandexGPT 0,20 ₽/1К"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "токены дешевеют"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "запуск агента без своей инфры"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "Timeweb: до 12,5 млн токенов на тест"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "Salebot 490 ₽/мес · Aimylogic 2750 ₽ · B"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "стек И конкурент нижнего этажа"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "Yandex AI Studio: 30 000+ агентов за 2 к"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "самсервис становится массовым"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "«настроил и ушёл»: OpenClaw за 2К, 202 о"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "1,5–2К ₽ разово"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "Kwork: медиана 4К · 44% из 72 услуг в 3–"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "самый густой этаж рынка"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "проектные команды под задачу, агентства "
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "от 30К ₽ за проект"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "длинный цикл · ответственность на исполн"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "от 100К ₽ · ИБ и старые системы"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "шаблоны юзкейсов вместо найма сборщика"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "30 000+ агентов созданы сами"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "поддержка — 10–58% полной цены агента"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "полная цена: эксплуатация ≠ ноль"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "«обучение работе с ИИ» — топ B2B-запросо"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "бесплатный вход: Нетология, нацпроект"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "доработки — скрытая часть полной цены"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "база знаний и промпты: 5–30К+"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "модель стоит 6–15К/мес, труд — остальное"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "интеллект за ₽ ≠ цена модели"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "Норникель: 100 агентов в 30+ процессах ·"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "победители прошли всю цепочку"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "окупаемость 0,3–12 мес — если агент рабо"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "fs": "9px",
+    "lh": "15.12px",
+    "txt": "но 85–93% до внедрения не доходят"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "10px",
+    "lh": "16.8px",
+    "txt": "ЗОНА РАЗРЫВА"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "ДЕНЬГИ ИДУТ ОБРАТНО: токены → инструмент"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "подписки 490–2 750 ₽/мес · проекты 2К–10"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "11px",
+    "lh": "18.48px",
+    "txt": "КТО КОМУ ПОМОГАЕТ И МЕШАЕТ"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "конструктор конкурирует за нижний этаж: "
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "платформа кормит самсервис: шаблоны вмес"
+   },
+   {
+    "sel": "svg#map > text",
+    "fs": "9.5px",
+    "lh": "15.96px",
+    "txt": "демпинг давит пол: медиана 4К держится, "
+   }
+  ],
+  "taps": [
+   {
+    "sel": "nav.top > div.wrap > div.nav-items > a",
+    "w": 35,
+    "h": 44,
+    "txt": "Цены"
+   },
+   {
+    "sel": "p#tools-note > a",
+    "w": 70,
+    "h": 18,
+    "txt": "выбрать ↑"
+   },
+   {
+    "sel": "section#gotovo > div.wide > p.accept-links > a",
+    "w": 287,
+    "h": 17,
+    "txt": "n8n: fix or build — or you don't"
+   },
+   {
+    "sel": "section#gotovo > div.wide > p.accept-links > a",
+    "w": 272,
+    "h": 17,
+    "txt": "КТ.Тим: чек-лист выбора подрядчи"
+   },
+   {
+    "sel": "section#gotovo > div.wide > p.accept-links > a",
+    "w": 287,
+    "h": 17,
+    "txt": "aiopermodel: gate-чеклисты внедр"
+   },
+   {
+    "sel": "section#gotovo > div.wide > p.accept-links > a",
+    "w": 212,
+    "h": 17,
+    "txt": "Альбато: чек-лист 10 шагов ↗"
+   },
+   {
+    "sel": "section#gotovo > div.wide > p.accept-links > a",
+    "w": 249,
+    "h": 17,
+    "txt": "ЭТОЧАТБОТ: 20 тестовых вопросов "
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 44,
+    "h": 18,
+    "txt": "GitHub"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 17,
+    "h": 18,
+    "txt": "VC"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 48,
+    "h": 18,
+    "txt": "оферта"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 85,
+    "h": 18,
+    "txt": "политика ПД"
+   },
+   {
+    "sel": "footer > div.wrap > p.sig-c > a",
+    "w": 158,
+    "h": 18,
+    "txt": "viktor.garnett@yandex.ru"
+   },
+   {
+    "sel": "div#ds-cookie-note > a",
+    "w": 57,
+    "h": 16,
+    "txt": "Политика"
+   }
+  ],
+  "wide": [],
+  "nowrap": [
+   {
+    "sel": "svg#map > text",
+    "sw": 491,
+    "txt": "02 ИНФРАСТРУКТУРА"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 414,
+    "txt": "чем собирают"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 744,
+    "txt": "03 СБОРКА"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 719,
+    "txt": "кто делает"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 1114,
+    "txt": "04 ЭКСПЛУАТАЦИЯ"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 1091,
+    "txt": "что происходит после"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 1409,
+    "txt": "05 РЕЗУЛЬТАТ"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 1400,
+    "txt": "что получил бизнес"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 578,
+    "txt": "РУКИ · кто собирает"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 662,
+    "txt": "3,2% занятых создают ИИ-решения (ВШЭ/Рос"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 633,
+    "txt": "опрос 314 тыс.). Пул кандидатов, не счёт"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 646,
+    "txt": "сборщиков — число активных исполнителей "
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 707,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 908,
+    "txt": "СТЕК · чем собирают"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 991,
+    "txt": "n8n, RAG-шаблоны, MCP-протокол (−80% вре"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 995,
+    "txt": "интеграций по заявлению Octapi). Стек уд"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 972,
+    "txt": "сборку и одновременно усиливает самсерви"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 1037,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1215,
+    "txt": "НАВЫК · где учат"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1300,
+    "txt": "Гос-переобучение: 64,5 тыс. за 9 мес. 20"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1328,
+    "txt": "ВСЕМ направлениям (×4,5), 77,5% трудоуст"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1329,
+    "txt": "не ИИ-специфично. Курсы: от бесплатного "
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 1367,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 469,
+    "txt": "Модели и токены"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 546,
+    "txt": "GigaChat 0,50 ₽/1К · YandexGPT 0,20 ₽/1К"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 441,
+    "txt": "токены дешевеют"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 614,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 469,
+    "txt": "Облака и хостинг"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 500,
+    "txt": "запуск агента без своей инфры"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 554,
+    "txt": "Timeweb: до 12,5 млн токенов на тест"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 614,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 450,
+    "txt": "Конструкторы"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 579,
+    "txt": "Salebot 490 ₽/мес · Aimylogic 2750 ₽ · B"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 522,
+    "txt": "стек И конкурент нижнего этажа"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 614,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 458,
+    "txt": "ИИ-платформы"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 574,
+    "txt": "Yandex AI Studio: 30 000+ агентов за 2 к"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 516,
+    "txt": "самсервис становится массовым"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 614,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 824,
+    "txt": "Установщики-демпинг"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 895,
+    "txt": "«настроил и ушёл»: OpenClaw за 2К, 202 о"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 761,
+    "txt": "1,5–2К ₽ разово"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 934,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 773,
+    "txt": "Фриланс-этаж"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 884,
+    "txt": "Kwork: медиана 4К · 44% из 72 услуг в 3–"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 804,
+    "txt": "самый густой этаж рынка"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 934,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 801,
+    "txt": "Студии и агентства"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 922,
+    "txt": "проектные команды под задачу, агентства "
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 777,
+    "txt": "от 30К ₽ за проект"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 934,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 798,
+    "txt": "Корп-интеграторы"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 900,
+    "txt": "длинный цикл · ответственность на исполн"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 847,
+    "txt": "от 100К ₽ · ИБ и старые системы"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 934,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 831,
+    "txt": "Самсервис (клиент сам)"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 878,
+    "txt": "шаблоны юзкейсов вместо найма сборщика"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 831,
+    "txt": "30 000+ агентов созданы сами"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 934,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1188,
+    "txt": "Поддержка по договору (SLA)"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1191,
+    "txt": "поддержка — 10–58% полной цены агента"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1173,
+    "txt": "полная цена: эксплуатация ≠ ноль"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 1254,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1116,
+    "txt": "Обучение клиента"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1229,
+    "txt": "«обучение работе с ИИ» — топ B2B-запросо"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1200,
+    "txt": "бесплатный вход: Нетология, нацпроект"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 1254,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1137,
+    "txt": "Доработки и кастомы"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1183,
+    "txt": "доработки — скрытая часть полной цены"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1156,
+    "txt": "база знаний и промпты: 5–30К+"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 1254,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1434,
+    "txt": "Эффект у бизнеса"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1514,
+    "txt": "модель стоит 6–15К/мес, труд — остальное"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1471,
+    "txt": "интеллект за ₽ ≠ цена модели"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 1574,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1433,
+    "txt": "Выжившие кейсы"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1538,
+    "txt": "Норникель: 100 агентов в 30+ процессах ·"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1476,
+    "txt": "победители прошли всю цепочку"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 1574,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1443,
+    "txt": "Окупаемость у МСБ"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1531,
+    "txt": "окупаемость 0,3–12 мес — если агент рабо"
+   },
+   {
+    "sel": "svg#map > g > text",
+    "sw": 1498,
+    "txt": "но 85–93% до внедрения не доходят"
+   },
+   {
+    "sel": "svg#map > g > a > text",
+    "sw": 1574,
+    "txt": "↗"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 1000,
+    "txt": "ЗОНА РАЗРЫВА"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 1041,
+    "txt": "ДЕНЬГИ ИДУТ ОБРАТНО: токены → инструмент"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 998,
+    "txt": "подписки 490–2 750 ₽/мес · проекты 2К–10"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 790,
+    "txt": "конструктор конкурирует за нижний этаж: "
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 784,
+    "txt": "платформа кормит самсервис: шаблоны вмес"
+   },
+   {
+    "sel": "svg#map > text",
+    "sw": 954,
+    "txt": "демпинг давит пол: медиана 4К держится, "
+   }
+  ],
+  "traps": [],
+  "viewportMeta": "width=device-width,initial-scale=1",
+  "bodyFont": 17,
+  "h1": 28
+ }
+}

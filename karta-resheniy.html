@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Карта решений рынка ИИ-агентов РФ — по сегментам — Discovery System</title>
+<meta name="description" content="Шесть путей клиента и Discovery на одном графе — для самозанятого, ИП и малого бизнеса: цена входа сейчас и ущерб через 1, 3 и 12 месяцев. Каждая цифра — с датой замера. Составлено 24–25.10.2026."/>
+<link rel="canonical" href="https://discovery-system.ru/karta-resheniy.html"/>
+<meta property="og:title" content="Карта решений рынка ИИ-агентов РФ — Discovery System"/>
+<meta property="og:description" content="Подписки, студии, маркетплейсы, DIY, фрилансер, ничего не делать — цена входа и ущерб через 1/3/12 месяцев, с датами замера. Переключение по сегментам."/>
+<meta property="og:url" content="https://discovery-system.ru/karta-resheniy.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:image" content="https://discovery-system.ru/og-cover.png"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Discovery System"/>
+<link rel="icon" href="favicon-32.png" sizes="32x32"/>
+<link rel="stylesheet" href="fonts/fonts.css"/>
+<style>
+:root{
+  --bg:#111524; --ink:#eef2f9; --body:#b8c3d6; --meta:#8893a8; --faint:#5a6275;
+  --line:rgba(255,255,255,.12); --line-soft:rgba(255,255,255,.07);
+  --accent:#7bc4a8; --accent-rgb:123,196,168; --card:#161c30; --deep:#0d1120;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --display:'Onest',var(--sans);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+radial-gradient(720px 480px at 82% -6%,rgba(123,196,168,.10),transparent 68%),
+radial-gradient(640px 520px at -8% 34%,rgba(70,96,168,.08),transparent 70%)}
+@media(max-width:760px){body:before{background:radial-gradient(420px 320px at 88% -4%,rgba(123,196,168,.09),transparent 70%)}}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+h1{color:var(--ink);font-family:var(--display);font-weight:700;line-height:1.15;letter-spacing:-.01em;font-size:clamp(1.9rem,4.5vw,2.9rem);margin:36px 0 14px;text-wrap:balance}
+p.lede{max-width:760px;margin:0 0 10px;text-wrap:pretty}
+.kicker{font-family:var(--mono);font-size:12px;color:var(--meta);letter-spacing:.09em;text-transform:uppercase}
+.stamp{font-family:var(--mono);font-size:13px;color:var(--meta);margin:0 0 34px;line-height:1.7}
+.stamp b{color:var(--body);font-weight:600}
+a{color:var(--ink)}
+a.src{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(123,196,168,.45)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* ── сегментные вкладки ── */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 6px}
+.tab{appearance:none;background:transparent;border:1px solid var(--line);border-radius:10px;
+  color:var(--meta);font:500 14.5px/1.3 var(--sans);padding:8px 16px;min-height:44px;cursor:pointer;
+  transition:border-color .18s var(--ease),color .18s var(--ease),background .18s var(--ease)}
+.tab:hover{color:var(--ink);border-color:rgba(255,255,255,.24)}
+.tab[aria-selected="true"]{color:var(--ink);border-color:rgba(var(--accent-rgb),.55);background:rgba(var(--accent-rgb),.08)}
+.tab .t-sub{display:block;font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:5px;letter-spacing:.02em}
+.tab[aria-selected="true"] .t-sub{color:var(--meta)}
+@media(max-width:760px){
+  .tabs{gap:8px}
+  .tab{flex:1 1 100%;text-align:left;padding:10px 14px}
+  .tab .t-sub{display:inline;margin-left:8px}
+}
+
+/* ── доска графа ── */
+.board{margin:14px 0 0}
+#graph-box{border:1px solid var(--line);border-radius:14px;background:var(--deep);position:relative;overflow:hidden}
+#gsvg{display:block;width:100%}
+#graph-note{position:absolute;left:16px;bottom:10px;font-family:var(--mono);font-size:12px;color:var(--faint);pointer-events:none}
+.graph-fallback{display:block;padding:26px;font-family:var(--mono);font-size:13px;color:var(--meta);line-height:1.7}
+/* состояния наведения: подсветить путь, остальное погасить */
+#gsvg .gnode{cursor:pointer;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+#gsvg .gnode.low{opacity:.5}
+#gsvg .gnode.mid{opacity:.78}
+#gsvg .gedge{transition:opacity .45s var(--ease);pointer-events:none}
+#gsvg .gedge.low{opacity:.5}
+#gsvg.dim .gnode:not(.hot){opacity:.14}
+#gsvg.dim .gedge:not(.hot){opacity:.07}
+#gsvg .gnode:focus{outline:none}
+#gsvg .gnode:focus-visible .n-rect{stroke:var(--accent);stroke-width:2}
+/* вход со stagger: только transform — контент никогда не остаётся невидимым
+   (opacity-вход freeze'ится в headless/фоновых рендерах);
+   при reduced-motion гасится правилом ниже и в ds-base.css */
+#gsvg.anim .gedge, #gsvg.anim .gnode{animation:kin .45s var(--ease) backwards}
+@keyframes kin{from{transform:translateY(10px)}}
+
+/* ── карточка пути / сегмента ── */
+#card{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:24px 24px 20px;margin-top:16px}
+#card .hint{color:var(--meta);font-size:15px}
+.c-title{color:var(--ink);font-family:var(--display);font-weight:700;font-size:20px;line-height:1.3;margin-bottom:2px}
+.c-sub{color:var(--meta);font-size:14px;margin-bottom:16px}
+.sec{margin-top:18px}
+.sec-k{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
+.sec.discovery .sec-k{color:var(--accent)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+@media(max-width:760px){.cols{grid-template-columns:1fr}}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid var(--line-soft)}
+.row:first-of-type{border-top:none}
+.row .v{color:var(--body);font-size:15px;line-height:1.55}
+.row .v b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.row .d{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:right;white-space:nowrap;flex-shrink:0;font-variant-numeric:tabular-nums}
+@media(max-width:760px){.row{flex-direction:column;gap:2px}.row .d{text-align:left;white-space:normal}}
+/* служебный текст на мобилке не ниже 12.5px (анти-слоп правило) */
+@media(max-width:760px){
+  .sec-k,.row .d,ul.c-list li .d,.tab .t-sub,td .d,.kicker,.stamp,.legend{font-size:12.5px}
+}
+.c-verdict{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink);font-size:15px;line-height:1.6}
+ul.c-list{list-style:none}
+ul.c-list li{padding:9px 0 9px 14px;border-top:1px solid var(--line-soft);font-size:15px;line-height:1.55;position:relative}
+ul.c-list li:before{content:"";position:absolute;left:0;top:19px;width:6px;height:1px;background:var(--faint)}
+ul.c-list li .d{display:block;font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:3px;font-variant-numeric:tabular-nums}
+.seg-note{margin-top:18px;padding:14px 16px;border-left:2px solid var(--accent);background:rgba(123,196,168,.04);border-radius:0 12px 12px 0;font-size:15px;line-height:1.6;color:var(--ink)}
+.seg-note .sec-k{margin-bottom:6px}
+
+/* ── легенда ── */
+.legend{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--meta);margin:12px 2px 0;line-height:1.6}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:14px;height:0;border-top:3px solid rgba(255,255,255,.30);display:inline-block;flex-shrink:0}
+.sw.acc{border-top-color:var(--accent);border-top-width:2px}
+.sw.thick{border-top-width:6px}
+.sw.c-sub{border-top-color:#7d9bd1}
+.sw.c-int{border-top-color:#cfa96f}
+.sw.c-mass{border-top-color:#c98a7b}
+.sw.c-diy{border-top-color:#6fa8b8}
+.sw.c-none{border-top-color:#8b93a5}
+
+/* ── таблица ── */
+section.tbl{padding:56px 0 24px}
+h2{color:var(--ink);font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,3vw,1.9rem);margin:0 0 8px;text-wrap:balance}
+.tbl-note{font-family:var(--mono);font-size:13px;color:var(--meta);margin:0 0 20px;line-height:1.7}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:820px;font-size:13.5px}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);text-align:left;padding:12px;border-bottom:1px solid var(--line);font-weight:500}
+td{padding:12px;border-bottom:1px solid var(--line-soft);vertical-align:top;color:var(--body);line-height:1.6;font-variant-numeric:tabular-nums}
+td.p{color:var(--ink);font-weight:600;white-space:nowrap}
+td .d{display:block;font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:4px;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+tr.disc td{background:rgba(123,196,168,.05)}
+tr.disc td.p{color:var(--accent)}
+
+/* ── источники и визитка ── */
+footer.src{padding:40px 0 24px}
+footer.src .k{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+footer.src p{font-size:13px;color:var(--meta);max-width:860px;margin:0 0 8px;font-variant-numeric:tabular-nums;line-height:1.7}
+footer.foot{padding:24px 0 64px;border-top:1px solid var(--line-soft)}
+.sig{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.sig-photo{width:48px;height:60px;object-fit:cover;border-radius:6px;filter:grayscale(.3)}
+.sig-text{display:flex;flex-direction:column;gap:2px}
+.sig-name{font-family:var(--display);font-size:17px;font-weight:600;color:var(--ink)}
+.sig-role{font-size:14px;color:var(--meta)}
+.sig-tg{font-size:14px;color:var(--accent);text-decoration:none;margin-top:4px}
+.sig-tg:hover{text-decoration:underline}
+.sig-c{text-align:center;color:var(--meta);font-size:14px;margin-top:24px}
+.sig-c a{color:var(--meta);text-decoration:none}
+.sig-c a:hover{color:var(--ink)}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+</style>
+<link rel="stylesheet" href="ds-base.css"/>
+</head>
+<body>
+<noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt=""/></div></noscript>
+
+<nav class="top" aria-label="Основная навигация" data-ds-nav><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"/><span>Discovery System</span></a></div></nav>
+
+<div class="wrap">
+  <div class="kicker">Карта решений · ноябрь 2026 · интерактив</div>
+  <h1>Карта решений рынка ИИ-агентов РФ — по сегментам</h1>
+  <p class="lede">Куда клиент может пойти за агентом прямо сейчас, сколько это стоит на входе и что случится через 1, 3 и 12 месяцев. Выберите сегмент — граф перестроится: какие пути этот сегмент выбирает, чем каждый кончается и где на карте Discovery. Нажмите на узел — карточка с цифрами и датой каждого замера. Четвёртый сегмент — «Хочу как ты»: для тех, кто хочет сам зарабатывать на агентах.</p>
+  <p class="stamp"><b>Составлено:</b> 24–25.10.2026 · дополнено 26.10.2026 &nbsp;·&nbsp; каждая цифра с источником и датой; где замера нет — так и написано &nbsp;·&nbsp; документ-разбор тех же замеров — <a class="src" href="market.html">Рынок ИИ-агентов</a></p>
+</div>
+
+<div class="wrap">
+  <div class="tabs" role="tablist" aria-label="Сегменты" id="tabs"></div>
+
+  <div class="board">
+    <div id="graph-box">
+      <div id="graph-holder"></div>
+      <div id="graph-note">клик по узлу — карточка · наведение — подсветить путь</div>
+      <div class="graph-fallback" id="graph-fallback">
+        Граф рисуется скриптом этой страницы — без внешних библиотек и CDN.
+        Если скрипт не выполнится (блокировщик, старый браузер), вся карта всё равно ниже —
+        сводными таблицами, с теми же цифрами и датами.
+      </div>
+    </div>
+    <div id="card" aria-live="polite"></div>
+    <div class="legend" id="legend">
+      <span><i class="sw thick"></i>толщина и изгиб линии — тяжесть ущерба через 12 месяцев (порядок по тексту карты)</span>
+      <span><i class="sw c-sub"></i>подписки</span>
+      <span><i class="sw c-int"></i>интеграторы</span>
+      <span><i class="sw c-mass"></i>массовики</span>
+      <span><i class="sw c-diy"></i>DIY</span>
+      <span><i class="sw c-none"></i>статус-кво</span>
+      <span><i class="sw acc"></i>Discovery System</span>
+    </div>
+  </div>
+</div>
+
+<section class="tbl">
+  <div class="wrap">
+    <h2>Сводная таблица</h2>
+    <p class="tbl-note">Те же данные текстом — для случая, когда граф не открылся, и для чтения без JS. Один источник данных с графом выше: карта-решений-ноябрь-2026, замеры 24–25.10.2026.</p>
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>Путь</th><th>Цена входа сейчас</th><th>Через 1 месяц</th><th>Через 3 месяца</th><th>Через 12 месяцев</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="p">Зарубежные подписки<span class="d">Claude / ChatGPT / Perplexity</span></td>
+            <td>$20–200/мес; живых сервисов 9 из 25 с домашнего IP<span class="d">Habr, 01.10.2026</span></td>
+            <td>Новая волна блокировок Claude — режут аккаунты россиян, включая плативших $200/мес<span class="d">The Moscow Times, 02.10.2026</span></td>
+            <td>Деньги заплачены, доступа нет: ни счёта-фактуры, ни УПД, только инвойс<span class="d">методофлаг, 07.10.2026</span></td>
+            <td>Перекупы закрыты: OpenRouter прекратил приём РФ-биллинга 11–12.05.2026; с 27.06.2026 — 403 по региону биллинга<span class="d">методофлаг, 07.10.2026</span></td>
+          </tr>
+          <tr>
+            <td class="p">Студии «под ключ»<span class="d">для сравнения: средний чек внедрения МСБ — 6 000 ₽, Т-Бизнес, 07.09.2026</span></td>
+            <td>49 990 / 99 990 / 199 990 ₽ + токены 2 000–5 000 ₽/мес<span class="d">dare.ru, 14.10.2026; прожарка, 05.10.2026</span></td>
+            <td>Агент работает, но состав скрыт: исполнитель не называет модели<span class="d">верификация Дарэ, 05.10.2026</span></td>
+            <td>Любая правка — платная работа: код и конфиг у студии<span class="d">замер состава, 05.10.2026</span></td>
+            <td>Аренда навсегда: от 80 000 ₽ за год; смена исполнителя = переделка с нуля; юрлицо исполнителя сменилось<span class="d">агрегат конкурентов, 05.10.2026</span></td>
+          </tr>
+          <tr>
+            <td class="p">Маркетплейс-агенты<span class="d">Найми.ИИ, Яндекс Hermes, ГигаАгент</span></td>
+            <td>Найми.ИИ 3 650–61 000 ₽/мес<span class="d">кейс-замер, 14.10.2026</span>; Яндекс Hermes от 3 642 ₽/мес<span class="d">Yandex Cloud, 02.09.2026</span></td>
+            <td>Остановил оплату — агент остановился; внутри чужие сборки<span class="d">тарифы, 14.10.2026</span></td>
+            <td>Условия меняются в одностороннем порядке: GigaChat Lite −67% за год, Алиса Плюс ×2<span class="d">замер наценок, 19–20.09.2026</span></td>
+            <td>43 800–732 000 ₽/год — и на выходе ничего своего: ни агента, ни данных, ни навыков<span class="d">расчёт × 12, 14.10.2026</span></td>
+          </tr>
+          <tr>
+            <td class="p">DIY по бесплатным гайдам<span class="d">свой контур</span></td>
+            <td>Своя связка 2 470 ₽/мес против коробки 3 490 ₽/мес; сборка 3 000–5 000 ₽ разово<span class="d">замер наценок, 19–20.09.2026</span>; GigaChat: 365 млн токенов/год бесплатно<span class="d">developers.sber.ru, 19.09.2026</span></td>
+            <td>Застревание: 74% компаний упираются в разрыв компетенций<span class="d">«Яков и Партнёры» × Яндекс, 09.2026</span></td>
+            <td>Полусобранный агент съедает больше времени, чем экономит: 38% не видят понятной пользы<span class="d">VK WorkSpace × Hi-Tech Mail, 23.09.2026</span></td>
+            <td>Техдолг без владельца: бэкап модели DIY не поддерживает<span class="d">Habr, 01.10.2026</span>; данных о доле доживших до года нет</td>
+          </tr>
+          <tr>
+            <td class="p">Фрилансер с Авито<span class="d">этаж демпинга &lt;5 000 ₽</span></td>
+            <td>999–4 990 ₽; 11 из 30 живых карточек<span class="d">срез Авито, 13–14.10.2026</span></td>
+            <td>Работает до первой поломки; предоплату требуют 16 из 30, гарантий почти ни у кого нет<span class="d">срез Авито, 13–14.10.2026</span></td>
+            <td>Фрилансер пропал: ~25% карточек снято с публикации<span class="d">срез Авито, 13–14.10.2026</span></td>
+            <td>Потерянная сумма мала (1–5 тыс. ₽), но потерян год рутины<span class="d">срез Авито, 13–14.10.2026</span></td>
+          </tr>
+          <tr>
+            <td class="p">«Ничего не делать»<span class="d">продолжать руками</span></td>
+            <td>0 ₽ деньгами; рутина &gt;10 ч/нед ≈ 43 ч/мес ≈ 520 ч/год<span class="d">расчёт: 10 × 4,33 × 12</span></td>
+            <td>Ничего не ломается, счёт тикает: запросы «внедрение ИИ» +17% г/г<span class="d">eLama, 01.07.2026</span></td>
+            <td>—</td>
+            <td>Отставание фиксируется: доля МСП с ИИ 17% → 53% за год<span class="d">Известия × ПСБ, 03.08.2026</span>; при ставке от 1 000 ₽/ч — от ~43 000 ₽/мес времени<span class="d">допущение, ставку подставить</span></td>
+          </tr>
+          <tr class="disc">
+            <td class="p">Discovery System<span class="d">сборка под ключ</span></td>
+            <td>Сборка 7–15 тыс. ₽; токены 53 ₽/мес на 5 человек<span class="d">замер наценок, 19–20.09.2026</span></td>
+            <td>Экономика сборки закрыта цифрами до оплаты<span class="d">Ведомости, 07.10.2026</span></td>
+            <td>Владение: код, сервер и данные у клиента; отдельный аккаунт на сборку, 152-ФЗ<span class="d">модель, 28.09.2026</span></td>
+            <td>РФ-связка без VPN: модели на РФ-провайдерах, рубли, УПД<span class="d">сигналы, 01–02.10.2026</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="tbl">
+  <div class="wrap">
+    <h2>Сегмент «Хочу как ты»: исполнитель</h2>
+    <p class="tbl-note">Те же данные четвёртого сегмента текстом — пути того, кто хочет сам зарабатывать на агентах. Источники: живая выдача установщиков, 05.10.2026; замер каналов, 24.10.2026; корпус провалов agent-failures.html; СТРАТЕГИЯ §3.4, ред. 29.09.2026.</p>
+    <div class="tblwrap">
+      <table>
+        <thead>
+          <tr><th>Путь</th><th>Цена входа сейчас</th><th>Что происходит дальше</th><th>Чем кончается</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="p">Демпинговать как массовики<span class="d">установка на полке</span></td>
+            <td>FL.ru 2 990 ₽, Авито 3 000–3 900 ₽, openclawinstall.ru 4 000 ₽, up-seo.ru 5 000 ₽; медиана ценника исполнителя с Авито — 3,5 тыс. ₽<span class="d">живая выдача, 05.10.2026; СТРАТЕГИЯ §3.4, ред. 29.09.2026</span></td>
+            <td>«Установка» стала commodity: гонка ко дну против ставящих по скрипту; за 6 недель вход «от 10К» стал полкой 2 990–5 000 ₽<span class="d">СЕГМЕНТЫ-И-КАНАЛЫ, 05.10.2026</span></td>
+            <td>Клиенты без чинильщика: ~25% карточек на Авито — «снято с публикации»<span class="d">срез Авито, 13–14.10.2026</span></td>
+          </tr>
+          <tr>
+            <td class="p">Вайбкодить по гайдам<span class="d">свой контур без инженера</span></td>
+            <td>Счёт за три дня — ~$4; GigaChat физлицу — 365 млн токенов/год бесплатно<span class="d">Habr, 04.09.2026; developers.sber.ru, 19.09.2026</span></td>
+            <td>156 узлов «лишь бы работало» → 127 с защитной логикой; техдолг без владельца<span class="d">Habr, 04.09.2026; Habr, 01.10.2026</span></td>
+            <td>Продавать такую сборку — отвечать самому: за ошибку ИИ платит оператор<span class="d">обзор Право.ру, 06.07.2026</span></td>
+          </tr>
+          <tr>
+            <td class="p">Купить курс или франшизу<span class="d">«бизнес под ключ»</span></td>
+            <td>Франшиза интегратора ботов — от 650 000 ₽; обещания 400–500 тыс. ₽/мес ничем не подтверждены<span class="d">Forbes Франшизы, 29.05.2026; разбор франшизы, 03.04.2026</span></td>
+            <td>Вместо «готовых клиентов» — базы телефонов для обзвона; уголовное дело, ущерб 25 млн ₽<span class="d">ict-online, 23.09.2026</span></td>
+            <td>Иск франчайзи на 576 054 ₽ о расторжении договора<span class="d">АС Свердловской области, 09.02.2026</span></td>
+          </tr>
+          <tr>
+            <td class="p">Лезть на биржу за заказами<span class="d">Kwork и доски</span></td>
+            <td>Отклик платный; в no-code/автоматизации 24 заказа из 381<span class="d">замер каналов, 24.10.2026</span></td>
+            <td>25–63 отклика на свежий заказ за 1–2 суток<span class="d">замер каналов, 24.10.2026</span></td>
+            <td>Биржа — вторичный канал, не источник заказов<span class="d">замер каналов, 24.10.2026</span></td>
+          </tr>
+          <tr class="disc">
+            <td class="p">Партнёрство с Discovery<span class="d">субподряд или реферал</span></td>
+            <td>Субподряд внедрений или клиент по рекомендации, без паушалок<span class="d">СТРАТЕГИЯ §3.4, ред. 29.09.2026</span></td>
+            <td>Сборки уже идут: больше восьми внедрений под разные задачи<span class="d">ds-cases.js, снято 25.10.2026</span></td>
+            <td>Не конвейер: ёмкость ограничена — один исполнитель, очередь вместо потока<span class="d">решение по подпискам, 09.10.2026</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="src">
+  <div class="wrap">
+    <div class="k">Источники замеров</div>
+    <p>Habr, 01.10.2026 — замер 25 сервисов с домашнего IP; The Moscow Times, 02.10.2026 — блокировки Claude; методофлаг, 07.10.2026 — валютный контроль, OpenRouter, 403 по биллингу.</p>
+    <p>dare.ru, 14.10.2026 и прожарка конкурента, 05.10.2026 — студийные тарифы и скрытый состав; Т-Бизнес секреты, 07.09.2026 — средний чек внедрения МСБ.</p>
+    <p>Кейс-замер Найми.ИИ, 14.10.2026; Yandex Cloud Marketplace, 02.09.2026; ВЭФ, 02.09.2026 — ГигаАгент; замер наценок, 19–20.09.2026 — тарифы и токены; замер посредников, 22.09.2026.</p>
+    <p>Срез Авито, 13–14.10.2026 — 30 живых карточек; «Яков и Партнёры» × Яндекс, 09.2026; VK WorkSpace × Hi-Tech Mail, 23.09.2026; eLama, 01.07.2026; Известия × ПСБ, 03.08.2026; CNews, 07.10.2026 — К2Тех в 1С.</p>
+    <p>Сегменты: опрос ЮMoney, 1500+ респондентов (ict.moscow, 27.05.2026); СберАналитика, 23.10.2026 — автоматизация и ИИ-агенты в компаниях; замер экономики сегментов, 10.10.2026 — 81 час самостоятельной сборки, 40% шанс дойти, окупаемость установки; разбор обещаний и жалоб рынка, 24.10.2026; аудит-цифр, 20.10.2026 — потерянные аккаунты за 2026 год; Gartner — 40% отменённых агентных проектов, прогноз 2025.</p>
+    <p>Сегмент «исполнитель»: живая выдача установщиков, 05.10.2026 — openclawinstall.ru, up-seo.ru, FL.ru, Авито, openclaw.ru, замер дельты 26.08 → 05.10.2026; замер каналов, 24.10.2026 — Kwork 25–63 отклика на свежий заказ; СТРАТЕГИЯ §3.4, ред. 29.09.2026 — партнёрский канал (субподряд/реферал).</p>
+    <p>Внутренние замеры Discovery: модель владения 28.09.2026; агрегат конкурентов 05.10.2026; решение по подпискам 09.10.2026; ds-cases.js — больше восьми внедрений (снято 25.10.2026).</p>
+  </div>
+</footer>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="sig">
+      <img src="viktor.jpg" alt="Виктор Зайцев" loading="lazy" class="sig-photo"/>
+      <div class="sig-text">
+        <span class="sig-name">Виктор Зайцев</span>
+        <span class="sig-role">отвечаю сам · без отдела продаж</span>
+        <a href="https://t.me/discoverysystem" target="_blank" rel="noopener" class="sig-tg">Telegram →</a> <a href="https://vk.com/discoverysystem" target="_blank" rel="noopener" class="sig-tg">ВК →</a>
+      </div>
+    </div>
+    <p class="sig-c">Discovery System · 2026 · <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a> · <a href="https://vc.ru/id6099688">VC</a> · <a href="oferta.html">оферта</a> · <a href="policy.html">политика ПД</a></p>
+    <p class="sig-c" style="margin-top:8px">Зайцев Виктор Павлович, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></p>
+  </div>
+</footer>
+
+<script src="ym-slot.js" defer></script>
+<script src="ds-nav.js" defer></script>
+<script>
+(function(){
+"use strict";
+
+/* ═══════════════════════════════════════════════════════════════════
+   Данные: один источник с market.html и со сводной таблицей ниже —
+   карта-решений-ноябрь-2026 (замеры 24–25.10.2026).
+   Ущерб 12 мес закодирован порядком 1–4 (толщина/изгиб линии):
+   это визуальный порядок по тексту карты, измерением не является.
+   ═══════════════════════════════════════════════════════════════════ */
+
+var DAMAGE = {p1:3, p2:4, p3:4, p4:2, p5:2, p6:4, disc:1,
+              pd1:4, pd2:3, pd3:4, pd4:2, pd5:1};
+/* тихий цветовой код типа пути: полоса на плашке + цвет ребра.
+   Без радуги — по одному приглушённому оттенку на тип, акцент только у Discovery. */
+var TYPE = {
+  p1:  {c:"подписки",    col:"#7d9bd1", edge:"rgba(125,155,209,.58)"},
+  p2:  {c:"интеграторы", col:"#cfa96f", edge:"rgba(207,169,111,.58)"},
+  p3:  {c:"массовики",   col:"#c98a7b", edge:"rgba(201,138,123,.58)"},
+  p5:  {c:"массовики",   col:"#c98a7b", edge:"rgba(201,138,123,.58)"},
+  p4:  {c:"DIY",         col:"#6fa8b8", edge:"rgba(111,168,184,.58)"},
+  p6:  {c:"статус-кво",  col:"#8b93a5", edge:"rgba(255,255,255,.38)"},
+  disc:{c:"Discovery",   col:"#7bc4a8", edge:"rgba(123,196,168,.85)"},
+  /* сегмент «исполнитель»: те же приглушённые оттенки, без новых цветов */
+  pd1:{c:"демпинг",      col:"#c98a7b", edge:"rgba(201,138,123,.58)"},
+  pd2:{c:"вайбкод",      col:"#6fa8b8", edge:"rgba(111,168,184,.58)"},
+  pd3:{c:"курсы",        col:"#cfa96f", edge:"rgba(207,169,111,.58)"},
+  pd4:{c:"биржа",        col:"#8b93a5", edge:"rgba(255,255,255,.38)"},
+  pd5:{c:"партнёрство",  col:"#7bc4a8", edge:"rgba(123,196,168,.85)"}
+};
+var PRICE = {p1:"$20–200/мес", p2:"49 990–199 990 ₽", p3:"3 650–61 000 ₽/мес",
+             p4:"~2 470 ₽/мес", p5:"999–4 990 ₽", p6:"0 ₽ деньгами", disc:"7–15 тыс. ₽",
+             pd1:"2 990–5 000 ₽", pd2:"токены + VPS", pd3:"до 650 000 ₽",
+             pd4:"отклик платный", pd5:"субподряд / реферал"};
+
+var PATHS = {
+  p1:{label:"Зарубежные подписки", sub:"Claude / ChatGPT / Perplexity",
+    price:[
+      ["Подписки $20–200/мес, но в РФ путь закрыт на трёх уровнях: живых сервисов 9 из 25","замер с домашнего IP, Habr, 01.10.2026"],
+      ["ChatGPT не открывается на сетевом уровне с 06.09.2026, смена DNS не помогает","Habr, 01.10.2026"],
+      ["Российские карты отклоняют по BIN; оплата юрлицом РФ упирается в валютный контроль и отсутствие закрывающих","методофлаг, 07.10.2026"]],
+    time:[
+      ["Бан уже базового сценария: новая волна блокировок Claude, режут аккаунты россиян, включая плативших $200/мес","The Moscow Times, 02.10.2026"],
+      ["Деньги заплачены, доступа нет, расход в учёт не встаёт: ни счёта-фактуры, ни УПД, только инвойс на английском","методофлаг, 07.10.2026"],
+      ["Запасной путь через перекупов закрыт: OpenRouter прекратил приём платежей РФ-биллинга 11–12.05.2026; с 27.06.2026 модели OpenAI/Anthropic/Google отдают 403 по региону биллинга","проверка provod.ai, sostav.ru, ai-seowriter.ru; методофлаг, 07.10.2026"]],
+    verdict:"Оплаченный доступ, который могут отозвать в любой месяц, без документов и без права на сервис. Подписка не твоя, доступ не твой."},
+  p2:{label:"Студии «под ключ»", sub:"49 990–199 990 ₽ + токены",
+    price:[
+      ["Лестница 49 990 / 99 990 / 199 990 ₽ за внедрение + токены 2 000–5 000 ₽/мес сверху","кейс-замер dare.ru, 14.10.2026; подтверждено конкурентом, 05.10.2026"],
+      ["Средний чек внедрения у малого бизнеса — 6 000 ₽: студийный этаж живёт в другой вселенной","Т-Бизнес секреты, 07.09.2026"],
+      ["Гарантия «100% возврат» при недостижении KPI за 90 дней — 3 месяца работы на чужой системе до права на возврат","dare.ru, 14.10.2026"]],
+    time:[
+      ["Агент работает, но состав скрыт: исполнитель не называет модели, на которых собран ИИ-менеджер","верификация Дарэ, 05.10.2026"],
+      ["Любая правка = платная работа: код и конфиг у студии, не у клиента","замер состава, 05.10.2026"],
+      ["Аренда навсегда: токены 2–5 000 ₽/мес поверх чека, доработки только через исполнителя, смена исполнителя = переделка с нуля. Юрлицо исполнителя сменилось — непрерывность не гарантирована","агрегат конкурентов, 05.10.2026"]],
+    verdict:"От 80 000 ₽ за год (внедрение + 12 мес токенов) за работающую, но закрытую систему, из которой нельзя выйти без потери всего."},
+  p3:{label:"Маркетплейс-агенты", sub:"Найми.ИИ, Яндекс Hermes, ГигаАгент",
+    price:[
+      ["Найми.ИИ: 3 650 / 7 350 / 18 350 / 61 000 ₽/мес — аренда чужой системы","кейс-замер, 14.10.2026"],
+      ["Яндекс Hermes в Cloud Marketplace: от 3 642 ₽/мес, рубли без VPN — но это только место для агента, сборка остаётся за клиентом","Yandex Cloud Marketplace, 02.09.2026"],
+      ["Сбер ГигаАгент: платформенный автономный агент на GigaChat, универсальный, не под конкретную рутину","ВЭФ, 02.09.2026"]],
+    time:[
+      ["Платёж уходит, как аренда: остановил оплату — агент остановился. Внутри Найми.ИИ чужие сборки","тарифы, 14.10.2026"],
+      ["Условия меняются в одностороннем порядке: за год GigaChat Lite подешевел на 67% (0,20 → 0,065 ₽/1K токенов), а Алиса Плюс подорожала вдвое","замер наценок, 19–20.09.2026"],
+      ["Аренда за год: 43 800–732 000 ₽ на Найми.ИИ — и на выходе ничего своего: ни агента, ни данных, ни навыков. Ловушка ступеней цен: рост при масштабе скачком","расчёт × 12; замер наценок, 19–20.09.2026"]],
+    verdict:"Предсказуемая, но вечная абонентка, растущая со ступенями. Данных по retention и реальной динамике цен этих платформ нет — следить."},
+  p4:{label:"DIY по гайдам", sub:"свой контур, токены по API + сервер",
+    price:[
+      ["Своя связка 2 470 ₽/мес против коробки 3 490 ₽/мес; разовая сборка 3 000–5 000 ₽; сервер ~2 000 ₽/мес; токены бота на 5 человек — 53 ₽/мес","замер наценок, 19–20.09.2026"],
+      ["GigaChat физлицу даёт 365 млн токенов/год бесплатно","developers.sber.ru, 19.09.2026"],
+      ["Один и тот же токен в РФ стоит от 0,5 ₽ (кэш) до 9 990 ₽/1М внутри коробки amoCRM","замер наценок, 19–20.09.2026"]],
+    time:[
+      ["Застревание: экономика понятна, а встроить не получается — 74% компаний упираются в разрыв компетенций","«Яков и Партнёры» × Яндекс, 09.2026"],
+      ["Полусобранный агент съедает больше времени, чем экономит: главный барьер МСБ — 38% не видят понятной пользы","VK WorkSpace × Hi-Tech Mail, 23.09.2026"],
+      ["Техдолг без владельца: замки регулятора и вендора требуют бэкапа модели, DIY без навыка его не поддерживает","Habr, 01.10.2026; данных о доле доживших до года нет"]],
+    verdict:"Возможна лучшая экономика из всех путей — если клиент дойдёт. Большинство не доходит: путь для тех, у кого есть внутренний инженер."},
+  p5:{label:"Фрилансер с Авито", sub:"этаж демпинга <5 000 ₽",
+    price:[
+      ["Этаж демпинга <5 000 ₽ — 11 из 30 живых карточек (999–4 990 ₽); типичный продавец — одиночка с опытом «меньше года»","срез Авито, 13–14.10.2026"],
+      ["Волна «установлю OpenClaw» за 1 000–5 000 ₽; якорь «от 999 ₽» почти всегда маркетинговый","срез Авито, 13–14.10.2026"]],
+    time:[
+      ["Установка работает до первой поломки: предоплату требуют 16 из 30, договор точечно, гарантий результата почти ни у кого нет","срез Авито, 13–14.10.2026"],
+      ["Фрилансер пропал: ~25% выдачи — «снято с публикации» — и некому ни чинить, ни развивать. У клиента система без владельца","срез Авито, 13–14.10.2026"],
+      ["Потерянная сумма невелика (1–5 тыс. ₽), но потерян год рутины: агент мёртв, рутина вернулась руками","срез Авито, 13–14.10.2026"]],
+    verdict:"Лотерея: за 1 000 ₽ — установка без эксплуатации, классический «внедрил и исчез»."},
+  p6:{label:"«Ничего не делать»", sub:"продолжать руками",
+    price:[
+      ["0 ₽ потрачено. Но рутина >10 ч/нед — ≈43 ч/мес и ≈520 ч/год","расчёт: 10 × 4,33 × 12"],
+      ["При цене часа владельца от 1 000 ₽ — от ~43 000 ₽/мес или ~520 000 ₽/год времени","допущение: реальную ставку подставить"]],
+    time:[
+      ["Ничего не ломается, счёт просто тикает: запросы «внедрение ИИ» выросли на 17% г/г — весь рост категории дал этот запрос","eLama, 01.07.2026"],
+      ["Отставание фиксируется: доля МСП с ИИ выросла с 17% до 53% за год — конкурент с агентом отвечает быстрее и стоит дешевле в часах","Известия × ПСБ, 03.08.2026"],
+      ["~520 часов жизни владельца за год","расчёт"]],
+    verdict:"Единственный путь с гарантированным ущербом в 100% случаев."},
+  disc:{label:"Discovery System", sub:"сборка под ключ, 7–15 тыс. ₽",
+    price:[
+      ["Сборка 7–15 тыс. ₽ против 49 990 ₽ студийного этажа; токены на реальных объёмах МСБ — 53 ₽/мес на 5 человек","замер наценок, 19–20.09.2026"],
+      ["Экономика сборки закрыта цифрами до оплаты — то, чего рынок теперь требует","Ведомости, 07.10.2026"],
+      ["Отдельный аккаунт на каждую сборку, деньги клиента в аккаунте клиента, 152-ФЗ, обезличивание до модели","модель владения, 28.09.2026"]],
+    strong:[
+      ["Владение вместо аренды: своя сборка, свой сервер, свои данные — единственный доступный МСБ вариант","модель владения, 28.09.2026"],
+      ["Приёмка до оплаты: чек-лист из 8 пунктов до перевода денег — против «100% возврата» через 90 дней","агрегат, 05.10.2026"],
+      ["Больше восьми внедрений под разные задачи, код и навыки открыты: точность 63% против 47%, F1 0,61/0,39 (скилл поиска заказов)","ds-cases.js, снято 25.10.2026; внутренний замер"],
+      ["РФ-связка без VPN и без банов: модели на РФ-провайдерах, рубли, УПД","сигналы, 01–02.10.2026"]],
+    weak:[
+      ["Доказательства: один кейс, разобранный до цифр, против 26 кейсов у студийного этажа","прожарка, 05.10.2026"],
+      ["Ёмкость: один исполнитель, лимиты поддержки 2–6 ч/мес — очередь вместо конвейера","решение по подпискам, 09.10.2026"],
+      ["Интеграции в 1С/amoCRM/Битрикс не делает: МСБ 20+ человек с коробками уйдёт к платформам","CNews, 07.10.2026"]],
+    verdict:"Своя сборка за 7–15 тыс. ₽ с деньгами клиента в своём аккаунте. Слабое место — доказательства и ёмкость: один кейс, один исполнитель.",
+  /* ── пути сегмента «исполнитель»: тот, кто хочет сам зарабатывать на агентах ── */
+  pd1:{label:"Демпинговать как массовики", sub:"установка на полке 3–5 тыс. ₽",
+    price:[
+      ["Полка уже занята: FL.ru 2 990 ₽, Авито 3 000–3 900 ₽, openclawinstall.ru 4 000 ₽, up-seo.ru 5 000 ₽","живая выдача, 05.10.2026"],
+      ["Рядом подписка дешевле установки: openclaw.ru — 2 590 ₽/мес, агент в облаке","живая выдача, 05.10.2026"],
+      ["Медиана ценника исполнителя с Авито — 3,5 тыс. ₽, и сам исполнитель тонет в ручной рутине","СТРАТЕГИЯ, §3.4, ред. 29.09.2026"]],
+    time:[
+      ["«Установка» перестала быть продуктом — это commodity: продавать её — гонка ко дну против армии исполнителей с нулевыми издержками, которые ставят по скрипту","СЕГМЕНТЫ-И-КАНАЛЫ, 05.10.2026"],
+      ["26.08 вход на Авито был «от 10 000 ₽», 05.10 — полка 2 990–5 000 ₽: шесть недель на обвал","замер дельты, 26.08 → 05.10.2026"],
+      ["Клиенты этажа остаются без чинильщика: ~25% карточек на Авито — «снято с публикации»","срез Авито, 13–14.10.2026"]],
+    verdict:"Этаж переполнен и падает: за шесть недель вход «от 10К» стал полкой 2 990–5 000 ₽, а внизу — конкуренты, которые ставят по скрипту.",
+  pd2:{label:"Вайбкодить по гайдам", sub:"свой контур без инженера",
+    price:[
+      ["Деньгами почти 0: счёт за три дня вайбкода — ~$4 при цене $0,07 за 1 млн токенов","кейс Habr, 04.09.2026"],
+      ["GigaChat физлицу — 365 млн токенов/год бесплатно","developers.sber.ru, 19.09.2026"]],
+    time:[
+      ["Кейс из корпуса провалов: за три дня «навайбкодили» воркфлоу на 156 узлов «лишь бы работало»; в финале 127 узлов, больше трети — защитная логика","Habr, 04.09.2026"],
+      ["Техдолг без владельца: замки регулятора и вендора требуют бэкапа модели — DIY без навыка его не поддерживает","Habr, 01.10.2026"],
+      ["Продавать такую сборку — отвечать самому: за ошибку ИИ перед клиентом платит оператор, который на нём зарабатывает","обзор Право.ру, 06.07.2026"]],
+    verdict:"Себе по гайдам — рабочий путь, если готов сам разбираться в каждой строке. На продажу — сборка «лишь бы работало» возвращается претензиями клиента.",
+  pd3:{label:"Купить курс или франшизу", sub:"обучение и «бизнес под ключ»",
+    price:[
+      ["Франшиза интегратора ботов: старт от 650 000 ₽, обещание «без офиса и технических знаний», окупаемость 2–4 месяца","Forbes Франшизы, 29.05.2026"],
+      ["Франшиза ИИ-продвижения: партнёру обещают 400–500 тыс. ₽/мес — доход ничем не подтверждён, окупаемость «4 месяца» — прогноз","разбор франшизы, 03.04.2026"]],
+    time:[
+      ["Больше 40 партнёров интегратора вместо «готовых клиентов» получили базы телефонов для холодного обзвона; по эпизоду во Владикавказе возбуждено дело о мошенничестве, ущерб 25 млн ₽","ict-online, 23.09.2026"],
+      ["Партнёр-франчайзи интегратора подал в арбитраж, чтобы расторгнуть договор: иск на 576 054 ₽","АС Свердловской области, 09.02.2026"],
+      ["Фон, в который покупаешься: больше 80% ИИ-проектов в России не дают результата, реально внедрили ИИ 5,8% компаний","inc, 16.02.2026"]],
+    verdict:"Деньги уходят за обещанную окупаемость, а не за клиентов: в корпусе провалов это суд, обзвон чужих баз и неподтверждённый доход.",
+  pd4:{label:"Лезть на биржу за заказами", sub:"Kwork и доски заказов",
+    price:[
+      ["Отклик на Kwork платный: платишь за право конкурировать","замер каналов, 24.10.2026"],
+      ["Заказов мало: в no-code/автоматизации 24 из 381 проекта на доске","замер каналов, 24.10.2026"]],
+    time:[
+      ["На свежий заказ в нише — 25–63 отклика за 1–2 суток: ты один из полусотни под одним заказом","замер каналов, 24.10.2026"],
+      ["Медиана по всем 381 проекту — 8 откликов, но в живой нише толпа в разы больше","замер каналов, 24.10.2026"],
+      ["Вывод замера: охота за заказом — проигрыш, биржа остаётся вторичным каналом","замер каналов, 24.10.2026"]],
+    verdict:"25–63 отклика на один свежий заказ, и отклик платный: биржа — вторичный канал, а не источник заказов.",
+  pd5:{label:"Партнёрство с Discovery", sub:"субподряд или клиент по рекомендации", noteK:"Партнёрство — что это даёт и чего не даёт",
+    price:[
+      ["Схема: субподряд внедрений или клиент по рекомендации — без паушалок и вступительных взносов","СТРАТЕГИЯ, §3.4, ред. 29.09.2026"],
+      ["Твоё остаётся твоим: клиентские базы и отношения с клиентами не передаются","модель партнёрства"]],
+    strong:[
+      ["Сборки уже идут: больше восьми внедрений под разные задачи, код и навыки открыты","ds-cases.js, снято 25.10.2026; внутренний замер"],
+      ["Деньги на этой полке не в установке, а в диагностике и доводке чужих связок: клиенты уже платили прошлому подрядчику и остались недовольны","СЕГМЕНТЫ-И-КАНАЛЫ, 05.10.2026"],
+      ["Рутина, в которой тонут исполнители (медиана ценника 3,5 тыс. ₽), — ровно то, что снимают с тебя сборкой","СТРАТЕГИЯ, §3.4, ред. 29.09.2026"]],
+    weak:[
+      ["Это не поток заявок: субподряд идёт под конкретные внедрения, а не конвейером","модель партнёрства"],
+      ["Ёмкость ограничена и у головного: один исполнитель, лимиты поддержки 2–6 ч/мес — очередь вместо конвейера","решение по подпискам, 09.10.2026"]],
+    verdict:"Те же клиенты, что и на демпинг-этаже, но связка с идущими сборками вместо гонки за установку. Это путь, а не гарантия: субподряд не бывает конвейером."}
+};
+
+/* ── сегменты: из сегменты-сценарии-ноябрь-2026 (25.10.2026) ──
+   order — порядок узлов на графе (важные сверху), rel — гашение дальних путей,
+   tag — метка на узле, brief — карточка сегмента, discNote — его путь к Discovery. */
+
+var SEGS = [
+  {
+    id:"solo", tab:"Самозанятый · фрилансер", tabSub:"работает один",
+    hubT:"Работаешь один", hubS:"самозанятый · рутина >10 ч/нед",
+    order:["p1","p4","p3","p6","p2","p5"],
+    rel:{p1:"hi",p4:"hi",p3:"mid",p6:"mid",p2:"low",p5:"low"},
+    tag:{p1:"выбирает сейчас",p4:"второй заход DIY",p3:"редко",p6:"состояние сейчас",p2:"не его чек",p5:"не его путь"},
+    brief:[
+      ["Уже платит: 51% фрилансеров регулярно оплачивают ИИ-подписки, 24% пользуются премиумом ежедневно — подписка стала «коммуналкой»","опрос ЮMoney, 1500+ респондентов — ict.moscow, 27.05.2026"],
+      ["Выбирает сейчас: ещё одну подписку или второй заход DIY по гайдам с ютуба","сегменты-сценарии, 25.10.2026"],
+      ["Чем кончится подписка: за 2026 год аккаунты в зарубежных сервисах потеряли 86 тыс. россиян, интервал 58–221 тыс.","аудит-цифр, 20.10.2026"],
+      ["Чем кончится DIY: 81 час на самостоятельную сборку и 40% шанс дойти до результата","замер экономики сегментов, 10.10.2026"]],
+    discNote:"Час фрилансера 1 500 ₽ — установка отбивается за 1,3 месяца (замер экономики сегментов, 10.10.2026). Вход — гайд 5 000 ₽ или сборка 7–15 тыс. ₽. Связка остаётся у тебя: подписку у тебя отобрать не могут."
+  },
+  {
+    id:"ip", tab:"ИП · микробизнес", tabSub:"1–5 человек",
+    hubT:"ИП · микробизнес 1–5", hubS:"заявки и документы — руками",
+    order:["p5","p3","p1","p4","p6","p2"],
+    rel:{p5:"hi",p3:"hi",p1:"mid",p4:"mid",p6:"mid",p2:"low"},
+    tag:{p5:"выбирает сейчас",p3:"выбирает сейчас",p1:"уже платит",p4:"уже пробовал",p6:"состояние сейчас",p2:"не его этаж"},
+    brief:[
+      ["Уже платит: 49% предпринимателей применяют ИИ; траты большинства платящих — до 3 000 ₽/мес, и это «чат в браузере»","Т-Бизнес секреты, 07.09.2026"],
+      ["Выбирает сейчас: дешёвую установку «под ключ за день» с Авито (999–4 990 ₽) или бота на конструкторе","срез Авито, 13–14.10.2026; сегменты-сценарии, 25.10.2026"],
+      ["Чем кончится установка: «за 4 месяца ломались 7 раз», «бота невозможно экспортировать», «подводят на оплату VIP-поддержки»","разбор жалоб покупателей, 24.10.2026"],
+      ["Типовая точка входа в ноябре: «сервер арендовал, Claude проплатил — дальше не идёт»","разбор диалогов, 29.09.2026"]],
+    discNote:"Сначала бесплатный разбор на 20 минут — окупится ли агент на ваших задачах. Дальше внедрение для ИП — 30 000 ₽ с приёмкой по чек-листу до оплаты; если уже заплатил прошлому подрядчику и не работает — оптимизация чужой связки от 25 000 ₽ (clarity.html)."
+  },
+  {
+    id:"smb", tab:"Малый бизнес", tabSub:"5–30 человек",
+    hubT:"Малый бизнес 5–30", hubS:"CRM и 1С стоят · заявки руками",
+    order:["p2","p3","p1","p4","p6","p5"],
+    rel:{p2:"hi",p3:"hi",p1:"mid",p4:"mid",p6:"mid",p5:"low"},
+    tag:{p2:"выбирает сейчас",p3:"выбирает сейчас",p1:"уже пробовал",p4:"уже пробовал",p6:"риск отставания",p5:"не его этаж"},
+    brief:[
+      ["Контекст: ИИ-агенты уже у 39% компаний; документооборот автоматизирован у 70%, бухгалтерия — у 55%","СберАналитика, 23.10.2026"],
+      ["Выбирает сейчас: студию 50–500 тыс. ₽ (пилот — замер от 150 000 ₽) или подписку на платформу — Найми.ИИ до 61 000 ₽/мес","разбор обещаний рынка, 24.10.2026; кейс-замер Найми.ИИ, 14.10.2026"],
+      ["Чем кончится студийный путь: 40% агентных проектов отменены или заморожены — и главный вопрос остаётся: кто чинит на второй месяц","Gartner, прогноз 2025; разбор рынка, 24.10.2026"],
+      ["Цена «ничего не делать» растёт с размером: 90 ч/мес рутины — это полставки, которые пришлось бы нанять","разбор рынка, 24.10.2026"]],
+    discNote:"Диагностика процесса + пилот на одном процессе — заказчик с ТЗ обычно предлагает пилот сам. Дальше внедрение 60 000 ₽ или офис агентов 25 000 ₽, поддержка фикс-ценой, срок 1–10 рабочих дней (clarity.html)."
+  },
+  {
+    id:"executor", tab:"Хочу как ты · исполнитель", tabSub:"заработать на агентах самому",
+    hubT:"Хочешь зарабатывать на агентах", hubS:"исполнитель · Авито/Kwork · рутина руками",
+    graphL:"исполнитель и пути заработка на ИИ-агентах",
+    briefK:"Сегмент: полка, рутина и чем всё кончается",
+    hubNoteK:"Партнёрство с Discovery — путь наравне с остальными",
+    noDisc:true,
+    order:["pd1","pd4","pd2","pd3","pd5"],
+    rel:{pd1:"hi",pd4:"hi",pd2:"mid",pd3:"mid",pd5:"mid"},
+    tag:{pd1:"полка сейчас",pd4:"перегрето",pd2:"пробуют",pd3:"соблазн",pd5:"путь рядом"},
+    brief:[
+      ["Полка, на которой стоишь: FL.ru 2 990 ₽, Авито 3 000–3 900 ₽, openclawinstall.ru 4 000 ₽, up-seo.ru 5 000 ₽; рядом подписка openclaw.ru — 2 590 ₽/мес","живая выдача, 05.10.2026"],
+      ["Твоя рутина: медиана ценника исполнителя с Авито — 3,5 тыс. ₽, и сам исполнитель тонет в ручной рутине — клиентской и своей","СТРАТЕГИЯ, §3.4, ред. 29.09.2026"],
+      ["Чем кончается демпинг: «установка» стала commodity — гонка ко дну против армии исполнителей, которые ставят по скрипту с нулевыми издержками","СЕГМЕНТЫ-И-КАНАЛЫ, 05.10.2026"],
+      ["Куда уходят клиенты этажа: из 30 карточек на Авито ~25% — «снято с публикации», чинить некому","срез Авито, 13–14.10.2026"],
+      ["Где деньги на этом рынке на самом деле: не в установке, а в диагностике и доводке чужих связок — клиенты уже платили и остались недовольны","СЕГМЕНТЫ-И-КАНАЛЫ, 05.10.2026"],
+      ["Сколько на этом выживает: больше 80% ИИ-проектов в России не дают результата, реально внедрили ИИ 5,8% компаний","inc, 16.02.2026 — корпус провалов"]],
+    discNote:"Discovery в этом сегменте — один из путей, не единственный: субподряд внедрений или клиент по рекомендации (СТРАТЕГИЯ, §3.4, ред. 29.09.2026). Клиентские базы остаются твоими; к ним добавляются сборки, которые уже идут, — больше восьми внедрений под разные задачи (ds-cases.js, снято 25.10.2026). Без паушалок и «готовых клиентов из базы» — тех, что в корпусе провалов кончаются судом и уголовным делом (АС Свердловской области, 09.02.2026; ict-online, 23.09.2026).",
+    legend:[["c-mass","демпинг: установки 2 990–5 000 ₽"],["c-diy","вайбкод по гайдам"],["c-int","курсы и франшизы"],["c-none","биржа заказов"],["acc","партнёрство с Discovery"]],
+    svgLeg:[["pd1","демпинг — установки 2 990–5 000 ₽"],["pd4","биржа — доски заказов"],["pd2","вайбкод — свой контур"],["pd3","курсы и франшизы"],["pd5","партнёрство с Discovery"]]
+  }
+];
+
+/* ═══════════ граф: кастомный SVG вместо vis-network ═══════════ */
+
+var SVGNS = "http://www.w3.org/2000/svg";
+var cur = 0;
+var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var gsvg = null, edgeEls = {}, nodeEls = {}, hubEl = null;
+
+function el(name, attrs){
+  var e = document.createElementNS(SVGNS, name);
+  for (var k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+function txt(x, y, cls, str){
+  var t = el("text", {x:x, y:y, "class":cls});
+  t.textContent = str;
+  return t;
+}
+
+function buildGraph(){
+  var holder = document.getElementById("graph-holder");
+  var box = document.getElementById("graph-box");
+  var W = Math.max(280, holder.clientWidth || box.clientWidth);
+  var seg = SEGS[cur];
+  var ids = seg.order.concat(seg.noDisc ? [] : ["disc"]);
+  var n = ids.length;
+  var nodeH = 64, gap = 16, mobile = W < 760;
+  var xNode, wNode, y0, H, hub;
+
+  if (mobile){
+    wNode = W - 32; xNode = 16; y0 = 104;
+    H = y0 + n*nodeH + (n-1)*gap + 14;
+    hub = {x:16, y:14, w:W-32, h:70};
+  } else {
+    wNode = 300; xNode = W - 16 - wNode; y0 = 30;
+    H = Math.max(y0 + n*nodeH + (n-1)*gap + 30, 560);
+    hub = {x:16, y:Math.round(H/2 - 40), w:260, h:80};
+  }
+
+  holder.innerHTML = "";
+  gsvg = el("svg", {id:"gsvg", width:W, height:H, viewBox:"0 0 "+W+" "+H,
+    role:"group", "aria-label":"Граф: " + (seg.graphL || "клиент и пути внедрения ИИ-агента") + ", текущий сегмент — " + seg.tab});
+  holder.appendChild(gsvg);
+  edgeEls = {}; nodeEls = {}; hubEl = null;
+
+  var nodeY = {};
+  for (var i=0;i<n;i++) nodeY[ids[i]] = y0 + i*(nodeH+gap);
+
+  /* текстовые стили SVG-узлов */
+  var st = el("style", {});
+  st.textContent =
+    "#gsvg text{font-family:'IBM Plex Sans',system-ui,sans-serif}" +
+    "#gsvg .n-t{font-size:15.5px;font-weight:600;fill:var(--ink)}" +
+    "#gsvg .hub .n-t{fill:var(--body)}" +
+    "#gsvg .disc .n-t{fill:var(--accent)}" +
+    "#gsvg .n-s{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;fill:var(--meta)}" +
+    "#gsvg .disc .n-s{fill:rgba(123,196,168,.8)}" +
+    "#gsvg .g-leg-h{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.09em;text-transform:uppercase;fill:var(--faint)}" +
+    "#gsvg .g-leg{font-size:12px;fill:var(--meta)}";
+  gsvg.appendChild(st);
+
+  /* рёбра — под узлами; толщина и кривизна ∝ ущербу 12 мес */
+  for (var j=0;j<n;j++){
+    var id = ids[j], w = DAMAGE[id], isDisc = id === "disc";
+    var sx, sy, ex, ey, c1, c2;
+    if (mobile){
+      sx = W/2; sy = hub.y + hub.h + 3; ex = W/2; ey = nodeY[id] - 4;
+      var bow = (j % 2 ? 1 : -1) * (12 + w*5);
+      c1 = (sx+bow) + " " + (sy + 36); c2 = (ex+bow) + " " + (ey - 36);
+    } else {
+      sx = hub.x + hub.w; ex = xNode - 5; ey = nodeY[id] + nodeH/2;
+      /* рёбра выходят веером с правого края хаба, а не из одной точки,
+         и входят в плашку горизонтально, с зазором 5px до её края */
+      var off = (j - (n-1)/2) * 7;
+      sy = Math.min(Math.max(hub.y + hub.h/2 + off, hub.y + 14), hub.y + hub.h - 14);
+      var span = ex - sx, pull = Math.min(0.34 + w*0.055, 0.48);
+      c1 = (sx + span*pull) + " " + sy; c2 = (ex - span*pull) + " " + ey;
+    }
+    var p = el("path", {d:"M "+sx+" "+sy+" C "+c1+", "+c2+", "+ex+" "+ey,
+      fill:"none", "class":"gedge" + (isDisc ? " disc" : "") + (seg.rel[id]==="low" ? " low" : ""),
+      stroke: TYPE[id].edge,
+      "stroke-width": (isDisc ? 1.6 : 1.3 + w*1.15).toFixed(2),
+      "stroke-linecap":"round"});
+    gsvg.appendChild(p);
+    edgeEls[id] = p;
+  }
+
+  /* узлы путей — не точки: плашки с названием, ценой и меткой сегмента */
+  for (var k=0;k<n;k++){
+    var pid = ids[k], pd = PATHS[pid], d2 = pid === "disc";
+    var y = nodeY[pid];
+    var g = el("g", {"class":"gnode" + (d2 ? " disc" : "") + (seg.rel[pid]==="low" ? " low" : seg.rel[pid]==="mid" ? " mid" : ""),
+      tabindex:"0", role:"button", "data-id":pid,
+      "aria-label":"Путь: " + pd.label + ", " + PRICE[pid] + ". Нажмите для карточки с цифрами и датами."});
+    g.appendChild(el("rect", {x:xNode, y:y, width:wNode, height:nodeH, rx:12,
+      "class":"n-rect",
+      fill: d2 ? "#16241f" : "#161c30",
+      stroke: d2 ? "rgba(123,196,168,.6)" : "rgba(255,255,255,.20)",
+      "stroke-width": d2 ? "1.5" : "1"}));
+    /* полоса типа пути: у Discovery — полный акцент, у остальных — приглушённая */
+    g.appendChild(el("rect", {x:xNode, y:y, width:3, height:nodeH, rx:1.5,
+      fill:TYPE[pid].col, "fill-opacity": d2 ? "1" : ".8"}));
+    g.appendChild(txt(xNode+16, y+27, "n-t", pd.label));
+    var sub = PRICE[pid] + " · " + (d2 ? "выход" : seg.tag[pid]);
+    g.appendChild(txt(xNode+16, y+48, "n-s", sub));
+    gsvg.appendChild(g);
+    nodeEls[pid] = g;
+    bindNode(g, pid);
+  }
+
+  /* компактная легенда под узлом-источником — закрывает пустую левую колонку.
+     Только десктоп: на мобилке хаб сверху, легенда — общая под доской. */
+  if (!mobile){
+    var lx = hub.x + 2, ly = hub.y + hub.h + 36;
+    var LEG = seg.svgLeg || [["p1","подписки — зарубежные сервисы"], ["p2","интеграторы — студии «под ключ»"],
+      ["p3","массовики — маркетплейсы и фрилансер"], ["p4","DIY — свой контур"],
+      ["p6","«ничего не делать» — статус-кво"], ["disc","Discovery System"]];
+    gsvg.appendChild(txt(lx, ly, "g-leg-h", "как читать линии"));
+    for (var li=0; li<LEG.length; li++){
+      var lyy = ly + 24 + li*21;
+      gsvg.appendChild(el("line", {x1:lx, y1:lyy-4, x2:lx+22, y2:lyy-4,
+        stroke:TYPE[LEG[li][0]].edge, "stroke-width": LEG[li][0] === "disc" ? 2 : 3, "stroke-linecap":"round"}));
+      gsvg.appendChild(txt(lx+30, lyy, "g-leg", LEG[li][1]));
+    }
+    gsvg.appendChild(txt(lx, ly + 24 + LEG.length*21 + 10, "g-leg",
+      "толщина линии — тяжесть ущерба за 12 мес"));
+  }
+
+  /* узел клиента */
+  var hg = el("g", {"class":"gnode hub", tabindex:"0", role:"button", "data-id":"hub",
+    "aria-label":"Клиент: " + seg.hubT + ". Нажмите для карточки сегмента."});
+  hg.appendChild(el("rect", {x:hub.x, y:hub.y, width:hub.w, height:hub.h, rx:12,
+    fill:"#0d1120", stroke:"rgba(255,255,255,.22)", "stroke-width":"1", "stroke-dasharray":"4 4", "class":"n-rect"}));
+  hg.appendChild(txt(hub.x+16, hub.y+30, "n-t", seg.hubT));
+  hg.appendChild(txt(hub.x+16, hub.y+52, "n-s", seg.hubS));
+  gsvg.appendChild(hg);
+  hubEl = hg;
+  bindNode(hg, "hub");
+
+  /* вход со stagger: задержки анимации через inline style, показ не зависит от rAF */
+  if (!reduced){
+    gsvg.classList.add("anim");
+    var parts = gsvg.querySelectorAll(".gedge, .gnode");
+    for (var m=0;m<parts.length;m++) parts[m].style.animationDelay = (m*45) + "ms";
+  }
+
+  document.getElementById("graph-fallback").style.display = "none";
+}
+
+function bindNode(g, id){
+  g.addEventListener("mouseenter", function(){ focusPath(id); });
+  g.addEventListener("mouseleave", function(){ blurPath(); });
+  g.addEventListener("focus", function(){ focusPath(id); });
+  g.addEventListener("blur", function(){ blurPath(); });
+  g.addEventListener("click", function(){ showCard(id); });
+  g.addEventListener("keydown", function(ev){
+    if (ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); showCard(id); }
+  });
+}
+
+function focusPath(id){
+  if (!gsvg) return;
+  gsvg.classList.add("dim");
+  for (var k in nodeEls){ nodeEls[k].classList.toggle("hot", k === id); }
+  for (var e in edgeEls){ edgeEls[e].classList.toggle("hot", e === id); }
+  if (hubEl) hubEl.classList.toggle("hot", id === "hub");
+}
+function blurPath(){
+  if (!gsvg) return;
+  gsvg.classList.remove("dim");
+  var all = gsvg.querySelectorAll(".hot");
+  for (var i=0;i<all.length;i++) all[i].classList.remove("hot");
+}
+
+/* ═══════════ карточка узла / сегмента ═══════════ */
+
+var cardEl = document.getElementById("card");
+
+function rowsHTML(rows){
+  var h = "";
+  for (var i=0;i<rows.length;i++){
+    h += '<div class="row"><span class="v">' + rows[i][0] + '</span>' +
+         (rows[i][1] ? '<span class="d">' + rows[i][1] + '</span>' : '') + '</div>';
+  }
+  return h;
+}
+function listHTML(rows){
+  var h = '<ul class="c-list">';
+  for (var i=0;i<rows.length;i++){
+    h += '<li>' + rows[i][0] + (rows[i][1] ? '<span class="d">' + rows[i][1] + '</span>' : '') + '</li>';
+  }
+  return h + '</ul>';
+}
+
+function showCard(id){
+  var seg = SEGS[cur];
+  var h = "";
+  if (id === "hub"){
+    h = '<div class="c-title">' + seg.hubT + '</div><div class="c-sub">' + seg.hubS + '</div>';
+    h += '<div class="sec"><div class="sec-k">' + (seg.briefK || "Сегмент: что уже платит и что выбирает") + '</div>' + rowsHTML(seg.brief) + '</div>';
+    h += '<div class="seg-note"><div class="sec-k">' + (seg.hubNoteK || "Путь к Discovery для этого сегмента") + '</div>' + seg.discNote + '</div>';
+  } else {
+    var pd = PATHS[id];
+    if (!pd) return;
+    h = '<div class="c-title">' + pd.label + '</div><div class="c-sub">' + pd.sub + ' · ' + PRICE[id] + '</div>';
+    if (pd.strong){
+      h += '<div class="cols"><div>';
+      h += '<div class="sec"><div class="sec-k">Цена сейчас</div>' + rowsHTML(pd.price) + '</div>';
+      h += '</div><div>';
+      h += '<div class="sec discovery"><div class="sec-k">Сильное</div>' + listHTML(pd.strong) + '</div>';
+      h += '<div class="sec"><div class="sec-k">Слабое — честно</div>' + listHTML(pd.weak) + '</div>';
+      h += '</div></div>';
+      h += '<div class="seg-note"><div class="sec-k">' + (pd.noteK || ('Путь к Discovery для сегмента «' + seg.tab + '»')) + '</div>' + seg.discNote + '</div>';
+    } else {
+      h += '<div class="seg-note"><div class="sec-k">В сегменте «' + seg.tab + '»</div>Метка на графе: «' + seg.tag[id] + '» — насколько этот путь типичен для сегмента сейчас.</div>';
+      h += '<div class="cols"><div>';
+      h += '<div class="sec"><div class="sec-k">Цена сейчас</div>' + rowsHTML(pd.price) + '</div>';
+      h += '</div><div>';
+      h += '<div class="sec"><div class="sec-k">Ущерб по месяцам</div>' + rowsHTML(pd.time) + '</div>';
+      h += '</div></div>';
+    }
+    h += '<div class="c-verdict"><div class="sec-k">Итог</div>' + pd.verdict + '</div>';
+  }
+  cardEl.innerHTML = h;
+  cardEl.scrollTop = 0;
+}
+
+/* ═══════════ вкладки сегментов ═══════════ */
+
+var tabsEl = document.getElementById("tabs");
+var legendEl = document.getElementById("legend");
+var LEGEND_DEFAULT = legendEl.innerHTML;
+function buildLegend(seg){
+  if (!seg.legend){ legendEl.innerHTML = LEGEND_DEFAULT; return; }
+  var h = '<span><i class="sw thick"></i>толщина и изгиб линии — тяжесть ущерба через 12 месяцев (порядок по тексту карты)</span>';
+  for (var i=0;i<seg.legend.length;i++){
+    h += '<span><i class="sw ' + seg.legend[i][0] + '"></i>' + seg.legend[i][1] + '</span>';
+  }
+  legendEl.innerHTML = h;
+}
+function buildTabs(){
+  var h = "";
+  for (var i=0;i<SEGS.length;i++){
+    h += '<button class="tab" role="tab" id="tab-' + SEGS[i].id + '" aria-selected="' + (i===cur) + '" ' +
+         'aria-controls="card" data-i="' + i + '">' + SEGS[i].tab +
+         '<span class="t-sub">' + SEGS[i].tabSub + '</span></button>';
+  }
+  tabsEl.innerHTML = h;
+  var btns = tabsEl.querySelectorAll(".tab");
+  for (var j=0;j<btns.length;j++){
+    (function(b){
+      b.addEventListener("click", function(){ setSegment(parseInt(b.getAttribute("data-i"),10)); });
+      b.addEventListener("keydown", function(ev){
+        if (ev.key === "ArrowRight" || ev.key === "ArrowLeft"){
+          ev.preventDefault();
+          var d = ev.key === "ArrowRight" ? 1 : -1;
+          var nx = (parseInt(b.getAttribute("data-i"),10) + d + SEGS.length) % SEGS.length;
+          setSegment(nx);
+          tabsEl.querySelectorAll(".tab")[nx].focus();
+        }
+      });
+    })(btns[j]);
+  }
+}
+function setSegment(i){
+  if (i === cur && gsvg) return;
+  cur = i;
+  var btns = tabsEl.querySelectorAll(".tab");
+  for (var j=0;j<btns.length;j++) btns[j].setAttribute("aria-selected", j===cur ? "true" : "false");
+  try { buildGraph(); } catch(e){ /* граф не перестроился — таблица ниже остаётся */ }
+  buildLegend(SEGS[cur]);
+  showCard("hub");
+}
+
+/* ═══════════ запуск и деградация ═══════════ */
+
+buildTabs();
+buildLegend(SEGS[cur]);
+try {
+  buildGraph();
+  showCard("hub");
+} catch(e){
+  /* честная деградация: заглушка остаётся видимой, таблица ниже — с теми же данными */
+}
+
+var rt = null;
+window.addEventListener("resize", function(){
+  clearTimeout(rt);
+  rt = setTimeout(function(){
+    try { buildGraph(); } catch(e){}
+  }, 180);
+});
+
+/* тестовый хук: позволяет проверять вкладки и карточки вне canvas */
+window.__karta = {
+  setSegment: setSegment,
+  showCard: showCard,
+  segments: SEGS.map(function(s){ return s.tab; }),
+  pathsCount: Object.keys(PATHS).length
+};
+})();
+</script>
+</body>
+</html>
