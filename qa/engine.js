@@ -135,10 +135,10 @@ const MODELS={ /* подписи — нейтральные классы, без
 };
 
 /* ====== STATE ====== */
-let start=null,device='cpu',goal=null,goals=[],tasks=[],autonomy='review',conns=[],data='cloud',pay='rucard',budget=null;
+let start=null,device='cpu',goal=null,goals=[],tasks=[],autonomy='review',conns=[],data='cloud',pay='rucard',budget='b';
 let _mc=null; try{_mc=JSON.parse(sessionStorage.getItem('ds_mc')||'null');}catch(e){}
 let _mcScenario=null; try{_mcScenario=sessionStorage.getItem('ds_mc_scenario');}catch(e){}
-let step=1; const N=2;
+const N=2;
 /* Шаг 3 убран: задачи выводятся из целей (ux-research/02) */
 const GOAL_TASKS={repeat:[],leads:['sales'],report:['data','docs'],scan:['web','research'],write:['text'],paper:['docs'],unsure:[]};
 function deriveTasks(){ return [...new Set(goals.flatMap(g=>GOAL_TASKS[g]||[]))]; }
@@ -149,13 +149,7 @@ function renderBridge(){ const m=mcHint(); const el=document.getElementById('mcB
   if(m.saveHours>60){ /* hint for autonomy selection */ }
 }
 const STEP_NAMES=['Откуда','Рутина'];
-function renderSteps(){
-  var h='';
-  for(var i=1;i<=N;i++){
-    h+='<button class="stepname '+(i===step?'cur':'')+(i<step?' done':'')+'" onclick="go('+(i-step)+')"><span class="sn">'+i+'</span>'+STEP_NAMES[i-1]+'</button>';
-  }
-  document.getElementById('steps').innerHTML=h;
-}
+function renderSteps(){ /* шаги убраны: живой конструктор на одном экране */ }
 function renderCards(){
   var so=document.getElementById('startOpts');
   if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="start='${s.id}';pickOption();">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
@@ -164,7 +158,8 @@ function renderCards(){
   var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
   var ao=document.getElementById('autoOpts');
   if(ao)ao.innerHTML=AUTONOMY.map(a=>'<button type="button" class="'+(autonomy===a.id?'on':'')+'" onclick="setAuto(\''+a.id+'\')">'+a.label+'</button>').join('');
-  document.getElementById('budgetOpts').innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
+  var bo=document.getElementById('budgetOpts');
+  if(bo)bo.innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
   a11y();
 }
 /* Пресеты задач: один клик вместо 8 отметок */
@@ -184,7 +179,7 @@ function applyPreset(id){
   var p=TASK_PRESETS.find(x=>x.id===id); if(!p)return;
   var same=p.tasks.every(t=>tasks.includes(t))&&tasks.length===p.tasks.length;
   tasks=same?[]:p.tasks.slice();
-  renderCards(); renderPresets(); updateLive(); stepRender();
+  renderCards(); renderPresets(); updateLive();
 }
 /* Конфигуратор в результате: цена меняется на глазах */
 function renderConfig(){
@@ -225,9 +220,9 @@ document.addEventListener('keydown',function(ev){
     ev.preventDefault(); el.click();
   }
 });
-function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();stepRender();renderBridge();}
+function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();renderBridge();}
 function toggleGoal(id){
-  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();stepRender();updateGoalMeta();return;}
+  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();return;}
   goals=goals.filter(x=>x!=='unsure');
   if(goals.includes(id)){goals=goals.filter(x=>x!==id);}
   else{
@@ -237,7 +232,8 @@ function toggleGoal(id){
   }
   goal=goals[0]||null;
   tasks=deriveTasks();
-  renderCards();updateLive();stepRender();updateGoalMeta();
+  renderCards();updateLive();updateGoalMeta();
+  if(estimate())calculate(); /* результат пересчитывается на том же экране, без прыжков */
 }
 function startBase(){ const s=STARTS.find(x=>x.id===start); return s?s.base:0; }
 function segProfile(){
@@ -442,7 +438,7 @@ function days(h){return h+' ч/мес';}
 /* ========== LIVE PRICE ========== */
 function mcHint(){ try{ const m=JSON.parse(sessionStorage.getItem('ds_mc')||'null'); if(!m) return null; return m; }catch(e){ return null; } }
 function estimate(){
-  if(!device||!goals.length||!autonomy||!budget)return null;
+  if(!device||!goals.length||!autonomy)return null;
   const gs=goals.map(id=>GOALS.find(x=>x.id===id)).filter(Boolean);
   const b=BUDGETS.find(x=>x.id===budget);
   const aut=AUTONOMY.find(x=>x.id===autonomy);
@@ -529,60 +525,32 @@ function estimate(){
 function updateLive(){
   const lb=document.getElementById('livebar');
   const e=estimate();
-  if(!e){if(lb)lb.style.display='none';document.getElementById('livePrice').innerHTML='— <span>₽/мес</span>';return;}
+  const emptyEl=document.getElementById('ctorEmpty');
+  if(!e){
+    if(lb)lb.style.display='none';
+    document.getElementById('livePrice').innerHTML='— <span>₽/мес</span>';
+    if(emptyEl)emptyEl.style.display='';
+    const r0=document.getElementById('result'); if(r0)r0.classList.remove('show');
+    return;
+  }
+  if(emptyEl)emptyEl.style.display='none';
   if(lb)lb.style.display='';
   document.getElementById('livePrice').innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>₽/мес</span>';
-  const b=BUDGETS.find(x=>x.id===budget);
-  if(b&&b.max!==Infinity&&e.monthly>b.max){
-    document.getElementById('liveHint').textContent='⚠ превышает бюджет '+b.max.toLocaleString('ru-RU')+' ₽ — убери подключения';
-  }else{
-    document.getElementById('liveHint').textContent='сейчас уходит '+e.handsHours+' ч/мес · агент освободит ~'+e.hours+' ч — '+e.cat;
-  }
+  const hintEl=document.getElementById('liveHint');
+  if(hintEl)hintEl.textContent='сейчас уходит '+e.handsHours+' ч/мес · агент освободит ~'+e.hours+' ч — '+e.cat;
+  /* результат живёт рядом с тапами — показываем сразу, как он посчитался */
+  const res=document.getElementById('result');
+  if(res&&!res.classList.contains('show')){res.classList.add('show');if(typeof renderConfig==='function')renderConfig();}
 }
 
-/* ========== NAV ========== */
-function show(cardNo){
-  for(let i=1;i<=N;i++)document.getElementById('card'+i).style.display=(i===cardNo)?'':'none';
-  document.getElementById('stepsCount').textContent=step+' / '+N;
-  renderSteps();
-  if(cardNo===N) updatePreSummary();
-}
-function stepValid(){
-  if(step===1)return !!start;
-  if(step===2)return goals.length>0&&!!budget;
-  if(step===3)return true; // задачи и автономность — опционально, есть дефолты
-  return true;
-}
-function stepRender(){
-  show(step);
-  updateLive();
-  document.getElementById('backBtn').style.visibility=step===1?'hidden':'visible';
-  document.getElementById('nextBtn').textContent=step===N?'Посчитать связку →':'Далее →';
-  const valid=stepValid();
-  document.getElementById('nextBtn').disabled=!valid;
-  document.getElementById('nextBtn').style.opacity=valid?'1':'.35';
-  document.getElementById('nextBtn').style.cursor=valid?'pointer':'not-allowed';
-}
-function pickOption(){
-  if(step===1&&start){step=2;}
-  renderCards();
-  updateLive();stepRender();
-  updatePreSummary();
-}
+/* ========== ЖИВОЙ КОНСТРУКТОР: шагов нет, всё на одном экране ========== */
+/* Все тапы ведут в один апдейт: пересчёт реальный, цифра меняется на глазах. */
+function pickOption(){ renderCards(); updateLive(); updateGoalMeta(); if(estimate()) calculate(); }
 function updatePreSummary(){
   const el=document.getElementById('preSummary'); if(!el) return;
-  const b=budget?BUDGETS.find(x=>x.id===budget):null;
   const names=goals.map(id=>{const g=GOALS.find(x=>x.id===id);return g?(g.sn||g.t):'';}).filter(Boolean);
   const st=STARTS.find(x=>x.id===start);
   el.textContent=(st?st.short:'старт не выбран')+' · '+(names.length?names.join(' + '):'—')+(tasks.length?' · '+tasks.length+' задач':'');
-}
-function go(delta){step=Math.min(N,Math.max(1,step+delta));stepRender();}
-function next(){
-  if(step===1&&!start){toast('Выбери, с чем работаешь сейчас');return;}
-  if(step===2&&!goals.length){toast('Отметь хотя бы одну вещь');return;}
-  if(step===2&&!budget){toast('Выбери бюджет');return;}
-  if(step<N){step++;stepRender();}
-  else calculate();
 }
 function toast(m){
   const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');
@@ -803,7 +771,7 @@ function calculate(){
   if(!document.getElementById('result').classList.contains('show'))renderConfig();
   document.getElementById('result').classList.add('show');
   document.getElementById('offerBox').style.display='block';
-  document.getElementById('result').scrollIntoView({behavior:'smooth'});
+
 }
 
 /* ========== ОПЛАТА: прямой перевод + личка ========== */
