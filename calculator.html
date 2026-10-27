@@ -46,19 +46,48 @@
   .hero p{color:var(--muted);max-width:660px;font-size:15px;line-height:1.6}
   .steps{display:flex;gap:8px;margin:22px 0 26px;flex-wrap:wrap}
 /* ── Живой конструктор: контролы слева, результат справа, без экранов-прыжков ── */
-.ctor{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,430px);gap:22px;align-items:start;margin-top:6px}
-.ctor-controls{display:flex;flex-direction:column;gap:16px;min-width:0}
-.ctor-group{background:var(--panel2);border:1px solid var(--line2);border-radius:14px;padding:18px}
-.ctor-h{font-size:13px;color:var(--dim);margin:0 0 12px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-.ctor-h b{color:var(--txt);font-size:15px;font-weight:600}
-.ctor-cap{font-size:12px;color:var(--primary-l);opacity:.85}
+/* Wizard: воронка из 5 шагов — один вопрос на экран; честному расчёту нужны 4–5 шагов */
+.wiz{margin-top:6px}
+.wiz-bar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;margin-bottom:16px;background:linear-gradient(var(--bg) 78%,transparent)}
+.wiz-progress{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.wiz-progress::-webkit-scrollbar{display:none}
+.wp{display:flex;align-items:center;gap:7px;padding:10px 12px;border:1px solid var(--line2);border-radius:10px;background:var(--panel);color:var(--dim);font:600 12.5px/1.2 var(--sans);cursor:pointer;transition:.15s;white-space:nowrap;min-height:44px}
+.wp i{font-style:normal;font-size:12px;color:var(--dim);border:1px solid var(--line2);border-radius:6px;padding:3px 6px}
+.wp.act{border-color:var(--primary);color:var(--txt);background:var(--primary-dim)}
+.wp.act i{border-color:var(--primary);color:var(--primary-l)}
+.wp.done{color:var(--body)}
+.wp.done i{background:var(--primary-dim);color:var(--primary-l);border-color:var(--primary-line)}
+.wiz-price{font:800 17px/1 var(--sans);color:var(--up);white-space:nowrap;text-align:right}
+.wiz-price small{display:block;font:500 10.5px var(--sans);color:var(--dim);margin-top:3px}
+.wiz-step{max-width:860px}
+.ws-title{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.4px;margin:8px 0 8px;line-height:1.15}
+.ws-title em{font-style:normal;color:var(--primary-l)}
+.ws-sub{font-size:15px;color:var(--muted);line-height:1.55;margin:0 0 24px;max-width:62ch}
+.wz-group{margin:0 0 24px}
+.wz-l{font-size:14.5px;font-weight:700;color:var(--txt);margin-bottom:10px}
+.wz-l small{font-weight:500;color:var(--dim);margin-left:8px;font-size:12.5px}
+.wiz-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:28px 0 10px}
+.wiz-back{background:none;border:none;color:var(--muted);font:600 14px var(--sans);cursor:pointer;padding:12px 8px;min-height:44px}
+.wiz-back:hover{color:var(--txt)}
+.wiz-next{width:auto;min-width:300px;padding:16px 28px}
+.wiz-next[disabled]{opacity:.4;cursor:not-allowed;transform:none}
+.wiz-hint{font-size:12px;color:var(--dim);line-height:1.5;margin:12px 0 0}
+.auto-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.auto-card{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:18px;cursor:pointer;transition:.15s;font-family:inherit}
+.auto-card:hover{border-color:var(--primary-line)}
+.auto-card.on{border-color:var(--primary);background:var(--primary-dim)}
+.auto-card .ac-l{font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--primary-l)}
+.auto-card .ac-t{font-size:16.5px;font-weight:700;color:var(--txt)}
+.auto-card .ac-d{font-size:13.5px;color:var(--muted);line-height:1.5}
+.auto-card .ac-p{font-size:12px;color:var(--dim)}
+.wz-edit{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 16px}
+.wz-edit button{background:none;border:1px solid var(--line2);border-radius:10px;color:var(--muted);font:600 12.5px var(--sans);padding:8px 14px;cursor:pointer;min-height:36px;transition:.15s}
+.wz-edit button:hover{color:var(--txt);border-color:var(--primary-line)}
+@media (max-width:720px){.auto-grid{grid-template-columns:1fr}.wp .wt{display:none}.wiz-next{width:100%;min-width:0}.wiz-nav{flex-direction:column-reverse;align-items:stretch}.wiz-back{padding:10px;text-align:center}}
 #autoOpts button{min-height:44px;padding:11px 18px;font-size:14px;border:1px solid var(--line2);border-radius:10px;background:var(--panel);color:var(--body);font-family:inherit;cursor:pointer;transition:.15s}
 #autoOpts button:hover{border-color:var(--primary-line);color:var(--txt)}
 #autoOpts button.on{background:var(--primary-dim);border-color:var(--primary);color:var(--primary-l);font-weight:600}
-.ctor-note{font-size:12px;color:var(--dim);line-height:1.5;margin:0}
-.ctor-result{position:sticky;top:72px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.ctor-empty{border:1px dashed var(--line2);border-radius:14px;padding:22px 18px;font-size:13.5px;line-height:1.55;color:var(--dim);background:rgba(255,255,255,.02)}
-@media (max-width:960px){.ctor{grid-template-columns:1fr}.ctor-result{position:static}.ctor-group{padding:14px}}
+@media (max-width:960px){.wiz-bar{padding:8px 0}}
   .steps .stepname{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line2);border-radius:10px;background:var(--panel2);color:var(--dim);font-size:13px;font-family:inherit;cursor:pointer;transition:.15s;min-height:40px}
   .steps .stepname .sn{font-family:var(--mono);font-size:11px;opacity:.7}
   .steps .stepname:hover{border-color:var(--primary-line);color:var(--body)}
@@ -389,32 +418,71 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
     <p id="heroLead">3 вопроса — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.</p>
   </div>
 
-  <!-- КОНСТРУКТОР: один экран, результат живёт рядом и обновляется на каждом тапе.
-       Экранов-шагов больше нет: 10 прыжков «далее» убивали конверсию (решение 24.10). -->
-  <div class="ctor">
-    <div class="ctor-controls">
-      <div class="ctor-group">
-        <div class="ctor-h">01 · <b>С чего начинаешь</b><span class="ctor-cap">одно</span></div>
-        <div class="opts" id="startOpts"></div>
-      </div>
-      <div class="ctor-group">
-        <div class="ctor-h">02 · <b>Что жрёт время</b><span class="ctor-cap">до трёх, жрущее первым</span></div>
-        <div class="opts" id="goalOpts"></div>
-        <div class="goal-meta" id="goalMeta" style="display:none"></div>
-        <div class="seg-badge" id="segBadge"></div>
-      </div>
-      <div class="ctor-group">
-        <div class="ctor-h">03 · <b>Насколько агент самостоятелен</b><span class="ctor-cap">выбери одно</span></div>
-        <div class="row" id="autoOpts"></div>
-      </div>
-      <p class="ctor-note">Оплата из РФ без VPN · данные твои · цифры пересчитываются на каждом тапе.<br>Больше восьми внедрений под разные задачи — от монтажа видео до 1С.</p>
+  <!-- WIZARD: воронка 01–05. Один вопрос на экран, живая цена в прогресс-баре,
+       финальный шаг — полный результат: цифры, сравнение, офферы (решение 26.10). -->
+  <div class="wiz" id="wiz">
+    <div class="wiz-bar">
+      <nav class="wiz-progress" aria-label="Шаги расчёта">
+        <button type="button" class="wp act" data-step="1" onclick="goStep(1)"><i>01</i><span class="wt">Старт</span></button>
+        <button type="button" class="wp" data-step="2" onclick="goStep(2)"><i>02</i><span class="wt">Рутина</span></button>
+        <button type="button" class="wp" data-step="3" onclick="goStep(3)"><i>03</i><span class="wt">Самостоятельность</span></button>
+        <button type="button" class="wp" data-step="4" onclick="goStep(4)"><i>04</i><span class="wt">Обвязка</span></button>
+        <button type="button" class="wp" data-step="5" onclick="goStep(5)"><i>05</i><span class="wt">Расчёт</span></button>
+      </nav>
+      <div class="wiz-price" id="wizPrice" style="display:none"><span id="livePrice" aria-live="polite">— <span>₽/мес</span></span><small id="liveHint">цена появится после шага 02</small></div>
     </div>
-    <aside class="ctor-result" id="ctorResult">
-      <div class="ctor-empty" id="ctorEmpty">Тапай слева — расчёт соберётся здесь. Без регистрации, цифры живые и обновляются на глазах.</div>
+
+    <section class="wiz-step" id="wstep1">
+      <h2 class="ws-title">С чего начинаешь?</h2>
+      <p class="ws-sub">Откуда стартуем — от этого зависит первый продукт и вся экономика дальше. Один вариант, честно.</p>
+      <div class="opts big" id="startOpts"></div>
+      <div class="wiz-nav"><span></span><button class="btn-cta wiz-next" id="next1" disabled onclick="goStep(2)">Выбрал — что жрёт время →</button></div>
+      <p class="wiz-hint">Оплата из РФ без VPN · данные твои · цифры считаются по реальным тарифам провайдеров.</p>
+    </section>
+
+    <section class="wiz-step" id="wstep2" hidden>
+      <h2 class="ws-title">Что жрёт время?</h2>
+      <p class="ws-sub">До трёх пунктов, самое жрущее — первым. Лучше меньше, но правда: часы считаются отсюда.</p>
+      <div class="opts big" id="goalOpts"></div>
+      <div class="goal-meta" id="goalMeta" style="display:none"></div>
+      <div class="seg-badge" id="segBadge"></div>
+      <div id="mcBridge" style="font-size:11px;color:var(--primary-l);margin-top:6px;display:none"></div>
+      <div class="wiz-nav">
+        <button class="wiz-back" onclick="goStep(1)">← Назад</button>
+        <button class="btn-cta wiz-next" id="next2" disabled onclick="goStep(3)">Дальше — самостоятельность →</button>
+      </div>
+      <p class="wiz-hint">Не находишь своё? Внизу списка есть «не могу назвать» — разберём день и найдём повторяющееся.</p>
+    </section>
+
+    <section class="wiz-step" id="wstep3" hidden>
+      <h2 class="ws-title">Насколько агент самостоятелен?</h2>
+      <p class="ws-sub">Чем больше агент делает сам, тем больше токенов он тратит. Это главная ручка цены — и она твоя.</p>
+      <div class="auto-grid" id="autoOpts"></div>
+      <div class="wiz-nav">
+        <button class="wiz-back" onclick="goStep(2)">← Назад</button>
+        <button class="btn-cta wiz-next" onclick="goStep(4)">Дальше — обвязка →</button>
+      </div>
+    </section>
+
+    <section class="wiz-step" id="wstep4" hidden>
+      <h2 class="ws-title">Где живёт и чем управляется</h2>
+      <p class="ws-sub">Каналы, железо и данные. По умолчанию — РФ-облако, можно поменять: цена пересчитается сразу.</p>
+      <div class="wz-group"><div class="wz-l">Что подключить <small>нажми — цена обновится</small></div><div class="chips" id="connChips"></div></div>
+      <div class="wz-group"><div class="wz-l">Где живёт агент</div><div class="opts" id="deviceOpts"></div></div>
+      <div class="wz-group"><div class="wz-l">Где хранить данные</div><div class="opts" id="dataOpts"></div></div>
+      <div class="wz-group"><div class="wz-l">Как платить</div><div class="opts" id="payOpts"></div></div>
+      <div class="wiz-nav">
+        <button class="wiz-back" onclick="goStep(3)">← Назад</button>
+        <button class="btn-cta wiz-next" onclick="goStep(5)">Посчитать связку — честно, до копейки →</button>
+      </div>
+    </section>
+
+    <section class="wiz-step" id="wstep5" hidden>
+      <div class="wz-edit"><button onclick="goStep(2)">← рутина</button><button onclick="goStep(3)">← самостоятельность</button><button onclick="goStep(4)">← обвязка</button></div>
       <div class="livebar" id="livebar" style="display:none">
         <div class="lbl">Твоя связка</div>
-        <div class="val" id="livePrice" aria-live="polite">— <span>₽/мес</span></div>
-        <div class="hint" id="liveHint">выбери рутину — цена и время обновятся</div><div id="mcBridge" style="font-size:11px;color:var(--primary-l);margin-top:6px;display:none"></div>
+        <div class="val" id="livePriceStep5" aria-live="polite">— <span>₽/мес</span></div>
+        <div class="hint" id="liveHintStep5">выбери рутину — цена и время обновятся</div>
       </div>
 
 
@@ -487,37 +555,8 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="row2"><div class="name" id="specName"></div></div>
         <ul id="specList"></ul>
       </div>
-    </div>
-
-    <div class="config" id="configBox">
-      <div class="cfg-head">Настрой под себя — цена меняется сразу</div>
-
-      <div class="cfg-row">
-        <div class="cfg-l">Насколько сам работает</div>
-        <div class="seg" id="autoSeg"></div>
-      </div>
-
-      <div class="cfg-row">
-        <div class="cfg-l">Что подключить <span class="cfg-hint">нажми — цена обновится</span></div>
-        <div class="chips" id="connChips"></div>
-      </div>
-
-      <details class="cfg-more">
-        <summary>Железо, данные, оплата <span class="cfg-hint">по умолчанию РФ-облако</span></summary>
-        <div class="cfg-row">
-          <div class="cfg-l">Где живёт агент</div>
-          <div class="opts" id="deviceOpts"></div>
-        </div>
-        <div class="cfg-row">
-          <div class="cfg-l">Где хранить данные</div>
-          <div class="opts" id="dataOpts"></div>
-        </div>
-        <div class="cfg-row">
-          <div class="cfg-l">Как платить</div>
-          <div class="opts" id="payOpts"></div>
-        </div>
-      </details>
-    </div>
+    </section>
+  </div>
 
     <div class="offer" id="offerBox" style="display:none">
       <span class="persona-tag" id="personaTag" style="display:none"></span>
@@ -768,7 +807,7 @@ function renderBridge(){ const m=mcHint(); const el=document.getElementById('mcB
   if(m.saveHours>60){ /* hint for autonomy selection */ }
 }
 const STEP_NAMES=['Откуда','Рутина'];
-function renderSteps(){ /* шаги убраны: живой конструктор на одном экране */ }
+function renderSteps(){ /* шаги рендерит goStep() — воронка 01–05 */ }
 function renderCards(){
   var so=document.getElementById('startOpts');
   if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="start='${s.id}';pickOption();">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
@@ -776,7 +815,7 @@ function renderCards(){
   document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">от ${days(g.econ)}</div></div></div>`).join('');
   var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
   var ao=document.getElementById('autoOpts');
-  if(ao)ao.innerHTML=AUTONOMY.map(a=>'<button type="button" class="'+(autonomy===a.id?'on':'')+'" onclick="setAuto(\''+a.id+'\')">'+a.label+'</button>').join('');
+  if(ao)ao.innerHTML=AUTONOMY.map(a=>`<div class="auto-card ${autonomy===a.id?'on':''}" onclick="setAuto('${a.id}')" role="button" tabindex="0"><div class="ac-l">${a.label}</div><div class="ac-t">${a.t}</div><div class="ac-d">${a.d}</div><div class="ac-p">нагрузка на модель ×${String(a.mult).replace('.',',')}</div></div>`).join('');
   var bo=document.getElementById('budgetOpts');
   if(bo)bo.innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
   a11y();
@@ -849,12 +888,12 @@ document.addEventListener('keydown',function(ev){
 });
 function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();renderBridge();}
 function toggleGoal(id){
-  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();if(estimate())calculate();return;}
+  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();wizButtons();if(estimate())calculate();return;}
   goals=goals.filter(x=>x!=='unsure');
   if(goals.includes(id)){goals=goals.filter(x=>x!==id);}
   else{
     /* кап «до трёх»: снимает и паралич выбора, и завышение итоговой цифры (ux-research/02) */
-    if(goals.length>=3){toast('До трёх — выбери самое жрущее, остальное добавим после приёмки');renderCards();return;}
+    if(goals.length>=3){toast('До трёх — выбери самое жрущее, остальное добавим после приёмки');renderCards();wizButtons();return;}
     goals.push(id);
   }
   goal=goals[0]||null;
@@ -1172,30 +1211,60 @@ function estimate(){
   const startMoney=startBase();
   return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost,hostCost,connTotal,gateway,modelName:m.name,base:startMoney};
 }
+/* ========== WIZARD: воронка из 5 шагов ==========
+   Один вопрос на экран, прогресс, mini-CTA. Честному расчёту нужны 4–5 шагов —
+   и финальный экран, который можно спокойно прочитать (решение 26.10). */
+/* Состояние кнопок «Далее»: оживают сразу на тапе, не только на переходе */
+function wizButtons(){
+  const nb1=document.getElementById('next1');if(nb1)nb1.disabled=!start;
+  const nb2=document.getElementById('next2');if(nb2)nb2.disabled=goals.length===0;
+}
+let wizStep=1;
+function goStep(n){
+  if(n>1&&!start){toast('Сначала выбери, с чего начинаешь');return;}
+  if(n>2&&goals.length===0){toast('Отметь хотя бы одну рутину — или «не могу назвать»');return;}
+  if(n>3&&!autonomy){toast('Выбери уровень самостоятельности');return;}
+  wizStep=n;
+  for(let i=1;i<=5;i++){const el=document.getElementById('wstep'+i);if(el)el.hidden=(i!==n);}
+  document.querySelectorAll('.wiz-progress .wp').forEach(b=>{
+    const s=+b.dataset.step;
+    b.classList.toggle('act',s===n);
+    b.classList.toggle('done',s<n);
+  });
+  wizButtons();
+  const ob=document.getElementById('offerBox');
+  if(n===5){if(estimate())calculate();}
+  else if(ob)ob.style.display='none';
+  const w=document.getElementById('wiz');
+  if(w&&n>1){try{w.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){window.scrollTo(0,0);}}
+  a11y();
+}
+
 function updateLive(){
   const lb=document.getElementById('livebar');
   const e=estimate();
   const emptyEl=document.getElementById('ctorEmpty');
   if(!e){
     if(lb)lb.style.display='none';
-    document.getElementById('livePrice').innerHTML='— <span>₽/мес</span>';
+    const lp0=document.getElementById('livePrice'); if(lp0)lp0.innerHTML='— <span>₽/мес</span>';
+    const wp0=document.getElementById('wizPrice'); if(wp0)wp0.style.display='none';
     if(emptyEl)emptyEl.style.display='';
     const r0=document.getElementById('result'); if(r0)r0.classList.remove('show');
     return;
   }
   if(emptyEl)emptyEl.style.display='none';
   if(lb)lb.style.display='';
-  document.getElementById('livePrice').innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>₽/мес</span>';
+  const wp=document.getElementById('wizPrice'); if(wp)wp.style.display='';
+  const lp=document.getElementById('livePrice'); if(lp)lp.innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>₽/мес</span>';
   const hintEl=document.getElementById('liveHint');
-  if(hintEl)hintEl.textContent='сейчас уходит '+e.handsHours+' ч/мес · агент освободит ~'+e.hours+' ч — '+e.cat;
-  /* результат живёт рядом с тапами — показываем сразу, как он посчитался */
-  const res=document.getElementById('result');
-  if(res&&!res.classList.contains('show')){res.classList.add('show');if(typeof renderConfig==='function')renderConfig();}
+  if(hintEl)hintEl.textContent='сейчас уходит '+e.handsHours+' ч/мес · освободит ~'+e.hours+' ч';
+  const r=document.getElementById('result');
+  if(r&&!r.classList.contains('show')&&wizStep===5){r.classList.add('show');if(typeof renderConfig==='function')renderConfig();}
 }
 
 /* ========== ЖИВОЙ КОНСТРУКТОР: шагов нет, всё на одном экране ========== */
 /* Все тапы ведут в один апдейт: пересчёт реальный, цифра меняется на глазах. */
-function pickOption(){ renderCards(); updateLive(); updateGoalMeta(); if(estimate()) calculate(); }
+function pickOption(){ renderCards(); updateLive(); updateGoalMeta(); wizButtons(); if(estimate()) calculate(); }
 function updatePreSummary(){
   const el=document.getElementById('preSummary'); if(!el) return;
   const names=goals.map(id=>{const g=GOALS.find(x=>x.id===id);return g?(g.sn||g.t):'';}).filter(Boolean);
@@ -1428,7 +1497,7 @@ function calculate(){
   if(!isUnsure)countUp(document.getElementById('ahaCost'),e.monthly,' \u20bd/\u043c\u0435\u0441'); /* «0 ₽ за разбор» не подменяем ценой владения (аудит 15-audit-tech) */
   if(!document.getElementById('result').classList.contains('show'))renderConfig();
   document.getElementById('result').classList.add('show');
-  document.getElementById('offerBox').style.display='block';
+  if(wizStep===5)document.getElementById('offerBox').style.display='block'; /* офферы — только на финальном шаге */
 
 }
 
@@ -1582,10 +1651,9 @@ function copyTxt(row){
 renderCards();
 renderPresets();
 renderConfig();
-renderSteps();
+goStep(1);
 updateLive();
 a11y();
-var _sc=document.getElementById('stepsCount'); if(_sc)_sc.textContent='1 / '+N;
 </script>
 
 

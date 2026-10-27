@@ -151,7 +151,7 @@ function renderBridge(){ const m=mcHint(); const el=document.getElementById('mcB
   if(m.saveHours>60){ /* hint for autonomy selection */ }
 }
 const STEP_NAMES=['Откуда','Рутина'];
-function renderSteps(){ /* шаги убраны: живой конструктор на одном экране */ }
+function renderSteps(){ /* шаги рендерит goStep() — воронка 01–05 */ }
 function renderCards(){
   var so=document.getElementById('startOpts');
   if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="start='${s.id}';pickOption();">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
@@ -159,7 +159,7 @@ function renderCards(){
   document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">от ${days(g.econ)}</div></div></div>`).join('');
   var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
   var ao=document.getElementById('autoOpts');
-  if(ao)ao.innerHTML=AUTONOMY.map(a=>'<button type="button" class="'+(autonomy===a.id?'on':'')+'" onclick="setAuto(\''+a.id+'\')">'+a.label+'</button>').join('');
+  if(ao)ao.innerHTML=AUTONOMY.map(a=>`<div class="auto-card ${autonomy===a.id?'on':''}" onclick="setAuto('${a.id}')" role="button" tabindex="0"><div class="ac-l">${a.label}</div><div class="ac-t">${a.t}</div><div class="ac-d">${a.d}</div><div class="ac-p">нагрузка на модель ×${String(a.mult).replace('.',',')}</div></div>`).join('');
   var bo=document.getElementById('budgetOpts');
   if(bo)bo.innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
   a11y();
@@ -232,12 +232,12 @@ document.addEventListener('keydown',function(ev){
 });
 function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();renderBridge();}
 function toggleGoal(id){
-  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();if(estimate())calculate();return;}
+  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();wizButtons();if(estimate())calculate();return;}
   goals=goals.filter(x=>x!=='unsure');
   if(goals.includes(id)){goals=goals.filter(x=>x!==id);}
   else{
     /* кап «до трёх»: снимает и паралич выбора, и завышение итоговой цифры (ux-research/02) */
-    if(goals.length>=3){toast('До трёх — выбери самое жрущее, остальное добавим после приёмки');renderCards();return;}
+    if(goals.length>=3){toast('До трёх — выбери самое жрущее, остальное добавим после приёмки');renderCards();wizButtons();return;}
     goals.push(id);
   }
   goal=goals[0]||null;
@@ -555,30 +555,60 @@ function estimate(){
   const startMoney=startBase();
   return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost,hostCost,connTotal,gateway,modelName:m.name,base:startMoney};
 }
+/* ========== WIZARD: воронка из 5 шагов ==========
+   Один вопрос на экран, прогресс, mini-CTA. Честному расчёту нужны 4–5 шагов —
+   и финальный экран, который можно спокойно прочитать (решение 26.10). */
+/* Состояние кнопок «Далее»: оживают сразу на тапе, не только на переходе */
+function wizButtons(){
+  const nb1=document.getElementById('next1');if(nb1)nb1.disabled=!start;
+  const nb2=document.getElementById('next2');if(nb2)nb2.disabled=goals.length===0;
+}
+let wizStep=1;
+function goStep(n){
+  if(n>1&&!start){toast('Сначала выбери, с чего начинаешь');return;}
+  if(n>2&&goals.length===0){toast('Отметь хотя бы одну рутину — или «не могу назвать»');return;}
+  if(n>3&&!autonomy){toast('Выбери уровень самостоятельности');return;}
+  wizStep=n;
+  for(let i=1;i<=5;i++){const el=document.getElementById('wstep'+i);if(el)el.hidden=(i!==n);}
+  document.querySelectorAll('.wiz-progress .wp').forEach(b=>{
+    const s=+b.dataset.step;
+    b.classList.toggle('act',s===n);
+    b.classList.toggle('done',s<n);
+  });
+  wizButtons();
+  const ob=document.getElementById('offerBox');
+  if(n===5){if(estimate())calculate();}
+  else if(ob)ob.style.display='none';
+  const w=document.getElementById('wiz');
+  if(w&&n>1){try{w.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){window.scrollTo(0,0);}}
+  a11y();
+}
+
 function updateLive(){
   const lb=document.getElementById('livebar');
   const e=estimate();
   const emptyEl=document.getElementById('ctorEmpty');
   if(!e){
     if(lb)lb.style.display='none';
-    document.getElementById('livePrice').innerHTML='— <span>₽/мес</span>';
+    const lp0=document.getElementById('livePrice'); if(lp0)lp0.innerHTML='— <span>₽/мес</span>';
+    const wp0=document.getElementById('wizPrice'); if(wp0)wp0.style.display='none';
     if(emptyEl)emptyEl.style.display='';
     const r0=document.getElementById('result'); if(r0)r0.classList.remove('show');
     return;
   }
   if(emptyEl)emptyEl.style.display='none';
   if(lb)lb.style.display='';
-  document.getElementById('livePrice').innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>₽/мес</span>';
+  const wp=document.getElementById('wizPrice'); if(wp)wp.style.display='';
+  const lp=document.getElementById('livePrice'); if(lp)lp.innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>₽/мес</span>';
   const hintEl=document.getElementById('liveHint');
-  if(hintEl)hintEl.textContent='сейчас уходит '+e.handsHours+' ч/мес · агент освободит ~'+e.hours+' ч — '+e.cat;
-  /* результат живёт рядом с тапами — показываем сразу, как он посчитался */
-  const res=document.getElementById('result');
-  if(res&&!res.classList.contains('show')){res.classList.add('show');if(typeof renderConfig==='function')renderConfig();}
+  if(hintEl)hintEl.textContent='сейчас уходит '+e.handsHours+' ч/мес · освободит ~'+e.hours+' ч';
+  const r=document.getElementById('result');
+  if(r&&!r.classList.contains('show')&&wizStep===5){r.classList.add('show');if(typeof renderConfig==='function')renderConfig();}
 }
 
 /* ========== ЖИВОЙ КОНСТРУКТОР: шагов нет, всё на одном экране ========== */
 /* Все тапы ведут в один апдейт: пересчёт реальный, цифра меняется на глазах. */
-function pickOption(){ renderCards(); updateLive(); updateGoalMeta(); if(estimate()) calculate(); }
+function pickOption(){ renderCards(); updateLive(); updateGoalMeta(); wizButtons(); if(estimate()) calculate(); }
 function updatePreSummary(){
   const el=document.getElementById('preSummary'); if(!el) return;
   const names=goals.map(id=>{const g=GOALS.find(x=>x.id===id);return g?(g.sn||g.t):'';}).filter(Boolean);
@@ -811,7 +841,7 @@ function calculate(){
   if(!isUnsure)countUp(document.getElementById('ahaCost'),e.monthly,' \u20bd/\u043c\u0435\u0441'); /* «0 ₽ за разбор» не подменяем ценой владения (аудит 15-audit-tech) */
   if(!document.getElementById('result').classList.contains('show'))renderConfig();
   document.getElementById('result').classList.add('show');
-  document.getElementById('offerBox').style.display='block';
+  if(wizStep===5)document.getElementById('offerBox').style.display='block'; /* офферы — только на финальном шаге */
 
 }
 
@@ -965,7 +995,6 @@ function copyTxt(row){
 renderCards();
 renderPresets();
 renderConfig();
-renderSteps();
+goStep(1);
 updateLive();
 a11y();
-var _sc=document.getElementById('stepsCount'); if(_sc)_sc.textContent='1 / '+N;
