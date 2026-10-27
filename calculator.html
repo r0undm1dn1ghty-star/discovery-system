@@ -297,7 +297,8 @@ background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:
   .brk .brow.total b{color:var(--up)}
   .payback{border:1px solid var(--primary-line);border-radius:12px;padding:16px 18px;background:rgba(123,196,168,.05)}
   .pb-head{font-size:11px;font-weight:700;letter-spacing:1.5px;color:var(--primary-l);text-transform:uppercase;margin-bottom:10px}
-  .pb-line{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .pb-line{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .pb-range{font-size:11.5px;color:var(--dim);margin-left:8px;font-weight:400}
   .pb-line b{color:var(--txt);font-variant-numeric:tabular-nums}
   .payback input[type=range]{width:100%;accent-color:var(--primary);margin:4px 0 10px;cursor:pointer}
   .pb-res{font-size:16px;font-weight:700;color:var(--txt);line-height:1.45}
@@ -546,8 +547,8 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="brk" id="brkTable"></div>
         <div class="payback" id="paybackBox">
           <div class="pb-head">Окупаемость — двигай ползунок</div>
-          <div class="pb-line"><span>твоя цена часа</span><b id="pbRate">700 ₽</b></div>
-          <input type="range" id="pbSlider" min="300" max="3000" step="100" value="700" aria-label="Твоя цена часа, ₽ в час" oninput="recalcPayback()">
+          <div class="pb-line"><span>твоя цена часа</span><b id="pbRate">700 ₽</b><small class="pb-range">100 ₽ — 10 000 ₽</small></div>
+          <input type="range" id="pbSlider" min="100" max="10000" step="50" value="700" aria-label="Твоя цена часа, ₽ в час" oninput="recalcPayback()">
           <div class="pb-res" id="pbRes"></div>
           <div class="pb-note" id="pbNote"></div>
         </div>

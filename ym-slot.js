@@ -40,8 +40,8 @@ window.__ymId = 113187640;
     var x = document.createElement('button');
     x.textContent = 'понятно';
     x.style.cssText = 'margin-left:10px;background:none;border:1px solid rgba(255,255,255,.25);'
-      + 'border-radius:4px;color:#e8ecf4;font:600 12px "IBM Plex Sans",sans-serif;'
-      + 'padding:3px 10px;cursor:pointer';
+      + 'border-radius:6px;color:#e8ecf4;font:600 12.5px "IBM Plex Sans",sans-serif;'
+      + 'padding:12px 16px;min-height:44px;min-width:44px;cursor:pointer';
     x.onclick = function(){ try{localStorage.setItem('ds-cookie-ok','1');}catch(e){} b.remove(); };
     b.appendChild(x);
     document.body.appendChild(b);
