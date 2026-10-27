@@ -51,7 +51,11 @@
 
   var cv = document.createElement('canvas');
   cv.setAttribute('aria-hidden', 'true');
-  cv.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none;';
+  // z-index:-1 (не 0): позиционированный слой с z-index:0 рисуется ПОВЕРХ
+  // неспозиционированного контента — на страницах без <main> (calculator,
+  // services, policy) плазма накрывала карточки. Отрицательный слой всегда
+  // под контентом независимо от структуры страницы.
+  cv.style.cssText = 'position:fixed;inset:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;';
   document.body.appendChild(cv);
   // контент выше
   document.body.style.position = 'relative';
