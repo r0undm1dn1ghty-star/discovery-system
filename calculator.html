@@ -634,7 +634,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="oth-row"><span>AI-Groups — агент на процесс</span><b>от 50 000 ₽</b><a href="https://ai-groups.ru/" target="_blank" rel="noopener">сайт</a></div>
         <div class="oth-row"><span>DICOM TEAM — чат-бот на LLM (прайс-лист)</span><b>от 150 000 ₽</b><a href="https://dicom.team/" target="_blank" rel="noopener">сайт</a></div>
         <div class="oth-row"><span>AVAT Studio — старт внедрения</span><b>от 150 000 ₽</b><a href="https://avat.studio/services/ai-implementation/" target="_blank" rel="noopener">сайт</a></div>
-        <div class="oth-row"><span>PrimexAI — нейросотрудник</span><b>200 000 ₽ + 25 000 ₽/мес</b><a href="https://primexai.ru/nejrosotrudnik" target="_blank" rel="noopener">сайт</a></div>
+        <div class="oth-row"><span>PrimexAI — нейросотрудник</span><b>от 70 000 ₽ за сценарий</b><a href="https://primexai.ru/nejrosotrudnik" target="_blank" rel="noopener">сайт</a></div>
         <div class="oth-row"><span>DoDigital — пилот</span><b>от 350 000 ₽</b><a href="https://dodigital.ru/aiagent" target="_blank" rel="noopener">сайт</a></div>
         <p class="oth-note">Вилки «от N» без состава работ сравнивать нельзя — у каждого свой состав, финальные цены у них — за перепиской. У нас состав открыт в карточке: что входит и что платится провайдерам напрямую. Это то, чего нет ни у одного из них: расчёт под твои объёмы в рублях, до разговора.</p>
       </div>
@@ -664,10 +664,10 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         </div>
       </div>
 
-      <button class="btn btn-primary btn-block" id="btnPaid" onclick="openChat('paid')">Я оплатил — получить гайд →</button>
-      <button class="btn btn-ghost btn-block" id="btnAsk" onclick="openChat('ask')" style="margin-top:10px">Сначала спрошу в личке →</button>
+      <button class="btn btn-primary btn-block" id="btnPaid" onclick="openChat('paid')">Перевёл по реквизитам — скрин прилагаю →</button>
+      <button class="btn btn-ghost btn-block" id="btnAsk" onclick="openChat('ask')" style="margin-top:10px">Получить реквизиты в личке →</button>
 
-      <div class="privacy">Оплата — прямой перевод по СБП. Вопросы — задай их в личке до оплаты, отвечаю лично.</div>
+      <div class="privacy">Оплата — прямой перевод по СБП. Реквизиты даю лично в TG: номер телефона и проверка имени получателя до перевода. Вопросы — задай их в личке до оплаты, отвечаю лично.</div>
     </div>
     </div>
 
@@ -851,7 +851,7 @@ const SUBS=[
 ];
 let subPick='',subName='',useGoal='',taxForm='';
 function pickStart(id){
-  if(start!==id){start=id;}
+  if(start!==id){start=id;userStartChosen=true;}
   if(id==='sub'&&!subPick){subPick='plus';applySub();}
   renderCards();renderSubPick();renderLegalPick();updateLive();updateGoalMeta();wizButtons();if(estimate())calculate();
 }
@@ -888,8 +888,8 @@ function renderLegalPick(){
   if(to)to.innerHTML=TAXES.map(t=>`<div class="pill ${taxForm===t.id?'selected':''}" onclick="setTax('${t.id}')">${t.t}</div>`).join('');
   const hint=document.getElementById('legalHint');
   if(hint){
-    if(!useGoal&&!taxForm)hint.textContent='От этого зависит законность тарифов (Freemium — только личное), персданные клиентов (152-ФЗ) и оффер.';
-    else if(useGoal==='business'&&taxForm==='fiz')hint.textContent='Бизнес без статуса: Freemium-тарифы моделей запрещают коммерцию — агент может встать в любой день. Быстрый фикс — самозанятость (10 минут, НПД 4–6%).';
+    if(!useGoal&&!taxForm)hint.textContent='От этого зависит законность тарифов (Freemium у РФ-моделей — только личное), персданные клиентов (152-ФЗ) и оффер.';
+    else if(useGoal==='business'&&taxForm==='fiz')hint.textContent='Бизнес без статуса: Freemium у РФ-моделей (GigaChat) запрещает коммерцию — агент может встать в любой день. Быстрый фикс — самозанятость (10 минут, НПД 4–6%).';
     else if(useGoal==='business'&&taxForm==='samozan')hint.textContent='НПД: перепродажа чужого запрещена — агент работает на твои услуги. Чек обязателен. Персданные клиентов — уведомление РКН.';
     else if(useGoal==='business')hint.textContent='ИП/ООО: уведомление РКН по 152-ФЗ, политика обработки данных, расходы на модель и хостинг — в затраты.';
     else hint.textContent='Личное использование: ограничения минимальные, бизнес-тарифы не нужны.';
@@ -902,13 +902,13 @@ function legalNotes(){
   const n=[];
   if(!useGoal||!taxForm){
     n.push('Статус не выбран — считаем как для физлица.');
-    n.push('Если агент работает на бизнес: Freemium-тарифы моделей запрещают коммерческое использование (риск: заявки встанут в любой день), персданные клиентов — это 152-ФЗ, доход — налоги.');
+    n.push('Если агент работает на бизнес: Freemium у РФ-моделей (GigaChat) разрешает только личное использование — риск, что заявки встанут в любой день; зарубежные подписки коммерцию разрешают, но их аккаунты в РФ блокируют по гео — персданные клиентов всё равно 152-ФЗ, доход — налоги.');
   }else if(useGoal==='personal'){
     n.push('Личное использование: платные личные тарифы — законно, Freemium уместен.');
     n.push('Персданных клиентов нет — 152-ФЗ не про тебя. Дохода с агента нет — налоги не при чём.');
   }else if(taxForm==='fiz'){
     n.push('Бизнес без статуса: чеков контрагентам нет, налоги с дохода — твои в любом случае.');
-    n.push('Freemium-тарифы моделей запрещают коммерцию — риск, что заявки встанут в неудобный день.');
+    n.push('Freemium у РФ-моделей (GigaChat) разрешает только личное — коммерция = риск отключения в неудобный день. Зарубежные подписки коммерцию разрешают, но аккаунты в РФ блокируют по гео.');
     n.push('Персданные клиентов → уведомление РКН по 152-ФЗ (ст.22). Быстрый фикс: самозанятость, 10 минут.');
   }else if(taxForm==='samozan'){
     n.push('НПД: перепродажа чужих услуг с наценкой запрещена — агент должен работать на твои услуги.');
@@ -1020,7 +1020,7 @@ function toggleGoal(id){
   }
   goal=goals[0]||null;
   tasks=deriveTasks();
-  renderCards();updateLive();updateGoalMeta();
+  renderCards();updateLive();updateGoalMeta();wizButtons();
   if(estimate())calculate(); /* результат пересчитывается на том же экране, без прыжков */
 }
 function startBase(){ const s=STARTS.find(x=>x.id===start); return s?s.base:0; }
@@ -1315,7 +1315,11 @@ function estimate(){
   /* Свой VPS — это тоже деньги каждый месяц, а не «бесплатно». Раньше device='vps' давал
      hostCost=0 и клиент видел связку на 2190 ₽ дешевле, чем она стоит. Считаем как есть,
      а в интерфейсе помечаем «сервер уже оплачен». */
-  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')||device==='vps'||data==='ru');
+  /* Сервер нужен, когда связке есть где и зачем жить: свой хост/VPS, облако, РФ-сервер,
+     или облачная модель + канал 24/7 (боту нужен сервер). Локальная модель на своём
+     железе без каналов — работает с ПК клиента, 0 ₽ (аудит 21: «месяц бесплатным не бывает»
+     касался облачной модели + TG). */
+  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')||device==='vps'||data==='ru'||(modelKey!=='local'&&modelKey!=='hybrid'&&tgNeeded));
   const rfColo=hosted||data==='ru'||device==='vps';
   /* Шлюз для Telegram на РФ-хостинге: api.telegram.org из дата-центров РФ не отвечает (ТСПУ).
      MTProxy/реверс-прокси на дешёвом VPS — 200–400 ₽/мес, берём середину. */
@@ -1327,8 +1331,11 @@ function estimate(){
   const connTotal=connCost;
   const monthly=Math.round(modelCost+hostCost+connTotal);
   // с агентом: что осталось человеку — контроль и правки, доля от автономности
-  const agentShare=draft=>({draft:0.4,review:0.3,auto:0.2,full:0.1}[draft]||0.3);
-  const agentHours=Math.round(handsHours*(1-agentShare(autonomy))*1);
+  /* доля рутины, которую забирает агент — растёт с автономностью.
+     Аудит 21-audit-tech: прежние доли (агент забирал 60–90% даже на «Черновиках»)
+     завышали окупаемость ~2,5×. Теперь честно: на «Черновиках» агент берёт треть. */
+  const agentShare=draft=>({draft:0.3,review:0.5,auto:0.75,full:0.9}[draft]||0.5);
+  const agentHours=Math.round(handsHours*agentShare(autonomy));
   const handsTotal=handsHours;
   const startMoney=startBase();
   return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost,hostCost,connTotal,gateway,modelName:m.name,base:startMoney};
@@ -1352,25 +1359,25 @@ const LENSES={
     ws2s:'До трёх пунктов, самое жрущее — первым. Лучше меньше, но правда: часы считаются отсюда.',
     ws3s:'Чем больше агент делает сам, тем больше токенов он тратит. Это главная ручка цены — и она твоя.',
     ws4s:'Каналы, железо и данные. По умолчанию — РФ-облако, можно поменять: цена пересчитается сразу.',
-    tag:'Твоя связка готова',preset:null},
+    tag:'Твоя связка готова',preset:null,next1:'Выбрал — что жрёт время →'},
   people:{
     title:'Сколько стоит <em>твой человек на рутине</em>',
     lead:'Считаем долю зарплаты, которую съедает рутина, против владения агентом. Человек остаётся — на том, что требует головы.',
     ws1t:'Старт уже выбран',ws1s:'Плачу человеку за рутину — так и считаем. Ошибся — поменяй, расчёт перестроится.',
-    ws2s:'Что из его списка отдашь агенту — это и есть освобождённая доля зарплаты. Считаем по ставке часа, не всю зарплату.',
+    ws2t:'Что из его работы отдаём агенту?',ws2s:'Что из его списка отдашь агенту — это и есть освобождённая доля зарплаты. Считаем по ставке часа, не всю зарплату.',
     ws3s:'Чем самостоятельнее агент, тем больше доли рутины он забирает — и тем меньше платишь за простои человека.',
     ws4s:'Каналы, железо и данные. Человек работает 8 часов и отдыхает — агент живёт 24/7, это тоже в цене.',
-    tag:'Доля рутины посчитана',preset:'people'},
+    tag:'Доля рутины посчитана',preset:'people',next1:'Выбрал — что отдаём агенту →'},
   sub:{
     title:'Сколько стоит <em>твоя подписка</em>',
     lead:'Подписка держит разговор, но не процессы: нет TG-бота с твоими правилами, CRM и Авито. Считаем свою связку против неё — и если подписка дешевле, так и скажем.',
     ws1t:'Старт уже выбран',ws1s:'Плачу за подписку — так и считаем. Ошибся — поменяй, расчёт перестроится.',
-    ws2s:'Что подписка не делает — вот это и отдаём агенту. У подписки нет рук: она не дозвонится и не занесёт в таблицу.',
+    ws2t:'Что подписка не делает?',ws2s:'Что подписка не делает — вот это и отдаём агенту. У подписки нет рук: она не дозвонится и не занесёт в таблицу.',
     ws3s:'Подписка отвечает, когда ты спрашиваешь. Агент работает сам — уровень выбирай под свой страх.',
     ws4s:'Каналы, железо и данные — то, чего у подписки нет вообще. Считаем свою обвязку.',
-    tag:'Подписка против своей связки',preset:'sub'}
+    tag:'Подписка против своей связки',preset:'sub',next1:'Выбрал — что подписка не делает →'}
 };
-let lens='time';
+let lens='time',userStartChosen=false;
 function setLens(k){
   if(!LENSES[k])return;
   lens=k;
@@ -1383,13 +1390,14 @@ function setLens(k){
   const hl=document.getElementById('heroLead');if(hl)hl.textContent=L.lead;
   const t1=document.getElementById('ws1title');if(t1)t1.textContent=L.ws1t;
   const s1=document.getElementById('ws1sub');if(s1)s1.textContent=L.ws1s;
+  const t2=document.getElementById('ws2title');if(t2)t2.textContent=L.ws2t;
   const s2=document.getElementById('ws2sub');if(s2)s2.textContent=L.ws2s;
   const s3=document.getElementById('ws3sub');if(s3)s3.textContent=L.ws3s;
   const s4=document.getElementById('ws4sub');if(s4)s4.textContent=L.ws4s;
   const tg=document.getElementById('ahaTag');if(tg)tg.textContent=L.tag;
-  /* Линза подсказывает старт: «плачу человеку» → people, «плачу подписке» → sub.
-     «Моё время» — старт остаётся на усмотрение клиента. */
-  if(L.preset&&start!==L.preset){start=L.preset;renderCards();renderSubPick();renderLegalPick();updateLive();updateGoalMeta();wizButtons();}
+  const n1=document.getElementById('next1');if(n1&&L.next1)n1.textContent=L.next1;
+  /* Линза подсказывает старт — но только пока клиент сам не выбрал (аудит 21: линза не должна перетирать выбор) */
+  if(L.preset&&!userStartChosen&&start!==L.preset){start=L.preset;renderCards();renderSubPick();renderLegalPick();updateLive();updateGoalMeta();wizButtons();}
   if(wizStep===5&&estimate())calculate();
 }
 
@@ -1469,15 +1477,16 @@ function recalcPayback(){
   document.getElementById('pbRate').textContent=rate.toLocaleString('ru-RU')+' \u20bd';
   const st=STARTS.find(x=>x.id===start)||STARTS[0];
   const timeMoney=e.hours*rate;              // сколько стоит освобождённое время
-  /* дублируем экономику в верхний блок — заполним после расчёта netMonthly */
-  const _sv=document.getElementById('ahaSaving');
-  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> — столько стоит освободившееся время по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч<span id="ahaNet"></span>';
   const noDouble=(start==='people');         // зарплату уже платили за эти часы — не двоим
   /* «плачу людям»: экономим не всю зарплату, а долю рутины (аудит 10-audit-economics) */
   const hRate=Math.max(1,Math.round(st.base/160));
   const routineMoney=Math.round((e.handsHours||0)*hRate);
   const money=(noDouble?routineMoney:timeMoney+e.base); // экономия = время/доля рутины + уход с текущих расходов
   const netMonthly=money-e.monthly;          // минус владение
+  /* дублируем экономику в верхний блок — уже после расчёта доли рутины */
+  const _sv=document.getElementById('ahaSaving');
+  const timeMoneyShown=noDouble?routineMoney:timeMoney;
+  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoneyShown).toLocaleString('ru-RU')+' ₽/мес</b> — столько стоит освободившееся время'+(noDouble?' по ставке из зарплаты':' по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч')+'<span id="ahaNet"></span>';
   /* чистыми: время минус владение — сразу на экран, без «до вычета» */
   const _netEl=document.getElementById('ahaNet');
   if(_netEl)_netEl.innerHTML=(netMonthly>0?' · чистыми после владения: <b>+'+netMonthly.toLocaleString('ru-RU')+' ₽/мес</b>':' · владение съедает время-экономию — смотри деньгами ниже');
@@ -1567,7 +1576,8 @@ function updateAcceptance(e,net){
   if(data==='local'||data==='ru'||data==='hybrid') items.push('Данные на твоём устройстве или РФ-сервере — показываю, где именно');
   items.push('Откат на заглушку, если агент упал — показываю, как');
   items.push('Лог первых задач: что сделал, что нет — отдаю тебе');
-  var pay=(net&&net>0)?('Окупается за '+( (STARTS.find(x=>x.id===start)||STARTS[0]).cost/Math.max(net,1)<=1?'первый месяц':Math.ceil((STARTS.find(x=>x.id===start)||STARTS[0]).cost/Math.max(net,1))+' мес' )):'не окупается — не начинаем';
+  var rcA=(typeof recPrice==='function')?recPrice():((STARTS.find(x=>x.id===start)||STARTS[0]).cost);
+  var pay=(net&&net>0)?('Окупается за '+( rcA/Math.max(net,1)<=1?'первый месяц':Math.ceil(rcA/Math.max(net,1))+' мес' )):'не окупается — не начинаем';
   box.innerHTML='<div class="acc-head">Чек-лист приёмки твоей сборки</div>'
     +'<div class="acc-sub">Это то, что ты примешь до оплаты. Пункт не работает — довожу без доплат (до 10 рабочих дней).</div>'
     +'<ol>'+items.map(function(t){return '<li>'+t+'</li>';}).join('')+'</ol>'
@@ -1604,14 +1614,15 @@ function calculate(){
   renderHeroCompare(e,_rate);
 
   const detail=document.getElementById('detailBox');
-  detail.style.display='block';
+  /* unsure: цифр нет — процесс не назван, любые часы/экономия были бы выдумкой (аудит 20, D3) */
+  detail.style.display=isUnsure?'none':'block';
   if(true){
     const max=Math.max(e.handsHours,e.hours,1);
     document.getElementById('vsHandsVal').textContent=e.handsHours+' \u0447/\u043c\u0435\u0441';
-    document.getElementById('vsAgentVal').textContent=e.hours+' \u0447/\u043c\u0435\u0441 (\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c)';
+    document.getElementById('vsAgentVal').textContent=e.hours+' \u0447/\u043c\u0435\u0441 \u2014 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u0430\u0433\u0435\u043d\u0442';
     setTimeout(()=>{
       document.getElementById('vsHands').style.width=Math.round(e.handsHours/max*100)+'%';
-      document.getElementById('vsAgent').style.width=Math.round((e.handsHours-e.hours)/max*100)+'%';
+      document.getElementById('vsAgent').style.width=Math.round(e.hours/max*100)+'%';
     },60);
     const rows=[['\u041c\u043e\u0434\u0435\u043b\u044c \u2014 '+e.modelName,e.modelCost],['\u0425\u043e\u0441\u0442\u0438\u043d\u0433'+(e.gateway?' (\u0441 \u0448\u043b\u044e\u0437\u043e\u043c \u0434\u043b\u044f Telegram)':''),e.hostCost],['\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f',e.connTotal]];
     document.getElementById('brkTable').innerHTML=
@@ -1632,7 +1643,7 @@ function calculate(){
       else if(start==='sub') line='<span class="sb-k">Платишь сейчас ~'+st.base.toLocaleString('ru-RU')+' ₽/мес за подписку</span> → владение <b>'+m0+' ₽/мес</b> · плюс нельзя отключить';
       else if(start==='legacy') line='<span class="sb-k">Связка сейчас ~'+st.base.toLocaleString('ru-RU')+' ₽/мес</span> → после оптимизации <b>'+m0+' ₽/мес</b> · замер до/после';
       else if(start==='hardware') line='<span class="sb-k">Железо уже твоё</span> → связка <b>'+m0+' ₽/мес</b> вместо ~'+st.base.toLocaleString('ru-RU')+' ₽ за облако';
-      else if(start==='people') line='<span class="sb-k">Платишь человеку ~'+st.base.toLocaleString('ru-RU')+' ₽/мес</span> → агент+владение <b>'+m0+' ₽/мес</b> · не болеет и не уходит';
+      else if(start==='people'){var _hr=Math.max(1,Math.round(st.base/160)),_rm=Math.round((e.handsHours||0)*_hr);line='<span class="sb-k">Платишь человеку ~'+st.base.toLocaleString('ru-RU')+' ₽/мес</span> → рутина из них ≈ <b>'+_rm.toLocaleString('ru-RU')+' ₽/мес</b>, владение агентом <b>'+m0+' ₽/мес</b> · человек остаётся на работе, требующей головы';}
       sb.innerHTML=line;
       sb.style.display='block';
     }
@@ -1701,7 +1712,9 @@ function buildTgText(kind){
   const connsLbl=conns.map(c=>{const x=CONNS.find(y=>y.id===c);return x?x.label:'';}).filter(Boolean).join(', ')||'—';
   const dataLbl=(DATA.find(x=>x.id===data)||{}).t||'—';
   const rate=+(document.getElementById('pbSlider')||{value:700}).value||700;
-  const saved=e.hours?Math.round(e.hours*rate):0;
+  /* линза «плачу людям»: экономика в TG — от доли рутины по ставке зарплаты (аудит 22) */
+  const _hRate=Math.max(1,Math.round((st.base||0)/160));
+  const saved=e.hours?Math.round(start==='people'?Math.round((e.handsHours||0)*_hRate):e.hours*rate):0;
   const T={config:'Персональная сборка — 7 000 ₽',table:'Гайд: 20 конфигураций — 5 000 ₽',
     optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — бриф, 0 ₽'};
   let title=T[kind]||'Связка ИИ-агента';
