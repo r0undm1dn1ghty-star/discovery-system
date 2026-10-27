@@ -225,6 +225,9 @@
     if (!ASM[key]) return;
     var asm = ASM[key];
     var token = ++seq;
+    // программный доскролл — мгновенный: smooth-ретаргеты съедали финальный
+    // scrollTop (поток оставался наверху, итоговая карточка обрезалась краем)
+    stream.style.scrollBehavior = 'auto';
     state.asm = key;
     state.running = true;
     state.total = asm.steps.length;
