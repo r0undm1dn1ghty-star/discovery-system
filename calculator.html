@@ -43,6 +43,11 @@
   .hero{padding:20px 0 2px}
   .hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.5px;margin-bottom:12px;line-height:1.15}
   .hero h1 em{font-style:normal;color:var(--primary-l)}
+  /* Линзы: три денежных языка, кликабельное название перестраивает весь поток */
+  .lens-switch{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .lens-switch button{background:transparent;border:1px solid var(--line2);border-radius:10px;color:var(--muted);font:600 13.5px var(--sans);padding:10px 16px;min-height:44px;cursor:pointer;transition:.15s}
+  .lens-switch button:hover{color:var(--txt);border-color:var(--primary-line)}
+  .lens-switch button[aria-selected="true"]{border-color:var(--primary);background:var(--primary-dim);color:var(--primary-l)}
   .hero p{color:var(--muted);max-width:660px;font-size:15px;line-height:1.6}
   .steps{display:flex;gap:8px;margin:22px 0 26px;flex-wrap:wrap}
 /* ── Живой конструктор: контролы слева, результат справа, без экранов-прыжков ── */
@@ -418,7 +423,12 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 <div class="wrap">
 
   <nav class="top" aria-label="Основная навигация" data-ds-nav><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"/><span>Discovery System</span></a></div></nav><div class="hero">
-    <h1>Сколько забирает <em>твоя рутина</em></h1>
+    <div class="lens-switch" role="tablist" aria-label="Язык расчёта — переключает весь калькулятор">
+      <button type="button" role="tab" data-lens="time" aria-selected="true" onclick="setLens('time')">Съедает моё время</button>
+      <button type="button" role="tab" data-lens="people" aria-selected="false" onclick="setLens('people')">Плачу человеку</button>
+      <button type="button" role="tab" data-lens="sub" aria-selected="false" onclick="setLens('sub')">Плачу подписке</button>
+    </div>
+    <h1 id="heroTitle">Сколько забирает <em>твоя рутина</em></h1>
     <p id="heroLead">3 вопроса — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.</p>
   </div>
 
@@ -437,8 +447,8 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
     </div>
 
     <section class="wiz-step" id="wstep1">
-      <h2 class="ws-title">С чего начинаешь?</h2>
-      <p class="ws-sub">Откуда стартуем — от этого зависит первый продукт и вся экономика дальше. Один вариант, честно.</p>
+      <h2 class="ws-title" id="ws1title">С чего начинаешь?</h2>
+      <p class="ws-sub" id="ws1sub">Откуда стартуем — от этого зависит первый продукт и вся экономика дальше. Один вариант, честно.</p>
       <div class="opts big" id="startOpts"></div>
       <div class="wiz-nav"><span></span><button class="btn-cta wiz-next" id="next1" disabled onclick="goStep(2)">Выбрал — что жрёт время →</button></div>
       <p class="wiz-hint">Оплата из РФ без VPN · данные твои · цифры считаются по реальным тарифам провайдеров.</p>
@@ -446,7 +456,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 
     <section class="wiz-step" id="wstep2" hidden>
       <h2 class="ws-title">Что жрёт время?</h2>
-      <p class="ws-sub">До трёх пунктов, самое жрущее — первым. Лучше меньше, но правда: часы считаются отсюда.</p>
+      <p class="ws-sub" id="ws2sub">До трёх пунктов, самое жрущее — первым. Лучше меньше, но правда: часы считаются отсюда.</p>
       <div class="opts big" id="goalOpts"></div>
       <div class="goal-meta" id="goalMeta" style="display:none"></div>
       <div class="seg-badge" id="segBadge"></div>
@@ -460,7 +470,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 
     <section class="wiz-step" id="wstep3" hidden>
       <h2 class="ws-title">Насколько агент самостоятелен?</h2>
-      <p class="ws-sub">Чем больше агент делает сам, тем больше токенов он тратит. Это главная ручка цены — и она твоя.</p>
+      <p class="ws-sub" id="ws3sub">Чем больше агент делает сам, тем больше токенов он тратит. Это главная ручка цены — и она твоя.</p>
       <div class="auto-grid" id="autoOpts"></div>
       <div class="wiz-nav">
         <button class="wiz-back" onclick="goStep(2)">← Назад</button>
@@ -470,7 +480,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 
     <section class="wiz-step" id="wstep4" hidden>
       <h2 class="ws-title">Где живёт и чем управляется</h2>
-      <p class="ws-sub">Каналы, железо и данные. По умолчанию — РФ-облако, можно поменять: цена пересчитается сразу.</p>
+      <p class="ws-sub" id="ws4sub">Каналы, железо и данные. По умолчанию — РФ-облако, можно поменять: цена пересчитается сразу.</p>
       <div class="wz-group"><div class="wz-l">Что подключить <small>нажми — цена обновится</small></div><div class="chips" id="connChips"></div></div>
       <div class="wz-group"><div class="wz-l">Где живёт агент</div><div class="opts" id="deviceOpts"></div></div>
       <div class="wz-group"><div class="wz-l">Где хранить данные</div><div class="opts" id="dataOpts"></div></div>
@@ -492,7 +502,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 
   <div class="result" id="result">
     <div class="rcard">
-      <div class="aha-tag">Твоя связка готова</div>
+      <div class="aha-tag" id="ahaTag">Твоя связка готова</div>
       <div class="aha-title" id="ahaTitle"></div>
       <div class="aha-desc" id="ahaDesc"></div>
       <div class="hero-number">
@@ -1223,6 +1233,58 @@ function wizButtons(){
   const nb1=document.getElementById('next1');if(nb1)nb1.disabled=!start;
   const nb2=document.getElementById('next2');if(nb2)nb2.disabled=goals.length===0;
 }
+/* ========== LENS: три денежных языка ==========
+   Клик по названию перестраивает весь поток: заголовки шагов, подписи, ага-тег.
+   Цифры одни и те же — меняется язык, которым клиент думает о деньгах. */
+const LENSES={
+  time:{
+    title:'Сколько забирает <em>твоя рутина</em>',
+    lead:'3 вопроса — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.',
+    ws1t:'С чего начинаешь?',ws1s:'Откуда стартуем — от этого зависит первый продукт и вся экономика дальше. Один вариант, честно.',
+    ws2s:'До трёх пунктов, самое жрущее — первым. Лучше меньше, но правда: часы считаются отсюда.',
+    ws3s:'Чем больше агент делает сам, тем больше токенов он тратит. Это главная ручка цены — и она твоя.',
+    ws4s:'Каналы, железо и данные. По умолчанию — РФ-облако, можно поменять: цена пересчитается сразу.',
+    tag:'Твоя связка готова',preset:null},
+  people:{
+    title:'Сколько стоит <em>твой человек на рутине</em>',
+    lead:'Считаем долю зарплаты, которую съедает рутина, против владения агентом. Человек остаётся — на том, что требует головы.',
+    ws1t:'Старт уже выбран',ws1s:'Плачу человеку за рутину — так и считаем. Ошибся — поменяй, расчёт перестроится.',
+    ws2s:'Что из его списка отдашь агенту — это и есть освобождённая доля зарплаты. Считаем по ставке часа, не всю зарплату.',
+    ws3s:'Чем самостоятельнее агент, тем больше доли рутины он забирает — и тем меньше платишь за простои человека.',
+    ws4s:'Каналы, железо и данные. Человек работает 8 часов и отдыхает — агент живёт 24/7, это тоже в цене.',
+    tag:'Доля рутины посчитана',preset:'people'},
+  sub:{
+    title:'Сколько стоит <em>твоя подписка</em>',
+    lead:'Подписка держит разговор, но не процессы: нет TG-бота с твоими правилами, CRM и Авито. Считаем свою связку против неё — и если подписка дешевле, так и скажем.',
+    ws1t:'Старт уже выбран',ws1s:'Плачу за подписку — так и считаем. Ошибся — поменяй, расчёт перестроится.',
+    ws2s:'Что подписка не делает — вот это и отдаём агенту. У подписки нет рук: она не дозвонится и не занесёт в таблицу.',
+    ws3s:'Подписка отвечает, когда ты спрашиваешь. Агент работает сам — уровень выбирай под свой страх.',
+    ws4s:'Каналы, железо и данные — то, чего у подписки нет вообще. Считаем свою обвязку.',
+    tag:'Подписка против своей связки',preset:'sub'}
+};
+let lens='time';
+function setLens(k){
+  if(!LENSES[k])return;
+  lens=k;
+  const L=LENSES[k];
+  document.querySelectorAll('.lens-switch button').forEach(b=>{
+    const on=b.dataset.lens===k;
+    b.setAttribute('aria-selected',on?'true':'false');
+  });
+  const ht=document.getElementById('heroTitle');if(ht)ht.innerHTML=L.title;
+  const hl=document.getElementById('heroLead');if(hl)hl.textContent=L.lead;
+  const t1=document.getElementById('ws1title');if(t1)t1.textContent=L.ws1t;
+  const s1=document.getElementById('ws1sub');if(s1)s1.textContent=L.ws1s;
+  const s2=document.getElementById('ws2sub');if(s2)s2.textContent=L.ws2s;
+  const s3=document.getElementById('ws3sub');if(s3)s3.textContent=L.ws3s;
+  const s4=document.getElementById('ws4sub');if(s4)s4.textContent=L.ws4s;
+  const tg=document.getElementById('ahaTag');if(tg)tg.textContent=L.tag;
+  /* Линза подсказывает старт: «плачу человеку» → people, «плачу подписке» → sub.
+     «Моё время» — старт остаётся на усмотрение клиента. */
+  if(L.preset&&start!==L.preset){start=L.preset;renderCards();updateLive();updateGoalMeta();wizButtons();}
+  if(wizStep===5&&estimate())calculate();
+}
+
 let wizStep=1;
 function goStep(n){
   if(n>1&&!start){toast('Сначала выбери, с чего начинаешь');return;}

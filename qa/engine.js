@@ -563,6 +563,58 @@ function wizButtons(){
   const nb1=document.getElementById('next1');if(nb1)nb1.disabled=!start;
   const nb2=document.getElementById('next2');if(nb2)nb2.disabled=goals.length===0;
 }
+/* ========== LENS: три денежных языка ==========
+   Клик по названию перестраивает весь поток: заголовки шагов, подписи, ага-тег.
+   Цифры одни и те же — меняется язык, которым клиент думает о деньгах. */
+const LENSES={
+  time:{
+    title:'Сколько забирает <em>твоя рутина</em>',
+    lead:'3 вопроса — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.',
+    ws1t:'С чего начинаешь?',ws1s:'Откуда стартуем — от этого зависит первый продукт и вся экономика дальше. Один вариант, честно.',
+    ws2s:'До трёх пунктов, самое жрущее — первым. Лучше меньше, но правда: часы считаются отсюда.',
+    ws3s:'Чем больше агент делает сам, тем больше токенов он тратит. Это главная ручка цены — и она твоя.',
+    ws4s:'Каналы, железо и данные. По умолчанию — РФ-облако, можно поменять: цена пересчитается сразу.',
+    tag:'Твоя связка готова',preset:null},
+  people:{
+    title:'Сколько стоит <em>твой человек на рутине</em>',
+    lead:'Считаем долю зарплаты, которую съедает рутина, против владения агентом. Человек остаётся — на том, что требует головы.',
+    ws1t:'Старт уже выбран',ws1s:'Плачу человеку за рутину — так и считаем. Ошибся — поменяй, расчёт перестроится.',
+    ws2s:'Что из его списка отдашь агенту — это и есть освобождённая доля зарплаты. Считаем по ставке часа, не всю зарплату.',
+    ws3s:'Чем самостоятельнее агент, тем больше доли рутины он забирает — и тем меньше платишь за простои человека.',
+    ws4s:'Каналы, железо и данные. Человек работает 8 часов и отдыхает — агент живёт 24/7, это тоже в цене.',
+    tag:'Доля рутины посчитана',preset:'people'},
+  sub:{
+    title:'Сколько стоит <em>твоя подписка</em>',
+    lead:'Подписка держит разговор, но не процессы: нет TG-бота с твоими правилами, CRM и Авито. Считаем свою связку против неё — и если подписка дешевле, так и скажем.',
+    ws1t:'Старт уже выбран',ws1s:'Плачу за подписку — так и считаем. Ошибся — поменяй, расчёт перестроится.',
+    ws2s:'Что подписка не делает — вот это и отдаём агенту. У подписки нет рук: она не дозвонится и не занесёт в таблицу.',
+    ws3s:'Подписка отвечает, когда ты спрашиваешь. Агент работает сам — уровень выбирай под свой страх.',
+    ws4s:'Каналы, железо и данные — то, чего у подписки нет вообще. Считаем свою обвязку.',
+    tag:'Подписка против своей связки',preset:'sub'}
+};
+let lens='time';
+function setLens(k){
+  if(!LENSES[k])return;
+  lens=k;
+  const L=LENSES[k];
+  document.querySelectorAll('.lens-switch button').forEach(b=>{
+    const on=b.dataset.lens===k;
+    b.setAttribute('aria-selected',on?'true':'false');
+  });
+  const ht=document.getElementById('heroTitle');if(ht)ht.innerHTML=L.title;
+  const hl=document.getElementById('heroLead');if(hl)hl.textContent=L.lead;
+  const t1=document.getElementById('ws1title');if(t1)t1.textContent=L.ws1t;
+  const s1=document.getElementById('ws1sub');if(s1)s1.textContent=L.ws1s;
+  const s2=document.getElementById('ws2sub');if(s2)s2.textContent=L.ws2s;
+  const s3=document.getElementById('ws3sub');if(s3)s3.textContent=L.ws3s;
+  const s4=document.getElementById('ws4sub');if(s4)s4.textContent=L.ws4s;
+  const tg=document.getElementById('ahaTag');if(tg)tg.textContent=L.tag;
+  /* Линза подсказывает старт: «плачу человеку» → people, «плачу подписке» → sub.
+     «Моё время» — старт остаётся на усмотрение клиента. */
+  if(L.preset&&start!==L.preset){start=L.preset;renderCards();updateLive();updateGoalMeta();wizButtons();}
+  if(wizStep===5&&estimate())calculate();
+}
+
 let wizStep=1;
 function goStep(n){
   if(n>1&&!start){toast('Сначала выбери, с чего начинаешь');return;}
