@@ -348,66 +348,45 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
   .tdiv { font-size: 12.5px; }
 }
 
-/* ═══ ДОРОЖКА КЕЙСОВ (канон case-proof-sections) ═══
-   Одна форма карточки, авто-прокрутка слева направо (гаснет при касании/наведении),
-   стрелки для явного управления, мини-экран с реальными строками работы. */
-.cases-wrap{position:relative;margin-top:26px}
-.cases-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
-  padding-bottom:6px;scrollbar-width:none;overscroll-behavior-x:contain}
-.cases-track::-webkit-scrollbar{display:none}
-.case{flex:0 0 320px;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px;
-  padding:18px 18px 16px;border:1px solid var(--line);border-radius:12px;
-  background:rgba(255,255,255,.015);min-height:392px}
-.c-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.c-niche{font-family:var(--mono);font-size:12.5px;color:var(--meta);letter-spacing:.06em;text-transform:uppercase}
-.c-tag{font-family:var(--mono);font-size:12.5px;color:var(--accent);white-space:nowrap}
-.c-task{font-family:var(--display);font-size:16.5px;font-weight:600;color:var(--ink);line-height:1.3;margin:0}
-.c-bs{margin:0;display:flex;flex-direction:column;gap:8px}
-.c-bs > div{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:start}
-.c-bs dt{font-family:var(--mono);font-size:12.5px;color:var(--meta);text-transform:uppercase;letter-spacing:.06em;padding-top:2px}
-.c-bs > div:last-child dt{color:var(--accent)}
-.c-bs dd{margin:0;font-size:14.5px;color:var(--body);line-height:1.5}
-.c-bs > div:first-child dd{color:var(--meta)}
-.c-num{margin:0;font-size:13.5px;color:var(--accent);line-height:1.5}
-.c-screen{margin:auto 0 0;padding:12px 13px;border-radius:10px;background:rgba(0,0,0,.32);
-  border:1px solid var(--line-soft);font-family:var(--mono);font-size:12.5px;line-height:1.65;
-  color:var(--body);white-space:pre-wrap;overflow:hidden}
-.cases-nav{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
-.cases-btn{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);
-  background:transparent;color:var(--ink);font-size:16px;cursor:pointer;transition:border-color .18s,color .18s}
-.cases-btn:hover{border-color:rgba(var(--accent-rgb),.5);color:var(--accent)}
-.cases-quotes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
-.cq{margin:0;padding:18px 20px;border-left:2px solid var(--accent);background:rgba(123,196,168,.04);
-  border-radius:0 12px 12px 0}
-.cq p{margin:0;font-size:15.5px;color:var(--ink);line-height:1.6}
-.cq span{display:block;margin-top:10px;font-family:var(--mono);font-size:12.5px;color:var(--meta);line-height:1.5}
+/* ═══ ДОКАЗАТЕЛЬСТВА (ds-cases.js): кейс + бенчмарк + грабли + ключ чтения ═══ */
+.pv-case{margin-top:26px;border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;
+  background:rgba(255,255,255,.015);display:grid;grid-template-columns:1.25fr .8fr;gap:26px}
+.pv-tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.pv-title{font-family:var(--display);font-size:19px;font-weight:600;color:var(--ink);line-height:1.3;margin:8px 0 10px}
+.pv-body{font-size:15.5px;color:var(--body);line-height:1.65;margin:0}
+.pv-aside{display:flex;flex-direction:column;gap:12px;min-width:0}
+.pv-transform{font-size:15px;color:var(--ink);line-height:1.6;margin:0;padding:14px 16px;
+  border-left:2px solid rgba(var(--accent-rgb),.6);background:rgba(123,196,168,.05)}
+.pv-meta{font:400 12.5px/1.6 var(--mono);color:var(--meta);margin:0}
+.pv-bench{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:20px 22px 12px;background:rgba(0,0,0,.14)}
+.pv-bench h3{margin:0 0 4px;font-size:16px;color:var(--ink);font-weight:600}
+.pv-brow{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font:400 13.5px/1.5 var(--mono)}
+.pv-brow:last-of-type{border-bottom:none}
+.pv-brow .k{color:var(--meta);flex:0 0 auto}
+.pv-brow .v{color:var(--ink);text-align:right;min-width:0}
+.pv-note{font:400 12.5px/1.5 var(--mono);color:var(--meta);margin:0;padding:10px 0 4px;border-top:1px solid rgba(255,255,255,.06)}
+.pv-pits{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pv-pit{border:1px solid var(--line);border-radius:12px;padding:16px}
+.pv-pit .lb{display:block;font:500 12.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--meta);margin-bottom:8px}
+.pv-pit .p{font-size:14px;color:var(--body);line-height:1.5;margin:0}
+.pv-pit .f{margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line-soft);font-size:13.5px;color:var(--accent);line-height:1.5}
+.pv-key{margin-top:16px;border-top:1px solid var(--line)}
+.pv-keyrow{display:grid;grid-template-columns:minmax(140px,200px) 1fr auto;gap:6px 18px;align-items:baseline;padding:13px 2px;border-bottom:1px solid var(--line-soft)}
+.pv-keyrow .w{font:400 12.5px/1.4 var(--mono);color:var(--accent)}
+.pv-keyrow .s{font-size:14.5px;color:var(--body);line-height:1.5}
+.pv-keyrow a{font-size:13.5px;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(var(--accent-rgb),.4);white-space:nowrap}
+.pv-keyrow a:hover{border-bottom-color:var(--accent)}
+.pv-quote{margin:22px 0 0;padding:18px 20px;border-left:2px solid rgba(var(--accent-rgb),.6);background:rgba(123,196,168,.04);border-radius:0 12px 12px 0}
+.pv-quote p{margin:0;font-size:15.5px;color:var(--ink);line-height:1.6}
+.pv-quote span{display:block;margin-top:10px;font:400 12.5px/1.5 var(--mono);color:var(--meta)}
+.pv-cta{margin:22px 0 0}
+@media (max-width:860px){.pv-case{grid-template-columns:1fr;gap:16px;padding:20px 16px}}
 @media (max-width:760px){
-  .cases-track{gap:12px;margin-right:calc(var(--gut-m) * -1);padding-right:var(--gut-m)}
-  .case{flex:0 0 84vw;min-height:0;padding:16px}
-  .cases-nav{justify-content:center}
-  .cases-quotes{grid-template-columns:1fr;gap:12px;margin-top:20px}
+  .pv-pits{grid-template-columns:1fr}
+  .pv-keyrow{grid-template-columns:1fr;gap:4px}
+  .pv-keyrow a{justify-self:start}
+  .pv-quote{padding:14px 14px}
 }
-@media (prefers-reduced-motion:reduce){.cases-track{scroll-behavior:auto}}
-
-/* терминальное окно в карточке кейса: три точки, имя, моно-лог с подсветкой чисел */
-.c-term{margin:auto 0 0;border-radius:10px;border:1px solid var(--line-soft);background:rgba(0,0,0,.34);overflow:hidden}
-.c-term-bar{display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid var(--line-soft);background:rgba(255,255,255,.02)}
-.c-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18)}
-.c-term-name{margin-left:6px;font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.06em}
-.c-screen{margin:0;padding:11px 12px;font-family:var(--mono);font-size:12.5px;line-height:1.72;
-  color:#c6d1e3;white-space:pre-wrap;overflow:hidden}
-.c-screen .hl{color:var(--accent);font-weight:600}
-.c-idx{font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.06em}
-.case{transition:border-color .2s var(--ease),transform .2s var(--ease)}
-.case:hover{border-color:rgba(var(--accent-rgb),.4);transform:translateY(-2px)}
-@media (max-width:760px){ .c-screen{font-size:12.5px} }
-
-/* индикатор дорожки: видно, сколько всего карточек и где ты */
-.cases-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;flex-wrap:wrap}
-.cases-dots{display:flex;gap:6px}
-.cases-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.16);transition:background .2s}
-.cases-dots i.on{background:var(--accent)}
-@media (max-width:760px){.cases-foot{justify-content:center}}
 
 /* кнопка «написать мне по услуге» — рядом с оплатой (два пути: диалог или ускоренная оплата) */
 .btn-tg{display:inline-flex;align-items:center;justify-content:center;min-height:44px;

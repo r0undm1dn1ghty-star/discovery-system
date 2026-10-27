@@ -26,8 +26,9 @@
 
   var NAV = [
     { key: 'system',   href: 'system.html',   label: 'Система' },
-    { key: 'prices',   href: 'clarity.html',  label: 'Цены' },
-    { key: 'market',   href: 'market.html',   label: 'Рынок ИИ' }
+    { key: 'prices',   href: 'clarity.html',  label: 'Ясность' },
+    { key: 'market',   href: 'market.html',   label: 'Рынок ИИ' },
+    { key: 'channel',  href: 'channel.html',  label: 'Канал' }
   ];
   var CTA = { key: 'calc', href: 'calculator.html', label: 'Посчитать свою связку' };
 
@@ -37,7 +38,7 @@
     'system.html': 'system',
     'proof.html': 'system',
     'market.html': 'market',
-    'channel.html': 'market',
+    'channel.html': 'channel',
     'clarity.html': 'prices',
     'calculator.html': 'calc',
     // подстраницы прилипают к своему разделу
