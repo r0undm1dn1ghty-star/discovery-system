@@ -73,13 +73,17 @@
 .wiz-next[disabled]{opacity:.4;cursor:not-allowed;transform:none}
 .wiz-hint{font-size:12px;color:var(--dim);line-height:1.5;margin:12px 0 0}
 .auto-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.auto-card{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:18px;cursor:pointer;transition:.15s;font-family:inherit}
+.auto-card{position:relative;display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:18px;padding-right:44px;cursor:pointer;transition:.15s;font-family:inherit}
 .auto-card:hover{border-color:var(--primary-line)}
+.auto-card:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.ac-dot{position:absolute;top:16px;right:16px;width:20px;height:20px;border:2px solid var(--line2);border-radius:50%;background:transparent;transition:.15s;flex:0 0 auto}
 .auto-card.on{border-color:var(--primary);background:var(--primary-dim)}
+.auto-card.on .ac-dot{background:var(--primary);border-color:var(--primary)}
+.auto-card.on .ac-t{color:var(--primary-l)}
 .auto-card .ac-l{font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--primary-l)}
 .auto-card .ac-t{font-size:16.5px;font-weight:700;color:var(--txt)}
 .auto-card .ac-d{font-size:13.5px;color:var(--muted);line-height:1.5}
-.auto-card .ac-p{font-size:12px;color:var(--dim)}
+.auto-card .ac-p{font-size:12.5px;color:var(--muted)}
 .wz-edit{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 16px}
 .wz-edit button{background:none;border:1px solid var(--line2);border-radius:10px;color:var(--muted);font:600 12.5px var(--sans);padding:8px 14px;cursor:pointer;min-height:36px;transition:.15s}
 .wz-edit button:hover{color:var(--txt);border-color:var(--primary-line)}
@@ -815,7 +819,7 @@ function renderCards(){
   document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">от ${days(g.econ)}</div></div></div>`).join('');
   var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
   var ao=document.getElementById('autoOpts');
-  if(ao)ao.innerHTML=AUTONOMY.map(a=>`<div class="auto-card ${autonomy===a.id?'on':''}" onclick="setAuto('${a.id}')" role="button" tabindex="0"><div class="ac-l">${a.label}</div><div class="ac-t">${a.t}</div><div class="ac-d">${a.d}</div><div class="ac-p">нагрузка на модель ×${String(a.mult).replace('.',',')}</div></div>`).join('');
+  if(ao)ao.innerHTML=AUTONOMY.map(a=>`<div class="auto-card ${autonomy===a.id?'on':''}" onclick="setAuto('${a.id}')" role="button" tabindex="0" aria-pressed="${autonomy===a.id}"><span class="ac-dot" aria-hidden="true"></span><div class="ac-l">${a.label}</div><div class="ac-t">${a.t}</div><div class="ac-d">${a.d}</div><div class="ac-p">нагрузка на модель ×${String(a.mult).replace('.',',')}</div></div>`).join('');
   var bo=document.getElementById('budgetOpts');
   if(bo)bo.innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
   a11y();
@@ -859,7 +863,7 @@ function renderConfig(){
   if(pa)pa.innerHTML=PAY.map(p=>`<div class="opt ${pay===p.id?'selected':''}" onclick="pay='${p.id}';cfgChange();">${ic(p.ic)}<div class="body"><div class="t">${p.t}</div><div class="d">${p.d}</div></div></div>`).join('');
   a11y();
 }
-function setAuto(id){autonomy=id;cfgChange();}
+function setAuto(id){autonomy=id;renderCards();cfgChange();}
 /* Конфигуратор: перерисовываем только его + цену (шаги скрыты — renderCards/stepRender не нужны) */
 function cfgChange(){renderConfig();updateLive();if(document.getElementById('result').classList.contains('show'))calculate();}
 

@@ -159,7 +159,7 @@ function renderCards(){
   document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">от ${days(g.econ)}</div></div></div>`).join('');
   var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
   var ao=document.getElementById('autoOpts');
-  if(ao)ao.innerHTML=AUTONOMY.map(a=>`<div class="auto-card ${autonomy===a.id?'on':''}" onclick="setAuto('${a.id}')" role="button" tabindex="0"><div class="ac-l">${a.label}</div><div class="ac-t">${a.t}</div><div class="ac-d">${a.d}</div><div class="ac-p">нагрузка на модель ×${String(a.mult).replace('.',',')}</div></div>`).join('');
+  if(ao)ao.innerHTML=AUTONOMY.map(a=>`<div class="auto-card ${autonomy===a.id?'on':''}" onclick="setAuto('${a.id}')" role="button" tabindex="0" aria-pressed="${autonomy===a.id}"><span class="ac-dot" aria-hidden="true"></span><div class="ac-l">${a.label}</div><div class="ac-t">${a.t}</div><div class="ac-d">${a.d}</div><div class="ac-p">нагрузка на модель ×${String(a.mult).replace('.',',')}</div></div>`).join('');
   var bo=document.getElementById('budgetOpts');
   if(bo)bo.innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
   a11y();
@@ -203,7 +203,7 @@ function renderConfig(){
   if(pa)pa.innerHTML=PAY.map(p=>`<div class="opt ${pay===p.id?'selected':''}" onclick="pay='${p.id}';cfgChange();">${ic(p.ic)}<div class="body"><div class="t">${p.t}</div><div class="d">${p.d}</div></div></div>`).join('');
   a11y();
 }
-function setAuto(id){autonomy=id;cfgChange();}
+function setAuto(id){autonomy=id;renderCards();cfgChange();}
 /* Конфигуратор: перерисовываем только его + цену (шаги скрыты — renderCards/stepRender не нужны) */
 function cfgChange(){renderConfig();updateLive();if(document.getElementById('result').classList.contains('show'))calculate();}
 
