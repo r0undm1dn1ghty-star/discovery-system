@@ -152,9 +152,100 @@ function renderBridge(){ const m=mcHint(); const el=document.getElementById('mcB
 }
 const STEP_NAMES=['Откуда','Рутина'];
 function renderSteps(){ /* шаги рендерит goStep() — воронка 01–05 */ }
+/* ========== ШАГ 1.5: какая подписка + налоговый статус ==========
+   «Подписка» — не одна вещь: ChatGPT Plus, Pro за 20К и конструктор ботов — разные рынки.
+   И без цели (личное/бизнес) и формы (физ/самозанятый/ИП/ООО) мы не знаем, что клиент нарушает. */
+const SUBS=[
+  {id:'plus',t:'ChatGPT Plus / Claude Pro',d:'диалоги и поиск — но заявки сама не забирает, в CRM не заносит',base:2000,short:'ChatGPT Plus'},
+  {id:'pro',t:'ChatGPT Pro / Claude Max',d:'топ-модели — всё равно не процессы, не интеграции, не 24/7',base:20000,short:'ChatGPT Pro'},
+  {id:'bot',t:'Конструктор ботов (Salebot, BotHelp)',d:'боты и воронки есть, агентов с памятью и CRM — нет; токены пакетами',base:3000,short:'конструктор ботов'},
+  {id:'aggr',t:'Агрегатор моделей (GoAI, Vexel, ProxyAPI)',d:'доступ к моделям дешевле — автоматизации ноль',base:2000,short:'агрегатор моделей'},
+  {id:'own',t:'Своя сборка из сервисов',d:'VPN + API + glue-скрипты — впиши, сколько выходит в месяц',base:5000,short:'своя сборка сервисов'}
+];
+let subPick='',subName='',useGoal='',taxForm='';
+function pickStart(id){
+  if(start!==id){start=id;}
+  if(id==='sub'&&!subPick){subPick='plus';applySub();}
+  renderCards();renderSubPick();renderLegalPick();updateLive();updateGoalMeta();wizButtons();if(estimate())calculate();
+}
+function applySub(){
+  const s=SUBS.find(x=>x.id===subPick)||SUBS[0];
+  const st=STARTS.find(x=>x.id==='sub');
+  if(st){st.base=s.base;st.short='платишь за '+s.short;}
+  subName=s.t;
+}
+function renderSubPick(){
+  const wrap=document.getElementById('subPickWrap');
+  if(!wrap)return;
+  const show=(start==='sub');
+  wrap.style.display=show?'':'none';
+  if(!show)return;
+  const sp=document.getElementById('subPick');
+  if(sp)sp.innerHTML=SUBS.map(s=>`<div class="opt ${subPick===s.id?'selected':''}" onclick="chooseSub('${s.id}')"><div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div><div class="tag">≈ ${s.base.toLocaleString('ru-RU')} ₽/мес</div></div></div>`).join('');
+  const s=SUBS.find(x=>x.id===subPick);
+  const note=document.getElementById('subPickNote');
+  if(note&&s)note.textContent='Считаем против '+s.base.toLocaleString('ru-RU')+' ₽/мес. '+({plus:'Плюс не умеет сам: не дождётся заявки в 3 часа ночи и не занесёт её в CRM.',pro:'Даже топ-модель не берёт на себя процесс — она ждёт твоего сообщения.',bot:'Бот-конструктор не думает: сценарии статичны, память и документы — мимо.',aggr:'Агрегатор — это кран с моделью, кран сам ничего не делает.',own:'Своя сборка — это и есть «до Discovery»: glue-скрипты, которые чинишь сам.'}[s.id]||'');
+  a11y();
+}
+function chooseSub(id){
+  if(!SUBS.find(x=>x.id===id))return;
+  subPick=id;applySub();renderSubPick();updateLive();
+  if(wizStep===5&&estimate())calculate();
+}
+const USES=[{id:'personal',t:'Для себя и семьи'},{id:'business',t:'В бизнесе — работаю с клиентами'}];
+const TAXES=[{id:'fiz',t:'Физлицо'},{id:'samozan',t:'Самозанятый'},{id:'ip',t:'ИП'},{id:'ooo',t:'ООО'}];
+function renderLegalPick(){
+  const uo=document.getElementById('useOpts');
+  if(uo)uo.innerHTML=USES.map(u=>`<div class="pill ${useGoal===u.id?'selected':''}" onclick="setUse('${u.id}')">${u.t}</div>`).join('');
+  const to=document.getElementById('taxOpts');
+  if(to)to.innerHTML=TAXES.map(t=>`<div class="pill ${taxForm===t.id?'selected':''}" onclick="setTax('${t.id}')">${t.t}</div>`).join('');
+  const hint=document.getElementById('legalHint');
+  if(hint){
+    if(!useGoal&&!taxForm)hint.textContent='От этого зависит законность тарифов (Freemium — только личное), персданные клиентов (152-ФЗ) и оффер.';
+    else if(useGoal==='business'&&taxForm==='fiz')hint.textContent='Бизнес без статуса: Freemium-тарифы моделей запрещают коммерцию — агент может встать в любой день. Быстрый фикс — самозанятость (10 минут, НПД 4–6%).';
+    else if(useGoal==='business'&&taxForm==='samozan')hint.textContent='НПД: перепродажа чужого запрещена — агент работает на твои услуги. Чек обязателен. Персданные клиентов — уведомление РКН.';
+    else if(useGoal==='business')hint.textContent='ИП/ООО: уведомление РКН по 152-ФЗ, политика обработки данных, расходы на модель и хостинг — в затраты.';
+    else hint.textContent='Личное использование: ограничения минимальные, бизнес-тарифы не нужны.';
+  }
+  a11y();
+}
+function setUse(v){useGoal=v;renderLegalPick();if(wizStep===5)updateLegal();}
+function setTax(v){taxForm=v;renderLegalPick();if(wizStep===5)updateLegal();}
+function legalNotes(){
+  const n=[];
+  if(!useGoal||!taxForm){
+    n.push('Статус не выбран — считаем как для физлица.');
+    n.push('Если агент работает на бизнес: Freemium-тарифы моделей запрещают коммерческое использование (риск: заявки встанут в любой день), персданные клиентов — это 152-ФЗ, доход — налоги.');
+  }else if(useGoal==='personal'){
+    n.push('Личное использование: платные личные тарифы — законно, Freemium уместен.');
+    n.push('Персданных клиентов нет — 152-ФЗ не про тебя. Дохода с агента нет — налоги не при чём.');
+  }else if(taxForm==='fiz'){
+    n.push('Бизнес без статуса: чеков контрагентам нет, налоги с дохода — твои в любом случае.');
+    n.push('Freemium-тарифы моделей запрещают коммерцию — риск, что заявки встанут в неудобный день.');
+    n.push('Персданные клиентов → уведомление РКН по 152-ФЗ (ст.22). Быстрый фикс: самозанятость, 10 минут.');
+  }else if(taxForm==='samozan'){
+    n.push('НПД: перепродажа чужих услуг с наценкой запрещена — агент должен работать на твои услуги.');
+    n.push('Чек на оплату обязателен, лимит 2,4 млн ₽/год.');
+    n.push('Персданные клиентов → уведомление РКН (152-ФЗ, ст.22) + политика обработки.');
+    n.push('Если агент публикует рекламу — маркировка (ЕРИД).');
+  }else{
+    n.push('Уведомление РКН по 152-ФЗ — обязательно, политика обработки данных — на сайте и в боте.');
+    n.push('Расходы на модель и хостинг — в затраты (УСН/ОСНО), платёжки провайдерам — подтверждение.');
+    n.push('Если агент публикует рекламу — маркировка (ЕРИД).');
+  }
+  return n;
+}
+function updateLegal(){
+  const box=document.getElementById('legalBox');
+  if(!box)return;
+  const notes=legalNotes();
+  if(!notes.length){box.style.display='none';return;}
+  box.style.display='block';
+  box.innerHTML='<div class="legal-h">Что это значит юридически под твой статус</div><ul>'+notes.map(t=>'<li>'+t+'</li>').join('')+'</ul><p class="law-note">Это не юрконсультация — детали у бухгалтера. Здесь только то, что влияет на расчёт и на жизнь связки.</p>';
+}
 function renderCards(){
   var so=document.getElementById('startOpts');
-  if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="start='${s.id}';pickOption();">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
+  if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="pickStart('${s.id}')">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
   const showUnsure=goals.length===0||goals.includes('unsure');
   document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">от ${days(g.econ)}</div></div></div>`).join('');
   var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
@@ -611,7 +702,7 @@ function setLens(k){
   const tg=document.getElementById('ahaTag');if(tg)tg.textContent=L.tag;
   /* Линза подсказывает старт: «плачу человеку» → people, «плачу подписке» → sub.
      «Моё время» — старт остаётся на усмотрение клиента. */
-  if(L.preset&&start!==L.preset){start=L.preset;renderCards();updateLive();updateGoalMeta();wizButtons();}
+  if(L.preset&&start!==L.preset){start=L.preset;renderCards();renderSubPick();renderLegalPick();updateLive();updateGoalMeta();wizButtons();}
   if(wizStep===5&&estimate())calculate();
 }
 
@@ -716,6 +807,7 @@ function recalcPayback(){
     res.innerHTML='Экономия <b>'+netMonthly.toLocaleString('ru-RU')+' ₽/мес</b> · '+paybackTxt+' ('+_rn2+' '+rc.toLocaleString('ru-RU')+' ₽ разово)';
   }
   document.getElementById('pbNote').textContent='\u0421\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0435\u0441\u0442\u043d\u043e: \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u044f = \u043e\u0441\u0432\u043e\u0431\u043e\u0436\u0434\u0451\u043d\u043d\u044b\u0435 \u0447\u0430\u0441\u044b \u00d7 \u0442\u0432\u043e\u044f \u0446\u0435\u043d\u0430 \u0447\u0430\u0441\u0430'+(e.base>0?' + \u0443\u0445\u043e\u0434 \u0441 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432':'')+' \u2212 \u0432\u043b\u0430\u0434\u0435\u043d\u0438\u0435'+(noDouble?'. \u0415\u0441\u043b\u0438 \u043f\u043b\u0430\u0442\u0438\u0448\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0443 \u2014 \u0441\u0447\u0438\u0442\u0430\u0435\u0442\u0441\u044f \u0434\u043e\u043b\u044f \u0440\u0443\u0442\u0438\u043d\u044b, \u043d\u0435 \u0432\u0441\u044f \u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430':'')+'.';
+  if(typeof updateLegal==='function')updateLegal();
   updateYearBox(e,netMonthly,st);
   showOrderCta(e);
 }
@@ -1050,6 +1142,8 @@ function copyTxt(row){
 renderCards();
 renderPresets();
 renderConfig();
+renderSubPick();
+renderLegalPick();
 goStep(1);
 updateLive();
 a11y();
