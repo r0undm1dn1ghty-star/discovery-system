@@ -691,15 +691,18 @@ function recalcPayback(){
   document.getElementById('pbRate').textContent=rate.toLocaleString('ru-RU')+' \u20bd';
   const st=STARTS.find(x=>x.id===start)||STARTS[0];
   const timeMoney=e.hours*rate;              // сколько стоит освобождённое время
-  /* дублируем экономику в верхний блок, чтобы ползунок менял и её */
+  /* дублируем экономику в верхний блок — заполним после расчёта netMonthly */
   const _sv=document.getElementById('ahaSaving');
-  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч (до вычета владения)';
+  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> — столько стоит освободившееся время по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч<span id="ahaNet"></span>';
   const noDouble=(start==='people');         // зарплату уже платили за эти часы — не двоим
   /* «плачу людям»: экономим не всю зарплату, а долю рутины (аудит 10-audit-economics) */
   const hRate=Math.max(1,Math.round(st.base/160));
   const routineMoney=Math.round((e.handsHours||0)*hRate);
   const money=(noDouble?routineMoney:timeMoney+e.base); // экономия = время/доля рутины + уход с текущих расходов
   const netMonthly=money-e.monthly;          // минус владение
+  /* чистыми: время минус владение — сразу на экран, без «до вычета» */
+  const _netEl=document.getElementById('ahaNet');
+  if(_netEl)_netEl.innerHTML=(netMonthly>0?' · чистыми после владения: <b>+'+netMonthly.toLocaleString('ru-RU')+' ₽/мес</b>':' · владение съедает время-экономию — смотри деньгами ниже');
   const rc=(typeof recPrice==='function')?recPrice():st.cost;
   const res=document.getElementById('pbRes');
   if(netMonthly<=0){

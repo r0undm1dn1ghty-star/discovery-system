@@ -60,8 +60,8 @@
 .wp i{font-style:normal;font-size:12px;color:var(--dim);border:1px solid var(--line2);border-radius:6px;padding:3px 6px}
 .wp.act{border-color:var(--primary);color:var(--txt);background:var(--primary-dim)}
 .wp.act i{border-color:var(--primary);color:var(--primary-l)}
-.wp.done{color:var(--body)}
-.wp.done i{background:var(--primary-dim);color:var(--primary-l);border-color:var(--primary-line)}
+.wp.done{color:var(--txt);border-color:var(--primary-line)}
+.wp.done i{background:var(--primary-dim);color:var(--primary-l);border-color:var(--primary)}
 .wiz-price{font:800 17px/1 var(--sans);color:var(--up);white-space:nowrap;text-align:right}
 .wiz-price small{display:block;font:500 10.5px var(--sans);color:var(--dim);margin-top:3px}
 .wiz-step{max-width:860px}
@@ -493,11 +493,6 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 
     <section class="wiz-step" id="wstep5" hidden>
       <div class="wz-edit"><button onclick="goStep(2)">← рутина</button><button onclick="goStep(3)">← самостоятельность</button><button onclick="goStep(4)">← обвязка</button></div>
-      <div class="livebar" id="livebar" style="display:none">
-        <div class="lbl">Твоя связка</div>
-        <div class="val" id="livePriceStep5" aria-live="polite">— <span>₽/мес</span></div>
-        <div class="hint" id="liveHintStep5">выбери рутину — цена и время обновятся</div>
-      </div>
 
 
   <div class="result" id="result">
@@ -1361,15 +1356,18 @@ function recalcPayback(){
   document.getElementById('pbRate').textContent=rate.toLocaleString('ru-RU')+' \u20bd';
   const st=STARTS.find(x=>x.id===start)||STARTS[0];
   const timeMoney=e.hours*rate;              // сколько стоит освобождённое время
-  /* дублируем экономику в верхний блок, чтобы ползунок менял и её */
+  /* дублируем экономику в верхний блок — заполним после расчёта netMonthly */
   const _sv=document.getElementById('ahaSaving');
-  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч (до вычета владения)';
+  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> — столько стоит освободившееся время по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч<span id="ahaNet"></span>';
   const noDouble=(start==='people');         // зарплату уже платили за эти часы — не двоим
   /* «плачу людям»: экономим не всю зарплату, а долю рутины (аудит 10-audit-economics) */
   const hRate=Math.max(1,Math.round(st.base/160));
   const routineMoney=Math.round((e.handsHours||0)*hRate);
   const money=(noDouble?routineMoney:timeMoney+e.base); // экономия = время/доля рутины + уход с текущих расходов
   const netMonthly=money-e.monthly;          // минус владение
+  /* чистыми: время минус владение — сразу на экран, без «до вычета» */
+  const _netEl=document.getElementById('ahaNet');
+  if(_netEl)_netEl.innerHTML=(netMonthly>0?' · чистыми после владения: <b>+'+netMonthly.toLocaleString('ru-RU')+' ₽/мес</b>':' · владение съедает время-экономию — смотри деньгами ниже');
   const rc=(typeof recPrice==='function')?recPrice():st.cost;
   const res=document.getElementById('pbRes');
   if(netMonthly<=0){
