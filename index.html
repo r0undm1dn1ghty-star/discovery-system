@@ -351,6 +351,19 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
   .rs b{font-size:15.5px}
   .rs-a{display:none}
 }
+/* persona ladder */
+.p-who{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:10px}
+.p-card{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border:1px solid var(--line);border-radius:var(--r-sm);background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:border-color .2s var(--ease)}
+.p-card:hover{border-color:var(--accent)}
+.p-card[aria-pressed="true"]{border-color:var(--accent)}
+.p-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.p-t{font:500 15px/1.4 var(--txt,var(--sans));color:var(--ink)}
+.p-d{font-size:13px;line-height:1.55;color:var(--body)}
+.p-hint{font:400 13px/1.6 var(--mono);color:var(--meta);margin-top:14px}
+.m-cta{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;margin-top:24px;border-radius:var(--r-sm);background:var(--btn);color:var(--btn-text);font:500 15px var(--sans);text-decoration:none}
+.m-cta:hover{background:var(--btn-h)}
+.m-cta:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:760px){.p-who{grid-template-columns:1fr}}
 </style>
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
@@ -450,12 +463,37 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 
 <section id="money"><div class="wrap">
 <p class="eyebrow rv">считаем не рынок — твои деньги</p>
-<h2 class="rv">Сколько стоит рутина — и что её заменяет</h2>
-<div class="money-rows">
-<div class="mrow rv"><span class="m-num">50–350 тыс. ₽</span><span class="m-t">студии внедрения за проект — а состав цены обычно скрыт до оплаты</span><span class="m-s">сверка офферов 6 студий · 26.10.2026</span></div>
-<div class="mrow rv" style="transition-delay:.06s"><span class="m-num">40–60 тыс. ₽/мес</span><span class="m-t">помощник в найм — оклад, налоги, отпуск; платишь каждый месяц, даже в простой</span><span class="m-s">и его работу всё равно принимаешь сам</span></div>
-<div class="mrow accent rv" style="transition-delay:.12s"><span class="m-num">5–15 тыс. разово</span><span class="m-t">своя связка + 2–4 тыс. ₽/мес владения — состав и логика видны до старта</span><span class="m-s">цены и чек-лист приёмки — на <a href="clarity.html" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Ясности</a></span></div>
+<h2 class="rv">ИИ-агентов пробовали все. Владеют ими по адекватной цене — только единицы.</h2>
+<div class="p-who rv" role="group" aria-label="Кому считаем">
+<button type="button" class="p-card" data-persona="agent" aria-pressed="false"><span class="p-t">Личный агент</span><span class="p-d">Под твои задачи. За день, с приёмкой по чек-листу.</span></button>
+<button type="button" class="p-card" data-persona="solo" aria-pressed="false"><span class="p-t">Самозанятому</span><span class="p-d">Минимальный сервер — впритык и по делу.</span></button>
+<button type="button" class="p-card" data-persona="biz" aria-pressed="false"><span class="p-t">ИП и малому бизнесу</span><span class="p-d">Рабочая сборка 8 ГБ, агенты под процессы.</span></button>
 </div>
+<div class="money-rows" id="p-rows"></div>
+<p class="p-hint">Выбери себя — цифры подстроятся. 7 вопросов в калькуляторе дадут цену владения под твой масштаб.</p>
+<a class="m-cta" href="calculator.html">Посчитать свою цену — 7 вопросов</a>
+<script>
+(function(){
+var D={
+def:[["53%","<b>МСП уже внутри</b> — по другой методике 23%. От четверти до половины.","ПСБ · Опора, 08.2026 · VK WorkSpace, 09.2026"],
+["44%","<b>Отказались от агентов</b>, ещё 46% пилотов — без эффекта.","Джет + Smart Ranking, 26.08.2026"],
+["−37 п.п.","<b>Годовая скорость вытеснения</b> тех, кто ещё не в ИИ. Окно — около 15 месяцев.","собственный замер, 24.10.2026"],
+["150 000 ₽","<b>Медиана зарплаты «ИИ-агента»</b> — столько стоит твоя рутина, отданная человеку. Своя связка — 2–4К ₽/мес. Она твоя.","hh.ru, 24.10.2026"]],
+agent:[["44%","<b>Отказались от агентов</b>, ещё 46% пилотов — без эффекта. Без системы ты в остальных.","Джет + Smart Ranking, 26.08.2026"],
+["150 000 ₽","<b>Медиана зарплаты «ИИ-агента»</b> — столько стоит твоя рутина, отданная человеку.","hh.ru, 24.10.2026"],
+["2–4К ₽/мес","<b>Своя связка под твои задачи</b>, собранная один раз. Она не аренда. Она твоя.","калькулятор — 7 вопросов"]],
+solo:[["5 900 ₽","<b>Медиана чека исполнителя на Kwork</b> — а оборот биржи за год −35%: исполнителей больше, денег меньше.","собственный замер, 24.10.2026"],
+["150 000 ₽","<b>Медиана зарплаты «ИИ-агента»</b> — делегировать под ключ дороже, чем владеть.","hh.ru, 24.10.2026"],
+["2–4К ₽/мес","<b>Минимальный сервер — впритык и по делу.</b> Связка собирается один раз.","калькулятор — 7 вопросов"]],
+biz:[["53%","<b>МСП уже внутри</b> — по другой методике 23%. От четверти до половины.","ПСБ · Опора, 08.2026 · VK WorkSpace, 09.2026"],
+["5–15 млн ₽","<b>За 3 года</b> тратит компания ~50 человек, отдавшая внедрение интегратору.","Axenix × ИИ-центр МГУ, Ведомости, 31.03.2026"],
+["2–4К ₽/мес","<b>Рабочая сборка 8 ГБ</b> и агенты под процессы — состав и логика видны до старта.","калькулятор — 7 вопросов"]]};
+var rows=document.getElementById('p-rows');
+function render(k){var d=D[k]||D.def;var h='';for(var i=0;i<d.length;i++){var r=d[i];var last=(k!=='def'&&i===d.length-1);h+='<div class="mrow'+(last?' accent':'')+'"><span class="m-num">'+r[0]+'</span><span class="m-t">'+r[1]+'</span><span class="m-s">'+r[2]+'</span></div>'}rows.innerHTML=h}
+render('def');
+document.querySelectorAll('.p-card').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.p-card').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');try{sessionStorage.setItem('ds_persona',b.dataset.persona)}catch(e){}render(b.dataset.persona)})});
+})();
+</script>
 </div></section>
 
 <section id="inside"><div class="wrap">
