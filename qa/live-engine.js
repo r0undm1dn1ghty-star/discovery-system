@@ -151,15 +151,106 @@ function renderBridge(){ const m=mcHint(); const el=document.getElementById('mcB
   if(m.saveHours>60){ /* hint for autonomy selection */ }
 }
 const STEP_NAMES=['Откуда','Рутина'];
-function renderSteps(){ /* шаги убраны: живой конструктор на одном экране */ }
+function renderSteps(){ /* шаги рендерит goStep() — воронка 01–05 */ }
+/* ========== ШАГ 1.5: какая подписка + налоговый статус ==========
+   «Подписка» — не одна вещь: ChatGPT Plus, Pro за 20К и конструктор ботов — разные рынки.
+   И без цели (личное/бизнес) и формы (физ/самозанятый/ИП/ООО) мы не знаем, что клиент нарушает. */
+const SUBS=[
+  {id:'plus',t:'ChatGPT Plus / Claude Pro',d:'диалоги и поиск — но заявки сама не забирает, в CRM не заносит',base:2000,short:'ChatGPT Plus'},
+  {id:'pro',t:'ChatGPT Pro / Claude Max',d:'топ-модели — всё равно не процессы, не интеграции, не 24/7',base:20000,short:'ChatGPT Pro'},
+  {id:'bot',t:'Конструктор ботов (Salebot, BotHelp)',d:'боты и воронки есть, агентов с памятью и CRM — нет; токены пакетами',base:3000,short:'конструктор ботов'},
+  {id:'aggr',t:'Агрегатор моделей (GoAI, Vexel, ProxyAPI)',d:'доступ к моделям дешевле — автоматизации ноль',base:2000,short:'агрегатор моделей'},
+  {id:'own',t:'Своя сборка из сервисов',d:'VPN + API + glue-скрипты — впиши, сколько выходит в месяц',base:5000,short:'своя сборка сервисов'}
+];
+let subPick='',subName='',useGoal='',taxForm='';
+function pickStart(id){
+  if(start!==id){start=id;userStartChosen=true;}
+  if(id==='sub'&&!subPick){subPick='plus';applySub();}
+  renderCards();renderSubPick();renderLegalPick();updateLive();updateGoalMeta();wizButtons();if(estimate())calculate();
+}
+function applySub(){
+  const s=SUBS.find(x=>x.id===subPick)||SUBS[0];
+  const st=STARTS.find(x=>x.id==='sub');
+  if(st){st.base=s.base;st.short='платишь за '+s.short;}
+  subName=s.t;
+}
+function renderSubPick(){
+  const wrap=document.getElementById('subPickWrap');
+  if(!wrap)return;
+  const show=(start==='sub');
+  wrap.style.display=show?'':'none';
+  if(!show)return;
+  const sp=document.getElementById('subPick');
+  if(sp)sp.innerHTML=SUBS.map(s=>`<div class="opt ${subPick===s.id?'selected':''}" onclick="chooseSub('${s.id}')"><div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div><div class="tag">≈ ${s.base.toLocaleString('ru-RU')} ₽/мес</div></div></div>`).join('');
+  const s=SUBS.find(x=>x.id===subPick);
+  const note=document.getElementById('subPickNote');
+  if(note&&s)note.textContent='Считаем против '+s.base.toLocaleString('ru-RU')+' ₽/мес. '+({plus:'Плюс не умеет сам: не дождётся заявки в 3 часа ночи и не занесёт её в CRM.',pro:'Даже топ-модель не берёт на себя процесс — она ждёт твоего сообщения.',bot:'Бот-конструктор не думает: сценарии статичны, память и документы — мимо.',aggr:'Агрегатор — это кран с моделью, кран сам ничего не делает.',own:'Своя сборка — это и есть «до Discovery»: glue-скрипты, которые чинишь сам.'}[s.id]||'');
+  a11y();
+}
+function chooseSub(id){
+  if(!SUBS.find(x=>x.id===id))return;
+  subPick=id;applySub();renderSubPick();updateLive();
+  if(wizStep===5&&estimate())calculate();
+}
+const USES=[{id:'personal',t:'Для себя и семьи'},{id:'business',t:'В бизнесе — работаю с клиентами'}];
+const TAXES=[{id:'fiz',t:'Физлицо'},{id:'samozan',t:'Самозанятый'},{id:'ip',t:'ИП'},{id:'ooo',t:'ООО'}];
+function renderLegalPick(){
+  const uo=document.getElementById('useOpts');
+  if(uo)uo.innerHTML=USES.map(u=>`<div class="pill ${useGoal===u.id?'selected':''}" onclick="setUse('${u.id}')">${u.t}</div>`).join('');
+  const to=document.getElementById('taxOpts');
+  if(to)to.innerHTML=TAXES.map(t=>`<div class="pill ${taxForm===t.id?'selected':''}" onclick="setTax('${t.id}')">${t.t}</div>`).join('');
+  const hint=document.getElementById('legalHint');
+  if(hint){
+    if(!useGoal&&!taxForm)hint.textContent='От этого зависит законность тарифов (Freemium у РФ-моделей — только личное), персданные клиентов (152-ФЗ) и оффер.';
+    else if(useGoal==='business'&&taxForm==='fiz')hint.textContent='Бизнес без статуса: Freemium у РФ-моделей (GigaChat) запрещает коммерцию — агент может встать в любой день. Быстрый фикс — самозанятость (10 минут, НПД 4–6%).';
+    else if(useGoal==='business'&&taxForm==='samozan')hint.textContent='НПД: перепродажа чужого запрещена — агент работает на твои услуги. Чек обязателен. Персданные клиентов — уведомление РКН.';
+    else if(useGoal==='business')hint.textContent='ИП/ООО: уведомление РКН по 152-ФЗ, политика обработки данных, расходы на модель и хостинг — в затраты.';
+    else hint.textContent='Личное использование: ограничения минимальные, бизнес-тарифы не нужны.';
+  }
+  a11y();
+}
+function setUse(v){useGoal=v;renderLegalPick();if(wizStep===5)updateLegal();}
+function setTax(v){taxForm=v;renderLegalPick();if(wizStep===5)updateLegal();}
+function legalNotes(){
+  const n=[];
+  if(!useGoal||!taxForm){
+    n.push('Статус не выбран — считаем как для физлица.');
+    n.push('Если агент работает на бизнес: Freemium у РФ-моделей (GigaChat) разрешает только личное использование — риск, что заявки встанут в любой день; зарубежные подписки коммерцию разрешают, но их аккаунты в РФ блокируют по гео — персданные клиентов всё равно 152-ФЗ, доход — налоги.');
+  }else if(useGoal==='personal'){
+    n.push('Личное использование: платные личные тарифы — законно, Freemium уместен.');
+    n.push('Персданных клиентов нет — 152-ФЗ не про тебя. Дохода с агента нет — налоги не при чём.');
+  }else if(taxForm==='fiz'){
+    n.push('Бизнес без статуса: чеков контрагентам нет, налоги с дохода — твои в любом случае.');
+    n.push('Freemium у РФ-моделей (GigaChat) разрешает только личное — коммерция = риск отключения в неудобный день. Зарубежные подписки коммерцию разрешают, но аккаунты в РФ блокируют по гео.');
+    n.push('Персданные клиентов → уведомление РКН по 152-ФЗ (ст.22). Быстрый фикс: самозанятость, 10 минут.');
+  }else if(taxForm==='samozan'){
+    n.push('НПД: перепродажа чужих услуг с наценкой запрещена — агент должен работать на твои услуги.');
+    n.push('Чек на оплату обязателен, лимит 2,4 млн ₽/год.');
+    n.push('Персданные клиентов → уведомление РКН (152-ФЗ, ст.22) + политика обработки.');
+    n.push('Если агент публикует рекламу — маркировка (ЕРИД).');
+  }else{
+    n.push('Уведомление РКН по 152-ФЗ — обязательно, политика обработки данных — на сайте и в боте.');
+    n.push('Расходы на модель и хостинг — в затраты (УСН/ОСНО), платёжки провайдерам — подтверждение.');
+    n.push('Если агент публикует рекламу — маркировка (ЕРИД).');
+  }
+  return n;
+}
+function updateLegal(){
+  const box=document.getElementById('legalBox');
+  if(!box)return;
+  const notes=legalNotes();
+  if(!notes.length){box.style.display='none';return;}
+  box.style.display='block';
+  box.innerHTML='<div class="legal-h">Что это значит юридически под твой статус</div><ul>'+notes.map(t=>'<li>'+t+'</li>').join('')+'</ul><p class="law-note">Это не юрконсультация — детали у бухгалтера. Здесь только то, что влияет на расчёт и на жизнь связки.</p>';
+}
 function renderCards(){
   var so=document.getElementById('startOpts');
-  if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="start='${s.id}';pickOption();">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
+  if(so)so.innerHTML=STARTS.map(s=>`<div class="opt ${start===s.id?'selected':''}" onclick="pickStart('${s.id}')">${ic(s.ic)}<div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div></div></div>`).join('');
   const showUnsure=goals.length===0||goals.includes('unsure');
   document.getElementById('goalOpts').innerHTML=GOALS.filter(g=>g.id!=='unsure'||showUnsure).map(g=>`<div class="opt ${goals.includes(g.id)?'selected':''}" onclick="toggleGoal('${g.id}')">${ic(g.ic)}<div class="body"><div class="t">${g.t}</div><div class="d">${g.d}</div><div class="tag">от ${days(g.econ)}</div></div></div>`).join('');
   var to=document.getElementById('taskOpts'); if(to)to.innerHTML=TASKS.map(t=>`<div class="task ${tasks.includes(t.id)?'selected':''}" onclick="toggleTask('${t.id}')">${ic(t.ic)}<div class="body"><div class="t">${t.label}</div><div class="d">${t.d}</div><div class="econ">до ${days(t.econ)}</div></div></div>`).join('');
   var ao=document.getElementById('autoOpts');
-  if(ao)ao.innerHTML=AUTONOMY.map(a=>'<button type="button" class="'+(autonomy===a.id?'on':'')+'" onclick="setAuto(\''+a.id+'\')">'+a.label+'</button>').join('');
+  if(ao)ao.innerHTML=AUTONOMY.map(a=>`<div class="auto-card ${autonomy===a.id?'on':''}" onclick="setAuto('${a.id}')" role="button" tabindex="0" aria-pressed="${autonomy===a.id}"><span class="ac-dot" aria-hidden="true"></span><div class="ac-l">${a.label}</div><div class="ac-t">${a.t}</div><div class="ac-d">${a.d}</div><div class="ac-p">нагрузка на модель ×${String(a.mult).replace('.',',')}</div></div>`).join('');
   var bo=document.getElementById('budgetOpts');
   if(bo)bo.innerHTML=BUDGETS.map(b=>`<div class="pill ${budget===b.id?'selected':''}" onclick="budget='${b.id}';pickOption();">${b.label}</div>`).join('');
   a11y();
@@ -203,7 +294,7 @@ function renderConfig(){
   if(pa)pa.innerHTML=PAY.map(p=>`<div class="opt ${pay===p.id?'selected':''}" onclick="pay='${p.id}';cfgChange();">${ic(p.ic)}<div class="body"><div class="t">${p.t}</div><div class="d">${p.d}</div></div></div>`).join('');
   a11y();
 }
-function setAuto(id){autonomy=id;cfgChange();}
+function setAuto(id){autonomy=id;renderCards();cfgChange();}
 /* Конфигуратор: перерисовываем только его + цену (шаги скрыты — renderCards/stepRender не нужны) */
 function cfgChange(){renderConfig();updateLive();if(document.getElementById('result').classList.contains('show'))calculate();}
 
@@ -232,17 +323,17 @@ document.addEventListener('keydown',function(ev){
 });
 function toggleTask(id){tasks=tasks.includes(id)?tasks.filter(x=>x!==id):[...tasks,id];renderCards();updateLive();renderBridge();}
 function toggleGoal(id){
-  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();if(estimate())calculate();return;}
+  if(id==='unsure'){goals=goals.includes(id)?[]:['unsure'];goal=goals[0]||null;tasks=deriveTasks();renderCards();updateLive();updateGoalMeta();wizButtons();if(estimate())calculate();return;}
   goals=goals.filter(x=>x!=='unsure');
   if(goals.includes(id)){goals=goals.filter(x=>x!==id);}
   else{
     /* кап «до трёх»: снимает и паралич выбора, и завышение итоговой цифры (ux-research/02) */
-    if(goals.length>=3){toast('До трёх — выбери самое жрущее, остальное добавим после приёмки');renderCards();return;}
+    if(goals.length>=3){toast('До трёх — выбери самое жрущее, остальное добавим после приёмки');renderCards();wizButtons();return;}
     goals.push(id);
   }
   goal=goals[0]||null;
   tasks=deriveTasks();
-  renderCards();updateLive();updateGoalMeta();
+  renderCards();updateLive();updateGoalMeta();wizButtons();
   if(estimate())calculate(); /* результат пересчитывается на том же экране, без прыжков */
 }
 function startBase(){ const s=STARTS.find(x=>x.id===start); return s?s.base:0; }
@@ -537,7 +628,11 @@ function estimate(){
   /* Свой VPS — это тоже деньги каждый месяц, а не «бесплатно». Раньше device='vps' давал
      hostCost=0 и клиент видел связку на 2190 ₽ дешевле, чем она стоит. Считаем как есть,
      а в интерфейсе помечаем «сервер уже оплачен». */
-  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')||device==='vps'||data==='ru');
+  /* Сервер нужен, когда связке есть где и зачем жить: свой хост/VPS, облако, РФ-сервер,
+     или облачная модель + канал 24/7 (боту нужен сервер). Локальная модель на своём
+     железе без каналов — работает с ПК клиента, 0 ₽ (аудит 21: «месяц бесплатным не бывает»
+     касался облачной модели + TG). */
+  const hosted=(device==='host'||(data==='cloud'&&device!=='vps')||device==='vps'||data==='ru'||(modelKey!=='local'&&modelKey!=='hybrid'&&tgNeeded));
   const rfColo=hosted||data==='ru'||device==='vps';
   /* Шлюз для Telegram на РФ-хостинге: api.telegram.org из дата-центров РФ не отвечает (ТСПУ).
      MTProxy/реверс-прокси на дешёвом VPS — 200–400 ₽/мес, берём середину. */
@@ -549,36 +644,122 @@ function estimate(){
   const connTotal=connCost;
   const monthly=Math.round(modelCost+hostCost+connTotal);
   // с агентом: что осталось человеку — контроль и правки, доля от автономности
-  const agentShare=draft=>({draft:0.4,review:0.3,auto:0.2,full:0.1}[draft]||0.3);
-  const agentHours=Math.round(handsHours*(1-agentShare(autonomy))*1);
+  /* доля рутины, которую забирает агент — растёт с автономностью.
+     Аудит 21-audit-tech: прежние доли (агент забирал 60–90% даже на «Черновиках»)
+     завышали окупаемость ~2,5×. Теперь честно: на «Черновиках» агент берёт треть. */
+  const agentShare=draft=>({draft:0.3,review:0.5,auto:0.75,full:0.9}[draft]||0.5);
+  const agentHours=Math.round(handsHours*agentShare(autonomy));
   const handsTotal=handsHours;
   const startMoney=startBase();
   return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost,hostCost,connTotal,gateway,modelName:m.name,base:startMoney};
 }
+/* ========== WIZARD: воронка из 5 шагов ==========
+   Один вопрос на экран, прогресс, mini-CTA. Честному расчёту нужны 4–5 шагов —
+   и финальный экран, который можно спокойно прочитать (решение 26.10). */
+/* Состояние кнопок «Далее»: оживают сразу на тапе, не только на переходе */
+function wizButtons(){
+  const nb1=document.getElementById('next1');if(nb1)nb1.disabled=!start;
+  const nb2=document.getElementById('next2');if(nb2)nb2.disabled=goals.length===0;
+}
+/* ========== LENS: три денежных языка ==========
+   Клик по названию перестраивает весь поток: заголовки шагов, подписи, ага-тег.
+   Цифры одни и те же — меняется язык, которым клиент думает о деньгах. */
+const LENSES={
+  time:{
+    title:'Сколько забирает <em>твоя рутина</em>',
+    lead:'3 вопроса — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.',
+    ws1t:'С чего начинаешь?',ws1s:'Откуда стартуем — от этого зависит первый продукт и вся экономика дальше. Один вариант, честно.',
+    ws2s:'До трёх пунктов, самое жрущее — первым. Лучше меньше, но правда: часы считаются отсюда.',
+    ws3s:'Чем больше агент делает сам, тем больше токенов он тратит. Это главная ручка цены — и она твоя.',
+    ws4s:'Каналы, железо и данные. По умолчанию — РФ-облако, можно поменять: цена пересчитается сразу.',
+    tag:'Твоя связка готова',preset:null,next1:'Выбрал — что жрёт время →'},
+  people:{
+    title:'Сколько стоит <em>твой человек на рутине</em>',
+    lead:'Считаем долю зарплаты, которую съедает рутина, против владения агентом. Человек остаётся — на том, что требует головы.',
+    ws1t:'Старт уже выбран',ws1s:'Плачу человеку за рутину — так и считаем. Ошибся — поменяй, расчёт перестроится.',
+    ws2t:'Что из его работы отдаём агенту?',ws2s:'Что из его списка отдашь агенту — это и есть освобождённая доля зарплаты. Считаем по ставке часа, не всю зарплату.',
+    ws3s:'Чем самостоятельнее агент, тем больше доли рутины он забирает — и тем меньше платишь за простои человека.',
+    ws4s:'Каналы, железо и данные. Человек работает 8 часов и отдыхает — агент живёт 24/7, это тоже в цене.',
+    tag:'Доля рутины посчитана',preset:'people',next1:'Выбрал — что отдаём агенту →'},
+  sub:{
+    title:'Сколько стоит <em>твоя подписка</em>',
+    lead:'Подписка держит разговор, но не процессы: нет TG-бота с твоими правилами, CRM и Авито. Считаем свою связку против неё — и если подписка дешевле, так и скажем.',
+    ws1t:'Старт уже выбран',ws1s:'Плачу за подписку — так и считаем. Ошибся — поменяй, расчёт перестроится.',
+    ws2t:'Что подписка не делает?',ws2s:'Что подписка не делает — вот это и отдаём агенту. У подписки нет рук: она не дозвонится и не занесёт в таблицу.',
+    ws3s:'Подписка отвечает, когда ты спрашиваешь. Агент работает сам — уровень выбирай под свой страх.',
+    ws4s:'Каналы, железо и данные — то, чего у подписки нет вообще. Считаем свою обвязку.',
+    tag:'Подписка против своей связки',preset:'sub',next1:'Выбрал — что подписка не делает →'}
+};
+let lens='time',userStartChosen=false;
+function setLens(k){
+  if(!LENSES[k])return;
+  lens=k;
+  const L=LENSES[k];
+  document.querySelectorAll('.lens-switch button').forEach(b=>{
+    const on=b.dataset.lens===k;
+    b.setAttribute('aria-selected',on?'true':'false');
+  });
+  const ht=document.getElementById('heroTitle');if(ht)ht.innerHTML=L.title;
+  const hl=document.getElementById('heroLead');if(hl)hl.textContent=L.lead;
+  const t1=document.getElementById('ws1title');if(t1)t1.textContent=L.ws1t;
+  const s1=document.getElementById('ws1sub');if(s1)s1.textContent=L.ws1s;
+  const t2=document.getElementById('ws2title');if(t2)t2.textContent=L.ws2t;
+  const s2=document.getElementById('ws2sub');if(s2)s2.textContent=L.ws2s;
+  const s3=document.getElementById('ws3sub');if(s3)s3.textContent=L.ws3s;
+  const s4=document.getElementById('ws4sub');if(s4)s4.textContent=L.ws4s;
+  const tg=document.getElementById('ahaTag');if(tg)tg.textContent=L.tag;
+  const n1=document.getElementById('next1');if(n1&&L.next1)n1.textContent=L.next1;
+  /* Линза подсказывает старт — но только пока клиент сам не выбрал (аудит 21: линза не должна перетирать выбор) */
+  if(L.preset&&!userStartChosen&&start!==L.preset){start=L.preset;renderCards();renderSubPick();renderLegalPick();updateLive();updateGoalMeta();wizButtons();}
+  if(wizStep===5&&estimate())calculate();
+}
+
+let wizStep=1;
+function goStep(n){
+  if(n>1&&!start){toast('Сначала выбери, с чего начинаешь');return;}
+  if(n>2&&goals.length===0){toast('Отметь хотя бы одну рутину — или «не могу назвать»');return;}
+  if(n>3&&!autonomy){toast('Выбери уровень самостоятельности');return;}
+  wizStep=n;
+  for(let i=1;i<=5;i++){const el=document.getElementById('wstep'+i);if(el)el.hidden=(i!==n);}
+  document.querySelectorAll('.wiz-progress .wp').forEach(b=>{
+    const s=+b.dataset.step;
+    b.classList.toggle('act',s===n);
+    b.classList.toggle('done',s<n);
+  });
+  wizButtons();
+  const ob=document.getElementById('offerBox');
+  if(n===5){if(estimate())calculate();}
+  else if(ob)ob.style.display='none';
+  const w=document.getElementById('wiz');
+  if(w&&n>1){try{w.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){window.scrollTo(0,0);}}
+  a11y();
+}
+
 function updateLive(){
   const lb=document.getElementById('livebar');
   const e=estimate();
   const emptyEl=document.getElementById('ctorEmpty');
   if(!e){
     if(lb)lb.style.display='none';
-    document.getElementById('livePrice').innerHTML='— <span>₽/мес</span>';
+    const lp0=document.getElementById('livePrice'); if(lp0)lp0.innerHTML='— <span>₽/мес</span>';
+    const wp0=document.getElementById('wizPrice'); if(wp0)wp0.style.display='none';
     if(emptyEl)emptyEl.style.display='';
     const r0=document.getElementById('result'); if(r0)r0.classList.remove('show');
     return;
   }
   if(emptyEl)emptyEl.style.display='none';
   if(lb)lb.style.display='';
-  document.getElementById('livePrice').innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>₽/мес</span>';
+  const wp=document.getElementById('wizPrice'); if(wp)wp.style.display='';
+  const lp=document.getElementById('livePrice'); if(lp)lp.innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>₽/мес</span>';
   const hintEl=document.getElementById('liveHint');
-  if(hintEl)hintEl.textContent='сейчас уходит '+e.handsHours+' ч/мес · агент освободит ~'+e.hours+' ч — '+e.cat;
-  /* результат живёт рядом с тапами — показываем сразу, как он посчитался */
-  const res=document.getElementById('result');
-  if(res&&!res.classList.contains('show')){res.classList.add('show');if(typeof renderConfig==='function')renderConfig();}
+  if(hintEl)hintEl.textContent='сейчас уходит '+e.handsHours+' ч/мес · освободит ~'+e.hours+' ч';
+  const r=document.getElementById('result');
+  if(r&&!r.classList.contains('show')&&wizStep===5){r.classList.add('show');if(typeof renderConfig==='function')renderConfig();}
 }
 
 /* ========== ЖИВОЙ КОНСТРУКТОР: шагов нет, всё на одном экране ========== */
 /* Все тапы ведут в один апдейт: пересчёт реальный, цифра меняется на глазах. */
-function pickOption(){ renderCards(); updateLive(); updateGoalMeta(); if(estimate()) calculate(); }
+function pickOption(){ renderCards(); updateLive(); updateGoalMeta(); wizButtons(); if(estimate()) calculate(); }
 function updatePreSummary(){
   const el=document.getElementById('preSummary'); if(!el) return;
   const names=goals.map(id=>{const g=GOALS.find(x=>x.id===id);return g?(g.sn||g.t):'';}).filter(Boolean);
@@ -609,15 +790,19 @@ function recalcPayback(){
   document.getElementById('pbRate').textContent=rate.toLocaleString('ru-RU')+' \u20bd';
   const st=STARTS.find(x=>x.id===start)||STARTS[0];
   const timeMoney=e.hours*rate;              // сколько стоит освобождённое время
-  /* дублируем экономику в верхний блок, чтобы ползунок менял и её */
-  const _sv=document.getElementById('ahaSaving');
-  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoney).toLocaleString('ru-RU')+' ₽/мес</b> по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч (до вычета владения)';
   const noDouble=(start==='people');         // зарплату уже платили за эти часы — не двоим
   /* «плачу людям»: экономим не всю зарплату, а долю рутины (аудит 10-audit-economics) */
   const hRate=Math.max(1,Math.round(st.base/160));
   const routineMoney=Math.round((e.handsHours||0)*hRate);
   const money=(noDouble?routineMoney:timeMoney+e.base); // экономия = время/доля рутины + уход с текущих расходов
   const netMonthly=money-e.monthly;          // минус владение
+  /* дублируем экономику в верхний блок — уже после расчёта доли рутины */
+  const _sv=document.getElementById('ahaSaving');
+  const timeMoneyShown=noDouble?routineMoney:timeMoney;
+  if(_sv&&e.hours)_sv.innerHTML='освобождает ~'+days(e.hours)+' · <b>≈ '+Math.round(timeMoneyShown).toLocaleString('ru-RU')+' ₽/мес</b> — столько стоит освободившееся время'+(noDouble?' по ставке из зарплаты':' по ставке '+rate.toLocaleString('ru-RU')+' ₽/ч')+'<span id="ahaNet"></span>';
+  /* чистыми: время минус владение — сразу на экран, без «до вычета» */
+  const _netEl=document.getElementById('ahaNet');
+  if(_netEl)_netEl.innerHTML=(netMonthly>0?' · чистыми после владения: <b>+'+netMonthly.toLocaleString('ru-RU')+' ₽/мес</b>':' · владение съедает время-экономию — смотри деньгами ниже');
   const rc=(typeof recPrice==='function')?recPrice():st.cost;
   const res=document.getElementById('pbRes');
   if(netMonthly<=0){
@@ -631,6 +816,7 @@ function recalcPayback(){
     res.innerHTML='Экономия <b>'+netMonthly.toLocaleString('ru-RU')+' ₽/мес</b> · '+paybackTxt+' ('+_rn2+' '+rc.toLocaleString('ru-RU')+' ₽ разово)';
   }
   document.getElementById('pbNote').textContent='\u0421\u0447\u0438\u0442\u0430\u0435\u043c \u0447\u0435\u0441\u0442\u043d\u043e: \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u044f = \u043e\u0441\u0432\u043e\u0431\u043e\u0436\u0434\u0451\u043d\u043d\u044b\u0435 \u0447\u0430\u0441\u044b \u00d7 \u0442\u0432\u043e\u044f \u0446\u0435\u043d\u0430 \u0447\u0430\u0441\u0430'+(e.base>0?' + \u0443\u0445\u043e\u0434 \u0441 \u0442\u0435\u043a\u0443\u0449\u0438\u0445 \u0440\u0430\u0441\u0445\u043e\u0434\u043e\u0432':'')+' \u2212 \u0432\u043b\u0430\u0434\u0435\u043d\u0438\u0435'+(noDouble?'. \u0415\u0441\u043b\u0438 \u043f\u043b\u0430\u0442\u0438\u0448\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u0443 \u2014 \u0441\u0447\u0438\u0442\u0430\u0435\u0442\u0441\u044f \u0434\u043e\u043b\u044f \u0440\u0443\u0442\u0438\u043d\u044b, \u043d\u0435 \u0432\u0441\u044f \u0437\u0430\u0440\u043f\u043b\u0430\u0442\u0430':'')+'.';
+  if(typeof updateLegal==='function')updateLegal();
   updateYearBox(e,netMonthly,st);
   showOrderCta(e);
 }
@@ -649,7 +835,7 @@ document.addEventListener('DOMContentLoaded',function(){
       +'\u041a\u043e\u0433\u0434\u0430 \u043d\u0443\u0436\u043d\u043e: [\u0441\u0440\u043e\u043a]\n'
       +'\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0430 \u0437\u0430\u043f\u0443\u0441\u043a: [\u0435\u0441\u0442\u044c / \u043d\u0435\u0442]\n\n'
       +'\u0420\u0430\u0441\u0447\u0451\u0442 \u0438\u0437 \u043a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440\u0430: '+monthly;
-    window.open('https://t.me/soulvictor?text='+encodeURIComponent(msg),'_blank','noopener');
+    window.open('https://t.me/victorpinksight?text='+encodeURIComponent(msg),'_blank','noopener');
   });
 });
 function updateYearBox(e,net,st){
@@ -703,7 +889,8 @@ function updateAcceptance(e,net){
   if(data==='local'||data==='ru'||data==='hybrid') items.push('Данные на твоём устройстве или РФ-сервере — показываю, где именно');
   items.push('Откат на заглушку, если агент упал — показываю, как');
   items.push('Лог первых задач: что сделал, что нет — отдаю тебе');
-  var pay=(net&&net>0)?('Окупается за '+( (STARTS.find(x=>x.id===start)||STARTS[0]).cost/Math.max(net,1)<=1?'первый месяц':Math.ceil((STARTS.find(x=>x.id===start)||STARTS[0]).cost/Math.max(net,1))+' мес' )):'не окупается — не начинаем';
+  var rcA=(typeof recPrice==='function')?recPrice():((STARTS.find(x=>x.id===start)||STARTS[0]).cost);
+  var pay=(net&&net>0)?('Окупается за '+( rcA/Math.max(net,1)<=1?'первый месяц':Math.ceil(rcA/Math.max(net,1))+' мес' )):'не окупается — не начинаем';
   box.innerHTML='<div class="acc-head">Чек-лист приёмки твоей сборки</div>'
     +'<div class="acc-sub">Это то, что ты примешь до оплаты. Пункт не работает — довожу без доплат (до 10 рабочих дней).</div>'
     +'<ol>'+items.map(function(t){return '<li>'+t+'</li>';}).join('')+'</ol>'
@@ -740,14 +927,15 @@ function calculate(){
   renderHeroCompare(e,_rate);
 
   const detail=document.getElementById('detailBox');
-  detail.style.display='block';
+  /* unsure: цифр нет — процесс не назван, любые часы/экономия были бы выдумкой (аудит 20, D3) */
+  detail.style.display=isUnsure?'none':'block';
   if(true){
     const max=Math.max(e.handsHours,e.hours,1);
     document.getElementById('vsHandsVal').textContent=e.handsHours+' \u0447/\u043c\u0435\u0441';
-    document.getElementById('vsAgentVal').textContent=e.hours+' \u0447/\u043c\u0435\u0441 (\u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044c)';
+    document.getElementById('vsAgentVal').textContent=e.hours+' \u0447/\u043c\u0435\u0441 \u2014 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u0430\u0433\u0435\u043d\u0442';
     setTimeout(()=>{
       document.getElementById('vsHands').style.width=Math.round(e.handsHours/max*100)+'%';
-      document.getElementById('vsAgent').style.width=Math.round((e.handsHours-e.hours)/max*100)+'%';
+      document.getElementById('vsAgent').style.width=Math.round(e.hours/max*100)+'%';
     },60);
     const rows=[['\u041c\u043e\u0434\u0435\u043b\u044c \u2014 '+e.modelName,e.modelCost],['\u0425\u043e\u0441\u0442\u0438\u043d\u0433'+(e.gateway?' (\u0441 \u0448\u043b\u044e\u0437\u043e\u043c \u0434\u043b\u044f Telegram)':''),e.hostCost],['\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f',e.connTotal]];
     document.getElementById('brkTable').innerHTML=
@@ -768,7 +956,7 @@ function calculate(){
       else if(start==='sub') line='<span class="sb-k">Платишь сейчас ~'+st.base.toLocaleString('ru-RU')+' ₽/мес за подписку</span> → владение <b>'+m0+' ₽/мес</b> · плюс нельзя отключить';
       else if(start==='legacy') line='<span class="sb-k">Связка сейчас ~'+st.base.toLocaleString('ru-RU')+' ₽/мес</span> → после оптимизации <b>'+m0+' ₽/мес</b> · замер до/после';
       else if(start==='hardware') line='<span class="sb-k">Железо уже твоё</span> → связка <b>'+m0+' ₽/мес</b> вместо ~'+st.base.toLocaleString('ru-RU')+' ₽ за облако';
-      else if(start==='people') line='<span class="sb-k">Платишь человеку ~'+st.base.toLocaleString('ru-RU')+' ₽/мес</span> → агент+владение <b>'+m0+' ₽/мес</b> · не болеет и не уходит';
+      else if(start==='people'){var _hr=Math.max(1,Math.round(st.base/160)),_rm=Math.round((e.handsHours||0)*_hr);line='<span class="sb-k">Платишь человеку ~'+st.base.toLocaleString('ru-RU')+' ₽/мес</span> → рутина из них ≈ <b>'+_rm.toLocaleString('ru-RU')+' ₽/мес</b>, владение агентом <b>'+m0+' ₽/мес</b> · человек остаётся на работе, требующей головы';}
       sb.innerHTML=line;
       sb.style.display='block';
     }
@@ -811,13 +999,13 @@ function calculate(){
   if(!isUnsure)countUp(document.getElementById('ahaCost'),e.monthly,' \u20bd/\u043c\u0435\u0441'); /* «0 ₽ за разбор» не подменяем ценой владения (аудит 15-audit-tech) */
   if(!document.getElementById('result').classList.contains('show'))renderConfig();
   document.getElementById('result').classList.add('show');
-  document.getElementById('offerBox').style.display='block';
+  if(wizStep===5)document.getElementById('offerBox').style.display='block'; /* офферы — только на финальном шаге */
 
 }
 
 /* ========== ОПЛАТА: прямой перевод + личка ========== */
 /* Никаких ботов и автоматизации: СБП/карта → личка Виктора с готовым текстом. */
-const TG_ME='https://t.me/soulvictor';
+const TG_ME='https://t.me/victorpinksight';
 let chosenOffer=null;
 
 /* ====== ЕДИНЫЙ БИЛДЕР TG-СООБЩЕНИЯ (ux-research/05) ======
@@ -837,7 +1025,9 @@ function buildTgText(kind){
   const connsLbl=conns.map(c=>{const x=CONNS.find(y=>y.id===c);return x?x.label:'';}).filter(Boolean).join(', ')||'—';
   const dataLbl=(DATA.find(x=>x.id===data)||{}).t||'—';
   const rate=+(document.getElementById('pbSlider')||{value:700}).value||700;
-  const saved=e.hours?Math.round(e.hours*rate):0;
+  /* линза «плачу людям»: экономика в TG — от доли рутины по ставке зарплаты (аудит 22) */
+  const _hRate=Math.max(1,Math.round((st.base||0)/160));
+  const saved=e.hours?Math.round(start==='people'?Math.round((e.handsHours||0)*_hRate):e.hours*rate):0;
   const T={config:'Персональная сборка — 7 000 ₽',table:'Гайд: 20 конфигураций — 5 000 ₽',
     optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — бриф, 0 ₽'};
   let title=T[kind]||'Связка ИИ-агента';
@@ -965,7 +1155,8 @@ function copyTxt(row){
 renderCards();
 renderPresets();
 renderConfig();
-renderSteps();
+renderSubPick();
+renderLegalPick();
+goStep(1);
 updateLive();
 a11y();
-var _sc=document.getElementById('stepsCount'); if(_sc)_sc.textContent='1 / '+N;

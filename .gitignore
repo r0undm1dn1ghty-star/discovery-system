@@ -38,3 +38,11 @@ _mine/
 *.bak-uxaudit
 *.html.mine
 _t[0-9]*.log
+
+# sensitive artifacts (2026-10-28 pentest fix)
+*.session
+*.session-journal
+.env
+.env.*
+auth.json
+mcp-tokens/
