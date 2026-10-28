@@ -67,8 +67,6 @@ h2{color:var(--ink);font-family:var(--display);font-size:1.18rem;font-weight:600
 .btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(var(--accent-rgb),.4);transform:none;box-shadow:none}
 .msgr{display:flex;flex-direction:column;gap:10px}
 .msgr .btn{width:100%}
-.btn-vk{background:rgba(255,255,255,.03);border-color:var(--line);color:var(--ink);box-shadow:none;font-weight:500}
-.btn-vk:hover{background:rgba(255,255,255,.07);box-shadow:none}
 .tga-note{font-size:13px;color:var(--meta);margin:16px 0 0;line-height:1.6}
 .tga-note a{color:var(--accent);text-decoration:underline}
 .trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 30px;font-size:13px;color:var(--meta)}
@@ -138,9 +136,8 @@ footer a{color:var(--meta);text-decoration:underline}
 <input id="tgIn" type="text" inputmode="text" autocomplete="off" placeholder="@username или ссылка t.me/..."/>
 <div class="msgr">
 <button class="btn" id="tgBtn" type="button">Отправить заявку в Telegram →</button>
-<button class="btn btn-vk" id="vkBtn" type="button">Отправить заявку ВКонтакте →</button>
 </div>
-<p class="tga-note">Принимаю заявки в Telegram и ВКонтакте. Если оба не под рукой — <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>.</p>
+<p class="tga-note">Принимаю заявки в Telegram. Если оба не под рукой — <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>.</p>
 </div>
 
 <div class="trust">
@@ -329,7 +326,6 @@ var NEXT = {
      текстом: продукт, сумма, ник. Останется нажать «отправить». */
   var inp=document.getElementById('tgIn');
   var btnTg=document.getElementById('tgBtn');
-  var btnVk=document.getElementById('vkBtn');
 
   function nick(){ return (inp&&inp.value||'').trim().replace(/^https?:\/\/(t\.me|vk\.com|vk\.ru)\//i,'').replace(/^@/,''); }
   function buildOrder(){
@@ -349,18 +345,7 @@ var NEXT = {
       window.open('https://t.me/victorpinksight?text='+encodeURIComponent(buildOrder()),'_blank','noopener');
     });
   }
-  if(btnVk){
-    btnVk.addEventListener('click',function(){
-      if(!nick()){ if(inp){inp.focus();inp.style.borderColor='rgba(240,178,74,.6)';} return; }
-      var txt=encodeURIComponent(buildOrder());
-      if(DS_VK_DIRECT){ window.open(DS_VK_DIRECT+(DS_VK_DIRECT.indexOf('?')>-1?'&':'?')+'text='+txt,'_blank','noopener'); }
-      else {
-        if(navigator.clipboard) navigator.clipboard.writeText(decodeURIComponent(txt));
-        btnVk.textContent='Текст скопирован — вставь в ВК ✓';
-        setTimeout(function(){btnVk.textContent='Отправить заявку ВКонтакте →';},3200);
-      }
-    });
-  }
+  
   if(inp){inp.addEventListener('input',function(){inp.style.borderColor='';});}
 })();
 </script>
