@@ -63,7 +63,7 @@ var DS_PAY = {
 
 /* ── Куда ведём, когда ссылка ещё не создана ───────────── */
 var DS_TG_ORDER   = 'https://t.me/discoverysystem';  /* канал */
-var DS_TG_DIRECT  = 'https://t.me/soulvictor';       /* личка */
+var DS_TG_DIRECT  = 'https://t.me/victorpinksight';       /* личка */
 var DS_VK_DIRECT  = '';                              /* вставь ссылку ВК, когда будет */
 var DS_MAX_MSG    = 2000;  /* макс. сумма для «напишите, если не нашли» */
 
@@ -128,7 +128,7 @@ var DS_TRIBUTE_SUPPORT  = DS_PAY.support.url;
           var t=el.getAttribute('data-tg');
           if(!t) return;
           var msg=t+'\n\nХочу решить сейчас — подскажи, что нужно от меня и какие сроки.';
-          el.setAttribute('href','https://t.me/soulvictor?text='+encodeURIComponent(msg));
+          el.setAttribute('href','https://t.me/victorpinksight?text='+encodeURIComponent(msg));
           el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
         })(tgs[j]);
       }
