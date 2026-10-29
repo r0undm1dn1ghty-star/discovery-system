@@ -243,6 +243,29 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 :root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
 
 
+
+/* ===== визуализация внедрения: восемь потоков → один ===== */
+.viz{margin:18px 0 6px;border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.018)}
+.viz-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line-soft);
+  font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.viz-bar b{color:var(--accent);font-weight:500}
+.viz-bar .r{margin-left:auto;letter-spacing:.06em;text-transform:none;color:var(--meta)}
+.viz-chaos{height:250px;position:relative}
+.viz-chaos canvas{width:100%;height:100%;display:block}
+.viz-stats{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line-soft)}
+.viz-st{padding:12px 14px}
+.viz-st+.viz-st{border-left:1px solid var(--line-soft)}
+.viz-st .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:7px}
+.viz-st .row{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--meta)}
+.viz-st .row b{font-family:var(--mono);font-size:11px;font-weight:500}
+.viz-st .row .bad{color:#e0a396}
+.viz-st .row .good{color:var(--ok)}
+.viz-note{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--meta);padding:10px 14px;border-top:1px solid var(--line-soft)}
+@media(max-width:760px){.viz-chaos{height:196px}.viz-stats{grid-template-columns:1fr}.viz-st+.viz-st{border-left:0;border-top:1px solid var(--line-soft)}}
+/* мобильный фикс: карточки внедрения не влезали в 390px */
+.ic{min-width:0}
+@media(max-width:760px){.install-cards,.install-cards.four{grid-template-columns:1fr}}}
+
 </style>
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
@@ -331,6 +354,15 @@ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/sv
 <div class="ic-cta"><a class="btn-tg" data-tg="Услуга: Внедрение — средний бизнес" href="https://t.me/victorpinksight">Написать мне</a>
 <a class="btn-buy btn-buy-lg" data-buy="mid" data-buy-label="Оплатить сразу — 60 000 ₽" href="#">Оплатить сразу — 60 000 ₽</a></div>
 </div>
+</div>
+<div class="viz rv" data-viz="2">
+  <div class="viz-bar"><b>до и после</b><span class="r">слева — сейчас · справа — после</span></div>
+  <div class="viz-chaos"><canvas id="vzChaos"></canvas></div>
+  <div class="viz-stats">
+    <div class="viz-st"><span class="k">сейчас</span><div class="row"><span><b class="bad">8</b> источников</span><span><b class="bad">3</b> системы</span><span><b class="bad">3 ч 12 м</b> на заявку</span></div></div>
+    <div class="viz-st"><span class="k">после</span><div class="row"><span><b class="good">1</b> поток</span><span><b class="good">1</b> место</span><span><b class="good">6 мин</b> на заявку</span></div></div>
+  </div>
+  <div class="viz-note">схема подключения · шаги идут в твоём порядке, исключения — твои</div>
 </div>
 <p class="n-meta">гайд 5К включён · без абонентки · чек-лист требований до оплаты · гарантия возврата, если агент не пройдёт приёмку (см. «Гарантия» ниже)</p>
 </div>
@@ -513,5 +545,62 @@ el.innerHTML=el.textContent.split('·').map(function(s){return '<span class="icv
 });
 })();
 </script>
+
+<script>
+(function(){
+  var cv=document.getElementById('vzChaos');
+  if(!cv) return;
+  function inView(el){var r=el.getBoundingClientRect();return r.top<(innerHeight||800)*.95&&r.bottom>0;}
+  var box=cv.closest('.viz');
+  if(box && inView(box)) box.classList.add('in');
+  if(box && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ if(es[0].isIntersecting) box.classList.add('in'); },{threshold:.12}).observe(box);
+  }
+  setTimeout(function(){ if(box) box.classList.add('in'); },2500);
+
+  var ctx=cv.getContext('2d'), W=0,H=0,dpr=Math.min(devicePixelRatio||1,2), vis=true, t=0, last=0;
+  function size(){var r=cv.getBoundingClientRect();W=Math.max(240,r.width);H=Math.max(140,r.height);
+    cv.width=Math.floor(W*dpr);cv.height=Math.floor(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
+  size(); addEventListener('resize',size);
+  var N=8, labels=['почта','Авито','WhatsApp','1С','таблица','звонки','отзывы','склад'],
+      cols=['#8b9cff','#7bc4a8','#d9b98a','#e0a396','#8b9cff','#7bc4a8','#d9b98a','#e0a396'];
+  function nz(s,tt){return Math.sin(tt*2.1+s*3.1)*.5+Math.sin(tt*5.5+s*1.7)*.3+Math.sin(tt*9.1+s*4.3)*.2;}
+  function frame(now){
+    requestAnimationFrame(frame);
+    if(!vis) return; if(now-last<33) return; last=now; t=now/1000;
+    ctx.clearRect(0,0,W,H);
+    var midX=W*.52, midY=H*.5, leftW=W*.34;
+    for(var i=0;i<N;i++){
+      var y0=H*(.12+.76*(i/(N-1)));
+      var c1x=leftW*.45, c1y=y0+nz(i*1.7,t)*28, c2x=midX-leftW*.42, c2y=midY+nz(i*2.9,t+1)*20;
+      ctx.beginPath();ctx.moveTo(0,y0);ctx.bezierCurveTo(c1x,c1y,c2x,c2y,midX,midY);
+      ctx.strokeStyle=cols[i];ctx.globalAlpha=.5;ctx.lineWidth=1.5;ctx.stroke();
+      for(var k=1;k<=3;k++){var u=k/4;
+        var x=(1-u)*(1-u)*u*3*c1x+(1-u)*u*u*3*c2x+u*u*u*midX;
+        var yy=(1-u)*(1-u)*(1-u)*y0+(1-u)*(1-u)*u*3*c1y+(1-u)*u*u*3*c2y+u*u*u*midY;
+        ctx.globalAlpha=.55;ctx.fillStyle=cols[i];ctx.fillRect(x-1.8,yy-1.8,3.6,3.6);}
+      ctx.globalAlpha=.8;ctx.fillStyle='rgba(184,195,214,.62)';ctx.font='9px IBM Plex Mono,monospace';
+      ctx.fillText(labels[i],8,y0-7);
+    }
+    ctx.globalAlpha=1;
+    var pulse=1+Math.sin(t*2)*.06;
+    ctx.beginPath();ctx.arc(midX,midY,17*pulse,0,7);ctx.fillStyle='rgba(123,196,168,.16)';ctx.fill();
+    ctx.beginPath();ctx.arc(midX,midY,9,0,7);ctx.fillStyle='#7bc4a8';ctx.fill();
+    ctx.beginPath();ctx.arc(midX,midY,17,0,7);ctx.strokeStyle='rgba(123,196,168,.5)';ctx.lineWidth=1;ctx.stroke();
+    ctx.fillStyle='#0d1a16';ctx.font='600 7px IBM Plex Mono,monospace';ctx.textAlign='center';ctx.fillText('агент',midX,midY+2.6);ctx.textAlign='left';
+    var endX=W-8;
+    ctx.beginPath();ctx.moveTo(midX+19,midY);ctx.bezierCurveTo(midX+58,midY,midX+58,midY,endX,midY);
+    ctx.strokeStyle='rgba(123,196,168,.7)';ctx.lineWidth=2.6;ctx.lineCap='round';ctx.stroke();
+    for(var m=0;m<5;m++){var p=((t*.22+m*.2)%1);var x2=midX+19+(endX-midX-19)*p;
+      ctx.beginPath();ctx.arc(x2,midY,3,0,7);ctx.fillStyle='rgba(123,196,168,'+(.9-p*.5)+')';ctx.fill();}
+    ctx.fillStyle='rgba(123,196,168,.85)';ctx.font='9px IBM Plex Mono,monospace';ctx.fillText('один поток',endX-66,midY-12);
+  }
+  requestAnimationFrame(frame);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){vis=es[0].isIntersecting},{threshold:0}).observe(cv);
+  }
+})();
+</script>
+
 </body>
 </html>
