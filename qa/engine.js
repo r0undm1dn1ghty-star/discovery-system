@@ -827,16 +827,12 @@ function showOrderCta(e){
 document.addEventListener('DOMContentLoaded',function(){
   var b=document.getElementById('orderBtn'); if(!b) return;
   b.addEventListener('click',function(){
-    var e=estimate();
-    var monthly=(e&&e.monthly)?e.monthly.toLocaleString('ru-RU')+' \u20bd/\u043c\u0435\u0441':'\u0435\u0449\u0451 \u043d\u0435 \u043f\u043e\u0441\u0447\u0438\u0442\u0430\u043d\u043e';
-    var msg='\u0412\u0438\u043a\u0442\u043e\u0440, \u043f\u0440\u0438\u0432\u0435\u0442! \u0425\u043e\u0447\u0443 \u0432\u043d\u0435\u0434\u0440\u0438\u0442\u044c \u0430\u0433\u0435\u043d\u0442\u0430 \u2014 \u0440\u0430\u0441\u0447\u0451\u0442 \u0438\u0437 \u043a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440\u0430 \u043f\u0440\u0438\u043b\u0430\u0433\u0430\u044e.\n\n'
-      +'\u0427\u0442\u043e \u0437\u0430 \u0440\u0443\u0442\u0438\u043d\u0430: [\u0434\u0432\u0443\u043c\u044f \u0441\u043b\u043e\u0432\u0430\u043c\u0438]\n'
-      +'\u0427\u0442\u043e \u0434\u0435\u043b\u0430\u0435\u0442\u0441\u044f \u0440\u0443\u043a\u0430\u043c\u0438: [\u0447\u0442\u043e \u0437\u0430\u0431\u0440\u0430\u0442\u044c \u0443 \u0430\u0433\u0435\u043d\u0442\u0430]\n'
-      +'\u041a\u043e\u0433\u0434\u0430 \u043d\u0443\u0436\u043d\u043e: [\u0441\u0440\u043e\u043a]\n'
-      +'\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0430 \u0437\u0430\u043f\u0443\u0441\u043a: [\u0435\u0441\u0442\u044c / \u043d\u0435\u0442]\n\n'
-      +'\u0420\u0430\u0441\u0447\u0451\u0442 \u0438\u0437 \u043a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440\u0430: '+monthly;
-    window.open('https://t.me/victorpinksight?text='+encodeURIComponent(msg),'_blank','noopener');
+    var k=recKind(recommendProduct());
+    if(k==='install'&&!installTier)installTier=installTierGuess();
+    sendToTg(k);
   });
+  var c=document.getElementById('orderCopy'); if(!c) return;
+  c.addEventListener('click',copyOrderText);
 });
 function updateYearBox(e,net,st){
   var box=document.getElementById('yearBox'); if(!box)return;
@@ -1008,60 +1004,155 @@ function calculate(){
 const TG_ME='https://t.me/victorpinksight';
 let chosenOffer=null;
 
-/* ====== ЕДИНЫЙ БИЛДЕР TG-СООБЩЕНИЯ (ux-research/05) ======
-   Полный паспорт расчёта + лайнеры, которые клиент дополнит.
-   Раньше 4 точки выхода шл разный текст: orderBtn терял контекст целиком. */
+/* ====== ПАСПОРТ РАСЧЁТА ДЛЯ TELEGRAM (единый билдер) ======
+   Задача: клиент приходит в личку не с «сколько стоит», а с рутиной, стеком,
+   ограничениями и цифрами. Раньше 4 точки выхода шл разный текст, а ссылка
+   вида t.me/<user>?text= , открытая из браузера на iOS, теряла черновик —
+   до Виктора доезжал только вопрос про цену. */
 let installTier=null;
+const OFFER_NAMES={config:'Персональная сборка — 7 000 ₽',table:'Гайд: 20 конфигураций — 5 000 ₽',
+  optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — бриф, 0 ₽'};
+const INSTALL_NAMES={pc:'Личный агент на ПК — 15 000 ₽',vps:'Агент для самозанятого — 20 000 ₽',
+  integ:'ИП/малый бизнес — 30 000 ₽',mid:'Средний бизнес — 60 000 ₽'};
+function recKind(k){ return (!k||k==='build')?'config':k; }
+function productLabel(kind){
+  if(kind==='install') return INSTALL_NAMES[installTier]||'Внедрение под ключ';
+  return OFFER_NAMES[kind]||'Связка ИИ-агента';
+}
+/* тот же выбор масштаба, что подсвечивает arrangeOffers */
+function installTierGuess(){
+  return (conns.includes('crm')||conns.includes('avito')||goals.filter(g=>g!=='unsure').length>=3)?'integ'
+       : (device==='vps'||device==='host')?'vps':'pc';
+}
+function labelOf(list,id){ const x=(list||[]).find(v=>v.id===id); return x?(x.label||x.t||x.short||id):''; }
+function taskLabels(){ return tasks.map(id=>labelOf(TASKS,id)).filter(Boolean); }
+/* экономика для паспорта — та же, что на экране: вторая арифметика разошлась бы с калькулятором */
+function briefNumbers(){
+  const e=estimate()||{};
+  const st=STARTS.find(x=>x.id===start)||null;
+  const rate=+(document.getElementById('pbSlider')||{value:700}).value||700;
+  const hRate=Math.max(1,Math.round(((st&&st.base)||0)/160));
+  const people=(start==='people');
+  const routine=Math.round((e.handsHours||0)*hRate);
+  const money=people?routine:((e.hours||0)*rate+(e.base||0));
+  const net=Math.round(money-(e.monthly||0));
+  const rc=(typeof recPrice==='function')?recPrice():0;
+  return {rate:rate,hRate:hRate,people:people,routine:routine,money:money,net:net,rc:rc};
+}
+function briefText(kind){
+  const e=estimate()||{};
+  const st=STARTS.find(x=>x.id===start)||null;
+  const aut=AUTONOMY.find(x=>x.id===autonomy)||null;
+  const n=briefNumbers();
+  const isUnsure=(goal==='unsure'||goals.includes('unsure'));
+  const L=[];
+  L.push('Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.');
+  L.push('');
+  const gl=isUnsure?'':goalLabel();
+  L.push('РУТИНА: '+(gl||'пока не назвал сам — нужен разбор дня'));
+  const tl=taskLabels(); if(tl.length)L.push('Задачи в связке: '+tl.join(', '));
+  const bg=[];
+  if(st)bg.push(st.short+(st.base?' (~'+st.base.toLocaleString('ru-RU')+' ₽/мес)':''));
+  if(start==='sub'&&subPick){const s=SUBS.find(x=>x.id===subPick); if(s)bg.push('подписка: '+s.short);}
+  if(e.handsHours)bg.push('руками уходит ~'+e.handsHours+' ч/мес');
+  const pc=(typeof PERSONA_COPY!=='undefined'&&PERSONA_COPY[persona()])?PERSONA_COPY[persona()].tag.replace('Твой путь — ',''):'';
+  if(bg.length||pc)L.push('БЭКГРАУНД: '+(bg.join(' · ')+(bg.length&&pc?' · ближе подача: ':'подача: ')+pc));
+  const stack=[];
+  if(device)stack.push(deviceLabel());
+  if(data)stack.push(labelOf(DATA,data));
+  if(e.modelName)stack.push('модель: '+e.modelName);
+  if(aut)stack.push('автономность: '+aut.t);
+  if(conns.length)stack.push('подключения: '+conns.map(c=>labelOf(CONNS,c)).filter(Boolean).join(', '));
+  if(stack.length)L.push('СТЕК: '+stack.join(' · '));
+  const lim=[];
+  const useL=labelOf(USES,useGoal), taxL=labelOf(TAXES,taxForm);
+  if(useL||taxL)lim.push('статус: '+[useL,taxL].filter(Boolean).join(', '));
+  if(budget)lim.push('бюджет: '+budgetLabel());
+  if(pay)lim.push('оплата: '+labelOf(PAY,pay));
+  if(lim.length)L.push('ОГРАНИЧЕНИЯ: '+lim.join(' · '));
+  if(e.handsHours){
+    const left=Math.max(0,e.handsHours-e.hours);
+    const rate=Math.max(1,Math.round((st&&st.base?Math.round(st.base/160):n.rate)));
+    const savedTxt=(n.people?n.routine:Math.round(e.hours*n.rate)).toLocaleString('ru-RU');
+    L.push('ЦИФРЫ: агент забирает ~'+e.hours+' ч/мес из '+e.handsHours+' ч (контроль ~'+left+' ч) · ставка '
+      +(n.people?n.hRate.toLocaleString('ru-RU'):n.rate.toLocaleString('ru-RU'))+' ₽/ч · экономия ~'+savedTxt+' ₽/мес · владение ~'
+      +(e.monthly||0).toLocaleString('ru-RU')+' ₽/мес'+(n.net>0?(' · чистыми +'+n.net.toLocaleString('ru-RU')+' ₽/мес, за год ~'+(n.net*12).toLocaleString('ru-RU')+' ₽'):''));
+  } else if(e.monthly!==undefined){
+    L.push('ЦИФРЫ: владение ~'+(e.monthly||0).toLocaleString('ru-RU')+' ₽/мес · часы пока не названы — считаем после разбора дня');
+  }
+  const rk=recKind(kind||recommendProduct());
+  L.push('РЕКОМЕНДАЦИЯ КАЛЬКУЛЯТОРА: '+productLabel(rk));
+  L.push('');
+  const LINERS={
+    config:['Уточню словами: чем занимаюсь — [2 строки]','Что уже есть: [сервисы, таблицы, помощники]'],
+    table:['Собираю сам: цель на первый месяц — [задача]'],
+    optimization:['Где болит: [сколько часов или рублей утекает]','Что уже пробовал: [чтобы не повторять]'],
+    install:['Процесс по шагам: [откуда данные → что делать → куда результат]','Доступы готов дать: [TG / таблица / CRM]'],
+    diagnostic:['Мой день: [утром… потом…]','Чем делаю сейчас: [руками / Excel / бот / помощник]','Куда должен приходить результат: [TG / таблица / CRM]']
+  };
+  const ln=LINERS[rk]||LINERS.config;
+  L.push('ДОПОЛНЮ СВОИМИ СЛОВАМИ (по желанию):');
+  ln.forEach(t=>L.push('• '+t));
+  L.push('');
+  const NEXT={config:'Готов оплатить 7 000 ₽ и начать сборку — подтверди, что архитектура покроет мой случай.',
+    table:'Готов взять гайд за 5 000 ₽ — скажи, как оплатить.',
+    optimization:'Готов дать доступ к связке — сделай аудит и назови цену до старта.',
+    diagnostic:'Готов описать день — верни разбор: что автоматизировать первым и сколько это стоит.',
+    install:'Созвон по архитектуре (15 минут) или всё в переписке — как удобнее.'};
+  L.push('ДАЛЬШЕ: '+(NEXT[rk]||NEXT.config));
+  L.push('— расчёт из калькулятора '+(new Date().toLocaleDateString('ru-RU'))+', discovery-system.ru/calculator.html');
+  return L.join('\n');
+}
+function buildTgText(kind){ return briefText(kind); }
+/* Снимок заказа + готовый текст в localStorage: страницы без калькулятора (clarity/pay/thanks)
+   дописывают паспорт к своему сообщению — контекст не теряется между страницами. */
 function tgSnapshot(kind,paid){
   const e=estimate()||{};
-  try{localStorage.setItem('ds_order',JSON.stringify({offer:kind,tier:installTier,paid:!!paid,ts:Date.now(),
-    goals:goals,tasks:tasks,device:device,data:data,autonomy:autonomy,conns:conns,budget:budget,start:start,
-    monthly:e.monthly,hours:e.hours}));}catch(err){}
+  try{
+    const txt=briefText(kind);
+    localStorage.setItem('ds_order',JSON.stringify({offer:kind,tier:installTier,paid:!!paid,ts:Date.now(),
+      goals:goals,tasks:tasks,device:device,data:data,autonomy:autonomy,conns:conns,budget:budget,start:start,
+      monthly:e.monthly,hours:e.hours}));
+    localStorage.setItem('ds_brief',JSON.stringify({ts:Date.now(),offer:kind,text:txt}));
+  }catch(err){}
 }
-function buildTgText(kind){
-  const e=estimate()||{};
-  const st=STARTS.find(x=>x.id===start)||{short:'—'};
-  const aut=(AUTONOMY.find(x=>x.id===autonomy)||{}).label||'—';
-  const connsLbl=conns.map(c=>{const x=CONNS.find(y=>y.id===c);return x?x.label:'';}).filter(Boolean).join(', ')||'—';
-  const dataLbl=(DATA.find(x=>x.id===data)||{}).t||'—';
-  const rate=+(document.getElementById('pbSlider')||{value:700}).value||700;
-  /* линза «плачу людям»: экономика в TG — от доли рутины по ставке зарплаты (аудит 22) */
-  const _hRate=Math.max(1,Math.round((st.base||0)/160));
-  const saved=e.hours?Math.round(start==='people'?Math.round((e.handsHours||0)*_hRate):e.hours*rate):0;
-  const T={config:'Персональная сборка — 7 000 ₽',table:'Гайд: 20 конфигураций — 5 000 ₽',
-    optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — бриф, 0 ₽'};
-  let title=T[kind]||'Связка ИИ-агента';
-  if(kind==='install')title={pc:'Личный агент на ПК — 15 000 ₽',vps:'Агент для самозанятого — 20 000 ₽',integ:'ИП/малый бизнес — 30 000 ₽',mid:'Средний бизнес — 60 000 ₽'}[installTier]||'Внедрение под ключ';
-  const L=[title+' — Discovery System','','Из калькулятора:'];
-  L.push('• Рутина: '+(goalLabel()||'—'));
-  L.push('• Старт: '+st.short);
-  L.push('• Автономность: '+aut);
-  if(conns.length)L.push('• Подключения: '+connsLbl);
-  L.push('• Данные: '+dataLbl);
-  if(e.hours)L.push('• Освобождает: ~'+e.hours+' ч/мес ≈ '+saved.toLocaleString('ru-RU')+' ₽/мес');
-  if(e.monthly)L.push('• Владение: ~'+e.monthly.toLocaleString('ru-RU')+' ₽/мес');
-  L.push('','Моё:');
-  const LINERS={
-    config:['Рутина двумя словами: [например, заявки с Авито]','Должно работать: [например, ответ в TG за 5 минут]','Когда нужно: [например, на этой неделе]'],
-    table:['Что соберу первым: [задача]','Вопрос по таблице: [если есть]'],
-    optimization:['Где болит: [с цифрой — сколько часов или рублей]','Что уже пробовал: [чтобы не повторять]','Метрика «до»: [например, 6 ч/мес]'],
-    install:['Процесс по шагам: [откуда данные → что делать → куда результат]','Доступы готов дать: [TG / таблица / CRM]','Приёмка пройдена, если: [например, заявка доходит в TG за 5 минут]'],
-    diagnostic:['Мой день по шагам: [утром... потом...]','Сколько раз в день/неделю повторяется: [число]','Чем делаю сейчас: [руками / Excel / бот / помощник]','Куда должен приходить результат: [TG / таблица / CRM / почта]','Что бесит больше всего: [...]']
-  };
-  (LINERS[kind]||[]).forEach(l=>L.push('• '+l));
-  const NEXT={config:'посчитал связку в калькуляторе и хочу персональную сборку — подтвердите, что архитектура покроет мой случай, затем пришлю оплату 7 000 и скрин перевода; сборка нужна за 1–3 дня',
-    table:'оплачу 5 000 → скрин → таблица сразу',
-    optimization:'дам доступ к связке → аудит → цена и счёт в тот же день',
-    diagnostic:'заполню бриф прямо здесь → разбор: что автоматизировать первым, сколько часов и рублей это стоит',
-    install:'15-минутный созвон по архитектуре — или всё в переписке, как удобнее'};
-  L.push('','Дальше: '+(NEXT[kind]||''));
-  return L.join('\n');
+/* Ссылка в Telegram.
+   iOS: t.me/<user>?text= , открытая ИЗ БРАУЗЕРА, теряет черновик (Telegram-iOS #2354 —
+   текст подставляется, только если ссылку открыли изнутри Telegram), поэтому на iOS идём
+   через share-шит: текст гарантированно в поле ввода, клиенту остаётся выбрать чат и отправить.
+   Android и десктоп ?text= подставляют: один тап — и диалог уже с расчётом. */
+function tgUrl(text){
+  const ios=/iPad|iPhone|iPod/.test(navigator.userAgent||'')||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(ios) return 'https://t.me/share/url?url='+encodeURIComponent('https://discovery-system.ru/calculator.html')+'&text='+encodeURIComponent(text);
+  return TG_ME+'?text='+encodeURIComponent(text);
+}
+function copyBriefText(text){
+  try{ if(navigator.clipboard&&navigator.clipboard.writeText) return navigator.clipboard.writeText(text); }catch(e){}
+  return Promise.reject();
+}
+/* Копируем ДО перехода: если в Telegram поле окажется пустым (iOS, старые клиенты),
+   расчёт уже в буфере — вставится одним удержанием. */
+function sendToTg(kind){
+  const text=briefText(kind);
+  tgSnapshot(kind,false);
+  copyBriefText(text).catch(function(){});
+  window.open(tgUrl(text),'_blank','noopener');
+  return text;
 }
 function openTg(kind,tier){
   if(tier)installTier=tier;
-  if(kind==='demo')kind='config'; /* демо как продукт убрано: сборка = архитектура + гайд, без показов */
-  tgSnapshot(kind,false);
-  window.open(TG_ME+'?text='+encodeURIComponent(buildTgText(kind)),'_blank','noopener');
+  if(kind==='demo')kind='config'; /* демо как продукт убрано */
+  if(kind==='install'&&!installTier)installTier=installTierGuess();
+  sendToTg(kind);
+}
+/* Кнопка «скопировать расчёт» — ручной путь, если автоподстановка не сработала */
+function copyOrderText(){
+  const kind=recKind(chosenOffer||recommendProduct());
+  if(kind==='install'&&!installTier)installTier=installTierGuess();
+  const text=briefText(kind);
+  copyBriefText(text).then(function(){toast('Расчёт скопирован — в чате удержи поле ввода и выбери «Вставить»');})
+    .catch(function(){toast('Скопировать не дал браузер — выдели текст вручную');});
+  return text;
 }
 
 function payConfig(){
@@ -1130,9 +1221,10 @@ function openChat(paid){
   const plink=(chosenOffer==='table'&&typeof PAY_LINK_ROBOKASSA_GUIDE!=='undefined'&&PAY_LINK_ROBOKASSA_GUIDE)?PAY_LINK_ROBOKASSA_GUIDE:(chosenOffer==='config'&&typeof PAY_LINK_ROBOKASSA_BUILD!=='undefined'&&PAY_LINK_ROBOKASSA_BUILD)?PAY_LINK_ROBOKASSA_BUILD:(chosenOffer==='optimization'&&typeof PAY_LINK_ROBOKASSA_OPTIMIZATION!=='undefined'&&PAY_LINK_ROBOKASSA_OPTIMIZATION)?PAY_LINK_ROBOKASSA_OPTIMIZATION:'';
   if(plink&&paid){window.open(plink,'_blank','noopener');return;}
   tgSnapshot(chosenOffer,paid);
-  let txt=buildTgText(chosenOffer);
+  let txt=briefText(recKind(chosenOffer||recommendProduct()));
   if(paid)txt='Оплатил. Скрин перевода прилагаю.\n\n'+txt;
-  window.open(TG_ME+'?text='+encodeURIComponent(txt),'_blank','noopener');
+  copyBriefText(txt).catch(function(){});
+  window.open(tgUrl(txt),'_blank','noopener');
 }
 
 /* Копирование реквизитов по тапу */

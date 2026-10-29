@@ -1,0 +1,1109 @@
+{
+ "paths": [
+  {
+   "name": "P1 время/с нуля/1 рутина/физлицо → сборка 7К",
+   "timeline": [
+    {
+     "at": "Ничего нет",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Для себя",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Физлицо",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "#next1",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Отвечаю на одни и те же",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 217 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#next2",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 217 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Готовит + проверка",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 217 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep3 .wiz-next",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 217 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Telegram",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 517 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "На РФ-сервере",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 517 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep4 .wiz-next",
+     "step": 5,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 517 ₽/мес",
+     "next1": false,
+     "next2": false
+    }
+   ],
+   "taps": [
+    "DIV:Ничего нет — начинаю с нулясейчас за И",
+    "DIV:Для себя и семьи",
+    "DIV:Физлицо",
+    "#next1",
+    "DIV:Отвечаю на одни и те же вопросыклиенты",
+    "#next2",
+    "DIV:СредняяГотовит + проверкая утверждаю п",
+    "BUTTON:Дальше — обвязка →",
+    "BUTTON:Telegram",
+    "DIV:На РФ-сервереданные в России · для Tel",
+    "BUTTON:Посчитать связку — честно, до копейки ",
+    "BUTTON:Собрать мою связку →"
+   ],
+   "toasts": [],
+   "opens": [
+    {
+     "base": "https://auth.robokassa.ru/merchant/Invoice/RjF3Mh-GhUmFIiCWVxkMFA",
+     "hasP": true,
+     "text": ""
+    }
+   ],
+   "scrolls": 4,
+   "finals": {
+    "wizStep": 5,
+    "resultShown": true,
+    "offersShown": "block",
+    "recommended": "Персональная сборка — твоя связка",
+    "recBadge": "да",
+    "ahaTag": "Твоя связка готова",
+    "ahaTitle": "Твой агент — с нуля",
+    "ahaCost": "355 ₽/мес",
+    "ahaSaving": "освобождает ~8 ч/мес · ≈ 5 600 ₽/мес — столько стоит освободившееся время по ставке 700 ₽/ч · чистыми после владения: +4",
+    "pbRes": "Экономия 4 083 ₽/мес · окупается за 2 мес (сборки 7 000 ₽ разово)",
+    "yearPayback": "Окупаемость сборкиза 2 месСчитаем честно: экономия = освобождённые часы × твоя цена часа − владение.",
+    "acceptPay": "Оплата вперёд, но риск снят: критерии зафиксированы здесь и в оферте, а не «оплатишь — разберёмся». Окупается за 2 мес.",
+    "diagShown": "none",
+    "specShown": "block",
+    "legalShown": "block",
+    "legalFirst": "Что это значит юридически под твой статусЛичное использовани",
+    "orderCta": "block",
+    "heroCompareHasTable": false,
+    "scenBox": "С нуля: владение 1 517 ₽/мес · окупается за счёт освобождённых часов",
+    "startVar": "nothing",
+    "subPickVar": "",
+    "dsOrder": "{\"offer\":\"config\",\"paid\":false,\"ts\":1793258786116,\"goals\":[\"repeat\"],\"device\":\"cpu\",\"monthly\":1517}"
+   },
+   "notes": []
+  },
+  {
+   "name": "P2 линза человек/платишь людям/2 рутины/самозанятый + CRM → внедрение 30К",
+   "timeline": [
+    {
+     "at": "Плачу человеку",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "В бизнесе",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Самозанятый",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "#next1",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Отвечаю на одни и те же",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 217 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Разгребаю заявки",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 380 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#next2",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 380 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Работает сам",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 456 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep3 .wiz-next",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 456 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Telegram",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 756 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "CRM и рассылки",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "3 306 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "На РФ-сервере",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "3 306 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep4 .wiz-next",
+     "step": 5,
+     "toasts": [],
+     "opens": 0,
+     "price": "3 306 ₽/мес",
+     "next1": false,
+     "next2": false
+    }
+   ],
+   "taps": [
+    "BUTTON:Плачу человеку",
+    "DIV:В бизнесе — работаю с клиентами",
+    "DIV:Самозанятый",
+    "#next1",
+    "DIV:Отвечаю на одни и те же вопросыклиенты",
+    "DIV:Разгребаю заявки, пока не остылиотклик",
+    "#next2",
+    "DIV:ВысокаяРаботает самделает и отправляет",
+    "BUTTON:Дальше — обвязка →",
+    "BUTTON:Telegram",
+    "BUTTON:CRM и рассылки · +550 ₽/мес",
+    "DIV:На РФ-сервереданные в России · для Tel",
+    "BUTTON:Посчитать связку — честно, до копейки ",
+    "BUTTON:Микро/малый бизнес (ИП) — 30 000 ₽ →"
+   ],
+   "toasts": [],
+   "opens": [
+    {
+     "base": "https://auth.robokassa.ru/merchant/Invoice/jjPrDM9xSkK1qKCLSGB-MA",
+     "hasP": true,
+     "text": ""
+    }
+   ],
+   "scrolls": 4,
+   "finals": {
+    "wizStep": 5,
+    "resultShown": true,
+    "offersShown": "block",
+    "recommended": "Внедрение под ключ — 15 / 20 / 30 / 60К",
+    "recBadge": "да",
+    "ahaTag": "Доля рутины посчитана",
+    "ahaTitle": "Рутина — без людей",
+    "ahaCost": "780 ₽/мес",
+    "ahaSaving": "освобождает ~23 ч/мес · ≈ 7 500 ₽/мес — столько стоит освободившееся время по ставке из зарплаты · чистыми после владени",
+    "pbRes": "Экономия 4 194 ₽/мес · окупается за 8 мес (внедрения 30 000 ₽ разово)",
+    "yearPayback": "Окупаемость внедренияза 8 месДоля рутины в зарплатесчитается по ставке часа — не вся зарплатаСчитаем",
+    "acceptPay": "Оплата вперёд, но риск снят: критерии зафиксированы здесь и в оферте, а не «оплатишь — разберёмся». Окупается за 8 мес.",
+    "diagShown": "none",
+    "specShown": "block",
+    "legalShown": "block",
+    "legalFirst": "Что это значит юридически под твой статусНПД: перепродажа чу",
+    "orderCta": "block",
+    "heroCompareHasTable": true,
+    "scenBox": "Платишь человеку ~40 000 ₽/мес → рутина из них ≈ 7 500 ₽/мес, владение агентом 3 306 ₽/мес · человек остаётся на работе, требующей головы",
+    "startVar": "people",
+    "subPickVar": "",
+    "dsOrder": ""
+   },
+   "notes": []
+  },
+  {
+   "name": "P3 линза подписка/плюс/1 рутина/ИП → сборка 7К",
+   "timeline": [
+    {
+     "at": "Плачу подписке",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "ChatGPT Plus",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "В бизнесе",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "ИП",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "#next1",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Держу клиентов в курсе",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 120 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#next2",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 120 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Готовит + проверка",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 120 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep3 .wiz-next",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 120 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Telegram",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 420 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep4 .wiz-next",
+     "step": 5,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 420 ₽/мес",
+     "next1": false,
+     "next2": false
+    }
+   ],
+   "taps": [
+    "BUTTON:Плачу подписке",
+    "DIV:ChatGPT Plus / Claude Proдиалоги и пои",
+    "DIV:В бизнесе — работаю с клиентами",
+    "DIV:ИП",
+    "#next1",
+    "DIV:Держу клиентов в курсе — напоминания и",
+    "#next2",
+    "DIV:СредняяГотовит + проверкая утверждаю п",
+    "BUTTON:Дальше — обвязка →",
+    "BUTTON:Telegram",
+    "BUTTON:Посчитать связку — честно, до копейки ",
+    "BUTTON:Собрать мою связку →"
+   ],
+   "toasts": [],
+   "opens": [
+    {
+     "base": "https://auth.robokassa.ru/merchant/Invoice/RjF3Mh-GhUmFIiCWVxkMFA",
+     "hasP": true,
+     "text": ""
+    }
+   ],
+   "scrolls": 4,
+   "finals": {
+    "wizStep": 5,
+    "resultShown": true,
+    "offersShown": "block",
+    "recommended": "Персональная сборка — твоя связка",
+    "recBadge": "да",
+    "ahaTag": "Подписка против своей связки",
+    "ahaTitle": "Ты уходишь с подписки",
+    "ahaCost": "307 ₽/мес",
+    "ahaSaving": "освобождает ~6 ч/мес · ≈ 4 200 ₽/мес — столько стоит освободившееся время по ставке 700 ₽/ч · чистыми после владения: +4",
+    "pbRes": "Экономия 4 780 ₽/мес · окупается за 2 мес (сборки 7 000 ₽ разово)",
+    "yearPayback": "Окупаемость сборкиза 2 месСчитаем честно: экономия = освобождённые часы × твоя цена часа + уход с те",
+    "acceptPay": "Оплата вперёд, но риск снят: критерии зафиксированы здесь и в оферте, а не «оплатишь — разберёмся». Окупается за 2 мес.",
+    "diagShown": "none",
+    "specShown": "block",
+    "legalShown": "block",
+    "legalFirst": "Что это значит юридически под твой статусУведомление РКН по ",
+    "orderCta": "block",
+    "heroCompareHasTable": false,
+    "scenBox": "Платишь сейчас ~2 000 ₽/мес за подписку → владение 1 420 ₽/мес · плюс нельзя отключить",
+    "startVar": "sub",
+    "subPickVar": "plus",
+    "dsOrder": "{\"offer\":\"config\",\"paid\":false,\"ts\":1793258789309,\"goals\":[\"remind\"],\"device\":\"cpu\",\"monthly\":1420}"
+   },
+   "notes": []
+  },
+  {
+   "name": "P4 время/связка уже есть/отчёт/ООО + VPS → оптимизация 25К",
+   "timeline": [
+    {
+     "at": "Связка есть",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "В бизнесе",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "ООО",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "#next1",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Каждую неделю собираю",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 130 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#next2",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 130 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Работает сам",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 142 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep3 .wiz-next",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 142 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Telegram",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 442 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Свой сервер / VPS",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 442 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep4 .wiz-next",
+     "step": 5,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 442 ₽/мес",
+     "next1": false,
+     "next2": false
+    }
+   ],
+   "taps": [
+    "DIV:Связка есть — дорогая или тормозитуже ",
+    "DIV:В бизнесе — работаю с клиентами",
+    "DIV:ООО",
+    "#next1",
+    "DIV:Каждую неделю собираю один и тот же от",
+    "#next2",
+    "DIV:ВысокаяРаботает самделает и отправляет",
+    "BUTTON:Дальше — обвязка →",
+    "BUTTON:Telegram",
+    "DIV:Свой сервер / VPS (РФ)постоянный серве",
+    "BUTTON:Посчитать связку — честно, до копейки ",
+    "BUTTON:Заказать аудит →"
+   ],
+   "toasts": [],
+   "opens": [
+    {
+     "base": "https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og",
+     "hasP": true,
+     "text": ""
+    }
+   ],
+   "scrolls": 4,
+   "finals": {
+    "wizStep": 5,
+    "resultShown": true,
+    "offersShown": "block",
+    "recommended": "Оптимизация ИИ-агента — от 25 000 ₽",
+    "recBadge": "да",
+    "ahaTag": "Твоя связка готова",
+    "ahaTitle": "Твоя связка — дешевле и чище",
+    "ahaCost": "316 ₽/мес",
+    "ahaSaving": "освобождает ~11 ч/мес · ≈ 7 700 ₽/мес — столько стоит освободившееся время по ставке 700 ₽/ч · чистыми после владения: +",
+    "pbRes": "Экономия 9 758 ₽/мес · окупается за 3 мес (аудита 25 000 ₽ разово)",
+    "yearPayback": "Окупаемость аудитаза 3 месСчитаем честно: экономия = освобождённые часы × твоя цена часа + уход с те",
+    "acceptPay": "Оплата вперёд, но риск снят: критерии зафиксированы здесь и в оферте, а не «оплатишь — разберёмся». Окупается за 3 мес.",
+    "diagShown": "none",
+    "specShown": "block",
+    "legalShown": "block",
+    "legalFirst": "Что это значит юридически под твой статусУведомление РКН по ",
+    "orderCta": "block",
+    "heroCompareHasTable": false,
+    "scenBox": "Связка сейчас ~3 500 ₽/мес → после оптимизации 1 442 ₽/мес · замер до/после",
+    "startVar": "legacy",
+    "subPickVar": "",
+    "dsOrder": "{\"offer\":\"optimization\",\"paid\":false,\"ts\":1793258790744,\"goals\":[\"report\"],\"device\":\"vps\",\"monthly\":1442}"
+   },
+   "notes": []
+  },
+  {
+   "name": "P5 время/железо есть/2 рутины/физлицо + GPU локально → гайд 5К",
+   "timeline": [
+    {
+     "at": "Есть железо",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Для себя",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Физлицо",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "#next1",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Ищу информацию и слежу",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 159 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Пишу тексты с нуля",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 289 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#next2",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 289 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Готовит + проверка",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 289 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep3 .wiz-next",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 289 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Видеокарта 12–16 GB",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "2 190 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Локально",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "0 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep4 .wiz-next",
+     "step": 5,
+     "toasts": [],
+     "opens": 0,
+     "price": "0 ₽/мес",
+     "next1": false,
+     "next2": false
+    }
+   ],
+   "taps": [
+    "DIV:Есть железо — простаиваетGPU или серве",
+    "DIV:Для себя и семьи",
+    "DIV:Физлицо",
+    "#next1",
+    "DIV:Ищу информацию и слежу: цены, остатки,",
+    "DIV:Пишу тексты с нуля каждый разпосты, ре",
+    "#next2",
+    "DIV:СредняяГотовит + проверкая утверждаю п",
+    "BUTTON:Дальше — обвязка →",
+    "DIV:Видеокарта 12–16 GBComfyUI · модели до",
+    "DIV:Локально — на моём устройствеполный ко",
+    "BUTTON:Посчитать связку — честно, до копейки ",
+    "BUTTON:Взять гайд →"
+   ],
+   "toasts": [],
+   "opens": [
+    {
+     "base": "https://auth.robokassa.ru/merchant/Invoice/GEV6reyqiEWXzYG_Mkulbw",
+     "hasP": true,
+     "text": ""
+    }
+   ],
+   "scrolls": 4,
+   "finals": {
+    "wizStep": 5,
+    "resultShown": true,
+    "offersShown": "block",
+    "recommended": "Гайд: 20 конфигураций — собрать самому",
+    "recBadge": "да",
+    "ahaTag": "Твоя связка готова",
+    "ahaTitle": "Твоё железо — в дело",
+    "ahaCost": "0 ₽/мес",
+    "ahaSaving": "освобождает ~14 ч/мес · ≈ 9 800 ₽/мес — столько стоит освободившееся время по ставке 700 ₽/ч · чистыми после владения: +",
+    "pbRes": "Экономия 11 200 ₽/мес · окупается в первый же месяц (гайда 5 000 ₽ разово)",
+    "yearPayback": "Окупаемость гайдапервый месяцСчитаем честно: экономия = освобождённые часы × твоя цена часа + уход с",
+    "acceptPay": "Оплата вперёд, но риск снят: критерии зафиксированы здесь и в оферте, а не «оплатишь — разберёмся». Окупается за первый месяц.",
+    "diagShown": "none",
+    "specShown": "block",
+    "legalShown": "block",
+    "legalFirst": "Что это значит юридически под твой статусЛичное использовани",
+    "orderCta": "block",
+    "heroCompareHasTable": false,
+    "scenBox": "Железо уже твоё → связка 0 ₽/мес вместо ~1 400 ₽ за облако",
+    "startVar": "hardware",
+    "subPickVar": "",
+    "dsOrder": "{\"offer\":\"table\",\"paid\":false,\"ts\":1793258792264,\"goals\":[\"scan\",\"write\"],\"device\":\"gpu12\",\"monthly\":0}"
+   },
+   "notes": []
+  },
+  {
+   "name": "P6 время/с нуля/«не могу назвать»/физлицо → диагностика в TG",
+   "timeline": [
+    {
+     "at": "Ничего нет",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Для себя",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Физлицо",
+     "step": 1,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "#next1",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "— ₽/мес",
+     "next1": false,
+     "next2": true
+    },
+    {
+     "at": "Пока не могу назвать",
+     "step": 2,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 100 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#next2",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 100 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Черновики и идеи",
+     "step": 3,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 100 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep3 .wiz-next",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 100 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "Telegram",
+     "step": 4,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 400 ₽/мес",
+     "next1": false,
+     "next2": false
+    },
+    {
+     "at": "#wstep4 .wiz-next",
+     "step": 5,
+     "toasts": [],
+     "opens": 0,
+     "price": "1 400 ₽/мес",
+     "next1": false,
+     "next2": false
+    }
+   ],
+   "taps": [
+    "DIV:Ничего нет — начинаю с нулясейчас за И",
+    "DIV:Для себя и семьи",
+    "DIV:Физлицо",
+    "#next1",
+    "DIV:Пока не могу назвать — надо разобратьс",
+    "#next2",
+    "DIV:НизкаяЧерновики и идеиагент готовит, я",
+    "BUTTON:Дальше — обвязка →",
+    "BUTTON:Telegram",
+    "BUTTON:Посчитать связку — честно, до копейки ",
+    "BUTTON:Заполнить бриф — 5 строк в TG →"
+   ],
+   "toasts": [],
+   "opens": [
+    {
+     "base": "https://t.me/victorpinksight",
+     "hasP": false,
+     "text": "Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.\n\nРУТИНА: пока не назвал сам — нужен разбор дня\nБЭКГРАУНД: с нуля · руками уходит ~10 ч/мес · Твой путь — расчёт и доказательства\nСТЕК: Ноутбук / ПК без видеокарты · В облаке — не у меня · модель: Базовая модель (Lite-класс) · автономность: Черновики и идеи · подключения: Telegram\nОГРАНИЧЕНИЯ: статус: Для себя и семьи, Физлицо · бюджет: сколько нужно · оплата: Карта РФ / СБП\nЦИФРЫ: агент забирает ~3 ч/м"
+    }
+   ],
+   "scrolls": 4,
+   "finals": {
+    "wizStep": 5,
+    "resultShown": true,
+    "offersShown": "block",
+    "recommended": "Персональная сборка — твоя связка",
+    "recBadge": "да",
+    "ahaTag": "Твоя связка готова",
+    "ahaTitle": "Начнём с диагностики",
+    "ahaCost": "0 ₽ за разбор",
+    "ahaSaving": "разбор бесплатный",
+    "pbRes": "Экономия 700 ₽/мес · окупается за 10 мес (сборки 7 000 ₽ разово)",
+    "yearPayback": "Окупаемость сборкиза 10 месСчитаем честно: экономия = освобождённые часы × твоя цена часа − владение",
+    "acceptPay": "Оплата вперёд, но риск снят: критерии зафиксированы здесь и в оферте, а не «оплатишь — разберёмся». Окупается за 10 мес.",
+    "diagShown": "block",
+    "specShown": "none",
+    "legalShown": "block",
+    "legalFirst": "Что это значит юридически под твой статусЛичное использовани",
+    "orderCta": "block",
+    "heroCompareHasTable": false,
+    "scenBox": "",
+    "startVar": "nothing",
+    "subPickVar": "",
+    "dsOrder": "{\"offer\":\"diagnostic\",\"tier\":null,\"paid\":false,\"ts\":1793258793614,\"goals\":[\"unsure\"],\"tasks\":[],\"device\":\"cpu\",\"data\":\"c"
+   },
+   "notes": []
+  }
+ ],
+ "probes": {
+  "jumpTo5NoStart": {
+   "toast": [
+    "Сначала выбери, с чего начинаешь"
+   ],
+   "step": 1
+  },
+  "jumpTo5NoGoals": {
+   "toast": [
+    "Отметь хотя бы одну рутину — или «не могу назвать»"
+   ],
+   "step": 1
+  },
+  "capРазгре": [],
+  "capДержу ": [],
+  "capКаждую": [
+   "До трёх — выбери самое жрущее, остальное добавим после приёмки"
+  ],
+  "unsureCardStillThere": true,
+  "autoDefaultOn": 1,
+  "step3PassedWithoutClick": 4
+ },
+ "tg": [
+  {
+   "kind": "config",
+   "title": "Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.",
+   "lines": 15,
+   "liners": 2,
+   "next": "НЕТ",
+   "hasSnapshot": false
+  },
+  {
+   "kind": "table",
+   "title": "Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.",
+   "lines": 14,
+   "liners": 1,
+   "next": "НЕТ",
+   "hasSnapshot": false
+  },
+  {
+   "kind": "optimization",
+   "title": "Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.",
+   "lines": 15,
+   "liners": 2,
+   "next": "НЕТ",
+   "hasSnapshot": false
+  },
+  {
+   "kind": "diagnostic",
+   "title": "Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.",
+   "lines": 16,
+   "liners": 3,
+   "next": "НЕТ",
+   "hasSnapshot": false
+  },
+  {
+   "kind": "install:pc",
+   "title": "Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.",
+   "lines": 15,
+   "liners": 2,
+   "next": "НЕТ"
+  },
+  {
+   "kind": "install:vps",
+   "title": "Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.",
+   "lines": 15,
+   "liners": 2,
+   "next": "НЕТ"
+  },
+  {
+   "kind": "install:integ",
+   "title": "Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.",
+   "lines": 15,
+   "liners": 2,
+   "next": "НЕТ"
+  },
+  {
+   "kind": "install:mid",
+   "title": "Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.",
+   "lines": 15,
+   "liners": 2,
+   "next": "НЕТ"
+  }
+ ],
+ "lens": {
+  "people": {
+   "heroTitle": "Сколько стоит твой человек на рутине",
+   "ws1t": "Старт уже выбран",
+   "ws2H2": "Что жрёт время?",
+   "ws3H2": "Насколько агент самостоятелен?",
+   "next1Label": "Выбрал — что отдаём агенту →",
+   "next2Label": "Дальше — самостоятельность →",
+   "ahaTag": "Доля рутины посчитана",
+   "subPickSelected": "",
+   "subPickNote": "",
+   "startOptsSelected": [
+    "Плачу людям за рутину"
+   ]
+  },
+  "sub": {
+   "heroTitle": "Сколько стоит твоя подписка",
+   "ws1t": "Старт уже выбран",
+   "ws2H2": "Что жрёт время?",
+   "ws3H2": "Насколько агент самостоятелен?",
+   "next1Label": "Выбрал — что подписка не делает →",
+   "next2Label": "Дальше — самостоятельность →",
+   "ahaTag": "Подписка против своей связки",
+   "subPickSelected": "",
+   "subPickNote": "",
+   "startOptsSelected": [
+    "Плачу за подписку"
+   ]
+  },
+  "overrideUserStart": {
+   "before": "nothing",
+   "after": "nothing"
+  },
+  "peopleFinalConflict": {
+   "lensLead": "Считаем долю зарплаты, которую съедает рутина, против владения агентом. Человек ",
+   "ahaTitle": "Рутина — без людей",
+   "ahaDesc": "Сравниваем с тем, что платишь человеку. Агент не болеет и не уходит: фикс-цена запуска и владение вместо зарплаты каждый месяц. Из 16 ч/мес руками агент забирае",
+   "compareNote": "Человек остаётся в штате: агент забирает ≈ 8 ч рутины, тебе остаётся ≈ 8 ч контроля. Освобождённая д"
+  }
+ },
+ "pay": [
+  {
+   "probe": "фолбэк goCheckout(config) без ссылок → payPanel",
+   "panelShown": "block",
+   "payRows": " Персональная сборка — оплата Переведи 7 000 ₽ и напиши мне: соберу связку под твои задачи за 1–3 дня. Сумма 7 000 ₽ Способ СБП через платёжную ссылку Получатель Зайцев Виктор Павлович Банк любой банк РФ · СБП Я оплатил — начать сборку → Получить реквизиты в л",
+   "hasCardOrPhone": false
+  },
+  {
+   "probe": "фолбэк «Я оплатил» → TG-текст начинается с",
+   "open": "Оплатил. Скрин перевода прилагаю.\n\nВиктор, привет! Посчитал в калькуляторе — при"
+  },
+  {
+   "link": "guide",
+   "url": "https://auth.robokassa.ru/merchant/Invoice/GEV6reyqiEWXzYG_Mkulbw?p=guide",
+   "hasP": true
+  },
+  {
+   "link": "build",
+   "url": "https://auth.robokassa.ru/merchant/Invoice/RjF3Mh-GhUmFIiCWVxkMFA?p=build",
+   "hasP": true
+  },
+  {
+   "link": "pc",
+   "url": "https://auth.robokassa.ru/merchant/Invoice/xp2UNX65i0GBewjBqkgJOw",
+   "hasP": false
+  },
+  {
+   "link": "self",
+   "url": "https://auth.robokassa.ru/merchant/Invoice/AuPs4sLt3USvwXypMewUDw?p=self",
+   "hasP": true
+  },
+  {
+   "link": "smb",
+   "url": "https://auth.robokassa.ru/merchant/Invoice/jjPrDM9xSkK1qKCLSGB-MA?p=smb",
+   "hasP": true
+  },
+  {
+   "link": "mid",
+   "url": "https://auth.robokassa.ru/merchant/Invoice/ga2H8Nr6zUadphD3DvygDQ?p=mid",
+   "hasP": true
+  },
+  {
+   "link": "optimize",
+   "url": "https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og?p=optimize",
+   "hasP": true
+  }
+ ],
+ "tgPaidPrefix": "Оплатил. Скрин перевода прилагаю.\n\nВиктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не пересп",
+ "orderBtnMsg": "Виктор, привет! Хочу внедрить агента — расчёт из калькулятора прилагаю.\n\nЧто за рутина: [двумя словами]\nЧто делается руками: [что забрать у агента]\nКогда нужно: [срок]\nБюджет на запуск: [есть / нет]\n\nРасчёт из калькулятора: 3 306 ₽/мес"
+}

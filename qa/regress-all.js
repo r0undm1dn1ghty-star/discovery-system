@@ -1,6 +1,6 @@
 // Полный регресс после фиксов роя
 const { execSync } = require('child_process');
-const run = (cmd) => { try { return execSync(cmd, { encoding: 'utf8', timeout: 120000 }); } catch (e) { return (e.stdout || '') + 'ERR:' + e.status; } };
+const run = (cmd) => { try { return execSync(cmd, { encoding: 'utf8', timeout: 120000, cwd: __dirname }); } catch (e) { return (e.stdout || '') + 'ERR:' + e.status; } };
 console.log('=== WIZARD ===');
 console.log(run('node wizard-check.js').split('\n').filter(l => l.includes('FAIL')).join('\n') || 'все ok');
 console.log('=== LENS ===');

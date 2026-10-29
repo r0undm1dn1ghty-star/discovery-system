@@ -66,6 +66,31 @@ var DS_TG_ORDER   = 'https://t.me/discoverysystem';  /* канал */
 var DS_TG_DIRECT  = 'https://t.me/victorpinksight';       /* личка */
 var DS_MAX_MSG    = 2000;  /* макс. сумма для «напишите, если не нашли» */
 
+/* ── Отправка в Telegram ─────────────────────────────────
+   iOS теряет черновик у ссылки t.me/<user>?text=, открытой ИЗ БРАУЗЕРА
+   (Telegram-iOS #2354: текст подставляется, только если ссылку открыли
+   изнутри Telegram). Поэтому на iOS идём через share-шит — там текст
+   гарантированно в поле ввода. На Android и десктопе ?text= работает. */
+function dsTgUrl(text){
+  var ua=navigator.userAgent||'';
+  var ios=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(ios) return 'https://t.me/share/url?url='+encodeURIComponent('https://discovery-system.ru/calculator.html')+'&text='+encodeURIComponent(text);
+  return DS_TG_DIRECT+'?text='+encodeURIComponent(text);
+}
+/* Паспорт расчёта, собранный калькулятором на этом устройстве (14 дней):
+   клиент ушёл из калькулятора на другую страницу — контекст не теряем. */
+function dsStoredBrief(){
+  try{
+    var raw=localStorage.getItem('ds_brief'); if(!raw) return '';
+    var o=JSON.parse(raw); if(!o||!o.text||!o.ts) return '';
+    if(Date.now()-o.ts>14*864e5) return '';
+    var t=String(o.text), i=t.indexOf('РУТИНА:');
+    if(i>0)t=t.slice(i);
+    if(t.length>1200)t=t.slice(0,1200)+'…';
+    return '\n\nМой расчёт из калькулятора:\n'+t;
+  }catch(e){ return ''; }
+}
+
 /* ============================================================
    НИЖЕ — не трогать. Старые имена переменных оставлены, чтобы
    calculator.html и pay.html продолжали работать.
@@ -111,8 +136,8 @@ var DS_TRIBUTE_SUPPORT  = DS_PAY.support.url;
             el.setAttribute('data-ready','1');
           } else {
             /* ссылки нет — собираем заказ текстом */
-            var txt='Хочу: '+prod.name+' ('+prod.price.toLocaleString('ru-RU')+' ₽). Подскажите, как оплатить.';
-            if(isLink){ el.setAttribute('href',DS_TG_DIRECT+'?text='+encodeURIComponent(txt)); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
+            var txt='Хочу: '+prod.name+' ('+prod.price.toLocaleString('ru-RU')+' ₽). Подскажите, как оплатить.'+dsStoredBrief();
+            if(isLink){ el.setAttribute('href',dsTgUrl(txt)); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
             el.classList.add('buy-pending');
           }
           var lbl=el.getAttribute('data-buy-label');
@@ -126,8 +151,8 @@ var DS_TRIBUTE_SUPPORT  = DS_PAY.support.url;
         (function(el){
           var t=el.getAttribute('data-tg');
           if(!t) return;
-          var msg=t+'\n\nХочу решить сейчас — подскажи, что нужно от меня и какие сроки.';
-          el.setAttribute('href','https://t.me/victorpinksight?text='+encodeURIComponent(msg));
+          var msg=t+'\n\nХочу решить сейчас — подскажи, что нужно от меня и какие сроки.'+dsStoredBrief();
+          el.setAttribute('href',dsTgUrl(msg));
           el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
         })(tgs[j]);
       }
