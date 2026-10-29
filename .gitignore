@@ -46,3 +46,6 @@ _t[0-9]*.log
 .env.*
 auth.json
 mcp-tokens/
+
+# артефакты прогонов аудита (генерируются, живут в KB)
+qa/*-report.json
