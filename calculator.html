@@ -557,9 +557,8 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <div class="legal" id="legalBox" style="display:none"></div>
         <div class="accept" id="acceptBox" style="display:none"></div>
         <div class="order-cta" id="orderCta" style="display:none;margin-top:18px">
-          <button class="btn-cta" id="orderBtn" style="width:100%">Отправить расчёт Виктору →</button>
-          <button class="btn-cta btn-cta-ghost" id="orderCopy" style="width:100%;margin-top:8px">Скопировать расчёт</button>
-          <p class="oc-note" style="font:400 12.5px/1.55 var(--sans);color:var(--meta);margin:10px 0 0">Откроется мой личный чат — в сообщении уже рутина, стек, ограничения и цифры. Поле пустое? Нажми «Скопировать расчёт» и вставь его (удержание → «Вставить»).</p>
+          <button class="btn-cta" id="orderBtn" style="width:100%">У меня заказ — хочу решить сейчас →</button>
+          <p class="oc-note" style="font:400 12.5px/1.55 var(--sans);color:var(--meta);margin:10px 0 0">Откроется мой личный чат — сообщение с расчётом уже в поле ввода, остаётся отправить.</p>
         </div>
       </div>
       <div class="diag" id="diagBox" style="display:none">
@@ -1520,8 +1519,6 @@ document.addEventListener('DOMContentLoaded',function(){
     if(k==='install'&&!installTier)installTier=installTierGuess();
     sendToTg(k);
   });
-  var c=document.getElementById('orderCopy'); if(!c) return;
-  c.addEventListener('click',copyOrderText);
 });
 function updateYearBox(e,net,st){
   var box=document.getElementById('yearBox'); if(!box)return;
@@ -1728,69 +1725,73 @@ function briefNumbers(){
   const rc=(typeof recPrice==='function')?recPrice():0;
   return {rate:rate,hRate:hRate,people:people,routine:routine,money:money,net:net,rc:rc};
 }
-function briefText(kind){
+function modelShort(e){
+  const m=String(e.modelName||'');
+  const p=m.match(/\(([^)]+)\)/);
+  if(p) return p[1].replace('-класс','');
+  if(/Локальная/.test(m)) return 'локальная';
+  if(/Гибрид/.test(m)) return 'гибрид';
+  return 'облако';
+}
+function connShort(c){ return String(c).split(' и ')[0]; }
+/* короткие подписи для паспорта: в URL одна кириллическая буква стоит ~6 знаков,
+   поэтому длинные формулировки интерфейса в сообщение не переносим */
+const DEV_SHORT={cpu:'ПК без GPU',gpu8:'GPU 4–8 ГБ',gpu12:'GPU 12–16 ГБ',gpu24:'GPU 24 ГБ+',vps:'VPS РФ',host:'облачный сервер',phone:'только телефон'};
+const USE_SHORT={personal:'личное',business:'бизнес'};
+const TAX_SHORT={fiz:'физлицо',samozan:'самозанятый',ip:'ИП',ooo:'ООО'};
+const PAY_SHORT={rucard:'оплата картой РФ',crypto:'крипта',proxy:'через посредников'};
+const BUD_SHORT={b3:'бюджет до 3К/мес',b6:'бюджет до 6К/мес',b:'бюджет любой'};
+/* Паспорт расчёта. Держим его КОРОТКИМ: текст едет в URL-параметре ?text=,
+   а кириллица в URL занимает ~6 символов на букву — «подробный» паспорт на 1000 знаков
+   давал ссылку на 5,4 КБ, и переход в Telegram падал (предел обработчика ~2 КБ).
+   Поэтому: только то, что решает первый ответ, + fitBriefUrl() как страховка. */
+function briefLines(kind){
   const e=estimate()||{};
   const st=STARTS.find(x=>x.id===start)||null;
   const aut=AUTONOMY.find(x=>x.id===autonomy)||null;
   const n=briefNumbers();
   const isUnsure=(goal==='unsure'||goals.includes('unsure'));
-  const L=[];
-  L.push('Виктор, привет! Посчитал в калькуляторе — прикладываю расчёт целиком, чтобы не переспрашивать.');
-  L.push('');
-  const gl=isUnsure?'':goalLabel();
-  L.push('РУТИНА: '+(gl||'пока не назвал сам — нужен разбор дня'));
-  const tl=taskLabels(); if(tl.length)L.push('Задачи в связке: '+tl.join(', '));
-  const bg=[];
-  if(st)bg.push(st.short+(st.base?' (~'+st.base.toLocaleString('ru-RU')+' ₽/мес)':''));
-  if(start==='sub'&&subPick){const s=SUBS.find(x=>x.id===subPick); if(s)bg.push('подписка: '+s.short);}
-  if(e.handsHours)bg.push('руками уходит ~'+e.handsHours+' ч/мес');
-  const pc=(typeof PERSONA_COPY!=='undefined'&&PERSONA_COPY[persona()])?PERSONA_COPY[persona()].tag.replace('Твой путь — ',''):'';
-  if(bg.length||pc)L.push('БЭКГРАУНД: '+(bg.join(' · ')+(bg.length&&pc?' · ближе подача: ':'подача: ')+pc));
-  const stack=[];
-  if(device)stack.push(deviceLabel());
-  if(data)stack.push(labelOf(DATA,data));
-  if(e.modelName)stack.push('модель: '+e.modelName);
-  if(aut)stack.push('автономность: '+aut.t);
-  if(conns.length)stack.push('подключения: '+conns.map(c=>labelOf(CONNS,c)).filter(Boolean).join(', '));
-  if(stack.length)L.push('СТЕК: '+stack.join(' · '));
-  const lim=[];
   const useL=labelOf(USES,useGoal), taxL=labelOf(TAXES,taxForm);
-  if(useL||taxL)lim.push('статус: '+[useL,taxL].filter(Boolean).join(', '));
-  if(budget)lim.push('бюджет: '+budgetLabel());
-  if(pay)lim.push('оплата: '+labelOf(PAY,pay));
-  if(lim.length)L.push('ОГРАНИЧЕНИЯ: '+lim.join(' · '));
-  if(e.handsHours){
-    const left=Math.max(0,e.handsHours-e.hours);
-    const rate=Math.max(1,Math.round((st&&st.base?Math.round(st.base/160):n.rate)));
-    const savedTxt=(n.people?n.routine:Math.round(e.hours*n.rate)).toLocaleString('ru-RU');
-    L.push('ЦИФРЫ: агент забирает ~'+e.hours+' ч/мес из '+e.handsHours+' ч (контроль ~'+left+' ч) · ставка '
-      +(n.people?n.hRate.toLocaleString('ru-RU'):n.rate.toLocaleString('ru-RU'))+' ₽/ч · экономия ~'+savedTxt+' ₽/мес · владение ~'
-      +(e.monthly||0).toLocaleString('ru-RU')+' ₽/мес'+(n.net>0?(' · чистыми +'+n.net.toLocaleString('ru-RU')+' ₽/мес, за год ~'+(n.net*12).toLocaleString('ru-RU')+' ₽'):''));
-  } else if(e.monthly!==undefined){
-    L.push('ЦИФРЫ: владение ~'+(e.monthly||0).toLocaleString('ru-RU')+' ₽/мес · часы пока не названы — считаем после разбора дня');
-  }
   const rk=recKind(kind||recommendProduct());
-  L.push('РЕКОМЕНДАЦИЯ КАЛЬКУЛЯТОРА: '+productLabel(rk));
-  L.push('');
-  const LINERS={
-    config:['Уточню словами: чем занимаюсь — [2 строки]','Что уже есть: [сервисы, таблицы, помощники]'],
-    table:['Собираю сам: цель на первый месяц — [задача]'],
-    optimization:['Где болит: [сколько часов или рублей утекает]','Что уже пробовал: [чтобы не повторять]'],
-    install:['Процесс по шагам: [откуда данные → что делать → куда результат]','Доступы готов дать: [TG / таблица / CRM]'],
-    diagnostic:['Мой день: [утром… потом…]','Чем делаю сейчас: [руками / Excel / бот / помощник]','Куда должен приходить результат: [TG / таблица / CRM]']
-  };
-  const ln=LINERS[rk]||LINERS.config;
-  L.push('ДОПОЛНЮ СВОИМИ СЛОВАМИ (по желанию):');
-  ln.forEach(t=>L.push('• '+t));
-  L.push('');
-  const NEXT={config:'Готов оплатить 7 000 ₽ и начать сборку — подтверди, что архитектура покроет мой случай.',
-    table:'Готов взять гайд за 5 000 ₽ — скажи, как оплатить.',
-    optimization:'Готов дать доступ к связке — сделай аудит и назови цену до старта.',
-    diagnostic:'Готов описать день — верни разбор: что автоматизировать первым и сколько это стоит.',
-    install:'Созвон по архитектуре (15 минут) или всё в переписке — как удобнее.'};
-  L.push('ДАЛЬШЕ: '+(NEXT[rk]||NEXT.config));
-  L.push('— расчёт из калькулятора '+(new Date().toLocaleDateString('ru-RU'))+', discovery-system.ru/calculator.html');
-  return L.join('\n');
+  const nums=[];
+  if(e.handsHours){
+    nums.push('агент забирает ~'+e.hours+' ч/мес из '+e.handsHours);
+    if(n.money)nums.push('экономия '+(n.people?n.routine:Math.round(e.hours*n.rate)).toLocaleString('ru-RU')+' ₽/мес');
+    if(e.monthly)nums.push('владение '+(e.monthly||0).toLocaleString('ru-RU')+' ₽/мес');
+  }else if(e.monthly){
+    nums.push('владение '+(e.monthly||0).toLocaleString('ru-RU')+' ₽/мес');
+  }
+  const stack=[];
+  if(device)stack.push(DEV_SHORT[device]||deviceLabel());
+  if(data)stack.push(labelOf(DATA,data).split(' — ')[0]);
+  if(aut)stack.push(modelShort(e)+' · '+(aut.label||'').toLowerCase());
+  if(conns.length)stack.push(conns.map(c=>connShort(labelOf(CONNS,c))).filter(Boolean).join('+'));
+  const stat=[];
+  const uS=USE_SHORT[useGoal]||(useL?'бизнес':''), tS=TAX_SHORT[taxForm]||'';
+  if(uS||tS)stat.push([uS,tS].filter(Boolean).join(', '));
+  if(budget)stat.push(BUD_SHORT[budget]||('бюджет '+budgetLabel()));
+  if(pay)stat.push(PAY_SHORT[pay]||labelOf(PAY,pay));
+  return [
+    {k:'hi',  t:'Виктор, привет! Расчёт из калькулятора.'},
+    {k:'goal',t:'РУТИНА: '+((isUnsure?'':goalLabel())||'пока не назвал — нужен разбор дня')+(st?' · '+st.short:'')},
+    {k:'want',t:'ХОЧУ: '+productLabel(rk)},
+    {k:'num', t:'ЦИФРЫ: '+nums.join(' · ')},
+    {k:'stack',t:'СТЕК: '+stack.join(' · ')},
+    {k:'stat',t:'СТАТУС: '+stat.join(' · ')}
+  ];
+}
+/* порядок выкидывания, если ссылка не влезает: от менее важного к более важному */
+const BRIEF_DROP=['stat','stack','num','goal'];
+function briefText(kind,extra){
+  const all=briefLines(kind);
+  const join=list=>list.map(l=>l.t).filter(t=>t&&!/:\s*$/.test(t)).concat(extra?[extra]:[]).join('\n');
+  const without=k=>all.filter(l=>l.k!==k);
+  let text=join(all);
+  /* URL-бюджет: ?text= должен переживать обработчик ссылки (предел Windows ~2083, держим 1850) */
+  const drop=BRIEF_DROP.slice();
+  while(tgUrl(text).length>1850&&drop.length)text=join(without(drop.shift()));
+  if(tgUrl(text).length>1850)text=text.slice(0,240)+'…';
+  return text;
 }
 function buildTgText(kind){ return briefText(kind); }
 /* Снимок заказа + готовый текст в localStorage: страницы без калькулятора (clarity/pay/thanks)
@@ -1825,7 +1826,10 @@ function sendToTg(kind){
   const text=briefText(kind);
   tgSnapshot(kind,false);
   copyBriefText(text).catch(function(){});
-  window.open(tgUrl(text),'_blank','noopener');
+  const url=tgUrl(text);
+  /* попап может быть заблокирован — тогда уходим в чат в текущем окне, без «ничего не произошло» */
+  const win=window.open(url,'_blank','noopener');
+  if(!win)window.location.href=url;
   return text;
 }
 function openTg(kind,tier){
@@ -1834,16 +1838,6 @@ function openTg(kind,tier){
   if(kind==='install'&&!installTier)installTier=installTierGuess();
   sendToTg(kind);
 }
-/* Кнопка «скопировать расчёт» — ручной путь, если автоподстановка не сработала */
-function copyOrderText(){
-  const kind=recKind(chosenOffer||recommendProduct());
-  if(kind==='install'&&!installTier)installTier=installTierGuess();
-  const text=briefText(kind);
-  copyBriefText(text).then(function(){toast('Расчёт скопирован — в чате удержи поле ввода и выбери «Вставить»');})
-    .catch(function(){toast('Скопировать не дал браузер — выдели текст вручную');});
-  return text;
-}
-
 function payConfig(){
   if(chosenOffer==='config')return{amount:'7 000 ₽',title:'Персональная сборка — оплата',sub:'Переведи 7 000 ₽ и напиши мне: соберу связку под твои задачи за 1–3 дня.',btn:'Я оплатил — начать сборку →'};
   if(chosenOffer==='optimization')return{amount:'от 25 000 ₽',title:'Оптимизация агента — заявка',sub:'Напиши мне: сначала аудит связки, потом назову точную цену до начала работ.',btn:'Обсудить аудит →'};
@@ -1915,6 +1909,7 @@ function openChat(paid){
   copyBriefText(txt).catch(function(){});
   window.open(tgUrl(txt),'_blank','noopener');
 }
+
 
 /* Копирование реквизитов по тапу */
 function copyTxt(row){

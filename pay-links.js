@@ -78,16 +78,25 @@ function dsTgUrl(text){
   return DS_TG_DIRECT+'?text='+encodeURIComponent(text);
 }
 /* Паспорт расчёта, собранный калькулятором на этом устройстве (14 дней):
-   клиент ушёл из калькулятора на другую страницу — контекст не теряем. */
-function dsStoredBrief(){
+   клиент ушёл из калькулятора на другую страницу — контекст не теряем.
+   ВАЖНО: текст едет в ?text=, а кириллица в URL занимает ~6 знаков на букву —
+   поэтому хвост подрезается так, чтобы ссылка осталась короче 1900 знаков (иначе переход в TG падает). */
+function dsStoredBrief(base){
   try{
     var raw=localStorage.getItem('ds_brief'); if(!raw) return '';
     var o=JSON.parse(raw); if(!o||!o.text||!o.ts) return '';
     if(Date.now()-o.ts>14*864e5) return '';
-    var t=String(o.text), i=t.indexOf('РУТИНА:');
-    if(i>0)t=t.slice(i);
-    if(t.length>1200)t=t.slice(0,1200)+'…';
-    return '\n\nМой расчёт из калькулятора:\n'+t;
+    var t=String(o.text).replace(/\n?Виктор, привет! Расчёт из калькулятора\.\n?/,'');
+    var head=String(base||'')+'\n\nМой расчёт из калькулятора:\n';
+    if(1900-dsTgUrl(head).length<140) return '';
+    var out='', cut=false;
+    t.split('\n').forEach(function(l){
+      if(cut||!l) return;
+      if(out && dsTgUrl(head+out+'\n'+l).length>1900){ cut=true; return; }
+      out=out?out+'\n'+l:l;
+    });
+    if(!out) return '';
+    return '\n\nМой расчёт из калькулятора:\n'+out;
   }catch(e){ return ''; }
 }
 
@@ -136,7 +145,8 @@ var DS_TRIBUTE_SUPPORT  = DS_PAY.support.url;
             el.setAttribute('data-ready','1');
           } else {
             /* ссылки нет — собираем заказ текстом */
-            var txt='Хочу: '+prod.name+' ('+prod.price.toLocaleString('ru-RU')+' ₽). Подскажите, как оплатить.'+dsStoredBrief();
+            var txt='Хочу: '+prod.name+' ('+prod.price.toLocaleString('ru-RU')+' ₽). Подскажите, как оплатить.';
+            txt+=dsStoredBrief(txt);
             if(isLink){ el.setAttribute('href',dsTgUrl(txt)); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
             el.classList.add('buy-pending');
           }
@@ -151,7 +161,8 @@ var DS_TRIBUTE_SUPPORT  = DS_PAY.support.url;
         (function(el){
           var t=el.getAttribute('data-tg');
           if(!t) return;
-          var msg=t+'\n\nХочу решить сейчас — подскажи, что нужно от меня и какие сроки.'+dsStoredBrief();
+          var msg=t+'\n\nХочу решить сейчас — подскажи, что нужно от меня и какие сроки.';
+          msg+=dsStoredBrief(msg);
           el.setAttribute('href',dsTgUrl(msg));
           el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
         })(tgs[j]);
