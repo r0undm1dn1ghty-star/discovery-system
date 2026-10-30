@@ -30,7 +30,9 @@
     { key: 'market',   href: 'market.html',   label: 'Рынок ИИ' },
     { key: 'channel',  href: 'channel.html',  label: 'Канал' }
   ];
-  var CTA = { key: 'calc', href: 'calculator.html', label: 'Посчитать свою связку' };
+  /* короткая подпись на узких экранах: полная не влезала в 390px и кнопка уезжала за край */
+  var CTA = { key: 'calc', href: 'calculator.html',
+    label: (window.innerWidth < 700) ? 'Считать' : 'Посчитать свою связку' };
 
   /* какой пункт считать активным для каждой страницы */
   var ACTIVE = {
