@@ -349,6 +349,13 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
 }
 
 /* ═══ ДОКАЗАТЕЛЬСТВА (ds-cases.js): кейс + бенчмарк + грабли + ключ чтения ═══ */
+.pv-sub{font:500 12.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--meta);margin:24px 0 0}
+.pv-xgrid{margin-top:12px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.pv-xrow{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:rgba(255,255,255,.015);display:flex;flex-direction:column}
+.pv-xrow .pv-xn{display:block;font:500 12.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.pv-xrow .pv-xd{font-size:14.5px;color:var(--body);line-height:1.55;margin:0}
+.pv-xrow .pv-xr{display:block;margin-top:auto;padding-top:11px;border-top:1px solid var(--line-soft);font:400 13px/1.5 var(--mono);color:var(--ink)}
+.pv-xrow.deep{border-color:rgba(var(--accent-rgb),.45);background:rgba(123,196,168,.05)}
 .pv-case{margin-top:26px;border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;
   background:rgba(255,255,255,.015);display:grid;grid-template-columns:1.25fr .8fr;gap:26px}
 .pv-tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
@@ -383,6 +390,7 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
 @media (max-width:860px){.pv-case{grid-template-columns:1fr;gap:16px;padding:20px 16px}}
 @media (max-width:760px){
   .pv-pits{grid-template-columns:1fr}
+  .pv-xgrid{grid-template-columns:1fr}
   .pv-keyrow{grid-template-columns:1fr;gap:4px}
   .pv-keyrow a{justify-self:start}
   .pv-quote{padding:14px 14px}
