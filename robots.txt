@@ -29,6 +29,9 @@ User-agent: Applebot-Extended
 Allow: /
 
 User-agent: *
+Disallow: /IA-JOURNEY.html
+Disallow: /SERVICE-BLUEPRINT.html
+
 Allow: /
 
 Sitemap: https://discovery-system.ru/sitemap.xml
