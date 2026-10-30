@@ -347,7 +347,7 @@ background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization", "name": "Discovery System", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/", "logo": {"@type": "ImageObject", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/logo-nav.png", "width": 220, "height": 40}, "description": "Рыночная разведка в мире ИИ-агентов. Своя ИИ-связка на РФ-провайдерах без VPN — 2–4К/мес. Калькулятор, гайд 20 конфигураций, персональная сборка, установка.", "founder": {"@type": "Person", "name": "Виктор Зайцев", "url": "https://r0undm1dn1ghty-star.github.io/discovery-system/clarity.html#author", "sameAs": ["https://github.com/r0undm1dn1ghty-star", "https://t.me/discoverysystem"]}, "sameAs": ["https://github.com/r0undm1dn1ghty-star/discovery-system", "https://t.me/discoverysystem", "https://vc.ru/id6099688", "https://x.com/d1sc0v3rysyst3m"], "license": "https://creativecommons.org/licenses/by/4.0/","priceRange":"5 000–60 000 ₽","areaServed":{"@type":"Country","name":"Россия"},"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"knowsAbout":["ИИ-агенты","внедрение ИИ в МСБ","локальные LLM","152-ФЗ","автоматизация рутины"],"makesOffer":[{"@type":"Offer","name":"Гайд 20 конфигураций","price":"5000","priceCurrency":"RUB"},{"@type":"Offer","name":"Подбор конфигурации","price":"7000","priceCurrency":"RUB"},{"@type":"Offer","name":"Установка под ключ","priceSpecification":{"@type":"PriceSpecification","minPrice":"15000","maxPrice":"60000","priceCurrency":"RUB"}},{"@type":"Offer","name":"Оптимизация ИИ-агента","priceSpecification":{"@type":"PriceSpecification","minPrice":"25000","priceCurrency":"RUB"}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Discovery System", "item": "https://r0undm1dn1ghty-star.github.io/discovery-system/"}, {"@type": "ListItem", "position": 2, "name": "Калькулятор", "item": "https://discovery-system.ru/calculator.html"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "@id": "https://discovery-system.ru/calculator.html#app", "name": "Калькулятор стоимости ИИ-агента — Discovery System", "url": "https://discovery-system.ru/calculator.html", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "3 вопроса — сколько часов и рублей стоит твоя рутина (Руками vs С агентом). Считает экономию до старта, без регистрации.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB", "availability": "https://schema.org/InStock"}, "author": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}, "isAccessibleForFree": true}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "@id": "https://discovery-system.ru/calculator.html#app", "name": "Калькулятор стоимости ИИ-агента — Discovery System", "url": "https://discovery-system.ru/calculator.html", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "7 вопросов — сколько часов и рублей стоит твоя рутина (Руками vs С агентом). Считает экономию до старта, без регистрации.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "RUB", "availability": "https://schema.org/InStock"}, "author": {"@id": "https://r0undm1dn1ghty-star.github.io/discovery-system/#organization"}, "isAccessibleForFree": true}</script>
 
 
 
@@ -440,7 +440,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       <button type="button" role="tab" data-lens="sub" aria-selected="false" onclick="setLens('sub')">Плачу подписке</button>
     </div>
     <h1 id="heroTitle">Сколько забирает <em>твоя рутина</em></h1>
-    <p id="heroLead">3 вопроса — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.</p>
+    <p id="heroLead">7 вопросов — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.</p>
   </div>
 
   <!-- WIZARD: воронка 01–05. Один вопрос на экран, живая цена в прогресс-баре,
@@ -595,7 +595,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       <div class="offer-tag">Забрать результат</div>
       <p class="persona-why" id="personaWhy" style="display:none"></p>
       <div class="offer-opt" data-prod="build" style="border-color:rgba(94,217,168,.28);background:rgba(94,217,168,.06)">
-        <div class="o-top"><div class="o-name">Подбор конфигурации — твоя связка</div><span class="o-badge" style="background:rgba(94,217,168,.14);border-color:rgba(94,217,168,.28);color:#5ed9a8">архитектура + гайд установки и отладки · 1–3 дня</span></div>
+        <div class="o-top"><div class="o-name">Подбор конфигурации — твоя связка</div><span class="o-badge" style="background:rgba(94,217,168,.14);border-color:rgba(94,217,168,.28);color:#5ed9a8">архитектура + гайд установки и отладки · 24 часа</span></div>
                 <div class="o-desc">Гайд (20 конфигураций) включён + архитектура под твой кейс + полный гайд установки и отладки. Гарантия: если гайд что-то не покрыл — решаю до 3 твоих вопросов за свой счёт. Без демо и созвонов — всё в переписке. Вклад: 30 мин + доступы по выбору.</div>
         <div class="o-price">7 000 ₽ <small>разово · <a href="clarity.html" style="color:var(--muted);text-decoration:underline">что входит в 7К →</a></small></div>
         <button class="btn-cta" onclick="goCheckout('config')">Собрать мою связку →</button>
@@ -609,7 +609,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       <div class="offer-opt" data-prod="install" style="border-color:rgba(242,182,101,.22)">
         <div class="o-top"><div class="o-name">Внедрение под ключ — 15 / 20 / 30 / 60К</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">2 часа до запуска · GPU/хостинг решим</span></div>
         <div class="o-desc">Личный агент на ПК (15К), система для самозанятого (20К), для ИП с CRM/Авито (30К) или для среднего бизнеса с сопровождением (60К). Состав и чек-лист приёмки фиксируем до старта — без «допов по ходу». <a href="clarity.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в ясности →</a></div>
-        <div class="o-price">15 / 20 / 30 / 60К <small>разово · 1–3 дня</small></div>
+        <div class="o-price">15 / 20 / 30 / 60К <small>разово · от 1 до 10 рабочих дней</small></div>
         <button class="btn-cta btn-cta-ghost" data-tier="pc" onclick="goInstall('pc')" style="width:100%">Личный агент на ПК — 15 000 ₽ →</button>
         <button class="btn-cta btn-cta-ghost" data-tier="vps" onclick="goInstall('vps')" style="width:100%;margin-top:8px">Самозанятый — 20 000 ₽ →</button>
         <button class="btn-cta btn-cta-ghost" data-tier="integ" onclick="goInstall('integ')" style="width:100%;margin-top:8px">Микро/малый бизнес (ИП) — 30 000 ₽ →</button>
@@ -1355,7 +1355,7 @@ function wizButtons(){
 const LENSES={
   time:{
     title:'Сколько забирает <em>твоя рутина</em>',
-    lead:'3 вопроса — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.',
+    lead:'7 вопросов — и видно: часы руками против часов с агентом, цена в месяц и окупаемость. Оплата из РФ, без VPN.',
     ws1t:'С чего начинаешь?',ws1s:'Откуда стартуем — от этого зависит первый продукт и вся экономика дальше. Один вариант, честно.',
     ws2s:'До трёх пунктов, самое жрущее — первым. Лучше меньше, но правда: часы считаются отсюда.',
     ws3s:'Чем больше агент делает сам, тем больше токенов он тратит. Это главная ручка цены — и она твоя.',
