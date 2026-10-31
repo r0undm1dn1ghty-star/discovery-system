@@ -361,8 +361,13 @@ table.data td.n{font-variant-numeric:tabular-nums}
 <h2 class="rv">Твой счёт</h2>
 <div class="personal rv">
 <div class="ms-row">
-<input class="ms-input" id="ms-in" type="number" min="0" step="100" value="2000" inputmode="numeric" aria-label="Сколько ты платишь за ИИ-сервисы в месяц"/>
-<span class="ms-per">₽ в месяц за ChatGPT / Claude / прочее</span>
+<input class="ms-input" id="ms-in" type="number" min="0" step="100" value="2000" inputmode="numeric" aria-label="Сколько ты платишь за ИИ-сервисы"/>
+<select class="ms-per" id="ms-per" aria-label="Период платежа" style="background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:var(--mono);font-size:15px;padding:12px 12px;outline:none;cursor:pointer">
+<option value="mo">₽ в месяц</option>
+<option value="wk">₽ в неделю</option>
+<option value="once">₽ за один раз</option>
+</select>
+<span class="ms-per-label" style="color:var(--meta);font-size:14.5px">за ChatGPT / Claude / прочее</span>
 </div>
 <div class="ms-src">2 000 ₽ — типичные траты на ИИ в России (медиана) · ТАСС / ППВМ, 09.2026</div>
 <div class="ms-out" id="ms-out" aria-live="polite"></div>
@@ -477,15 +482,20 @@ b.setAttribute('aria-expanded',String(open));
 });
 });
 /* ---------- личный счёт ---------- */
-var msi=d.getElementById('ms-in'), mso=d.getElementById('ms-out');
+var msi=d.getElementById('ms-in'), msp=d.getElementById('ms-per'), mso=d.getElementById('ms-out');
+var P_FACTORS={mo:12, wk:52, once:1};
+var P_NAMES={mo:'год', wk:'год', once:'раз'};
 function msCalc(){
 if(!msi||!mso)return;
 var m=parseFloat(String(msi.value).replace(',','.'));
 if(isNaN(m)||m<0){mso.innerHTML='';return;}
 m=Math.min(m,999999);
-var y=m*12;
-mso.innerHTML='За год это <b>'+Math.round(y).toLocaleString('ru-RU')+' ₽</b> — и вся история чатов, проекты, память. Блокировка приходит без предупреждения'+(m>0?' — и это не возвращается.':'.');
+var key=msp?msp.value:'mo';
+var y=m*P_FACTORS[key];
+var label = key==='once' ? 'в месяц при таком спросе' : P_NAMES[key];
+mso.innerHTML='За '+label+' это <b>'+Math.round(y).toLocaleString('ru-RU')+' ₽</b> — и вся история чатов, проекты, память. Блокировка приходит без предупреждения'+(m>0?' — и это не возвращается.':'.');
 }
+if(msp){msp.addEventListener('change',function(){msCalc();});}
 if(msi){msi.addEventListener('input',msCalc);msCalc();}
 /* ---------- воронка ---------- */
 var F=[
