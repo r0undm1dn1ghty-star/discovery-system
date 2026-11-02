@@ -1,0 +1,131 @@
+/* ============================================================================
+   ds-hero-premium.css — первый экран Discovery System (мокап v1)
+   Приёмы референса, перенесённые в бренд:
+   1) полноэкранное движение вместо разрозненных блоков  — GPU-поле (ds-hero-field.js)
+   2) тонкие состояния кнопок — смена цвета И радиуса, внутренний свет
+   3) «внутренняя тень»: мятное свечение внутри панели гаснет/разгорается медленно
+   4) градиент, который «выкатывается» по ключевой фразе
+   5) анимации и иконки на выверенной сетке
+   Токены только из :root страницы. Никаких новых цветов.
+   ========================================================================== */
+
+/* ---------- свет под секцией: сначала свет, потом стекло ------------------ */
+.hero{position:relative;padding:78px 0 40px;isolation:isolate;
+  min-height:min(86vh,820px);display:flex;flex-direction:column;justify-content:center}
+.hero-light{position:absolute;inset:-14% -12% 0 -12%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(46% 38% at 20% 4%,  rgba(var(--accent-rgb),.20), transparent 64%),
+    radial-gradient(40% 32% at 88% 16%, rgba(214,152,84,.13),   transparent 66%),
+    radial-gradient(72% 56% at 52% 112%, rgba(var(--accent-rgb),.11), transparent 72%);
+  opacity:.85}
+/* зерно поверх больших тёмных градиентов — иначе видны полосы */
+.hero:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.05;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>")}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{grid-template-columns:minmax(0,1.24fr) minmax(0,1fr);gap:44px 52px;align-items:center}
+
+/* ---------- типографика: один крупный тезис ------------------------------- */
+.hero h1{font-family:var(--display);font-weight:700;margin:0;
+  /* кегль упирается и в ширину, и в высоту экрана: первый экран влезает целиком */
+  font-size:clamp(2.25rem,min(1.0rem + 4.3vw,5.6vh + 1.05rem),5.15rem);line-height:1.02;
+  letter-spacing:-.034em;text-wrap:balance}
+.hero .copy{max-width:720px;position:relative}
+.hero .copy:before{content:"";position:absolute;inset:-56px -80px -48px -90px;z-index:-1;
+  pointer-events:none;border-radius:52px;
+  background:radial-gradient(58% 56% at 34% 48%,rgba(8,11,20,.78),rgba(8,11,20,.34) 58%,transparent 80%)}
+.hero .kicker{margin:0 0 18px;font:500 12.5px/1.4 var(--mono);color:var(--meta);
+  text-transform:uppercase;letter-spacing:.14em}
+.hero .lead{margin:18px 0 0;font-size:18px;line-height:1.58;color:var(--body);max-width:45ch}
+.hero .cta-row{margin-top:28px;display:flex;align-items:center;gap:14px 16px;flex-wrap:wrap}
+
+/* ---------- ключевая фраза: градиент выкатывается по ходу появления ------- */
+.hero h1 .chrome-text{background:linear-gradient(100deg,
+    var(--accent) 0%, #f2f7ff 34%, var(--accent) 58%, #e8f3ee 100%);
+  background-size:220% 100%;background-position:118% 0;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;font-style:normal;
+  transition:background-position 2.4s var(--ease) .3s}
+.js .hero h1.in .chrome-text{background-position:-18% 0}
+
+/* ---------- кнопки: тонкая смена цвета И радиуса (референс) --------------- */
+.btn{border-radius:12px;
+  transition:background .34s var(--ease),border-radius .34s var(--ease),
+             box-shadow .34s var(--ease),border-color .34s var(--ease),
+             color .28s var(--ease),transform .18s var(--ease)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-primary{background:linear-gradient(180deg,#26906a,#1c6b46);
+  border-color:rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 12px 30px -20px rgba(0,0,0,.95)}
+.btn-primary:active{transform:scale(.96);border-radius:14px}
+.btn-ghost{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.13);
+  color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.btn-ghost .ico{width:16px;height:16px;stroke:currentColor;stroke-width:1.6;fill:none;
+  margin-right:9px;opacity:.75;transition:transform .34s var(--ease),opacity .34s var(--ease)}
+@media(hover:hover){
+  .btn-primary:hover{background:linear-gradient(180deg,#33b184,#218059);border-radius:16px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 16px 38px -18px rgba(var(--accent-rgb),.5)}
+  .btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.22);
+    border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+  .btn-ghost:hover .ico{transform:translateX(3px);opacity:1}
+}
+
+/* ---------- строка фактов: иконки на выверенной сетке --------------------- */
+.hero-facts{list-style:none;display:flex;gap:12px 26px;flex-wrap:wrap;margin:24px 0 0;padding:18px 0 0;
+  border-top:1px solid var(--line-soft)}
+.hero-facts li{display:flex;align-items:center;gap:9px;
+  font:400 13.5px/1.4 var(--sans);color:var(--body)}
+.hero-facts svg{width:17px;height:17px;flex:none;stroke:var(--accent);stroke-width:1.5;fill:none;opacity:.85}
+.js .hero-facts li{opacity:0;transform:translateY(8px);
+  transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .hero-facts.in li{opacity:1;transform:none}
+.js .hero-facts.in li:nth-child(2){transition-delay:.09s}
+.js .hero-facts.in li:nth-child(3){transition-delay:.18s}
+
+/* ---------- панель: стекло над светом + медленное внутреннее свечение ----- */
+.minicalc{position:relative;border-radius:20px;padding:26px 26px 24px;
+  border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(180deg,var(--card),var(--deep) 58%,#0b0f1c);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    0 44px 96px -46px rgba(0,0,0,.98),
+    0 10px 34px -22px rgba(0,0,0,.85),
+    0 0 90px -46px rgba(var(--accent-rgb),.55);
+  transition:box-shadow .7s var(--ease),border-color .7s var(--ease),transform .7s var(--ease)}
+/* внутреннее свечение + кромка: разгорается медленно и дышит.
+   :before панели занят родной акцентной линией страницы (ledgerTrace) — не трогаем. */
+.minicalc:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:
+    linear-gradient(90deg,transparent 6%,rgba(255,255,255,.30) 44%,rgba(255,255,255,.08) 74%,transparent 94%) top/100% 1px no-repeat,
+    radial-gradient(124% 86% at 4% -16%,rgba(var(--accent-rgb),.38),transparent 60%),
+    radial-gradient(94% 74% at 104% 118%,rgba(214,152,84,.26),transparent 62%);
+  mix-blend-mode:screen;opacity:0;
+  transition:opacity 2.6s var(--ease) .35s}
+.js .minicalc:after{opacity:0}
+.js .minicalc.in:after{opacity:1;animation:mcBreathe 15s var(--ease) 3s infinite alternate}
+@keyframes mcBreathe{from{filter:brightness(.9)}to{filter:brightness(1.16)}}
+@media(hover:hover){
+  .minicalc:hover{transform:translateY(-2px);border-color:rgba(var(--accent-rgb),.26);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 44px 96px -52px rgba(0,0,0,1)}
+}
+
+/* ---------- состав цены: уехал под первый экран, читается как вкладка ----- */
+.price-band{position:relative;padding:8px 0 84px}
+.price-band .wrap{position:relative;z-index:2}
+.price-band .own-price{max-width:880px;margin:0 auto}
+
+/* ---------- движение и предпочтения системы ------------------------------- */
+@media (prefers-reduced-motion: reduce){
+  .js .minicalc.in:after{animation:none}
+  .hero h1 .chrome-text{transition:none;background-position:-18% 0}
+  .js .hero-facts li{opacity:1;transform:none}
+  .js .minicalc:after{opacity:1}
+  .btn,.minicalc{transition:none}
+}
+@media (max-width:860px){
+  .hero{padding:84px 0 56px}
+  .hero .lead{font-size:17px;margin-top:18px}
+  .hero .cta-row{margin-top:24px}
+  .hero-facts{margin-top:26px;padding-top:18px;gap:10px 18px}
+  .minicalc{border-radius:16px}
+}

@@ -61,11 +61,12 @@ def desc_text(h):
     return html.unescape(re.sub(r"\s+", " ", m.group(1))).strip() if m else ""
 
 
-def build_block(page, date, tokens):
+def build_block(page, date, first_date, tokens):
     lines = [BLOCK_START,
              '<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>',
              f'<meta name="author" content="{AUTHOR}"/>',
              f'<link rel="alternate" type="application/rss+xml" title="Discovery System — обновления" href="{SITE}/feed.xml"/>',
+             f'<meta property="article:published_time" content="{first_date}"/>',
              f'<meta property="article:modified_time" content="{date}"/>']
     if tokens.get("google"):
         lines.append(f'<meta name="google-site-verification" content="{tokens["google"]}"/>')
@@ -133,6 +134,41 @@ def ld(data):
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "</script>"
 
 
+def git_first_date(path):
+    try:
+        out = subprocess.run(["git", "log", "--diff-filter=A", "--format=%ad", "--date=short", "--", path],
+                             capture_output=True, text=True, timeout=20, cwd=ROOT).stdout.strip().splitlines()
+        return out[-1].strip() if out else git_date(path)
+    except Exception:
+        return git_date(path)
+
+
+def dedup_head(h):
+    """Убирает дубли robots/author/rss вне SEO:CORE — оставляет только управляемый блок."""
+    changed = 0
+    core = re.search(re.escape(BLOCK_START) + r".*?" + re.escape(BLOCK_END), h, flags=re.S)
+    core_span = core.span() if core else None
+    for pat in (r'<meta name="robots"[^>]*>', r'<meta name="author"[^>]*>',
+                r'<link rel="alternate"[^>]*>'):
+        for m in list(re.finditer(pat, h)):
+            if core_span and core_span[0] <= m.start() <= core_span[1]:
+                continue
+            h = h[:m.start()] + h[m.end():]
+            changed += 1
+            core = re.search(re.escape(BLOCK_START) + r".*?" + re.escape(BLOCK_END), h, flags=re.S)
+            core_span = core.span() if core else None
+    return h, changed
+
+
+def speakable_block():
+    data = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".lead"]},
+    }
+    return ld(data)
+
+
 def inject_schema(h, page, title, desc, date):
     """Кладёт BreadcrumbList (и WebPage, если ld+json не было) после последнего блока или после SEO:CORE."""
     added = []
@@ -149,6 +185,8 @@ def inject_schema(h, page, title, desc, date):
         ps = page_schema(page, title, desc, date)
         if ps:
             payload.append(ps); added.append("webpage")
+    if '"SpeakableSpecification"' not in h and re.search(r'class="lead"', h):
+        payload.append(speakable_block()); added.append("speakable")
     if not payload:
         return h, "exists"
     return h[:insert_at] + "\n" + "\n".join(payload) + h[insert_at:], "+".join(added)
@@ -212,6 +250,7 @@ def main():
             continue
         raw = open(p, encoding="utf-8").read()
         title, date, desc = head_text(raw), git_date(page), desc_text(raw)
+        first = git_first_date(page)
         pages_meta[page] = (title, desc, date)
 
         # canonical: если страницу отдаём поисковикам, у неё должен быть self-canonical
@@ -233,7 +272,8 @@ def main():
                 report.append(f"{page}: noindex")
             continue
 
-        h, how = inject_block(raw, build_block(page, date, tokens))
+        h, how = inject_block(raw, build_block(page, date, first, tokens))
+        h, dd = dedup_head(h)
         h, bc = inject_schema(h, page, title, desc, date)
         h, sa = fix_sameas(h)
         bad = validate_jsonld(page, h)
@@ -242,7 +282,7 @@ def main():
             continue
         if not dry and h != raw:
             open(p, "w", encoding="utf-8", newline="").write(h)
-        report.append(f"{page}: core={how} breadcrumb={bc} sameAs+={sa}")
+        report.append(f"{page}: core={how} dedup={dd} schema={bc} sameAs+={sa}")
 
     # ---- sitemap ----
     today = datetime.date.today().isoformat()

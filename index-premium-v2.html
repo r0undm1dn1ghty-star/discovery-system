@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ИИ-агента можно выбрать с первого раза — Discovery System</title>
+<meta name="description" content="Разведка, система и канал для тех, кто устал от подписок на чужие обещания. Агент на твоём компьютере, данные у тебя, без VPN. Отобрать нельзя."/>
+<link rel="canonical" href="https://discovery-system.ru/"/>
+<meta property="og:title" content="ИИ-агента можно выбрать с первого раза — Discovery System"/>
+<meta property="og:description" content="Агент на твоём компьютере, данные у тебя, без VPN — от 150 ₽/мес на модели. Скиллы, сигналы, системы."/>
+<meta property="og:url" content="https://discovery-system.ru/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://discovery-system.ru/og-cover.png"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="Discovery System"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="ИИ-агента можно выбрать с первого раза — Discovery System"/>
+<meta name="twitter:description" content="Агент на твоём компьютере, данные у тебя, без VPN — от 150 ₽/мес на модели. Скиллы, сигналы, системы."/>
+<meta name="twitter:image" content="https://discovery-system.ru/og-cover.png"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-nav.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов. Агент на твоём компьютере, данные у тебя, без VPN — от 150 ₽/мес. Скиллы, сигналы, системы.","founder":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem"]},"sameAs":["https://github.com/r0undm1dn1ghty-star/discovery-system","https://t.me/discoverysystem","https://vc.ru/id6099688","https://x.com/d1sc0v3rysyst3m"],"license":"https://creativecommons.org/licenses/by/4.0/","priceRange":"5 000–60 000 ₽","areaServed":{"@type":"Country","name":"Россия"},"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"knowsAbout":["ИИ-агенты","внедрение ИИ в МСБ","локальные LLM","152-ФЗ","автоматизация рутины"],"makesOffer":[{"@type":"Offer","name":"Гайд 20 конфигураций","price":"5000","priceCurrency":"RUB"},{"@type":"Offer","name":"Архитектура агента","price":"7000","priceCurrency":"RUB"},{"@type":"Offer","name":"Установка под ключ","priceSpecification":{"@type":"PriceSpecification","minPrice":"15000","maxPrice":"60000","priceCurrency":"RUB"}},{"@type":"Offer","name":"Оптимизация ИИ-агента","priceSpecification":{"@type":"PriceSpecification","minPrice":"25000","priceCurrency":"RUB"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Discovery System","url":"https://discovery-system.ru/","description":"Рыночная разведка в мире ИИ-агентов: скиллы, сигналы, системы. Своя связка, которая твоя.","inLanguage":"ru"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://discovery-system.ru/#author","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","jobTitle":"Основатель Discovery System","knowsAbout":["AI-агенты","рыночная разведка","продуктовый консалтинг","автоматизация МСБ"],"sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem","https://vc.ru/id6099688"]}</script>
+<link rel="icon" href="favicon-32.png" sizes="32x32"/>
+
+
+<link href="fonts/fonts.css" rel="stylesheet">
+<script>document.documentElement.className+=' js';</script>
+<style>
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--line:rgba(255,255,255,.12);--faint:#7a85a0;--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Onest',var(--sans);--ease:cubic-bezier(.22,1,.36,1);--card:#161c30;--deep:#0d1120;--btn:#1f7a4d;--btn-h:#26895b;--btn-text:#f2fbf5;--r-card:14px;--r-sm:10px;--gut:24px;--gut-m:18px;--tap:44px;--txt:'IBM Plex Sans','Onest',system-ui,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;position:relative}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+radial-gradient(720px 480px at 82% -6%,rgba(123,196,168,.10),transparent 68%),
+radial-gradient(640px 520px at -8% 34%,rgba(70,96,168,.08),transparent 70%),
+radial-gradient(560px 420px at 55% 112%,rgba(150,118,84,.06),transparent 72%)}
+@media(max-width:760px){body:before{background:radial-gradient(420px 320px at 88% -4%,rgba(123,196,168,.09),transparent 70%)}}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+section{padding:170px 0}
+h1,h2{color:var(--ink);font-family:var(--display);line-height:1.15;font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,6vw,4rem);margin:0 0 40px}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin:0 0 64px}
+p{margin:0 0 24px}
+a{color:var(--ink)}
+:focus-visible{outline:2px solid #7bc4a8;outline-offset:3px;border-radius:4px}
+nav.top{padding:28px 0}
+nav.top .wrap{display:flex;gap:28px;flex-wrap:wrap;align-items:center;justify-content:center}
+nav.top a{color:var(--meta);text-decoration:none;font-size:15px;min-height:44px;display:inline-flex;align-items:center}
+nav.top a:hover{color:var(--ink)}
+nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}
+nav.top img{height:28px;width:auto;border-radius:4px}
+nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.hero{position:relative;text-align:center;padding:180px 0}
+
+.hero .sub{color:var(--meta);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:32px}
+.hero .lead{max-width:640px;margin:0 auto 20px;font-size:20px}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:56px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.btn-primary{background:#1f7a4d;color:#f2fbf5;border-color:rgba(255,255,255,.14)}.btn-primary:hover{background:#26895b;transform:translateY(-1px)}.btn-primary:active{background:#1a6b44;transform:none}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 4px 14px rgba(0,0,0,.35)}
+.btn-primary:active{transform:translateY(0);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 1px 4px rgba(0,0,0,.2)}
+.btn-ghost{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);color:var(--ink);box-shadow:0 1px 0 rgba(255,255,255,.05) inset;transition:transform .15s,background .15s,border-color .15s}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);transform:translateY(-1px)}}
+.accent{color:#7bc4a8;font-weight:700}
+.eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:24px}
+a.sys{text-decoration:none;color:inherit}
+.who{display:grid;grid-template-columns:200px 1fr;gap:48px;align-items:start}
+.who .links{display:flex;gap:24px;flex-wrap:wrap;font-size:16px}
+.who img{width:200px;border-radius:14px;border:1px solid var(--line);display:block;filter:grayscale(1);transition:filter .35s var(--ease)}
+.who:hover img{filter:grayscale(0)}
+.who .own{color:var(--ink)}
+.stats{display:flex;gap:36px;margin:32px 0;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--display);font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.stat span{font-family:var(--mono);font-size:13px;color:var(--meta)}
+.who .links{display:flex;gap:24px;flex-wrap:wrap;font-size:16px}
+.finale{text-align:center}
+.finale .micro{color:var(--meta);font-size:15px;margin-top:32px;letter-spacing:.06em}
+/* рельс пути 0 → 5К → 7К → 15К + живая лента */
+.rail{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:38px 0 4px;text-align:left}
+.rstep{display:flex;flex-direction:column;gap:6px;padding:18px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.015)}
+.rstep .rp{font:700 16.5px/1 var(--mono);color:var(--accent);white-space:nowrap}
+.rstep .rt{font:600 15px/1.3 var(--display);color:var(--ink)}
+.rstep .rd{font-size:13px;color:var(--meta);line-height:1.45}
+.sigline{display:flex;flex-direction:column;gap:7px;margin:20px 0 4px;text-align:left}
+.sigline .sl-h{font:500 12px/1.4 var(--mono);color:var(--meta);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.sigline a{font-size:14px;color:var(--body);text-decoration:none;line-height:1.5}
+.sigline a b{font:500 12.5px/1 var(--mono);color:var(--meta);margin-right:8px}
+.sigline a:hover{color:var(--ink)}
+@media(max-width:760px){.rail{grid-template-columns:1fr 1fr;gap:10px}}
+@media(max-width:560px){.rail{grid-template-columns:1fr}}
+
+/* reveal: без JS контент виден */
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+
+@media (max-width:760px){
+body{font-size:17px}
+section{padding:110px 0}
+.hero{padding:120px 0}
+.who{grid-template-columns:1fr;gap:28px}
+.who img{width:140px}
+.cta-row .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*{animation:none!important;transition:none!important}
+.js .rv{opacity:1;transform:none}
+}
+
+
+.sig{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.sig-photo{width:48px;height:60px;object-fit:cover;border-radius:6px;filter:grayscale(.3)}
+.sig-text{display:flex;flex-direction:column;gap:2px}
+.sig-name{font-family:var(--display);font-size:17px;font-weight:600;color:var(--ink)}
+.sig-role{font-size:14px;color:var(--meta)}
+.sig-tg{font-size:14px;color:var(--accent);text-decoration:none;margin-top:4px}
+.sig-tg:hover{text-decoration:underline}
+.sig-c{text-align:center;color:var(--meta);font-size:14px;margin-top:24px}
+.sig-c a{color:var(--meta);text-decoration:none}
+.sig-c a:hover{color:var(--ink)}
+@media(max-width:760px){.sig{justify-content:center}.sig-c{text-align:center}}
+
+
+h1,h2,h3{text-wrap:balance}
+p,li,.lead,.desc{text-wrap:pretty}
+
+/* sticky CTA — сопровождает пользователя (WIM) */
+.sticky-cta{position:fixed;bottom:24px;right:24px;z-index:50;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
+.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:10px;background:#1f7a4d;color:#f2fbf5;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.sticky-cta a:hover{transform:scale(1.02)}
+@media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
+
+/* ── mobile layout fixes (360px audit) ── */
+@media (max-width:760px){
+nav.top{padding:14px 0}
+nav.top .wrap{gap:0 10px}
+nav.top a{font-size:13px;min-height:38px}
+nav.top a.home{flex-basis:100%;justify-content:center;margin-bottom:0}
+nav.top img{height:24px}
+h1{font-size:clamp(1.3rem,5.9vw,1.7rem);line-height:1.22}
+h1 br{display:none}
+h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
+}
+
+/* grain — текстура поверх фона (Jamie McKaye pattern) */
+body{position:relative}
+body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media(prefers-reduced-motion:reduce){body:after{opacity:.035}}
+/* chrome-text — металлический градиент на ключевых словах */
+.chrome-text{background:linear-gradient(170deg,#e9ebef 8%,#aeb4bd 46%,#6e747d 72%,#e9ebef 100%);
+-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;font-style:normal}
+/* luminance steps — глубина через уровни темноты, не тени */
+:root{--ink-0:var(--bg);--ink-1:rgba(255,255,255,.025);--ink-2:rgba(255,255,255,.045)}
+
+
+/* hero own-price — состав цены своей связки, без шкал и баров */
+.own-price{max-width:520px;margin:52px auto 0;border:1px solid var(--line);border-radius:14px;padding:28px 28px 24px;background:rgba(255,255,255,.015);text-align:left;position:relative;overflow:hidden}
+.own-price:before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.7),transparent);transform:scaleX(.2);transform-origin:left;opacity:.35}
+.js .own-price.in:before{animation:ledgerTrace 1.4s .15s var(--ease) both}
+.own-price .op-kicker{font-family:var(--mono);font-size:13px;color:var(--meta);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.op-kicker-note{display:block;letter-spacing:0;text-transform:none;color:var(--faint);font-size:11px;margin-top:5px}
+.op-row{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:13px 0;border-top:1px solid rgba(255,255,255,.06);font-size:16px;position:relative}
+.js .own-price.in .op-row{animation:ledgerIn .58s var(--ease) both;animation-delay:var(--delay,0s)}
+.js .own-price.in .op-total{animation:ledgerTotal .7s .42s var(--ease) both}
+@keyframes ledgerIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+@keyframes ledgerTotal{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes ledgerTrace{from{transform:scaleX(.2);opacity:0}to{transform:scaleX(1);opacity:.35}}
+.op-row:first-of-type{border-top:none}
+.op-name{color:var(--body);line-height:1.55}
+.op-name small{display:block;color:var(--meta);font-size:13px;margin-top:5px;line-height:1.6}
+.op-val{color:var(--ink);font-weight:600;white-space:nowrap;font-family:var(--mono);font-size:15px}
+.op-total{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:15px 0 5px;margin-top:6px;border-top:1px solid var(--line);font-size:17px}
+.op-total .op-name{color:var(--ink);font-weight:600}
+.op-total .op-val{color:var(--accent);font-size:19px;font-weight:700}
+.op-them{margin:18px 0 0;padding:18px 0 2px;border-top:1px solid var(--line-soft);display:flex;flex-direction:column;gap:12px;font-size:15px}
+.op-them .th{display:flex;justify-content:space-between;align-items:baseline;gap:16px;line-height:1.5}
+.op-them .th span{color:var(--meta)}
+.op-them .th b{color:var(--ink);font-weight:600;white-space:nowrap;font-family:var(--mono);font-size:14px}
+.op-verdict{margin:24px 0 0;font-size:16px;color:var(--ink);line-height:1.6;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
+.op-verdict b{color:var(--accent)}
+.op-note{font-size:13.5px;color:var(--meta);margin:10px 0 0;line-height:1.6}
+.op-more{margin:14px 0 0;font-size:16px}
+.op-more a{color:var(--accent);font-weight:600}
+@media(max-width:760px){.own-price{max-width:100%;padding:24px 20px 20px}.op-row{font-size:15px}.op-val{font-size:14px}.op-them .th b{font-size:13px}}
+
+/* ═══ КОНСОЛЬ ЖИВОГО АГЕНТА В ГЕРОЕ (ds-hero.js) ═══
+   Токены из :root; ширина героя 1160 под две колонки; скрипт — ds-hero.js. */
+.hero .wrap{max-width:1160px}
+.hero{padding:84px 0 64px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.06fr);gap:40px;align-items:start}
+.copy .lead{margin:16px 0 0;font-size:18px;line-height:1.65;color:var(--body);max-width:52ch}
+.kicker{margin:0 0 12px;font:500 12.5px/1.4 var(--mono);color:var(--meta);text-transform:uppercase;letter-spacing:.13em}
+.cta-note{font:400 13px/1.4 var(--mono);color:var(--meta)}
+.hero-meta{margin:18px 0 0;font:400 12.5px/1.6 var(--mono);color:var(--faint)}
+.agent{border:1px solid var(--line);border-radius:var(--r-card);background:var(--card);overflow:hidden;display:flex;flex-direction:column}
+.ag-head{display:flex;align-items:center;gap:11px;padding:12px 14px;border-bottom:1px solid var(--line-soft)}
+.ag-ava{width:34px;height:34px;flex:none;border-radius:var(--r-sm);background:var(--accent);color:var(--bg);display:flex;align-items:center;justify-content:center;font:700 15px/1 var(--display)}
+.ag-id{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ag-id b{font:600 14.5px/1.3 var(--sans);color:var(--ink)}
+.ag-st{font:400 12px/1.4 var(--mono);color:var(--meta);display:flex;align-items:center;gap:6px}
+.dot{width:6px;height:6px;border-radius:3px;background:var(--accent);flex:none}
+.ag-rec{margin-left:auto;font:500 12px/1 var(--mono);color:var(--meta);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.ag-rec.on{color:var(--accent)}
+.ag-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line-soft)}
+.ag-tab{display:flex;flex-direction:column;gap:3px;min-height:56px;padding:10px 12px;background:none;border:0;border-top:2px solid transparent;border-left:1px solid var(--line-soft);text-align:left;cursor:pointer;font-family:var(--sans);color:var(--meta);transition:color .15s,border-color .15s;min-width:0}
+.ag-tab:first-child{border-left:0}
+.ag-tab .i{font:500 12px/1 var(--mono);color:var(--faint);letter-spacing:.08em}
+.ag-tab b{font:600 14px/1.25 var(--sans);color:var(--body);overflow-wrap:anywhere}
+.ag-tab .s{font:400 12px/1.3 var(--sans);color:var(--meta)}
+.ag-tab:hover{color:var(--ink)}
+.ag-tab:hover b{color:var(--ink)}
+.ag-tab[aria-selected="true"]{border-top-color:var(--accent)}
+.ag-tab[aria-selected="true"] b{color:var(--accent)}
+.ag-body{height:340px;overflow-y:auto;overscroll-behavior:contain;background:var(--deep);padding:14px 13px 16px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
+/* flex-shrink:0 — без этого flex сжимает единственный overflow:hidden элемент
+   (.msg) до огрызка: текст «вытекает» из пузыря и прячется под следующей карточкой */
+.ag-body > *{flex-shrink:0}
+.ag-body::-webkit-scrollbar{width:8px}
+.ag-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:10px}
+.l-day{align-self:center;font:400 12px/1.4 var(--mono);color:var(--meta);background:rgba(255,255,255,.04);padding:3px 11px;border-radius:var(--r-sm)}
+.l-log{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:10px;padding:3px 0 3px 10px;border-left:1px solid var(--line-soft);font:400 12.5px/1.55 var(--mono)}
+.l-log .t{color:var(--faint);white-space:nowrap}
+.l-log .x{color:var(--body);overflow-wrap:anywhere}
+.l-log .x b{color:var(--accent);font-weight:600}
+.l-file{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;padding:10px 11px;border:1px solid var(--line-soft);border-radius:var(--r-sm);background:rgba(0,0,0,.28)}
+.l-file svg{width:18px;height:18px;color:var(--accent);margin-top:1px}
+.l-file .n{font:500 13px/1.4 var(--mono);color:var(--ink);overflow-wrap:anywhere}
+.l-file .m{font:400 12px/1.5 var(--mono);color:var(--meta);margin-top:2px}
+.l-file .add{font:400 12px/1.5 var(--mono);color:var(--accent);margin-top:4px}
+.msg{max-width:90%;padding:9px 12px;border-radius:12px;font-size:14px;line-height:1.5}
+.msg.agent{align-self:flex-start;background:#1c2434;border-bottom-left-radius:4px;color:#dbe4f0}
+.msg.user{align-self:flex-end;background:rgba(var(--accent-rgb),.14);border:1px solid rgba(var(--accent-rgb),.22);border-bottom-right-radius:4px;color:var(--ink)}
+.msg .meta{display:block;margin-top:4px;font:400 12px/1.4 var(--mono);color:var(--meta)}
+.l-res{position:relative;align-self:stretch;padding:12px 13px;border-radius:12px;border:1px solid rgba(var(--accent-rgb),.32);background:rgba(123,196,168,.05)}
+.l-res::before{content:"";position:absolute;left:12px;right:12px;top:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.7),transparent);transform:scaleX(.2);transform-origin:left center;transition:transform .5s ease}
+.l-res.in::before{transform:scaleX(1)}
+.l-res .rt{font:600 14.5px/1.4 var(--sans);color:var(--ink)}
+.l-res .rr{display:flex;justify-content:space-between;gap:12px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line-soft);font:400 12.5px/1.5 var(--mono)}
+.l-res .rr:first-of-type{border-top:0;padding-top:0;margin-top:6px}
+.l-res .rr .k{color:var(--meta)}
+.l-res .rr .v{color:var(--accent);text-align:right}
+.typing{align-self:flex-start;background:#1c2434;border-radius:12px;border-bottom-left-radius:4px;padding:10px 13px;display:flex;gap:5px;align-items:center}
+.typing[hidden]{display:none}
+.typing i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.42);animation:tp 1s infinite}
+.typing i:nth-child(2){animation-delay:.18s}
+.typing i:nth-child(3){animation-delay:.36s}
+@keyframes tp{0%,60%,100%{opacity:.28}30%{opacity:1}}
+.line-in{opacity:1}
+@media (prefers-reduced-motion:no-preference){.line-in{animation:lif .28s ease-out both}@keyframes lif{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}}
+.ag-input{display:flex;align-items:center;gap:10px;margin:12px 12px 0;padding:12px 14px;border-radius:var(--r-sm);background:#1c2434;font:400 13px/1.4 var(--txt);color:var(--meta)}
+.ag-input svg{width:18px;height:18px;flex:none;color:var(--meta)}
+.ag-input span{min-width:0;overflow-wrap:anywhere}
+.ag-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 14px 14px;border-top:1px solid var(--line-soft);margin-top:12px}
+.ag-foot .res{font:400 13px/1.5 var(--sans);color:var(--body);min-width:0}
+.ag-foot .res b{color:var(--ink);font-weight:600}
+.ag-acts{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ag-again{min-height:var(--tap);padding:0;background:none;border:0;border-bottom:1px solid var(--line);color:var(--meta);font:400 12.5px/1 var(--mono);cursor:pointer}
+.ag-again:hover{color:var(--ink);border-bottom-color:rgba(var(--accent-rgb),.5)}
+.ag-link{display:inline-flex;align-items:center;min-height:var(--tap);font:400 12.5px/1 var(--mono);color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(var(--accent-rgb),.4)}
+.ag-link:hover{border-bottom-color:var(--accent)}
+@media (max-width:860px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:24px}.hero{padding:56px 0 44px}.copy .lead{font-size:17px;margin-top:13px}.cta-row{margin-top:20px}.ag-body{height:300px}}
+@media (max-width:760px){.hero-meta{display:none}.ag-tab{padding:9px 9px}.ag-tab .s{display:none}.ag-foot{flex-direction:column;align-items:flex-start}.ag-foot .ag-acts{width:100%}}
+@media (max-width:400px){.ag-tab b{font-size:13px}.l-log{gap:8px;padding-left:8px}.ag-body{padding:12px 11px 14px}}
+@media (min-width:761px){.ag-body{height:420px}}
+@media (prefers-reduced-motion:reduce){.agent,.agent *{animation:none !important;transition:none !important}.ag-body{scroll-behavior:auto}.l-res::before{transform:scaleX(1)}.typing{display:none !important}.msg,.l-log,.l-file,.l-day,.l-res{opacity:1;transform:none}}
+
+
+/* ═══ МАЛЫЙ КАЛЬКУЛЯТОР РУТИНЫ В ГЕРОЕ ═══ */
+.minicalc{border:1px solid var(--line);border-radius:var(--r-card);padding:24px 24px 22px;background:rgba(255,255,255,.015);position:relative;overflow:hidden;text-align:left}
+.minicalc:before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--accent-rgb),.7),transparent);transform:scaleX(.25);transform-origin:left;opacity:.35}
+.js .minicalc.in:before{animation:ledgerTrace 1.4s .2s var(--ease) both}
+.mc-kicker{font:500 12.5px/1.4 var(--mono);color:var(--meta);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.mc-ctrl{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:8px 0 0;border-top:1px solid var(--line-soft)}
+.mc-ctrl label{font-size:14px;color:var(--body)}
+.mc-ctrl output{font:600 14px/1.6 var(--mono);color:var(--ink);text-align:right;white-space:nowrap}
+.mc-ctrl input[type=range]{grid-column:1/-1;width:100%;accent-color:#7bc4a8;margin:0 0 4px}
+.mc-loss,.mc-mine{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-top:1px solid var(--line-soft);font-size:14.5px}
+.mc-loss span,.mc-mine span{color:var(--meta)}
+.mc-loss b{color:#ff7a6b;font:700 15px/1.35 var(--mono);text-align:right}
+.mc-mine b{color:var(--accent);font:700 13.5px/1.45 var(--mono);text-align:right}
+.mc-verdict{font-size:14.5px;color:var(--body);line-height:1.55;margin:12px 0 0;padding-top:12px;border-top:1px solid var(--line-soft)}
+.mc-go{margin-top:16px;width:100%}
+@media(max-width:760px){.minicalc{padding:18px 14px 16px}.mc-loss b{font-size:13px}.mc-mine b{font-size:12px}}
+
+/* ═══ ДЕНЬГИ: три строки про его деньги, не про рынок ═══ */
+.money-rows{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.mrow{display:grid;grid-template-columns:minmax(190px,250px) 1fr;gap:4px 28px;padding:24px 2px;border-bottom:1px solid var(--line-soft);text-decoration:none;transition:background .18s}
+.mrow:hover{background:rgba(255,255,255,.02)}
+.m-num{font-family:var(--display);font-size:clamp(1.45rem,2.8vw,1.9rem);font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.15}
+.m-t{color:var(--body);font-size:16.5px;line-height:1.55;align-self:center}
+.m-s{grid-column:2;color:var(--meta);font:400 13px/1.5 var(--mono)}
+.mrow.accent .m-num{color:var(--accent)}
+@media(max-width:760px){.mrow{grid-template-columns:1fr;gap:4px;padding:18px 0}.m-s{grid-column:1}}
+
+/* ═══ ЧЕТЫРЕ ВХОДА: карта-созвездие (клик по узлу — панель с рядами) ═══ */
+.orbit{display:grid;grid-template-columns:1fr minmax(190px,230px) 1fr;gap:14px;align-items:center;margin-top:36px}
+.onode{display:flex;flex-direction:column;gap:5px;min-height:104px;padding:16px 16px 14px;background:none;border:1px solid var(--line);border-radius:var(--r-card);text-align:left;cursor:pointer;color:var(--meta);font-family:var(--sans);transition:border-color .18s,background .18s}
+.onode .n{font:500 11.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.onode b{font:600 16.5px/1.25 var(--display);color:var(--body)}
+.onode .d{font-size:13px;line-height:1.45}
+.onode:hover{border-color:rgba(var(--accent-rgb),.4)}
+.onode:hover b{color:var(--ink)}
+.onode[aria-pressed="true"]{border-color:rgba(var(--accent-rgb),.55);background:rgba(123,196,168,.05)}
+.onode[aria-pressed="true"] b{color:var(--accent)}
+.ocenter{grid-column:2;grid-row:2;justify-self:center;align-self:center;text-align:center;padding:18px 10px}
+.ocenter .o-dot{width:64px;height:64px;margin:0 auto 10px;border-radius:50%;border:1px solid rgba(var(--accent-rgb),.55);display:flex;align-items:center;justify-content:center;font:700 22px/1 var(--display);color:var(--accent);background:rgba(123,196,168,.06)}
+.ocenter span{font:400 12px/1.5 var(--mono);color:var(--meta);letter-spacing:.06em}
+.o-n1{grid-column:1;grid-row:1}.o-n2{grid-column:3;grid-row:1}
+.o-n3{grid-column:1;grid-row:3}.o-n4{grid-column:3;grid-row:3}
+.opane{margin-top:20px;border:1px solid var(--line);border-radius:var(--r-card);padding:8px 22px 6px;background:rgba(255,255,255,.015)}
+.opane[hidden]{display:none}
+.opane .orow{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px;line-height:1.5}
+.opane .orow:last-of-type{border-bottom:none}
+.opane .orow .k{color:var(--ink);font-weight:600;white-space:nowrap}
+.opane .orow .v{color:var(--meta);text-align:right}
+.opane .orow .v em{font-style:normal;color:var(--accent)}
+.opane .o-more{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-size:14px}
+.opane .o-more a{color:var(--accent);font-weight:600;text-decoration:none}
+.opane .o-more a:hover{text-decoration:underline}
+@media(max-width:760px){.orbit{grid-template-columns:1fr 1fr;gap:10px}.ocenter{grid-column:1/-1;grid-row:1;padding:10px 0 4px}.o-n1{grid-column:1;grid-row:2}.o-n2{grid-column:2;grid-row:2}.o-n3{grid-column:1;grid-row:3}.o-n4{grid-column:2;grid-row:3}.onode{min-height:92px;padding:13px 12px 11px}.onode b{font-size:15px}.opane{padding:6px 14px 4px}.opane .orow{flex-direction:column;gap:2px}.opane .orow .v{text-align:left}}
+
+/* ── исследования на главной: сетка карточек, единый ритм ── */
+.res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+.res-card{display:flex;flex-direction:column;gap:8px;padding:20px 20px 18px;border:1px solid var(--line);
+  border-radius:12px;background:rgba(255,255,255,.015);text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.res-card:hover{border-color:rgba(var(--accent-rgb),.45);transform:translateY(-2px)}
+.rc-top{display:flex;align-items:baseline;gap:10px}
+.rc-date{font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.04em}
+.rc-tag{font-family:var(--mono);font-size:12.5px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em}
+.rc-name{font-family:var(--display);font-size:16.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.rc-desc{font-size:14.5px;color:var(--body);line-height:1.55;flex:1}
+.rc-go{font-size:14px;color:var(--accent);margin-top:2px}
+@media (max-width:760px){
+  .res-grid{grid-template-columns:1fr;gap:12px;margin-top:20px}
+  .res-card{padding:18px}
+}
+
+/* плотная строка исследований на главной: без стены одинаковых карточек */
+.res-strip{display:flex;flex-direction:column;border-top:1px solid var(--line-soft);margin-top:20px}
+.rs{display:grid;grid-template-columns:132px 1fr 20px;gap:14px;align-items:baseline;
+  padding:14px 2px;border-bottom:1px solid var(--line-soft);text-decoration:none;transition:background .18s}
+.rs:hover{background:rgba(255,255,255,.02)}
+.rs-t{font-family:var(--mono);font-size:12.5px;color:var(--accent);letter-spacing:.04em;white-space:nowrap}
+.rs b{font-family:var(--display);font-size:16px;font-weight:600;color:var(--ink);line-height:1.35}
+.rs-a{font-family:var(--mono);color:var(--meta);text-align:right;transition:color .18s,transform .18s}
+.rs:hover .rs-a{color:var(--accent);transform:translateX(2px)}
+@media (max-width:760px){
+  .rs{grid-template-columns:1fr;gap:6px;padding:14px 0}
+  .rs b{font-size:15.5px}
+  .rs-a{display:none}
+}
+/* persona ladder */
+.p-who{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:10px}
+.p-card{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border:1px solid var(--line);border-radius:var(--r-sm);background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:border-color .2s var(--ease)}
+.p-card:hover{border-color:var(--accent)}
+.p-card[aria-pressed="true"]{border-color:var(--accent)}
+.p-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.p-t{font:500 15px/1.4 var(--txt,var(--sans));color:var(--ink)}
+.p-d{font-size:13px;line-height:1.55;color:var(--body)}
+.p-hint{font:400 13px/1.6 var(--mono);color:var(--meta);margin-top:14px}
+.m-cta{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;margin-top:24px;border-radius:var(--r-sm);background:var(--btn);color:var(--btn-text);font:500 15px var(--sans);text-decoration:none}
+.m-cta:hover{background:var(--btn-h)}
+.m-cta:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:760px){.p-who{grid-template-columns:1fr}}
+</style>
+<script src="ym-slot.js" defer></script>
+<link rel="stylesheet" href="ds-base.css"/>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="ds-hero-premium-v2.css"/>
+</head>
+<body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<nav class="top" aria-label="Основная навигация" data-ds-nav><div class="wrap"><a class="home" href="index.html"><img src="logo-nav.png" alt="Discovery System" height="28"/><span>Discovery System</span></a></div></nav>
+<header class="hero" id="hero">
+<div class="hero-light" aria-hidden="true"></div>
+<div class="wrap hero-grid">
+
+<div class="copy">
+<p class="kicker rv">команды 3–30 человек · рутина от 10 ч/нед</p>
+<h1 class="rv" style="transition-delay:.06s">ИИ-агента можно выбрать <span class="chrome-text">с первого раза</span></h1>
+<p class="lead rv" style="transition-delay:.12s">Подписка берёт деньги и данные — и умирает от блокировок. Студия — чёрный ящик от 50 000 ₽. Найм — 40–60 тысяч каждый месяц. Своя связка — 5–15 тыс. разово и 2–4 тыс. ₽/мес владения: цена и логика видны до старта.</p>
+<div class="cta-row rv" style="transition-delay:.24s">
+<a class="btn btn-primary" href="calculator.html">Посчитать свою связку</a>
+<a class="btn btn-ghost" href="#work"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13"/><path d="M13 6.5l5.5 5.5-5.5 5.5"/></svg>Что делает агент</a>
+<span class="cta-note">7 вопросов · без регистрации</span>
+</div>
+<ul class="hero-facts rv" style="transition-delay:.26s">
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>связка на твоём сервере</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9.4 12.3l1.9 1.9 3.4-3.7"/></svg>данные у тебя</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 3L6 13.5h5l-.8 7.5L18 10.5h-5z"/></svg>без VPN</li>
+</ul>
+
+
+</div>
+
+<div class="minicalc rv" id="minicalc" style="transition-delay:.18s">
+<div class="mc-kicker">твоя рутина в рублях · двигай ползунки</div>
+<div class="mc-ctrl"><label for="mcTasks">задач в неделю</label><input type="range" id="mcTasks" min="5" max="40" step="1" value="20" aria-label="Задач в неделю"/><output id="mcTasksV">20</output></div>
+<div class="mc-ctrl"><label for="mcHours">часов на задачу</label><input type="range" id="mcHours" min="0.25" max="4" step="0.25" value="1" aria-label="Часов на задачу"/><output id="mcHoursV">1 ч</output></div>
+<div class="mc-ctrl"><label for="mcRate">цена твоего часа</label><input type="range" id="mcRate" min="500" max="3000" step="100" value="1200" aria-label="Цена часа в рублях"/><output id="mcRateV">1 200 ₽</output></div>
+<div class="mc-loss"><span>эта рутина руками</span><b id="mcLoss">87 ч ≈ 104 000 ₽/мес</b></div>
+<div class="mc-mine"><span>владение связкой</span><b>5–15 тыс. разово + 2–4 тыс. ₽/мес</b></div>
+<p class="mc-verdict">Агент ведёт рутину — принимаешь результат. Состав цены виден заранее.</p>
+<a class="btn btn-primary mc-go" href="calculator.html">Собрать точную связку за минуту</a>
+</div>
+</div>
+</header>
+
+<section class="price-band" aria-label="Состав цены"><div class="wrap">
+<div class="own-price rv" style="transition-delay:.3s;margin-top:56px">
+<div class="op-kicker">ежемесячное владение своей связкой<span class="op-kicker-note">не сравнение с курсами — только за что реально платишь</span></div>
+<div class="op-row" style="--delay:.08s"><div class="op-name">модель / API<small>считается по числу задач и автономности агента</small></div><div class="op-val">0–5 500 ₽</div></div>
+<div class="op-row" style="--delay:.18s"><div class="op-name">сервер, если нужен 24/7<small>локально — 0 ₽; сервер 1 100–4 800 ₽ + 300 ₽ шлюз для Telegram из РФ</small></div><div class="op-val">0–5 100 ₽</div></div>
+<div class="op-row" style="--delay:.28s"><div class="op-name">подключения<small>Telegram — 0 ₽; CRM, таблицы, память — до 1 400 ₽; WhatsApp и Авито — по 5 000 ₽ каждый</small></div><div class="op-val">0–1 400 ₽</div></div>
+<div class="op-total"><div class="op-name">локально + Telegram</div><div class="op-val">от 150 ₽/мес</div></div>
+<div class="op-total" style="border-top:none;padding-top:0"><div class="op-name">сервер 24/7 + Telegram</div><div class="op-val">от 1 500 ₽/мес</div></div>
+<div class="op-them">
+<div class="th"><span>модель, сервер и подключения</span><b>платишь провайдерам</b></div>
+<div class="th"><span>сборка и настройка</span><b>отдельно, один раз</b></div>
+</div>
+<p class="op-verdict">Не курс и не подписка на обещание. <b>Состав цены виден заранее.</b></p>
+<p class="op-note">Точная сумма зависит от твоей задачи. Калькулятор покажет её после 7 коротких вопросов — без регистрации и СМС.</p>
+<p class="op-more"><a href="calculator.html">Сверить со своей рутиной →</a></p>
+</div>
+</div></section>
+<main>
+
+<section id="work"><div class="wrap">
+<p class="eyebrow rv">в работе · демо на живых сборках</p>
+<h2 class="rv">Три смены, которые ведёт агент</h2>
+
+<div class="agent rv" id="agent">
+
+<div class="ag-head">
+<span class="ag-ava" aria-hidden="true">D</span>
+<span class="ag-id">
+<b>Discovery Agent</b>
+<span class="ag-st"><i class="dot" aria-hidden="true"></i> онлайн · <span id="agShift">смена идёт</span></span>
+</span>
+<span class="ag-rec" id="agRec">запись</span>
+</div>
+
+<div class="ag-tabs" role="tablist" aria-label="Смены агента">
+<button class="ag-tab" role="tab" id="tab-shift" aria-controls="stream" aria-selected="true" data-asm="shift">
+<span class="i">01</span><b>Смена закрывается сама</b><span class="s">диктовка → таблица → сводка</span>
+</button>
+<button class="ag-tab" role="tab" id="tab-requests" aria-controls="stream" aria-selected="false" tabindex="-1" data-asm="requests">
+<span class="i">02</span><b>Заявка не ждёт утра</b><span class="s">разбор → черновик → отправляешь ты</span>
+</button>
+<button class="ag-tab" role="tab" id="tab-orders" aria-controls="stream" aria-selected="false" tabindex="-1" data-asm="orders">
+<span class="i">03</span><b>Утром — список заказов</b><span class="s">площадки → скоринг → контакты</span>
+</button>
+</div>
+
+<div class="ag-body" id="stream" role="log" aria-live="polite" aria-relevant="additions" aria-label="Строки работы агента">
+<div class="typing" id="typing" hidden><i></i><i></i><i></i></div>
+</div>
+
+<div class="ag-input" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10a3.5 3.5 0 0 0 7 0"/><path d="M5 11.5a7 7 0 0 0 7 7 7 7 0 0 0 7-7"/><path d="M12 18.5V21"/><path d="M8.5 21h7"/></svg>
+<span>Сотрудник диктует голосом — как в Telegram</span>
+</div>
+
+<div class="ag-foot">
+<span class="res" id="agRes"></span>
+<span class="ag-acts">
+<button class="ag-again" id="agAgain" type="button">запустить снова</button>
+<a class="ag-link" href="calculator.html">посчитать свою связку</a>
+</span>
+</div>
+
+</div>
+<p class="work-cap rv">Учёт и сводки — внедрение в малом бизнесе, живёт на его сервере 24/7. Отбор заказов — открытый парсер: 63% точности против 47% у поиска по словам. Заявки — сценарий: черновик готовит агент, отправляет человек — сам он клиентам не пишет.</p>
+</div></section>
+
+<section id="money"><div class="wrap">
+<p class="eyebrow rv">считаем не рынок — твои деньги</p>
+<h2 class="rv">ИИ-агентов пробовали все. Владеют ими по адекватной цене — только единицы.</h2>
+<div class="p-who rv" role="group" aria-label="Кому считаем">
+<button type="button" class="p-card" data-persona="agent" aria-pressed="false"><span class="p-t">Личный агент</span><span class="p-d">Под твои задачи. За день, с приёмкой по чек-листу.</span></button>
+<button type="button" class="p-card" data-persona="solo" aria-pressed="false"><span class="p-t">Самозанятому</span><span class="p-d">Минимальный сервер — впритык и по делу.</span></button>
+<button type="button" class="p-card" data-persona="biz" aria-pressed="false"><span class="p-t">ИП и малому бизнесу</span><span class="p-d">Рабочая сборка 8 ГБ, агенты под процессы.</span></button>
+</div>
+<div class="money-rows" id="p-rows"></div>
+<p class="p-hint">Выбери себя — цифры подстроятся. 7 вопросов в калькуляторе дадут цену владения под твой масштаб.</p>
+<a class="m-cta" href="calculator.html">Посчитать свою цену — 7 вопросов</a>
+<script>
+(function(){
+var D={
+def:[["53%","<b>МСП уже внутри</b> — по другой методике 23%. От четверти до половины.","ПСБ · Опора, 08.2026 · VK WorkSpace, 09.2026"],
+["44%","<b>Отказались от агентов</b>, ещё 46% пилотов — без эффекта.","Джет + Smart Ranking, 26.08.2026"],
+["−37 п.п.","<b>Годовая скорость вытеснения</b> тех, кто ещё не в ИИ. Окно — около 15 месяцев.","собственный замер, 24.10.2026"],
+["150 000 ₽","<b>Медиана зарплаты «ИИ-агента»</b> — столько стоит твоя рутина, отданная человеку. Своя связка — 2–4К ₽/мес. Она твоя.","hh.ru, 24.10.2026"]],
+agent:[["44%","<b>Отказались от агентов</b>, ещё 46% пилотов — без эффекта. Без системы ты в остальных.","Джет + Smart Ranking, 26.08.2026"],
+["150 000 ₽","<b>Медиана зарплаты «ИИ-агента»</b> — столько стоит твоя рутина, отданная человеку.","hh.ru, 24.10.2026"],
+["2–4К ₽/мес","<b>Своя связка под твои задачи</b>, собранная один раз. Она не аренда. Она твоя.","калькулятор — 7 вопросов"]],
+solo:[["5 900 ₽","<b>Медиана чека исполнителя на Kwork</b> — а оборот биржи за год −35%: исполнителей больше, денег меньше.","собственный замер, 24.10.2026"],
+["150 000 ₽","<b>Медиана зарплаты «ИИ-агента»</b> — делегировать под ключ дороже, чем владеть.","hh.ru, 24.10.2026"],
+["2–4К ₽/мес","<b>Минимальный сервер — впритык и по делу.</b> Связка собирается один раз.","калькулятор — 7 вопросов"]],
+biz:[["53%","<b>МСП уже внутри</b> — по другой методике 23%. От четверти до половины.","ПСБ · Опора, 08.2026 · VK WorkSpace, 09.2026"],
+["5–15 млн ₽","<b>За 3 года</b> тратит компания ~50 человек, отдавшая внедрение интегратору.","Axenix × ИИ-центр МГУ, Ведомости, 31.03.2026"],
+["2–4К ₽/мес","<b>Рабочая сборка 8 ГБ</b> и агенты под процессы — состав и логика видны до старта.","калькулятор — 7 вопросов"],
+["×3 ниже рынка","<b>Агент + продуктовый отдел на связи.</b> Поддержка связки, пока ты растёшь. Веришь в это? И мы нет. Цены скоро поднимем — рынок не стоит на месте.","формат и цена поддержки — на <a href=\"clarity.html\">Ясности</a>"]]};
+var rows=document.getElementById('p-rows');
+function render(k){var d=D[k]||D.def;var h='';for(var i=0;i<d.length;i++){var r=d[i];var last=(k!=='def'&&i===d.length-1);h+='<div class="mrow'+(last?' accent':'')+'"><span class="m-num">'+r[0]+'</span><span class="m-t">'+r[1]+'</span><span class="m-s">'+r[2]+'</span></div>'}rows.innerHTML=h}
+render('def');
+document.querySelectorAll('.p-card').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.p-card').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');try{sessionStorage.setItem('ds_persona',b.dataset.persona)}catch(e){}render(b.dataset.persona)})});
+})();
+</script>
+</div></section>
+
+<section id="inside"><div class="wrap">
+<p class="eyebrow rv">четыре входа · клик по узлу</p>
+<h2 class="rv">Что внутри Discovery System</h2>
+<div class="orbit rv">
+<button class="onode o-n1" data-pane="p-skills" aria-pressed="true"><span class="n">01 · бесплатно</span><b>Скиллы</b><span class="d">открытый код — скачивай и запускай у своего агента</span></button>
+<div class="ocenter"><div class="o-dot">DS</div><span>один агент<br>четыре входа</span></div>
+<button class="onode o-n2" data-pane="p-signals" aria-pressed="false"><span class="n">02 · живое</span><b>Сигналы</b><span class="d">лента рынка с датами — без пересылок из чатов</span></button>
+<button class="onode o-n3" data-pane="p-research" aria-pressed="false"><span class="n">03 · замеры</span><b>Исследования</b><span class="d">свои цифры, источники и дата проверки на каждом</span></button>
+<button class="onode o-n4" data-pane="p-systems" aria-pressed="false"><span class="n">04 · продукты</span><b>Системы</b><span class="d">от калькулятора за 0 ₽ до внедрения под твой бюджет</span></button>
+</div>
+
+<div class="opane" id="p-skills" role="group" aria-label="Скиллы">
+<div class="orow"><span class="k">warm-lead-parser</span><span class="v">парсер тёплых лидов — <em>63% против 47%</em> у поиска по словам, код открыт</span></div>
+<div class="orow"><span class="k">spiral-maturity</span><span class="v">зрелость команды под ИИ-агентов: 7 уровней за один прогон</span></div>
+<div class="orow"><span class="k">pnl-check</span><span class="v">юнит-экономика сделки — до того, как платить внедренцу</span></div>
+<div class="orow"><span class="k">market-evidence-diagnostic</span><span class="v">бизнес-модель по evidence: живая или на обещаниях</span></div>
+<div class="orow"><span class="k">geo-audit</span><span class="v">видимость в ответах ИИ-поиска</span></div>
+<div class="o-more"><span>запуск — у своего агента, одной командой</span><a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub →</a></div>
+</div>
+
+<div class="opane" id="p-signals" role="group" aria-label="Сигналы" hidden>
+<div class="orow"><span class="k">27.10.2026</span><span class="v">Anthropic подала S-1: <em>12 ноября</em> новая Usage Policy — запрет на владельцев и реселлеров из неподдерживаемых регионов, России в списке нет</span></div>
+<div class="orow"><span class="k">14.10.2026</span><span class="v">Найми.ИИ — агент-маркетплейс: аренда <em>3 650–61 000 ₽/мес</em>. Считай год, а не месяц</span></div>
+<div class="orow"><span class="k">02.10.2026</span><span class="v">новая волна блокировок Claude — режут аккаунты россиян, включая плативших $200/мес</span></div>
+<div class="o-more"><span>свежие сигналы — пару раз в неделю</span><a href="channel.html">Читать ленту →</a></div>
+</div>
+
+<div class="opane" id="p-research" role="group" aria-label="Исследования" hidden>
+<div class="orow"><span class="k">×148</span><span class="v">одна модель Claude — разница в цене до ×148 из-за кэша: вендор против платформы</span></div>
+<div class="orow"><span class="k">76 провалов</span><span class="v">заплатил за ИИ-агента — он не работает: разбор причин отказов</span></div>
+<div class="orow"><span class="k">Второй месяц</span><span class="v">какой путь рынка ИИ-агентов ещё живёт весной</span></div>
+<div class="o-more"><span>каждый замер — с источниками и датами</span><a href="market.html#research">Все замеры →</a></div>
+</div>
+
+<div class="opane" id="p-systems" role="group" aria-label="Системы" hidden>
+<div class="orow"><span class="k">Калькулятор</span><span class="v"><em>0 ₽</em> · 7 вопросов — цена своей связки за минуту</span></div>
+<div class="orow"><span class="k">Гайд 20 конфигураций</span><span class="v">5 000 ₽ · выдача до 15 минут</span></div>
+<div class="orow"><span class="k">Архитектура агента</span><span class="v">7 000 ₽ · консультация и конфигурация, правки до приёмки</span></div>
+<div class="orow"><span class="k">Внедрение</span><span class="v">от 15 000 ₽ · ПК / сервер / интеграция — по твоей форме и бюджету</span></div>
+<div class="o-more"><span>оплата вперёд · приёмка по чек-листу, зафиксированному до старта</span><a href="clarity.html">Ясность →</a></div>
+</div>
+</div></section>
+
+<section id="research"><div class="wrap">
+<p class="eyebrow rv">исследования · замеры с источниками</p>
+<h2 class="rv">Что я выяснил про этот рынок</h2>
+<div class="res-strip rv">
+<a class="rs" href="lost-accounts.html"><span class="rs-t">риск · 86 тыс [58–221]</span><b>Claude и ChatGPT не принадлежат тебе: сколько аккаунтов потеряно</b><span class="rs-a">→</span></a>
+<a class="rs" href="karta-resheniy.html"><span class="rs-t">карта · 6 путей</span><b>Второй месяц: какой путь рынка ИИ-агентов ещё живёт весной</b><span class="rs-a">→</span></a>
+<a class="rs" href="agent-failures.html"><span class="rs-t">провалы · 76</span><b>Заплатил за ИИ-агента — он не работает: 76 провалов</b><span class="rs-a">→</span></a>
+<a class="rs" href="nacenka.html"><span class="rs-t">токеномика · ×148</span><b>Claude и DeepSeek: одна модель — разница в цене до ×148 из-за кэша</b><span class="rs-a">→</span></a>
+<a class="rs" href="value-chain.html"><span class="rs-t">экономика</span><b>Карта создания ценности рынка ИИ-агентов: где твой сегмент</b><span class="rs-a">→</span></a>
+</div>
+<p class="rv link-row" style="margin-top:16px"><a class="btn btn-ghost" href="market.html#research">Все замеры на «Рынке ИИ» →</a></p>
+</div></section>
+
+<section id="cases"><div class="wrap" data-ds-cases></div></section>
+
+<section id="who"><div class="wrap">
+<p class="eyebrow rv">кто строит</p>
+<h2 class="rv" id="author">Виктор Зайцев</h2>
+<div class="who rv">
+<img src="viktor.jpg" alt="Виктор Зайцев" loading="lazy"/>
+<div>
+<p>3 года в цифровых продуктах и рыночных исследованиях. Я делюсь опытом того, как можно быстрее и точнее достигать результата ИИ-агентами. Здесь — то же для твоей рутины, бизнеса и работы.</p>
+<p class="own">Связка остаётся у тебя. Инструменты под твоим контролем — и ты знаешь, сколько они стоят.</p>
+<div class="stats">
+<div class="stat"><b>20→80%</b><span>точность AI-скоринга кандидатов</span></div>
+<div class="stat"><b>+23%</b><span>выручка на единицу продукта</span></div>
+<div class="stat"><b>×1.8</b><span>время разработки и релиза продукта</span></div>
+</div>
+<p class="links"><a href="https://t.me/discoverysystem">Telegram</a><a href="https://github.com/r0undm1dn1ghty-star">GitHub</a><a href="https://vc.ru/id6099688">VC</a></p>
+</div>
+</div>
+</div></section>
+<section class="finale rv"><div class="wrap">
+<h2>Путь: от расчёта до работающего агента</h2>
+<div class="rail">
+<div class="rstep rv"><span class="rp">0 ₽</span><span class="rt">Калькулятор связки</span><span class="rd">7 вопросов · минута</span></div>
+<div class="rstep rv" style="transition-delay:.06s"><span class="rp">5 000 ₽</span><span class="rt">Гайд 20 конфигураций</span><span class="rd">выдача до 15 минут</span></div>
+<div class="rstep rv" style="transition-delay:.12s"><span class="rp">7 000 ₽</span><span class="rt">Архитектура агента</span><span class="rd">правки до приёмки</span></div>
+<div class="rstep rv" style="transition-delay:.18s"><span class="rp">от 15 000 ₽</span><span class="rt">Внедрение</span><span class="rd">ПК / сервер / интеграция · ~2 ч</span></div>
+</div>
+<div class="sigline rv">
+<span class="sl-h">сейчас в ленте</span>
+<a href="channel.html"><b>27.10</b> Anthropic выходит на биржу: блокировки из РФ становятся обязательством перед биржей, а не решением компании</a>
+<a href="channel.html"><b>14.10</b> Найми.ИИ — аренда агентов 3 650–61 000 ₽/мес: считай год, а не месяц</a>
+<a href="channel.html"><b>02.10</b> новая волна блокировок Claude — режут аккаунты плативших $200/мес</a>
+</div>
+<div class="cta-row">
+<a class="btn btn-primary" href="calculator.html">Начать с калькулятора</a>
+<a class="btn btn-ghost" href="https://t.me/discoverysystem">Сигналы рынка в канале →</a>
+</div>
+<p class="micro">бесплатно · без регистрации и данных · минута</p>
+</div></section>
+<footer>
+<div class="wrap">
+<div class="sig">
+<img src="viktor.jpg" alt="Виктор Зайцев" loading="lazy" class="sig-photo"/>
+<div class="sig-text">
+<span class="sig-name">Виктор Зайцев</span>
+<span class="sig-role">отвечаю лично · без ботов</span>
+<a href="https://t.me/discoverysystem" target="_blank" rel="noopener" class="sig-tg">Telegram →</a>
+</div>
+</div>
+<p class="sig-c">Discovery System · 2026 · <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a> · <a href="https://vc.ru/id6099688">VC</a> · <a href="oferta.html">оферта</a> · <a href="policy.html">политика ПД</a></p>
+<p class="sig-c" style="margin-top:8px">Зайцев Виктор Павлович, самозанятый (НПД) · ИНН 780627413110 · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></p>
+</div>
+</footer>
+</main>
+<script>
+(function(){
+var d=document;
+/* reveal: без JS контент виден, с JS проявляется по скроллу */
+if('IntersectionObserver' in window){
+var io=new IntersectionObserver(function(es){
+es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+d.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+}else{
+d.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});
+}
+})();
+</script>
+<div class="sticky-cta" id="stickyCta"><a href="calculator.html">Посчитать за минуту</a></div>
+<script>
+/* мини-калькулятор рутины в герое: часы × ставка — без выдуманной точности */
+(function(){
+var T=document.getElementById('mcTasks'),H=document.getElementById('mcHours'),R=document.getElementById('mcRate');
+if(!T)return;
+var tV=document.getElementById('mcTasksV'),hV=document.getElementById('mcHoursV'),rV=document.getElementById('mcRateV'),loss=document.getElementById('mcLoss');
+function fmt(n){return n.toLocaleString('ru-RU');}
+function calc(){
+var t=+T.value,h=+H.value,r=+R.value;
+var hours=Math.round(t*h*4.33),money=Math.round(hours*r/1000)*1000;
+tV.textContent=t;
+hV.textContent=(h%1===0?h:String(h).replace('.',','))+' ч';
+rV.textContent=fmt(r)+' ₽';
+loss.textContent=fmt(hours)+' ч ≈ '+fmt(money)+' ₽/мес';
+}
+[T,H,R].forEach(function(i){i.addEventListener('input',calc);});
+calc();
+})();
+</script>
+<script>
+/* четыре входа: карта-созвездие — клик по узлу переключает панель */
+(function(){
+var nodes=[].slice.call(document.querySelectorAll('.onode'));
+if(!nodes.length)return;
+function pick(btn){
+nodes.forEach(function(n){n.setAttribute('aria-pressed',n===btn?'true':'false');});
+[].slice.call(document.querySelectorAll('.opane')).forEach(function(p){p.hidden=(p.id!==btn.getAttribute('data-pane'));});
+}
+nodes.forEach(function(n){n.addEventListener('click',function(){pick(n);});});
+})();
+</script>
+<script>
+/* sticky CTA: показывается после первого экрана */
+(function(){
+var sc=document.getElementById('stickyCta');
+if(!sc)return;
+var shown=false;
+function upd(){
+var y=window.scrollY||document.documentElement.scrollTop;
+var h=window.innerHeight;
+if(y>h*0.8&&!shown){sc.classList.add('show');shown=true;}
+else if(y<h*0.3&&shown){sc.classList.remove('show');shown=false;}
+}
+window.addEventListener('scroll',upd,{passive:true});
+upd();
+})();
+</script>
+<script>(function(){var on=!!navigator.gpu&&window.innerWidth>=760&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches&&!sessionStorage.getItem("gpu-crashed");if(on)return;var s=document.createElement("script");s.src="ds-plasma.js";s.defer=true;s.setAttribute("data-ds-plasma","1");document.head.appendChild(s);})();</script>
+<script>
+/* страховка проявления: не даём контенту остаться невидимым из-за скролл-анимации */
+(function(){
+  function revealAll(){ document.querySelectorAll('.rv:not(.in)').forEach(function(el){ el.classList.add('in'); }); }
+  if (document.readyState === 'complete') setTimeout(revealAll, 1200);
+  else window.addEventListener('load', function(){ setTimeout(revealAll, 1200); });
+  // и на всякий случай — если пользователь уже пролистал дальше, чем успело проявиться
+  window.addEventListener('scroll', function(){ if (window.scrollY > 200) setTimeout(revealAll, 600); }, { passive: true, once: true });
+})();
+</script>
+<script src="ds-cases.js" defer></script>
+<script src="ds-nav.js" defer></script>
+<script src="ds-hero.js" defer></script>
+<script id="hero-field-artifact" type="application/json">{"version":2,"wgsl":"// vgsl-module: C:\\Users\\Victor\\Desktop\\hermes_work\\vgpu-lab-hero\\ds-hero-field.wgsl\n// ============================================================================\r\n// ds-hero-field.wgsl \u2014 \u0441\u0432\u0435\u0442\u043e\u0432\u043e\u0435 \u043f\u043e\u043b\u0435 \u043f\u0435\u0440\u0432\u043e\u0433\u043e \u044d\u043a\u0440\u0430\u043d\u0430 Discovery System\r\n// \u041d\u0435 \u00ab\u043c\u0443\u0442\u043d\u044b\u0439 \u0448\u0443\u043c\u00bb, \u0430 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430: \u0434\u0432\u0430 \u0441\u043b\u043e\u044f \u0442\u043e\u043d\u043a\u0438\u0445 \u0441\u0432\u0435\u0442\u044f\u0449\u0438\u0445\u0441\u044f \u043d\u0438\u0442\u0435\u0439 (flow field)\r\n// \u0441 \u043f\u0430\u0440\u0430\u043b\u043b\u0430\u043a\u0441\u043e\u043c + \u043c\u044f\u0433\u043a\u0438\u0439 \u0441\u0442\u0443\u0434\u0438\u0439\u043d\u044b\u0439 \u043a\u043e\u043d\u0443\u0441 \u0441\u0432\u0435\u0442\u0430 \u0441\u0432\u0435\u0440\u0445\u0443 + \u0442\u0451\u043f\u043b\u044b\u0439 \u043e\u0442\u0431\u043b\u0435\u0441\u043a\r\n// \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0433\u043e \u044f\u0440\u0443\u0441\u0430 + \u043a\u0443\u0440\u0441\u043e\u0440\u043d\u0430\u044f \u043f\u043e\u0434\u0441\u0432\u0435\u0442\u043a\u0430 + \u044d\u043b\u043b\u0438\u043f\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043c\u0430\u0441\u043a\u0430 \u043f\u043e\u0434\r\n// \u0437\u043e\u043d\u0443 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 + \u0437\u0435\u0440\u043d\u043e 4%. \u0412\u044b\u0445\u043e\u0434 \u043f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u044b\u0439: vec4f(col, 0.0).\r\n// ============================================================================\r\nstruct _vgsl_2ed50e45__Params {\r\n  time: f32,\r\n  texel: vec2f,\r\n  accent: vec3f,\r\n  warm: vec3f,\r\n  ink: vec3f,\r\n  mouse: vec2f,\r\n  aspect: f32,\r\n  mask: f32,\r\n  intensity: f32,\r\n}\r\n\r\n@group(0) @binding(0) var<uniform> params: _vgsl_2ed50e45__Params;\r\n\r\nfn _vgsl_2ed50e45__hash21(p: vec2f) -> f32 {\r\n  var q = fract(p * vec2f(123.34, 456.21));\r\n  q = q + vec2f(dot(q, q + 45.32));\r\n  return fract(q.x * q.y);\r\n}\r\n\r\nfn _vgsl_2ed50e45__valueNoise(p: vec2f) -> f32 {\r\n  let i = floor(p);\r\n  let f = fract(p);\r\n  let u = f * f * (3.0 - 2.0 * f);\r\n  let a = _vgsl_2ed50e45__hash21(i);\r\n  let b = _vgsl_2ed50e45__hash21(i + vec2f(1.0, 0.0));\r\n  let c = _vgsl_2ed50e45__hash21(i + vec2f(0.0, 1.0));\r\n  let d = _vgsl_2ed50e45__hash21(i + vec2f(1.0, 1.0));\r\n  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);\r\n}\r\n\r\nfn _vgsl_2ed50e45__fbm(p0: vec2f, oct: i32) -> f32 {\r\n  var p = p0;\r\n  var amp = 0.5;\r\n  var sum = 0.0;\r\n  for (var i = 0; i < 3; i = i + 1) {\r\n    if (i >= oct) { break; }\r\n    sum = sum + amp * _vgsl_2ed50e45__valueNoise(p);\r\n    p = p * 2.07 + vec2f(17.1, 9.7);\r\n    amp = amp * 0.5;\r\n  }\r\n  return sum;\r\n}\r\n\r\n// \u043f\u043e\u043b\u0435 \u043d\u0430\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f: \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u043e \u0432\u0440\u0430\u0449\u0430\u044e\u0449\u0438\u0435\u0441\u044f \u0432\u0438\u0445\u0440\u0438\r\nfn _vgsl_2ed50e45__flowAngle(p: vec2f, drift: f32) -> f32 {\r\n  let n = _vgsl_2ed50e45__fbm(p * 0.42 + vec2f(drift, drift * 0.35), 3);\r\n  return n * 6.28318 * 1.7 + drift * 0.35;\r\n}\r\n\r\n// \u043d\u0438\u0442\u0438: \u0441\u0434\u0432\u0438\u0433\u0430\u0435\u043c \u0442\u043e\u0447\u043a\u0443 \u0432\u0434\u043e\u043b\u044c \u043f\u043e\u043b\u044f \u0438 \u0431\u0435\u0440\u0451\u043c \u0442\u043e\u043d\u043a\u0438\u0435 \u0438\u0437\u043e\u043b\u0438\u043d\u0438\u0438 fbm\r\nfn _vgsl_2ed50e45__filaments(p: vec2f, scale: f32, lines: f32, warp: f32, drift: f32, w: f32) -> f32 {\r\n  let a = _vgsl_2ed50e45__flowAngle(p * scale + vec2f(drift * 0.5, -drift * 0.3), drift);\r\n  let moved = p + vec2f(cos(a), sin(a)) * warp;\r\n  let n = _vgsl_2ed50e45__fbm(moved * scale + vec2f(0.0, drift * 0.6), 3);\r\n  let band = abs(fract(n * lines) - 0.5) * 2.0;\r\n  let line = smoothstep(0.92 - 0.55 * w, 0.0, band);\r\n  let core = pow(line, 4.0);\r\n  let halo = line * 0.10;\r\n  return (core + halo) * (0.55 + 0.45 * n);\r\n}\r\n\r\n@fragment\r\nfn fs_main(@location(0) uv: vec2f) -> @location(0) vec4f {\r\n  let p = (uv - vec2f(0.5, 0.5)) * vec2f(params.aspect, 1.0);\r\n  let t = params.time;\r\n\r\n  var col = vec3f(0.0);\r\n\r\n  // ---- \u0441\u043b\u043e\u0439 1: \u0434\u0430\u043b\u044c\u043d\u0438\u0435 \u043d\u0438\u0442\u0438, \u0448\u0438\u0440\u043e\u043a\u0438\u0439 \u0445\u043e\u0434, \u043c\u044f\u0442\u0430 --------------------------\r\n  let f1 = _vgsl_2ed50e45__filaments(p, 1.15, 22.0, 0.46, t * 0.020, 1.0);\r\n  // ---- \u0441\u043b\u043e\u0439 2: \u0431\u043b\u0438\u0436\u043d\u0438\u0435 \u043d\u0438\u0442\u0438, \u043f\u043b\u043e\u0442\u043d\u0435\u0435 \u0438 \u0442\u043e\u043d\u044c\u0448\u0435 (\u043f\u0430\u0440\u0430\u043b\u043b\u0430\u043a\u0441) ---------------\r\n  let f2 = _vgsl_2ed50e45__filaments(p, 2.35, 38.0, 0.22, t * 0.034, 1.35);\r\n  // ---- \u0441\u043b\u043e\u0439 3: \u0442\u0451\u043f\u043b\u044b\u0439 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u043e\u0442\u0431\u043b\u0435\u0441\u043a, \u0441\u043b\u0435\u0432\u0430-\u0432\u043d\u0438\u0437\u0443 -------------\r\n  let f3 = _vgsl_2ed50e45__filaments(p + vec2f(0.38, 0.32), 1.70, 18.0, 0.54, t * 0.026, 0.80);\r\n\r\n  col = col + params.accent * f1 * 0.42;\r\n  col = col + params.accent * f2 * 0.26;\r\n  col = col + params.warm   * f3 * 0.26;\r\n\r\n  // ---- \u0441\u0442\u0443\u0434\u0438\u0439\u043d\u044b\u0439 \u043a\u043e\u043d\u0443\u0441 \u0441\u0432\u0435\u0442\u0430 \u0441\u0432\u0435\u0440\u0445\u0443: \u0434\u044b\u0448\u0438\u0442 ------------------------------\r\n  let cone = exp(-abs(p.x) * 1.35) * smoothstep(0.62, -0.62, p.y);\r\n  let breathe = 0.88 + 0.12 * sin(t * 0.30);\r\n  col = col + params.accent * cone * 0.045 * breathe;\r\n\r\n  // ---- \u043a\u0443\u0440\u0441\u043e\u0440: \u043f\u043e\u0434\u0445\u0432\u0430\u0442\u044b\u0432\u0430\u0435\u0442 \u0441\u0432\u0435\u0442 ----------------------------------------\r\n  let mp = (params.mouse - vec2f(0.5, 0.5)) * vec2f(params.aspect, 1.0);\r\n  let dm = length(p - mp);\r\n  col = col + params.accent * exp(-dm * 3.4) * 0.10\r\n            + params.warm * exp(-dm * 5.6) * 0.035;\r\n\r\n  // ---- \u043c\u0430\u0441\u043a\u0430 \u043f\u043e\u0434 \u0437\u043e\u043d\u0443 \u0437\u0430\u0433\u043e\u043b\u043e\u0432\u043a\u0430 ----------------------------------------\r\n  var guard = 1.0;\r\n  if (params.mask > 0.5) {\r\n    // \u0433\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u044c\u043d\u0430\u044f \u043f\u043e\u043b\u043e\u0441\u0430 \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u0430: \u043f\u043e\u043b\u0435 \u0436\u0438\u0432\u0451\u0442 \u0441\u0432\u0435\u0440\u0445\u0443 \u0438 \u0441\u043d\u0438\u0437\u0443, \u0442\u0435\u043a\u0441\u0442 \u043e\u0441\u0442\u0430\u0451\u0442\u0441\u044f \u0447\u0438\u0441\u0442\u044b\u043c\r\n    let dy = (uv.y - 0.47) / 0.42;\r\n    let band = exp(-dy * dy);\r\n    // \u043f\u043b\u044e\u0441 \u043c\u044f\u0433\u043a\u043e\u0435 \u043e\u0441\u043b\u0430\u0431\u043b\u0435\u043d\u0438\u0435 \u0432 \u043b\u0435\u0432\u043e\u0439 \u043a\u043e\u043b\u043e\u043d\u043a\u0435 (\u043a\u043e\u043f\u0438\u0440\u0430\u0439\u0442 \u0437\u0430\u043d\u0438\u043c\u0430\u0435\u0442 \u0435\u0451 \u0446\u0435\u043b\u0438\u043a\u043e\u043c)\r\n    let dxL = max(0.0, (0.62 - uv.x) / 0.62);\r\n    guard = 1.0 - 0.93 * band * (0.60 + 0.40 * dxL);\r\n  }\r\n\r\n  // ---- \u0432\u0438\u043d\u0435\u0442\u043a\u0430 ---------------------------------------------------------\r\n  let vig = 1.0 - 0.55 * min(1.0, length(p * vec2f(0.86, 1.02)) * 1.25);\r\n\r\n  // ---- \u0437\u0435\u0440\u043d\u043e 4% (\u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e\u0435, \u043d\u0435 \u043f\u043e \u0441\u0435\u043a\u0443\u043d\u0434\u0430\u043c) --------------------------\r\n  let g = (_vgsl_2ed50e45__hash21(uv * 1024.0 + vec2f(fract(t * 11.3) * 41.0, fract(t * 7.7) * 29.0)) - 0.5) * 0.030;\r\n\r\n  let out3 = (col * guard * vig + vec3f(g)) * params.intensity;\r\n  return vec4f(out3, 0.0);\r\n}\n","reflection":{"bindings":[{"group":0,"binding":0,"name":"params","mangledName":"params","type":{"kind":"identifier","name":"_vgsl_2ed50e45__Params","mangledName":"_vgsl_2ed50e45___vgsl_2ed50e45__Params"},"kind":"buffer","addressSpace":"uniform","struct":{"name":"_vgsl_2ed50e45__Params","mangledName":"_vgsl_2ed50e45___vgsl_2ed50e45__Params","members":[{"name":"time","type":{"kind":"scalar","name":"f32"}},{"name":"texel","type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}}},{"name":"accent","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}}},{"name":"warm","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}}},{"name":"ink","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}}},{"name":"mouse","type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}}},{"name":"aspect","type":{"kind":"scalar","name":"f32"}},{"name":"mask","type":{"kind":"scalar","name":"f32"}},{"name":"intensity","type":{"kind":"scalar","name":"f32"}}]},"layout":{"name":"params","mangledName":"params","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"identifier","name":"_vgsl_2ed50e45__Params","mangledName":"_vgsl_2ed50e45___vgsl_2ed50e45__Params"},"align":16,"size":96,"members":[{"name":"time","offset":0,"align":4,"size":4,"type":{"kind":"scalar","name":"f32"},"layout":{"name":"time","mangledName":"time","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"scalar","name":"f32"},"align":4,"size":4}},{"name":"texel","offset":8,"align":8,"size":8,"type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"texel","mangledName":"texel","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}},"align":8,"size":8}},{"name":"accent","offset":16,"align":16,"size":12,"type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"accent","mangledName":"accent","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"align":16,"size":12}},{"name":"warm","offset":32,"align":16,"size":12,"type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"warm","mangledName":"warm","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"align":16,"size":12}},{"name":"ink","offset":48,"align":16,"size":12,"type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"ink","mangledName":"ink","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"align":16,"size":12}},{"name":"mouse","offset":64,"align":8,"size":8,"type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"mouse","mangledName":"mouse","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}},"align":8,"size":8}},{"name":"aspect","offset":72,"align":4,"size":4,"type":{"kind":"scalar","name":"f32"},"layout":{"name":"aspect","mangledName":"aspect","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"scalar","name":"f32"},"align":4,"size":4}},{"name":"mask","offset":76,"align":4,"size":4,"type":{"kind":"scalar","name":"f32"},"layout":{"name":"mask","mangledName":"mask","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"scalar","name":"f32"},"align":4,"size":4}},{"name":"intensity","offset":80,"align":4,"size":4,"type":{"kind":"scalar","name":"f32"},"layout":{"name":"intensity","mangledName":"intensity","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"scalar","name":"f32"},"align":4,"size":4}}]},"bindingLayout":{"kind":"buffer","buffer":{"type":"uniform","hasDynamicOffset":false,"minBindingSize":96}}}],"entryPoints":[{"name":"fs_main","mangledName":"fs_main","stage":"fragment","bindings":[{"group":0,"binding":0}],"samplingPairs":[]}],"overrides":[],"featuresRequired":[],"aliases":[],"structs":[{"name":"_vgsl_2ed50e45__Params","mangledName":"_vgsl_2ed50e45___vgsl_2ed50e45__Params","members":[{"name":"time","type":{"kind":"scalar","name":"f32"}},{"name":"texel","type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}}},{"name":"accent","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}}},{"name":"warm","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}}},{"name":"ink","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}}},{"name":"mouse","type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}}},{"name":"aspect","type":{"kind":"scalar","name":"f32"}},{"name":"mask","type":{"kind":"scalar","name":"f32"}},{"name":"intensity","type":{"kind":"scalar","name":"f32"}}]}],"hostShareableLayouts":[{"name":"params","mangledName":"params","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"identifier","name":"_vgsl_2ed50e45__Params","mangledName":"_vgsl_2ed50e45___vgsl_2ed50e45__Params"},"align":16,"size":96,"members":[{"name":"time","offset":0,"align":4,"size":4,"type":{"kind":"scalar","name":"f32"},"layout":{"name":"time","mangledName":"time","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"scalar","name":"f32"},"align":4,"size":4}},{"name":"texel","offset":8,"align":8,"size":8,"type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"texel","mangledName":"texel","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}},"align":8,"size":8}},{"name":"accent","offset":16,"align":16,"size":12,"type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"accent","mangledName":"accent","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"align":16,"size":12}},{"name":"warm","offset":32,"align":16,"size":12,"type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"warm","mangledName":"warm","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"align":16,"size":12}},{"name":"ink","offset":48,"align":16,"size":12,"type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"ink","mangledName":"ink","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":3,"element":{"kind":"scalar","name":"f32"}},"align":16,"size":12}},{"name":"mouse","offset":64,"align":8,"size":8,"type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}},"layout":{"name":"mouse","mangledName":"mouse","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"vector","width":2,"element":{"kind":"scalar","name":"f32"}},"align":8,"size":8}},{"name":"aspect","offset":72,"align":4,"size":4,"type":{"kind":"scalar","name":"f32"},"layout":{"name":"aspect","mangledName":"aspect","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"scalar","name":"f32"},"align":4,"size":4}},{"name":"mask","offset":76,"align":4,"size":4,"type":{"kind":"scalar","name":"f32"},"layout":{"name":"mask","mangledName":"mask","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"scalar","name":"f32"},"align":4,"size":4}},{"name":"intensity","offset":80,"align":4,"size":4,"type":{"kind":"scalar","name":"f32"},"layout":{"name":"intensity","mangledName":"intensity","layoutMode":"wgsl-host-shareable-v1","type":{"kind":"scalar","name":"f32"},"align":4,"size":4}}]}]},"sourceChecksum":"fnv1a64-utf16le-v1:af0cd411b1f2ef5f","producer":"@vgpu/wgsl/prepare-v2","functionExports":[]}</script>
+<script src="ds-hero-field.js" defer></script>
+</body>
+</html>

@@ -115,8 +115,13 @@ nav.top a.cur{color:var(--accent)}
 .ms-input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .ms-per{font-family:var(--mono);font-size:13px;color:#a6b0c5;letter-spacing:.03em;padding-bottom:2px}
 .ms-src{font-family:var(--mono);font-size:12px;color:#a6b0c5}
-.ms-out{margin-top:14px;font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--ink);line-height:1.5}
+.ms-out{margin-top:18px;padding-top:16px;border-top:1px solid var(--line-soft);font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,2.4vw,1.35rem);color:var(--ink);line-height:1.5}
 .ms-out b{color:#f0a09e;font-weight:800}
+.ms-out small{display:block;margin-top:10px;font-family:var(--sans);font-weight:400;font-size:14px;color:var(--meta);line-height:1.6}
+.ms-months{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-top:18px}
+.ms-months span{height:8px;border-radius:4px;background:rgba(255,255,255,.07);transition:background .3s}
+.ms-months span.on{background:var(--accent)}
+@media(max-width:760px){.ms-months{grid-template-columns:repeat(12,1fr);gap:4px}.ms-input{width:100%}}
 .rk .dt{padding:5px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.16);font-size:12px;letter-spacing:.06em;color:#dfe6f2}
 .rk .dt.hi{border-color:rgba(224,96,94,.55);color:#f6b8b6;background:rgba(224,96,94,.08)}
 .rk .dt.mid{border-color:rgba(123,196,168,.5);color:#9fd9c4;background:rgba(123,196,168,.08)}
@@ -374,15 +379,17 @@ table.data td.n{font-variant-numeric:tabular-nums}
 <span class="ms-per-label" style="color:var(--meta);font-size:14.5px">за ChatGPT / Claude / прочее</span>
 </div>
 <div class="ms-src">2 000 ₽ — типичные траты на ИИ в России (медиана) · ТАСС / ППВМ, 09.2026</div>
-<div class="ms-row" style="margin-top:16px">
-<input class="ms-input" id="ms-mo" type="number" min="1" max="36" step="1" value="6" inputmode="numeric" aria-label="Сколько месяцев уже платишь" style="width:110px"/>
+<div class="ms-row" style="margin-top:16px;align-items:baseline">
+<span style="font-family:var(--mono);font-size:15px;color:var(--ink)">плачу уже</span>
+<input class="ms-input" id="ms-mo" type="number" min="1" max="36" step="1" value="6" inputmode="numeric" aria-label="Сколько месяцев уже платишь" style="width:92px;font-size:20px;padding:10px 12px"/>
 <span class="ms-per">мес.</span>
-<span class="ms-per-label" style="color:var(--meta);font-size:14.5px">столько уже платишь — потяни, это твои реальные траты</span>
 </div>
-<div class="ms-row" style="margin-top:8px;align-items:center">
-<input type="range" id="ms-range" min="1" max="36" value="6" aria-label="Месяцев подписки" style="flex:1;accent-color:#7bc4a8;height:32px"/>
-<span class="ms-per" id="ms-range-v">6 мес</span>
+<div class="ms-row" style="margin-top:4px;align-items:center">
+<span style="font-family:var(--mono);font-size:12px;color:var(--faint)">1</span>
+<input type="range" id="ms-range" min="1" max="36" value="6" aria-label="Месяцев подписки" style="flex:1;accent-color:#7bc4a8;height:28px"/>
+<span style="font-family:var(--mono);font-size:12px;color:var(--faint)">36</span>
 </div>
+<div class="ms-months" id="ms-months" aria-hidden="true"></div>
 <div class="ms-out" id="ms-out" aria-live="polite"></div>
 </div>
 <div class="now rv">
@@ -497,7 +504,9 @@ b.setAttribute('aria-expanded',String(open));
 });
 });
 /* ---------- личный счёт: в месяц × месяцев подписки ---------- */
-var msi=d.getElementById('ms-in'), msmo=d.getElementById('ms-mo'), msr=d.getElementById('ms-range'), msv=d.getElementById('ms-range-v'), mso=d.getElementById('ms-out');
+var msi=d.getElementById('ms-in'), msmo=d.getElementById('ms-mo'), msr=d.getElementById('ms-range'), msm=d.getElementById('ms-months'), mso=d.getElementById('ms-out');
+if(msm){var mh='';for(var i=0;i<36;i++){mh+='<span></span>';}msm.innerHTML=mh;}
+function msPlural(n){n=Math.abs(n)%100;var d=n%10;if(n>10&&n<20)return 'месяцев';if(d>1&&d<5)return 'месяца';if(d===1)return 'месяц';return 'месяцев';}
 function msCalc(){
 if(!msi||!mso)return;
 var m=parseFloat(String(msi.value).replace(',','.'));
@@ -506,8 +515,9 @@ m=Math.min(m,999999);
 var mo=msmo?parseInt(msmo.value,10):6;
 if(isNaN(mo)||mo<1)mo=1; if(mo>36)mo=36;
 var y=Math.round(m*mo);
-mso.innerHTML='За '+mo+' мес. ты уже отдал <b>'+y.toLocaleString('ru-RU')+' ₽</b> — и вся история чатов, проекты, память. Блокировка приходит без предупреждения — и это не возвращается.';
-if(msv)msv.textContent=mo+' мес';
+var mw=msPlural(mo);
+mso.innerHTML='За '+mo+' '+mw+' ты уже отдал <b>'+y.toLocaleString('ru-RU')+' ₽</b><small>История чатов, проекты и контекст могут исчезнуть в один день — без предупреждения и возврата.</small>';
+if(msm){var cells=msm.children;for(var i=0;i<cells.length;i++){cells[i].className=i<mo?'on':'';}}
 }
 function msSync(from){
 var v=parseInt(from.value,10);

@@ -1,0 +1,161 @@
+/* ============================================================================
+   ds-hero-premium-v2.css — первый экран Discovery System, версия 2
+   Пересобрано по ЗАМЕРАМ референсов, а не по вкусу.
+
+   ТИПОГРАФИКА (linear.app / vercel.com / stripe.com — замеры CSS):
+     · кегль hero = 3,9× основного текста (Linear 4,27×, Vercel 4,0×, Stripe 3,0×)
+       → h1 до 64px при тексте 16,5px
+     · вес ОБРАТЕН кеглю: Linear 510, Vercel 400, Stripe 300 → здесь 500
+     · межстрочный заголовка = кеглю: Linear 64/64, Vercel 64/64 → 1,02
+     · letter-spacing −0,022em при 64px (Linear −0,022em, Stripe −0,02em)
+     · колонка текста жёстко ограничена: Vercel 444px, Stripe 36ch → 520px
+     · первый экран почти пустой: 5–12 текстовых объектов (замер по трём сайтам)
+
+   СВЕТ И МАТЕРИАЛ (те же замеры):
+     · Linear: свечения 400×400 с rgba(255,255,255,.04) — 4% белого, а не 30%
+     · Vercel: чистый фон + тайл шума 70×70, multiply, opacity .42
+     · кнопка 32–48px, горизонтальный отступ больше вертикального
+     · hover микроскопический: Linear 0,1s по цвету и фону, пресс scale(.97)
+
+   ПАНЕЛЬ (vernik.me, замер style.min.css):
+     · 1px бордер, радиус 12–14, БЕЗ тени в покое
+     · hover: translateY(−4px) + 0 10px 20px rgba(0,0,0,.1)
+     · один токен движения на всё: .3s
+
+   ИЗ РИЛСА (материал и движение):
+     · полноэкранное поле вместо разрозненных блоков
+     · внутреннее свечение панели разгорается медленно (2,6 с) и дышит
+   ========================================================================== */
+
+/* ---------- сцена: свет в 4%, а не в 30% --------------------------------- */
+.hero{position:relative;padding:88px 0 56px;isolation:isolate;
+  min-height:min(84vh,780px);display:flex;flex-direction:column;justify-content:center}
+.hero-light{position:absolute;inset:-16% -14% 0 -14%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(46% 40% at 22% 2%,  rgba(255,255,255,.045), transparent 68%),
+    radial-gradient(38% 34% at 88% 14%, rgba(var(--accent-rgb),.055), transparent 70%),
+    radial-gradient(70% 54% at 52% 112%, rgba(var(--accent-rgb),.040), transparent 74%)}
+/* шум: тайл 70×70, как у Vercel */
+.hero:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.05;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='70' height='70'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='70' height='70' filter='url(%23n)'/></svg>")}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:44px 56px;align-items:center}
+
+/* ---------- типографика по числам --------------------------------------- */
+.hero h1{font-family:var(--display);font-weight:500;margin:0;
+  /* 64px на 1440 и не выше — как .text-heading-64 у Vercel */
+  font-size:clamp(2.1rem,min(0.88rem + 3.4vw,6.6vh + 0.9rem),4rem);
+  line-height:1.02;letter-spacing:-.022em;text-wrap:balance}
+.hero .copy{max-width:520px;position:relative}
+/* подложка под текстом: канва не спорит с буквами (маска в шейдере + скрим) */
+.hero .copy:before{content:"";position:absolute;inset:-48px -70px -40px -80px;z-index:-1;
+  pointer-events:none;border-radius:48px;
+  background:radial-gradient(56% 54% at 34% 48%,rgba(7,10,18,.72),rgba(7,10,18,.28) 58%,transparent 80%)}
+.hero .kicker{margin:0 0 20px;font:400 12px/1.4 var(--mono);color:var(--meta);
+  text-transform:uppercase;letter-spacing:.14em}
+/* текст 16,5px при заголовке 64px = 3,9× */
+.hero .lead{margin:24px 0 0;font-size:16.5px;line-height:1.6;color:var(--body);max-width:48ch;
+  letter-spacing:-.006em}
+.hero .cta-row{margin-top:32px;display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap}
+.hero .cta-note{font:400 12.5px/1.4 var(--mono);color:var(--meta)}
+
+/* ключевая фраза: медленный проход градиента */
+.hero h1 .chrome-text{background:linear-gradient(100deg,
+    var(--accent) 0%,#f4f8ff 38%,var(--accent) 64%,#eaf4ef 100%);
+  background-size:220% 100%;background-position:118% 0;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;font-style:normal;
+  transition:background-position 2.2s var(--ease) .3s}
+.js .hero h1.in .chrome-text{background-position:-18% 0}
+
+/* ---------- кнопка: глянец из замеров Overchat, геометрия из Linear ----- */
+.btn{border-radius:12px;font-weight:500}
+/* высота 48px — как у Stripe (Get started 141×48), тап-зона не ниже 44 */
+.hero .btn{min-height:48px;padding:0 22px}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn-primary{background-image:linear-gradient(180deg,#2b9a64,#1c6b45);
+  border-color:rgba(255,255,255,.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(0,0,0,.18),
+    0 1px 2px rgba(0,0,0,.5),
+    0 14px 34px -18px rgba(0,0,0,.95),
+    0 0 0 1px rgba(255,255,255,.06);
+  transition:background-color .16s var(--ease),box-shadow .16s var(--ease),
+             color .16s var(--ease),transform .16s var(--ease)}
+.btn-primary:active{transform:scale(.97)}
+.btn-ghost{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.10);
+  color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  transition:background-color .16s var(--ease),border-color .16s var(--ease),
+             color .16s var(--ease),transform .16s var(--ease)}
+.btn-ghost:active{transform:scale(.97)}
+.btn-ghost .ico{width:15px;height:15px;stroke:currentColor;stroke-width:1.6;fill:none;
+  margin-right:9px;opacity:.6;transition:transform .3s var(--ease),opacity .3s var(--ease)}
+/* hover микроскопический: цвет и фон, геометрия на месте (замер Linear/Stripe) */
+@media(hover:hover){
+  .btn-primary:hover{background-image:linear-gradient(180deg,#33ab72,#218556);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.34),
+      inset 0 -1px 0 rgba(0,0,0,.2),
+      0 1px 2px rgba(0,0,0,.5),
+      0 18px 40px -20px rgba(var(--accent-rgb),.45),
+      0 0 0 1px rgba(255,255,255,.10)}
+  .btn-ghost:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18)}
+  .btn-ghost:hover .ico{transform:translateX(3px);opacity:.95}
+}
+
+/* ---------- факты: тонкие моно-метки вместо второго ряда блоков --------- */
+.hero-facts{list-style:none;display:flex;gap:8px 18px;flex-wrap:wrap;margin:26px 0 0;padding:0}
+.hero-facts li{display:flex;align-items:center;gap:7px;
+  font:400 12.5px/1.4 var(--mono);color:var(--meta);letter-spacing:-.01em}
+.hero-facts li+li:before{content:"";width:1px;height:11px;background:var(--line);margin-right:11px}
+.hero-facts svg{width:14px;height:14px;flex:none;stroke:var(--body);stroke-width:1.5;fill:none;opacity:.7}
+.js .hero-facts li{opacity:0;transform:translateY(6px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.js .hero-facts.in li{opacity:1;transform:none}
+.js .hero-facts.in li:nth-child(2){transition-delay:.08s}
+.js .hero-facts.in li:nth-child(3){transition-delay:.16s}
+
+/* ---------- панель: поверхность Верника вместо витринного свечения ------ */
+.minicalc{position:relative;border-radius:14px;padding:22px 22px 20px;
+  border:1px solid rgba(255,255,255,.08);
+  background:#0f1424;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+/* внутреннее свечение: слабое, разгорается 2,6 с и дышит — приём из рилса */
+.minicalc:after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:
+    linear-gradient(90deg,transparent 8%,rgba(255,255,255,.14) 46%,transparent 92%) top/100% 1px no-repeat,
+    radial-gradient(120% 80% at 6% -12%,rgba(var(--accent-rgb),.10),transparent 62%),
+    radial-gradient(90% 70% at 103% 116%,rgba(214,152,84,.07),transparent 64%);
+  mix-blend-mode:screen;opacity:0;
+  transition:opacity 2.6s var(--ease) .35s}
+.js .minicalc:after{opacity:0}
+.js .minicalc.in:after{opacity:1;animation:mcBreathe 16s var(--ease) 3s infinite alternate}
+@keyframes mcBreathe{from{filter:brightness(.92)}to{filter:brightness(1.14)}}
+/* hover: как у карточек Верника */
+@media(hover:hover){
+  .minicalc:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.13);
+    box-shadow:0 10px 20px rgba(0,0,0,.35)}
+}
+
+/* ---------- состав цены: полоса под первым экраном ---------------------- */
+.price-band{position:relative;padding:8px 0 80px}
+.price-band .wrap{position:relative;z-index:2}
+.price-band .own-price{max-width:880px;margin:0 auto;box-shadow:none}
+
+/* ---------- предпочтения системы --------------------------------------- */
+@media (prefers-reduced-motion: reduce){
+  .js .minicalc.in:after{animation:none}
+  .hero h1 .chrome-text{transition:none;background-position:-18% 0}
+  .js .hero-facts li{opacity:1;transform:none}
+  .btn,.minicalc{transition:none}
+}
+@media (max-width:860px){
+  .hero{padding:72px 0 44px}
+  .hero .lead{font-size:15.5px;margin-top:18px}
+  .hero .cta-row{margin-top:24px}
+  .hero-facts{margin-top:20px}
+  .hero-facts li+li:before{display:none}
+  .minicalc{border-radius:12px;padding:18px 16px 16px}
+}
