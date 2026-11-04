@@ -87,8 +87,8 @@ def norm_usd_per_m(value, unit):
         return v
     if unit == "rub_per_1k_chars":
         # VseGPT: ₽ за 1000 символов. ~3.5 символа/токен (грубая оценка),
-        # в USD по курсу 84,3414 ₽/$ (ЦБ 26.09.2026).
-        return v / 3.5 * 1000 / 84.3414
+        # в USD по курсу 81,6699 ₽/$ (ЦБ 04.11.2026).
+        return v / 3.5 * 1000 / 81.6699
     return v
 
 

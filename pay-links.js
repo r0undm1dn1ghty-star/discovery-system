@@ -55,9 +55,9 @@ var DS_PAY = {
             url:'https://web.tribute.tg/s/16eU', sub:true},
   support:    {price:15000, name:'Персональная поддержка',
             url:'https://web.tribute.tg/s/16eW', sub:true},
-  support_smb:{price:25000, name:'Поддержка ИИ-агента МСБ',
+  support_smb:{price:25000, name:'Техподдержка ИИ-агента для МСБ',
             url:'https://web.tribute.tg/s/18R4', sub:true},
-  support_dept:{price:40000,name:'Поддержка продуктового отдела',
+  support_dept:{price:40000,name:'Продуктовый отдел',
             url:'https://web.tribute.tg/s/18R9', sub:true}
 };
 
