@@ -12,7 +12,7 @@ PAGES = [
     "index.html", "market.html", "karta-resheniy.html", "system.html", "proof.html",
     "clarity.html", "channel.html", "calculator.html", "agent-bez-vpn.html",
     "claude-alternativa.html", "lost-accounts.html", "agent-failures.html",
-    "nacenka.html", "value-chain.html", "pay.html",
+    "nacenka.html", "value-chain.html", "pay.html", "reviews.html",
 ]
 
 SKIP_TAGS = re.compile(r"<(script|style|noscript)[^>]*>.*?</\1>", re.S | re.I)

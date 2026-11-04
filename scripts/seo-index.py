@@ -30,6 +30,7 @@ INDEXABLE = [
     "karta-resheniy.html", "value-chain.html", "channel.html", "nacenka.html",
     "agent-failures.html", "lost-accounts.html", "proof.html", "pay.html",
     "oferta.html", "policy.html", "agent-bez-vpn.html", "claude-alternativa.html",
+    "reviews.html",
 ]
 # служебные — только noindex
 NOINDEX = ["thanks.html", "fail.html"]
