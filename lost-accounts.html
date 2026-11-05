@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Claude и ChatGPT не принадлежат тебе — сколько россиян потеряли аккаунты в 2026</title>
-<meta name="description" content="Исследование Discovery System: 39–170 тыс. (P5–P95 модели v7.1), рабочая оценка 86 тыс. россиян потеряли аккаунты ChatGPT и Claude в 2026 и не вернули старый. Разбор фейка про 1,5 млн и официальные цифры Anthropic Transparency Hub."/>
+<meta name="description" content="Исследование Discovery System: 74–206 тыс. (90%, модель v8.1 с байес-коррекцией смещения отбора), рабочая оценка 144 тыс. россиян потеряли аккаунты ChatGPT и Claude в 2026 и не вернули старый. Разбор фейка про 1,5 млн и официальные цифры Anthropic Transparency Hub."/>
 <link rel="canonical" href="https://discovery-system.ru/lost-accounts.html"/>
 <!-- SEO:CORE v1 — собирается scripts/seo-index.py, руками не править -->
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
@@ -16,14 +16,14 @@
 <meta property="article:published_time" content="2026-09-19T00:00:00+03:00"/>
 <meta property="article:modified_time" content="2026-09-19T00:00:00+03:00"/>
 <meta property="og:title" content="Claude и ChatGPT не принадлежат тебе — сколько россиян потеряли аккаунты в 2026"/>
-<meta property="og:description" content="39–170 тыс. (P5–P95 модели v7.1), рабочая оценка 86 тыс. человек потеряли аккаунты ChatGPT и Claude и не вернули старый. Почему рубильник не у тебя — и что с этим делать."/>
+<meta property="og:description" content="74–206 тыс. (90%, модель v8.1), рабочая оценка 144 тыс. человек потеряли аккаунты ChatGPT и Claude и не вернули старый. Почему рубильник не у тебя — и что с этим делать."/>
 <meta property="og:url" content="https://discovery-system.ru/lost-accounts.html"/>
 <meta property="og:type" content="article"/>
 <meta property="og:image" content="https://discovery-system.ru/og-cover.png"/>
 <meta property="og:locale" content="ru_RU"/>
 <meta property="og:site_name" content="Discovery System"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Claude и ChatGPT не принадлежат тебе — сколько россиян потеряли аккаунты в 2026","author":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author"},"datePublished":"2026-09-19","dateModified":"2026-09-19","inLanguage":"ru","publisher":{"@type":"Organization","name":"Discovery System","url":"https://discovery-system.ru/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Claude и ChatGPT не принадлежат тебе — сколько россиян потеряли аккаунты в 2026","author":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author"},"datePublished":"2026-09-19","dateModified":"2026-11-04","inLanguage":"ru","publisher":{"@type":"Organization","name":"Discovery System","url":"https://discovery-system.ru/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Discovery System","item":"https://discovery-system.ru/"},{"@type":"ListItem","position":2,"name":"Claude и ChatGPT не принадлежат тебе — сколько россиян потеряли аккаунты в 2026","item":"https://discovery-system.ru/lost-accounts.html"}]}</script>
 <link rel="icon" href="favicon-32.png" sizes="32x32"/>
 
@@ -312,11 +312,11 @@ table.data td.n{font-variant-numeric:tabular-nums}
 <h1 class="rv" style="transition-delay:.06s">Claude и ChatGPT <em>не принадлежат тебе</em> — сколько россиян потеряли аккаунты в 2026</h1>
 <p class="lead rv" style="transition-delay:.12s">Ты платишь за подписку, держишь в чатах проекты и код. Но рубильник — не у тебя. Мы посчитали масштаб потерь.</p>
 <div class="stat3 rv" id="stat3" style="transition-delay:.18s">
-<div class="sc"><div class="k">нижняя граница</div><div class="v"><span data-count="39">39</span> <small>тыс.</small></div><div class="money">≈ 1 <small>млрд ₽/год</small></div><div class="c">в 9 из 10 сценариев потерь больше</div><div class="track"><div class="fill" style="width:45%"></div></div></div>
-<div class="sc"><div class="k">середина</div><div class="v"><span data-count="62">62</span> <small>тыс.</small></div><div class="money acc">≈ 1,6 <small>млрд ₽/год</small></div><div class="c">середина интервала</div><div class="track"><div class="fill" style="width:72%"></div></div></div>
-<div class="sc mid"><div class="k">рабочая оценка</div><div class="v"><span data-count="86">86</span> <small>тыс.</small></div><div class="money">≈ 2,2 <small>млрд ₽/год</small></div><div class="c">консервативно — верх интервала</div><div class="track"><div class="fill" style="width:100%"></div></div></div>
+<div class="sc"><div class="k">нижняя граница (P5)</div><div class="v"><span data-count="74">74</span> <small>тыс.</small></div><div class="money">≈ 1,9 <small>млрд ₽/год</small></div><div class="c">в 9 из 10 сценариев потерь больше</div><div class="track"><div class="fill" style="width:36%"></div></div></div>
+<div class="sc"><div class="k">медиана модели</div><div class="v"><span data-count="144">144</span> <small>тыс.</small></div><div class="money acc">≈ 3,7 <small>млрд ₽/год</small></div><div class="c">середина интервала 90%</div><div class="track"><div class="fill" style="width:70%"></div></div></div>
+<div class="sc mid"><div class="k">верхняя граница (P95)</div><div class="v"><span data-count="206">206</span> <small>тыс.</small></div><div class="money">≈ 5,3 <small>млрд ₽/год</small></div><div class="c">консервативно — верх интервала</div><div class="track"><div class="fill" style="width:100%"></div></div></div>
 </div>
-<p class="hero-cap rv" style="transition-delay:.22s">потеряли аккаунт и не вернули старый за 2026 · это около четверти платящей аудитории · волны: май, 1–2 октября, 28–30 октября · обновлено 01.11.2026</p>
+<p class="hero-cap rv" style="transition-delay:.22s">потеряли аккаунт и не вернули старый за 2026 · это около 40% платящей аудитории · волны: май, 1–2 октября, 28–30 октября · обновлено 04.11.2026 · модель v8.1</p>
 <div class="cta-row rv" style="transition-delay:.26s">
 <a class="btn btn-primary" href="#chto-delat">Что с этим делать</a>
 <a class="btn btn-ghost" href="#masshtab">Как считали →</a>
@@ -328,7 +328,7 @@ table.data td.n{font-variant-numeric:tabular-nums}
 <h2 class="rv">Заголовки против расчёта</h2>
 <div class="wipe rv" id="wipe">
 <div class="base"><div class="lab">так пишут в заголовках</div><div class="big">1,5 млн</div><div class="sub2">глобальные баны за полгода, подписанные «россияне»</div></div>
-<div class="top"><div class="base"><div class="lab">так посчитали мы</div><div class="big">39–170 тыс.</div><div class="sub2">P5–P95 модели v7.1 · расчёт по 200 000 сценариям · рабочая оценка 86 тыс.</div></div></div>
+<div class="top"><div class="base"><div class="lab">так посчитали мы</div><div class="big">74–206 тыс.</div><div class="sub2">модель v8.1 · байес-коррекция смещения отбора · рабочая оценка 144 тыс.</div></div></div>
 </div>
 <div class="wipe-ctl rv"><span>заголовки</span><input type="range" id="wipeRange" min="0" max="100" value="50" aria-label="Сравнение оценок"/><span>расчёт</span></div>
 </div></section>
@@ -354,7 +354,7 @@ table.data td.n{font-variant-numeric:tabular-nums}
 <p class="eyebrow rv">масштаб</p>
 <h2 class="rv">Сколько людей это уже задело</h2>
 <p class="rv">Опорная цифра — официальная: <b style="color:var(--ink)">11,4 млн заблокированных аккаунтов</b> за первое полугодие 2026 во всём мире, 398 тысяч апелляций, 42 тысячи отмен. Это данные самого Anthropic из его открытого отчёта о блокировках (Transparency Hub). Россия в разбивке не фигурирует — платформа не публикует баны по странам.</p>
-<p class="rv">Поэтому дальше — реконструкция. Мы прогнали 200 тысяч сценариев: каждый шаг — вилка, а не одно число, и шаги связаны. Жёстче волна — больше региональных банов и выше доля России в них. Итог — интервал <span class="accent">39–170 тыс. (P5–P95 модели v7.1)</span>, рабочая оценка 86 тыс.</p>
+<p class="rv">Поэтому дальше — реконструкция. Слой 1: Монте-Карло 2 000 000 сценариев — каждый шаг вилка, шаги связаны: жёстче волна — больше региональных банов и выше доля России в них. Слой 2: байесовская коррекция смещения отбора — постят чаще пострадавшие, и наблюдаемые доли бана завышены на 10–30 п.п.; коррекция на данных Хабр-агрегата из 1 693 историй. Слой 3: сверка с потолком платящих. Итог — интервал <span class="accent">74–206 тыс. (90%, модель v8.1)</span>, рабочая оценка 144 тыс.</p>
 <div class="tl rv">
 <div class="row"><div class="d">05.2026</div><div class="e">Первая массовая чистка российских аккаунтов<span>сотни профилей разработчиков и предпринимателей — без предупреждения, по данным Baza. Деньги части вернули, аккаунты — нет. CNews, Habr StudyAI.</span></div></div>
 <div class="row"><div class="d">01–02.10.2026</div><div class="e">VPN-волна: Гонконг и Россия<span>письма про «подозрительные сигналы», доступ отозван. Пострадали и давние платные аккаунты — Max $200/мес больше года через VPS в Хельсинки. SCMP, The Bell, VC.ru.</span></div></div>
@@ -368,7 +368,7 @@ table.data td.n{font-variant-numeric:tabular-nums}
 <div class="stage-note" id="fn2" aria-live="polite"></div>
 </div>
 <div class="card fake rv"><h3>«1,5 млн забаненных россиян» — склейка</h3><p>1,45 млн — все баны Anthropic за второе полугодие 2025, глобально и почти целиком за нарушения правил. Реальная майская волна по России — сотни человек по данным Baza, RBC и CNews. Взять глобальную цифру и подписать её «россияне» — подлог.</p></div>
-<p class="src rv">Сверка: платящих подписчиков в России около 362 тысяч, и вероятность, что потери их превысят, — меньше 1%. Главный рычаг точности — опрос платящих пользователей; пока его нет, интервал 39–170 тыс. (P5–P95 модели v7.1), рабочая оценка 86 тыс. — то, что мы можем защитить.</p>
+<p class="src rv">Сверка: платящих подписчиков в России около 362 тысяч, и вероятность, что потери их превысят, — меньше 1%. Главный рычаг точности — опрос платящих пользователей; пока его нет, интервал 74–206 тыс. (90%, модель v8.1), рабочая оценка 144 тыс. — то, что мы можем защитить. Оценка 86 тыс. из прежней модели v7.1 попадает в нижнюю половину нового интервала: она была консервативной.
 </div></section>
 <section id="personal"><div class="wrap">
 <p class="eyebrow rv">как это касается тебя</p>
@@ -539,7 +539,7 @@ var F=[
  {l:'Делим на <b>аккаунтов на человека</b>', m:'Один человек из России нередко держит два-три аккаунта: основной, резервный, купленный. Баны считают аккаунты, а вопрос — про людей.', w:11, f:'÷ 2,5–5,0'},
  {l:'Старый аккаунт <b>мёртв навсегда</b>', m:'Апелляция спасает меньше одного процента от всех банов. Даже если человек завёл новый аккаунт, старый он не вернул — а вопрос именно про потерю.', w:10.7, f:'× 80–97%'},
  {l:'Второе полугодие <b>тяжелее первого</b>', m:'Волна нарастала: май, июль, сентябрь. Здесь начинается оценка, а не факт из документа — мы это признаём открыто.', w:17.8, f:'× 2,0–2,5'},
- {l:'Плюс потери <b>ChatGPT</b> за год', m:'OpenAI не публикует баны по странам вообще, поэтому добавляем оценку. Вместе с предыдущим шагом эти две оценки дают около 45% итога.', w:20, f:'≈ 86 000', fin:true}
+ {l:'Плюс потери <b>ChatGPT</b> за год', m:'OpenAI не публикует баны по странам вообще, поэтому добавляем оценку. Вместе с предыдущим шагом эти две оценки дают около 45% итога.', w:20, f:'≈ 144 000', fin:true}
 ];
 var fw=d.getElementById('funnel'), fs=d.getElementById('fs'), note=d.getElementById('fn2');
 if(fw){
