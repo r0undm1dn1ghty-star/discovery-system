@@ -10,10 +10,10 @@
 <meta name="author" content="Виктор Зайцев"/>
 <link rel="alternate" type="application/rss+xml" title="Discovery System — обновления" href="https://discovery-system.ru/feed.xml"/>
 <meta property="article:published_time" content="2026-09-30"/>
-<meta property="article:modified_time" content="2026-11-05"/>
+<meta property="article:modified_time" content="2026-11-06"/>
 <!-- /SEO:CORE -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Discovery System","item":"https://discovery-system.ru/"},{"@type":"ListItem","position":2,"name":"Discovery System — Канал: сигналы раньше, чем рынок замечает","item":"https://discovery-system.ru/channel.html"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://discovery-system.ru/channel.html#webpage","url":"https://discovery-system.ru/channel.html","name":"Discovery System — Канал: сигналы раньше, чем рынок замечает","description":"Канал Discovery System: факты с цифрой, источником и датой. Исследования рынка, разборы бизнес-моделей, карта смерти рынков. Вход — 0 ₽, лично — t.me/victorpinksight.","inLanguage":"ru","datePublished":"2026-11-05","dateModified":"2026-11-05","author":{"@id":"https://discovery-system.ru/#author"},"publisher":{"@id":"https://discovery-system.ru/#organization"},"isPartOf":{"@type":"WebSite","url":"https://discovery-system.ru/","name":"Discovery System"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://discovery-system.ru/channel.html#webpage","url":"https://discovery-system.ru/channel.html","name":"Discovery System — Канал: сигналы раньше, чем рынок замечает","description":"Канал Discovery System: факты с цифрой, источником и датой. Исследования рынка, разборы бизнес-моделей, карта смерти рынков. Вход — 0 ₽, лично — t.me/victorpinksight.","inLanguage":"ru","datePublished":"2026-11-05","dateModified":"2026-11-06","author":{"@id":"https://discovery-system.ru/#author"},"publisher":{"@id":"https://discovery-system.ru/#organization"},"isPartOf":{"@type":"WebSite","url":"https://discovery-system.ru/","name":"Discovery System"}}</script>
 <meta name="description" content="Канал Discovery System: факты с цифрой, источником и датой. Исследования рынка, разборы бизнес-моделей, карта смерти рынков. Вход — 0 ₽, лично — t.me/victorpinksight.">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -88,7 +88,7 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(28px
 .mapzone .lede b{color:#eef2fb;font-weight:500}
 .mapgrid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);align-items:start}
 .mapbox{background:#131c2b;border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:clamp(14px,2vw,24px)}
-.mapbox canvas{display:block;width:100%;height:auto;border-radius:8px;cursor:crosshair}
+.mapbox img{display:block;width:100%;height:auto;border-radius:8px}
 .mapcap{font-family:var(--mono);font-size:14px;font-weight:500;line-height:1.6;color:#8a94ad;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)}
 .mapcap b{color:#eef2fb;font-weight:500}
 .legend{display:flex;gap:clamp(14px,2vw,28px);flex-wrap:wrap;margin-top:12px}
@@ -97,7 +97,6 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(28px
 .map-side .tease{font-family:var(--disp);color:#eef2fb;font-weight:500;font-size:clamp(20px,2.2vw,26px);line-height:1.3;margin-bottom:18px;text-wrap:balance}
 .map-side p{color:#8a94ad;max-width:40ch;margin-bottom:26px}
 .map-side p b{color:#eef2fb;font-weight:500}
-.mapstat{font-family:var(--mono);font-size:14px;color:var(--meta);margin-top:10px;min-height:22px}
 /* двери: 2, тёмные, без белого */
 .doors{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px)}
 .door{border:1px solid var(--hair);border-radius:14px;padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;background:#131c2b}
@@ -108,16 +107,14 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(28px
 .door p{font-size:15.5px;flex:1;max-width:36ch}
 .door .btn{margin-top:22px;justify-content:center}
 .door.hot{border-color:rgba(143,168,255,.45);box-shadow:0 1px 2px rgba(16,20,31,.10)}
-/* сигналы: 6, hairline-строки без коробок */
-.signals{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,44px) clamp(28px,4vw,56px)}
-.sig{border-top:1px solid var(--hair);padding-top:22px}
-.sig:nth-child(1){grid-column:1/-1}
-.sig:nth-child(1) .num{font-size:clamp(56px,5.4vw,72px)}
-.sig .num{font-family:var(--mono);font-weight:500;font-size:clamp(40px,3.6vw,52px);color:var(--ink);line-height:1;letter-spacing:-.02em}
-.sig .num small{font-size:18px;font-weight:500;color:var(--meta)}
-.sig .fact{color:var(--ink);font-size:17px;margin:14px 0 10px;max-width:44ch}
-.sig .fact b{font-weight:500}
-.sig .src{font-family:var(--mono);font-size:14px;line-height:1.6;color:var(--meta);max-width:44ch}
+/* сигналы: 6, hairline-таблица как .wtbl на index — число слева, факт справа, без коробок */
+.sigtbl{border-top:1px solid var(--hair)}
+.sigr{display:grid;grid-template-columns:minmax(150px,230px) minmax(0,1fr);gap:8px clamp(20px,3vw,44px);align-items:baseline;padding:20px 0;border-bottom:1px solid var(--hair)}
+.sigr .num{font-family:var(--mono);font-weight:500;font-size:clamp(28px,2.8vw,42px);color:var(--ink);line-height:1.05;letter-spacing:-.02em;white-space:nowrap}
+.sigr .num small{font-size:16px;font-weight:500;color:var(--meta)}
+.sigr .fact{color:var(--ink);font-size:17px;line-height:1.55;max-width:56ch}
+.sigr .fact b{font-weight:500}
+.sigr .src{display:block;margin-top:8px;font-family:var(--mono);font-size:14px;line-height:1.6;color:var(--meta);max-width:56ch}
 /* кнопки */
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;min-height:54px;padding:14px 30px;border-radius:10px;font-size:15.5px;font-weight:500;text-decoration:none;border:1px solid transparent;transition:background .18s var(--ease),border-color .18s var(--ease),color .18s var(--ease)}
@@ -137,8 +134,8 @@ a:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4p
 footer{border-top:1px solid rgba(255,255,255,.10);padding:22px 0;font-size:14px;color:#8a94ad}
 footer a{color:#b9c1d6;text-decoration:none}
 footer a:hover{color:#8fa8ff}
-@media(max-width:880px){.items,.doors,.signals{grid-template-columns:1fr 1fr}.mapgrid{grid-template-columns:1fr}}
-@media(max-width:540px){.items,.doors,.signals{grid-template-columns:1fr}}
+@media(max-width:880px){.items,.doors{grid-template-columns:1fr 1fr}.mapgrid{grid-template-columns:1fr}}
+@media(max-width:540px){.items,.doors{grid-template-columns:1fr}.sigr{grid-template-columns:1fr}}
 @media(max-width:720px){header.nav .nav-in{flex-wrap:wrap;gap:10px 18px}header.nav nav{margin-left:0;flex-wrap:wrap;gap:6px 16px}}
 @media(prefers-reduced-motion:reduce){.js .fx{opacity:1;transform:none;transition:none}}
 </style>
@@ -157,6 +154,10 @@ footer a:hover{color:#8fa8ff}
 <div class="kicker fx">канал · Discovery System</div>
 <h1 class="fx">Сигналы раньше, чем <em>рынок замечает.</em></h1>
 <p class="lede fx">Канал Discovery System — <b>факты с цифрой, источником и датой</b>. Не мнения и не пересказ новостей: каждый сигнал проверяется по первоисточнику, прежде чем попасть в ленту.</p>
+<div class="cta fx" style="margin-top:28px">
+<a class="btn btn-p" href="https://t.me/discoverysystem">Читать канал · 0 ₽</a>
+<a class="btn btn-g" href="https://t.me/victorpinksight?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0%20%E2%80%94%20%D0%BD%D1%83%D0%B6%D0%B5%D0%BD%20%D1%80%D0%B0%D0%B7%D0%B1%D0%BE%D1%80%20%D0%BC%D0%BE%D0%B5%D0%B9%20%D1%81%D0%B8%D1%82%D1%83%D0%B0%D1%86%D0%B8%D0%B8.">Разбор лично</a>
+</div>
 <p class="forwho fx">Для кого: <b>самозанятый и ИП</b>, у кого заявки и аккаунты живут на чужой платформе.</p>
 </section>
 </div>
@@ -209,14 +210,13 @@ footer a:hover{color:#8fa8ff}
 </div>
 <div class="mapgrid">
 <div class="mapbox fx">
-<canvas id="deathGraph" role="img" aria-label="Фрагмент карты смерти рынков: 300 объектов в состояниях живой, съедаемый и мёртвый, без названий"></canvas>
+<img src="map-death-300.gif" alt="Карта смерти рынков в движении: 300 объектов в состояниях живой, съедаемый и мёртвый, без названий" width="900" height="569" loading="lazy">
 <div class="legend">
 <span><i style="background:#3f5c4d;border:1px solid #6f8f7f"></i>живой</span>
 <span><i style="background:#5c4d33;border:1px solid #a08455"></i>съедаемый</span>
 <span><i style="background:#232c40;border:1px solid #3a4460"></i>мёртвый</span>
 </div>
 <p class="mapcap"><b>Карта смерти рынков</b> · 300 объектов · полные разборы — в канале</p>
-<div class="mapstat" id="graphStat" aria-live="polite"></div>
 </div>
 <div class="map-side">
 <p class="tease fx">Какие рынки умирают, кто их ест и что остаётся тем, кто вошёл раньше.</p>
@@ -242,36 +242,36 @@ footer a:hover{color:#8fa8ff}
 <p class="ssrc">источник: открытые прайсы Яндекс AI Studio и Selectel · замер 27.09.2026</p>
 </div>
 </figure>
-<div class="signals">
-<div class="sig fx">
+<div class="sigtbl">
+<div class="sigr fx">
 <div class="num">×25.9</div>
-<p class="fact">Одна и та же модель у двух продавцов: <b>300 ₽ против 11,59 ₽</b> за 1 млн токенов входа (DeepSeek V4 Flash).</p>
-<p class="src">источник: открытые прайсы Яндекс AI Studio и Selectel · замер 27.09.2026</p>
+<div><p class="fact">Одна и та же модель у двух продавцов: <b>300 ₽ против 11,59 ₽</b> за 1 млн токенов входа (DeepSeek V4 Flash).</p>
+<p class="src">источник: открытые прайсы Яндекс AI Studio и Selectel · замер 27.09.2026</p></div>
 </div>
-<div class="sig fx">
+<div class="sigr fx">
 <div class="num">1 100 <small>₽/мес</small></div>
-<p class="fact">TCO агента — против <b>16 250–65 000 ₽/мес</b> у сотрудника на той же рутине.</p>
-<p class="src">источник: расчёт Discovery System (модель + хостинг) · тарифы сверены 26.10.2026</p>
+<div><p class="fact">TCO агента — против <b>16 250–65 000 ₽/мес</b> у сотрудника на той же рутине.</p>
+<p class="src">источник: расчёт Discovery System (модель + хостинг) · тарифы сверены 26.10.2026</p></div>
 </div>
-<div class="sig fx">
+<div class="sigr fx">
 <div class="num">96 <small>кейсов</small></div>
-<p class="fact">Разобранных провалов внедрений — <b>в прод доходит 7–10%</b>. Выживают проекты с приёмкой.</p>
-<p class="src">источник: досье agent-failures, РФ · обновлено 31.10.2026</p>
+<div><p class="fact">Разобранных провалов внедрений — <b>в прод доходит 7–10%</b>. Выживают проекты с приёмкой.</p>
+<p class="src">источник: досье agent-failures, РФ · обновлено 31.10.2026</p></div>
 </div>
-<div class="sig fx">
+<div class="sigr fx">
 <div class="num">60 <small>млрд ₽</small></div>
-<p class="fact">Рынок генеративного ИИ в РФ, но <b>70% экспериментов не доходят до прода</b>. Ломаются на внедрении, не на моделях.</p>
-<p class="src">источник: Коммерсантъ (обзор рынка генИИ), данные «К2 НейроТех» · 23.09.2026</p>
+<div><p class="fact">Рынок генеративного ИИ в РФ, но <b>70% экспериментов не доходят до прода</b>. Ломаются на внедрении, не на моделях.</p>
+<p class="src">источник: Коммерсантъ (обзор рынка генИИ), данные «К2 НейроТех» · 23.09.2026</p></div>
 </div>
-<div class="sig fx">
+<div class="sigr fx">
 <div class="num">×10 <small>разброс</small></div>
-<p class="fact">Цены на ИИ-курсы для руководителей: <b>49 500 против 286 000 ₽</b> за похожие обещания. Критериев рынок не задал.</p>
-<p class="src">источник: Хабр, обзор 7 программ (No1062988) · 26.07.2026</p>
+<div><p class="fact">Цены на ИИ-курсы для руководителей: <b>49 500 против 286 000 ₽</b> за похожие обещания. Критериев рынок не задал.</p>
+<p class="src">источник: Хабр, обзор 7 программ (No1062988) · 26.07.2026</p></div>
 </div>
-<div class="sig fx">
+<div class="sigr fx">
 <div class="num">63% <small>против 47%</small></div>
-<p class="fact">Точность поиска тёплых заказов своим инструментом — против наивного поиска по словам. Контрольная: <b>79% на 286 постах</b>.</p>
-<p class="src">источник: замер Discovery System, EVAL-методика в репо · 110 карточек размечены вручную</p>
+<div><p class="fact">Точность поиска тёплых заказов своим инструментом — против наивного поиска по словам. Контрольная: <b>79% на 286 постах</b>.</p>
+<p class="src">источник: замер Discovery System, EVAL-методика в репо · 110 карточек размечены вручную</p></div>
 </div>
 </div>
 </section>
@@ -296,7 +296,7 @@ footer a:hover{color:#8fa8ff}
 <div class="price"><small style="font-size:22px;font-weight:500;color:var(--ink)">разбор</small></div>
 <h3>Твоя ситуация</h3>
 <p>Разбираю твою связку, цены и рутину напрямую. Без ботов и менеджеров — отвечаю сам.</p>
-<a class="btn btn-g" href="https://t.me/victorpinksight?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A0%D0%B0%D0%B7%D0%B1%D0%B5%D1%80%D0%B8%D1%82%D0%B5%20%D0%BC%D0%BE%D1%8E%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D1%83%3A%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%B8%20%D0%B0%D0%BA%D0%BA%D0%B0%D1%83%D0%BD%D1%82%D1%8B%20%D0%BD%D0%B0%20%D1%87%D1%83%D0%B6%D0%BE%D0%B9%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B5%2C%20%D1%86%D0%B5%D0%BD%D1%8B%2C%20%D1%80%D1%83%D1%82%D0%B8%D0%BD%D0%B0.">Написать · t.me/victorpinksight</a>
+<a class="btn btn-g" href="https://t.me/victorpinksight?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0%20Discovery%20System.%20%D0%A0%D0%B0%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%BC%D0%BE%D1%8E%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D1%83%3A%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%B8%20%D0%B0%D0%BA%D0%BA%D0%B0%D1%83%D0%BD%D1%82%D1%8B%20%D0%BD%D0%B0%20%D1%87%D1%83%D0%B6%D0%BE%D0%B9%20%D0%BF%D0%BB%D0%B0%D1%82%D1%84%D0%BE%D1%80%D0%BC%D0%B5%2C%20%D1%86%D0%B5%D0%BD%D1%8B%2C%20%D1%80%D1%83%D1%82%D0%B8%D0%BD%D0%B0.">Написать · t.me/victorpinksight</a>
 </div>
 </div>
 </section>
@@ -413,106 +413,6 @@ document.querySelectorAll('.fx').forEach(function(e,i){e.style.transitionDelay=(
 /* двойной rAF + таймер-фоллбек: в скрытом табе rAF не тикает, контент не должен остаться невидимым */
 requestAnimationFrame(function(){requestAnimationFrame(reveal);});
 setTimeout(reveal,350);
-})();
-/* граф карты смерти: 300 объектов, узлы+рёбра из graph-300 механики, seeded PRNG (mulberry32, фиксированный сид),
-   статусы живой/съедаемый/мёртвый, hover-подсветка, приглушённые цвета, БЕЗ названий и метрик */
-(function(){
-'use strict';
-var cv=document.getElementById('deathGraph');if(!cv)return;
-var stat=document.getElementById('graphStat');
-function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}}
-var rnd=mulberry32(20261104);
-var N=300,CL=11,LW=940,LH=460,M=22;
-var ST_FILL={alive:'#3f5c4d',eaten:'#5c4d33',dead:'#232c40'};
-var ST_LINE={alive:'#6f8f7f',eaten:'#a08455',dead:'#3a4460'};
-var ST_NAME={alive:'живой',eaten:'съедаемый',dead:'мёртвый'};
-/* кластеры: центры по seeded кругу с джиттером */
-var centers=[];
-for(var c=0;c<CL;c++){
-  var ang=(c/CL)*Math.PI*2+rnd()*0.55;
-  var rad=0.30+rnd()*0.08;
-  centers.push([0.5+Math.cos(ang)*rad*1.12,0.5+Math.sin(ang)*rad]);
-}
-/* узлы: гауссоподобный разброс вокруг центра кластера, статус по порогам seeded */
-var nodes=[];
-for(var i=0;i<N;i++){
-  var cl=i%CL;
-  var gx=(rnd()+rnd()+rnd()-1.5)/1.5,gy=(rnd()+rnd()+rnd()-1.5)/1.5;
-  var x=Math.min(0.985,Math.max(0.015,centers[cl][0]+gx*0.115));
-  var y=Math.min(0.985,Math.max(0.015,centers[cl][1]+gy*0.125));
-  var v=rnd();
-  nodes.push({x:x,y:y,st:v<0.52?'alive':(v<0.80?'eaten':'dead'),r:2.1+rnd()*2.1});
-}
-/* рёбра: 2 ближайших соседа внутри кластера + 16 межкластерных, детерминированно */
-var edges=[],seen={},adj={};
-function addEdge(a,b){
-  var k=a<b?a+'_'+b:b+'_'+a;if(seen[k])return;
-  seen[k]=1;edges.push([a,b]);
-  (adj[a]=adj[a]||[]).push(b);(adj[b]=adj[b]||[]).push(a);
-}
-for(var i2=0;i2<N;i2++){
-  var list=[];
-  for(var j2=i2%CL;j2<N;j2+=CL){
-    if(j2===i2)continue;
-    var dx=nodes[j2].x-nodes[i2].x,dy=nodes[j2].y-nodes[i2].y;
-    list.push([dx*dx+dy*dy,j2]);
-  }
-  list.sort(function(a,b){return a[0]-b[0];});
-  for(var k2=0;k2<2&&k2<list.length;k2++)addEdge(i2,list[k2][1]);
-}
-for(var m2=0;m2<16;m2++){
-  var a3=Math.floor(rnd()*N),b3=Math.floor(rnd()*N);
-  if(a3!==b3)addEdge(a3,b3);
-}
-/* канвас: логическая система 940x460, буфер с dpr cap 2, CSS растягивает по ширине */
-var ctx=cv.getContext('2d'),dpr=Math.min(window.devicePixelRatio||1,2),hover=-1;
-cv.width=Math.floor(LW*dpr);cv.height=Math.floor(LH*dpr);
-function X(x){return M+x*(LW-2*M);}
-function Y(y){return M+y*(LH-2*M);}
-function draw(){
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  ctx.clearRect(0,0,LW,LH);
-  ctx.lineWidth=1;
-  for(var i=0;i<edges.length;i++){
-    var a=nodes[edges[i][0]],b=nodes[edges[i][1]];
-    var hi=hover>=0&&(edges[i][0]===hover||edges[i][1]===hover);
-    ctx.strokeStyle=hi?'rgba(143,168,255,.8)':'rgba(255,255,255,.08)';
-    ctx.beginPath();ctx.moveTo(X(a.x),Y(a.y));ctx.lineTo(X(b.x),Y(b.y));ctx.stroke();
-  }
-  for(var j=0;j<N;j++){
-    var n=nodes[j],hl=j===hover;
-    ctx.beginPath();ctx.arc(X(n.x),Y(n.y),hl?n.r+3.5:n.r,0,6.2832);
-    ctx.fillStyle=ST_FILL[n.st];ctx.fill();
-    ctx.strokeStyle=hl?'#8fa8ff':ST_LINE[n.st];
-    ctx.lineWidth=hl?1.6:1;
-    ctx.stroke();
-  }
-}
-draw();
-var rq=false;
-function redraw(){if(rq)return;rq=true;requestAnimationFrame(function(){rq=false;draw();});}
-/* hover: ближайший узел в радиусе 11px, подсветка узла и его рёбер, статус в подписи — без названий */
-function pt(e){
-  var r=cv.getBoundingClientRect();
-  return[(e.clientX-r.left)*(LW/Math.max(1,r.width)),(e.clientY-r.top)*(LW/Math.max(1,r.width))];
-}
-cv.addEventListener('pointermove',function(e){
-  var p=pt(e),mx=p[0],my=p[1],best=-1,bd=11*(LW/Math.max(1,cv.getBoundingClientRect().width));
-  for(var i=0;i<N;i++){
-    var dx=X(nodes[i].x)-mx,dy=Y(nodes[i].y)-my,d=Math.sqrt(dx*dx+dy*dy);
-    if(d<bd){bd=d;best=i;}
-  }
-  if(best!==hover){
-    hover=best;redraw();
-    if(stat)stat.textContent=best>=0?('объект '+(best+1)+' · '+ST_NAME[nodes[best].st]):'';
-  }
-},{passive:true});
-cv.addEventListener('pointerleave',function(){
-  if(hover!==-1){hover=-1;redraw();}
-  if(stat)stat.textContent='';
-},{passive:true});
-/* вход: один кадр уже нарисован; fade-in через класс (reduced → без перехода) */
-cv.classList.add('gstatic');
 })();
 </script>
 </body>

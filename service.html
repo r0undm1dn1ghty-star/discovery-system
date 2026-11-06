@@ -159,6 +159,10 @@ section{padding:clamp(64px,8vw,110px) 0 0}
 .om-grid dd.om-price{font-family:var(--mono);font-weight:500;font-size:24px;color:var(--navy);letter-spacing:-.02em}
 .om-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:26px}
 .om-note{font-size:14.5px;color:var(--meta)}
+.om-ctx{font-family:var(--mono);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:10px}
+.om-lvl{display:block;margin:0 0 10px;padding-left:14px;border-left:2px solid var(--hair);font-size:16px;line-height:1.55;color:var(--body)}
+.om-lvl b{color:var(--ink);font-weight:500}
+.om-ch{font-size:14.5px;color:var(--navy)}
 @media(max-width:640px){.om-grid{grid-template-columns:1fr}}
 /* ── один контур: входящие → агент → выход, SVG-поток ── */
 .flowbox{border:1px solid var(--hair);border-radius:18px;background:#fff;padding:clamp(14px,2.4vw,28px)}
@@ -226,8 +230,8 @@ header.nav a.brand{flex-basis:100%}
 
 <div class="hero">
 <div class="kicker fx">сервис · запуск и сопровождение ии-агентов</div>
-<h1 class="fx" style="animation-delay:.08s">Не услуги. Сервис, который начинается с <em>твоей двери</em>.</h1>
-<p class="lede fx" style="animation-delay:.16s">Своё и быстро: выбери, с чем пришёл, — сцена соберётся под выбор: <b>результат, цифра и формат с ценой</b>. Агент остаётся твоим и работает с первого дня. Инструменты и данные не забираем: если облако заблокируют — работа остаётся.</p>
+<h1 class="fx" style="animation-delay:.08s">Сервис, который начинается с <em>твоей двери</em> — и своё, и быстро.</h1>
+<p class="lede fx" style="animation-delay:.16s">Выбери, с чем пришёл, — сцена соберётся под выбор: <b>результат, цифра и формат с ценой</b>. Агент ставится за дни, а не за месяцы, и остаётся твоим с первого дня: инструменты и данные не забираем — если облако заблокируют, работа остаётся.</p>
 </div>
 </div>
 </div>
@@ -490,7 +494,7 @@ header.nav a.brand{flex-basis:100%}
 </section>
 
 <!-- сервис и инструменты -->
-<section class="shelf">
+<section class="shelf" id="optimization">
 <div class="shead">
 <h2>Сервис и инструменты</h2>
 <p class="s">Все цены на одном экране, <b>видны до разговора</b>. Строка раскрывается: состав, срок и критерии приёмки — до оплаты.</p>
@@ -534,7 +538,7 @@ header.nav a.brand{flex-basis:100%}
 <button type="button" class="shelf-row fx" data-offer="calc">
 <span class="n">Калькулятор и канал</span>
 <span class="p">0 ₽</span>
-<span class="d">связка в рублях за минуту · сигналы рынка с источниками</span>
+<span class="d">связка в рублях за минуту · сигналы рынка с источниками — t.me/discoverysystem</span>
 <span class="x" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>
 </button>
 <p class="shelf-vs fx">Для сравнения: студия — чёрный ящик <b>от 50 000 ₽</b>, найм — <b>40–60 тыс. ₽ каждый месяц</b>. Своя связка после установки стоит 2–4К ₽/мес — это счёт провайдеров модели и хостинга.</p>
@@ -548,6 +552,7 @@ header.nav a.brand{flex-basis:100%}
 <button type="button" class="modal-x" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
 <p class="p-kick" id="omKick"></p>
 <h3 id="omTitle"></h3>
+<p class="om-ctx" id="omCtx" hidden></p>
 <dl class="om-grid">
 <div><dt>Состав</dt><dd id="omWhat"></dd></div>
 <div><dt>Цена</dt><dd class="om-price" id="omPrice"></dd></div>
@@ -555,8 +560,10 @@ header.nav a.brand{flex-basis:100%}
 <div><dt>Критерии приёмки</dt><dd id="omAccept"></dd></div>
 <div><dt>Что нужно от тебя</dt><dd id="omNeed"></dd></div>
 </dl>
+<div id="omLvl"></div>
 <div class="om-cta">
 <a class="btn btn-p btn-s" id="omBtn" href="https://t.me/victorpinksight">Описать задачу</a>
+<a class="btn btn-g btn-s om-ch" id="omCh" href="https://t.me/discoverysystem">Канал: разборы и сигналы рынка</a>
 <span class="om-note">оплата — после согласования критериев приёмки</span>
 </div>
 </div>
@@ -569,6 +576,7 @@ header.nav a.brand{flex-basis:100%}
 <div class="cta fx" style="animation-delay:.14s">
 <a class="btn btn-p" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9E%D0%BF%D0%B8%D1%88%D1%83%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83%20%E2%80%94%20%D0%BF%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%20%D0%B8%20%D1%86%D0%B5%D0%BD%D1%83.">Описать задачу</a>
 <a class="btn btn-g" href="calculator.html">Посчитать связку</a>
+<a class="btn btn-g" href="https://t.me/discoverysystem">Канал: разборы и сигналы рынка</a>
 </div>
 </div>
 </div>
@@ -640,26 +648,32 @@ setTimeout(function(){play();},1200); /* фоллбек: скрытый таб /
 (function(){
 'use strict';
 var OFFERS={
-install:{kick:'разово · до старта',title:'Установка под ключ',what:'Сборка агентов под твои процессы, база знаний на твоих документах, интеграция CRM / Авито / таблиц, память между чатами.',when:'1–10 дней, работа не останавливается',accept:'Работает на <b>твоих задачах</b> — проверяешь руками. Критерии приёмки согласованы до старта, принимает при тебе.',need:'Доступы к CRM / Авито / таблицам и твои документы для базы знаний. Час твоего времени на приёмку — при тебе.',btn:'Описать задачу',href:'https://t.me/victorpinksight'},
-rescue:{kick:'аудит → замер до/после',title:'Спасение агента',what:'Аудит текущей сборки: где ломается, что теряет, почему не доживает до задач. Починка и перенастройка под твой процесс.',when:'точная цена и срок после аудита',accept:'Замер до/после <b>в цифрах</b> на тех же задачах. Приёмка при тебе.',need:'Доступ к текущей сборке и 20 минут разговора: что ломается и где. Дальше — замер до/после на тех же задачах.',btn:'Описать задачу',href:'https://t.me/victorpinksight'},
-guide:{kick:'вход в связки РФ · без VPN',title:'Гайд «20 конфигураций»',what:'20 сборок: какие живут в РФ без VPN, провайдеры модели и хостинга, адаптация под свою рутину за вечер.',when:'сборка своими руками за 3–4 часа',accept:'Сборка поднимается <b>без VPN</b> по шагам из гайда. Обучение агента под твои задачи — в переписке, без созвонов.',need:'3–4 часа твоего времени и твой компьютер. Гайд ведут по шагам — код писать не надо.',btn:'Забрать гайд',href:'https://t.me/victorpinksight'},
-pick:{kick:'отдельно от внедрений · архитектура',title:'Подбор индивидуальный',what:'Архитектура связки под твою задачу: состав, провайдеры, этапы. Отдельно от внедрений.',when:'1–2 дня',accept:'На руках связка, провайдеры и этапы. Принимаешь план — дальше решаешь сам: ставить своими руками или заказать установку.',need:'Одно описание задачи: что болит и на чём сидишь (CRM, Авито, таблицы). Остальное — подбираю сам.',btn:'Заказать подбор',href:'https://t.me/victorpinksight'},
-care:{kick:'3 уровня · именованный чинильщик',title:'Поддержки',what:'<b>15 000</b> — чинит падения и держит интеграции живыми, ответ до 4 часов.<br><b>25 000</b> — плюс память и промпты обновляются под тебя, слежу за связкой.<br><b>40 000</b> — плюс развиваю сценарии: новые задачи агента по твоим процессам. Приоритет.<br>Именованный исполнитель — я, без дежурных.',when:'ответ до 4 часов в рабочие дни',accept:'Падение закрывается, причина названа. Отмена в любой месяц, без штрафов.',need:'Доступ к сборке, чтобы чинить без созвонов. Остальное — пишу сам, ты только подтверждаешь, что снова работает.',btn:'Описать задачу',href:'https://t.me/victorpinksight'},
-trial:{kick:'7 дней · твои задачи',title:'Тест-драйв',what:'Скиллы Discovery в своём чат-боте: заявки, переписка, отчёты — на реальных задачах, без кода.',when:'7 дней',accept:'Ты сам видишь, что агент забирает, и решаешь — брать установку или нет.',need:'Одна твоя задача из жизни и доступ в свой чат-бот. Семь дней гоняешь на реальном — не на демо-данных.',btn:'Взять тест-драйв',href:'https://t.me/victorpinksight'},
+install:{kick:'разово · до старта',ctx:'шаг: выбрана дверь «Личный» на этой странице — установка закрывает её боль целиком',title:'Установка под ключ',what:'Сборка агентов под твои процессы, база знаний на твоих документах, интеграция CRM / Авито / таблиц, память между чатами.',lvls:[['Личный агент на ПК','15 000 ₽ — план, тексты, разборы; постановка на твоём ПК за 1 день'],['Агент самозанятого','20 000 ₽ — заявки и контент: клиенту ответ приходит ночью, а утром'],['Связка для ИП','30 000 ₽ — бот + CRM / Авито / таблицы в одном контуре, работа не останавливается'],['Агенты для команды','60 000 ₽ — несколько агентов на процессы, месяц сопровождения включён']],when:'1–10 дней, работа не останавливается',accept:'Работает на <b>твоих задачах</b> — проверяешь руками. Критерии приёмки согласованы до старта, принимает при тебе.',need:'Доступы к CRM / Авито / таблицам и твои документы для базы знаний. Час твоего времени на приёмку — при тебе.',btn:'Описать задачу',href:'https://t.me/victorpinksight'},
+rescue:{kick:'аудит → замер до/после',ctx:'шаг: у тебя уже стоит сборка, и она не доживает до задач — это следующий ход после чужой или старой установки',title:'Спасение агента',what:'Аудит текущей сборки: где ломается, что теряет, почему не доживает до задач. Починка и перенастройка под твой процесс.',when:'точная цена и срок после аудита',accept:'Замер до/после <b>в цифрах</b> на тех же задачах. Приёмка при тебе.',need:'Доступ к текущей сборке и 20 минут разговора: что ломается и где. Дальше — замер до/после на тех же задачах.',btn:'Описать задачу',href:'https://t.me/victorpinksight'},
+guide:{kick:'вход в связки РФ · без VPN',ctx:'шаг: ты перебежчик — Claude не платится, VPN падает; гайд — первый ход после потери подписки, внедрение пойдёт следом',title:'Гайд «20 конфигураций»',what:'20 сборок: какие живут в РФ без VPN, провайдеры модели и хостинга, адаптация под свою рутину за вечер.',when:'сборка своими руками за 3–4 часа',accept:'Сборка поднимается <b>без VPN</b> по шагам из гайда. Обучение агента под твои задачи — в переписке, без созвонов.',need:'3–4 часа твоего времени и твой компьютер. Гайд ведут по шагам — код писать не надо.',btn:'Забрать гайд',href:'https://t.me/victorpinksight'},
+pick:{kick:'отдельно от внедрений · архитектура',ctx:'шаг: считаешь в калькуляторе или выбираешь между дверями — подбор даёт план до денег на внедрение',title:'Подбор индивидуальный',what:'Архитектура связки под твою задачу: состав, провайдеры, этапы. Отдельно от внедрений.',when:'1–2 дня',accept:'На руках связка, провайдеры и этапы. Принимаешь план — дальше решаешь сам: ставить своими руками или заказать установку.',need:'Одно описание задачи: что болит и на чём сидишь (CRM, Авито, таблицы). Остальное — подбираю сам.',btn:'Заказать подбор',href:'https://t.me/victorpinksight'},
+care:{kick:'3 уровня · именованный чинильщик',ctx:'шаг: агент уже работает и приносит деньги — поддержка отвечает за то, чтобы он не перестал',title:'Поддержки',what:'<b>15 000 ₽/мес</b> — персональная: чинит падения и держит интеграции живыми, ответ до 4 часов в рабочие дни. Годовой пакет — 144 000 ₽ (12 000 ₽/мес).<br><b>25 000 ₽/мес</b> — техподдержка агента для МСБ: плюс память и промпты обновляются под твои процессы, проверка сценариев, отчёт с цифрами; SLA 4 часа.<br><b>40 000 ₽/мес</b> — продуктовый отдел: плюс до двух новых сценариев в месяц по твоим процессам; SLA 2 часа, созвон 45 минут.<br>Именованный исполнитель — я, без дежурных.',lvls:[['Персональная','15 000 ₽/мес — падения и интеграции, ответ до 4 часов'],['Техподдержка МСБ','25 000 ₽/мес — плюс обновление памяти и промптов, отчёт с цифрами'],['Продуктовый отдел','40 000 ₽/мес — плюс два новых сценария в месяц, SLA 2 часа']],when:'ответ до 4 часов в рабочие дни',accept:'Падение закрывается, причина названа — в отчёте с цифрами. Отмена в любой месяц, без штрафов.',need:'Доступ к сборке, чтобы чинить без созвонов. Остальное — пишу сам, ты только подтверждаешь, что снова работает.',btn:'Описать задачу',href:'https://t.me/victorpinksight'},
+trial:{kick:'7 дней · твои задачи',ctx:'шаг: сомневаешься между дверями — неделя с агентом снимает сомнение до денег',title:'Тест-драйв',what:'Неделя реальной работы в твоём чат-боте: агент берёт скиллы Discovery под твою задачу — заявки, переписка, отчёты. Ставлю на своём, отдаю готовое; доступы — твои.',when:'7 дней',accept:'По итогам недели ты сам решаешь, брать установку или нет.',need:'Одна задача из твоей жизни и доступ в свой чат-бот. Семь дней работаешь с агентом на реальном — не на демо-данных.',btn:'Взять тест-драйв',href:'https://t.me/victorpinksight'},
 calc:{kick:'без заявки',title:'Калькулятор и канал',what:'Калькулятор считает связку в рублях за минуту. Канал — сигналы рынка с цифрой, источником и датой.',when:'сразу',accept:'Считаешь сам, никто ничего не продаёт.',btn:'Открыть калькулятор',href:'calculator.html'}
 };
 function priceOf(id){var r=document.querySelector('.shelf-row[data-offer="'+id+'"] .p');return r?r.textContent:'';}
 var modal=document.getElementById('offerModal');if(!modal)return;
-var kick=document.getElementById('omKick'),title=document.getElementById('omTitle'),
+var doors=document.getElementById('doors');
+var kick=document.getElementById('omKick'),title=document.getElementById('omTitle'),ctx=document.getElementById('omCtx'),
 what=document.getElementById('omWhat'),price=document.getElementById('omPrice'),
 when=document.getElementById('omWhen'),accept=document.getElementById('omAccept'),
-btn=document.getElementById('omBtn'),need=document.getElementById('omNeed'),lastFocus=null;
-function open(id){
+btn=document.getElementById('omBtn'),need=document.getElementById('omNeed'),lvl=document.getElementById('omLvl'),lastFocus=null;
+function doorBtn(n){var d=doors&&doors.querySelector('button[data-p="'+n+'"]');return d||null;}
+function currentDoor(){var b=doors&&doors.querySelector('button[aria-pressed="true"]');return b?b.getAttribute('data-p'):null;}
+function open(id,fromDoor){
   var o=OFFERS[id];if(!o)return;
   kick.textContent=o.kick;title.textContent=o.title;
+  if(o.ctx){ctx.textContent=o.ctx;ctx.hidden=false;}else{ctx.hidden=true;}
   what.innerHTML=o.what;price.textContent=priceOf(id);
   when.textContent=o.when;accept.innerHTML=o.accept;need.innerHTML=o.need||'Ничего — просто открой и посчитай.';
+  lvl.innerHTML=(o.lvls||[]).map(function(p){return '<span class="om-lvl"><b>'+p[0]+'</b> — '+p[1]+'</span>';}).join('');
   btn.textContent=o.btn;btn.href=o.href;
+  modal.dataset.offer=id;modal.dataset.door=fromDoor||currentDoor()||'';
   lastFocus=document.activeElement;
   modal.hidden=false;
   document.documentElement.style.overflow='hidden';
@@ -668,7 +682,11 @@ function open(id){
 function close(){
   modal.hidden=true;
   document.documentElement.style.overflow='';
-  if(lastFocus)lastFocus.focus();
+  var ret=lastFocus;
+  if(ret&&ret.isConnected){ret.focus();return;}
+  if(modal.dataset.door){var db=doorBtn(modal.dataset.door);if(db){db.focus();return;}}
+  var first=document.querySelector('.shelf-row[data-offer]');
+  if(first)first.focus();
 }
 document.querySelectorAll('.shelf-row[data-offer]').forEach(function(r){
   r.addEventListener('click',function(){open(r.getAttribute('data-offer'));});
@@ -679,6 +697,9 @@ modal.addEventListener('click',function(e){
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'&&!modal.hidden)close();
 });
+/* deep-link: service.html?o=care&p=2 — модалка оффера поверх нужной двери */
+var dlm=location.search.match(/[?&]o=([a-z]+)/);
+if(dlm){var dpm=location.search.match(/[?&]p=([1-5])/);open(dlm[1],dpm?dpm[1]:null);}
 })();
 </script>
 <script>

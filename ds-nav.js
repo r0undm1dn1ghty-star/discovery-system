@@ -16,7 +16,7 @@
  *   подпись спорила с кнопкой «Сигналы в канале», которая ведёт в Telegram. «Рынок ИИ»
  *   переехал за «Цены»: сначала «что это» → «почему верить» → «сколько», и только потом
  *   контекст рынка для тех, кто копает. channel.html остаётся живой страницей — вход из
- *   market.html и из бесплатного узла clarity.html; в наве он прилипает к «Рынку ИИ».
+ *   market.html и из бесплатного узла service.html; в наве он прилипает к «Рынку ИИ».
  *
  * НЕ СТАВИТЬ НА: thanks.html, fail.html — это возвраты с Робокассы,
  * там одна задача: получить оплаченное или повторить платёж.
@@ -26,7 +26,7 @@
 
   var NAV = [
     { key: 'system',   href: 'system.html',   label: 'Система' },
-    { key: 'prices',   href: 'clarity.html',  label: 'Ясность' },
+    { key: 'prices',   href: 'service.html',  label: 'Ясность' },
     { key: 'market',   href: 'market.html',   label: 'Рынок ИИ' },
     { key: 'channel',  href: 'channel.html',  label: 'Канал' }
   ];
@@ -41,7 +41,7 @@
     'proof.html': 'system',
     'market.html': 'market',
     'channel.html': 'channel',
-    'clarity.html': 'prices',
+    'service.html': 'prices',
     'calculator.html': 'calc',
     // подстраницы прилипают к своему разделу
     'agent-failures.html': 'market',
@@ -87,7 +87,7 @@
         var home = document.createElement('a');
         home.className = 'home';
         home.href = 'index.html';
-        home.innerHTML = '<img src="logo-nav.png" alt="Discovery System" height="28"/>' +
+        home.innerHTML = '<img src="logo-5.png" alt="Discovery System" height="28"/>' +
           '<span>Discovery System</span>';
         wrap.appendChild(home);
       }

@@ -17,18 +17,16 @@
 <meta name="description" content="Калькулятор 0₽, канал сигналов 0₽, открытые скиллы и репо на GitHub, открытая методика исследований. Система — это когда инструменты собраны под твой бизнес и остаются твоими.">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f2f4f6;--ink:#10141f;--body:#414a5e;--meta:#7a8296;--hair:rgba(16,20,31,.10);--hair2:rgba(16,20,31,.06);--navy:#1b2a6b;--navy2:#24368f;--btn:#1b2a6b;--btn-h:#24368f;--btn-t:#f2f6ff;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Onest',var(--sans);--ease:cubic-bezier(.2,.7,.2,1)}
-.zone-dark{--ink:#eef2fb;--body:#b9c1d6;--meta:#8a94ad;--hair:rgba(255,255,255,.14);--hair2:rgba(255,255,255,.08);background:#0f1730;color:var(--body);position:relative;overflow:hidden}
+:root{--bg:#0f1730;--ink:#eef2fb;--body:#b9c1d6;--meta:#8a94ad;--hair:rgba(255,255,255,.14);--hair2:rgba(255,255,255,.08);--navy:#8fa8ff;--navy2:#a9bcff;--btn:#24368f;--btn-h:#2c3f9e;--btn-t:#f2f6ff;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Onest',var(--sans);--ease:cubic-bezier(.2,.7,.2,1)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--body);font:400 17.5px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--body);font:400 17.5px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative}
 a{color:inherit}
 .wrap{max-width:1060px;margin:0 auto;padding:0 clamp(20px,4vw,32px);position:relative;z-index:2}
 /* nav */
 .nav{border-bottom:1px solid var(--hair2);position:relative;z-index:3}
 .nav a{color:var(--meta);text-decoration:none}
-.nav a:hover{color:var(--accent,#1b2a6b)}
-.zone-dark .nav a:hover{color:#8fa8ff}
+.nav a:hover{color:#8fa8ff}
 .nav a.on{color:var(--ink)}
 /* fx: opacity:0 только под .js-классом (JS-триггер), без JS всё видно */
 .js .fx{opacity:0;transform:translateY(12px)}
@@ -55,37 +53,30 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(30px
 /* диаграмма потока ценности: SVG из форм, ленты = реальный поток */
 .flowwrap{margin:26px 0 0;overflow-x:auto;padding-bottom:6px}
 .flowwrap svg{display:block;min-width:720px;width:100%;height:auto}
-.flowwrap .box{fill:#fff;stroke:var(--hair)}
-.flowwrap .box-r{fill:#1b2a6b;stroke:#1b2a6b}
+.flowwrap .box{fill:#161c30;stroke:var(--hair)}
+.flowwrap .box-r{fill:#24368f;stroke:#24368f}
 .flowwrap text{font-family:var(--sans)}
 .flowwrap .src{fill:var(--ink);font-size:16px;font-weight:500}
-.flowwrap .src-s{fill:#55607a;font-size:15px;font-weight:400}
+.flowwrap .src-s{fill:#8a94ad;font-size:15px;font-weight:400}
 .flowwrap .res{fill:#f2f6ff;font-size:17.5px;font-weight:500}
 .flowwrap .res-s{fill:rgba(242,246,255,.78);font-size:15px;font-weight:400}
-.flowwrap .ribbon{fill:none;stroke:#1b2a6b;stroke-opacity:.38;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.15s var(--ease)}
+.flowwrap .ribbon{fill:none;stroke:#8fa8ff;stroke-opacity:.5;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.15s var(--ease)}
 .flowwrap.svg-in .ribbon{stroke-dashoffset:0}
-.flowcap{margin-top:14px;font-size:15.5px;color:#55607a}
+.flowcap{margin-top:14px;font-size:15.5px;color:#8a94ad}
 /* список бесплатного живёт ТОЛЬКО в диаграмме потока: иконки перенесены в узлы источников
    (stroke 1.5, currentColor, без коробок-подложек) — отдельного блока-дубля больше нет */
 /* цитаты: крупно, ключевая фраза weight 500 */
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,48px);padding:30px 0 8px}
+.quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,4vw,48px);padding:30px 0 8px}
 .q{border-top:1px solid var(--hair);padding-top:22px;font-size:19px;line-height:1.55;color:var(--ink)}
 .q b{font-weight:500}
-.q .who{display:block;margin-top:16px;font-family:var(--mono);font-size:15px;color:#55607a;font-style:normal}
+.q .who{display:block;margin-top:16px;font-family:var(--mono);font-size:15px;color:#8a94ad;font-style:normal}
 .q .who b{color:var(--ink);font-weight:500}
-/* пруф-полоса: метрики WorkWay намалёваны двумя SVG-стержнями 20%→80%, scaleY-рост;
-   один приём на секцию, детерминировано (seeded-задержки), reduced-motion → статика */
-.proof{border-top:1px solid var(--hair2);border-bottom:1px solid var(--hair2);background:rgba(27,42,107,.045);padding:26px clamp(16px,2.5vw,28px);margin-top:clamp(28px,4vw,48px);display:flex;align-items:center;gap:clamp(20px,3.5vw,44px);flex-wrap:wrap}
-.bars{display:block;flex:none}
-.bars .bar{fill:var(--navy);transform:scaleY(0);transform-origin:bottom;transform-box:fill-box;transition:transform .9s var(--ease)}
-.bars .bar.prev{fill:#8fa8ff}
-.bars .bnum{font-family:var(--mono);font-weight:500;font-size:30px;fill:var(--navy);opacity:0;transition:opacity .55s var(--ease)}
-.bars .axis{stroke:var(--hair);stroke-width:2}
-.bars .blab{font-family:var(--mono);font-size:14px;fill:#55607a}
-.proof.bars-in .bar{transform:scaleY(1)}
-.proof.bars-in .bnum{opacity:1}
-.proof p{font-size:16px;color:#55607a;max-width:46ch}
-.proof p b{color:var(--ink);font-weight:500}
+/* CTA-пресеты: строка инструментов + кнопка под демо, каждая с готовым сообщением (?text=) */
+.tool-ctas{display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:14px}
+.tool-ctas a{font-family:var(--mono);font-size:14px;color:var(--meta);text-decoration:underline;text-underline-offset:3px}
+.tool-ctas a:hover{color:#8fa8ff}
+.tool-ctas a:focus-visible{outline:2px solid #8fa8ff;outline-offset:3px}
+.demo-cta{margin-top:16px}
 /* демо смен: три сценария → смена в Telegram (тёмное окно, как настоящий клиент) */
 .demo-lede{max-width:62ch}
 .demo-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 18px}
@@ -93,7 +84,7 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(30px
 .demo-tab:hover{border-color:var(--navy);color:var(--ink)}
 .demo-tab:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
 .demo-tab[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:#f2f6ff}
-.tg{border:1px solid rgba(16,20,31,.2);border-radius:16px;overflow:hidden;background:#0e1621;box-shadow:0 30px 70px rgba(16,20,31,.28),0 4px 14px rgba(16,20,31,.16);max-width:520px}
+.tg{border:1px solid rgba(255,255,255,.18);border-radius:16px;overflow:hidden;background:#0e1621;box-shadow:0 30px 70px rgba(0,0,0,.5),0 4px 14px rgba(0,0,0,.35);max-width:520px}
 .tg .head{display:flex;align-items:center;gap:9px;padding:10px 14px;background:#17212b;border-bottom:1px solid rgba(0,0,0,.4)}
 .tg .hic{display:flex;align-items:center;justify-content:center;width:20px;height:20px;color:#7d8e9f;flex:none}
 .tg .hic svg{width:100%;height:100%}
@@ -120,6 +111,7 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(30px
 .cmsg .fm{display:block;margin-top:6px;padding:8px 10px;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(255,255,255,.05);font-family:var(--mono);font-size:14px;line-height:1.5;color:#cfe0f4}
 .cmsg .fm .r{display:flex;justify-content:space-between;gap:14px;padding:1px 0}
 .cmsg .fm .r em{font-style:normal;color:#fff;white-space:nowrap}
+@media(max-width:540px){.cmsg .fm .r{flex-wrap:wrap}.cmsg .fm .r em{white-space:normal}}
 .typing{align-self:flex-start;background:#182533;border-radius:12px;border-bottom-left-radius:4px;padding:11px 14px;display:flex;gap:5px;align-items:center}
 .typing[hidden]{display:none}
 .typing i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.42);animation:tp 1s infinite}
@@ -136,7 +128,7 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(30px
 .tg .foot .field{flex:1;background:#242f3d;border-radius:19px;padding:9px 15px;font:400 15px/1.4 var(--sans);color:#7d8e9f;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .demo-result{margin-top:16px;font-size:16px;color:var(--ink);max-width:60ch;min-height:26px}
 .demo-result b{font-weight:500}
-.demo-cap{margin-top:10px;font-size:14px;color:#55607a}
+.demo-cap{margin-top:10px;font-size:14px;color:#8a94ad}
 .demo-again{margin-top:12px;background:none;border:1px solid var(--hair);border-radius:10px;padding:9px 16px;min-height:44px;font:500 14.5px/1.3 var(--sans);color:var(--body);cursor:pointer;transition:border-color .15s var(--ease),color .15s var(--ease)}
 .demo-again:hover{border-color:var(--navy);color:var(--navy)}
 .demo-again:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
@@ -149,12 +141,12 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(30px
 .toolsfig .tname{font-family:var(--mono);font-size:15px;fill:var(--navy);text-decoration:underline;text-underline-offset:3px}
 .toolsfig .tjob{font-family:var(--sans);font-size:14.5px;fill:var(--body)}
 .toolsfig .tmet{font-family:var(--mono);font-size:14px;fill:var(--navy);font-weight:500}
-.toolsfig .tnote{font-family:var(--mono);font-size:14px;fill:#55607a}
-.toolsfig a:hover .tname{fill:#24368f}
+.toolsfig .tnote{font-family:var(--mono);font-size:14px;fill:#8a94ad}
+.toolsfig a:hover .tname{fill:#a9bcff}
 .toolsfig a:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
 .tool-foot{display:flex;align-items:center;gap:clamp(16px,3vw,32px);flex-wrap:wrap;margin-top:18px}
-.tool-note{margin:0;font-size:14.5px;color:#55607a;max-width:62ch}
-.scrollhint{display:none;margin-top:8px;font:400 14px/1.4 var(--mono);color:#55607a}
+.tool-note{margin:0;font-size:14.5px;color:#8a94ad;max-width:62ch}
+.scrollhint{display:none;margin-top:8px;font:400 14px/1.4 var(--mono);color:#8a94ad}
 @media(max-width:700px){.scrollhint{display:block}.tg .wall{height:520px;min-height:520px}}
 /* открытость = сила: якорь — открытый замок */
 .lockmark{color:var(--navy);margin-bottom:16px}
@@ -174,16 +166,14 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(30px
 .btn-p:hover{background:var(--btn-h)}
 .btn-g{border-color:var(--hair);color:var(--ink)}
 .btn-g:hover{border-color:var(--navy);color:var(--navy)}
-footer{border-top:1px solid var(--hair2);padding:26px 0;font-size:14px;color:#55607a}
+footer{border-top:1px solid var(--hair2);padding:26px 0;font-size:14px;color:#8a94ad}
 footer a{color:var(--body);text-decoration:none}
 footer a:hover{color:var(--ink)}
-@media(max-width:880px){.quotes,.open{grid-template-columns:1fr 1fr}.shead{grid-template-columns:1fr}}
+@media(max-width:880px){.shead{grid-template-columns:1fr}}
 @media(max-width:540px){.quotes,.open{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){
 .js .fx{opacity:1;transform:none;transition:none}
 .flowwrap .ribbon{stroke-dashoffset:0;transition:none}
-.bars .bar{transform:scaleY(1);transition:none}
-.bars .bnum{opacity:1;transition:none}
 .typing{display:none}
 .cmsg.line-in,.syschip.line-in,.daychip.line-in{animation:none}
 }
@@ -191,8 +181,7 @@ footer a:hover{color:var(--ink)}
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
-<div class="zone-dark" id="heroZone">
-<div id="heroFx" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1"></div>
+<div id="pageFx" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1"></div>
 <div class="wrap">
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
 <a class="brand" href="index.html" style="display:flex;align-items:center;gap:10px;font-family:Onest;font-weight:500;letter-spacing:-.01em;color:var(--ink);text-decoration:none;font-size:15.5px"><img src="logo-5.png" alt="Discovery System" width="26" height="26" style="border-radius:6px">discovery system</a>
@@ -207,7 +196,6 @@ footer a:hover{color:var(--ink)}
 <p class="terms fx"><span class="tlab">приёмка · оплата · сроки</span>Критерии приёмки — <b>до старта</b>, оплата рублями после согласования, срок <b>1–3 дня (макс 10 при сложных)</b>.</p>
 </div>
 </div>
-</div>
 
 <div class="wrap">
 <section>
@@ -219,11 +207,11 @@ footer a:hover{color:var(--ink)}
 <p class="s fx demo-lede">Агент пишет тебе в Telegram — так выглядит работа. Три сценария из живых сборок: кликни и смотри смену. Клиент справа, агент слева.</p>
 </div>
 <div class="demo-tabs fx" role="tablist" aria-label="Сценарии смены агента">
-<button type="button" class="demo-tab" role="tab" id="tab-shift" aria-controls="tgPanel" data-asm="shift" aria-selected="true">Смена закрывается сама</button>
-<button type="button" class="demo-tab" role="tab" id="tab-requests" aria-controls="tgPanel" data-asm="requests" aria-selected="false" tabindex="-1">Заявка не ждёт утра</button>
-<button type="button" class="demo-tab" role="tab" id="tab-orders" aria-controls="tgPanel" data-asm="orders" aria-selected="false" tabindex="-1">Утром — список заказов</button>
+<button type="button" class="demo-tab" role="tab" id="tab-requests" aria-controls="tgPanel" data-asm="requests" aria-selected="true">Заявки не ждут утра</button>
+<button type="button" class="demo-tab" role="tab" id="tab-morning" aria-controls="tgPanel" data-asm="morning" aria-selected="false" tabindex="-1">Утром — план и риски</button>
+<button type="button" class="demo-tab" role="tab" id="tab-radar" aria-controls="tgPanel" data-asm="radar" aria-selected="false" tabindex="-1">Радар ниш · топ-20</button>
 </div>
-<div class="tg fx" id="tgPanel" role="tabpanel" aria-labelledby="tab-shift" aria-label="Смена агента в Telegram">
+<div class="tg fx" id="tgPanel" role="tabpanel" aria-labelledby="tab-requests" aria-label="Смена агента в Telegram">
 <div class="head">
 <span class="hic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span>
 <span class="av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
@@ -234,18 +222,19 @@ footer a:hover{color:var(--ink)}
 </span>
 </div>
 <div class="wall" id="tgStream" role="log" aria-live="polite" aria-label="Смена агента в Telegram">
-<!-- снимок смены без JS: та же смена, что играет демо; первый кадр демо этот снимок заменяет -->
-<div class="daychip">Понедельник · смена Ильи</div>
-<div class="syschip"><span class="lrow"><span class="st">08:58</span><span>смена открыта, слушаю Telegram</span></span></div>
-<div class="cmsg out">Принял товар, 14 позиций. Накладную сфоткал.<span class="cap">голосовое · 0:09 · Илья</span><span class="bm"><span class="tm">08:58</span><svg class="tks" viewBox="0 0 18 10" aria-hidden="true"><path d="M1 5l3 3 6.5-7" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 7.5L10 9l7-8" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-<div class="cmsg in"><span class="bt">Учёт · Смена Пн</span><span class="fm">Google Таблица · лист «Смена»<br>+1 строка · 14 позиций</span><span class="bm"><span class="tm">08:59</span></span></div>
+<!-- снимок смены без JS: заявки не ждут утра — тот же сценарий, что играет демо -->
+<div class="daychip">Вторник · вечер, две заявки</div>
+<div class="cmsg out">Добрый день! Сколько стоит работа и когда сможет приехать специалист?<span class="cap">клиент · заявка 1</span><span class="bm"><span class="tm">21:40</span><svg class="tks" viewBox="0 0 18 10" aria-hidden="true"><path d="M1 5l3 3 6.5-7" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 7.5L10 9l7-8" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+<div class="syschip"><span class="lrow"><span class="st">21:40</span><span>заявка 1 разобрана: услуга, район, срочность</span></span><span class="lrow"><span class="st">22:15</span><span>заявка 2 разобрана: тот же прайс, другой район</span></span></div>
+<div class="cmsg in"><span class="bt">Черновики готовы</span>Цена по прайсу и свободные слоты в каждом. Отправляешь одной кнопкой — правила ответа задал ты.<span class="bm"><span class="tm">22:16</span></span></div>
 <div class="typing" id="tgTyping" hidden aria-label="печатает"><i></i><i></i><i></i></div>
 </div>
 <div class="foot" aria-hidden="true"><span class="field">Сообщение</span></div>
 </div>
 <p class="demo-result fx" id="demoResult"></p>
+<div class="cta fx demo-cta"><a class="btn btn-p" id="demoCta" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%9D%D0%B0%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%20%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9%20%C2%AB%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%BD%D0%B5%20%D0%B6%D0%B4%D1%83%D1%82%20%D1%83%D1%82%D1%80%D0%B0%C2%BB%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%2C%20%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9%20%D0%B2%D0%B5%D1%87%D0%B5%D1%80%D0%BE%D0%BC%20%D1%80%D0%B0%D0%B7%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%20%D0%B2%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B8%D0%B5%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%B8%20%D0%BA%20%D1%83%D1%82%D1%80%D1%83%20%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D1%82%20%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%BE%D0%B2.%20%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%3A%20discovery-system.ru%2Fsystem.html">Обсудить такую смену — сообщение уже собрано</a></div>
 <button type="button" class="demo-again fx" id="tgAgain">повторить смену</button>
-<p class="demo-cap fx">Сценарии — из сборок ds-hero.js: учёт смены, ночная заявка, утренний отбор. Сводка приходит сама — отправляешь ты.</p>
+<p class="demo-cap fx">Сценарии — из живых сборок: заявки вечером, утренняя сводка, радар ниш. Сводка приходит сама — отправляешь ты.</p>
 </section>
 
 <section>
@@ -258,7 +247,7 @@ footer a:hover{color:var(--ink)}
 <title id="flowTitle">Поток ценности: четыре бесплатных источника питают два бизнес-результата</title>
 <desc id="flowDesc">Калькулятор связки, канал сигналов, скиллы на GitHub и методика исследований ведут к двум результатам: знаешь, что строить, и агент работает на тебя.</desc>
 <defs>
-<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10Z" fill="#1b2a6b" fill-opacity=".65"/></marker>
+<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0L10,5L0,10Z" fill="#8fa8ff" fill-opacity=".7"/></marker>
 </defs>
 <!-- ленты: источник → результат, прорисовываются stroke-dashoffset -->
 <g>
@@ -274,25 +263,25 @@ footer a:hover{color:var(--ink)}
 <!-- источники -->
 <g>
 <rect class="box" x="8" y="28" width="300" height="64" rx="10"/>
-<g color="#1b2a6b"><svg x="26" y="49" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.75" width="14" height="18.5" rx="2"/><rect x="7.75" y="5.5" width="8.5" height="4" rx="0.75"/><circle cx="8.5" cy="13" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="13" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="13" r="0.9" fill="currentColor" stroke="none"/><circle cx="8.5" cy="16.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="16.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="16.5" r="0.9" fill="currentColor" stroke="none"/></svg></g>
+<g color="#8fa8ff"><svg x="26" y="49" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.75" width="14" height="18.5" rx="2"/><rect x="7.75" y="5.5" width="8.5" height="4" rx="0.75"/><circle cx="8.5" cy="13" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="13" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="13" r="0.9" fill="currentColor" stroke="none"/><circle cx="8.5" cy="16.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="12" cy="16.5" r="0.9" fill="currentColor" stroke="none"/><circle cx="15.5" cy="16.5" r="0.9" fill="currentColor" stroke="none"/></svg></g>
 <text class="src" x="60" y="57">Калькулятор связки</text>
 <text class="src-s" x="60" y="79">бюджет в рублях · 0 ₽</text>
 </g>
 <g>
 <rect class="box" x="8" y="124" width="300" height="64" rx="10"/>
-<g color="#1b2a6b"><svg x="26" y="145" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M8.5,9.5 a3.5,3.5 0 0 0 0,5"/><path d="M6,7 a7,7 0 0 0 0,10"/><path d="M15.5,9.5 a3.5,3.5 0 0 1 0,5"/><path d="M18,7 a7,7 0 0 1 0,10"/></svg></g>
+<g color="#8fa8ff"><svg x="26" y="145" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M8.5,9.5 a3.5,3.5 0 0 0 0,5"/><path d="M6,7 a7,7 0 0 0 0,10"/><path d="M15.5,9.5 a3.5,3.5 0 0 1 0,5"/><path d="M18,7 a7,7 0 0 1 0,10"/></svg></g>
 <text class="src" x="60" y="153">Канал сигналов</text>
 <text class="src-s" x="60" y="175">факт = цифра + источник · 0 ₽</text>
 </g>
 <g>
 <rect class="box" x="8" y="220" width="300" height="64" rx="10"/>
-<g color="#1b2a6b"><svg x="26" y="241" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9.2,8 5,12 9.2,16"/><polyline points="14.8,8 19,12 14.8,16"/></svg></g>
+<g color="#8fa8ff"><svg x="26" y="241" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9.2,8 5,12 9.2,16"/><polyline points="14.8,8 19,12 14.8,16"/></svg></g>
 <text class="src" x="60" y="249">Скиллы на GitHub</text>
 <text class="src-s" x="60" y="271">открытый код · забираешь себе</text>
 </g>
 <g>
 <rect class="box" x="8" y="316" width="300" height="64" rx="10"/>
-<g color="#1b2a6b"><svg x="26" y="337" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14,3.25 H7.5 a1,1 0 0 0 -1,1 v15.5 a1,1 0 0 0 1,1 h9 a1,1 0 0 0 1,-1 V7 Z"/><path d="M14,3.25 V7 h3.75"/><path d="M9.5,12 h5"/><path d="M9.5,15.5 h5"/></svg></g>
+<g color="#8fa8ff"><svg x="26" y="337" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14,3.25 H7.5 a1,1 0 0 0 -1,1 v15.5 a1,1 0 0 0 1,1 h9 a1,1 0 0 0 1,-1 V7 Z"/><path d="M14,3.25 V7 h3.75"/><path d="M9.5,12 h5"/><path d="M9.5,15.5 h5"/></svg></g>
 <text class="src" x="60" y="345">Методика исследований</text>
 <text class="src-s" x="60" y="367">как получено каждое число</text>
 </g>
@@ -320,20 +309,6 @@ footer a:hover{color:var(--ink)}
 <div class="quotes">
 <div class="q fx">«Взвешенно принимаешь решения и <b>держишь слово как партнёр</b>, я доверяю твоей продуктовой логике. Ты проявляешь инициативу там, где её изначально не ждут.»<i class="who"><b>Артур Прусаков</b> · Founder и CEO, WorkWay</i></div>
 <div class="q fx">«Попросил, чтобы он создал копию себя… <b>один теперь по учёту, а второй для остальных вопросов</b>»<i class="who"><b>Николай</b> · клиент с Авито, сентябрь 2026 · оплатил гайд, агенты на его сервере</i></div>
-<div class="q fx">«Нужно было перенести с текстового документа на интерактивную карту большой объём координат. Работа выполнена <b>быстро, качественно</b> и по привлекательной стоимости. Рекомендую исполнителя!»<i class="who"><b>Заказчик с Авито</b> · ноябрь 2026 · обработка геоданных</i></div>
-</div>
-<div class="proof fx" id="proofBox">
-<svg class="bars" viewBox="0 0 224 176" width="224" height="176" role="img" aria-label="Отбор кандидатов в WorkWay: точность 20% до внедрения и 80% после, слепой тест на 30 анкетах">
-<title>Отбор кандидатов в WorkWay: 20% до внедрения, 80% после</title>
-<line class="axis" x1="8" y1="148" x2="216" y2="148"/>
-<text class="bnum" x="56" y="112" text-anchor="middle">20%</text>
-<text class="bnum" x="168" y="40" text-anchor="middle">80%</text>
-<rect class="bar prev" x="32" y="124" width="48" height="24" rx="4"/>
-<rect class="bar" x="144" y="52" width="48" height="96" rx="4"/>
-<text class="blab" x="56" y="168" text-anchor="middle">до</text>
-<text class="blab" x="168" y="168" text-anchor="middle">после</text>
-</svg>
-<p>точность отбора кандидатов в <b>WorkWay</b>: 20% до внедрения, 80% после · слепой тест, 30 анкет</p>
 </div>
 </section>
 
@@ -348,40 +323,40 @@ footer a:hover{color:var(--ink)}
 <figure class="toolsfig fx">
 <svg viewBox="0 0 980 548" role="img" aria-labelledby="toolsTitle toolsDesc">
 <title id="toolsTitle">Шесть инструментов: что каждый проверяет и с какой точностью</title>
-<desc id="toolsDesc">Лид-парсер: 63% точности, 57 каналов и 7 бирж. Спираль зрелости: 4 из 4 ступеней. Проверка рынка: 5 из 5 вердиктов. P&amp;L-проверка: 3 из 3 ловушек. Контент-радар: около 150 рублей в месяц, 4 платформы. GEO-аудит: AUC 1,00, 92 правила.</desc>
+<desc id="toolsDesc">Контент-радар: около 150 рублей в месяц, 4 платформы. Лид-парсер: 63% точности, 57 каналов и 7 бирж. Спираль зрелости: 4 из 4 ступеней. Проверка рынка: 5 из 5 вердиктов. P&amp;L-проверка: 3 из 3 ловушек. GEO-аудит: AUC 1,00, 92 правила.</desc>
 
 <line class="tsep" x1="0" y1="24" x2="980" y2="24"/>
-<svg class="tic" x="8" y="40" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 4.6h17.2l-6.6 8.2v5.8l-4 2.2v-8z"/></svg>
-<a href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener"><text class="tname" x="46" y="57">ds_warm-lead-parser</text></a>
-<text class="tjob" x="46" y="81"><tspan x="46">Клиенты не приходят сами, а ждать некогда. Кто прямо сейчас ищет бота,</tspan><tspan x="46" dy="18">получает оценку готовности платить 0–100.</tspan></text>
-<text class="tmet" x="972" y="57" text-anchor="end">63% точности</text>
-<text class="tnote" x="972" y="78" text-anchor="end">57 каналов · 7 бирж</text>
+<svg class="tic" x="8" y="40" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="4.6"/><path d="M12 12l6.1-6.1"/><circle cx="16.2" cy="7.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+<a href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener"><text class="tname" x="46" y="57">ds_content-radar</text></a>
+<text class="tjob" x="46" y="81"><tspan x="46">Какой контент залетает в нише, руками листать — часы. Собирает топ X,</tspan><tspan x="46" dy="18">Instagram, TikTok и YouTube, находит аутлаеров, складывает план на неделю.</tspan></text>
+<text class="tmet" x="972" y="57" text-anchor="end">~150 ₽/мес</text>
+<text class="tnote" x="972" y="78" text-anchor="end">4 платформы · без Apify</text>
 
 <line class="tsep" x1="0" y1="110" x2="980" y2="110"/>
-<svg class="tic" x="8" y="126" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.00 12.00L13.14 12.27L13.20 12.61L13.15 12.98L12.99 13.36L12.71 13.71L12.32 14.00L11.83 14.19L11.27 14.25L10.67 14.16L10.08 13.92L9.55 13.50L9.10 12.94L8.79 12.25L8.65 11.47L8.71 10.64L8.98 9.81L9.46 9.03L10.15 8.37L11.01 7.87L12.00 7.58L13.07 7.54L14.16 7.76L15.20 8.25L16.13 9.00L16.87 9.98L17.37 11.15L17.60 12.44L17.50 13.79L17.08 15.11L16.33 16.33L15.29 17.37L14.00 18.15L12.52 18.62L10.93 18.72L9.33 18.45L7.80 17.78L6.43 16.75L5.32 15.40L4.55 13.79L4.17 12.00L4.22 10.13L4.72 8.29L5.65 6.58L6.99 5.11L8.68 3.97L10.61 3.25L12.71 3.00L14.84 3.25"/></svg>
-<a href="https://github.com/r0undm1dn1ghty-star/ds_spiral-maturity" target="_blank" rel="noopener"><text class="tname" x="46" y="143">ds_spiral-maturity</text></a>
-<text class="tjob" x="46" y="167"><tspan x="46">Пилот ИИ заглох через месяц — и дело не в технологии. За 10 минут:</tspan><tspan x="46" dy="18">зрелость компании и формат внедрения, который переживёт старт.</tspan></text>
-<text class="tmet" x="972" y="143" text-anchor="end">4/4 ступени</text>
-<text class="tnote" x="972" y="164" text-anchor="end">модель ВШЭ + Cloud.ru</text>
+<svg class="tic" x="8" y="126" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 4.6h17.2l-6.6 8.2v5.8l-4 2.2v-8z"/></svg>
+<a href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener"><text class="tname" x="46" y="143">ds_warm-lead-parser</text></a>
+<text class="tjob" x="46" y="167"><tspan x="46">Клиенты не приходят сами, а ждать некогда. Кто прямо сейчас ищет бота,</tspan><tspan x="46" dy="18">получает оценку готовности платить 0–100.</tspan></text>
+<text class="tmet" x="972" y="143" text-anchor="end">63% точности</text>
+<text class="tnote" x="972" y="164" text-anchor="end">57 каналов · 7 бирж</text>
 
 <line class="tsep" x1="0" y1="196" x2="980" y2="196"/>
-<svg class="tic" x="8" y="212" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M8.3 12.2l2.6 2.6 4.9-5.3"/></svg>
-<a href="https://github.com/r0undm1dn1ghty-star/ds_market-evidence" target="_blank" rel="noopener"><text class="tname" x="46" y="229">ds_market-evidence</text></a>
-<text class="tjob" x="46" y="253"><tspan x="46">Спрос вроде есть, а платят единицы. Проверяет утверждения бизнес-модели</tspan><tspan x="46" dy="18">по рынку: источник и дата у каждого вывода.</tspan></text>
-<text class="tmet" x="972" y="229" text-anchor="end">5/5 вердиктов</text>
+<svg class="tic" x="8" y="212" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.00 12.00L13.14 12.27L13.20 12.61L13.15 12.98L12.99 13.36L12.71 13.71L12.32 14.00L11.83 14.19L11.27 14.25L10.67 14.16L10.08 13.92L9.55 13.50L9.10 12.94L8.79 12.25L8.65 11.47L8.71 10.64L8.98 9.81L9.46 9.03L10.15 8.37L11.01 7.87L12.00 7.58L13.07 7.54L14.16 7.76L15.20 8.25L16.13 9.00L16.87 9.98L17.37 11.15L17.60 12.44L17.50 13.79L17.08 15.11L16.33 16.33L15.29 17.37L14.00 18.15L12.52 18.62L10.93 18.72L9.33 18.45L7.80 17.78L6.43 16.75L5.32 15.40L4.55 13.79L4.17 12.00L4.22 10.13L4.72 8.29L5.65 6.58L6.99 5.11L8.68 3.97L10.61 3.25L12.71 3.00L14.84 3.25"/></svg>
+<a href="https://github.com/r0undm1dn1ghty-star/ds_spiral-maturity" target="_blank" rel="noopener"><text class="tname" x="46" y="229">ds_spiral-maturity</text></a>
+<text class="tjob" x="46" y="253"><tspan x="46">Пилот ИИ заглох через месяц — и дело не в технологии. За 10 минут:</tspan><tspan x="46" dy="18">зрелость компании и формат внедрения, который переживёт старт.</tspan></text>
+<text class="tmet" x="972" y="229" text-anchor="end">4/4 ступени</text>
+<text class="tnote" x="972" y="250" text-anchor="end">модель ВШЭ + Cloud.ru</text>
 
 <line class="tsep" x1="0" y1="282" x2="980" y2="282"/>
-<svg class="tic" x="8" y="298" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.4v11.2"/><path d="M14.7 8.9c-.6-.8-1.6-1.3-2.7-1.3-1.6 0-2.7.8-2.7 2s1.1 1.8 2.7 2.1c1.6.3 2.7.9 2.7 2.1 0 1.2-1.1 2-2.7 2-1.2 0-2.2-.5-2.8-1.4"/></svg>
-<a href="https://github.com/r0undm1dn1ghty-star/ds_pnl-check" target="_blank" rel="noopener"><text class="tname" x="46" y="315">ds_pnl-check</text></a>
-<text class="tjob" x="46" y="339"><tspan x="46">Цифры в таблице есть, а решение принять страшно. Сверяет прибыль,</tspan><tspan x="46" dy="18">дебиторку и долг с деньгами: где подтверждено, где догадка.</tspan></text>
-<text class="tmet" x="972" y="315" text-anchor="end">3/3 ловушки</text>
+<svg class="tic" x="8" y="298" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M8.3 12.2l2.6 2.6 4.9-5.3"/></svg>
+<a href="https://github.com/r0undm1dn1ghty-star/ds_market-evidence" target="_blank" rel="noopener"><text class="tname" x="46" y="315">ds_market-evidence</text></a>
+<text class="tjob" x="46" y="339"><tspan x="46">Спрос вроде есть, а платят единицы. Проверяет утверждения бизнес-модели</tspan><tspan x="46" dy="18">по рынку: источник и дата у каждого вывода.</tspan></text>
+<text class="tmet" x="972" y="315" text-anchor="end">5/5 вердиктов</text>
 
 <line class="tsep" x1="0" y1="368" x2="980" y2="368"/>
-<svg class="tic" x="8" y="384" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="4.6"/><path d="M12 12l6.1-6.1"/><circle cx="16.2" cy="7.8" r="1.1" fill="currentColor" stroke="none"/></svg>
-<a href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener"><text class="tname" x="46" y="401">ds_content-radar</text></a>
-<text class="tjob" x="46" y="425"><tspan x="46">Какой контент залетает в нише, руками листать — часы. Собирает топ X,</tspan><tspan x="46" dy="18">Instagram, TikTok и YouTube, находит аутлаеров, складывает план на неделю.</tspan></text>
-<text class="tmet" x="972" y="401" text-anchor="end">~150 ₽/мес</text>
-<text class="tnote" x="972" y="422" text-anchor="end">4 платформы · без Apify</text>
+<svg class="tic" x="8" y="384" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 6.4v11.2"/><path d="M14.7 8.9c-.6-.8-1.6-1.3-2.7-1.3-1.6 0-2.7.8-2.7 2s1.1 1.8 2.7 2.1c1.6.3 2.7.9 2.7 2.1 0 1.2-1.1 2-2.7 2-1.2 0-2.2-.5-2.8-1.4"/></svg>
+<a href="https://github.com/r0undm1dn1ghty-star/ds_pnl-check" target="_blank" rel="noopener"><text class="tname" x="46" y="401">ds_pnl-check</text></a>
+<text class="tjob" x="46" y="425"><tspan x="46">Цифры в таблице есть, а решение принять страшно. Сверяет прибыль,</tspan><tspan x="46" dy="18">дебиторку и долг с деньгами: где подтверждено, где догадка.</tspan></text>
+<text class="tmet" x="972" y="401" text-anchor="end">3/3 ловушки</text>
 
 <line class="tsep" x1="0" y1="454" x2="980" y2="454"/>
 <svg class="tic" x="8" y="470" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><ellipse cx="12" cy="12" rx="3.7" ry="8.6"/><path d="M3.6 9.4h16.8M3.6 14.6h16.8"/></svg>
@@ -398,6 +373,15 @@ footer a:hover{color:var(--ink)}
 <div class="tool-foot fx">
 <p class="tool-note">Ставится копированием папки, без зависимостей: HTTP-сервис, CLI, MCP, GPT Actions — только стандартная библиотека Python 3.8+. Подключается к любому агенту или боту за минуту.</p>
 <a class="btn btn-g" href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">Открыть на GitHub →</a>
+</div>
+<p class="tool-note" style="margin-top:16px">Каждая ссылка ниже открывает личку с готовым сообщением про конкретный инструмент — допиши одну строку о своей задаче.</p>
+<div class="tool-ctas fx">
+<a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%A1%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%3A%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ds_content-radar%20%E2%80%94%20%D1%80%D0%B0%D0%B4%D0%B0%D1%80%20%D0%BD%D0%B8%D1%88%20%D0%B8%20%D1%82%D0%BE%D0%BF-%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D0%B2%2C%20%D1%80%D0%B0%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%B8%D0%BA%D0%B8%20~150%20%E2%82%BD%2F%D0%BC%D0%B5%D1%81.">радар ниш</a>
+<a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%A1%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%3A%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ds_warm-lead-parser%20%E2%80%94%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%20%D1%82%D1%91%D0%BF%D0%BB%D1%8B%D1%85%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BE%D0%BA%2C%20%D1%82%D0%BE%D1%87%D0%BD%D0%BE%D1%81%D1%82%D1%8C%2063%25%20%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%2047%25%20%D1%83%20%D0%BF%D0%BE%D0%B8%D1%81%D0%BA%D0%B0%20%D0%BF%D0%BE%20%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D0%BC.">лид-парсер</a>
+<a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%A1%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%3A%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ds_spiral-maturity%20%E2%80%94%20%D0%B7%D1%80%D0%B5%D0%BB%D0%BE%D1%81%D1%82%D1%8C%20%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%20%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B7%D0%B0%2010%20%D0%BC%D0%B8%D0%BD%D1%83%D1%82%20%284%2F4%20%D1%81%D1%82%D1%83%D0%BF%D0%B5%D0%BD%D0%B8%29.">спираль зрелости</a>
+<a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%A1%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%3A%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ds_market-evidence%20%E2%80%94%20%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D0%B8%20%D0%BF%D0%BE%20%D1%80%D1%8B%D0%BD%D0%BA%D1%83%2C%20%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%20%D0%B8%20%D0%B4%D0%B0%D1%82%D0%B0%20%D1%83%20%D0%BA%D0%B0%D0%B6%D0%B4%D0%BE%D0%B3%D0%BE%20%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D0%B0%20%285%2F5%20%D0%B2%D0%B5%D1%80%D0%B4%D0%B8%D0%BA%D1%82%D0%BE%D0%B2%29.">проверка рынка</a>
+<a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%A1%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%3A%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ds_pnl-check%20%E2%80%94%20%D1%81%D0%B2%D0%B5%D1%80%D0%BA%D0%B0%20%D0%BF%D1%80%D0%B8%D0%B1%D1%8B%D0%BB%D0%B8%2C%20%D0%B4%D0%B5%D0%B1%D0%B8%D1%82%D0%BE%D1%80%D0%BA%D0%B8%20%D0%B8%20%D0%B4%D0%BE%D0%BB%D0%B3%D0%B0%20%D1%81%20%D0%B4%D0%B5%D0%BD%D1%8C%D0%B3%D0%B0%D0%BC%D0%B8%20%283%2F3%20%D0%BB%D0%BE%D0%B2%D1%83%D1%88%D0%BA%D0%B8%29.">P&amp;L-проверка</a>
+<a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%A1%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%3A%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5%20ds_geo-audit%20%E2%80%94%20%D1%83%D0%B2%D0%B8%D0%B4%D1%8F%D1%82%20%D0%BB%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20ChatGPT%20%D0%B8%20Perplexity%3A%2092%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0%2C%20AUC%201%2C00.">GEO-аудит</a>
 </div>
 </section>
 
@@ -430,13 +414,13 @@ footer a:hover{color:var(--ink)}
 <footer><div class="wrap">Личка: <a href="https://t.me/victorpinksight">t.me/victorpinksight</a> · Канал: <a href="https://t.me/discoverysystem">t.me/discoverysystem</a> · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a><br>Отвечаю лично, без ботов · <a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · <a href="https://discovery-system.ru/reviews.html">отзывы</a> · ИНН 780627413110</div></footer>
 
 <script>
-/* ── DS Plasma: canvas в тёмной зоне героя, одна на страницу, z-index:-1 ── */
+/* ── DS Plasma: canvas на всю страницу (непрерывный фон, без стыков), одна на страницу, z-index:-1 ── */
 (function(){
 'use strict';
-var host=document.getElementById('heroFx');if(!host)return;
+var host=document.getElementById('pageFx');if(!host)return;
 var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var mqSmall=window.matchMedia('(max-width: 760px)');
-var LITE=mqSmall.matches,STATIC=reduced,FPS=LITE?16:24,DPR_CAP=LITE?1:2,CELL_BASE=LITE?34:26;
+var LITE=mqSmall.matches,STATIC=reduced,FPS=LITE?16:24,DPR_CAP=LITE?1:1.5,CELL_BASE=LITE?34:26;
 var BRAND=[15,23,48];
 var AMP=26,TONE=[0.85,0.95,1.35],MID_CURVE=0.8,EDGE_MAX=0.55,EDGE_K=0.5;
 var cv=document.createElement('canvas');cv.setAttribute('aria-hidden','true');
@@ -474,8 +458,9 @@ function loop(ts){if(!running)return;if(ts-last>1000/FPS){last=ts;t+=0.012;px+=(
 function start(){if(!running&&!STATIC){running=true;raf=requestAnimationFrame(loop);}}
 function stop(){running=false;if(raf)cancelAnimationFrame(raf);}
 window.addEventListener('resize',resize,{passive:true});
-if(mqSmall.addEventListener){mqSmall.addEventListener('change',function(e){LITE=e.matches;FPS=LITE?16:24;DPR_CAP=LITE?1:2;CELL_BASE=LITE?34:26;CELL=CELL_BASE*(dpr=Math.min(window.devicePixelRatio||1,DPR_CAP));resize();});}
-if(!STATIC){window.addEventListener('pointermove',function(e){var r=host.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;},{passive:true});
+if(window.ResizeObserver){new ResizeObserver(resize).observe(document.body);}
+if(mqSmall.addEventListener){mqSmall.addEventListener('change',function(e){LITE=e.matches;FPS=LITE?16:24;DPR_CAP=LITE?1:1.5;CELL_BASE=LITE?34:26;CELL=CELL_BASE*(dpr=Math.min(window.devicePixelRatio||1,DPR_CAP));resize();});}
+if(!STATIC){window.addEventListener('pointermove',function(e){tx=e.clientX/window.innerWidth;ty=e.clientY/window.innerHeight;},{passive:true});
 document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});}
 resize();if(STATIC)drawStatic();else start();
 })();
@@ -510,20 +495,7 @@ if(!fig||fig.classList.contains('svg-in'))return;
 fig.classList.add('svg-in');
 ribbons.forEach(function(r){r.style.transitionDelay='0ms';r.style.transition='none';r.style.strokeDashoffset='0';});
 }
-/* стержни WorkWay: scaleY-рост 0→финал, seeded-задержки; reduced-motion/capture → статичный финал */
-var proof=document.getElementById('proofBox');
-var bars=proof?Array.prototype.slice.call(proof.querySelectorAll('.bar')):[];
-var bnums=proof?Array.prototype.slice.call(proof.querySelectorAll('.bnum')):[];
-bars.forEach(function(b,i){b.style.transitionDelay=Math.round(120+i*180+rnd()*80)+'ms';});
-bnums.forEach(function(n,i){n.style.transitionDelay=Math.round(360+i*180)+'ms';});
-function drawBars(){
-if(!proof||proof.classList.contains('bars-in'))return;
-proof.classList.add('bars-in');
-/* страховка headless/виртуального времени: финал инлайн, без перехода */
-bars.forEach(function(b){b.style.transitionDelay='0ms';b.style.transition='none';b.style.transform='scaleY(1)';});
-bnums.forEach(function(n){n.style.transitionDelay='0ms';n.style.transition='none';n.style.opacity='1';});
-}
-function applyFinal(){DONE=true;revealFx();drawFlows();drawBars();}
+function applyFinal(){DONE=true;revealFx();drawFlows();}
 function triggerAll(){
 if(DONE)return;
 applyFinal();
@@ -537,7 +509,6 @@ var io=new IntersectionObserver(function(entries){
 entries.forEach(function(en){if(en.isIntersecting){triggerAll();io.disconnect();}});
 },{threshold:.25});
 if(fig)io.observe(fig);
-if(document.getElementById('proofBox'))io.observe(document.getElementById('proofBox'));
 }
 /* дублирующий триггер для headless/виртуального времени (verify-motion §2.4) */
 setTimeout(triggerAll,2500);
@@ -547,45 +518,51 @@ requestAnimationFrame(function(){requestAnimationFrame(function(){
 document.querySelectorAll('.fx').forEach(function(e){e.classList.add('on');});
 });});
 })();
-/* ── ДЕМО СМЕНЫ: три сценария из ds-hero.js → клиент Telegram.
+/* ── ДЕМО СМЕНЫ: три сценария из живых сборок → клиент Telegram.
    Роли читаются мгновенно: клиент справа (#2b5278, ✓✓), агент слева (#182533),
    действия агента — системные чипы с таймкодом. Кадр = состояние, без накопления.
    prefers-reduced-motion / ?static=1 → весь диалог сразу, без таймеров. ── */
 (function(){
 'use strict';
 var SC={
-shift:{result:'Смена закрыта: <b>сводка ушла в Telegram сама</b>, таблица дописана',nodes:[
- {k:'day',text:'Понедельник · смена Ильи'},
- {k:'log',tm:'08:58',text:'смена открыта, слушаю Telegram'},
- {k:'out',tm:'08:58',text:'Принял товар, 14 позиций. Накладную сфоткал.',cap:'голосовое · 0:09 · Илья'},
- {k:'log',tm:'08:59',text:'речь разобрана в текст'},
- {k:'log',tm:'08:59',text:'строка добавлена в таблицу учёта, фото вложено'},
- {k:'file',tm:'08:59',name:'Учёт · Смена Пн',meta:'Google Таблица · лист «Смена»',add:'+1 строка · 14 позиций'},
- {k:'log',tm:'21:00',text:'смена закрыта, сводка за день собрана'},
- {k:'in',tm:'21:00',title:'Сводка за день',text:'Прислал её сам, без напоминаний.',rows:[
-  ['Записи за день','14 позиций'],['Сводки','в 9:00 и 21:00'],['Абонентка за агента','0 ₽'],['Провайдер моделей','3 400–5 400 ₽/мес']]}
+requests:{result:'Обе заявки разобраны тем же вечером: <b>черновики готовы, отправка за тобой</b>',nodes:[
+ {k:'day',text:'Вторник · вечер, входящие заявки'},
+ {k:'out',tm:'21:40',text:'Добрый день! Сколько стоит работа и когда сможет приехать специалист?',cap:'клиент · заявка 1'},
+ {k:'log',tm:'21:40',text:'заявка 1 разобрана: услуга, район, срочность'},
+ {k:'out',tm:'22:15',text:'Здравствуйте! А на пятницу есть окно? Посчитайте сразу два визита.',cap:'клиент · заявка 2'},
+ {k:'log',tm:'22:15',text:'заявка 2 разобрана: тот же прайс, другой район'},
+ {k:'log',tm:'22:16',text:'цены — из прайса, свободные слоты — из календаря'},
+ {k:'in',tm:'22:16',text:'Черновики обоих ответов готовы: цена по прайсу и слоты. Отправляешь одной кнопкой — правила ответа задал ты.'},
+ {k:'in',tm:'22:16',title:'К утру на столе',rows:[
+  ['Заявки','2 из 2 разобраны тем же вечером'],['Черновики','цена + слоты, в каждом'],['Отправка','за тобой, агент сам не пишет'],['Владение','твой сервер · ~150 ₽/мес']]}
 ]},
-requests:{result:'К утру на столе: <b>разобранная заявка и черновик ответа</b> — отправляешь ты',nodes:[
- {k:'day',text:'Вторник · 21:40, входящая заявка'},
- {k:'out',tm:'21:40',text:'Добрый день! Сколько стоит работа и когда сможет приехать специалист?',cap:'клиент'},
- {k:'log',tm:'21:40',text:'заявка разобрана: услуга, район, срочность'},
- {k:'log',tm:'21:41',text:'цена взята из прайса, свободные слоты — из календаря'},
- {k:'in',tm:'21:41',text:'Черновик ответа готов: цена по прайсу и два свободных слота. Отправляешь одной кнопкой — правила ответа задал ты.'},
- {k:'in',tm:'21:41',title:'К утру на столе',rows:[
-  ['Заявка разобрана','в 21:40 того же вечера'],['Черновик','цена + два слота'],['Отправка','за тобой, агент сам не пишет'],['Владение','твой сервер · ~150 ₽/мес']]}
+morning:{result:'Утро начинается со сводки: <b>план на день, риски решены ночью, задачи у людей</b>',nodes:[
+ {k:'day',text:'Среда · 08:30, утренняя сводка'},
+ {k:'in',tm:'08:30',title:'План на день',text:'Собрал сам, пока ты спал — из твоих таблиц и переписки.',rows:[
+  ['Смена открыта','08:30'],['Сводки','в 9:00 и 21:00'],['Источник','твои таблицы и почта']]},
+ {k:'in',tm:'08:31',title:'Риски — решённые за ночь',text:'Два вопроса закрыл без тебя: платёж в таблице не сходился — нашёл голосовую накладную и сложил цифры; пятничный слот переехал — клиенту предложено новое время.'},
+ {k:'out',tm:'08:31',text:'Задачи на день раскидай по команде, у каждой срок.',cap:'клиент'},
+ {k:'log',tm:'08:32',text:'задачи записаны, у каждой исполнитель и срок'},
+ {k:'in',tm:'08:32',text:'Готово: задачи у людей, напоминания в 12:00. В 21:00 пришлю сводку, что закрыто.',rows:[
+  ['Задачи','у каждой исполнитель и срок'],['Напоминания','12:00'],['Сводка за день','21:00']]},
+ {k:'out',tm:'08:33',text:'Принял. В 21:00 жду сводку.',cap:'клиент'}
 ]},
-orders:{result:'Отбор готов к разговору: <b>в каждой карточке задача и контакт</b>, код открыт',nodes:[
- {k:'day',text:'Среда · утро, обход площадок'},
- {k:'out',tm:'07:29',text:'Найди заказы, где нужен агент или бот. К утру нужен список.',cap:'в Telegram'},
- {k:'log',tm:'07:30',text:'старт обхода: 7 площадок'},
- {k:'log',tm:'07:34',text:'карточек собрано: 1106'},
- {k:'log',tm:'07:36',text:'отсев: дубли, закрытые, без бюджета'},
- {k:'log',tm:'07:39',text:'скоринг: срок, бюджет, история заказчика'},
- {k:'file',tm:'07:39',name:'leads_week.csv',meta:'7 площадок · 1106 карточек',add:'лучшие сверху · контакт внутри'},
- {k:'in',tm:'07:39',text:'К отбору пришло меньше карточек, зато в каждой — задача и контакт. Мусор отсеян по признакам.'},
- {k:'in',tm:'07:39',title:'Точность отбора — на своих же данных',rows:[
-  ['Площадок','7'],['Карточек собрано','1106'],['Точность','63% против 47%'],['F1','0.61 против 0.39']]}
+radar:{result:'Топ-20 постов ниши готов: <b>аутлаеры в шапке, план на неделю по платформам</b>',nodes:[
+ {k:'day',text:'Четверг · утро, радар ниш'},
+ {k:'out',tm:'09:12',text:'Собери топ-20 постов моей ниши для тредса. Что сейчас залетает — не знаю.',cap:'клиент'},
+ {k:'log',tm:'09:12',text:'радар запущен: X, Instagram, TikTok, YouTube'},
+ {k:'log',tm:'09:41',text:'постов собрано: топ-20 по вовлечённости'},
+ {k:'log',tm:'09:43',text:'аутлаеры: 3 поста выше среднего по нише в разы'},
+ {k:'file',tm:'09:43',name:'Ниша · топ-20 постов',meta:'X · Instagram · TikTok · YouTube',add:'аутлаеры сверху · обложки и транскрипты внутри'},
+ {k:'in',tm:'09:44',text:'Топ-20 готов. В шапке три аутлаера: у них общий формат и хук. План на неделю собрал по платформам.',rows:[
+  ['Постов','топ-20'],['Аутлаеры','3'],['Платформы','4'],['Расходники','~150 ₽/мес, без подписок']]}
 ]}
+};
+/* CTA-пресеты: своя ссылка ?text= под каждый сценарий смены */
+var CTAS={
+requests:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%9D%D0%B0%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%20%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9%20%C2%AB%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%BD%D0%B5%20%D0%B6%D0%B4%D1%83%D1%82%20%D1%83%D1%82%D1%80%D0%B0%C2%BB%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%2C%20%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9%20%D0%B2%D0%B5%D1%87%D0%B5%D1%80%D0%BE%D0%BC%20%D1%80%D0%B0%D0%B7%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%20%D0%B2%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B8%D0%B5%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%B8%20%D0%BA%20%D1%83%D1%82%D1%80%D1%83%20%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D1%82%20%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%BE%D0%B2.%20%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%3A%20discovery-system.ru%2Fsystem.html',
+morning:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%9D%D0%B0%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%20%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9%20%C2%AB%D0%A3%D1%82%D1%80%D0%BE%D0%BC%20%E2%80%94%20%D0%BF%D0%BB%D0%B0%D0%BD%20%D0%B8%20%D1%80%D0%B8%D1%81%D0%BA%D0%B8%C2%BB%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D1%8E%D1%8E%20%D1%81%D0%B2%D0%BE%D0%B4%D0%BA%D1%83%3A%20%D0%BF%D0%BB%D0%B0%D0%BD%20%D0%BD%D0%B0%20%D0%B4%D0%B5%D0%BD%D1%8C%2C%20%D1%80%D0%B5%D1%88%D1%91%D0%BD%D0%BD%D1%8B%D0%B5%20%D0%B7%D0%B0%20%D0%BD%D0%BE%D1%87%D1%8C%20%D1%80%D0%B8%D1%81%D0%BA%D0%B8%2C%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8%20%D0%B4%D0%BB%D1%8F%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B.%20%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%3A%20discovery-system.ru%2Fsystem.html',
+radar:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%9D%D0%B0%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%20%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9%20%C2%AB%D0%A0%D0%B0%D0%B4%D0%B0%D1%80%20%D0%BD%D0%B8%D1%88%C2%BB%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D1%81%D0%B1%D0%BE%D1%80%20%D1%82%D0%BE%D0%BF-20%20%D0%BF%D0%BE%D1%81%D1%82%D0%BE%D0%B2%20%D0%BD%D0%B8%D1%88%D0%B8%20%D0%B8%20%D0%BF%D0%BB%D0%B0%D0%BD%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82%D0%B0%2C%20%D1%80%D0%B0%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D0%B8%D0%BA%D0%B8%20~150%20%E2%82%BD%2F%D0%BC%D0%B5%D1%81.%20%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%3A%20discovery-system.ru%2Fsystem.html'
 };
 var stream=document.getElementById('tgStream');
 var typing=document.getElementById('tgTyping');
@@ -598,7 +575,10 @@ if(!stream||!typing)return;
 var QS=/(?:\?|&)(?:static|final)=1(?:&|$)/.test(location.search);
 var RED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var STATIC=QS||RED;
-var seq=0,cur='shift',started=false;
+var seq=0,cur='requests',started=false;
+var ctaEl=document.getElementById('demoCta');
+function setCta(key){if(ctaEl&&CTAS[key])ctaEl.href=CTAS[key];}
+setCta(cur);
 var SVG_TICKS='<svg class="tks" viewBox="0 0 18 10" aria-hidden="true"><path d="M1 5l3 3 6.5-7" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 7.5L10 9l7-8" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function mk(t,c,x){var n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n;}
 function anim(el){if(!STATIC)el.classList.add('line-in');return el;}
@@ -688,6 +668,7 @@ function renderAll(sc){
 function play(key){
  var sc=SC[key];if(!sc)return;
  cur=key;
+ setCta(key);
  started=true;
  var token=++seq;
  clear();

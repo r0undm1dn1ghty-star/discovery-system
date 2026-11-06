@@ -34,7 +34,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f2f4f6;--ink:#10141f;--body:#414a5e;--meta:#666f85;--hair:rgba(16,20,31,.10);--hair2:rgba(16,20,31,.06);--navy:#1b2a6b;--navy2:#24368f;--accent:#1b2a6b;--btn:#1b2a6b;--btn-h:#24368f;--btn-t:#f2f6ff;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Onest',var(--sans);--ease:cubic-bezier(.22,1,.36,1)}
+:root{--bg:#f2f4f6;--ink:#10141f;--body:#414a5e;--meta:#666f85;--hair:rgba(16,20,31,.10);--hair2:rgba(16,20,31,.06);--navy:#1b2a6b;--navy2:#24368f;--accent:#1b2a6b;--btn:#1b2a6b;--btn-h:#24368f;--btn-t:#f2f6ff;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Onest',var(--sans);--ease:cubic-bezier(.2,.7,.2,1)}
 .zone-dark{--ink:#eef2fb;--body:#b9c1d6;--meta:#8a94ad;--hair:rgba(255,255,255,.14);--hair2:rgba(255,255,255,.08);--accent:#8fa8ff;background:#0f1730;color:var(--body);position:relative;overflow:hidden}
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -142,20 +142,17 @@ main section:first-child{border-top:0}
 .pnote{font:500 14.5px/1.6 var(--mono);color:var(--meta)}
 .pnote a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
 .pnote a:hover{color:var(--navy2)}
-/* ═══ ручной блок: два уровня + агент по сегментам — волосяные строки, без карточек ═══ */
+/* ═══ ручной блок: два уровня + агент по масштабу — волосяные строки, без карточек ═══ */
 .plvl{margin-top:clamp(24px,3.4vw,38px);border-top:1px solid var(--hair)}
 .plrow{display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr);gap:4px clamp(20px,3vw,44px);align-items:baseline;padding:15px 0;border-bottom:1px solid var(--hair)}
 .plrow .pk{font:500 14px/1.45 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--meta)}
 .plrow .pv{font-size:15.5px;line-height:1.65;color:var(--body)}
 .plrow .pv b{color:var(--ink);font-weight:500}
 .plrow .pv em{font-style:normal;color:var(--meta)}
-/* ═══ кейсы: строка-опора замера и отзыв ═══ */
+/* ═══ кейсы: строка-опора замера ═══ */
 .ceval{margin-top:clamp(20px,2.6vw,30px);font:500 14.5px/1.7 var(--mono);color:var(--body);max-width:88ch}
 .ceval a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
 .ceval a:hover{color:var(--navy2)}
-.crev{margin-top:clamp(28px,4vw,44px);padding-top:clamp(20px,3vw,28px);border-top:1px solid var(--hair);max-width:62ch}
-.crev p{font-family:var(--disp);font-weight:500;font-size:clamp(18px,1.9vw,21px);line-height:1.5;letter-spacing:-.01em;color:var(--ink)}
-.crev span{display:block;margin-top:12px;font:500 14px/1.5 var(--mono);color:var(--meta)}
 /* ═══ кейсы — hairline-строки (ампутация плиток): мини-SVG + типографическое число, без цен ═══ */
 .cse{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr);gap:clamp(26px,4.5vw,64px);align-items:center;padding:clamp(30px,4.5vw,48px) 0;border-top:1px solid var(--hair)}
 .cse:last-of-type{border-bottom:1px solid var(--hair)}
@@ -266,8 +263,8 @@ footer a:hover{text-decoration:underline}
 <div class="wrap">
 <div class="hero">
 <div class="kicker fx">личная рутина и команда до 30 · оплата рублями · критерии приёмки до старта</div>
-<h1 class="fx">Заявка не ждёт утра.<br>Агент отвечает <em>за секунды</em></h1>
-<p class="lede fx">Берёт на себя <span class="tw" id="tw">рутину заявок</span> — связка под твой процесс. Агент остаётся твоим и работает с первого дня: если облако заблокируют — работа остаётся.</p>
+<h1 class="fx">Бизнес быстрее, сильнее<br>и <em>не ломается</em></h1>
+<p class="lede fx">Своё и быстро: <span class="tw" id="tw">рутину заявок</span> забирает агент, связка живёт у тебя. Ночная заявка — один из примеров: ответ за секунды, запись в CRM, утром список.</p>
 <div class="cta fx">
 <a class="btn btn-p" href="calculator.html">Посчитать свою связку</a>
 <a class="btn btn-g" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%94%D0%B0%D0%B2%D0%B0%D0%B9%20%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D1%83%D0%B5%D0%BC%20%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B8%20%D0%BF%D1%80%D0%B8%D1%91%D0%BC%D0%BA%D0%B8%20%D0%B4%D0%BE%20%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0.">Согласовать критерии</a>
@@ -325,9 +322,9 @@ footer a:hover{text-decoration:underline}
 <div class="pin">
 <div class="shead">
 <h2>Что съедает твоё время</h2>
-<p class="s">Выбери сегмент — заявки, переписка, учёт, отчёты: цена руками, с агентом и разница за месяц. Числа прикинуты по часам × цене часа и <b>округлены до тысячи</b>.</p>
+<p class="s">Выбери масштаб — заявки, переписка, учёт, отчёты: цена руками, с агентом и разница за месяц. Числа прикинуты по часам × цене часа и <b>округлены до тысячи</b>.</p>
 </div>
-<div class="segs" role="group" aria-label="Сегмент бизнеса">
+<div class="segs" role="group" aria-label="Масштаб бизнеса">
 <button type="button" class="seg" data-seg="solo" aria-pressed="true" title="применяешь в своей работе без бизнеса">Личный</button>
 <button type="button" class="seg" data-seg="self" aria-pressed="false" title="налог 4-6%, есть клиенты">Самозанятый</button>
 <button type="button" class="seg" data-seg="ip" aria-pressed="false" title="учёт и наём до ~10">ИП</button>
@@ -343,7 +340,7 @@ footer a:hover{text-decoration:underline}
 <div class="plvl">
 <div class="plrow"><span class="pk">без наценок · твоё время</span><p class="pv">Личный <b>25–60К</b> · Самозанятый <b>40–90К</b> · ИП <b>60–150К</b> · Команда <b>от 120К</b> — <em>зависит от масштаба задач</em></p></div>
 <div class="plrow"><span class="pk">с наценками · рынок</span><p class="pv">студия <b>от 50К</b> разово · найм <b>40–60К/мес</b> · чужая подписка забирает деньги и данные</p></div>
-<div class="plrow"><span class="pk">агент по сегментам</span><p class="pv">Личный <b>0–6К/мес</b> · Самозанятый <b>6–12К</b> · ИП <b>12–20К</b> · Команда <b>от 20К</b></p></div>
+<div class="plrow"><span class="pk">агент по масштабу</span><p class="pv">Личный <b>0–6К/мес</b> · Самозанятый <b>6–12К</b> · ИП <b>12–20К</b> · Команда <b>от 20К</b></p></div>
 </div>
 <div class="pcta">
 <span class="poffer" id="pOffer">Сборка под личные задачи — <b>15 000 ₽</b>, критерии приёмки до старта</span>
@@ -358,8 +355,8 @@ footer a:hover{text-decoration:underline}
 <section id="cases">
 <div class="wrap">
 <div class="shead">
-<h2>Кейсы с замерами</h2>
-<p class="s">Внедрений — больше восьми. За каждое платили. Ниже — четыре замера, у каждого назван способ проверки.</p>
+<h2>Внедрения с замерами</h2>
+<p class="s">Внедрений — больше восьми. За каждое платили. Ниже — внедрения с замерами и интеграции, у каждого назван способ проверки.</p>
 </div>
 
 <div class="cse lead">
@@ -373,9 +370,9 @@ footer a:hover{text-decoration:underline}
 </div>
 <div class="ctx">
 <p class="lbl">Кейс 01 · WorkWay</p>
-<h3 class="cst">Отбор кандидатов</h3>
+<h3 class="cst">Скоринг кандидатов</h3>
 <span class="cnum">20 → 80%</span>
-<p class="cd">Агент разбирает заявки и считает скоринг. Слепой тест, 30 кандидатов. Сводка приходит в Telegram утром и вечером.</p>
+<p class="cd">Агент разбирает заявки и считает скоринг каждого кандидата. Слепой тест на 30 кандидатах. Сводка приходит в Telegram утром и вечером.</p>
 </div>
 </div>
 
@@ -389,10 +386,10 @@ footer a:hover{text-decoration:underline}
 <div class="ccap"><span>был один агент</span><b>стало четыре профиля</b></div>
 </div>
 <div class="ctx">
-<p class="lbl">Кейс 02 · клиент с Авито</p>
+<p class="lbl">Кейс 02 · Николай · Авито</p>
 <h3 class="cst">Один агент → четыре профиля</h3>
 <span class="cnum">1 → 4</span>
-<p class="cd">Николай попросил размножить агента: один ведёт учёт, остальные — переписку. Сборка, память и сервер — его. Сентябрь 2026.</p>
+<p class="cd">Николай попросил размножить агента. Теперь профилей четыре: учёт, переписка, документы, планирование и время. Сборка, память и сервер — его. Сентябрь 2026.</p>
 </div>
 </div>
 
@@ -409,32 +406,26 @@ footer a:hover{text-decoration:underline}
 <p class="lbl">Кейс 03 · Chill Music Lab</p>
 <h3 class="cst">Выручка бренда</h3>
 <span class="cnum">+16%</span>
-<p class="cd">JTBD-исследование контента: четыре виральных видео по итогам одного эксперимента. Годовая выручка бренда выросла на 16%.</p>
+<p class="cd">JTBD-исследование контента: четыре виральных видео по итогам одного эксперимента. Годовая выручка выросла на 16%, релиз продукта — в 1,8 раза быстрее.</p>
 </div>
 </div>
 
 <div class="cse flip">
-<div class="cvis" role="img" aria-label="точность парсера 63% против 47% у наивного поиска">
+<div class="cvis" role="img" aria-label="шесть скиллов Discovery с открытым кодом">
 <svg class="msvg" viewBox="0 0 320 84" aria-hidden="true">
-<circle class="fd" data-p cx="10" cy="26" r="5"/><circle class="fd" data-p cx="25" cy="26" r="5"/><circle class="fd" data-p cx="40" cy="26" r="5"/><circle class="fd" data-p cx="55" cy="26" r="5"/><circle class="fd" data-p cx="70" cy="26" r="5"/><circle class="fd" data-p cx="85" cy="26" r="5"/><circle class="fd" data-p cx="100" cy="26" r="5"/><circle class="fd" data-p cx="115" cy="26" r="5"/><circle class="fd" data-p cx="130" cy="26" r="5"/><circle class="fd" data-p cx="145" cy="26" r="5"/><circle class="fd" data-p cx="160" cy="26" r="5"/><circle class="fd" data-p cx="175" cy="26" r="5"/><circle class="fd" data-p cx="190" cy="26" r="5"/><circle class="ed" data-p cx="205" cy="26" r="5"/><circle class="ed" data-p cx="220" cy="26" r="5"/><circle class="ed" data-p cx="235" cy="26" r="5"/><circle class="ed" data-p cx="250" cy="26" r="5"/><circle class="ed" data-p cx="265" cy="26" r="5"/><circle class="ed" data-p cx="280" cy="26" r="5"/><circle class="ed" data-p cx="295" cy="26" r="5"/>
-<circle class="fdo" data-p cx="10" cy="62" r="5"/><circle class="fdo" data-p cx="25" cy="62" r="5"/><circle class="fdo" data-p cx="40" cy="62" r="5"/><circle class="fdo" data-p cx="55" cy="62" r="5"/><circle class="fdo" data-p cx="70" cy="62" r="5"/><circle class="fdo" data-p cx="85" cy="62" r="5"/><circle class="fdo" data-p cx="100" cy="62" r="5"/><circle class="fdo" data-p cx="115" cy="62" r="5"/><circle class="fdo" data-p cx="130" cy="62" r="5"/><circle class="ed" data-p cx="145" cy="62" r="5"/><circle class="ed" data-p cx="160" cy="62" r="5"/><circle class="ed" data-p cx="175" cy="62" r="5"/><circle class="ed" data-p cx="190" cy="62" r="5"/><circle class="ed" data-p cx="205" cy="62" r="5"/><circle class="ed" data-p cx="220" cy="62" r="5"/><circle class="ed" data-p cx="235" cy="62" r="5"/><circle class="ed" data-p cx="250" cy="62" r="5"/><circle class="ed" data-p cx="265" cy="62" r="5"/><circle class="ed" data-p cx="280" cy="62" r="5"/><circle class="ed" data-p cx="295" cy="62" r="5"/>
+<circle class="fd" data-p cx="30" cy="42" r="10"/><circle class="fd" data-p cx="82" cy="42" r="10"/><circle class="fd" data-p cx="134" cy="42" r="10"/><circle class="fd" data-p cx="186" cy="42" r="10"/><circle class="fd" data-p cx="238" cy="42" r="10"/><circle class="fd" data-p cx="290" cy="42" r="10"/>
 </svg>
-<div class="ccap"><span>парсер · 63%</span><b>поиск по словам · 47%</b></div>
+<div class="ccap"><span>парсер · гео-аудит · P&amp;L</span><b>код и EVAL на GitHub</b></div>
 </div>
 <div class="ctx">
-<p class="lbl">Кейс 04 · ds_warm-lead-parser</p>
-<h3 class="cst">Парсер тёплых лидов</h3>
-<span class="cnum">63% <em>vs</em> 47%</span>
-<p class="cd">Точность отбора против наивного поиска по словам: на контрольной выборке — 79% на 286 постах FL.ru. Сборка ds_warm-lead-parser.</p>
+<p class="lbl">Интеграции Discovery</p>
+<h3 class="cst">Скиллы с открытым кодом</h3>
+<span class="cnum">6 скиллов</span>
+<p class="cd">Парсер тёплых лидов, гео-аудит, проверка экономики и другие. EVAL и бенчмарки лежат рядом с кодом на GitHub — воспроизводятся у тебя.</p>
 </div>
 </div>
 
-<p class="ceval">Опора каждого кейса: 01 — слепой тест на 30 кандидатах · 02 — 1 агент → 4 профиля, Авито, 09.2026 · 03 — годовая выручка бренда · 04 — открытый бенчмарк и EVAL.md. <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">код парсера на GitHub — проверить у себя →</a></p>
-
-<blockquote class="crev">
-<p>«Нужно было перенести с текстового документа на интерактивную карту большой объём координат. Работа выполнена быстро, качественно и по привлекательной стоимости. Рекомендую исполнителя!»</p>
-<span>заказчик с Авито · координаты на карту</span>
-</blockquote>
+<p class="ceval">Опора каждого внедрения: слепой тест на кандидатах · четыре профиля в работе (Авито, сентябрь 2026) · годовая выручка бренда · открытый EVAL у скиллов. <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">код и метрики на GitHub — проверить у себя →</a></p>
 
 </div>
 </section>
@@ -476,12 +467,13 @@ footer a:hover{text-decoration:underline}
 <div>
 <p class="wbio"><b>Виктор Зайцев</b> — продакт, внедряю ИИ-агенты. Свои связки — WorkWay, Chill Music Lab.</p>
 <div class="wtbl">
-<div class="wrow"><b>20 → 80%</b><span>скоринг заявок (WorkWay, слепой тест 30 анкет)</span></div>
-<div class="wrow"><b>63% <em>vs</em> 47%</b><span>точность отбора против поиска по словам (открытый парсер, 286 постов)</span></div>
+<div class="wrow"><b>20 → 80%</b><span>скоринг кандидатов (WorkWay, слепой тест 30 кандидатов)</span></div>
+<div class="wrow"><b>×1,8</b><span>время разработки и релиза — с агентом в контуре</span></div>
 <div class="wrow"><b>+16%</b><span>годовая выручка бренда (Chill Music Lab)</span></div>
 </div>
 </div>
 </div>
+<p class="quiet">обсудить своё внедрение — <a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BF%D0%BE%D0%B4%20%D1%81%D0%B2%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81.">написать лично</a>, отвечаю сам</p>
 </div>
 </section>
 
@@ -502,7 +494,7 @@ footer a:hover{text-decoration:underline}
 <a class="door" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B5%D1%81%D1%82-%D0%B4%D1%80%D0%B0%D0%B9%D0%B2%3A%20%D0%B2%D0%BE%D1%82%20%D0%BC%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%20%E2%80%94%20%D0%B2%D0%B5%D1%80%D0%BD%D0%B8%20%D0%BF%D1%80%D0%BE%D0%B3%D0%BE%D0%BD%20%D0%B8%20%D0%B7%D0%B0%D0%BC%D0%B5%D1%80.">
 <span class="dk">шаг 2 · 0 ₽</span>
 <span class="dt">Тест-драйв для скептика</span>
-<span class="dd">Дай одну свою задачу — верну прогон и замер: что агент забирает, что остаётся руками. Сборка — после согласования критериев.</span>
+<span class="dd">Назови шаг из пути клиента — заявки, контент, исследования — верну прогон агента на твоих данных и замер: что забирает агент, что остаётся руками. Сборка — после согласования критериев.</span>
 <span class="go">взять тест-драйв →</span>
 </a>
 <a class="door" href="https://t.me/discoverysystem">
@@ -600,7 +592,7 @@ ci++;el.textContent=words[wi].slice(0,ci);
 if(ci>=words[wi].length){mode='hold';setTimeout(tick,950);}else{setTimeout(tick,95);}
 },2600);
 }})();
-/* ── рутина в рублях: сегменты, sessionStorage ds_persona ── */
+/* ── рутина в рублях: масштабы, sessionStorage ds_persona ── */
 (function(){
 'use strict';
 var P={

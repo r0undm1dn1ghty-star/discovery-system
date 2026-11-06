@@ -13,13 +13,13 @@
 <meta property="article:modified_time" content="2026-11-06"/>
 <!-- /SEO:CORE -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Discovery System","item":"https://discovery-system.ru/"},{"@type":"ListItem","position":2,"name":"Рынок ИИ","item":"https://discovery-system.ru/market.html"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://discovery-system.ru/market.html#webpage","url":"https://discovery-system.ru/market.html","name":"Рынок ИИ — Discovery System","description":"Рынок меняется быстрее, чем о нём пишут: пять стандартов внедрения, восемь сцен с числами, четыре дороги мимо агента, цифры под твой сегмент.","inLanguage":"ru","datePublished":"2026-11-06","dateModified":"2026-11-06","author":{"@id":"https://discovery-system.ru/#author"},"publisher":{"@id":"https://discovery-system.ru/#organization"},"isPartOf":{"@type":"WebSite","url":"https://discovery-system.ru/","name":"Discovery System"}}</script>
-<meta name="description" content="Рынок меняется быстрее, чем о нём пишут: пять стандартов внедрения, восемь сцен с числами, четыре дороги мимо агента, цифры под твой сегмент.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://discovery-system.ru/market.html#webpage","url":"https://discovery-system.ru/market.html","name":"Рынок ИИ — Discovery System","description":"Рынок меняется быстрее, чем о нём пишут: четыре стандарта внедрения, живые числа лабы, четыре дороги мимо агента, цифры под твою ситуацию.","inLanguage":"ru","datePublished":"2026-11-06","dateModified":"2026-11-06","author":{"@id":"https://discovery-system.ru/#author"},"publisher":{"@id":"https://discovery-system.ru/#organization"},"isPartOf":{"@type":"WebSite","url":"https://discovery-system.ru/","name":"Discovery System"}}</script>
+<meta name="description" content="Рынок меняется быстрее, чем о нём пишут: четыре стандарта внедрения, живые числа лабы, четыре дороги мимо агента, цифры под твою ситуацию.">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f2f4f6;--ink:#10141f;--body:#414a5e;--meta:#7a8296;--hair:rgba(16,20,31,.10);--hair2:rgba(16,20,31,.06);--navy:#1b2a6b;--navy2:#24368f;--acc:#8fa8ff;--btn:#1b2a6b;--btn-h:#24368f;--btn-t:#f2f6ff;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Onest',var(--sans);--ease:cubic-bezier(.2,.7,.2,1)}
 .zone-dark{--ink:#eef2fb;--body:#b9c1d6;--meta:#8a94ad;--hair:rgba(255,255,255,.14);--hair2:rgba(255,255,255,.08);--accent:#8fa8ff;background:#0f1730;color:var(--body);position:relative}
-/* плазма: один слой на всю тёмную зону (герой + стандарты + слайдер), без стыков между секциями */
+/* плазма: один слой на всю тёмную зону (герой + стандарты + POV), без стыков между секциями */
 #heroFx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -38,12 +38,21 @@ h1{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(34px
 h1 em{font-style:normal;color:var(--acc)}
 .lede{font-size:clamp(17px,1.4vw,18.5px);max-width:56ch;color:var(--meta)}
 .lede b{color:var(--ink);font-weight:500}
-/* 7 сцен статичной лентой */
-.slider{background:transparent;color:#b9c1d6;padding-bottom:clamp(40px,5vw,64px);position:relative;z-index:1}
-.slide{scroll-margin-top:80px;padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid rgba(255,255,255,.08)}
-.slide:last-of-type{border-bottom:0}
-.slide iframe{width:100%;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:#131c2b;display:block}
-/* стандарты внедрения: статичная лента без слайдера */
+/* POV: боль → разбор → ответ с метрикой. Красный — цена плохой версии, синий — ответ */
+.pov{padding:0 0 clamp(30px,4vw,52px)}
+.pov-k{font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--meta);margin-bottom:18px}
+.plist{border-top:1px solid rgba(255,255,255,.14)}
+.povc{padding:clamp(28px,3.5vw,44px) 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.povc:last-child{border-bottom:0}
+.povc .ppain{font-family:var(--disp);font-weight:500;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.02em;color:#eef2fb;margin-bottom:12px}
+.povc .pexp{font-size:17px;color:#b9c1d6;max-width:56ch}
+.povc .pexp b.bad{color:#e0605e;font-weight:500}
+.povc .pansw{margin-top:16px;padding:16px 20px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(255,255,255,.03)}
+.povc .pansw p{font-size:17px;color:#b9c1d6;max-width:56ch}
+.povc .pansw .met{font-family:var(--mono);font-weight:500;font-size:clamp(28px,3vw,40px);line-height:1.1;color:#8fa8ff;letter-spacing:-.02em;display:block;margin-bottom:6px}
+.povc .pansw a{color:#8fa8ff}
+.stand .bad-sub{color:#e0605e}
+/* стандарты внедрения: вертикальная лента без слайдера */
 .stand{padding:0 0 clamp(30px,4vw,52px)}
 .stand-k{font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--meta);margin-bottom:18px}
 .slist{border-top:1px solid rgba(255,255,255,.14)}
@@ -104,28 +113,25 @@ footer a:hover{color:#8fa8ff}
 <section class="hero">
 <div class="kicker">Рынок ИИ · внедрения</div>
 <h1>Рынок меняется быстрее, чем о нём пишут.</h1>
-<p class="lede">Правила внедрения уже сложились: приёмка до старта, данные у тебя, провайдер — твой выбор. Ниже — <b>пять стандартов</b>, семь сцен с числами и цифры под твой сегмент.</p>
+<p class="lede">Правила внедрения уже сложились: приёмка до старта, данные у тебя, провайдер — твой выбор. Ниже — <b>четыре стандарта</b>, живые числа из лабы и цифры под твою ситуацию.</p>
 </section>
 </div>
 <div class="wrap stand">
-<div class="stand-k">Пять стандартов · ниша внедрения</div>
+<div class="stand-k">Стандарты внедрения · что держится на всех проектах</div>
 <div class="slist">
-<article class="scard"><div class="snum">7–10%</div><div class="ssub">из 96 разобранных внедрений доходит до прода</div><h3>Приёмка до старта — письменно</h3><p>Критерии приёмки фиксируем до сборки: что агент делает, как проверяем, что считается готовым. Оплата — за работу в проде.</p></article>
-<article class="scard"><div class="snum">86 000</div><div class="ssub">аккаунтов потеряли доступ · до 4,3 млрд ₽ сгоревших подписок в год</div><h3>Агент и данные остаются твоими</h3><p>Связка живёт на твоём аккаунте, переписка и бэкап — у тебя. Смена платформы не обнуляет работу.</p></article>
-<article class="scard"><div class="snum">20% → 80%</div><div class="ssub">отбор заявок после скоринга · слепой тест на 30 кандидатах</div><h3>Скоринг вместо перебора</h3><p>Заявки разбирает скоринг: тёплые уходят в работу первыми. Проверка — слепой тест, замер до и после в цифрах.</p></article>
+<article class="scard"><div class="snum">7–10%</div><div class="ssub">из 96 разобранных внедрений доходит до прода · досье agent-failures, РФ</div><h3>Приёмка до старта — письменно</h3><p>Критерии приёмки фиксируем до сборки: что агент делает, как проверяем, что считается готовым. Оплата — за работу в проде.</p></article>
+<article class="scard"><div class="snum">74–206 тыс.</div><div class="ssub bad-sub">потеряли аккаунты в 2026 · рабочая оценка 144 тыс. · до ~5,3 млрд ₽/год сгоревших подписок · модель v8.1</div><h3>Агент и данные остаются твоими</h3><p>Связка живёт на твоём аккаунте, переписка и бэкап — у тебя. Цена чужой платформы выше: аккаунт с историей могут закрыть одним днём. Смена платформы не обнуляет работу.</p></article>
 <article class="scard"><div class="snum">11,59 ₽ против 300 ₽</div><div class="ssub">один запрос · одна модель · два продавца</div><h3>Провайдера выбираешь сам</h3><p>Модель и сервер оплачиваешь провайдерам напрямую по открытым тарифам. Тарифы сверены 26.10.2026.</p></article>
-<article class="scard"><div class="snum">×25.9</div><div class="ssub">разница за один и тот же запрос</div><h3>Экономия твоя</h3><p>Тот же запрос без посредника стоит в разы меньше. Разница остаётся у тебя каждый месяц.</p></article>
+<article class="scard"><div class="snum">1 100 ₽/мес</div><div class="ssub">владение связкой: модель + хостинг, тарифы сверены 26.10.2026</div><h3>Гарантия после приёмки</h3><p>После приёмки держу замер и поддержку: связка работает в проде, цифры проверяемы до и после. Сотрудник на той же рутине — 16 250–65 000 ₽/мес (расчёт Discovery System, тарифы сверены 26.10.2026). Оплата — после согласования критериев, дальше платишь только провайдеру напрямую. Данные лабораторных прогонов: парсер 63% против 47% наивного поиска (контрольная 79% на 286 постах, EVAL 20.09 + 26.09.2026), отбор заявок 20% → 80% слепым тестом на 30 кандидатах, годовая выручка бренда +16%.</p></article>
 </div>
 </div>
-<div class="slider" id="scenes">
-<div class="wrap">
-<section class="slide" id="s1"><iframe src="viz/viz-1-nightbot.html" title="1 · Ночной бот: заявка 23:47 → ответ за 0,8 сек" loading="lazy" height="760"></iframe></section>
-<section class="slide" id="s2"><iframe src="viz/viz-2-scoring.html" title="2 · Скоринг заявок: 20% → 80%" loading="lazy" height="720"></iframe></section>
-<section class="slide" id="s3"><iframe src="viz/viz-3-lost.html" title="3 · Потери аккаунтов" loading="lazy" height="720"></iframe></section>
-<section class="slide" id="s4"><iframe src="viz/viz-4-nacenka.html" title="4 · Наценка ×25.9 за одну модель" loading="lazy" height="560"></iframe></section>
-<section class="slide" id="s5"><iframe src="viz/viz-5-tco.html" title="5 · Экономика владения" loading="lazy" height="680"></iframe></section>
-<section class="slide" id="s6"><iframe src="viz/viz-6-parser.html" title="6 · Парсер лидов: 63% vs 47%" loading="lazy" height="640"></iframe></section>
-<section class="slide" id="s7"><iframe src="viz/viz-7-failures.html" title="7 · Провалы внедрений" loading="lazy" height="780"></iframe></section>
+<div class="wrap pov">
+<div class="pov-k">Живые числа · что это значит на твоей стороне</div>
+<div class="plist">
+<article class="povc"><h3 class="ppain">Платишь подписке и не видишь наценку</h3><p class="pexp">Один и тот же запрос стоит 11,59 ₽ у одного продавца и 300 ₽ у другого. <b class="bad">Переплата ×25.9 каждый месяц оседает у посредника.</b></p><div class="pansw"><p><span class="met">×25.9</span>Своя связка: модель и сервер оплачиваешь напрямую по открытым тарифам. Разница остаётся у тебя каждый месяц.</p></div></article>
+<article class="povc"><h3 class="ppain">Аккаунт может умереть вместе с перепиской</h3><p class="pexp">74–206 тыс. человек потеряли аккаунты в 2026 (рабочая оценка 144 тыс.): проекты, код и история — всё в чужом кабинете. <b class="bad">До ~5,3 млрд ₽/год сгоревших подписок.</b></p><div class="pansw"><p><span class="met">твоё</span>Агент и данные остаются твоими: связка на твоём аккаунте, переписка и бэкап — у тебя. Смена платформы не обнуляет работу.</p></div></article>
+<article class="povc"><h3 class="ppain">Пилот стоит денег и не доходит до прода</h3><p class="pexp">Из 96 разобранных внедрений до прода доходит 7–10%. Остальные свёрнуты или заморожены: приёмки не было. <b class="bad">Прототип показали, в работу не передали.</b></p><div class="pansw"><p><span class="met">7–10%</span>Критерии приёмки до старта: платишь за то, что работает в проде. Замер до и после — в цифрах.</p></div></article>
+<article class="povc"><h3 class="ppain">Сотрудник и студия съедают бюджет</h3><p class="pexp">Сотрудник на той же рутине стоит 16 250–65 000 ₽/мес, студия — чёрный ящик от 50 000 ₽. <b class="bad">Деньги уходят, связка не собирается.</b></p><div class="pansw"><p><span class="met">1 100 ₽/мес</span>Своя связка после установки стоит 2–4К ₽/мес — это счёт провайдеров модели и хостинга. Лабораторные прогоны это подтверждают: парсер находит тёплые лиды 63% против 47% наивного поиска.</p></div></article>
 </div>
 </div>
 </div>
@@ -209,9 +215,9 @@ footer a:hover{color:#8fa8ff}
 </div>
 <div class="wrap">
 <section id="persona">
-<h2>Что это значит для твоего сегмента</h2>
-<p class="sub">Выбери сегмент — боль, число с рынка, типичный провал и что меняет Discovery. Числа — только из сцен выше, без выдумок.</p>
-<div class="segs" role="group" aria-label="Сегмент бизнеса">
+<h2>Что это значит для тебя</h2>
+<p class="sub">Выбери свою ситуацию — боль, число с рынка, типичный провал и что меняет Discovery. Числа — из разборов выше, без выдумок.</p>
+<div class="segs" role="group" aria-label="Твоя ситуация">
 <button type="button" class="seg" data-seg="solo" aria-pressed="false" title="применяешь в своей работе без бизнеса">Личный</button>
 <button type="button" class="seg" data-seg="self" aria-pressed="false" title="налог 4-6%, есть клиенты">Самозанятый</button>
 <button type="button" class="seg" data-seg="ip" aria-pressed="false" title="учёт и наём до ~10">ИП</button>
@@ -236,8 +242,9 @@ footer a:hover{color:#8fa8ff}
 <a class="btn" href="service.html">Выбрать сервис: полка 15–60К разово</a>
 <a class="btn btn-g" href="calculator.html">Посчитать связку — 0 ₽</a>
 </div>
+<p class="pquiet" style="margin-top:18px;font-size:14px;color:#8a94ad">или написать лично — <a id="pLive" href="https://t.me/victorpinksight?text=%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A0%D1%8B%D0%BD%D0%BE%D0%BA%20%D0%98%D0%98%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%81%D0%B2%D0%BE%D1%8E%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D1%83%3A%20%D0%BA%D0%B0%D0%BA%D0%B0%D1%8F%20%D0%BF%D0%BE%D0%BB%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B9%D0%B4%D1%91%D1%82%20%D0%BC%D0%BD%D0%B5%3F" style="color:#8fa8ff">t.me/victorpinksight</a>, отвечаю сам</p>
 </section>
-<footer>Личка: <a href="https://t.me/victorpinksight">t.me/victorpinksight</a> · Канал: <a href="https://t.me/discoverysystem">t.me/discoverysystem</a> · Отвечаю лично, без ботов · <a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · <a href="https://discovery-system.ru/reviews.html">отзывы</a> · ИНН 780627413110</footer>
+<footer>Личка: <a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A0%D1%8B%D0%BD%D0%BE%D0%BA%20%D0%98%D0%98%C2%BB%20%E2%80%94%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B5.">t.me/victorpinksight</a> · Канал: <a href="https://t.me/discoverysystem">t.me/discoverysystem</a> · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a><br>Отвечаю лично, без ботов · <a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · <a href="https://discovery-system.ru/reviews.html">отзывы</a> · ИНН 780627413110</footer>
 </div>
 </div>
 <script>
@@ -342,17 +349,19 @@ fs.forEach(function(f){io.observe(f)});
 (function(){
 'use strict';
 var P={
- solo:{pain:'Платишь за каждый запрос и не видишь, сколько из этого — наценка продавца.',proof:'×25.9',proofSub:'разница за один и тот же запрос: 11,59 ₽ против 300 ₽',fail:'Собрал агента в чужой подписке — продавец сменил тариф, и связка подорожала в разы.',win:'Своя связка: цены моделей открыты, владение 2–4К/мес.'},
- self:{pain:'Аккаунты, переписка и витрина живут на чужой платформе — доступ теряется одним касанием.',proof:'86 000',proofSub:'аккаунтов потеряли доступ · 1–4,3 млрд ₽/год сгоревших подписок',fail:'Потерял аккаунт вместе с историей переписки — восстановить нечего.',win:'Данные и переписка — твои: агент работает на твоём аккаунте, бэкап у тебя.'},
- ip:{pain:'Заявки приходят в мессенджеры и теряются — разбирать руками некогда.',proof:'63% vs 47%',proofSub:'точность нахождения тёплых лидов: скоринг против наивного поиска',fail:'Человек-диспетчер пропускает тёплые заявки: до ответа доходит половина.',win:'Агент разбирает вход и готовит черновик ответа к твоему утру.'},
- mid:{pain:'Пилот внедрения стоит денег, но до продуктива доходит единица из десятка.',proof:'7–10%',proofSub:'из 96 кейсов внедрений доходит до прода',fail:'Купили внедрение у студии: прототип показали, в работу не передали — приёмки не было.',win:'Критерии приёмки до старта: платишь за то, что работает в проде.'}
+ solo:{pain:'Платишь за каждый запрос и не видишь, сколько из этого — наценка продавца.',proof:'×25.9',proofSub:'разница за один и тот же запрос: 11,59 ₽ против 300 ₽',fail:'Собрал агента в чужой подписке — продавец сменил тариф, и связка подорожала в разы.',win:'Своя связка: цены моделей открыты, владение 2–4К/мес.',cta:'Пришёл со страницы «Рынок ИИ». Применяю ИИ в своей работе, без бизнеса: плачу за каждый запрос и не вижу наценку. Хочу связку с открытыми ценами.'},
+ self:{pain:'Аккаунты, переписка и витрина живут на чужой платформе — доступ теряется одним касанием.',proof:'74–206 тыс.',proofSub:'потеряли аккаунты в 2026 · рабочая оценка 144 тыс. · модель v8.1',fail:'Потерял аккаунт вместе с историей переписки — восстановить нечего.',win:'Данные и переписка — твои: агент работает на твоём аккаунте, бэкап у тебя.',cta:'Пришёл со страницы «Рынок ИИ». Самозанятый: аккаунты и переписка живут на чужой платформе. Хочу агент на своём аккаунте.'},
+ ip:{pain:'Заявки приходят в мессенджеры и теряются — разбирать руками некогда.',proof:'63% vs 47%',proofSub:'точность нахождения тёплых лидов: скоринг против наивного поиска',fail:'Человек-диспетчер пропускает тёплые заявки: до ответа доходит половина.',win:'Агент разбирает вход и готовит черновик ответа к твоему утру.',cta:'Пришёл со страницы «Рынок ИИ». ИП: заявки теряются в мессенджерах. Нужен агент на вход с приёмкой.'},
+ mid:{pain:'Пилот внедрения стоит денег, но до продуктива доходит единица из десятка.',proof:'7–10%',proofSub:'из 96 кейсов внедрений доходит до прода',fail:'Купили внедрение у студии: прототип показали, в работу не передали — приёмки не было.',win:'Критерии приёмки до старта: платишь за то, что работает в проде.',cta:'Пришёл со страницы «Рынок ИИ». Команда 10–30: пилот без приёмки не доходит до прода. Хочу приёмку до старта.'}
 };
 var btns=Array.prototype.slice.call(document.querySelectorAll('.seg'));
 var el={pain:document.getElementById('pPain'),proof:document.getElementById('pProof'),sub:document.getElementById('pProofSub'),fail:document.getElementById('pFail'),win:document.getElementById('pWin')};
+var live=document.getElementById('pLive');
 function apply(k){
  var p=P[k];if(!p)return;
  el.pain.textContent=p.pain;el.proof.textContent=p.proof;el.sub.textContent=p.proofSub;
  el.fail.textContent=p.fail;el.win.textContent=p.win;
+ if(live)live.href='https://t.me/victorpinksight?text='+encodeURIComponent(p.cta);
  btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-seg')===k?'true':'false');});
 }
 var saved=null;
