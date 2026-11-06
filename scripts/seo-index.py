@@ -27,9 +27,9 @@ LINKEDIN = "https://www.linkedin.com/in/victor-zaitsev-product/"
 # страницы, которые отдаём поисковикам
 INDEXABLE = [
     "index.html", "clarity.html", "calculator.html", "system.html", "market.html",
-    "karta-resheniy.html", "value-chain.html", "channel.html", "nacenka.html",
+    "value-chain.html", "channel.html", "nacenka.html",
     "agent-failures.html", "lost-accounts.html", "proof.html", "pay.html",
-    "oferta.html", "policy.html", "claude-alternativa.html",
+    "oferta.html", "policy.html",
     "reviews.html", "tseny-vnedreniy.html",
 ]
 # служебные — только noindex
