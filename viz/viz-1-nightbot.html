@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ночной бот — ответ за 0,8 сек | Discovery System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:#0f1730;color:#eef2fb;
+    font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:32px 20px;
+  }
+</style>
+</head>
+<body>
+<section class="v1-scene" id="v1-nightbot" aria-label="Ночной бот: диалог клиента в 23:47 превращается в сделку">
+<style>
+  .v1-scene{width:100%;max-width:940px;background:#131c2b;color:#eef2fb;
+    border:1px solid rgba(255,255,255,.14);border-radius:20px;
+    padding:36px 36px 26px;position:relative;overflow:hidden;
+    font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
+  .v1-scene::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:#8fa8ff}
+  .v1-kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8fa8ff;font-weight:700;text-align:center}
+  .v1-h{font-family:Onest,'IBM Plex Sans',system-ui,sans-serif;font-weight:800;
+    font-size:clamp(22px,3.6vw,30px);line-height:1.2;text-align:center;margin:10px 0 6px}
+  .v1-sub{color:#b9c1d6;font-size:15px;line-height:1.55;text-align:center;max-width:640px;margin:0 auto}
+  .v1-phone{max-width:400px;margin:22px auto 0;background:#0e1621;
+    border:1px solid rgba(255,255,255,.14);border-radius:18px;overflow:hidden}
+  .v1-tghead{background:#17212b;padding:12px 14px;display:flex;align-items:center;gap:10px}
+  .v1-ava{width:40px;height:40px;border-radius:50%;background:#2b5278;flex:none;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff}
+  .v1-who{display:flex;flex-direction:column;line-height:1.3;min-width:0}
+  .v1-who b{font-size:14px;color:#fff}
+  .v1-who i{font-style:normal;font-size:12px;color:#8a94ad}
+  .v1-hero{margin-left:auto;font-size:12.5px;font-weight:700;color:#eef2fb;white-space:nowrap;
+    background:rgba(143,168,255,.14);border:1px solid rgba(143,168,255,.5);
+    border-radius:10px;padding:6px 10px}
+  .v1-chat{padding:16px 12px;display:flex;flex-direction:column;gap:10px;min-height:302px}
+  .v1-row{display:flex}
+  .v1-right{justify-content:flex-end}
+  .v1-left{justify-content:flex-start}
+  .v1-bub{max-width:80%;padding:10px 12px;border-radius:14px;font-size:14px;line-height:1.45;
+    transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .45s cubic-bezier(.22,1,.36,1)}
+  .v1-out{background:#2b5278;color:#fff;border-bottom-right-radius:5px}
+  .v1-out p{margin:0}
+  .v1-in{background:#182533;color:#eef2fb;border-bottom-left-radius:5px;min-width:120px}
+  .v1-atext{margin:0;min-height:20px}
+  .v1-time{display:block;text-align:right;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:11px;color:rgba(255,255,255,.6);margin-top:4px}
+  .v1-status{align-self:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:12.5px;color:#b9c1d6;background:rgba(143,168,255,.08);
+    border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:8px 14px;text-align:center;
+    transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .45s cubic-bezier(.22,1,.36,1)}
+  .v1-ok{color:#8fa8ff;font-weight:700}
+  .v1-dot{color:#8a94ad;margin:0 4px}
+  .v1-input{background:#17212b;padding:10px 12px;display:flex;align-items:center;gap:10px;
+    color:#8a94ad;font-size:13px}
+  .v1-field{flex:1;background:#0e1621;border:1px solid rgba(255,255,255,.1);
+    border-radius:12px;padding:8px 12px}
+  .v1-send{color:#8fa8ff;font-size:16px}
+  .v1-meta{margin-top:16px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:12px;color:#8a94ad}
+  @media (max-width:560px){
+    .v1-scene{padding:26px 18px 20px}
+    .v1-hero{font-size:11px}
+    .v1-bub{max-width:88%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .v1-bub,.v1-status{transition:none}
+  }
+</style>
+  <div class="v1-kicker">1 / 8 · Ночной бот</div>
+  <h1 class="v1-h">Клиент пишет в 23:47 — бот отвечает за 0,8 сек</h1>
+  <p class="v1-sub">Показывает, как ночной диалог превращается в сделку: ответ клиенту, запись в AmoCRM и задача логисту — без оператора.</p>
+
+  <div class="v1-phone">
+    <div class="v1-tghead">
+      <span class="v1-ava">DB</span>
+      <span class="v1-who"><b>Discovery Бот</b><i>online · отвечает ночью</i></span>
+      <span class="v1-hero">⚡ ответ 0,8 сек</span>
+    </div>
+    <div class="v1-chat">
+      <div class="v1-row v1-right">
+        <div class="v1-bub v1-client v1-out">
+          <p>Добрый вечер! Заказ 214 так и не приехал, а курьер не отвечает 😟</p>
+          <span class="v1-time">23:47 ✓✓</span>
+        </div>
+      </div>
+      <div class="v1-row v1-left">
+        <div class="v1-bub v1-agent v1-in">
+          <p class="v1-atext">Добрый вечер! Заказ №214 уже у курьера — прибудет до 00:30. Держу на контроле 👍</p>
+          <span class="v1-time v1-agtime">23:47</span>
+        </div>
+      </div>
+      <div class="v1-status"><span class="v1-ok">✓</span> сделка в AmoCRM <span class="v1-dot">·</span> <span class="v1-ok">✓</span> задача логисту <span class="v1-dot">·</span> 23:48</div>
+    </div>
+    <div class="v1-input"><span class="v1-field">Сообщение…</span><span class="v1-send">➤</span></div>
+  </div>
+
+  <p class="v1-meta">заказ №214 · AmoCRM · цикл замкнутый · пауза между повторами 2 сек</p>
+
+<script>
+(function(){
+  var root=document.getElementById('v1-nightbot');
+  if(!root||!('requestAnimationFrame' in window))return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var client=root.querySelector('.v1-client');
+  var agent=root.querySelector('.v1-agent');
+  var atext=root.querySelector('.v1-atext');
+  var agtime=root.querySelector('.v1-agtime');
+  var status=root.querySelector('.v1-status');
+  var FULL=atext.textContent;
+  var CH=Array.from(FULL);
+  var T_CLIENT=400, T_BOT=1400, T_TYPE=2000, PER=30;
+  var T_STATUS=T_TYPE+PER*CH.length+400;
+  var LOOP=T_STATUS+2000;
+  function setVis(el,show){
+    el.style.opacity=show?'1':'0';
+    el.style.transform=show?'translateY(0px)':'translateY(14px)';
+  }
+  function render(t){
+    setVis(client,t>=T_CLIENT);
+    setVis(agent,t>=T_BOT);
+    setVis(status,t>=T_STATUS);
+    if(t<T_BOT)return;
+    if(t<T_TYPE){
+      var n=1+(Math.floor((t-T_BOT)/350)%3);
+      atext.textContent='•'.repeat(n);
+      agtime.style.opacity='0';
+    }else{
+      var k=Math.min(CH.length,Math.floor((t-T_TYPE)/PER));
+      if(k<CH.length){atext.textContent=CH.slice(0,k).join('')+'▍';agtime.style.opacity='0';}
+      else{atext.textContent=FULL;agtime.style.opacity='1';}
+    }
+  }
+  var t0=performance.now();
+  function frame(now){render((now-t0)%LOOP);requestAnimationFrame(frame);}
+  requestAnimationFrame(frame);
+})();
+</script>
+</section>
+</body>
+</html>

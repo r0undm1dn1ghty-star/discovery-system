@@ -10,7 +10,7 @@ import os, re, html
 ROOT = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 PAGES = [
     "index.html", "market.html", "system.html", "proof.html",
-    "clarity.html", "channel.html", "calculator.html",
+    "clarity.html", "service.html", "channel.html", "calculator.html",
     "lost-accounts.html", "agent-failures.html",
     "nacenka.html", "value-chain.html", "pay.html", "reviews.html",
     "tseny-vnedreniy.html",

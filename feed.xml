@@ -7,11 +7,18 @@
   <language>ru</language>
   <lastBuildDate>2026-11-06</lastBuildDate>
   <item>
-    <title>Ясность — форматы работы и цены — Discovery System</title>
+    <title>Discovery System — страница переехала</title>
     <link>https://discovery-system.ru/clarity.html</link>
     <guid isPermaLink="true">https://discovery-system.ru/clarity.html</guid>
     <pubDate>Wed, 04 Nov 2026 00:00:00 +0300</pubDate>
-    <description>Пять шагов от бесплатного расчёта до агента под ключ: гайд 5 000 ₽, подбор конфигурации 7 000 ₽, установка 15/20/30/60 000 ₽, оптимизация от 25 000 ₽. Оплата картой РФ или СБП, чек самозанятого сразу.</description>
+    <description>Страница «Ясность» переехала в раздел «Сервис».</description>
+  </item>
+  <item>
+    <title>Сервис — Discovery System</title>
+    <link>https://discovery-system.ru/service.html</link>
+    <guid isPermaLink="true">https://discovery-system.ru/service.html</guid>
+    <pubDate>Fri, 06 Nov 2026 00:00:00 +0300</pubDate>
+    <description>Не прайс-лист — сервис. Выбери дверь: сцена покажет результат, цифру издержки и формат с ценой. Установка 15–60 тыс. ₽ разово, гайд 5 тыс. ₽, поддержки от 15 тыс. ₽/мес, калькулятор бесплатно.</description>
   </item>
   <item>
     <title>Discovery System — Сколько стоит твой ИИ-агент</title>
@@ -21,18 +28,18 @@
     <description>Калькулятор стоимости ИИ-агента: 7 вопросов — и видно, сколько часов и рублей в месяц забирает рутина и сколько остаётся с агентом. Руками vs С агентом. Бесплатно, без регистрации.</description>
   </item>
   <item>
-    <title>Система — ИИ-агента под конкретную рутину — Discovery System</title>
+    <title>Discovery System — метод и инструменты открыты</title>
     <link>https://discovery-system.ru/system.html</link>
     <guid isPermaLink="true">https://discovery-system.ru/system.html</guid>
     <pubDate>Thu, 05 Nov 2026 00:00:00 +0300</pubDate>
-    <description>ИИ-агента под конкретную рутину: смена агента в Telegram — демо из реальных внедрений. Форматы: калькулятор 0 ₽, гайд 5 000 ₽, сборка 7 000 ₽, внедрение под ключ. Метод открыт на GitHub.</description>
+    <description>Калькулятор 0₽, канал сигналов 0₽, открытые скиллы и репо на GitHub, открытая методика исследований. Система — это когда инструменты собраны под твой бизнес и остаются твоими.</description>
   </item>
   <item>
-    <title>Рынок ИИ-агентов в России — цифры с датами — Discovery System</title>
+    <title>Рынок ИИ — Discovery System</title>
     <link>https://discovery-system.ru/market.html</link>
     <guid isPermaLink="true">https://discovery-system.ru/market.html</guid>
-    <pubDate>Thu, 05 Nov 2026 00:00:00 +0300</pubDate>
-    <description>Студии — 49 990 ₽ за «агента», сервисы — 43,7К ₽/год аренды. Своя связка — 2–4К ₽/мес, провайдерам напрямую. Каждый факт — источник и дата.</description>
+    <pubDate>Fri, 06 Nov 2026 00:00:00 +0300</pubDate>
+    <description>Рынок меняется быстрее, чем о нём пишут: пять стандартов внедрения, восемь сцен с числами, четыре дороги мимо агента, цифры под твой сегмент.</description>
   </item>
   <item>
     <title>Микробизнесу и среднему бизнесу нужен разный ИИ-агент, а продают одинаково — Discovery System</title>
@@ -42,11 +49,11 @@
     <description>Ты — микробизнес или средний бизнес? Найди свою строку: чей бюджет, за что платишь, цена ошибки. Ниже — карта рынка ИИ-агентов в России: кто что делает, пока агент доходит до тебя, и где рвётся цепочка.</description>
   </item>
   <item>
-    <title>Сигналы рынка ИИ-агентов — лента с источниками — Discovery System</title>
+    <title>Discovery System — Канал: сигналы раньше, чем рынок замечает</title>
     <link>https://discovery-system.ru/channel.html</link>
     <guid isPermaLink="true">https://discovery-system.ru/channel.html</guid>
     <pubDate>Thu, 05 Nov 2026 00:00:00 +0300</pubDate>
-    <description>Короткие разборы: что заметить, что проверить, что забрать в работу. Каждый сигнал — источник и дата. Полная лента в Telegram.</description>
+    <description>Канал Discovery System: факты с цифрой, источником и датой. Исследования рынка, разборы бизнес-моделей, карта смерти рынков. Вход — 0 ₽, лично — t.me/victorpinksight.</description>
   </item>
   <item>
     <title>Одна модель: вендор против бигтеха — наценка на токены и кэш · Discovery System</title>
@@ -66,7 +73,7 @@
     <title>Claude и ChatGPT не принадлежат тебе — сколько россиян потеряли аккаунты в 2026</title>
     <link>https://discovery-system.ru/lost-accounts.html</link>
     <guid isPermaLink="true">https://discovery-system.ru/lost-accounts.html</guid>
-    <pubDate>Thu, 05 Nov 2026 00:00:00 +0300</pubDate>
+    <pubDate>Fri, 06 Nov 2026 00:00:00 +0300</pubDate>
     <description>Исследование Discovery System: 74–206 тыс. (90%, модель v8.1 с байес-коррекцией смещения отбора), рабочая оценка 144 тыс. россиян потеряли аккаунты ChatGPT и Claude в 2026 и не вернули старый. Разбор фейка про 1,5 млн и официальные цифры Anthropic Transparency Hub.</description>
   </item>
   <item>
@@ -108,7 +115,7 @@
     <title>Сколько стоит внедрение ИИ-агента в России — цены и сроки, ноябрь 2026 — Discovery System</title>
     <link>https://discovery-system.ru/tseny-vnedreniy.html</link>
     <guid isPermaLink="true">https://discovery-system.ru/tseny-vnedreniy.html</guid>
-    <pubDate>Thu, 05 Nov 2026 00:00:00 +0300</pubDate>
+    <pubDate>Fri, 06 Nov 2026 00:00:00 +0300</pubDate>
     <description>Замер цен внедрения ИИ-агентов в России: открытые нижние границы рынка (интеграторы, студии), этаж МСБ и enterprise, разрез «чат-бот ≠ агент», сроки по типам внедрений. Каждая цифра — с источником и датой. Обновляется.</description>
   </item>
 </channel>

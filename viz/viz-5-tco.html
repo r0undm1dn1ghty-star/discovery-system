@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Экономика владения — агент против сотрудника</title>
+<style>
+  :root{
+    --bg:#0b0e14; --card:#121826; --line:rgba(255,255,255,.09);
+    --txt:#eef2f8; --mut:#9aa7bd; --blue:#2f7bff; --blue-d:#1c4fb4;
+    --grey1:#5b6575; --grey2:#3c4453;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);color:var(--txt);
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:28px 18px;
+  }
+  .v5{width:100%;max-width:880px;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:30px 30px 22px;position:relative;overflow:hidden}
+  .v5::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--blue),#6aa1ff 55%,transparent)}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:700}
+  h1{font-size:clamp(20px,3.4vw,28px);line-height:1.2;margin:8px 0 4px}
+  .sub{color:var(--mut);font-size:14px;margin-bottom:20px}
+  .cols{display:flex;gap:26px;align-items:flex-end;justify-content:center;
+    padding:18px 10px 6px;min-height:300px}
+  .col{display:flex;flex-direction:column;align-items:center;gap:10px;flex:1;max-width:240px}
+  .barwrap{width:100%;height:230px;display:flex;align-items:flex-end;justify-content:center;gap:14px}
+  .bar{width:84px;border-radius:10px 10px 4px 4px;transform-origin:bottom center;
+    transform:scaleY(0);transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+  .v5.play .bar{transform:scaleY(1)}
+  .bar.agent{background:linear-gradient(180deg,#5d97ff,var(--blue) 60%,var(--blue-d));height:8px}
+  .bar.emp-lo{background:linear-gradient(180deg,#7b8494,var(--grey1) 60%,#454d5c);height:118px;transition-delay:.15s}
+  .bar.emp-hi{background:linear-gradient(180deg,#9aa3b2,var(--grey1) 55%,#333a46);height:230px;transition-delay:.3s}
+  .num{font-size:clamp(17px,2.6vw,23px);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .num small{font-size:12px;font-weight:600;color:var(--mut)}
+  .lbl{font-size:13px;color:var(--mut);text-align:center;line-height:1.4}
+  .lbl b{color:var(--txt)}
+  .fork{font-size:12px;color:var(--mut);border:1px dashed rgba(255,255,255,.22);
+    border-radius:20px;padding:4px 12px;margin-top:2px;white-space:nowrap}
+  .badge{display:inline-block;font-size:12px;font-weight:700;color:#cfe0ff;
+    background:rgba(47,123,255,.14);border:1px solid rgba(47,123,255,.4);
+    border-radius:20px;padding:4px 12px;margin-bottom:10px}
+  .foot{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;
+    font-size:13.5px;color:var(--mut);text-align:center;line-height:1.55}
+  .foot b{color:var(--txt)}
+  .mult{margin-top:10px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .pill{font-size:12.5px;font-weight:700;background:rgba(47,123,255,.12);
+    border:1px solid rgba(47,123,255,.35);color:#dbe7ff;border-radius:10px;padding:6px 12px}
+  .pill.grey{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--mut)}
+  @media (max-width:560px){
+    .cols{gap:12px}.bar{width:60px}
+    .bar.emp-lo{height:96px}.bar.emp-hi{height:180px}.barwrap{height:190px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .bar{transition:none;transform:scaleY(1)}
+  }
+</style>
+</head>
+<body>
+<section class="v5" id="v5" aria-label="Экономика владения: агент против сотрудника">
+  <div class="kicker">5 / 8 · Экономика владения</div>
+  <h1>Агент дешевле сотрудника в десятки раз</h1>
+  <p class="sub">Ежемесячная стоимость владения, рубли</p>
+
+  <div class="badge">⚖️ Весы месячных затрат</div>
+
+  <div class="cols">
+    <div class="col">
+      <div class="num" data-count="1100">0 <small>₽/мес</small></div>
+      <div class="barwrap"><div class="bar agent" aria-hidden="true"></div></div>
+      <div class="lbl"><b>Агент</b><br>модель + хостинг</div>
+    </div>
+    <div class="col">
+      <div class="num"><span data-count="16250">0</span>–<span data-count="65000">0</span> <small>₽/мес</small></div>
+      <div class="barwrap">
+        <div class="bar emp-lo" title="от четверти ставки" aria-hidden="true"></div>
+        <div class="bar emp-hi" title="целая ставка" aria-hidden="true"></div>
+      </div>
+      <div class="lbl"><b>Сотрудник</b><br>ставка с налогами</div>
+      <div class="fork">вилка: ¼ ставки → целая ставка</div>
+    </div>
+  </div>
+
+  <div class="mult" aria-label="Кратность разницы">
+    <span class="pill">×15 — против четверти ставки</span>
+    <span class="pill">×59 — против целой ставки</span>
+    <span class="pill grey">окупаемость с первого месяца</span>
+  </div>
+
+  <p class="foot">Замена <b>от четверти до целой ставки</b> · <b>окупаемость с первого месяца</b>.<br>
+  Агент: <b>1 100 ₽/мес</b> · сотрудник: <b>16 250–65 000 ₽/мес</b>.</p>
+</section>
+
+<script>
+(function(){
+  var root=document.getElementById('v5');
+  function fmt(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'\u2009');}
+  function count(el){
+    var target=parseInt(el.getAttribute('data-count'),10);
+    if(isNaN(target))return;
+    var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Deterministic count-up: fixed frame budget, no rAF timing dependence
+    var FRAMES=60,i=0;
+    if(reduced){setCount(target);return;}
+    function setCount(v){
+      if(el.tagName==='SPAN'){el.textContent=fmt(v);}
+      else{el.innerHTML=fmt(v)+' <small>₽/мес</small>';}
+    }
+    var t=setInterval(function(){
+      i++;
+      var v=Math.round(target*Math.min(i/FRAMES,1));
+      setCount(v);
+      if(i>=FRAMES){clearInterval(t);setCount(target);}
+    },16);
+  }
+  function start(){
+    root.classList.add('play');
+    var els=root.querySelectorAll('[data-count]');
+    for(var k=0;k<els.length;k++)count(els[k]);
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(e){
+      if(e[0].isIntersecting){start();io.disconnect();}
+    },{threshold:.3});
+    io.observe(root);
+  }
+  // Fallback: deterministic start even without IO
+  setTimeout(function(){if(!root.classList.contains('play'))start();},1200);
+})();
+</script>
+</body>
+</html>

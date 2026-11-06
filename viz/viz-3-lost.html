@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Потеря аккаунтов — Monte Carlo коридор · viz-3</title>
+<style>
+  :root{
+    --v3-bg:#0f1730; --v3-ink:#eef2fb; --v3-accent:#8fa8ff;
+    --v3-dim:#9aa3c7; --v3-line:rgba(143,168,255,.28);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--v3-bg); color:var(--v3-ink);
+    font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:32px 20px;
+  }
+  .v3-wrap{width:min(1020px,100%)}
+  .v3-eyebrow{
+    font-size:12px; letter-spacing:.22em; color:var(--v3-accent);
+    text-transform:uppercase; margin-bottom:12px;
+  }
+  h1{font-size:clamp(22px,3.4vw,34px); line-height:1.2; font-weight:700; max-width:22em}
+  h1 .n{color:var(--v3-accent)}
+  .v3-stats{display:flex; flex-wrap:wrap; gap:12px; margin:20px 0 8px}
+  .v3-stat{
+    border:1px solid var(--v3-line); border-radius:12px;
+    padding:12px 16px; min-width:200px; flex:1;
+    background:rgba(143,168,255,.05);
+  }
+  .v3-stat b{display:block; font-size:22px; color:var(--v3-accent); font-variant-numeric:tabular-nums}
+  .v3-stat span{font-size:13px; color:var(--v3-dim)}
+  .v3-fig{
+    border:1px solid var(--v3-line); border-radius:16px;
+    padding:20px 16px 12px; margin-top:12px; background:rgba(255,255,255,.012);
+  }
+  .v3-fig svg{width:100%; height:auto; display:block}
+  .v3-method{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:13px; color:var(--v3-dim); text-align:center; padding:12px 8px 6px;
+  }
+  .v3-method b{color:var(--v3-accent); font-weight:600}
+  /* ---- SVG scene ---- */
+  #v3-svg text{fill:var(--v3-dim); font-family:ui-monospace,Menlo,Consolas,monospace}
+  .v3-band{fill:rgba(143,168,255,.09); opacity:0; transition:opacity 1s ease 700ms}
+  .v3-frame{fill:none; stroke:var(--v3-accent); stroke-width:2; opacity:.9}
+  .v3-center{stroke:var(--v3-accent); stroke-width:2; stroke-dasharray:7 6; opacity:0; transition:opacity .8s ease 1400ms}
+  .v3-tick{stroke:var(--v3-line); stroke-width:1}
+  .v3-dot{opacity:0; transform:translateY(var(--dy,20px)); transition:opacity .5s ease, transform .5s ease}
+  .v3-svg.play .v3-dot{opacity:var(--o,.85); transform:translateY(0)}
+  .v3-svg.play .v3-band{opacity:1}
+  .v3-svg.play .v3-center{opacity:1}
+  @media (prefers-reduced-motion: reduce){
+    .v3-dot,.v3-band,.v3-center{transition:none !important}
+    .v3-dot{opacity:var(--o,.85); transform:none}
+    .v3-band,.v3-center{opacity:1}
+    .v3-frame{stroke-dashoffset:0 !important}
+  }
+</style>
+</head>
+<body>
+<div class="v3-wrap">
+  <div class="v3-eyebrow">Потеря аккаунтов · первая оценка в РФ</div>
+  <h1>Сколько сгорело подписок: <span class="n">86 тыс. платящих</span> потеряли доступ</h1>
+  <div class="v3-stats">
+    <div class="v3-stat"><b>86 тыс.</b><span>центральная оценка платящих, потерявших аккаунты</span></div>
+    <div class="v3-stat"><b>58–221 тыс.</b><span>коридор неопределённости (Monte Carlo)</span></div>
+    <div class="v3-stat"><b>1–4,3 млрд ₽/год</b><span>сгоревших подписок</span></div>
+  </div>
+  <figure class="v3-fig">
+    <svg id="v3-svg" class="v3-svg" viewBox="0 0 960 420" role="img"
+         aria-label="200 сценариев Monte Carlo собираются в коридор 58–221 тысяча, центр 86 тысяч">
+      <rect class="v3-band" x="139.5" y="150" width="629.5" height="120" rx="10"/>
+      <path id="v3-frame" class="v3-frame" d="M139.5,160 Q139.5,150 149.5,150 H759 Q769,150 769,160 V260 Q769,270 759,270 H149.5 Q139.5,270 139.5,260 Z"
+            pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+      <line class="v3-center" x1="247.7" y1="132" x2="247.7" y2="288"/>
+      <text x="247.7" y="122" text-anchor="middle" font-size="16" fill="#8fa8ff">86 тыс.</text>
+      <line class="v3-tick" x1="139.5" y1="270" x2="139.5" y2="282"/>
+      <text x="139.5" y="300" text-anchor="middle" font-size="14">58 тыс.</text>
+      <line class="v3-tick" x1="769" y1="270" x2="769" y2="282"/>
+      <text x="769" y="300" text-anchor="middle" font-size="14">221 тыс.</text>
+      <text x="70" y="340" font-size="13">потерявшие доступ, тыс. человек · 200 сценариев из 200 000 прогонов</text>
+      <text x="70" y="362" font-size="13">светлые точки — внутри коридора · тусклые — хвосты распределения</text>
+      <g id="v3-dots"></g>
+    </svg>
+    <figcaption class="v3-method">метод открыт: <b>16 кейсов OSINT · 200 000 прогонов Monte Carlo</b></figcaption>
+  </figure>
+</div>
+<script>
+(function(){
+  "use strict";
+  // Deterministic seeded PRNG (mulberry32, seed 3). Same layout on every load.
+  function m32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  var rnd=m32(3);
+  var X=function(v){return 70+(v-40)/220*850;};
+  var X58=X(58), X86=X(86), X221=X(221);
+  var dots=[], i, v, r;
+  for(i=0;i<200;i++){
+    r=rnd();
+    if(r<0.8){ v=58+163*Math.pow(rnd(),4.5); }   // 160 сценариев: масса у 86 тыс.
+    else{ v=44+rnd()*208; }                        // 40 сценариев: хвосты
+    dots.push({v:Math.min(252,Math.max(44,v)), y0:40+rnd()*340, y1:210+(rnd()-0.5)*88});
+  }
+  // Wave order: left-to-right rank -> stagger delay rank*4ms (deterministic).
+  var order=dots.map(function(d,idx){return idx;}).sort(function(a,b){return dots[a].v-dots[b].v;});
+  var NS="http://www.w3.org/2000/svg";
+  var g=document.getElementById("v3-dots");
+  order.forEach(function(idx,rank){
+    var d=dots[idx];
+    var c=document.createElementNS(NS,"circle");
+    var x=X(d.v), inside=(d.v>=58&&d.v<=221);
+    c.setAttribute("cx",x.toFixed(1)); c.setAttribute("cy",d.y1.toFixed(1)); c.setAttribute("r","5");
+    c.setAttribute("class","v3-dot");
+    c.setAttribute("fill",inside?"#8fa8ff":"#5a6fa8");
+    c.style.setProperty("--dy",(d.y0-d.y1).toFixed(1)+"px");
+    c.style.setProperty("--o",inside?"0.9":"0.45");
+    c.style.transitionDelay=(rank*4)+"ms";   // 4 мс stagger, волна слева направо
+    g.appendChild(c);
+  });
+  var svg=document.getElementById("v3-svg");
+  var frame=document.getElementById("v3-frame");
+  var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    svg.classList.add("play");
+    // Corridor outline draws via stroke-dashoffset: a pure function of time.
+    frame.style.transition=reduced?"none":"stroke-dashoffset 1.2s ease 700ms";
+    frame.style.strokeDashoffset="0";
+  });});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Визуализация 4/8 — Наценка: одна модель, два продавца</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: #1a1d23;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+  .v4-wrap { max-width: 720px; margin: 0 auto; padding: 40px 24px 48px; }
+  .v4-kicker { margin: 0 0 8px; font-size: 13px; letter-spacing: .08em;
+    text-transform: uppercase; color: #6b7280; }
+  .v4-title { margin: 0 0 6px; font-size: 28px; line-height: 1.2; }
+  .v4-sub { margin: 0 0 28px; color: #5b6270; font-size: 15px; }
+  .v4-row { margin: 0; }
+  .v4-label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+    margin-bottom: 8px; font-size: 15px; }
+  .v4-name { font-weight: 700; }
+  .v4-model { color: #5b6270; font-size: 13.5px; }
+  .v4-price { margin-left: auto; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .v4-chip { background: #8fa8ff; color: #17203a; border-radius: 999px; padding: 2px 12px; }
+  .v4-track { background: #edf0f4; border-radius: 10px; height: 44px; overflow: hidden; }
+  .v4-fill { height: 100%; border-radius: 10px;
+    transform: scaleX(0); transform-origin: left center; }
+  .v4-wrap.is-loaded .v4-fill { transform: scaleX(1); transition: transform 1s ease-out; }
+  .v4-fill--sel { background: #8fa8ff; }
+  .v4-fill--yan { background: #a6abb4; }
+  .v4-mult { display: flex; align-items: baseline; gap: 14px; margin: 22px 0; }
+  .v4-mult-num { font-size: 44px; font-weight: 800; letter-spacing: -.01em;
+    font-variant-numeric: tabular-nums; }
+  .v4-mult-note { color: #5b6270; font-size: 14px; }
+  .v4-cap { margin: 26px 0 0; color: #5b6270; font-size: 13.5px; }
+  .v4-scale { margin: 6px 0 0; color: #8a91a0; font-size: 12.5px; }
+  @media (prefers-reduced-motion: reduce) {
+    .v4-wrap.is-loaded .v4-fill { transition: none; transform: scaleX(1); }
+  }
+</style>
+</head>
+<body>
+<main class="v4-wrap" aria-label="Сравнение цен двух продавцов одной модели">
+  <p class="v4-kicker">4 / 8 · Наценка</p>
+  <h1 class="v4-title">Одна модель, два продавца</h1>
+  <p class="v4-sub">DeepSeek V4 Flash · входной токен · цены в рублях</p>
+
+  <div class="v4-row">
+    <div class="v4-label">
+      <span class="v4-name">Selectel</span>
+      <span class="v4-model">DeepSeek V4 Flash · вход</span>
+      <span class="v4-price v4-chip">11,59 ₽</span>
+    </div>
+    <div class="v4-track" role="img" aria-label="Полоса Selectel: 11,59 рубля">
+      <div class="v4-fill v4-fill--sel" style="width:3.86%"></div>
+    </div>
+  </div>
+
+  <div class="v4-mult" aria-live="polite">
+    <span class="v4-mult-num" id="v4-mult-num">×1,0</span>
+    <span class="v4-mult-note">разница цен за одну и ту же модель</span>
+  </div>
+
+  <div class="v4-row">
+    <div class="v4-label">
+      <span class="v4-name">Яндекс AI Studio</span>
+      <span class="v4-price">300 ₽</span>
+    </div>
+    <div class="v4-track" role="img" aria-label="Полоса Яндекс AI Studio: 300 рублей">
+      <div class="v4-fill v4-fill--yan" style="width:100%"></div>
+    </div>
+  </div>
+
+  <p class="v4-cap">Одна модель · два продавца · цены с сайтов, рубли</p>
+  <p class="v4-scale">Масштаб полос — линейный</p>
+</main>
+<script>
+(function () {
+  var wrap = document.querySelector('.v4-wrap');
+  var num = document.getElementById('v4-mult-num');
+  var target = 25.9, dur = 1000;
+  function fmt(v) { return '×' + v.toFixed(1).replace('.', ','); }
+  var reduce = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  requestAnimationFrame(function () { wrap.classList.add('is-loaded'); });
+  setTimeout(function () { wrap.classList.add('is-loaded'); }, 60);
+  if (reduce || !num) { if (num) num.textContent = fmt(target); return; }
+  var t0 = null;
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+  var timer = setInterval(function () {
+    var now = Date.now();
+    if (!t0) t0 = now;
+    var p = Math.min((now - t0) / dur, 1);
+    num.textContent = fmt(1 + (target - 1) * easeOut(p));
+    if (p >= 1) clearInterval(timer);
+  }, 50);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-скоринг 20% → 80% — viz-2</title>
+<style>
+  :root{
+    --bg:#0f1730;
+    --ink:#eef2fb;
+    --accent:#8fa8ff;
+    --muted:#8b93ad;
+    --gray:#5a6a8a;
+    --track:rgba(238,242,251,.12);
+    --font-display:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --font-body:'IBM Plex Sans','Onest',system-ui,-apple-system,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{background:var(--bg)}
+  body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 24px;
+    color:var(--ink);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+  }
+  .viz-stage{width:min(1120px,100%)}
+  .kicker{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:16px;
+  }
+  h1{
+    font-family:var(--font-display);
+    font-size:clamp(28px,4.4vw,52px);
+    line-height:1.08;
+    font-weight:700;
+    letter-spacing:-.01em;
+    max-width:20ch;
+  }
+  h1 .x4{color:var(--accent)}
+  .sub{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:clamp(15px,1.8vw,19px);
+    max-width:56ch;
+  }
+  .gauges{
+    margin-top:48px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(20px,4vw,64px);
+  }
+  .gauge{
+    background:rgba(238,242,251,.04);
+    border:1px solid rgba(238,242,251,.1);
+    border-radius:20px;
+    padding:32px 28px 28px;
+    opacity:0;
+    transform:translateY(18px);
+  }
+  .gauge.is-inview{opacity:1;transform:none;transition:opacity .6s ease-out,transform .6s ease-out}
+  .gauge.after{border-color:rgba(143,168,255,.4)}
+  .gauge-tag{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .gauge.before .gauge-tag{color:var(--muted)}
+  .gauge.after .gauge-tag{color:var(--accent)}
+  .gauge svg{display:block;width:100%;height:auto}
+  .gauge .track{stroke:var(--track)}
+  .gauge.before .value{stroke:var(--gray)}
+  .gauge.after .value{stroke:var(--accent)}
+  .track,.value{fill:none;stroke-width:16;stroke-linecap:round}
+  .value{stroke-dasharray:100;stroke-dashoffset:100}
+  .pct{
+    font-family:var(--font-mono);
+    font-size:clamp(44px,6vw,72px);
+    font-weight:600;
+    font-variant-numeric:tabular-nums;
+    line-height:1;
+    margin-top:4px;
+  }
+  .gauge.after .pct{color:var(--accent)}
+  .gauge-label{margin-top:10px;color:var(--muted);font-size:15px}
+  .caption{
+    margin-top:36px;
+    padding-top:20px;
+    border-top:1px solid rgba(238,242,251,.12);
+    color:var(--muted);
+    font-size:14px;
+    font-family:var(--font-mono);
+    letter-spacing:.04em;
+  }
+  @media (max-width:640px){.gauges{grid-template-columns:1fr}}
+  @media (prefers-reduced-motion:reduce){
+    .gauge{opacity:1;transform:none}
+    .gauge.is-inview{transition:none}
+  }
+</style>
+</head>
+<body>
+  <main class="viz-stage" aria-label="AI-скоринг: точность выросла с 20 до 80 процентов">
+    <div class="kicker">AI-скоринг</div>
+    <h1>Точность скоринга резюме <span class="x4">×4</span></h1>
+    <p class="sub">Проверено слепым тестом на 30 анкетах против ручной разметки.</p>
+
+    <div class="gauges" id="gauges">
+      <section class="gauge before" aria-label="До: 20 процентов">
+        <div class="gauge-tag">До</div>
+        <svg viewBox="0 0 260 150" role="img" aria-label="Гейдж: 20 процентов">
+          <path class="track" d="M30,130 A100,100 0 0 1 230,130" pathLength="100"></path>
+          <path class="value" id="arc-before" d="M30,130 A100,100 0 0 1 230,130" pathLength="100"></path>
+        </svg>
+        <div class="pct"><span id="num-before">0</span>%</div>
+        <div class="gauge-label">ручной отбор · попадание в шорт-лист</div>
+      </section>
+
+      <section class="gauge after" aria-label="После: 80 процентов">
+        <div class="gauge-tag">После</div>
+        <svg viewBox="0 0 260 150" role="img" aria-label="Гейдж: 80 процентов">
+          <path class="track" d="M30,130 A100,100 0 0 1 230,130" pathLength="100"></path>
+          <path class="value" id="arc-after" d="M30,130 A100,100 0 0 1 230,130" pathLength="100"></path>
+        </svg>
+        <div class="pct"><span id="num-after">0</span>%</div>
+        <div class="gauge-label">AI-скоринг · попадание в шорт-лист</div>
+      </section>
+    </div>
+
+    <p class="caption">Слепой тест против ручной разметки · 30 анкет</p>
+  </main>
+
+<script>
+(function(){
+  "use strict";
+  var DURATION = 1200;
+  var TARGET_BEFORE = 20;
+  var TARGET_AFTER = 80;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var arcBefore = document.getElementById("arc-before");
+  var arcAfter = document.getElementById("arc-after");
+  var numBefore = document.getElementById("num-before");
+  var numAfter = document.getElementById("num-after");
+  var gauges = document.getElementById("gauges");
+  var started = false;
+
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function setFinal(){
+    arcBefore.style.strokeDashoffset = String(100 - TARGET_BEFORE);
+    arcAfter.style.strokeDashoffset = String(100 - TARGET_AFTER);
+    numBefore.textContent = String(TARGET_BEFORE);
+    numAfter.textContent = String(TARGET_AFTER);
+  }
+
+  function animate(){
+    if(started) return;
+    started = true;
+    var cards = gauges.querySelectorAll(".gauge");
+    for(var i = 0; i < cards.length; i++){ cards[i].classList.add("is-inview"); }
+    if(reduceMotion){ setFinal(); return; }
+
+    /* Дуги: WAAPI, 1.2с, ease-out, обе одновременно */
+    var animOpts = { duration: DURATION, easing: "ease-out", fill: "forwards" };
+    arcBefore.animate(
+      [{ strokeDashoffset: "100" }, { strokeDashoffset: String(100 - TARGET_BEFORE) }],
+      animOpts
+    );
+    arcAfter.animate(
+      [{ strokeDashoffset: "100" }, { strokeDashoffset: String(100 - TARGET_AFTER) }],
+      animOpts
+    );
+
+    /* Числа: детерминированный count-up на rAF — чистая функция времени */
+    var t0 = null;
+    var done = false;
+    function frame(now){
+      if(done){ return; }
+      if(t0 === null){ t0 = now; }
+      var p = Math.min((now - t0) / DURATION, 1);
+      var e = easeOutCubic(p);
+      numBefore.textContent = String(Math.round(TARGET_BEFORE * e));
+      numAfter.textContent = String(Math.round(TARGET_AFTER * e));
+      if(p < 1){ requestAnimationFrame(frame); }
+      else { done = true; setFinal(); }
+    }
+    requestAnimationFrame(frame);
+    /* Watchdog: гарантирует финальное состояние 20/80, даже если rAF
+       троттлится (фоновый/headless таб). Детерминирован: ставит те же
+       константы, что и штатный финал; в живом браузере rAF завершает
+       раньше (1.2с < 1.7с), watchdog не срабатывает. */
+    setTimeout(function(){ if(!done){ done = true; setFinal(); } }, DURATION + 500);
+  }
+
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      for(var i = 0; i < entries.length; i++){
+        if(entries[i].isIntersecting){ animate(); io.disconnect(); }
+      }
+    }, { threshold: 0.25 });
+    io.observe(gauges);
+  }
+  /* Триггер «по загрузке»: сцена уже в видимой области — запуск сразу
+     (в headless-рендере IntersectionObserver может не срабатывать). */
+  var rect = gauges.getBoundingClientRect();
+  if(rect.top < window.innerHeight && rect.bottom > 0){ animate(); }
+})();
+</script>
+</body>
+</html>

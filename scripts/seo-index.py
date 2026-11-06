@@ -26,7 +26,7 @@ LINKEDIN = "https://www.linkedin.com/in/victor-zaitsev-product/"
 
 # страницы, которые отдаём поисковикам
 INDEXABLE = [
-    "index.html", "clarity.html", "calculator.html", "system.html", "market.html",
+    "index.html", "clarity.html", "service.html", "calculator.html", "system.html", "market.html",
     "value-chain.html", "channel.html", "nacenka.html",
     "agent-failures.html", "lost-accounts.html", "proof.html", "pay.html",
     "oferta.html", "policy.html",
