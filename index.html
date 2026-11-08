@@ -62,6 +62,8 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(28px
 .cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .btn{display:inline-flex;align-items:center;min-height:52px;padding:13px 28px;border-radius:10px;font-size:15.5px;font-weight:500;text-decoration:none;border:1px solid transparent;transition:background .18s var(--ease),border-color .18s var(--ease),color .18s var(--ease)}
 .btn-p{background:var(--btn);color:var(--btn-t);box-shadow:0 1px 2px rgba(16,20,31,.18)}
+.btn-g{border-color:var(--hair);color:var(--navy);background:transparent}
+.btn-g:hover{border-color:var(--navy)}
 .btn-p:hover{background:var(--btn-h)}
 .zone-dark .btn-g{border-color:rgba(255,255,255,.22);color:#eef2fb}
 .zone-dark .btn-g:hover{border-color:rgba(143,168,255,.55);color:#8fa8ff}
@@ -199,9 +201,11 @@ main section:first-child{border-top:0}
 .tlstep:last-child b{font-weight:500}
 .afline{margin-top:clamp(36px,5vw,56px);font-size:clamp(17px,1.5vw,19px);max-width:52ch}
 .afquote{margin:clamp(28px,4vw,44px) 0 0;font-family:var(--disp);font-weight:500;font-size:clamp(24px,2.9vw,36px);line-height:1.38;letter-spacing:-.015em;color:var(--ink);max-width:38ch}
-/* ═══ кто делает — фото-призрак + hairline-таблица ═══ */
+/* ═══ кто делает — живое фото + hairline-таблица ═══ */
 .whogrid{display:grid;grid-template-columns:minmax(200px,240px) minmax(0,1fr);gap:clamp(32px,5vw,64px);align-items:start;margin-top:clamp(32px,5vw,52px)}
-.wphoto{width:100%;max-width:260px;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid var(--hair);filter:grayscale(1);opacity:.15;display:block}
+.wshot{position:relative;width:100%;max-width:260px;border-radius:14px;overflow:hidden;line-height:0}
+.wshot::after{content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;background:radial-gradient(115% 95% at 50% 42%,rgba(9,14,30,0) 55%,rgba(9,14,30,.22) 100%)}
+.wphoto{width:100%;max-width:260px;aspect-ratio:1;object-fit:cover;object-position:50% 30%;border-radius:14px;border:1px solid var(--hair);filter:contrast(1.06) brightness(1.04) saturate(.95);opacity:1;display:block}
 .wbio{font-size:clamp(17px,1.6vw,19px);color:var(--body);max-width:56ch;margin-bottom:clamp(28px,4vw,44px)}
 .wbio b{color:var(--ink);font-weight:500}
 .wtbl{border-top:1px solid var(--hair)}
@@ -222,12 +226,16 @@ main section:first-child{border-top:0}
 .door.main .dk{color:#8fa8ff}
 .door.main .dt{font-size:clamp(26px,2.8vw,34px);color:#f2f6ff;max-width:16ch}
 .door.main .dd{color:#c6d2f2;font-size:17px;max-width:34ch}
-.door.main .go{color:#8fa8ff;margin-top:auto;padding-top:18px}
+.door.main .go{margin-top:auto;padding:13px 22px;align-self:flex-start;background:#8fa8ff;color:#0e1631;border-radius:10px;font:500 15.5px/1.2 var(--sans);letter-spacing:0;transition:background .18s var(--ease)}
+.door.main:hover .go{background:#a9bcff}
+.door:not(.main) .go{color:var(--meta);font-size:14.5px}
+.door:not(.main):hover .go{color:var(--navy)}
 .door.main:hover{border-color:var(--navy2);background:var(--navy2)}
 .endz .btn-p{border:1px solid rgba(143,168,255,.55)}
 .endz .btn-p:hover{border-color:#8fa8ff}
 .quiet{font-size:15px;color:var(--meta);margin-top:28px}
 .quiet a{color:var(--navy)}
+.endz .quiet{color:rgba(238,242,251,.72)}.endz .quiet a{color:#8fa8ff}
 /* ── футер-зона: одна строка-миссия + CTA (финал-миссия как отдельный блок снята) ── */
 .endz{margin-top:clamp(72px,9vw,120px)}
 .end{padding:clamp(48px,6vw,72px) 0 clamp(48px,6vw,64px)}
@@ -237,7 +245,7 @@ footer{border-top:1px solid var(--hair);padding:24px 24px 32px;font:500 14px/1.7
 footer a{color:var(--navy);text-decoration:none}
 footer a:hover{text-decoration:underline}
 /* ── адаптив ── */
-@media(max-width:920px){.nums{grid-template-columns:1fr;gap:26px}.nums .narr{display:none}.shead{grid-template-columns:1fr}.tlgrid{grid-template-columns:1fr;gap:22px}.tlstep{display:grid;grid-template-columns:130px minmax(0,1fr);gap:4px 18px;align-items:baseline}.tlstep i{margin-bottom:0}.whogrid{grid-template-columns:1fr}.wphoto{max-width:220px}.cse,.cse.flip,.cse.lead{grid-template-columns:1fr}.cse.flip .cvis{order:0}.cse.flip .ctx{order:1}.cvis{max-width:420px}.doors{grid-template-columns:1fr}.door.main{grid-row:auto}}
+@media(max-width:920px){.nums{grid-template-columns:1fr;gap:26px}.nums .narr{display:none}.shead{grid-template-columns:1fr}.tlgrid{grid-template-columns:1fr;gap:22px}.tlstep{display:grid;grid-template-columns:130px minmax(0,1fr);gap:4px 18px;align-items:baseline}.tlstep i{margin-bottom:0}.whogrid{grid-template-columns:1fr}.wshot,.wphoto{max-width:220px}.cse,.cse.flip,.cse.lead{grid-template-columns:1fr}.cse.flip .cvis{order:0}.cse.flip .ctx{order:1}.cvis{max-width:420px}.doors{grid-template-columns:1fr}.door.main{grid-row:auto}}
 @media(max-width:720px){.nav .nav-in{gap:12px;padding:12px 16px}.nav nav{gap:14px;font-size:14px}.nav nav a{padding:7px 0}.hero{min-height:0;padding:28px 0 32px}h1{font-size:34px;letter-spacing:-.02em}.kicker{margin-bottom:14px}.lede{margin-bottom:20px}.btn{min-height:48px;padding:11px 22px}.trustline{margin-top:20px;padding:12px 0}.tlstep{grid-template-columns:1fr;gap:4px}.plrow{grid-template-columns:1fr;gap:3px;padding:14px 0}}
 @media(max-width:540px){.segs{gap:8px}.seg{padding:12px 18px;font-size:16px}.cmsg{max-width:92%}.wrow{grid-template-columns:1fr;gap:4px}.wrow b{font-size:26px}}
 @media (prefers-reduced-motion:reduce){
@@ -248,6 +256,7 @@ footer a:hover{text-decoration:underline}
   .msvg [data-d],.msvg [data-p],.msvg .grow{transition:none}
 }
 </style>
+<link rel="stylesheet" href="ds-mnav.css?v=20261108"/>
 </head>
 <body>
 <script>document.documentElement.className+=' js';</script>
@@ -344,7 +353,7 @@ footer a:hover{text-decoration:underline}
 </div>
 <div class="pcta">
 <span class="poffer" id="pOffer">Сборка под личные задачи — <b>15 000 ₽</b>, критерии приёмки до старта</span>
-<a class="btn btn-p" id="pGo" href="calculator.html">Собрать за 15 000 ₽</a>
+<a class="btn btn-g" id="pGo" href="calculator.html">Собрать за 15 000 ₽</a>
 <span class="pnote">полка: гайд 5 000 · подбор 7 000 · сборка 15–60 000 ₽ по твоей форме · поддержка 15–40 000 ₽/мес — <a href="service.html">вся лестница</a></span>
 </div>
 </div>
@@ -463,7 +472,7 @@ footer a:hover{text-decoration:underline}
 <p class="s">Внедряю лично — без команды исполнителей и без передачи в подряд.</p>
 </div>
 <div class="whogrid">
-<img class="wphoto" src="viktor.jpg" alt="Виктор Зайцев" width="260" height="260" loading="lazy">
+<div class="wshot"><img class="wphoto" src="viktor.jpg" alt="Виктор Зайцев" width="260" height="260" loading="lazy"></div>
 <div>
 <p class="wbio"><b>Виктор Зайцев</b> — продакт, внедряю ИИ-агенты. Свои связки — WorkWay, Chill Music Lab.</p>
 <div class="wtbl">
@@ -491,11 +500,11 @@ footer a:hover{text-decoration:underline}
 <span class="dd">Калькулятор связки: 7 вопросов — твоя связка в рублях, без регистрации.</span>
 <span class="go">открыть калькулятор →</span>
 </a>
-<a class="door" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B5%D1%81%D1%82-%D0%B4%D1%80%D0%B0%D0%B9%D0%B2%3A%20%D0%B2%D0%BE%D1%82%20%D0%BC%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%20%E2%80%94%20%D0%B2%D0%B5%D1%80%D0%BD%D0%B8%20%D0%BF%D1%80%D0%BE%D0%B3%D0%BE%D0%BD%20%D0%B8%20%D0%B7%D0%B0%D0%BC%D0%B5%D1%80.">
+<a class="door" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%83%D1%8E%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%BB%D1%8E%3A%20%D0%B2%D0%BE%D1%82%20%D0%BC%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%20%E2%80%94%20%D0%B2%D0%B5%D1%80%D0%BD%D0%B8%20%D0%BF%D1%80%D0%BE%D0%B3%D0%BE%D0%BD%20%D0%B8%20%D0%B7%D0%B0%D0%BC%D0%B5%D1%80.">
 <span class="dk">шаг 2 · 0 ₽</span>
-<span class="dt">Тест-драйв для скептика</span>
+<span class="dt">Бесплатная неделя для скептика</span>
 <span class="dd">Назови шаг из пути клиента — заявки, контент, исследования — верну прогон агента на твоих данных и замер: что забирает агент, что остаётся руками. Сборка — после согласования критериев.</span>
-<span class="go">взять тест-драйв →</span>
+<span class="go">забрать бесплатно →</span>
 </a>
 <a class="door" href="https://t.me/discoverysystem">
 <span class="dk">шаг 3 · 0 ₽</span>
@@ -516,8 +525,8 @@ footer a:hover{text-decoration:underline}
 <p class="endline">Агент остаётся твоим. Данные — твои.</p>
 <div class="cta">
 <a class="btn btn-p" href="calculator.html">Посчитать свою связку</a>
-<a class="btn btn-g" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%3A%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D1%83%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81.">Написать лично</a>
 </div>
+<p class="quiet">или напиши лично — <a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%3A%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D1%83%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D0%BE%D0%B9%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81.">t.me/victorpinksight</a> · сигналы и разборы — <a href="https://t.me/discoverysystem">в канале</a></p>
 </div>
 </div>
 
@@ -757,5 +766,6 @@ var io=new IntersectionObserver(function(es){
 document.querySelectorAll('.msvg').forEach(function(s){io.observe(s);});
 })();
 </script>
+<script src="ds-mnav.js?v=20261108" defer></script>
 </body>
 </html>

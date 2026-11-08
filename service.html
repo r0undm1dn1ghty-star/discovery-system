@@ -47,7 +47,9 @@ h1 em{font-style:normal;color:var(--accent)}
 .zone-dark .btn-p{box-shadow:0 2px 18px var(--glow)}
 .zone-dark .btn-g{border-color:rgba(255,255,255,.22);color:#eef2fb}
 .zone-dark .btn-g:hover{border-color:rgba(143,168,255,.55);color:#8fa8ff}
-.btn-s{min-height:46px;padding:11px 22px;font-size:14.5px}
+.btn-s{min-height:48px;padding:12px 22px;font-size:15px}
+.quiet{font-size:15px;color:rgba(238,242,251,.72);margin-top:24px}
+.quiet a{color:#8fa8ff}
 /* ── секции ── */
 main{display:block}
 section{padding:clamp(64px,8vw,110px) 0 0}
@@ -216,6 +218,7 @@ header.nav a.brand{flex-basis:100%}
 }
 @media(prefers-reduced-motion:reduce){.js .fx,.js .panel.on,.js .panel.on .stag,.js .modal-card{animation:none}.door,.door:hover{transform:none;transition:none}.js .fb-line{stroke-dasharray:none;stroke-dashoffset:0;transition:none}.shelf-row{transition:none}}
 </style>
+<link rel="stylesheet" href="ds-mnav.css?v=20261108"/>
 </head>
 <body>
 <script>document.documentElement.className+=' js';</script>
@@ -530,7 +533,7 @@ header.nav a.brand{flex-basis:100%}
 <span class="x" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>
 </button>
 <button type="button" class="shelf-row fx" data-offer="trial">
-<span class="n">Тест-драйв</span>
+<span class="n">Бесплатная неделя</span>
 <span class="p">0 ₽</span>
 <span class="d">скиллы в своём чат-боте · 7 дней · твои задачи</span>
 <span class="x" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>
@@ -562,7 +565,7 @@ header.nav a.brand{flex-basis:100%}
 </dl>
 <div id="omLvl"></div>
 <div class="om-cta">
-<a class="btn btn-p btn-s" id="omBtn" href="https://t.me/victorpinksight">Описать задачу</a>
+<a class="btn btn-p btn-s" id="omBtn" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A1%D0%B5%D1%80%D0%B2%D0%B8%D1%81%C2%BB%20%E2%80%94%20%D0%BE%D0%BF%D0%B8%D1%88%D1%83%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83%2C%20%D0%BF%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%20%D0%B8%20%D1%86%D0%B5%D0%BD%D1%83.">Описать задачу</a>
 <a class="btn btn-g btn-s om-ch" id="omCh" href="https://t.me/discoverysystem">Канал: разборы и сигналы рынка</a>
 <span class="om-note">оплата — после согласования критериев приёмки</span>
 </div>
@@ -575,14 +578,13 @@ header.nav a.brand{flex-basis:100%}
 <p class="fx">Опиши задачу в личке — отвечаю лично, без ботов. Если удобнее сначала прикинуть — калькулятор покажет связку в рублях за минуту.</p>
 <div class="cta fx" style="animation-delay:.14s">
 <a class="btn btn-p" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9E%D0%BF%D0%B8%D1%88%D1%83%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83%20%E2%80%94%20%D0%BF%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%20%D0%B8%20%D1%86%D0%B5%D0%BD%D1%83.">Описать задачу</a>
-<a class="btn btn-g" href="calculator.html">Посчитать связку</a>
-<a class="btn btn-g" href="https://t.me/discoverysystem">Канал: разборы и сигналы рынка</a>
 </div>
+<p class="quiet">или сначала прикинуть — <a href="calculator.html">калькулятор 0 ₽</a> · сигналы и разборы — <a href="https://t.me/discoverysystem">в канале</a></p>
 </div>
 </div>
 
 <footer><div class="wrap">
-<span>Личка: <a href="https://t.me/victorpinksight">t.me/victorpinksight</a></span>
+<span>Личка: <a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A1%D0%B5%D1%80%D0%B2%D0%B8%D1%81%C2%BB%20%E2%80%94%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D0%B4%D0%B2%D0%B5%D1%80%D0%B8%20%D0%B8%20%D1%86%D0%B5%D0%BD%D0%B5.">t.me/victorpinksight</a></span>
 <span>Канал: <a href="https://t.me/discoverysystem">t.me/discoverysystem</a></span>
 <span>Почта: <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></span>
 <span>Отвечаю лично, без ботов</span>
@@ -653,7 +655,7 @@ rescue:{kick:'аудит → замер до/после',ctx:'шаг: у теб�
 guide:{kick:'вход в связки РФ · без VPN',ctx:'шаг: ты перебежчик — Claude не платится, VPN падает; гайд — первый ход после потери подписки, внедрение пойдёт следом',title:'Гайд «20 конфигураций»',what:'20 сборок: какие живут в РФ без VPN, провайдеры модели и хостинга, адаптация под свою рутину за вечер.',when:'сборка своими руками за 3–4 часа',accept:'Сборка поднимается <b>без VPN</b> по шагам из гайда. Обучение агента под твои задачи — в переписке, без созвонов.',need:'3–4 часа твоего времени и твой компьютер. Гайд ведут по шагам — код писать не надо.',btn:'Забрать гайд',href:'https://t.me/victorpinksight'},
 pick:{kick:'отдельно от внедрений · архитектура',ctx:'шаг: считаешь в калькуляторе или выбираешь между дверями — подбор даёт план до денег на внедрение',title:'Подбор индивидуальный',what:'Архитектура связки под твою задачу: состав, провайдеры, этапы. Отдельно от внедрений.',when:'1–2 дня',accept:'На руках связка, провайдеры и этапы. Принимаешь план — дальше решаешь сам: ставить своими руками или заказать установку.',need:'Одно описание задачи: что болит и на чём сидишь (CRM, Авито, таблицы). Остальное — подбираю сам.',btn:'Заказать подбор',href:'https://t.me/victorpinksight'},
 care:{kick:'3 уровня · именованный чинильщик',ctx:'шаг: агент уже работает и приносит деньги — поддержка отвечает за то, чтобы он не перестал',title:'Поддержки',what:'<b>15 000 ₽/мес</b> — персональная: чинит падения и держит интеграции живыми, ответ до 4 часов в рабочие дни. Годовой пакет — 144 000 ₽ (12 000 ₽/мес).<br><b>25 000 ₽/мес</b> — техподдержка агента для МСБ: плюс память и промпты обновляются под твои процессы, проверка сценариев, отчёт с цифрами; SLA 4 часа.<br><b>40 000 ₽/мес</b> — продуктовый отдел: плюс до двух новых сценариев в месяц по твоим процессам; SLA 2 часа, созвон 45 минут.<br>Именованный исполнитель — я, без дежурных.',lvls:[['Персональная','15 000 ₽/мес — падения и интеграции, ответ до 4 часов'],['Техподдержка МСБ','25 000 ₽/мес — плюс обновление памяти и промптов, отчёт с цифрами'],['Продуктовый отдел','40 000 ₽/мес — плюс два новых сценария в месяц, SLA 2 часа']],when:'ответ до 4 часов в рабочие дни',accept:'Падение закрывается, причина названа — в отчёте с цифрами. Отмена в любой месяц, без штрафов.',need:'Доступ к сборке, чтобы чинить без созвонов. Остальное — пишу сам, ты только подтверждаешь, что снова работает.',btn:'Описать задачу',href:'https://t.me/victorpinksight'},
-trial:{kick:'7 дней · твои задачи',ctx:'шаг: сомневаешься между дверями — неделя с агентом снимает сомнение до денег',title:'Тест-драйв',what:'Неделя реальной работы в твоём чат-боте: агент берёт скиллы Discovery под твою задачу — заявки, переписка, отчёты. Ставлю на своём, отдаю готовое; доступы — твои.',when:'7 дней',accept:'По итогам недели ты сам решаешь, брать установку или нет.',need:'Одна задача из твоей жизни и доступ в свой чат-бот. Семь дней работаешь с агентом на реальном — не на демо-данных.',btn:'Взять тест-драйв',href:'https://t.me/victorpinksight'},
+trial:{kick:'7 дней · твои задачи',ctx:'шаг: сомневаешься между дверями — неделя с агентом снимает сомнение до денег',title:'Бесплатная неделя',what:'Неделя реальной работы в твоём чат-боте: агент берёт скиллы Discovery под твою задачу — заявки, переписка, отчёты. Ставлю на своём, отдаю готовое; доступы — твои.',when:'7 дней',accept:'По итогам недели ты сам решаешь, брать установку или нет.',need:'Одна задача из твоей жизни и доступ в свой чат-бот. Семь дней работаешь с агентом на реальном — не на демо-данных.',btn:'Забрать бесплатно',href:'https://t.me/victorpinksight'},
 calc:{kick:'без заявки',title:'Калькулятор и канал',what:'Калькулятор считает связку в рублях за минуту. Канал — сигналы рынка с цифрой, источником и датой.',when:'сразу',accept:'Считаешь сам, никто ничего не продаёт.',btn:'Открыть калькулятор',href:'calculator.html'}
 };
 function priceOf(id){var r=document.querySelector('.shelf-row[data-offer="'+id+'"] .p');return r?r.textContent:'';}
@@ -752,5 +754,6 @@ document.addEventListener('visibilitychange',function(){document.hidden?stop():s
 resize();if(STATIC)drawStatic();else start();
 })();
 </script>
+<script src="ds-mnav.js?v=20261108" defer></script>
 </body>
 </html>
