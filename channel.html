@@ -141,6 +141,25 @@ footer a:hover{color:#8fa8ff}
 @media(max-width:540px){.items,.doors{grid-template-columns:1fr}.sigr{grid-template-columns:1fr}}
 @media(max-width:720px){header.nav .nav-in{flex-wrap:wrap;gap:10px 18px}header.nav nav{margin-left:0;flex-wrap:wrap;gap:6px 16px}}
 @media(prefers-reduced-motion:reduce){.js .fx{opacity:1;transform:none;transition:none}}
+
+/* карточки сигналов — самостоятельные объекты */
+.siggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:22px}
+.sigc{border:1px solid var(--hair);border-radius:14px;padding:22px 20px;background:#fff;display:flex;flex-direction:column;gap:10px}
+.sigc-num{font:500 clamp(32px,3vw,44px)/1 var(--mono);color:var(--ink);letter-spacing:-.02em}
+.sigc-num small{font-size:16px;font-weight:500;color:var(--meta);margin-left:6px}
+.sigc-fact{font-size:16.5px;line-height:1.55;color:var(--ink);margin:0}
+.sigc-follow{font-size:15.5px;line-height:1.5;color:var(--acc-ink,#2f4bb5);margin:0;font-weight:500}
+.sigc-src{font:400 14px/1.5 var(--mono);color:var(--meta);margin:auto 0 0;padding-top:8px;border-top:1px solid var(--hair)}
+/* конвейер */
+.pipe{list-style:none;padding:0;margin:14px 0 0;border-top:1px solid var(--hair)}
+.pipe li{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--hair);align-items:start}
+.pipe-n{font:500 15px/1 var(--mono);color:var(--acc,#8fa8ff)}
+.pipe b{display:block;font-size:17px;color:var(--ink);margin-bottom:4px}
+.pipe p{margin:0;font-size:15.5px;line-height:1.55;color:var(--meta);max-width:62ch}
+@media(max-width:560px){
+ .siggrid{grid-template-columns:1fr}
+ .pipe li{grid-template-columns:40px 1fr;gap:10px}
+}
 </style>
 <script>document.documentElement.className+=' js';</script>
 <link rel="stylesheet" href="ds-mnav.css?v=20261108"/>
@@ -214,7 +233,7 @@ footer a:hover{color:#8fa8ff}
 </div>
 <div class="mapgrid">
 <div class="mapbox fx">
-<img src="map-death-300.gif" alt="Карта смерти рынков в движении: 300 объектов в состояниях живой, съедаемый и мёртвый, без названий" width="900" height="569" loading="lazy">
+<img src="map-death-graph-clean.gif" alt="Граф карты смерти рынков: 300 рынков и 16 сил, которые забирают спрос" width="900" height="570" loading="lazy">
 <div class="legend">
 <span><i style="background:#3f5c4d;border:1px solid #6f8f7f"></i>живой</span>
 <span><i style="background:#5c4d33;border:1px solid #a08455"></i>съедаемый</span>
@@ -246,39 +265,47 @@ footer a:hover{color:#8fa8ff}
 <p class="ssrc">источник: открытые прайсы Яндекс AI Studio и Selectel · замер 27.09.2026</p>
 </div>
 </figure>
-<div class="sigtbl">
-<div class="sigr fx">
-<div class="num">×25.9</div>
-<div><p class="fact">Одна и та же модель у двух продавцов: <b>300 ₽ против 11,59 ₽</b> за 1 млн токенов входа (DeepSeek V4 Flash).</p>
-<p class="src">источник: открытые прайсы Яндекс AI Studio и Selectel · замер 27.09.2026</p></div>
+<div class="siggrid"><article class="sigc fx">
+  <div class="sigc-num">99,5%<small>обещают</small></div>
+  <p class="sigc-fact">Продавцы баз обещают точность <b>до 99,5%</b>. В замере клиента из 4 200 контактов рабочих оказалось <b>36%</b>.</p>
+  <p class="sigc-follow">Платят за объём, а не за рабочий контакт — вот где дыра.</p>
+  <p class="sigc-src">источник: прайс Lead Hub (от 15 000 ₽) · замер yestcontact.ru, 27.04.2026</p>
+</article>
+<article class="sigc fx">
+  <div class="sigc-num">×2,9</div>
+  <p class="sigc-fact">Бухгалтерия без ввода первички — <b>2 400 ₽/мес</b>. С выпиской документов — <b>7 000 ₽</b> за те же налоги.</p>
+  <p class="sigc-follow">Самая дорогая часть учёта — бумаги, а не проводки.</p>
+  <p class="sigc-src">источник: прайс buh-guru.ru · срез 09.11.2026</p>
+</article>
+<article class="sigc fx">
+  <div class="sigc-num">20–50<small>ч/мес</small></div>
+  <p class="sigc-fact">Столько уходит на сверку денежных средств. <b>94% команд</b> держат это в таблицах.</p>
+  <p class="sigc-follow">Сверка — не разовая задача, а ежемесячный налог на время.</p>
+  <p class="sigc-src">источник: Ledge, бенчмарк закрытия месяца 2025 · цит. vc.ru, 28.09.2026</p>
+</article>
+<article class="sigc fx">
+  <div class="sigc-num">8,2<small>трлн ₽</small></div>
+  <p class="sigc-fact">Просроченная кредиторская задолженность предприятий РФ, <b>+20% за год</b>.</p>
+  <p class="sigc-follow">Дебиторка — не исключение, а система. Её надо вести, а не вспоминать.</p>
+  <p class="sigc-src">источник: vc.ru со ссылкой на РБК · 24.04.2026</p>
+</article>
+<article class="sigc fx">
+  <div class="sigc-num">×25,9</div>
+  <p class="sigc-fact">Одна и та же модель у двух продавцов: <b>300 ₽ против 11,59 ₽</b> за 1 млн токенов входа.</p>
+  <p class="sigc-follow">Наценка живёт в прайсе, а не в модели.</p>
+  <p class="sigc-src">источник: открытые прайсы Яндекс AI Studio и Selectel · замер 27.09.2026</p>
+</article></div>
+<div class="shead fx" style="margin-top:38px">
+<h2>Как это собирается</h2>
+<p class="s">Один сигнал — это не пост руками. Это конвейер, в котором человек стоит на последнем шаге.</p>
 </div>
-<div class="sigr fx">
-<div class="num">1 100 <small>₽/мес</small></div>
-<div><p class="fact">TCO агента — против <b>16 250–65 000 ₽/мес</b> у сотрудника на той же рутине.</p>
-<p class="src">источник: расчёт Discovery System (модель + хостинг) · тарифы сверены 26.10.2026</p></div>
-</div>
-<div class="sigr fx">
-<div class="num">96 <small>кейсов</small></div>
-<div><p class="fact">Разобранных провалов внедрений — <b>в прод доходит 7–10%</b>. Выживают проекты с приёмкой.</p>
-<p class="src">источник: досье agent-failures, РФ · обновлено 31.10.2026</p></div>
-</div>
-<div class="sigr fx">
-<div class="num">60 <small>млрд ₽</small></div>
-<div><p class="fact">Рынок генеративного ИИ в РФ, но <b>70% экспериментов не доходят до прода</b>. Ломаются на внедрении, не на моделях.</p>
-<p class="src">источник: Коммерсантъ (обзор рынка генИИ), данные «К2 НейроТех» · 23.09.2026</p></div>
-</div>
-<div class="sigr fx">
-<div class="num">×10 <small>разброс</small></div>
-<div><p class="fact">Цены на ИИ-курсы для руководителей: <b>49 500 против 286 000 ₽</b> за похожие обещания. Критериев рынок не задал.</p>
-<p class="src">источник: Хабр, обзор 7 программ (No1062988) · 26.07.2026</p></div>
-</div>
-<div class="sigr fx">
-<div class="num">63% <small>против 47%</small></div>
-<div><p class="fact">Точность поиска тёплых заказов своим инструментом — против наивного поиска по словам. Контрольная: <b>79% на 286 постах</b>.</p>
-<p class="src">источник: замер Discovery System, EVAL-методика в репо · 110 карточек размечены вручную</p></div>
-</div>
-</div>
-</section>
+<ol class="pipe">
+<li class="fx"><span class="pipe-n">01</span><div><b>Радар источников</b><p>Публичные доски и живые чаты: заказы, вопросы владельцев, найм на рутину.</p></div></li>
+<li class="fx"><span class="pipe-n">02</span><div><b>Скоринг с порогом</b><p>Отсев вакансий, курсов, мёртвых постов, чужих профилей и бюджетов ниже входа. Порог выводится из цены ошибки, а не из головы.</p></div></li>
+<li class="fx"><span class="pipe-n">03</span><div><b>Карточка</b><p>Число-триггер, одна фраза «что произошло», источник с датой, вывод для читателя.</p></div></li>
+<li class="fx"><span class="pipe-n">04</span><div><b>Проверка человеком</b><p>Карточка попадает в очередь на подтверждение. Без «ок» она не уходит в канал.</p></div></li>
+<li class="fx"><span class="pipe-n">05</span><div><b>Публикация</b><p>После подтверждения — в канал и в архив сигналов. Всё, что не подтверждено, остаётся в очереди и не выдаётся за факт.</p></div></li>
+</ol></section>
 </div>
 
 <div class="wrap">

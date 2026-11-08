@@ -27,7 +27,7 @@
 <meta name="twitter:title" content="Discovery System — заявка не ждёт утра">
 <meta name="twitter:description" content="Агент берёт рутину заявок, переписки, учёта и отчётов. Критерии приёмки до старта, оплата рублями, без VPN.">
 <meta name="twitter:image" content="https://discovery-system.ru/og-cover.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-5.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов. Агент на твоём компьютере, данные у тебя, без VPN — 2–4К ₽/мес. Скиллы, сигналы, системы.","founder":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem","https://www.linkedin.com/in/victor-zaitsev-product/"]},"sameAs":["https://github.com/r0undm1dn1ghty-star/discovery-system","https://t.me/discoverysystem","https://vc.ru/id6099688","https://x.com/d1sc0v3rysyst3m","https://www.linkedin.com/in/victor-zaitsev-product/"],"license":"https://creativecommons.org/licenses/by/4.0/","priceRange":"5 000–60 000 ₽","areaServed":{"@type":"Country","name":"Россия"},"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"knowsAbout":["ИИ-агенты","внедрение ИИ в МСБ","локальные LLM","152-ФЗ","автоматизация рутины"],"makesOffer":[{"@type":"Offer","name":"Гайд 20 конфигураций","price":"5000","priceCurrency":"RUB"},{"@type":"Offer","name":"Подбор конфигурации","price":"7000","priceCurrency":"RUB"},{"@type":"Offer","name":"Установка под ключ","priceSpecification":{"@type":"PriceSpecification","minPrice":"15000","maxPrice":"60000","priceCurrency":"RUB"}},{"@type":"Offer","name":"Оптимизация ИИ-агента","priceSpecification":{"@type":"PriceSpecification","minPrice":"25000","priceCurrency":"RUB"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://discovery-system.ru/#organization","name":"Discovery System","url":"https://discovery-system.ru/","logo":{"@type":"ImageObject","url":"https://discovery-system.ru/logo-5.png","width":220,"height":40},"description":"Рыночная разведка в мире ИИ-агентов. Агент на твоём компьютере, данные у тебя, без VPN — 2–4К ₽/мес. Скиллы, сигналы, системы.","founder":{"@type":"Person","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem","https://www.linkedin.com/in/victor-zaitsev-product/"]},"sameAs":["https://github.com/r0undm1dn1ghty-star/discovery-system","https://t.me/discoverysystem","https://vc.ru/id6099688","https://x.com/d1sc0v3rysyst3m","https://www.linkedin.com/in/victor-zaitsev-product/"],"license":"https://creativecommons.org/licenses/by/4.0/","priceRange":"4 000–60 000 ₽","areaServed":{"@type":"Country","name":"Россия"},"address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU"},"knowsAbout":["ИИ-агенты","внедрение ИИ в МСБ","локальные LLM","152-ФЗ","автоматизация рутины"],"makesOffer":[{"@type":"Offer","name":"Гайд 20 конфигураций","price":"5000","priceCurrency":"RUB"},{"@type":"Offer","name":"Подбор конфигурации","price":"7000","priceCurrency":"RUB"},{"@type":"Offer","name":"Установка под ключ","priceSpecification":{"@type":"PriceSpecification","minPrice":"4000","maxPrice":"60000","priceCurrency":"RUB"}},{"@type":"Offer","name":"Оптимизация ИИ-агента","priceSpecification":{"@type":"PriceSpecification","minPrice":"25000","priceCurrency":"RUB"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Discovery System","url":"https://discovery-system.ru/","description":"Рыночная разведка в мире ИИ-агентов: скиллы, сигналы, системы. Своя связка, которая твоя.","inLanguage":"ru"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","@id":"https://discovery-system.ru/#author","name":"Виктор Зайцев","url":"https://discovery-system.ru/#author","jobTitle":"Основатель Discovery System","knowsAbout":["AI-агенты","рыночная разведка","продуктовый консалтинг","автоматизация МСБ"],"sameAs":["https://github.com/r0undm1dn1ghty-star","https://t.me/discoverysystem","https://vc.ru/id6099688","https://www.linkedin.com/in/victor-zaitsev-product/"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -255,6 +255,18 @@ footer a:hover{text-decoration:underline}
   .cmsg.line-in,.syschip.line-in,.daychip.line-in{animation:none}
   .msvg [data-d],.msvg [data-p],.msvg .grow{transition:none}
 }
+
+/* ── герой: текст слева, витрина телеграм-чатов справа ── */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:clamp(24px,4vw,54px);
+ max-width:1060px;align-items:center;min-height:min(calc(100svh - 56px),820px);padding:22px 0}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.hero h1{font-size:clamp(34px,3.7vw,54px)}
+@media(max-width:980px){
+ .hero{grid-template-columns:1fr;min-height:0;padding:22px 0 26px;gap:18px}
+ .showcase{margin-top:4px}
+ .showcase .vw-stage{height:400px}
+}
+@media(max-width:420px){ .showcase .vw-card{width:268px;margin-left:-134px} }
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261108"/>
 </head>
@@ -270,7 +282,9 @@ footer a:hover{text-decoration:underline}
 </div></header>
 
 <div class="wrap">
-<div class="hero">
+<div class="hero hero-split">
+<div class="hero-copy">
+
 <div class="kicker fx">личная рутина и команда до 30 · оплата рублями · критерии приёмки до старта</div>
 <h1 class="fx">Бизнес быстрее, сильнее<br>и <em>не ломается</em></h1>
 <p class="lede fx">Своё и быстро: <span class="tw" id="tw">рутину заявок</span> забирает агент, связка живёт у тебя. Ночная заявка — один из примеров: ответ за секунды, запись в CRM, утром список.</p>
@@ -282,6 +296,74 @@ footer a:hover{text-decoration:underline}
 <span>заявка 23:47 → ответ ночью, без тебя</span>
 <span>оплата рублями · без VPN</span>
 <span>критерии приёмки — до старта</span>
+</div></div>
+<div class="showcase" id="showcase">
+  <div class="vw-stage">
+    <div class="vw-card" data-i="0" aria-label="Агент заявок">
+      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
+        <span class="tg-who"><b>Агент заявок</b><i>бот · отвечает 24/7</i></span><span class="tg-more">⋮</span></div>
+      <div class="tg-body">        <div class="tg-day">Вторник, 23:47</div>
+        <div class="tg-in">Здравствуйте! Сколько стоит монтаж и когда сможете приехать?</div>
+        <div class="tg-out">Монтаж — 18 400 ₽, свободное окно в четверг с 10:00. Записать?<span class="tg-t">23:47 ✓✓</span></div>
+        <div class="tg-chip">сделка создана · четверг 10:00</div></div>
+      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
+    </div>
+    <div class="vw-card" data-i="1" aria-label="Агент-бухгалтер">
+      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
+        <span class="tg-who"><b>Агент-бухгалтер</b><i>бот · сверка документов</i></span><span class="tg-more">⋮</span></div>
+      <div class="tg-body">        <div class="tg-day">Сверка за март</div>
+        <div class="tg-doc"><span class="tg-doc-ic">PDF</span><span><b>Счёт №1847</b><i>ожидалось 42 000 ₽</i><i>в документе 46 800 ₽</i></span></div>
+        <div class="tg-out">Расхождение +11%. Похоже, добавили доставку, которой нет в договоре. Написал поставщику, приложил договор.<span class="tg-t">09:12 ✓✓</span></div>
+        <div class="tg-chip">сверено 4 из 4 документов</div></div>
+      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
+    </div>
+    <div class="vw-card" data-i="2" aria-label="Агент-лиды">
+      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
+        <span class="tg-who"><b>Агент-лиды</b><i>бот · парсинг и скоринг</i></span><span class="tg-more">⋮</span></div>
+      <div class="tg-body">        <div class="tg-day">Парсинг · 12:40</div>
+        <div class="tg-funnel"><i style="--w:100%">100</i><i style="--w:64%">20</i><i style="--w:30%">7</i></div>
+        <div class="tg-in">100 холодных, 20 горячих, 7 наших. Кому пишем?</div>
+        <div class="tg-out">Этим семи. У каждого — повод: новый филиал, смена подрядчика, вакансия на монтажника.<span class="tg-t">12:41 ✓✓</span></div>
+        <div class="tg-chip">7 писем готовы</div></div>
+      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
+    </div>
+    <div class="vw-card" data-i="3" aria-label="Агент-проджект">
+      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
+        <span class="tg-who"><b>Агент-проджект</b><i>бот · утренний бриф</i></span><span class="tg-more">⋮</span></div>
+      <div class="tg-body">        <div class="tg-day">Утро, 09:00</div>
+        <div class="tg-out">2 риска: Климов тянет оплату 11 дней, у Грина сорван срок на объекте.<br>3 задачи на сегодня, 1 — твоя подпись.<span class="tg-t">09:00 ✓✓</span></div>
+        <div class="tg-in">Климову — письмо</div>
+        <div class="tg-out">Готово, черновик в буфере. Сумма и пеня посчитаны по договору.<span class="tg-t">09:04 ✓✓</span></div></div>
+      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
+    </div>
+    <div class="vw-card" data-i="4" aria-label="Агент-риск">
+      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
+        <span class="tg-who"><b>Агент-риск</b><i>бот · мониторинг</i></span><span class="tg-more">⋮</span></div>
+      <div class="tg-body">        <div class="tg-day">Проверка контрагента</div>
+        <div class="tg-doc warn"><span class="tg-doc-ic">ИНН</span><span><b>ООО «Спектр-М»</b><i>маркер: зелёный</i><i>3 иска за 6 месяцев</i></span></div>
+        <div class="tg-out">Зелёный маркер врёт: три иска, директор сменился в августе. Работать — только по предоплате.<span class="tg-t">14:20 ✓✓</span></div>
+        <div class="tg-chip">поставлен на мониторинг</div></div>
+      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
+    </div>
+    <div class="vw-card" data-i="5" aria-label="Агент-советник">
+      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
+        <span class="tg-who"><b>Агент-советник</b><i>бот · решения</i></span><span class="tg-more">⋮</span></div>
+      <div class="tg-body">        <div class="tg-day">Советник</div>
+        <div class="tg-in">Беру склад в аренду или достраиваю свой?</div>
+        <div class="tg-out">Три варианта, по каждому — цена ошибки:<br>1) аренда — 240 тыс/год, выход через месяц<br>2) свой — 1,9 млн, окупаемость 3,4 года<br>3) гибрид — паллетное хранение пиков<br>Твои условия сходятся с №3.<span class="tg-t">20:06 ✓✓</span></div></div>
+      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
+    </div>
+    <div class="vw-card" data-i="6" aria-label="Агент-документы">
+      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
+        <span class="tg-who"><b>Агент-документы</b><i>бот · проверка перед отправкой</i></span><span class="tg-more">⋮</span></div>
+      <div class="tg-body">        <div class="tg-day">Документы за неделю</div>
+        <div class="tg-check"><span>✓ реквизиты сверены</span><span>✓ сумма сходится</span><span>✓ подписант в праве</span><span>✓ дублей нет</span></div>
+        <div class="tg-out">12 документов, 1 на подпись, 1 вернул с ошибкой в дате.<span class="tg-t">18:30 ✓✓</span></div></div>
+      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
+    </div>
+  </div>
+<p class="vw-hint">смахни окно влево или вправо — другой агент</p>
+  <div class="vw-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 </div>
 </div>
 </div>
@@ -352,9 +434,9 @@ footer a:hover{text-decoration:underline}
 <div class="plrow"><span class="pk">агент по масштабу</span><p class="pv">Личный <b>0–6К/мес</b> · Самозанятый <b>6–12К</b> · ИП <b>12–20К</b> · Команда <b>от 20К</b></p></div>
 </div>
 <div class="pcta">
-<span class="poffer" id="pOffer">Сборка под личные задачи — <b>15 000 ₽</b>, критерии приёмки до старта</span>
-<a class="btn btn-g" id="pGo" href="calculator.html">Собрать за 15 000 ₽</a>
-<span class="pnote">полка: гайд 5 000 · подбор 7 000 · сборка 15–60 000 ₽ по твоей форме · поддержка 15–40 000 ₽/мес — <a href="service.html">вся лестница</a></span>
+<span class="poffer" id="pOffer">Сборка под личные задачи — <b>4 000 ₽</b>, критерии приёмки до старта</span>
+<a class="btn btn-g" id="pGo" href="calculator.html">Собрать за 4 000 ₽</a>
+<span class="pnote">полка: гайд 5 000 · подбор 7 000 · сборка 4–60 000 ₽ по твоей форме · поддержка 15–40 000 ₽/мес — <a href="service.html">вся лестница</a></span>
 </div>
 </div>
 </div>
@@ -605,7 +687,7 @@ if(ci>=words[wi].length){mode='hold';setTimeout(tick,950);}else{setTimeout(tick,
 (function(){
 'use strict';
 var P={
- solo:{price:'15 000',routine:'25–60 000',agent:'0–6 000',diff:'≈ 39 500',hours:'≈ 12–30 ч/мес × 2 000 ₽/ч',seg:'личные задачи'},
+ solo:{price:'4 000',routine:'25–60 000',agent:'0–6 000',diff:'≈ 39 500',hours:'≈ 12–30 ч/мес × 2 000 ₽/ч',seg:'личные задачи'},
  self:{price:'20 000',routine:'40–90 000',agent:'6–12 000',diff:'≈ 54 800',hours:'≈ 27–60 ч/мес × 1 500 ₽/ч',seg:'самозанятого'},
  ip:{price:'30 000',routine:'60–150 000',agent:'12–20 000',diff:'≈ 89 000',hours:'≈ 40–100 ч/мес × 1 500 ₽/ч',seg:'ИП'},
  mid:{price:'60 000',routine:'от 120 000',agent:'от 20 000',diff:'от 100 000',hours:'зависит от масштаба задач',seg:'команды 10–30'}
@@ -767,5 +849,123 @@ document.querySelectorAll('.msvg').forEach(function(s){io.observe(s);});
 })();
 </script>
 <script src="ds-mnav.js?v=20261108" defer></script>
+<script>/* ── свайп-витрина: тянем в пределах окошка, отпускаем — перелист ── */
+(function(){
+  var stage=document.querySelector('.vw-stage'); if(!stage) return;
+  var cards=[].slice.call(stage.querySelectorAll('.vw-card'));
+  var dots=[].slice.call(document.querySelectorAll('.vw-dots i'));
+  var i=0, down=false, x0=0, dx=0, w=innerWidth;
+
+  function layout(offset){
+    var n=cards.length;
+    cards.forEach(function(c){
+      var d=+c.getAttribute('data-i')-i+(offset||0);
+      /* закольцовка: слева и справа всегда есть краюшка соседа */
+      if(d>n/2) d-=n; if(d<-n/2) d+=n;
+      var ad=Math.abs(d);
+      var x=d*196, s=Math.max(.66,1-ad*0.12), o=Math.max(.12,1-ad*0.45), r=d*8;
+      c.style.transform='translateX('+x+'px) translateZ('+(-ad*90)+'px) rotateY('+(-r)+'deg) scale('+s+')';
+      c.style.opacity=ad>2?0:o; c.style.zIndex=String(100-Math.round(ad*10)); c.style.visibility=ad>2?'hidden':'visible';
+      c.style.pointerEvents = d===0 ? 'auto' : 'none';
+    });
+    dots.forEach(function(d,n){ d.classList.toggle('on', n===i); });
+  }
+  function set(n){ i=Math.max(0,Math.min(cards.length-1,n)); layout(0); }
+  layout(0);
+
+  stage.addEventListener('pointerdown',function(e){
+    if(e.target.closest('a')) return;
+    down=true; dx=0; x0=e.clientX; stage.classList.add('drag');
+    cards.forEach(function(c){ c.classList.add('noanim'); });
+    stage.setPointerCapture && stage.setPointerCapture(e.pointerId);
+  });
+  stage.addEventListener('pointermove',function(e){
+    if(!down) return;
+    dx=e.clientX-x0;
+    /* рubber-band на краях */
+    var atEdge=(i===0&&dx>0)||(i===cards.length-1&&dx<0);
+    var shift=atEdge?dx*0.32:dx;
+    layout(Math.max(-1.2,Math.min(1.2, shift/196)));
+  });
+  ['pointerup','pointercancel'].forEach(function(ev){
+    stage.addEventListener(ev,function(){
+      if(!down) return; down=false; stage.classList.remove('drag');
+      cards.forEach(function(c){ c.classList.remove('noanim'); });
+      var step = Math.round(-dx/120);
+      if(Math.abs(dx)>60) set(i+step); else set(i);
+      dx=0;
+    });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft') set(i-1);
+    if(e.key==='ArrowRight') set(i+1);
+  });
+})();
+
+</script>
+
+<style id="hero-showcase">
+.hero.hero-split{display:grid!important;grid-template-columns:minmax(0,1fr) 330px;gap:clamp(24px,4vw,54px);
+ max-width:1060px!important;align-items:center;min-height:min(calc(100svh - 56px),820px);padding:22px 0}
+.hero.hero-split .hero-copy{display:flex;flex-direction:column;justify-content:center;min-width:0}
+.hero.hero-split h1{font-size:clamp(34px,3.7vw,54px)}
+/* ── витрина: настоящие телеграм-чаты ── */
+.showcase{position:relative}
+.showcase .vw-stage{position:relative;height:420px;perspective:1400px;touch-action:pan-y;cursor:grab}
+.showcase .vw-stage.drag{cursor:grabbing}
+.showcase .vw-card{position:absolute;left:50%;top:0;width:286px;margin-left:-143px;background:#17212b;
+ border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden;
+ box-shadow:0 18px 40px rgba(6,12,26,.45);transition:transform .42s var(--ease),opacity .42s var(--ease);will-change:transform}
+.showcase .vw-card.noanim{transition:none}
+/* шапка чата */
+.showcase .tg-top{display:flex;align-items:center;gap:9px;padding:9px 10px;background:#17212b;border-bottom:1px solid rgba(255,255,255,.07)}
+.showcase .tg-back{color:#7d8fa5;font-size:20px;line-height:1;margin-right:-2px}
+.showcase .tg-ava{width:30px;height:30px;border-radius:50%;background:linear-gradient(160deg,#8fa8ff,#5b6dc4);
+ display:grid;place-items:center;font:600 15px/1 var(--sans);color:#0f1730;flex:0 0 auto}
+.showcase .tg-who{display:flex;flex-direction:column;gap:2px;min-width:0}
+.showcase .tg-who b{font:600 15px/1.1 var(--sans);color:#eef2fb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.showcase .tg-who i{font:400 14px/1 var(--mono);color:#8fa8ff;font-style:normal}
+.showcase .tg-more{margin-left:auto;color:#7d8fa5;font-size:18px;line-height:1}
+/* тело чата */
+.showcase .tg-body{background:#0e1621;padding:12px 10px;display:flex;flex-direction:column;gap:7px;height:300px;overflow:hidden}
+.showcase .tg-day{align-self:center;font:500 14px/1 var(--mono);color:#9fb0c4;background:rgba(255,255,255,.06);
+ padding:5px 9px;border-radius:8px;margin-bottom:2px}
+.showcase .tg-in,.tg-out{max-width:88%;padding:8px 10px;border-radius:11px;font:400 14.5px/1.4 var(--sans);color:#eef2fb}
+.showcase .tg-in{background:#182533;align-self:flex-start;border-bottom-left-radius:4px}
+.showcase .tg-out{background:#2b5278;align-self:flex-end;border-bottom-right-radius:4px}
+.showcase .tg-t{display:block;text-align:right;font:400 14px/1 var(--mono);color:#bcd0e6;margin-top:4px;opacity:.85}
+.showcase .tg-chip{align-self:flex-start;font:500 14px/1 var(--mono);color:#a9bcff;
+ background:rgba(143,168,255,.14);border:1px solid rgba(143,168,255,.3);border-radius:999px;padding:6px 10px}
+/* документ внутри чата */
+.showcase .tg-doc{display:flex;gap:9px;align-items:flex-start;background:#182533;border-radius:10px;padding:9px 10px;border-left:3px solid #8fa8ff}
+.showcase .tg-doc.warn{border-left-color:#ffb26b}
+.showcase .tg-doc-ic{font:600 14px/1 var(--mono);color:#0f1730;background:#8fa8ff;border-radius:5px;padding:5px 6px;flex:0 0 auto}
+.showcase .tg-doc.warn .tg-doc-ic{background:#ffb26b}
+.showcase .tg-doc span{display:flex;flex-direction:column;gap:3px}
+.showcase .tg-doc b{font:600 14.5px/1.2 var(--sans);color:#eef2fb}
+.showcase .tg-doc i{font:400 14px/1.3 var(--mono);color:#a8b6c8;font-style:normal}
+/* воронка */
+.showcase .tg-funnel{display:grid;gap:6px}
+.showcase .tg-funnel i{position:relative;display:block;width:var(--w);height:22px;border-radius:5px;
+ background:linear-gradient(90deg,rgba(143,168,255,.9),rgba(143,168,255,.3));
+ font:600 14px/22px var(--mono);color:#0f1730;text-align:right;padding-right:8px;font-style:normal}
+/* чеклист */
+.showcase .tg-check{display:grid;gap:5px;background:#182533;border-radius:10px;padding:10px}
+.showcase .tg-check span{font:400 14px/1.3 var(--mono);color:#9fe0b8}
+/* поле ввода */
+.showcase .tg-input{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#17212b;border-top:1px solid rgba(255,255,255,.07)}
+.showcase .tg-input span{flex:1;font:400 14px/1 var(--sans);color:#7d8fa5;background:#0e1621;border-radius:999px;padding:8px 12px}
+.showcase .tg-send{color:#8fa8ff;font-size:16px;line-height:1}
+.showcase .vw-hint{text-align:center;font:400 14px/1.4 var(--mono);color:#b9c1d6;margin-top:10px}
+.showcase .vw-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
+.showcase .vw-dots i{width:6px;height:6px;border-radius:50%;background:rgba(238,242,251,.28);transition:background .2s}
+.showcase .vw-dots i.on{background:#8fa8ff}
+
+@media(max-width:980px){
+ .hero.hero-split{grid-template-columns:1fr!important;min-height:0;padding:22px 0 26px;gap:18px}
+ .showcase .vw-stage{height:400px}
+}
+@media(max-width:420px){ .showcase .vw-card{width:268px;margin-left:-134px} }
+</style>
 </body>
 </html>
