@@ -38,7 +38,7 @@
 .zone-dark{--ink:#eef2fb;--body:#b9c1d6;--meta:#8a94ad;--hair:rgba(255,255,255,.14);--hair2:rgba(255,255,255,.08);--accent:#8fa8ff;background:#0f1730;color:var(--body);position:relative;overflow:hidden}
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--body);font:400 17.5px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--body);font:400 17.5px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
 a{color:inherit}
 .wrap{max-width:1060px;margin:0 auto;padding:0 clamp(20px,4vw,32px);position:relative;z-index:2}
 /* ── навбар (спека: лого-5 26px radius 6) ── */
@@ -268,26 +268,27 @@ footer a:hover{text-decoration:underline}
 }
 @media(max-width:420px){ .showcase .vw-card{width:268px;margin-left:-134px} }
 </style>
-<link rel="stylesheet" href="ds-mnav.css?v=20261108"/>
+<link rel="stylesheet" href="ds-mnav.css?v=20261109"/>
 </head>
 <body>
+<header class="nav"><div class="nav-in">
+<a class="brand" href="index.html"><img src="logo-5.png" alt="Discovery System" width="26" height="26" style="border-radius:6px">discovery system</a>
+<nav><a href="index.html" class="on">Главная</a><a href="market.html">Рынок ИИ</a><a href="service.html">Сервис</a><a href="system.html">Система</a><a href="calculator.html">Калькулятор</a><a href="channel.html">Канал</a></nav>
+</div></header>
 <script>document.documentElement.className+=' js';</script>
 
 <!-- ═══ ЗОНА 1: герой (плазма, ≤100vh, без чата и без калькулятора) ═══ -->
 <div class="zone-dark" id="heroZone">
 <div id="heroFx" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0"></div>
-<header class="nav"><div class="nav-in">
-<a class="brand" href="index.html"><img src="logo-5.png" alt="Discovery System" width="26" height="26" style="border-radius:6px">discovery system</a>
-<nav><a href="index.html" class="on">Главная</a><a href="market.html">Рынок ИИ</a><a href="service.html">Сервис</a><a href="system.html">Система</a><a href="calculator.html">Калькулятор</a><a href="channel.html">Канал</a></nav>
-</div></header>
+
 
 <div class="wrap">
 <div class="hero hero-split">
 <div class="hero-copy">
 
 <div class="kicker fx">личная рутина и команда до 30 · оплата рублями · критерии приёмки до старта</div>
-<h1 class="fx">Бизнес быстрее, сильнее<br>и <em>не ломается</em></h1>
-<p class="lede fx">Своё и быстро: <span class="tw" id="tw">рутину заявок</span> забирает агент, связка живёт у тебя. Ночная заявка — один из примеров: ответ за секунды, запись в CRM, утром список.</p>
+<h1 class="fx">Агент, которого<br><em>нельзя заблокировать</em></h1>
+<p class="lede fx">Семь агентов в твоём Telegram: заявки, документы, лиды, задачи, риски, решения. Живут на твоём железе, оплата рублями, без VPN. Критерии приёмки — до старта.</p>
 <div class="cta fx">
 <a class="btn btn-p" href="calculator.html">Посчитать свою связку</a>
 <a class="btn btn-g" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%94%D0%B0%D0%B2%D0%B0%D0%B9%20%D1%81%D0%BE%D0%B3%D0%BB%D0%B0%D1%81%D1%83%D0%B5%D0%BC%20%D0%BA%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B8%20%D0%BF%D1%80%D0%B8%D1%91%D0%BC%D0%BA%D0%B8%20%D0%B4%D0%BE%20%D1%81%D1%82%D0%B0%D1%80%D1%82%D0%B0.">Согласовать критерии</a>
@@ -299,70 +300,81 @@ footer a:hover{text-decoration:underline}
 </div></div>
 <div class="showcase" id="showcase">
   <div class="vw-stage">
-    <div class="vw-card" data-i="0" aria-label="Агент заявок">
-      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
-        <span class="tg-who"><b>Агент заявок</b><i>бот · отвечает 24/7</i></span><span class="tg-more">⋮</span></div>
-      <div class="tg-body">        <div class="tg-day">Вторник, 23:47</div>
-        <div class="tg-in">Здравствуйте! Сколько стоит монтаж и когда сможете приехать?</div>
-        <div class="tg-out">Монтаж — 18 400 ₽, свободное окно в четверг с 10:00. Записать?<span class="tg-t">23:47 ✓✓</span></div>
-        <div class="tg-chip">сделка создана · четверг 10:00</div></div>
-      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
-    </div>
-    <div class="vw-card" data-i="1" aria-label="Агент-бухгалтер">
-      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
-        <span class="tg-who"><b>Агент-бухгалтер</b><i>бот · сверка документов</i></span><span class="tg-more">⋮</span></div>
-      <div class="tg-body">        <div class="tg-day">Сверка за март</div>
-        <div class="tg-doc"><span class="tg-doc-ic">PDF</span><span><b>Счёт №1847</b><i>ожидалось 42 000 ₽</i><i>в документе 46 800 ₽</i></span></div>
-        <div class="tg-out">Расхождение +11%. Похоже, добавили доставку, которой нет в договоре. Написал поставщику, приложил договор.<span class="tg-t">09:12 ✓✓</span></div>
-        <div class="tg-chip">сверено 4 из 4 документов</div></div>
-      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
-    </div>
-    <div class="vw-card" data-i="2" aria-label="Агент-лиды">
-      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
-        <span class="tg-who"><b>Агент-лиды</b><i>бот · парсинг и скоринг</i></span><span class="tg-more">⋮</span></div>
-      <div class="tg-body">        <div class="tg-day">Парсинг · 12:40</div>
-        <div class="tg-funnel"><i style="--w:100%">100</i><i style="--w:64%">20</i><i style="--w:30%">7</i></div>
-        <div class="tg-in">100 холодных, 20 горячих, 7 наших. Кому пишем?</div>
-        <div class="tg-out">Этим семи. У каждого — повод: новый филиал, смена подрядчика, вакансия на монтажника.<span class="tg-t">12:41 ✓✓</span></div>
-        <div class="tg-chip">7 писем готовы</div></div>
-      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
-    </div>
-    <div class="vw-card" data-i="3" aria-label="Агент-проджект">
-      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
-        <span class="tg-who"><b>Агент-проджект</b><i>бот · утренний бриф</i></span><span class="tg-more">⋮</span></div>
-      <div class="tg-body">        <div class="tg-day">Утро, 09:00</div>
-        <div class="tg-out">2 риска: Климов тянет оплату 11 дней, у Грина сорван срок на объекте.<br>3 задачи на сегодня, 1 — твоя подпись.<span class="tg-t">09:00 ✓✓</span></div>
-        <div class="tg-in">Климову — письмо</div>
-        <div class="tg-out">Готово, черновик в буфере. Сумма и пеня посчитаны по договору.<span class="tg-t">09:04 ✓✓</span></div></div>
-      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
-    </div>
-    <div class="vw-card" data-i="4" aria-label="Агент-риск">
-      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
-        <span class="tg-who"><b>Агент-риск</b><i>бот · мониторинг</i></span><span class="tg-more">⋮</span></div>
-      <div class="tg-body">        <div class="tg-day">Проверка контрагента</div>
-        <div class="tg-doc warn"><span class="tg-doc-ic">ИНН</span><span><b>ООО «Спектр-М»</b><i>маркер: зелёный</i><i>3 иска за 6 месяцев</i></span></div>
-        <div class="tg-out">Зелёный маркер врёт: три иска, директор сменился в августе. Работать — только по предоплате.<span class="tg-t">14:20 ✓✓</span></div>
-        <div class="tg-chip">поставлен на мониторинг</div></div>
-      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
-    </div>
-    <div class="vw-card" data-i="5" aria-label="Агент-советник">
-      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
-        <span class="tg-who"><b>Агент-советник</b><i>бот · решения</i></span><span class="tg-more">⋮</span></div>
-      <div class="tg-body">        <div class="tg-day">Советник</div>
-        <div class="tg-in">Беру склад в аренду или достраиваю свой?</div>
-        <div class="tg-out">Три варианта, по каждому — цена ошибки:<br>1) аренда — 240 тыс/год, выход через месяц<br>2) свой — 1,9 млн, окупаемость 3,4 года<br>3) гибрид — паллетное хранение пиков<br>Твои условия сходятся с №3.<span class="tg-t">20:06 ✓✓</span></div></div>
-      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
-    </div>
-    <div class="vw-card" data-i="6" aria-label="Агент-документы">
-      <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">А</span>
-        <span class="tg-who"><b>Агент-документы</b><i>бот · проверка перед отправкой</i></span><span class="tg-more">⋮</span></div>
-      <div class="tg-body">        <div class="tg-day">Документы за неделю</div>
-        <div class="tg-check"><span>✓ реквизиты сверены</span><span>✓ сумма сходится</span><span>✓ подписант в праве</span><span>✓ дублей нет</span></div>
-        <div class="tg-out">12 документов, 1 на подпись, 1 вернул с ошибкой в дате.<span class="tg-t">18:30 ✓✓</span></div></div>
-      <div class="tg-input"><span>Сообщение</span><span class="tg-send">➤</span></div>
-    </div>
+<div class="vw-card" data-i="0" aria-label="Агент заявок">
+  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
+    <span class="tg-who"><b>Агент заявок</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
+  <div class="tg-body">
+  <div class="tg-day">Вторник</div>
+  <div class="tg-in">Здравствуйте! Сколько стоит монтаж и когда сможете приехать?<span class="tg-tm">23:47</span></div>
+  <div class="tg-out">Монтаж — 18 400 ₽. Ближайшее окно: четверг, 10:00.<span class="tg-tm">23:47 <i class="ok">✓✓</i></span></div>
+  <div class="tg-out sm">Записать?<span class="tg-tm">23:47 <i class="ok">✓✓</i></span></div></div>
+  <div class="tg-kb"><button type="button">Записать · четверг 10:00</button><button type="button">Другое время</button></div>
+  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
+</div>
+<div class="vw-card" data-i="1" aria-label="Агент-бухгалтер">
+  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
+    <span class="tg-who"><b>Агент-бухгалтер</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
+  <div class="tg-body">
+  <div class="tg-day">Сверка за март</div>
+  <div class="tg-doc"><span class="tg-pdf">PDF</span><span><b>Счёт №1847</b><i>в договоре — 42 000 ₽</i><i>в счёте — 46 800 ₽</i></span></div>
+  <div class="tg-out">Расхождение +11%. Похоже, добавили доставку, которой нет в договоре.<span class="tg-tm">09:12 <i class="ok">✓✓</i></span></div></div>
+  <div class="tg-kb"><button type="button">Написать поставщику</button><button type="button">Принять как есть</button></div>
+  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
+</div>
+<div class="vw-card" data-i="2" aria-label="Агент-лиды">
+  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
+    <span class="tg-who"><b>Агент-лиды</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
+  <div class="tg-body">
+  <div class="tg-day">Парсинг · 12:40</div>
+  <div class="tg-funnel"><i style="--w:100%"><b>100</b> холодных</i><i style="--w:64%"><b>20</b> горячих</i><i style="--w:30%"><b>7</b> наши</i></div>
+  <div class="tg-out">У этих семи есть повод: новый филиал, смена подрядчика, вакансия на монтажника.<span class="tg-tm">12:41 <i class="ok">✓✓</i></span></div></div>
+  <div class="tg-kb"><button type="button">Открыть семь писем</button><button type="button">Показать поводы</button></div>
+  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
+</div>
+<div class="vw-card" data-i="3" aria-label="Агент-проджект">
+  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
+    <span class="tg-who"><b>Агент-проджект</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
+  <div class="tg-body">
+  <div class="tg-day">Утро · 09:00</div>
+  <div class="tg-out">2 риска: Климов тянет оплату 11 дней, у Грина сорван срок на объекте.<span class="tg-tm">09:00 <i class="ok">✓✓</i></span></div>
+  <div class="tg-out sm">3 задачи на сегодня. Одна — твоя подпись.<span class="tg-tm">09:00 <i class="ok">✓✓</i></span></div>
+  <div class="tg-in">Климову — письмо<span class="tg-tm">09:03</span></div>
+  <div class="tg-out">Готово, черновик в буфере. Пеня посчитана по договору.<span class="tg-tm">09:04 <i class="ok">✓✓</i></span></div></div>
+  <div class="tg-kb"><button type="button">Показать риски</button><button type="button">Что на мне</button></div>
+  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
+</div>
+<div class="vw-card" data-i="4" aria-label="Агент-риск">
+  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
+    <span class="tg-who"><b>Агент-риск</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
+  <div class="tg-body">
+  <div class="tg-day">Проверка контрагента</div>
+  <div class="tg-doc warn"><span class="tg-pdf">ИНН</span><span><b>ООО «Спектр-М»</b><i>маркер: зелёный</i><i>3 иска за 6 месяцев</i></span></div>
+  <div class="tg-out">Зелёный маркер врёт. Директор сменился в августе. Работать — только по предоплате.<span class="tg-tm">14:20 <i class="ok">✓✓</i></span></div></div>
+  <div class="tg-kb"><button type="button">Поставить на мониторинг</button><button type="button">Скачать досье</button></div>
+  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
+</div>
+<div class="vw-card" data-i="5" aria-label="Агент-советник">
+  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
+    <span class="tg-who"><b>Агент-советник</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
+  <div class="tg-body">
+  <div class="tg-day">Советник</div>
+  <div class="tg-in">Беру склад в аренду или достраиваю свой?<span class="tg-tm">20:04</span></div>
+  <div class="tg-out">Три варианта, по каждому — цена ошибки: аренда 240 тыс/год, свой 1,9 млн с окупаемостью 3,4 года, гибрид с паллетным хранением пиков. Твои условия сходятся с третьим.<span class="tg-tm">20:06 <i class="ok">✓✓</i></span></div></div>
+  <div class="tg-kb"><button type="button">Сравнить по цифрам</button><button type="button">Записать решение</button></div>
+  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
+</div>
+<div class="vw-card" data-i="6" aria-label="Агент-документы">
+  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
+    <span class="tg-who"><b>Агент-документы</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
+  <div class="tg-body">
+  <div class="tg-day">Документы за неделю</div>
+  <div class="tg-check"><span>✓ реквизиты сверены</span><span>✓ сумма сходится</span><span>✓ подписант в праве</span><span>✓ дублей нет</span></div>
+  <div class="tg-out">12 документов. Один на подпись, один вернул с ошибкой в дате.<span class="tg-tm">18:30 <i class="ok">✓✓</i></span></div></div>
+  <div class="tg-kb"><button type="button">Отправить на подпись</button><button type="button">Показать ошибку</button></div>
+  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
+</div>
   </div>
-<p class="vw-hint">смахни окно влево или вправо — другой агент</p>
+  <p class="vw-hint">смахни окно — следующий агент</p>
   <div class="vw-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 </div>
 </div>
@@ -370,40 +382,7 @@ footer a:hover{text-decoration:underline}
 </div>
 
 <!-- ═══ ЗОНА 2: чат Telegram — отдельная крупная секция, пруф одной строкой ═══ -->
-<div class="zone-dark chatsec" id="tgchat">
-<div class="wrap">
-<div class="shead">
-<h2>Заявка ночью — запись готова за две минуты</h2>
-<p class="s">Один диалог: клиент пишет в 23:47, агент отвечает за секунды, визит попадает в CRM. Роли различимы сразу — <b>клиент справа, агент слева</b>. Показано медленно, как в реальном чате.</p>
-</div>
-<div class="chatgrid">
-<div class="chatbox">
-<div class="glow" aria-hidden="true"></div>
-<div class="tg">
-<div class="head">
-<span class="hic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span>
-<span class="av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
-<div class="t"><b>Ночной агент · Discovery</b><span id="tgStatus">онлайн</span></div>
-<div class="hright" aria-hidden="true">
-<span class="hic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></span>
-<span class="hic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></span>
-</div>
-</div>
-<div class="wall" id="tgStream" role="log" aria-live="polite" aria-label="Демо-диалог: запись клиента на вечер">
-<div class="typing" id="tgTyping" hidden aria-label="печатает"><i></i><i></i><i></i></div>
-</div>
-<div class="foot" aria-hidden="true">
-<span class="hic" style="width:24px;height:24px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.1l-9.2 9.2a5.5 5.5 0 0 1-7.8-7.8l9.6-9.6a3.7 3.7 0 0 1 5.2 5.2l-9.6 9.6a1.9 1.9 0 0 1-2.6-2.6l8.8-8.8"/></svg></span>
-<span class="field">Сообщение</span>
-<span class="hic" style="width:24px;height:24px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11.5" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5"/></svg></span>
-</div>
-</div>
-</div>
-</div>
-<p class="chatproof"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>запись в CRM · утром список</p>
-<p class="chatcap">Демо-диалог: запись в стоматологию — пример разговора, не кейс. Повторяется с паузами чтения. <button type="button" id="tgAgain">повторить диалог</button></p>
-</div>
-</div>
+
 
 <main>
 
@@ -848,124 +827,131 @@ var io=new IntersectionObserver(function(es){
 document.querySelectorAll('.msvg').forEach(function(s){io.observe(s);});
 })();
 </script>
-<script src="ds-mnav.js?v=20261108" defer></script>
-<script>/* ── свайп-витрина: тянем в пределах окошка, отпускаем — перелист ── */
+<script src="ds-mnav.js?v=20261109" defer></script>
+<script>
+/* витрина: одно окно, листается по кругу */
 (function(){
-  var stage=document.querySelector('.vw-stage'); if(!stage) return;
-  var cards=[].slice.call(stage.querySelectorAll('.vw-card'));
+  var st=document.querySelector('.vw-stage'); if(!st) return;
+  var cards=[].slice.call(st.querySelectorAll('.vw-card'));
   var dots=[].slice.call(document.querySelectorAll('.vw-dots i'));
-  var i=0, down=false, x0=0, dx=0, w=innerWidth;
+  var n=cards.length, i=0, down=false, x0=0, dx=0, lock=0;
 
-  function layout(offset){
-    var n=cards.length;
-    cards.forEach(function(c){
-      var d=+c.getAttribute('data-i')-i+(offset||0);
-      /* закольцовка: слева и справа всегда есть краюшка соседа */
-      if(d>n/2) d-=n; if(d<-n/2) d+=n;
-      var ad=Math.abs(d);
-      var x=d*196, s=Math.max(.66,1-ad*0.12), o=Math.max(.12,1-ad*0.45), r=d*8;
-      c.style.transform='translateX('+x+'px) translateZ('+(-ad*90)+'px) rotateY('+(-r)+'deg) scale('+s+')';
-      c.style.opacity=ad>2?0:o; c.style.zIndex=String(100-Math.round(ad*10)); c.style.visibility=ad>2?'hidden':'visible';
-      c.style.pointerEvents = d===0 ? 'auto' : 'none';
-    });
-    dots.forEach(function(d,n){ d.classList.toggle('on', n===i); });
+  function paint(){ dots.forEach(function(d,j){ d.classList.toggle('on', j===i); }); }
+  function show(k, from){
+    i=((k % n) + n) % n;                       /* закольцовка в обе стороны */
+    cards.forEach(function(c,j){ c.classList.toggle('on', j===i); });
+    if(from!==undefined) cards[i].style.setProperty('--from', (from>0?26:-26)+'px');
+    paint();
   }
-  function set(n){ i=Math.max(0,Math.min(cards.length-1,n)); layout(0); }
-  layout(0);
+  function clear(){ cards.forEach(function(c){ c.style.transition=''; c.style.transform=''; c.style.opacity=''; }); }
+  show(0);
 
-  stage.addEventListener('pointerdown',function(e){
-    if(e.target.closest('a')) return;
-    down=true; dx=0; x0=e.clientX; stage.classList.add('drag');
-    cards.forEach(function(c){ c.classList.add('noanim'); });
-    stage.setPointerCapture && stage.setPointerCapture(e.pointerId);
+  st.addEventListener('pointerdown', function(e){
+    if(e.target.closest('button')) return;
+    if(Date.now()<lock) return;
+    down=true; dx=0; x0=e.clientX; st.classList.add('drag');
+    if(st.setPointerCapture) st.setPointerCapture(e.pointerId);
   });
-  stage.addEventListener('pointermove',function(e){
+  st.addEventListener('pointermove', function(e){
     if(!down) return;
     dx=e.clientX-x0;
-    /* рubber-band на краях */
-    var atEdge=(i===0&&dx>0)||(i===cards.length-1&&dx<0);
-    var shift=atEdge?dx*0.32:dx;
-    layout(Math.max(-1.2,Math.min(1.2, shift/196)));
+    var c=cards[i];
+    c.style.transform='translateX('+(dx*0.32)+'px)';
+    c.style.opacity=String(Math.max(.4, 1-Math.abs(dx)/520));
   });
-  ['pointerup','pointercancel'].forEach(function(ev){
-    stage.addEventListener(ev,function(){
-      if(!down) return; down=false; stage.classList.remove('drag');
-      cards.forEach(function(c){ c.classList.remove('noanim'); });
-      var step = Math.round(-dx/120);
-      if(Math.abs(dx)>60) set(i+step); else set(i);
-      dx=0;
-    });
+  function finish(){
+    if(!down) return;
+    down=false; st.classList.remove('drag');
+    var far=Math.abs(dx)>55;
+    if(!far){ clear(); dx=0; return; }
+    var dir=dx<0?1:-1, c=cards[i];
+    lock=Date.now()+220;
+    c.style.transition='transform .15s ease, opacity .15s ease';
+    c.style.transform='translateX('+(dir*-46)+'px)'; c.style.opacity='0';
+    setTimeout(function(){ clear(); show(i+dir, dir); lock=0; },150);
+    dx=0;
+  }
+  st.addEventListener('pointerup', finish);
+  st.addEventListener('pointercancel', finish);
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowLeft'){ clear(); show(i-1,-1); }
+    if(e.key==='ArrowRight'){ clear(); show(i+1,1); }
   });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='ArrowLeft') set(i-1);
-    if(e.key==='ArrowRight') set(i+1);
-  });
+  /* хук для проверки логики без синтетических касаний */
+  window.__vw={next:function(d){ clear(); show(i+d,d); }, index:function(){ return i; }, count:function(){ return n; }};
 })();
-
 </script>
 
 <style id="hero-showcase">
-.hero.hero-split{display:grid!important;grid-template-columns:minmax(0,1fr) 330px;gap:clamp(24px,4vw,54px);
+.hero.hero-split{display:grid!important;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(24px,4vw,54px);
  max-width:1060px!important;align-items:center;min-height:min(calc(100svh - 56px),820px);padding:22px 0}
 .hero.hero-split .hero-copy{display:flex;flex-direction:column;justify-content:center;min-width:0}
 .hero.hero-split h1{font-size:clamp(34px,3.7vw,54px)}
-/* ── витрина: настоящие телеграм-чаты ── */
-.showcase{position:relative}
-.showcase .vw-stage{position:relative;height:420px;perspective:1400px;touch-action:pan-y;cursor:grab}
-.showcase .vw-stage.drag{cursor:grabbing}
-.showcase .vw-card{position:absolute;left:50%;top:0;width:286px;margin-left:-143px;background:#17212b;
- border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden;
- box-shadow:0 18px 40px rgba(6,12,26,.45);transition:transform .42s var(--ease),opacity .42s var(--ease);will-change:transform}
-.showcase .vw-card.noanim{transition:none}
-/* шапка чата */
-.showcase .tg-top{display:flex;align-items:center;gap:9px;padding:9px 10px;background:#17212b;border-bottom:1px solid rgba(255,255,255,.07)}
-.showcase .tg-back{color:#7d8fa5;font-size:20px;line-height:1;margin-right:-2px}
-.showcase .tg-ava{width:30px;height:30px;border-radius:50%;background:linear-gradient(160deg,#8fa8ff,#5b6dc4);
- display:grid;place-items:center;font:600 15px/1 var(--sans);color:#0f1730;flex:0 0 auto}
-.showcase .tg-who{display:flex;flex-direction:column;gap:2px;min-width:0}
-.showcase .tg-who b{font:600 15px/1.1 var(--sans);color:#eef2fb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.showcase .tg-who i{font:400 14px/1 var(--mono);color:#8fa8ff;font-style:normal}
-.showcase .tg-more{margin-left:auto;color:#7d8fa5;font-size:18px;line-height:1}
-/* тело чата */
-.showcase .tg-body{background:#0e1621;padding:12px 10px;display:flex;flex-direction:column;gap:7px;height:300px;overflow:hidden}
-.showcase .tg-day{align-self:center;font:500 14px/1 var(--mono);color:#9fb0c4;background:rgba(255,255,255,.06);
- padding:5px 9px;border-radius:8px;margin-bottom:2px}
-.showcase .tg-in,.tg-out{max-width:88%;padding:8px 10px;border-radius:11px;font:400 14.5px/1.4 var(--sans);color:#eef2fb}
-.showcase .tg-in{background:#182533;align-self:flex-start;border-bottom-left-radius:4px}
-.showcase .tg-out{background:#2b5278;align-self:flex-end;border-bottom-right-radius:4px}
-.showcase .tg-t{display:block;text-align:right;font:400 14px/1 var(--mono);color:#bcd0e6;margin-top:4px;opacity:.85}
-.showcase .tg-chip{align-self:flex-start;font:500 14px/1 var(--mono);color:#a9bcff;
- background:rgba(143,168,255,.14);border:1px solid rgba(143,168,255,.3);border-radius:999px;padding:6px 10px}
-/* документ внутри чата */
-.showcase .tg-doc{display:flex;gap:9px;align-items:flex-start;background:#182533;border-radius:10px;padding:9px 10px;border-left:3px solid #8fa8ff}
-.showcase .tg-doc.warn{border-left-color:#ffb26b}
-.showcase .tg-doc-ic{font:600 14px/1 var(--mono);color:#0f1730;background:#8fa8ff;border-radius:5px;padding:5px 6px;flex:0 0 auto}
-.showcase .tg-doc.warn .tg-doc-ic{background:#ffb26b}
-.showcase .tg-doc span{display:flex;flex-direction:column;gap:3px}
-.showcase .tg-doc b{font:600 14.5px/1.2 var(--sans);color:#eef2fb}
-.showcase .tg-doc i{font:400 14px/1.3 var(--mono);color:#a8b6c8;font-style:normal}
-/* воронка */
-.showcase .tg-funnel{display:grid;gap:6px}
-.showcase .tg-funnel i{position:relative;display:block;width:var(--w);height:22px;border-radius:5px;
- background:linear-gradient(90deg,rgba(143,168,255,.9),rgba(143,168,255,.3));
- font:600 14px/22px var(--mono);color:#0f1730;text-align:right;padding-right:8px;font-style:normal}
-/* чеклист */
-.showcase .tg-check{display:grid;gap:5px;background:#182533;border-radius:10px;padding:10px}
-.showcase .tg-check span{font:400 14px/1.3 var(--mono);color:#9fe0b8}
-/* поле ввода */
-.showcase .tg-input{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#17212b;border-top:1px solid rgba(255,255,255,.07)}
-.showcase .tg-input span{flex:1;font:400 14px/1 var(--sans);color:#7d8fa5;background:#0e1621;border-radius:999px;padding:8px 12px}
-.showcase .tg-send{color:#8fa8ff;font-size:16px;line-height:1}
-.showcase .vw-hint{text-align:center;font:400 14px/1.4 var(--mono);color:#b9c1d6;margin-top:10px}
-.showcase .vw-dots{display:flex;gap:6px;justify-content:center;margin-top:10px}
-.showcase .vw-dots i{width:6px;height:6px;border-radius:50%;background:rgba(238,242,251,.28);transition:background .2s}
-.showcase .vw-dots i.on{background:#8fa8ff}
+.hero.hero-split .lede{max-width:46ch}
 
+/* ── витрина: одно окно, настоящий телеграм, без соседей ── */
+.showcase{position:relative}
+.showcase .vw-stage{position:relative;height:452px;touch-action:pan-y;cursor:grab;overflow:hidden}
+.showcase .vw-stage.drag{cursor:grabbing}
+.showcase .vw-card{width:300px;margin:0 auto;background:#17212b;border:1px solid rgba(255,255,255,.13);
+ border-radius:14px;overflow:hidden;box-shadow:0 20px 46px rgba(6,12,26,.5);display:none}
+.showcase .vw-card.on{display:block;animation:vwIn .26s cubic-bezier(.3,.7,.2,1) both}
+@keyframes vwIn{from{opacity:0;transform:translateX(var(--from,26px))}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.showcase .vw-card.on{animation:none}}
+
+.tg-top{display:flex;align-items:center;gap:8px;padding:9px 10px;background:#17212b;border-bottom:1px solid rgba(255,255,255,.07)}
+.tg-back{color:#7d8fa5;font-size:20px;line-height:1;margin-right:-1px}
+.tg-ava{width:30px;height:30px;border-radius:50%;background:linear-gradient(160deg,#8fa8ff,#5b6dc4);
+ display:grid;place-items:center;font:600 15px/1 var(--sans);color:#0f1730;flex:0 0 auto}
+.tg-who{display:flex;flex-direction:column;gap:2px;min-width:0}
+.tg-who b{font:600 15px/1.1 var(--sans);color:#eef2fb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tg-who i{font:400 14px/1 var(--mono);color:#8fa8ff;font-style:normal}
+.tg-ico{margin-left:auto;color:#7d8fa5;font-size:18px;line-height:1}
+.tg-body{background:#0e1621;padding:12px 10px 6px;display:flex;flex-direction:column;gap:7px;height:290px;overflow:hidden}
+.tg-day{align-self:center;font:500 14px/1 var(--mono);color:#9fb0c4;background:rgba(255,255,255,.06);
+ padding:5px 9px;border-radius:8px;margin-bottom:2px}
+.tg-in,.tg-out{position:relative;max-width:86%;padding:8px 10px 7px;border-radius:12px;
+ font:400 14.5px/1.42 var(--sans);color:#eef2fb}
+.tg-in{background:#182533;align-self:flex-start;border-bottom-left-radius:5px}
+.tg-in::after{content:'';position:absolute;left:-5px;bottom:0;width:10px;height:10px;background:#182533;
+ clip-path:polygon(100% 0,100% 100%,0 100%)}
+.tg-out{background:#2b5278;align-self:flex-end;border-bottom-right-radius:5px}
+.tg-out::after{content:'';position:absolute;right:-5px;bottom:0;width:10px;height:10px;background:#2b5278;
+ clip-path:polygon(0 0,0 100%,100% 100%)}
+.tg-out.sm{padding-bottom:6px}
+.tg-tm{display:block;text-align:right;font:400 12px/1 var(--mono);color:#a8c6e6;margin-top:3px;opacity:.9}
+.tg-tm .ok{color:#8fd0ff;font-style:normal;letter-spacing:-2px}
+.tg-doc{display:flex;gap:9px;align-items:flex-start;background:#182533;border-radius:10px;padding:9px 10px;border-left:3px solid #8fa8ff}
+.tg-doc.warn{border-left-color:#ffb26b}
+.tg-pdf{font:600 12px/1 var(--mono);color:#0f1730;background:#8fa8ff;border-radius:5px;padding:5px 6px;flex:0 0 auto}
+.tg-doc.warn .tg-pdf{background:#ffb26b}
+.tg-doc span{display:flex;flex-direction:column;gap:3px}
+.tg-doc b{font:600 14.5px/1.2 var(--sans);color:#eef2fb}
+.tg-doc i{font:400 13.5px/1.3 var(--mono);color:#a8b6c8;font-style:normal}
+.tg-funnel{display:grid;gap:6px}
+.tg-funnel i{display:flex;align-items:center;justify-content:space-between;width:var(--w);height:24px;border-radius:5px;
+ background:linear-gradient(90deg,rgba(143,168,255,.92),rgba(143,168,255,.34));padding:0 8px;font-style:normal}
+.tg-funnel b{font:600 14px/1 var(--mono);color:#0f1730}
+.tg-funnel i{font:500 13.5px/1 var(--mono);color:#12203a}
+.tg-check{display:grid;gap:5px;background:#182533;border-radius:10px;padding:10px}
+.tg-check span{font:400 14px/1.3 var(--mono);color:#9fe0b8}
+.tg-kb{display:grid;gap:6px;padding:0 10px 10px;background:#0e1621}
+.tg-kb button{width:100%;border:1px solid rgba(143,168,255,.35);background:rgba(143,168,255,.12);color:#b9c9ff;
+ border-radius:9px;padding:10px 8px;font:500 14.5px/1 var(--sans);cursor:pointer}
+.tg-kb button:hover{background:rgba(143,168,255,.2)}
+.tg-input{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#17212b;border-top:1px solid rgba(255,255,255,.07)}
+.tg-clip{color:#7d8fa5;font-size:15px;line-height:1}
+.tg-field{flex:1;font:400 14px/1 var(--sans);color:#7d8fa5;background:#0e1621;border-radius:999px;padding:9px 12px}
+.tg-send{color:#8fa8ff;font-size:16px;line-height:1}
+.vw-hint{text-align:center;font:400 14px/1.4 var(--mono);color:#b9c1d6;margin-top:8px}
+.vw-dots{display:flex;gap:6px;justify-content:center;margin-top:8px}
+.vw-dots i{width:6px;height:6px;border-radius:50%;background:rgba(238,242,251,.28);transition:background .2s}
+.vw-dots i.on{background:#8fa8ff}
 @media(max-width:980px){
  .hero.hero-split{grid-template-columns:1fr!important;min-height:0;padding:22px 0 26px;gap:18px}
- .showcase .vw-stage{height:400px}
+ .showcase .vw-stage{height:412px}
 }
-@media(max-width:420px){ .showcase .vw-card{width:268px;margin-left:-134px} }
+@media(max-width:420px){ .showcase .vw-card{width:288px} }
 </style>
 </body>
 </html>
