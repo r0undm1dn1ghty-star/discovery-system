@@ -1,0 +1,138 @@
+================== index.html | CTA-ish: 15
+  -- [NAV] n=2 primary=0
+      text      'Сервис'                             -> service.html
+      text      'Калькулятор'                        -> calculator.html
+  -- [top] n=4 primary=2  <<< >1 PRIMARY
+      PRIMARY   'Посчитать свою связку'              -> calculator.html
+      ghost     'Согласовать критерии'               -> TEXT=Виктор, привет! Давай согласуем критерии приёмки д
+      PRIMARY   'Посчитать свою связку'              -> calculator.html
+      ghost     'Написать лично'                     -> TEXT=Виктор, привет! Пишу лично: хочу обсудить связку п
+  -- [persona] n=2 primary=1
+      PRIMARY   'Собрать за 15 000 ₽'                -> calculator.html
+      text      'вся лестница'                       -> service.html
+  -- [who] n=1 primary=0
+      text      'написать лично'                     -> TEXT=Виктор, привет! Хочу обсудить внедрение под свой п
+  -- [doors] n=4 primary=0
+      tile      'шаг 1 · 0 ₽ Посчитать месячную стоимость Калькулятор св' -> calculator.html
+      tile      'шаг 2 · 0 ₽ Тест-драйв для скептика Назови шаг из пути ' -> TEXT=Виктор, привет! Хочу тест-драйв: вот моя задача — 
+      tile      'шаг 3 · 0 ₽ Подписаться на канал Сигналы рынка, числа в' -> https://t.me/discoverysystem
+      text      't.me/victorpinksight'               -> TEXT=Виктор, привет! Вопрос по агенту под мою рутину.
+  -- [FOOTER] n=2 primary=0
+      text      't.me/victorpinksight'               -> TEXT=Виктор, привет! Вопрос по Discovery System.
+      text      't.me/discoverysystem'               -> https://t.me/discoverysystem
+================== market.html | CTA-ish: 7
+  -- [NAV] n=2 primary=0
+      text      'Сервис'                             -> service.html
+      text      'Калькулятор'                        -> calculator.html
+  -- [s4(final)] n=3 primary=1
+      btn-plain 'Выбрать сервис: полка 15–60К разово' -> service.html
+      ghost     'Посчитать связку — 0 ₽'             -> calculator.html
+      text      't.me/victorpinksight'               -> TEXT=Пришёл со страницы «Рынок ИИ». Хочу свою связку: к
+  -- [FOOTER] n=2 primary=0
+      text      't.me/victorpinksight'               -> TEXT=Виктор, привет! Пришёл со страницы «Рынок ИИ» — во
+      text      't.me/discoverysystem'               -> https://t.me/discoverysystem
+================== system.html | CTA-ish: 14
+  -- [NAV] n=2 primary=0
+      text      'Сервис'                             -> service.html
+      text      'Калькулятор'                        -> calculator.html
+  -- [s1()] n=1 primary=1
+      PRIMARY   'Обсудить такую смену — сообщение уже собрано' -> TEXT=Виктор, привет. На странице «Система» посмотрел сц
+  -- [s4()] n=7 primary=0
+      ghost     'Открыть на GitHub →'                -> https://github.com/r0undm1dn1ghty-star
+      text      'радар ниш'                          -> TEXT=Виктор, привет. Со страницы «Система»: обсудить по
+      text      'лид-парсер'                         -> TEXT=Виктор, привет. Со страницы «Система»: обсудить по
+      text      'проверка рынка'                     -> TEXT=Виктор, привет. Со страницы «Система»: обсудить по
+      text      'GEO-аудит'                          -> TEXT=Виктор, привет. Со страницы «Система»: обсудить по
+      text      'P&L-проверка'                       -> TEXT=Виктор, привет. Со страницы «Система»: обсудить по
+      text      'спираль зрелости'                   -> TEXT=Виктор, привет. Со страницы «Система»: обсудить по
+  -- [s6(end)] n=2 primary=1
+      PRIMARY   'Калькулятор связки · 0 ₽'           -> calculator.html
+      ghost     'Канал сигналов · 0 ₽'               -> https://t.me/discoverysystem
+  -- [FOOTER] n=2 primary=0
+      text      't.me/victorpinksight'               -> https://t.me/victorpinksight
+      text      't.me/discoverysystem'               -> https://t.me/discoverysystem
+================== channel.html | CTA-ish: 11
+  -- [NAV] n=2 primary=0
+      text      'Сервис'                             -> service.html
+      text      'Калькулятор'                        -> calculator.html
+  -- [s1(hero)] n=2 primary=1
+      PRIMARY   'Читать канал · 0 ₽'                 -> https://t.me/discoverysystem
+      ghost     'Разбор лично'                       -> TEXT=Здравствуйте! Пришёл с канала — нужен разбор моей 
+  -- [top] n=1 primary=0
+      ghost     'Разборы карт — в канале'            -> https://t.me/discoverysystem
+  -- [s5()] n=2 primary=1
+      PRIMARY   'Читать · t.me/discoverysystem'      -> https://t.me/discoverysystem
+      ghost     'Написать · t.me/victorpinksight'    -> TEXT=Здравствуйте! Пришёл с канала Discovery System. Ра
+  -- [s6(end)] n=2 primary=1
+      PRIMARY   'Читать канал · 0 ₽'                 -> https://t.me/discoverysystem
+      ghost     'Разбор лично'                       -> TEXT=Здравствуйте! Пришёл с канала — нужен разбор моей 
+  -- [FOOTER] n=2 primary=0
+      text      't.me/victorpinksight'               -> https://t.me/victorpinksight
+      text      't.me/discoverysystem'               -> https://t.me/discoverysystem
+================== service.html | CTA-ish: 26
+  -- [NAV] n=2 primary=0
+      text      'Сервис'                             -> service.html
+      text      'Калькулятор'                        -> calculator.html
+  -- [s1()] n=10 primary=5  <<< >1 PRIMARY
+      tile      'ЛичныйПлан, тексты и разборы вручную — каждый вечер на ' -> 
+      tile      'СамозанятыйКлиенты пишут в мессенджеры — отвечаю сам, з' -> 
+      tile      'ИПЗаявки, Авито, CRM и таблицы живут отдельно — свожу р' -> 
+      tile      'КомандаЗадачи и сроки в разных чатах — утром никто не з' -> 
+      tile      'Потерял ClaudeПодписка не платится, VPN падает — связки' -> 
+      PRIMARY   'Описать задачу'                     -> TEXT=Виктор, привет! Я — личный: вечер уходит на план и
+      PRIMARY   'Описать задачу'                     -> TEXT=Виктор, привет! Я самозанятый: клиенты пишут в мес
+      PRIMARY   'Описать задачу'                     -> TEXT=Виктор, привет! У меня ИП: заявки, Авито, CRM и та
+      PRIMARY   'Описать задачу'                     -> TEXT=Виктор, привет! У нас команда: задачи тонут в чата
+      PRIMARY   'Забрать гайд'                       -> TEXT=Виктор, привет! Потерял Claude: хочу гайд «20 конф
+  -- [optimization] n=7 primary=0
+      tile      'Установка под ключ 15 000 / 20 000 / 30 000 / 60 000 ₽ ' -> 
+      tile      'Спасение агента от 25 000 ₽ точная цена после аудита · ' -> 
+      tile      'Гайд «20 конфигураций» 5 000 ₽ сборки, которые живут в ' -> 
+      tile      'Подбор индивидуальный 7 000 ₽ План связки под твою зада' -> 
+      tile      'Поддержки 15–40 тыс. ₽ в месяц три уровня · именованный' -> 
+      tile      'Тест-драйв 0 ₽ скиллы в своём чат-боте · 7 дней · твои ' -> 
+      tile      'Калькулятор и канал 0 ₽ связка в рублях за минуту · сиг' -> 
+  -- [top] n=5 primary=2  <<< >1 PRIMARY
+      PRIMARY   'Описать задачу'                     -> https://t.me/victorpinksight
+      ghost     'Канал: разборы и сигналы рынка'     -> https://t.me/discoverysystem
+      PRIMARY   'Описать задачу'                     -> TEXT=Виктор, привет! Опишу задачу — подскажи формат и ц
+      ghost     'Посчитать связку'                   -> calculator.html
+      ghost     'Канал: разборы и сигналы рынка'     -> https://t.me/discoverysystem
+  -- [FOOTER] n=2 primary=0
+      text      't.me/victorpinksight'               -> https://t.me/victorpinksight
+      text      't.me/discoverysystem'               -> https://t.me/discoverysystem
+================== calculator.html | CTA-ish: 25
+  -- [NAV] n=2 primary=0
+      text      'Сервис'                             -> service.html
+      text      'Калькулятор'                        -> calculator.html
+  -- [wstep1] n=1 primary=1
+      btn-plain 'Выбрал — что жрёт время →'          -> 
+  -- [wstep2] n=1 primary=1
+      btn-plain 'Дальше — самостоятельность →'       -> 
+  -- [wstep3] n=1 primary=1
+      btn-plain 'Дальше — обвязка →'                 -> 
+  -- [wstep4] n=1 primary=1
+      btn-plain 'Дальше — данные →'                  -> 
+  -- [wstep5] n=1 primary=1
+      btn-plain 'Дальше — статус →'                  -> 
+  -- [wstep6] n=1 primary=1
+      btn-plain 'Посчитать связку — честно, до копейки →' -> 
+  -- [wstep7] n=2 primary=2  <<< >1 PRIMARY
+      btn-plain 'У меня заказ — хочу решить сейчас →' -> 
+      btn-plain 'Заполнить бриф — 5 строк в TG →'    -> 
+  -- [top] n=15 primary=9  <<< >1 PRIMARY
+      text      'что входит в 7К →'                  -> service.html
+      btn-plain 'Собрать мою связку →'               -> 
+      btn-plain 'Взять гайд →'                       -> 
+      text      'Подробнее в сервисе →'              -> service.html
+      btn-plain 'Личный агент на ПК — 15 000 ₽ →'    -> 
+      btn-plain 'Самозанятый — 20 000 ₽ →'           -> 
+      btn-plain 'Микро/малый бизнес (ИП) — 30 000 ₽ →' -> 
+      btn-plain 'Средний бизнес — 60 000 ₽ →'        -> 
+      btn-plain 'Заказать аудит →'                   -> 
+      btn-plain 'Подписаться на канал →'             -> https://t.me/discoverysystem
+      text      'сервисе'                            -> service.html
+      PRIMARY   'Перевёл по реквизитам — скрин прилагаю →' -> 
+      ghost     'Получить реквизиты в личке →'       -> 
+      text      't.me/victorpinksight'               -> https://t.me/victorpinksight
+      text      't.me/discoverysystem'               -> https://t.me/discoverysystem

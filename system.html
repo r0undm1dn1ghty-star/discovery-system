@@ -99,14 +99,14 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(30px
 .tg .wall::-webkit-scrollbar-thumb{background:rgba(255,255,255,.16);border-radius:3px}
 .tg .wall>*{flex:0 0 auto}
 .tg .wall>*:first-child{margin-top:auto}
-.daychip{align-self:center;font:400 12.5px/1.3 var(--sans);color:#c3d0e0;background:rgba(0,0,0,.3);padding:4px 12px;border-radius:11px}
+.daychip{align-self:center;font:400 14px/1.35 var(--sans);color:#e2e9f4;background:rgba(0,0,0,.42);padding:4px 12px;border-radius:11px}
 .cmsg{max-width:82%;padding:7px 11px 8px;border-radius:12px;font:400 15px/1.45 var(--sans);color:#fff;position:relative;overflow:hidden;box-shadow:0 1px 1px rgba(0,0,0,.18)}
 .cmsg.in{align-self:flex-start;background:#182533;border-bottom-left-radius:4px}
 .cmsg.out{align-self:flex-end;background:#2b5278;border-bottom-right-radius:4px}
 .cmsg .bm{float:right;margin:9px -3px -6px 8px;display:inline-flex;align-items:center;gap:4px}
-.cmsg .tm{font:400 11.5px/1 var(--sans);color:rgba(255,255,255,.55);white-space:nowrap}
+.cmsg .tm{font:400 14px/1 var(--sans);color:rgba(255,255,255,.85);white-space:nowrap}
 .cmsg .tks{width:15px;height:9px}
-.cmsg .cap{display:block;margin-top:4px;font:400 12.5px/1.3 var(--sans);color:rgba(255,255,255,.5)}
+.cmsg .cap{display:block;margin-top:4px;font:400 14px/1.3 var(--sans);color:rgba(255,255,255,.82)}
 .cmsg .bt{display:block;font-weight:500;margin-bottom:5px}
 .cmsg .fm{display:block;margin-top:6px;padding:8px 10px;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(255,255,255,.05);font-family:var(--mono);font-size:14px;line-height:1.5;color:#cfe0f4}
 .cmsg .fm .r{display:flex;justify-content:space-between;gap:14px;padding:1px 0}
@@ -120,10 +120,10 @@ h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(30px
 @keyframes tp{0%,60%,100%{opacity:.28}30%{opacity:1}}
 @media(prefers-reduced-motion:no-preference){.cmsg.line-in,.syschip.line-in,.daychip.line-in{animation:tgpop .3s var(--ease) both}}
 @keyframes tgpop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.syschip{align-self:center;display:block;font:400 12.5px/1.3 var(--sans);color:#cfe0f4;background:rgba(0,0,0,.32);padding:7px 13px;border-radius:12px;max-width:100%}
+.syschip{align-self:center;display:block;font:400 14px/1.35 var(--sans);color:#e2e9f4;background:rgba(0,0,0,.42);padding:7px 13px;border-radius:12px;max-width:100%}
 .syschip .lrow{display:flex;align-items:baseline;gap:9px}
 .syschip .lrow+.lrow{margin-top:4px}
-.syschip .st{font-family:var(--mono);font-size:11.5px;color:rgba(255,255,255,.42);flex:none}
+.syschip .st{font-family:var(--mono);font-size:14px;color:rgba(255,255,255,.82);flex:none}
 .tg .foot{display:flex;align-items:center;gap:11px;padding:9px 12px;background:#17212b;border-top:1px solid rgba(0,0,0,.35)}
 .tg .foot .field{flex:1;background:#242f3d;border-radius:19px;padding:9px 15px;font:400 15px/1.4 var(--sans);color:#7d8e9f;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .demo-result{margin-top:16px;font-size:16px;color:var(--ink);max-width:60ch;min-height:26px}
@@ -179,6 +179,31 @@ footer a:hover{color:var(--ink)}
 .typing{display:none}
 .cmsg.line-in,.syschip.line-in,.daychip.line-in{animation:none}
 }
+/* ═══ READABILITY PASS: плазма — фон, а не акцент; текст и цифры поверх ═══ */
+#pageFx canvas{opacity:.6}
+#pageFx::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(15,23,48,.68) 0%,rgba(15,23,48,.8) 45%,rgba(15,23,48,.86) 100%)}
+:root{--ink:#f4f7fe;--body:#c8d0e2;--meta:#a2adc4}
+body{color:var(--body)}
+h1,h2,h3,.conflict,.q,.stance,.demo-result,.terms b,.lede b{color:var(--ink)}
+.kicker,.tlab,.flowcap,.demo-cap,.tool-note,.quiet,.q .who,footer{color:var(--meta)}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;margin-top:30px}
+.btn-p{background:#8fa8ff;color:#0f1730;box-shadow:0 8px 26px rgba(143,168,255,.28)}
+.btn-p:hover{background:#a9bcff}
+.quiet-link{font-family:var(--mono);font-size:15px;color:#c8d0e2;text-decoration:underline;text-underline-offset:3px}
+.quiet-link:hover{color:#fff}
+/* схемы: подписи контрастнее */
+.flowwrap .src-s{fill:#aab5cc}
+.flowwrap .res-s{fill:rgba(244,247,254,.92)}
+.toolsfig .tnote{fill:#aab5cc}
+.tool-ctas a{color:#b9c4da}
+/* мобильное меню: подпись над дверями ≥14px (перекрываем ds-mnav.css по специфичности) */
+.mnav .mnav-foot .mnav-lab{font-size:14px}
+
+/* чат-демо: подписи ≥14px и читаемые */
+.daychip,.syschip{font-size:14px;line-height:1.35;color:#e2e9f4;background:rgba(0,0,0,.42)}
+.cmsg .tm{font-size:14px;line-height:1;color:rgba(255,255,255,.85)}
+.cmsg .cap{font-size:14px;line-height:1.3;color:rgba(255,255,255,.82)}
+.syschip .st{font-size:14px;color:rgba(255,255,255,.82)}
 </style>
 <script>document.documentElement.className+=' js';</script>
 <link rel="stylesheet" href="ds-mnav.css?v=20261108"/>
@@ -197,6 +222,7 @@ footer a:hover{color:var(--ink)}
 <p class="lede fx">Тот же метод и те же инструменты доступны рынку. Возможность в том, что из них можно собрать систему под свой процесс — <b>и она остаётся твоей</b>.</p>
 <p class="conflict fx">У подписки на чужое облако есть срок жизни. У системы, которая твоя, — нет.</p>
 <p class="terms fx"><span class="tlab">приёмка · оплата · сроки</span>Критерии приёмки — <b>до старта</b>, оплата рублями после согласования, срок <b>1–3 дня (макс 10 при сложных)</b>.</p>
+<div class="hero-cta fx"><a class="btn btn-p" href="calculator.html">Калькулятор связки · 0 ₽</a><a class="quiet-link" href="#demo">смена агента в демо</a></div>
 </div>
 </div>
 
@@ -235,7 +261,7 @@ footer a:hover{color:var(--ink)}
 <div class="foot" aria-hidden="true"><span class="field">Сообщение</span></div>
 </div>
 <p class="demo-result fx" id="demoResult"></p>
-<div class="cta fx demo-cta"><a class="btn btn-p" id="demoCta" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%9D%D0%B0%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%20%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9%20%C2%AB%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%BD%D0%B5%20%D0%B6%D0%B4%D1%83%D1%82%20%D1%83%D1%82%D1%80%D0%B0%C2%BB%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%2C%20%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9%20%D0%B2%D0%B5%D1%87%D0%B5%D1%80%D0%BE%D0%BC%20%D1%80%D0%B0%D0%B7%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%20%D0%B2%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B8%D0%B5%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%B8%20%D0%BA%20%D1%83%D1%82%D1%80%D1%83%20%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D1%82%20%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%BE%D0%B2.%20%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%3A%20discovery-system.ru%2Fsystem.html">Обсудить такую смену — сообщение уже собрано</a></div>
+<div class="cta fx demo-cta" id="demo"><a class="btn btn-g" id="demoCta" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%9D%D0%B0%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%20%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9%20%C2%AB%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%BD%D0%B5%20%D0%B6%D0%B4%D1%83%D1%82%20%D1%83%D1%82%D1%80%D0%B0%C2%BB%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%2C%20%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9%20%D0%B2%D0%B5%D1%87%D0%B5%D1%80%D0%BE%D0%BC%20%D1%80%D0%B0%D0%B7%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%20%D0%B2%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B8%D0%B5%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%B8%20%D0%BA%20%D1%83%D1%82%D1%80%D1%83%20%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D1%82%20%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%BE%D0%B2.%20%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%3A%20discovery-system.ru%2Fsystem.html">Обсудить такую смену — сообщение уже собрано</a></div>
 <button type="button" class="demo-again fx" id="tgAgain">повторить смену</button>
 <p class="demo-cap fx">Сценарии — из живых сборок: заявки вечером, утренняя сводка, радар ниш. Сводка приходит сама — отправляешь ты.</p>
 </section>

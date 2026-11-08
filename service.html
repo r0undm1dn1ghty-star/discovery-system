@@ -217,6 +217,21 @@ header.nav a.brand{flex-basis:100%}
 .p-offer .btn{width:100%;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){.js .fx,.js .panel.on,.js .panel.on .stag,.js .modal-card{animation:none}.door,.door:hover{transform:none;transition:none}.js .fb-line{stroke-dasharray:none;stroke-dashoffset:0;transition:none}.shelf-row{transition:none}}
+/* мобильное меню: подпись над дверями ≥14px (перекрываем ds-mnav.css по специфичности) */
+.mnav .mnav-foot .mnav-lab{font-size:14px}
+
+/* ═══ READABILITY PASS: плазма в герое — фон; акценты и цифры читаются ═══ */
+#heroFx canvas{opacity:.62}
+#heroFx::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(15,23,48,.7) 0%,rgba(15,23,48,.82) 55%,rgba(15,23,48,.88) 100%)}
+:root{--meta:#5c6579}
+.zone-dark{--ink:#f4f7fe;--body:#c8d0e2;--meta:#a2adc4}
+.zone-dark .lede{color:#c8d0e2}
+.zone-dark .lede b{color:#f4f7fe}
+.zone-dark .btn-p{background:#8fa8ff;color:#0f1730;box-shadow:0 10px 30px rgba(143,168,255,.3)}
+.zone-dark .btn-p:hover{background:#a9bcff}
+.hero-cta{margin-top:30px}
+.hero-cta .quiet-link{font-family:var(--mono);font-size:15px;color:#c8d0e2;text-decoration:underline;text-underline-offset:3px}
+.hero-cta .quiet-link:hover{color:#f4f7fe}
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261108"/>
 </head>
@@ -235,6 +250,7 @@ header.nav a.brand{flex-basis:100%}
 <div class="kicker fx">сервис · запуск и сопровождение ии-агентов</div>
 <h1 class="fx" style="animation-delay:.08s">Сервис, который начинается с <em>твоей двери</em> — и своё, и быстро.</h1>
 <p class="lede fx" style="animation-delay:.16s">Выбери, с чем пришёл, — сцена соберётся под выбор: <b>результат, цифра и формат с ценой</b>. Агент ставится за дни, а не за месяцы, и остаётся твоим с первого дня: инструменты и данные не забираем — если облако заблокируют, работа остаётся.</p>
+<div class="cta fx hero-cta" style="animation-delay:.24s"><a class="btn btn-p" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9E%D0%BF%D0%B8%D1%88%D1%83%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83%20%E2%80%94%20%D0%BF%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%20%D0%B8%20%D1%86%D0%B5%D0%BD%D1%83.">Описать задачу</a><a class="quiet-link" href="#doors">выбрать свою дверь</a></div>
 </div>
 </div>
 </div>
