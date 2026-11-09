@@ -23,22 +23,18 @@
 var DS_PAY = {
 
   /* ── Разовые: цифровые материалы ───────────────────────── */
-  guide:   {price:5000,  name:'Гайд «20 сборок»',
-            url:'https://auth.robokassa.ru/merchant/Invoice/GEV6reyqiEWXzYG_Mkulbw?p=guide'},
-  build:   {price:7000,  name:'Архитектура агента (консультация + готовая конфигурация)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/RjF3Mh-GhUmFIiCWVxkMFA?p=build'},
+  guide:   {price:3000,  name:'Гайд «20 конфигураций»',
+            url:null},                      /* инвойс 5 000 больше не соответствует цене — нужен новый на 3 000 */
+  build:   {price:15000, name:'Персональная сборка (архитектура + гайд по установке; ставишь сам)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/xp2UNX65i0GBewjBqkgJOw?p=build'},
 
-  /* ── Разовые: внедрение (лестница 15/20/30/60) ─────────── */
-  personal:{price:15000, name:'ИИ-агент для личных целей (не-бизнес)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/xp2UNX65i0GBewjBqkgJOw'},
-  pc:      {price:15000, name:'Личный агент на ПК',
-            url:'https://auth.robokassa.ru/merchant/Invoice/xp2UNX65i0GBewjBqkgJOw'},
-  self:    {price:20000, name:'ИИ-агент для самозанятых и микробизнеса',
-            url:'https://auth.robokassa.ru/merchant/Invoice/AuPs4sLt3USvwXypMewUDw?p=self'},
-  smb:     {price:30000, name:'ИИ-агент для ИП и малого бизнеса',
-            url:'https://auth.robokassa.ru/merchant/Invoice/jjPrDM9xSkK1qKCLSGB-MA?p=smb'},
-  mid:     {price:60000, name:'ИИ-агент для среднего бизнеса',
-            url:'https://auth.robokassa.ru/merchant/Invoice/ga2H8Nr6zUadphD3DvygDQ?p=mid'},
+  /* ── Разовые: интеграция под ключ ───────────────────────── */
+  self:    {price:29990, name:'Интеграция самозанятым (1 человек)',
+            url:null},                      /* нужен новый инвойс на 29 990 */
+  smb:     {price:49990, name:'Интеграция микро-бизнесу (до 15 сотрудников)',
+            url:null},                      /* нужен новый инвойс на 49 990 */
+  mid:     {price:79990, name:'Интеграция малому бизнесу (16–30 сотрудников)',
+            url:null},                      /* нужен новый инвойс на 79 990 */
 
   /* ── Разовые: дополнительные решения ───────────────────── */
   factory_photo: {price:15000, name:'Контент-завод: фото',
@@ -55,11 +51,19 @@ var DS_PAY = {
             url:'https://web.tribute.tg/s/16eU', sub:true},
   support:    {price:15000, name:'Персональная поддержка',
             url:'https://web.tribute.tg/s/16eW', sub:true},
-  support_smb:{price:25000, name:'Техподдержка ИИ-агента для МСБ',
+  support_smb:{price:25000, name:'Поддержка: малый бизнес (до 10 человек)',
             url:'https://web.tribute.tg/s/18R4', sub:true},
-  support_dept:{price:40000,name:'Продуктовый отдел',
-            url:'https://web.tribute.tg/s/18R9', sub:true}
+  support_dept:{price:40000,name:'Поддержка: продуктовый отдел',
+            url:'https://web.tribute.tg/s/18R9', sub:true},
+  support_year:{price:144000,name:'Годовой пакет «Персональная поддержка» (12 000 ₽/мес)',
+            url:'https://web.tribute.tg/s/16eW', sub:true}
 };
+
+/* Сколько ссылка живёт без инвойса: пока url:null — ведём в личку с готовым текстом. */
+function dsPayUrl(key){
+  var it=DS_PAY[key]; if(!it) return DS_TG_DIRECT;
+  return it.url || dsTgUrl('Хочу оплатить: '+it.name+' — '+it.price+' ₽');
+}
 
 /* ── Куда ведём, когда ссылка ещё не создана ───────────── */
 var DS_TG_ORDER   = 'https://t.me/discoverysystem';  /* канал */
