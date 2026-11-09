@@ -398,6 +398,29 @@ footer a:hover{text-decoration:underline}
 .cs-who{font:400 14px/1.35 var(--mono);color:var(--meta);margin:-2px 0 2px}
 .tg-chip{align-self:center;margin:8px auto 2px;padding:6px 12px;border-radius:11px;background:rgba(143,168,255,.14);border:1px solid rgba(143,168,255,.32);font:500 14px/1.2 var(--sans);color:#cfe0ff;text-align:center}
 .tg-kb button:disabled{opacity:.55;cursor:default}
+
+#free .freegrid{display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,.85fr);gap:clamp(16px,3vw,32px);align-items:center;margin-top:clamp(20px,3vw,30px)}
+.freelist{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}
+.freelist li{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 0;border-bottom:1px solid var(--hair)}
+.freelist b{font:500 17px/1.35 var(--disp);color:var(--ink)}
+.freelist span{grid-column:1;font-size:15.5px;line-height:1.5;color:var(--body);max-width:44ch}
+.freelist a{grid-column:2;grid-row:1/span 2;align-self:center;font:500 14px/1.4 var(--mono);color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,42,107,.32);white-space:nowrap}
+.freearrow{font:400 30px/1 var(--mono);color:var(--meta);text-align:center}
+.freeout{display:grid;gap:14px}
+.freeout .fo{background:#fff;border:1px solid var(--hair);border-radius:14px;padding:18px 20px}
+.freeout b{display:block;font:500 19px/1.25 var(--disp);color:var(--ink);margin-bottom:6px}
+.freeout span{font-size:15.5px;line-height:1.5;color:var(--body)}
+@media(max-width:820px){#free .freegrid{grid-template-columns:1fr}.freearrow{transform:rotate(90deg)}}
+
+#free .freegrid{grid-template-rows:auto auto}
+#free .freecap{margin:0 0 4px;font:500 14px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--meta)}
+#free .freecap-l{grid-column:1;grid-row:1}
+#free .freecap-r{grid-column:3;grid-row:1}
+#free .freearrow{grid-column:2;grid-row:1/span 2;align-self:center}
+#free .freelist{grid-column:1;grid-row:2}
+#free .freeout{grid-column:3;grid-row:2}
+.freeout .fo a{display:inline-block;margin-top:10px;font:500 14px/1.4 var(--mono);color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,42,107,.32)}
+@media(max-width:820px){#free .freecap-r{grid-column:1;grid-row:3;margin-top:14px}#free .freelist{grid-row:2}#free .freeout{grid-column:1;grid-row:4}#free .freearrow{grid-row:3;grid-column:1;justify-self:center;display:none}}
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
 </head>
@@ -613,62 +636,63 @@ footer a:hover{text-decoration:underline}
 </div>
 <div class="cslider">
   <div class="cviewport" id="cviewport"><div class="ctrack" id="ctrack">
-<article class="cslide" data-i="0" aria-label="Агент ведёт учёт сам: голос в таблицу, с">
+<article class="cslide" data-i="0">
   <span class="cs-m">24/7</span>
   <p class="cs-who">Николай · учёт смен и смет · услуги</p>
   <p class="cs-what">Агент ведёт учёт сам: голос в таблицу, сводки в 9:00 и 21:00.</p>
   <p class="cs-proof"><span>чем проверено</span>Журнал операций у клиента на его сервере — видно каждую строку.</p>
   <span class="cs-n">01</span>
 </article>
-<article class="cslide" data-i="1" aria-label="Дизайнер без программиста дошёл до своей">
-  <span class="cs-m">1</span>
-  <p class="cs-who">дизайнер-фрилансер · креатив</p>
-  <p class="cs-what">Дизайнер без программиста дошёл до своей игры на Unity.</p>
-  <p class="cs-proof"><span>чем проверено</span>Проект собран: сцены, скрипты, ассеты из его же макетов.</p>
+<article class="cslide" data-i="1">
+  <span class="cs-m">12</span>
+  <p class="cs-who">главбух · 12 компаний · бухгалтерия</p>
+  <p class="cs-what">Столько компаний ведёт главбух с агентом вместо ручной сверки.</p>
+  <p class="cs-proof"><span>чем проверено</span>Обезличивание до модели по 152-ФЗ, первичка и регистры по 402-ФЗ, подпись за человеком.</p>
   <span class="cs-n">02</span>
 </article>
-<article class="cslide" data-i="2" aria-label="Радар ниши: 5–6 000 ₽/мес чужих подписок">
+<article class="cslide" data-i="2">
   <span class="cs-m">×40</span>
   <p class="cs-who">ювелирный бренд · радар ниши</p>
   <p class="cs-what">Радар ниши: 5–6 000 ₽/мес чужих подписок → 150 ₽/мес своих расходников.</p>
   <p class="cs-proof"><span>чем проверено</span>Аудит зависимостей скилла: три платных сервиса заменены своим кодом.</p>
   <span class="cs-n">03</span>
 </article>
-<article class="cslide" data-i="3" aria-label="Столько компаний ведёт главбух с агентом">
-  <span class="cs-m">12</span>
-  <p class="cs-who">главбух · 12 компаний</p>
-  <p class="cs-what">Столько компаний ведёт главбух с агентом вместо ручной сверки.</p>
-  <p class="cs-proof"><span>чем проверено</span>Обезличивание до модели по 152-ФЗ, первичка и регистры по 402-ФЗ, подпись за человеком.</p>
+<article class="cslide" data-i="3">
+  <span class="cs-m">1</span>
+  <p class="cs-who">дизайнер-фрилансер · креатив</p>
+  <p class="cs-what">Дизайнер без программиста дошёл до своей игры на Unity.</p>
+  <p class="cs-proof"><span>чем проверено</span>Проект собран: сцены, скрипты, ассеты из его же макетов.</p>
   <span class="cs-n">04</span>
 </article>
-<article class="cslide" data-i="4" aria-label="Нарезок из 2 ч 40 мин сырья: пять отобра">
+<article class="cslide" data-i="4">
   <span class="cs-m">14</span>
-  <p class="cs-who">продакшн · видео и нарезки</p>
+  <p class="cs-who">продакшн · видео и нарезки · контент</p>
   <p class="cs-what">Нарезок из 2 ч 40 мин сырья: пять отобрано в работу, сценарии и склейки готовы.</p>
   <p class="cs-proof"><span>чем проверено</span>Лог обработки: сколько файлов, сколько нарезок, что отобрано.</p>
   <span class="cs-n">05</span>
 </article>
-<article class="cslide" data-i="5" aria-label="Три карьерных трека и парсер открытых ва">
-  <span class="cs-m">3</span>
-  <p class="cs-who">клиент на поиске работы · карьера</p>
-  <p class="cs-what">Три карьерных трека и парсер открытых вакансий вместо ручных откликов.</p>
-  <p class="cs-proof"><span>чем проверено</span>Сопроводительное собирается под конкретную вакансию, а не веером.</p>
+<article class="cslide" data-i="5">
+  <span class="cs-m">62</span>
+  <p class="cs-who">маркетолог · вакансии и отклики · карьера</p>
+  <p class="cs-what">62 вакансии разобраны, к каждой — отклик под требования, а не веером.</p>
+  <p class="cs-proof"><span>чем проверено</span>Сопроводительное собирается из текста вакансии; отбор идёт по стеку, а не по заголовку.</p>
   <span class="cs-n">06</span>
 </article>
-<article class="cslide" data-i="6" aria-label="Источников с датами за один прогон иссле">
+<article class="cslide" data-i="6">
   <span class="cs-m">14</span>
   <p class="cs-who">B2B-исследование · рынок</p>
-  <p class="cs-what">Источников с датами за один прогон исследования рынка.</p>
+  <p class="cs-what">Источников с датами за один прогон: 14.</p>
   <p class="cs-proof"><span>чем проверено</span>Отдельно указано, что данные НЕ доказывают — границы не сглажены.</p>
   <span class="cs-n">07</span>
 </article>
-<article class="cslide" data-i="7" aria-label="Точность поиска заказов против поиска по">
-  <span class="cs-m">63/47</span>
+<article class="cslide" data-i="7">
+  <span class="cs-m">0,64 ₽</span>
   <p class="cs-who">открытый инструмент · лидген</p>
-  <p class="cs-what">Точность поиска заказов против поиска по словам: 63% и 47%.</p>
-  <p class="cs-proof"><span>чем проверено</span>EVAL.md в репозитории: разметка 110 карточек, контрольная выборка 286 постов.</p>
+  <p class="cs-what">Столько стоит один прогон парсера — и 0,85 ₽ выходит качественный лид.</p>
+  <p class="cs-proof"><span>чем проверено</span>Замер по 7 прогонам 15–22.10.2026: 38 ₽ за 60 прогонов, ~45 лидов/мес.</p>
   <span class="cs-n">08</span>
 </article>
+</div>
 </div></div>
   <button class="cbtn prev" type="button" aria-label="Предыдущий">←</button>
   <button class="cbtn next" type="button" aria-label="Следующий">→</button>
@@ -692,6 +716,30 @@ footer a:hover{text-decoration:underline}
 </section>
 
 <!-- ═══ кто делает ═══ -->
+<section id="free">
+<div class="wrap">
+<div class="shead">
+<h2>Что я даю бесплатно — и что можно забрать себе</h2>
+<p class="s">Четыре вещи, за которые не надо платить: калькулятор, сигналы рынка, код на GitHub и исследования. Из них складывается одно из двух — понимание, что строить, или работающий агент у тебя.</p>
+</div>
+<div class="freegrid">
+  <p class="freecap freecap-l">бесплатно</p>
+  <p class="freearrow" aria-hidden="true">→</p>
+  <p class="freecap freecap-r">что получает бизнес</p>
+  <ul class="freelist">
+    <li><b>Калькулятор связки — 0 ₽</b><span>считает, сколько часов и денег забирает рутина</span><a href="calculator.html">посчитать</a></li>
+    <li><b>Канал — 0 ₽</b><span>сигналы рынка: цены, провалы, блокировки, с источником и датой</span><a href="https://t.me/discoverysystem" target="_blank" rel="noopener">открыть</a></li>
+    <li><b>Скиллы на GitHub — 0 ₽</b><span>код и процедуры, можно клонировать и проверить</span><a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">смотреть код</a></li>
+    <li><b>Исследования — 0 ₽</b><span>цены рынка, потери аккаунтов, наценки — с методикой</span><a href="market.html">читать</a></li>
+  </ul>
+  
+  <div class="freeout">
+    <div class="fo"><b>Знаешь, что строить</b><span>и сколько это должно стоить — до разговора с продавцом</span><a href="market.html">срез рынка</a></div>
+    <div class="fo"><b>Агент работает у тебя</b><span>если решил ставить: контур твой, ключи твои, данные твои</span><a href="https://t.me/victorpinksight" target="_blank" rel="noopener">обсудить внедрение</a></div>
+  </div>
+</div>
+</div>
+</section>
 <section id="who">
 <div class="wrap">
 <div class="shead">

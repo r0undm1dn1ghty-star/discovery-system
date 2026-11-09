@@ -231,13 +231,13 @@ footer a:hover{color:#8fa8ff}
   <section id="deathmap-sec">
   <div class="shead">
     <h2>Карта смерти рынков</h2>
-    <p class="s">300 рынков России и 16 экосистем, которые их едят. Точка — рынок: зелёные живут, красные уже почти мёртвые. Наведи — покажет, что это.</p>
+    <p class="s">300 рынков России и 16 факторов, которые их вытесняют. Точка — рынок: зелёные живут, красные уже почти мёртвые. Наведи — покажет, что это.</p>
   </div>
   <div class="mapwrap">
     <canvas id="deathmap" role="img" aria-label="Граф: 300 рынков России и 16 экосистем, 1082 связи"></canvas>
     <div id="maptip" hidden></div>
   </div>
-  <div class="maplegend"><span class="lg"><i class="gr"></i>живут → почти мёртвые</span><span class="lg"><i class="ec"></i>экосистема, которая ест</span></div>
+  <div class="maplegend"><span class="lg"><i class="gr"></i>живут → почти мёртвые</span><span class="lg"><i class="ec"></i>фактор давления</span></div>
   <div class="mapfoot">
     <div class="mf"><b>300</b><span>рынков</span></div>
     <div class="mf"><b>1 082</b><span>связи: кто кого ест</span></div>
@@ -417,6 +417,12 @@ setTimeout(reveal,350);
   var N = D.nodes.map(function(n,i){ return {i:i,name:n[0],sec:n[1],st:n[2],x:0,y:0,vx:0,vy:0,
       r: n[2]===-2?8:(n[2]>=4?4.8:3.6)}; });
   var L = D.links.map(function(l){ return {a:N[l[0]],b:N[l[1]],t:l[2]}; });
+  var RENAME={'маркетплейсы':'платформы','агрегаторы и платформы':'агрегаторы','федеральные сети':'сети',
+    'аренда и ФОТ':'аренда и зарплаты','налоги и регуляторика':'налоги','ИИ-агенты':'ИИ',
+    'самозанятые и демпинг':'демпинг','иностранцы и импорт':'импорт','кредит и платёжеспособность':'кредит',
+    'геополитика и логистика':'логистика','госзаказ и ОПК':'госзаказ','сырьё и поставщики':'сырьё',
+    'стройщики и экономика':'стройка','новые форматы':'форматы'};
+  N.forEach(function(n){ if(RENAME[n.name]) n.name=RENAME[n.name]; });
   var EATERS = N.filter(function(n){return n.st===-2;});
   var COL = ['#3fb98a','#63b07c','#b0a35f','#d18b4a','#c25f52','#8e3b3b'];
   var W=0,H=0,DPR=1,hover=-1,running=false,raf=0,R=0;
@@ -508,7 +514,7 @@ setTimeout(reveal,350);
     hover=best;
     if(best>=0&&tip){var n=N[best];
       var st=n.st===-2?'':(n.st<0?'без оценки':'стадия '+n.st);
-      tip.innerHTML='<b>'+n.name+'</b><span>'+(st?n.sec+' · '+st:'экосистема, которая ест рынки')+'</span>';
+      tip.innerHTML='<b>'+n.name+'</b><span>'+(st?n.sec+' · '+st:'фактор давления рынки')+'</span>';
       tip.style.transform='translate('+Math.round(n.x+14)+'px,'+Math.round(n.y-12)+'px)';tip.hidden=false;}
     else if(tip){tip.hidden=true;}
   });

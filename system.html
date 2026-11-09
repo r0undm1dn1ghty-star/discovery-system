@@ -218,6 +218,13 @@ h1,h2,h3,.conflict,.q,.stance,.demo-result,.terms b,.lede b{color:var(--ink)}
  .tool-m,.tool-note{grid-column:1;text-align:left}
  .tool-m{grid-row:auto;margin-top:6px;font-size:22px}
 }
+
+.demo-center .shead{grid-template-columns:1fr;justify-items:center;text-align:center;gap:10px}
+.demo-center .shead .s{max-width:54ch;margin:0 auto}
+.demo-center .demo-tabs{justify-content:center}
+.demo-center .tg{margin:0 auto;max-width:560px;width:100%}
+.demo-center .demo-result,.demo-center .demo-cta{text-align:center;margin-left:auto;margin-right:auto;justify-content:center}
+@media(max-width:640px){.demo-center .tg{max-width:100%}}
 </style>
 <script>document.documentElement.className+=' js';</script>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
@@ -242,13 +249,13 @@ h1,h2,h3,.conflict,.q,.stance,.demo-result,.terms b,.lede b{color:var(--ink)}
 </div>
 
 <div class="wrap">
-<section>
+<section class="demo-center">
 <div class="shead">
 <div>
 <p class="kicker fx" style="margin-bottom:12px">демо · смена агента</p>
 <h2 class="fx">Выбери агента — посмотри его действия</h2>
 </div>
-<p class="s fx demo-lede">Агент пишет тебе в Telegram — так выглядит работа. Три сценария из живых сборок: кликни и смотри смену. Клиент справа, агент слева.</p>
+<p class="s fx demo-lede">Агент пишет тебе в Telegram — так выглядит работа. Три сценария из живых сборок: кликни и смотри смену. Ты пишешь — агент отвечает.</p>
 </div>
 <div class="demo-tabs fx" role="tablist" aria-label="Сценарии смены агента">
 <button type="button" class="demo-tab" role="tab" id="tab-requests" aria-controls="tgPanel" data-asm="requests" aria-selected="true">Заявки не ждут утра</button>
