@@ -424,6 +424,23 @@ header.nav .nav-in > .brand img{filter:none}
 .bill .bl-total{border-top:1px solid rgba(16,20,31,.28);margin-top:4px}
 .bill .bl-total .bl-k{font-weight:600}
 .bill-note{font-size:14px;color:var(--meta);margin:0 0 14px}
+
+.subcard{padding:16px 18px}
+.subcard .sc-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:8px}
+.subcard .sc-top .t{font-size:16px;font-weight:600}
+.subcard .sc-price{font:500 15px/1.3 var(--mono);color:var(--navy);white-space:nowrap}
+.subcard .sc-line{font-size:14.5px;color:var(--body);margin:0 0 4px}
+.subcard .sc-line b{color:var(--ink);font-weight:500}
+.subcard .sc-risk{display:flex;align-items:center;gap:8px;margin-top:9px;font:500 14px/1.4 var(--mono);letter-spacing:.01em}
+.subcard .sc-risk i{width:9px;height:9px;border-radius:50%;flex:none}
+.subcard .r-high i{background:#c0413f}.subcard .r-high{color:#a33a38}
+.subcard .r-mid i{background:#c68a2e}.subcard .r-mid{color:#9a6a20}
+.subcard .r-low i{background:#3f8f6a}.subcard .r-low{color:#2f6e52}
+
+.pill em{margin-left:8px;font-style:normal;font:400 13px/1 var(--mono);opacity:.72;white-space:nowrap}
+.risk-legend{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0 0;font:400 13.5px/1.4 var(--mono);color:var(--meta)}
+.risk-legend span{display:inline-flex;align-items:center;gap:6px}
+.risk-legend i{width:9px;height:9px;border-radius:50%}
 </style>
 <style>
 /* ── AIR v2.4: мета-текст ≥14px (канон 15), светлые хинты героя, воздух шагов ── */
@@ -558,10 +575,11 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       <p class="ws-sub" id="ws1sub">Выбери свою ситуацию — калькулятор сам подставит рутину. Один тап, и цифра уже считается.</p>
       <div class="auto-grid role-grid" id="roleOpts"></div>
       <details class="cfg-more" id="startDetails">
-        <summary>Уже платишь за ИИ или людям? — уточнить (необязательно)</summary>
+        <summary>Что у тебя уже оплачено — и чем ты рискуешь</summary>
         <div class="row" id="startOpts" style="margin-top:12px"></div>
+      <p class="risk-legend"><span><i style="background:#c0413f"></i>высокий риск</span><span><i style="background:#c68a2e"></i>средний</span><span><i style="background:#3f8f6a"></i>низкий</span><span>риск = что потеряешь, если это отключат или сломается</span></p>
         <div class="wz-group" id="subPickWrap" style="display:none;margin-top:16px">
-          <div class="wz-l">Что за подписка <small>сравнение разное</small></div>
+          <div class="wz-l">Какая именно <small>сравнение будет разным</small></div>
           <div class="opts big" id="subPick"></div>
           <p class="wz-note" id="subPickNote"></p>
         </div>
@@ -941,11 +959,26 @@ function renderSteps(){ /* шаги рендерит goStep() — воронка
    «Подписка» — не одна вещь: ChatGPT Plus, Pro за 20К и конструктор ботов — разные рынки.
    И без цели (личное/бизнес) и формы (физ/самозанятый/ИП/ООО) мы не знаем, что клиент нарушает. */
 const SUBS=[
-  {id:'plus',t:'ChatGPT Plus / Claude Pro',d:'диалоги и поиск — но заявки сама не забирает, в CRM не заносит',base:2000,short:'ChatGPT Plus'},
-  {id:'pro',t:'ChatGPT Pro / Claude Max',d:'топ-модели — всё равно не процессы, не интеграции, не 24/7',base:20000,short:'ChatGPT Pro'},
-  {id:'bot',t:'Конструктор ботов (Salebot, BotHelp)',d:'боты и воронки есть, агентов с памятью и CRM — нет; токены пакетами',base:3000,short:'конструктор ботов'},
-  {id:'aggr',t:'Агрегатор моделей (GoAI, Vexel, ProxyAPI)',d:'доступ к моделям дешевле — автоматизации ноль',base:2000,short:'агрегатор моделей'},
-  {id:'own',t:'Своя сборка из сервисов',d:'VPN + API + glue-скрипты — впиши, сколько выходит в месяц',base:5000,short:'своя сборка сервисов'}
+  {id:'plus',t:'Подписка на чат',short:'ChatGPT Plus',
+   d:'диалоги и поиск',covers:'отвечает на вопросы, пишет тексты',
+   gap:'заявку в 3 утра не заберёт, в CRM не занесёт, само не работает',
+   base:2000,risk:'high',riskText:'аккаунт заблокируют по гео — и всё встанет'},
+  {id:'pro',t:'Подписка на топ-модель',short:'ChatGPT Pro',
+   d:'топ-модели без лимитов',covers:'сложные рассуждения руками',
+   gap:'всё равно не процесс, не интеграция, не круглосуточно',
+   base:20000,risk:'high',riskText:'дороже в 10 раз, риск блокировки тот же'},
+  {id:'bot',t:'Конструктор ботов',short:'конструктор ботов',
+   d:'сценарии и воронки в мессенджере',covers:'кнопки и ветки, бот отвечает по сценарию',
+   gap:'памяти и инструментов нет; токены пакетами, за пределы сценария не выходит',
+   base:3000,risk:'mid',riskText:'платформа поднимет цену или закроет функции — сценарии придётся переписывать'},
+  {id:'aggr',t:'Агрегатор моделей',short:'агрегатор моделей',
+   d:'доступ к моделям дешевле, карта РФ',covers:'дешёвые токены вместо подписки',
+   gap:'автоматизации ноль: ключи есть, а кто будет работать — нет',
+   base:2000,risk:'low',riskText:'минимальный: ключи можно перенести к другому провайдеру'},
+  {id:'own',t:'Своя сборка из сервисов',short:'своя сборка сервисов',
+   d:'VPN + API + скрипты',covers:'полный контроль и свои данные',
+   gap:'держится на тебе: упал скрипт — работа встала',
+   base:5000,risk:'mid',riskText:'время и знания: чинить придётся самому, ночью и в отпуске'}
 ];
 let subPick='',subName='',useGoal='',taxForm='';
 function pickStart(id){
@@ -966,7 +999,7 @@ function renderSubPick(){
   wrap.style.display=show?'':'none';
   if(!show)return;
   const sp=document.getElementById('subPick');
-  if(sp)sp.innerHTML=SUBS.map(s=>`<div class="opt ${subPick===s.id?'selected':''}" onclick="chooseSub('${s.id}')"><div class="body"><div class="t">${s.t}</div><div class="d">${s.d}</div><div class="tag">≈ ${s.base.toLocaleString('ru-RU')} ₽/мес</div></div></div>`).join('');
+  if(sp)sp.innerHTML=SUBS.map(s=>`<div class="opt subcard ${subPick===s.id?'selected':''}" onclick="chooseSub('${s.id}')"><div class="body"><div class="sc-top"><span class="t">${s.t}</span><span class="sc-price">≈ ${s.base.toLocaleString('ru-RU')} ₽/мес</span></div><div class="sc-line"><b>что даёт:</b> ${s.covers}</div><div class="sc-line"><b>чего нет:</b> ${s.gap}</div><div class="sc-risk r-${s.risk}"><i></i>риск: ${s.riskText}</div></div></div>`).join('');
   const s=SUBS.find(x=>x.id===subPick);
   const note=document.getElementById('subPickNote');
   if(note&&s)note.textContent='Считаем против '+s.base.toLocaleString('ru-RU')+' ₽/мес. '+({plus:'Плюс не умеет сам: не дождётся заявки в 3 часа ночи и не занесёт её в CRM.',pro:'Даже топ-модель не берёт на себя процесс — она ждёт твоего сообщения.',bot:'Бот-конструктор не думает: сценарии статичны, память и документы — мимо.',aggr:'Агрегатор — это кран с моделью, кран сам ничего не делает.',own:'Своя сборка — это и есть «до Discovery»: glue-скрипты, которые чинишь сам.'}[s.id]||'');
@@ -1035,7 +1068,7 @@ const UI_DATA=['cloud','local','ru'];
 function renderCards(){
   renderRoleOpts();
   var so=document.getElementById('startOpts');
-  if(so)so.innerHTML=STARTS.map(s=>`<button type="button" class="pill ${start===s.id?'selected':''}" onclick="pickStart('${s.id}')">${s.short}</button>`).join('');
+  if(so)so.innerHTML=STARTS.map(s=>`<button type="button" class="pill ${start===s.id?'selected':''}" onclick="pickStart('${s.id}')">${s.short}<em>· ${s.base?('≈ '+s.base.toLocaleString('ru-RU')+' ₽/мес'):'0 ₽'}</em></button>`).join('');
   /* рутина: по сценарию уже отмечена; остальные — по кнопке «другая рутина» */
   const roleGoals=(ROLES[role]&&ROLES[role].goals)||[];
   const list=goalsExpanded?GOALS:GOALS.filter(g=>roleGoals.includes(g.id)||goals.includes(g.id));
