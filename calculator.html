@@ -594,7 +594,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
     <section class="wiz-step" id="wstep3" hidden>
       <h2 class="ws-title">Обвязка <em>— необязательно</em></h2>
       <p class="ws-sub" id="ws3sub">Всё уже стоит по умолчанию и входит в цену. Меняй, только если у тебя иначе — цифра пересчитается сразу.</p>
-      <div class="wz-group"><div class="wz-l">Сколько обращений в месяц</div><div class="opts" id="loadOpts"><button type="button" class="opt" data-l="300" onclick="setLoad(300)">до 300<em>один человек, тихая рутина</em></button><button type="button" class="opt" data-l="1000" onclick="setLoad(1000)">около 1 000<em>поток заявок и переписки</em></button><button type="button" class="opt" data-l="3000" onclick="setLoad(3000)">3 000 и больше<em>несколько каналов, команда</em></button></div></div><div class="wz-group"><div class="wz-l">Класс модели — от него почти вся цена токенов</div><div class="opts" id="classOpts"><button type="button" class="opt" data-c="lite" onclick="setModelClass('lite')">Дешёвая · GLM 5.3 Flash<em>2,46 / 8,21 ₽ за 1 млн · кэш 0,82</em></button><button type="button" class="opt" data-c="pro" onclick="setModelClass('pro')">Рабочая · DeepSeek V4.1 Flash<em>8,21 / 20,53 ₽ за 1 млн · кэш 0,82</em></button><button type="button" class="opt" data-c="max" onclick="setModelClass('max')">Топ · Claude Opus 5<em>411 / 2 054 ₽ — каталог, не твой тариф</em></button></div><p class="wz-hint" id="classHint">Сейчас — по задаче: рутина на дешёвой, документы и отчёты на рабочей.</p></div><div class="wz-group"><div class="wz-l">Где живёт агент</div><div class="opts" id="deviceOpts"></div></div>
+      <div class="wz-group"><div class="wz-l">Сколько обращений в месяц</div><div class="opts" id="loadOpts"><button type="button" class="opt" data-l="300" onclick="setLoad(300)">до 300<em>один человек, тихая рутина</em></button><button type="button" class="opt" data-l="1000" onclick="setLoad(1000)">около 1 000<em>поток заявок и переписки</em></button><button type="button" class="opt" data-l="3000" onclick="setLoad(3000)">3 000 и больше<em>несколько каналов, команда</em></button></div></div><div class="wz-group"><div class="wz-l">Класс модели — от него почти вся цена токенов</div><div class="opts" id="classOpts"><button type="button" class="opt" data-c="lite" onclick="setModelClass('lite')">Дешёвая · GLM через MWS<em>178 / 747 ₽ за 1 млн · кэш 21</em></button><button type="button" class="opt" data-c="pro" onclick="setModelClass('pro')">Рабочая · DeepSeek, Яндекс AI Studio<em>300 / 500 ₽ за 1 млн · кэш 75</em></button><button type="button" class="opt" data-c="max" onclick="setModelClass('max')">Топ · Claude Sonnet<em>245 / 1 225 ₽ — Anthropic; через Cloud.ru ×2,4</em></button></div><p class="wz-hint" id="classHint">Сейчас — по задаче: рутина на дешёвой, документы и отчёты на рабочей. Цены — рыночные, по РФ-каналам оплаты.</p></div><div class="wz-group"><div class="wz-l">Где живёт агент</div><div class="opts" id="deviceOpts"></div></div>
       <div class="wz-group"><div class="wz-l">Где хранить данные</div><div class="opts" id="dataOpts"></div></div>
       <details class="cfg-more"><summary>Подключения — Telegram, CRM, таблицы, Авито</summary><div class="chips" id="connChips" style="margin-top:12px"></div></details>
       <div class="wiz-nav">
@@ -637,7 +637,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         </div>
       </div>
       <div class="hero-compare" id="heroCompare" style="display:none"></div>
-      <details class="bill" id="billBox" style="display:none"><summary>Счёт за месяц, постатейно: <span id="billSum"></span></summary><ul id="billList"></ul><p class="bill-note">Цены — замер 09.11.2026. Модель — меньшая часть счёта: деньги уходят на сервер, шлюз и подключения. Именно это и есть «владение», а не токены.</p></details>
+      <details class="bill" id="billBox" style="display:none"><summary>Счёт за месяц, постатейно: <span id="billSum"></span></summary><ul id="billList"></ul><p class="bill-note">Цены — рыночные по РФ-каналам с картой, замер 04–05.11.2026 (НДС включён). Мой личный тариф NanoRouter — PAYG через крипту, он в 20–60 раз ниже, но клиенту недоступен, поэтому в расчёт не идёт. Токены здесь — самая большая статья, а не «мелочь».</p></details>
       <div class="scen-box" id="scenBox" style="display:none"></div>
       <div id="detailBox" style="display:none">
         <div class="brk" id="brkTable"></div>
@@ -1428,16 +1428,19 @@ function estimate(){
        lite — GLM 5.3 Flash ($0,034 / $0,083)
        pro  — DeepSeek V4.1 Flash ($0,051 / $0,567)
        max  — Claude Opus 5 ($5,00 / $25,00) */
-  /* ── ЕГО РЕАЛЬНЫЕ СТАВКИ, НЕ КАТАЛОЖНЫЕ ────────────────────────
-     NanoRouter, панель 10.11.2026 (79–80% off от каталожной цены):
-       glm-5.3-flash       вход $0,03 · выход $0,10 · кэш $0,01 за 1 млн
-       deepseek-v4.1-flash вход $0,10 · выход $0,25 · кэш $0,01 за 1 млн
-     Курс 82,14 ₽. Топ-класс — каталожный Claude Opus 5 ($5 / $25):
-     у него такого тарифа нет, это сценарий «если понадобится топ». */
+  /* ── РЫНОЧНЫЙ ПРАЙС ДЛЯ КЛИЕНТА, А НЕ МОЙ PAYG ──────────────────
+     Мой NanoRouter — PAYG через крипту (Walt), 79–80% off каталога.
+     Клиент платить криптой не будет и не должен: считаем то, что он
+     реально получит с картой РФ (замер 04–05.11.2026, НДС включён):
+       GLM 5.3 через MWS (МТС)       вход 178,12 · кэш 21,23 · выход 746,64
+       DeepSeek V4.1 Flash, Яндекс   вход 300,00 · кэш 75,00 · выход 500,00
+       Claude Sonnet (Anthropic)     вход 245,01 · кэш 24,50 · выход 1 225,05
+     Разница с моим тарифом — в 30–40 раз. Поэтому обещать «дёшево»
+     по моим ставкам нельзя: у клиента их нет. */
   const PRICE={
-    lite:{in:2.46, out:8.21, cache:0.82},   /* GLM 5.3 Flash */
-    pro: {in:8.21, out:20.53,cache:0.82},   /* DeepSeek V4.1 Flash */
-    max: {in:411,  out:2054, cache:41}      /* Claude Opus 5, каталог */
+    lite:{in:178.12,out:746.64,cache:21.23},  /* GLM 5.3, MWS (МТС) */
+    pro: {in:300,   out:500,   cache:75},     /* DeepSeek V4.1 Flash, Яндекс AI Studio */
+    max: {in:245.01,out:1225.05,cache:24.50}  /* Claude Sonnet, Anthropic (Cloud.ru — ×2,4) */
   };
   const TIER_OF={repeat:'lite', leads:'lite', remind:'lite', scan:'lite', report:'pro', write:'pro', quote:'pro', paper:'pro'};
   const callsPerMsg=CALLS_OF[autonomy]||3;
@@ -1646,7 +1649,7 @@ function setModelClass(c){
   modelClass=(modelClass===c?null:c);
   document.querySelectorAll('#classOpts .opt').forEach(b=>b.classList.toggle('on',b.dataset.c===modelClass));
   const h=document.getElementById('classHint');
-  if(h)h.textContent=modelClass?('Считаю по классу: '+{lite:'дешёвая',pro:'рабочая',max:'топ'}[modelClass]+'. Нажми ещё раз, чтобы вернуть по задаче.'):'Сейчас — по задаче: рутина на дешёвой, документы и отчёты на рабочей.';
+  if(h)h.textContent=modelClass?('Считаю по классу: '+{lite:'дешёвая',pro:'рабочая',max:'топ'}[modelClass]+'. Нажми ещё раз, чтобы вернуть по задаче.'):'Сейчас — по задаче: рутина на дешёвой, документы и отчёты на рабочей. Цены — рыночные, по РФ-каналам оплаты.';
   updateLive(); if(typeof calculate==='function')calculate();
 }
 function setRole(k){
