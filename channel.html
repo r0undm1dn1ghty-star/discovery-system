@@ -144,12 +144,12 @@ footer a:hover{color:#8fa8ff}
 
 /* карточки сигналов — самостоятельные объекты */
 .siggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:22px}
-.sigc{border:1px solid var(--hair);border-radius:14px;padding:22px 20px;background:#fff;display:flex;flex-direction:column;gap:10px}
-.sigc-num{font:500 clamp(32px,3vw,44px)/1 var(--mono);color:var(--ink);letter-spacing:-.02em}
-.sigc-num small{font-size:16px;font-weight:500;color:var(--meta);margin-left:6px}
-.sigc-fact{font-size:16.5px;line-height:1.55;color:var(--ink);margin:0}
-.sigc-follow{font-size:15.5px;line-height:1.5;color:var(--acc-ink,#2f4bb5);margin:0;font-weight:500}
-.sigc-src{font:400 14px/1.5 var(--mono);color:var(--meta);margin:auto 0 0;padding-top:8px;border-top:1px solid var(--hair)}
+.sigc{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:22px 20px;background:#131c2b;display:flex;flex-direction:column;gap:10px}
+.sigc-num{font:500 clamp(32px,3vw,44px)/1 var(--mono);color:#8fa8ff;letter-spacing:-.02em}
+.sigc-num small{font-size:16px;font-weight:500;color:rgba(238,242,251,.7);margin-left:6px}
+.sigc-fact{font-size:16.5px;line-height:1.55;color:#eef2fb;margin:0}
+.sigc-follow{font-size:15.5px;line-height:1.5;color:#a9bcff;margin:0;font-weight:500}
+.sigc-src{font:400 14px/1.5 var(--mono);color:rgba(238,242,251,.6);margin:auto 0 0;padding-top:8px;border-top:1px solid rgba(255,255,255,.12)}
 /* конвейер */
 .pipe{list-style:none;padding:0;margin:14px 0 0;border-top:1px solid var(--hair)}
 .pipe li{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--hair);align-items:start}
@@ -162,7 +162,7 @@ footer a:hover{color:#8fa8ff}
 }
 </style>
 <script>document.documentElement.className+=' js';</script>
-<link rel="stylesheet" href="ds-mnav.css?v=20261109"/>
+<link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px">
@@ -447,6 +447,6 @@ requestAnimationFrame(function(){requestAnimationFrame(reveal);});
 setTimeout(reveal,350);
 })();
 </script>
-<script src="ds-mnav.js?v=20261109" defer></script>
+<script src="ds-mnav.js?v=20261109b" defer></script>
 </body>
 </html>
