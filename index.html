@@ -267,6 +267,13 @@ footer a:hover{text-decoration:underline}
  .showcase .vw-stage{height:400px}
 }
 @media(max-width:420px){ .showcase .vw-card{width:268px;margin-left:-134px} }
+
+.pseg{display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;margin-top:18px;padding-top:14px;border-top:1px solid var(--hair);
+ font:400 15px/1.5 var(--mono);color:var(--meta)}
+.pseg b{color:var(--ink);font-weight:500}
+.pcta{margin-top:16px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.pgo{min-height:54px;padding:15px 30px;font-size:16px}
+@media(max-width:560px){.pgo{width:100%;justify-content:center}}
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109"/>
 </head>
@@ -407,14 +414,14 @@ footer a:hover{text-decoration:underline}
 <div class="narr" aria-hidden="true">→</div>
 <div><span class="nk">разница</span><span class="pn" id="pDiff">≈ 39 500<span class="pu">₽/мес</span></span><span class="pd">остаётся у тебя каждый месяц</span></div>
 </div>
-<div class="plvl">
-<div class="plrow"><span class="pk">без наценок · твоё время</span><p class="pv">Личный <b>25–60К</b> · Самозанятый <b>40–90К</b> · ИП <b>60–150К</b> · Команда <b>от 120К</b> — <em>зависит от масштаба задач</em></p></div>
-<div class="plrow"><span class="pk">с наценками · рынок</span><p class="pv">студия <b>от 50К</b> разово · найм <b>40–60К/мес</b> · чужая подписка забирает деньги и данные</p></div>
-<div class="plrow"><span class="pk">агент по масштабу</span><p class="pv">Личный <b>0–6К/мес</b> · Самозанятый <b>6–12К</b> · ИП <b>12–20К</b> · Команда <b>от 20К</b></p></div>
+<div class="pseg" aria-live="polite">
+<span><b id="pSetup">установка 4 000 ₽</b></span>
+<span>·</span><span id="pDays">1–2 дня</span>
+<span>·</span><span>критерии приёмки — до старта</span>
 </div>
 <div class="pcta">
-<span class="poffer" id="pOffer">Сборка под личные задачи — <b>4 000 ₽</b>, критерии приёмки до старта</span>
-<a class="btn btn-g" id="pGo" href="calculator.html">Собрать за 4 000 ₽</a>
+<span class="poffer" id="pOffer">Сборка под личные задачи: агент, интеграция, проверка на твоих данных</span>
+<a class="btn btn-p pgo" id="pGo" href="calculator.html">Собрать под себя</a>
 <span class="pnote">полка: гайд 5 000 · подбор 7 000 · сборка 4–60 000 ₽ по твоей форме · поддержка 15–40 000 ₽/мес — <a href="service.html">вся лестница</a></span>
 </div>
 </div>
@@ -666,16 +673,17 @@ if(ci>=words[wi].length){mode='hold';setTimeout(tick,950);}else{setTimeout(tick,
 (function(){
 'use strict';
 var P={
- solo:{price:'4 000',routine:'25–60 000',agent:'0–6 000',diff:'≈ 39 500',hours:'≈ 12–30 ч/мес × 2 000 ₽/ч',seg:'личные задачи'},
- self:{price:'20 000',routine:'40–90 000',agent:'6–12 000',diff:'≈ 54 800',hours:'≈ 27–60 ч/мес × 1 500 ₽/ч',seg:'самозанятого'},
- ip:{price:'30 000',routine:'60–150 000',agent:'12–20 000',diff:'≈ 89 000',hours:'≈ 40–100 ч/мес × 1 500 ₽/ч',seg:'ИП'},
- mid:{price:'60 000',routine:'от 120 000',agent:'от 20 000',diff:'от 100 000',hours:'зависит от масштаба задач',seg:'команды 10–30'}
+ solo:{price:'4 000',setup:'установка 4 000 ₽',days:'1–2 дня',routine:'25–60 000',agent:'0–6 000',diff:'≈ 39 500',hours:'≈ 12–30 ч/мес × 2 000 ₽/ч',seg:'личные задачи',cta:'Собрать под себя'},
+ self:{price:'20 000',setup:'установка 20 000 ₽',days:'1–3 дня',routine:'40–90 000',agent:'6–12 000',diff:'≈ 54 800',hours:'≈ 27–60 ч/мес × 1 500 ₽/ч',seg:'самозанятого',cta:'Собрать под самозанятого'},
+ ip:{price:'30 000',setup:'установка 30 000 ₽',days:'3–5 дней',routine:'60–150 000',agent:'12–20 000',diff:'≈ 89 000',hours:'≈ 40–100 ч/мес × 1 500 ₽/ч',seg:'ИП',cta:'Собрать под ИП'},
+ mid:{price:'60 000',setup:'установка 60 000 ₽',days:'5–10 дней',routine:'от 120 000',agent:'от 20 000',diff:'от 100 000',hours:'зависит от масштаба задач',seg:'команды 10–30',cta:'Собрать под команду'}
 };
 var UNIT='<span class="pu">₽/мес</span>';
 var btns=Array.prototype.slice.call(document.querySelectorAll('.seg'));
 var eRoutine=document.getElementById('pRoutine'),eAgent=document.getElementById('pAgent'),
     eDiff=document.getElementById('pDiff'),eHours=document.getElementById('pHours'),
-    eOffer=document.getElementById('pOffer'),eGo=document.getElementById('pGo');
+    eOffer=document.getElementById('pOffer'),eGo=document.getElementById('pGo'),
+    eSetup=document.getElementById('pSetup'),eDays=document.getElementById('pDays');
 function apply(k){
   if(!P[k])k='solo';
   var p=P[k];
@@ -683,8 +691,10 @@ function apply(k){
   eAgent.innerHTML=p.agent+UNIT;
   eDiff.innerHTML=p.diff+UNIT;
   eHours.textContent=p.hours;
-  eOffer.innerHTML='Сборка под '+p.seg+' — <b>'+p.price+' ₽</b>, критерии приёмки до старта';
-  eGo.textContent='Собрать за '+p.price+' ₽';
+  eOffer.textContent='Сборка под '+p.seg+': агент, интеграция, проверка на твоих данных';
+  eGo.textContent=p.cta;
+  if(eSetup)eSetup.textContent=p.setup;
+  if(eDays)eDays.textContent=p.days;
   btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-seg')===k?'true':'false');});
 }
 var saved=null;
