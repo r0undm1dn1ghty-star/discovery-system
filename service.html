@@ -263,7 +263,7 @@ header.nav a.brand{flex-basis:100%}
 <h2>Точка выбора</h2>
 <p class="s">Пять вариантов — у каждого своя сцена: <b>боль, выход и цифра</b>. Выбор никуда не записывается — страница просто отвечает.</p>
 </div>
-<div class="doors fx" role="group" aria-label="С чем вы пришли — выберите дверь" id="doors">
+<div class="doors fx" role="group" aria-label="С чем вы пришли — выберите вариант" id="doors">
 <button type="button" class="door" aria-pressed="true" data-p="1">
 <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
 <span class="d-t"><b>Личный</b><span>План, тексты и разборы вручную — каждый вечер на это уходит час</span></span>
@@ -610,7 +610,7 @@ header.nav a.brand{flex-basis:100%}
 </div></footer>
 
 <script>
-/* ── двери → сцена: выбор меняет сцену целиком, transform/opacity 400ms, stagger 60ms ── */
+/* ── выбор варианта → сцена: сцена меняется целиком, transform/opacity 400ms, stagger 60ms ── */
 (function(){
 'use strict';
 var doors=document.getElementById('doors'),scene=document.getElementById('scene');
@@ -716,7 +716,7 @@ modal.addEventListener('click',function(e){
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'&&!modal.hidden)close();
 });
-/* deep-link: service.html?o=care&p=2 — модалка оффера поверх нужной двери */
+/* deep-link: service.html?o=care&p=2 — модалка оффера поверх нужного варианта */
 var dlm=location.search.match(/[?&]o=([a-z]+)/);
 if(dlm){var dpm=location.search.match(/[?&]p=([1-5])/);open(dlm[1],dpm?dpm[1]:null);}
 })();
