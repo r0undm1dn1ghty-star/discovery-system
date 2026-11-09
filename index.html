@@ -274,6 +274,41 @@ footer a:hover{text-decoration:underline}
 .pcta{margin-top:16px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .pgo{min-height:54px;padding:15px 30px;font-size:16px}
 @media(max-width:560px){.pgo{width:100%;justify-content:center}}
+
+/* ═══ кейсы: журнал замеров ═══ */
+.casehero{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(20px,3vw,44px);
+ align-items:center;padding:clamp(22px,3vw,32px);border:1px solid var(--hair);border-radius:16px;background:#fff}
+.ch-vis{margin:0}
+.ch-vis svg{width:100%;height:auto;display:block}
+.chbase{stroke:var(--hair);stroke-width:1;fill:none}
+.chb1{fill:#c3cde4}
+.chb2{fill:#1b2a6b}
+.chv{font:600 15px/1 var(--mono);fill:#5c6579;text-anchor:middle}
+.chlb{font:500 14px/1 var(--sans);fill:#5c6579;text-anchor:middle}
+.chlb.on{fill:#1b2a6b}
+.chv.on{fill:var(--navy)}
+.ch-cap{display:flex;justify-content:space-between;margin:6px 0 0;font:400 14px/1.4 var(--mono);color:var(--meta)}
+.ch-cap b{color:var(--ink);font-weight:500}
+.ch-tx h3{font:500 clamp(22px,2.2vw,30px)/1.15 var(--disp);color:var(--ink);margin:6px 0 8px;letter-spacing:-.02em}
+.ch-num{font:500 clamp(34px,4vw,52px)/1 var(--mono);color:var(--navy);letter-spacing:-.03em;margin:0 0 12px}
+.cl{margin-top:clamp(22px,3vw,34px);border-top:1px solid var(--hair)}
+.cl-row{display:grid;grid-template-columns:44px 132px minmax(0,1fr) minmax(0,230px);
+ gap:6px clamp(14px,2vw,28px);align-items:baseline;padding:18px 0;border-bottom:1px solid var(--hair);
+ transition:background .18s var(--ease)}
+.cl-row:hover{background:rgba(27,42,107,.035)}
+.cl-n{font:500 14px/1 var(--mono);color:var(--meta)}
+.cl-m{font:500 clamp(22px,2.2vw,30px)/1 var(--mono);color:var(--ink);letter-spacing:-.02em;white-space:nowrap}
+.cl-b b{display:block;font:500 16.5px/1.3 var(--sans);color:var(--ink)}
+.cl-b p{margin:3px 0 0;font-size:15px;line-height:1.5;color:var(--body);max-width:46ch}
+.cl-w{font:400 14.5px/1.45 var(--mono);color:var(--navy)}
+.cl-src{grid-column:3 / -1;font:400 13.5px/1.4 var(--mono);color:var(--meta);margin-top:2px}
+.cl-note{margin-top:16px;font:400 14px/1.6 var(--mono);color:var(--meta);max-width:70ch}
+@media(max-width:900px){
+ .casehero{grid-template-columns:1fr}
+ .cl-row{grid-template-columns:34px 1fr;row-gap:6px}
+ .cl-m{grid-column:2;font-size:24px}
+ .cl-b,.cl-w,.cl-src{grid-column:2}
+}
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109"/>
 </head>
@@ -432,78 +467,80 @@ footer a:hover{text-decoration:underline}
 <section id="cases">
 <div class="wrap">
 <div class="shead">
-<h2>Внедрения с замерами</h2>
-<p class="s">Внедрений — больше восьми. За каждое платили. Ниже — внедрения с замерами и интеграции, у каждого назван способ проверки.</p>
+<h2>Восемь внедрений, у каждого — замер</h2>
+<p class="s">Не портфолио. Журнал: что менялось, на чём проверено, какая цифра осталась. Внедрений было больше — здесь те, у которых есть чем доказать.</p>
 </div>
 
-<div class="cse lead">
-<div class="cvis" role="img" aria-label="скоринг заявок: 20% до внедрения, 80% после">
-<svg class="msvg" viewBox="0 0 320 130" aria-hidden="true">
-<path class="base" d="M40 112 H280"/>
-<rect class="bar1 grow" data-p x="60" y="88" width="60" height="24" rx="2"/>
-<rect class="bar2 grow" data-p x="180" y="20" width="60" height="92" rx="2"/>
-</svg>
-<div class="ccap"><span>до агента · 20%</span><b>с агентом · 80%</b></div>
-</div>
-<div class="ctx">
-<p class="lbl">Кейс 01 · WorkWay</p>
-<h3 class="cst">Скоринг кандидатов</h3>
-<span class="cnum">20 → 80%</span>
-<p class="cd">Агент разбирает заявки и считает скоринг каждого кандидата. Слепой тест на 30 кандидатах. Сводка приходит в Telegram утром и вечером.</p>
-</div>
-</div>
+<article class="casehero fx">
+  <div class="ch-vis" role="img" aria-label="скоринг кандидатов: 20% до агента, 80% после">
+    <svg viewBox="0 0 360 168" aria-hidden="true">
+      <path class="chbase" d="M24 136 H336"/>
+      <text class="chlb" x="105" y="96">до агента</text>
+      <text class="chlb on" x="245" y="24">с агентом</text>
+      <rect class="chb1" x="70" y="104" width="70" height="32" rx="2"/>
+      <rect class="chb2" x="210" y="32" width="70" height="104" rx="2"/>
+      <text class="chv" x="105" y="158">20%</text>
+      <text class="chv on" x="245" y="158">80%</text>
+    </svg>
+  </div>
+  <div class="ch-tx">
+    <p class="lbl">01 · WorkWay</p>
+    <h3>Скоринг кандидатов</h3>
+    <p class="ch-num">20 → 80%</p>
+    <p class="cd">Агент разбирает анкеты, считает скоринг каждого кандидата и присылает сводку в Telegram утром и вечером. Проверяли на 30 кандидатах — критерии согласовали до старта.</p>
+  </div>
+</article>
 
-<div class="cse flip">
-<div class="cvis" role="img" aria-label="один агент превращается в четыре профиля">
-<svg class="msvg" viewBox="0 0 320 84" aria-hidden="true">
-<circle class="fd" data-p cx="24" cy="42" r="10"/>
-<path class="ln" data-d d="M44 42 H96"/>
-<circle class="fd" data-p cx="130" cy="42" r="12"/><circle class="fd" data-p cx="175" cy="42" r="12"/><circle class="fd" data-p cx="220" cy="42" r="12"/><circle class="fd" data-p cx="265" cy="42" r="12"/>
-</svg>
-<div class="ccap"><span>был один агент</span><b>стало четыре профиля</b></div>
+<div class="cl"><div class="cl-row fx">
+  <span class="cl-n">02</span>
+  <span class="cl-m">1 → 4</span>
+  <div class="cl-b"><b>Николай · Авито</b><p>Один агент размножили на четыре профиля: учёт, переписка, документы, планирование.</p></div>
+  <span class="cl-w">первый платящий клиент из собственной воронки — 17 000 ₽</span>
+  <span class="cl-src">повторные сборки, сентябрь 2026</span>
 </div>
-<div class="ctx">
-<p class="lbl">Кейс 02 · Николай · Авито</p>
-<h3 class="cst">Один агент → четыре профиля</h3>
-<span class="cnum">1 → 4</span>
-<p class="cd">Николай попросил размножить агента. Теперь профилей четыре: учёт, переписка, документы, планирование и время. Сборка, память и сервер — его. Сентябрь 2026.</p>
+<div class="cl-row fx">
+  <span class="cl-n">03</span>
+  <span class="cl-m">+16%</span>
+  <div class="cl-b"><b>Chill Music Lab</b><p>JTBD-исследование контента → четыре виральных видео по итогам одного эксперимента.</p></div>
+  <span class="cl-w">годовая выручка бренда</span>
+  <span class="cl-src">бухгалтерия бренда, 2024–2025</span>
 </div>
+<div class="cl-row fx">
+  <span class="cl-n">04</span>
+  <span class="cl-m">×1,8</span>
+  <div class="cl-b"><b>Chill Music Lab</b><p>Time-to-Market: от постановки задачи до релиза продукта.</p></div>
+  <span class="cl-w">быстрее выпуск, без роста команды</span>
+  <span class="cl-src">замер по релизам, 2025</span>
 </div>
-
-<div class="cse">
-<div class="cvis" role="img" aria-label="годовая выручка бренда: плюс 16 процентов после внедрения">
-<svg class="msvg" viewBox="0 0 320 130" aria-hidden="true">
-<path class="base" d="M40 112 H280"/>
-<rect class="bar1 grow" data-p x="60" y="32" width="60" height="80" rx="2"/>
-<rect class="bar2 grow" data-p x="180" y="19" width="60" height="93" rx="2"/>
-</svg>
-<div class="ccap"><span>до · выручка бренда</span><b>после · +16%</b></div>
+<div class="cl-row fx">
+  <span class="cl-n">05</span>
+  <span class="cl-m">50,07%</span>
+  <div class="cl-b"><b>Music Lab · Product Owner</b><p>Финальный экран продукта: конверсия и удовлетворённость после переделки.</p></div>
+  <span class="cl-w">CSAT 97,26% · два видео 1M+ просмотров · $80K+ выручки</span>
+  <span class="cl-src">аналитика продукта, 2024</span>
 </div>
-<div class="ctx">
-<p class="lbl">Кейс 03 · Chill Music Lab</p>
-<h3 class="cst">Выручка бренда</h3>
-<span class="cnum">+16%</span>
-<p class="cd">JTBD-исследование контента: четыре виральных видео по итогам одного эксперимента. Годовая выручка выросла на 16%, релиз продукта — в 1,8 раза быстрее.</p>
+<div class="cl-row fx">
+  <span class="cl-n">06</span>
+  <span class="cl-m">+18,3%</span>
+  <div class="cl-b"><b>Chill Music Lab · Researcher</b><p>20 JTBD-интервью за полгода, приоритизация болей → изменения в продукте.</p></div>
+  <span class="cl-w">AVD — средний срок удержания</span>
+  <span class="cl-src">панель метрик, 2025</span>
 </div>
+<div class="cl-row fx">
+  <span class="cl-n">07</span>
+  <span class="cl-m">51 → 3</span>
+  <div class="cl-b"><b>Discovery PM</b><p>51 гипотеза → 14 приоритизировано → 3 внедрено, два продукта валидированы.</p></div>
+  <span class="cl-w">ни одна гипотеза не ушла в разработку без проверки</span>
+  <span class="cl-src">Discovery-цикл, 2025</span>
 </div>
-
-<div class="cse flip">
-<div class="cvis" role="img" aria-label="шесть скиллов Discovery с открытым кодом">
-<svg class="msvg" viewBox="0 0 320 84" aria-hidden="true">
-<circle class="fd" data-p cx="30" cy="42" r="10"/><circle class="fd" data-p cx="82" cy="42" r="10"/><circle class="fd" data-p cx="134" cy="42" r="10"/><circle class="fd" data-p cx="186" cy="42" r="10"/><circle class="fd" data-p cx="238" cy="42" r="10"/><circle class="fd" data-p cx="290" cy="42" r="10"/>
-</svg>
-<div class="ccap"><span>парсер · гео-аудит · P&amp;L</span><b>код и EVAL на GitHub</b></div>
-</div>
-<div class="ctx">
-<p class="lbl">Интеграции Discovery</p>
-<h3 class="cst">Скиллы с открытым кодом</h3>
-<span class="cnum">6 скиллов</span>
-<p class="cd">Парсер тёплых лидов, гео-аудит, проверка экономики и другие. EVAL и бенчмарки лежат рядом с кодом на GitHub — воспроизводятся у тебя.</p>
-</div>
-</div>
-
-<p class="ceval">Опора каждого внедрения: слепой тест на кандидатах · четыре профиля в работе (Авито, сентябрь 2026) · годовая выручка бренда · открытый EVAL у скиллов. <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">код и метрики на GitHub — проверить у себя →</a></p>
-
+<div class="cl-row fx">
+  <span class="cl-n">08</span>
+  <span class="cl-m">2 оплаты</span>
+  <div class="cl-b"><b>НСПД</b><p>Загрузка векторных слоёв в государственный реестр, повторные оплаты по 3 000 и 7 000 ₽.</p></div>
+  <span class="cl-w">10 000 ₽ двумя платежами, без рекомендаций</span>
+  <span class="cl-src">октябрь 2026</span>
+</div></div>
+<p class="cl-note">Метод: цифры взяты из рабочих панелей и документов по каждому проекту. Где замера нет — не показываю, даже если внедрение было.</p>
 </div>
 </section>
 
