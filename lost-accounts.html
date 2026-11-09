@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Claude и ChatGPT не принадлежат тебе — сколько россиян потеряли аккаунты в 2026</title>
-<meta name="description" content="Исследование Discovery System: 74–206 тыс. (90%, модель v8.1 с байес-коррекцией смещения отбора), рабочая оценка 144 тыс. россиян потеряли аккаунты ChatGPT и Claude в 2026 и не вернули старый. Разбор фейка про 1,5 млн и официальные цифры Anthropic Transparency Hub."/>
+<title>Сколько россиян потеряли аккаунты Claude и ChatGPT</title>
+<meta name="description" content="Расчёт потерь аккаунтов Claude и ChatGPT в 2026: от 74 до 206 тысяч человек, 1,9–5,3 млрд ₽ в год, волны блокировок и что делать."/>
 <link rel="canonical" href="https://discovery-system.ru/lost-accounts.html"/>
 <!-- SEO:CORE v1 — собирается scripts/seo-index.py, руками не править -->
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
@@ -300,6 +300,28 @@ table.data td.n{font-variant-numeric:tabular-nums}
  .sc:hover,.tl2 button:hover{transform:none}
 }
 
+
+/* читаемость: весь служебный текст — минимум 14px */
+.frow .fn,
+.ms-per,
+.ms-src,
+.now .h,
+.rk .dt,
+.sc .c,
+.sc .k,
+.sl-hint,
+.tl2 .dt,
+.wipe .lab,
+.wipe-ctl,
+/* --- 12. Eyebrow: pill-бейдж как в журнале --- */,
+.eyebrow,
+nav.top a,
+table.data th{font-size:14px}
+
+/* читаемость */
+.fn,.dt,.dt.hi,.dt.mid,.eyebrow,.k,.c,th,.lab,.ms-per,.ms-src,small,td{font-size:14px!important}
+
+span,.ms-src,.dt,.fn{font-size:14px!important}
 </style>
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
@@ -343,7 +365,7 @@ table.data td.n{font-variant-numeric:tabular-nums}
 <div class="tl2 acc rv" id="rk">
 <div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">С 12 ноября банят по подозрению, не по доказанному нарушению</span><span class="ar">›</span></button><div class="dtl"><p>Новая редакция правил: было «если узнаем, что вы нарушили», стало «если подозреваем, что вы могли нарушить». Плюс троттлинг, ограничение и предупреждение как отдельные меры. Источник: Usage Policy, вступает в силу 12.11.2026.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Три серые схемы теперь запрещены прямым пунктом</span><span class="ar">›</span></button><div class="dtl"><p>Обход регистрации и входа, чужая или неавторизованная оплата, перепродажа и проксирование доступа через обычные подписки. Это дословно то, что продают объявления: «акк с KYC», «оформим на твой акк без входа», «все нейросети за 300 ₽». Источник: Usage Policy, 12.11.2026.</p></div></div>
-<div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Проверка личности закрывает дверь навсегда</span><span class="ar">›</span></button><div class="dtl"><p>Persona — сторонний сервис проверки личности, который подключили платформы, — требует паспорт и селфи. Провалил проверку — аккаунт блокируют навсегда, без второго шанса. Номер не «исправить», личность не подделать. С апреля 2026 это главный способ потерять аккаунт окончательно. Источник: Хабр, support.claude.com.</p></div></div>
+<div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Проверка личности закрывает доступ навсегда</span><span class="ar">›</span></button><div class="dtl"><p>Persona — сторонний сервис проверки личности, который подключили платформы, — требует паспорт и селфи. Провалил проверку — аккаунт блокируют навсегда, без второго шанса. Номер не «исправить», личность не подделать. С апреля 2026 это главный способ потерять аккаунт окончательно. Источник: Хабр, support.claude.com.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Проверка по паспорту бьёт даже за границей</span><span class="ar">›</span></button><div class="dtl"><p>Волна 28–30 октября: запрос проверки через Persona, российский загран — бан в ту же минуту. Коснулось и тех, кто живёт в поддерживаемых странах: Новая Зеландия, Грузия, Армения. Подписка не спасала — Pro и Max отзывали до проверки. Источники: Медуза, T-J, VC.ru, Ъ.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Аккаунт удаляют вместе с данными</span><span class="ar">›</span></button><div class="dtl"><p>Майская волна сносила профили целиком: чаты, проекты, код — по данным CNews и cisoclub. Подписку при блокировке обычно не возвращают — так записано в условиях и Anthropic, и OpenAI.</p></div></div>
 <div class="it"><button aria-expanded="false"><span class="dt hi">высокий</span><span class="tt">Апелляция почти не работает</span><span class="ar">›</span></button><div class="dtl"><p>В первом полугодии 2026 успешными были 10,6% апелляций — 0,37% от всех банов. Девять из десяти подавших теряют аккаунт. Апелляция существует, но с российским паспортом её невозможно выиграть. Источник: Anthropic Transparency Hub.</p></div></div>

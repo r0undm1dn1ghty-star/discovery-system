@@ -99,6 +99,14 @@ footer a:hover{text-decoration:underline}
 .rcard:focus-visible{outline:2px solid #24368f;outline-offset:3px}
 .rcard i{border-bottom:1px solid rgba(27,42,107,.32);display:inline-block;padding-bottom:2px}
 .rcard:hover b{color:var(--navy)}
+
+.herocta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:26px 0 30px}
+.hbtn{display:inline-flex;align-items:center;min-height:52px;padding:14px 26px;border-radius:10px;background:#24368f;color:#f2f6ff;text-decoration:none;font:500 15.5px/1 var(--sans);transition:background .18s ease}
+.hbtn:hover{background:#2c419f}
+.hlink{font:500 14px/1.4 var(--mono);color:#b9c1d6;text-decoration:none;border-bottom:1px solid rgba(185,193,214,.35);padding-bottom:2px}
+.hlink:hover{color:#eef2fb}
+.midcta{margin:14px 0 0;font-size:16px;color:var(--body)}
+.midcta a{color:var(--navy);border-bottom:1px solid rgba(27,42,107,.32);text-decoration:none}
 </style>
 </head>
 <body>
@@ -110,6 +118,10 @@ footer a:hover{text-decoration:underline}
 <h1>Одну и ту же работу продают за 0 ₽ и за 3 миллиона.</h1>
 <p>Я собрал цифры по рынку ИИ-агентов: сколько просят, что обещают и что получается на самом деле. У каждого числа есть источник и дата — можно проверить.</p>
 <p class="author" style="color:#8a94ad">Считал сам: открытые прайсы, 83 разбора внедрений, расчёт потерь аккаунтов. Где взял — написано под каждым блоком.</p>
+<div class="herocta">
+  <a class="hbtn" href="calculator.html">Посчитать свою связку — 0 ₽</a>
+  <a class="hlink" href="service.html">Цены и что входит</a>
+</div>
 <div class="hnums">
 <div class="hn"><div class="v">7–10%</div><div class="l">из ста начатых проектов до работы доходят меньше десяти · CNews, март 2026</div></div>
 <div class="hn"><div class="v">×153</div><div class="l">во столько раз посредник дороже разработчика за ту же модель · замер 04.11.2026</div></div>
@@ -134,7 +146,8 @@ footer a:hover{text-decoration:underline}
 
 <section class="sec"><div class="sh"><h2>Агент в чужом аккаунте выключают вместе с аккаунтом</h2><span class="tag">тыс. аккаунтов · ₽/год</span></div>
 <div class="fig"><svg viewBox="0 0 1000 190" role="img" aria-label="Потери аккаунтов: от 74 до 206 тысяч, медиана 144 тысячи" font-family="IBM Plex Mono, monospace"><line x1="60.0" y1="90" x2="900.0" y2="90" stroke="rgba(16,20,31,.22)"/><rect x="343" y="74" width="504" height="32" rx="16" fill="rgba(27,42,107,.10)" stroke="rgba(27,42,107,.35)"/><line x1="343" y1="64" x2="343" y2="116" stroke="#1b2a6b" opacity="0.5"/><text x="343" y="54" font-size="18" fill="#10141f" text-anchor="middle">74 тыс</text><text x="343" y="142" font-size="14" fill="#5c6479" text-anchor="middle">1,9 млрд ₽/год</text><line x1="610" y1="64" x2="610" y2="116" stroke="#1b2a6b" opacity="1"/><text x="610" y="54" font-size="18" fill="#10141f" text-anchor="middle">144 тыс</text><text x="610" y="142" font-size="14" fill="#5c6479" text-anchor="middle">3,7 млрд ₽/год</text><line x1="847" y1="64" x2="847" y2="116" stroke="#1b2a6b" opacity="0.5"/><text x="847" y="54" font-size="18" fill="#10141f" text-anchor="middle">206 тыс</text><text x="847" y="142" font-size="14" fill="#5c6479" text-anchor="middle">5,3 млрд ₽/год</text><text x="0" y="180" font-size="14" fill="#5c6479">нижняя, средняя и верхняя оценка · обновлено 04.11.2026</text></svg><div class="cap">Столько людей в 2026 потеряли доступ и не вернули его. Волны блокировок: май, 1–2 октября, 28–30 октября. Это около 40% платящих.</div></div>
-<p class="src">нижняя, средняя и верхняя оценка · обновлено 04.11.2026</p></section>
+<p class="src">нижняя, средняя и верхняя оценка · обновлено 04.11.2026</p>
+<p class="midcta">Если узнаёшь свою ситуацию — <a href="calculator.html">посчитай, сколько это стоит у тебя</a>.</p></section>
 
 <section class="sec"><div class="sh"><h2>Почему счёт больше, чем обещали</h2><span class="tag">за 1 млн токенов</span></div>
 <div class="fig"><svg viewBox="0 0 470 240" role="img" aria-label="Кэш у вендора 0,49 рубля, у платформы 75 рублей за миллион токенов" font-family="IBM Plex Mono, monospace"><text x="0" y="24" font-size="14" fill="#7a8296">за миллион слов, которые модель перечитывает</text><rect x="0" y="62" width="6" height="34" rx="3" fill="#7f93d8"/><text x="16" y="85" font-size="22" fill="#10141f">0,49 ₽ <tspan font-size="14" fill="#7a8296">вендор · $0,006 × 81,67</tspan></text><rect x="0" y="132" width="440" height="34" rx="4" fill="#1b2a6b"/><text x="14" y="155" font-size="22" fill="#eef2fb">75 ₽ <tspan font-size="14" fill="#b9c1d6">платформа</tspan></text><text x="0" y="214" font-size="18" fill="#1b2a6b">×153 — во столько раз посредник дороже</text><text x="0" y="236" font-size="14" fill="#5c6479">курс 81,67 ₽/$ · замер 04.11.2026</text></svg><div class="cap">Модель каждый раз перечитывает инструкцию и переписку — на это уходит 70–90% счёта. Разработчик берёт за это 0,49 ₽, посредник — 75 ₽ за одно и то же.</div></div>

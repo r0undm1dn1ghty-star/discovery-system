@@ -73,7 +73,7 @@ nav.top a, .top a {
 }
 @media (max-width: 760px) {
   nav.top .wrap, .top .wrap { gap: 0 10px; }
-  nav.top a, .top a { font-size: 13.5px; min-height: var(--tap); }
+  nav.top a, .top a { font-size: 14px; min-height: var(--tap); }
   nav.top a.home, .top a.home { min-height: var(--tap); }
 }
 
@@ -246,7 +246,7 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
   .task .tag,
   .task .econ,
   .opt .tag {
-    font-size: 12.5px;
+    font-size: 14px;
   }
 }
 
@@ -294,31 +294,31 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
   .res-meta span,
   .sig-meta span,
   .sig-meta a {
-    font-size: 12.5px;
+    font-size: 14px;
   }
   /* исключения, оставленные осознанно: номера шагов (.sn) — крупнее не нужны,
      метки внутри SVG остаются частью графики */
-  span.sn { font-size: 12.5px; }
+  span.sn { font-size: 14px; }
   .stepname .sn,
   button.stepname > span.sn,
   .steps .stepname .sn,
-  .steps .stepname.done .sn { font-size: 12.5px; }
+  .steps .stepname.done .sn { font-size: 14px; }
 
   /* остатки: подписи под ценой на странице наценки и мелкие строки в списках */
   small,
   li > span,
   div > small,
-  .bt-row small { font-size: 12.5px; }
+  .bt-row small { font-size: 14px; }
 
   /* dt в определениях: класс на родителе, поэтому бьём по тегу */
-  dl dt, dl dd dt, div > dt { font-size: 12.5px; }
+  dl dt, dl dd dt, div > dt { font-size: 14px; }
 }
 
 /* ═══ вкладки виджета «Проверь сам за минуту» ═══
    Замер: контент занимал 370px в строке 352px → четвёртая вкладка подрезалась. */
 @media (max-width: 760px) {
   .screen-tabs { gap: 10px; flex-wrap: wrap; padding: 14px 16px; }
-  .screen-tabs > * { font-size: 12.5px; padding-left: 0; padding-right: 0; }
+  .screen-tabs > * { font-size: 14px; padding-left: 0; padding-right: 0; }
 }
 
 /* ═══ ЛЕГАСИ-ФИКС 24.10 (точный): правила страниц, которые были специфичнее слоя ═══
@@ -328,78 +328,78 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
    в конце файла даёт победу при равной специфичности. */
 @media (max-width: 760px) {
   .seg-b dt,
-  dl.seg-b > div > dt { font-size: 12.5px; }
+  dl.seg-b > div > dt { font-size: 14px; }
 
-  .head small { font-size: 12.5px; }
+  .head small { font-size: 14px; }
 
   .prep .k,
   .nxt .k,
-  .tga label { font-size: 12.5px; }
+  .tga label { font-size: 14px; }
 
   .msg .time,
-  .tdiv .time { font-size: 12.5px; }
+  .tdiv .time { font-size: 14px; }
 
   /* адресно: статусы законов и разделитель дня в демо-чате */
   .law-list li span,
-  .law-list > li > span { font-size: 12.5px; }
+  .law-list > li > span { font-size: 14px; }
   .msg .tdiv,
   .chat .tdiv,
   .tdiv.in,
-  .tdiv { font-size: 12.5px; }
+  .tdiv { font-size: 14px; }
 }
 
 /* ═══ ДОКАЗАТЕЛЬСТВА (ds-cases.js): кейс + бенчмарк + разобранные ошибки + ключ чтения ═══ */
-.pv-sub{font:500 12.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--meta);margin:24px 0 0}
+.pv-sub{font:500 14px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--meta);margin:24px 0 0}
 .pv-xgrid{margin-top:12px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .pv-xrow{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:rgba(255,255,255,.015);display:flex;flex-direction:column}
-.pv-xrow .pv-xn{display:block;font:500 12.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.pv-xrow .pv-xn{display:block;font:500 14px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
 .pv-xrow .pv-xd{font-size:14.5px;color:var(--body);line-height:1.55;margin:0}
-.pv-xrow .pv-xr{display:block;margin-top:auto;padding-top:11px;border-top:1px solid var(--line-soft);font:400 13px/1.5 var(--mono);color:var(--ink)}
+.pv-xrow .pv-xr{display:block;margin-top:auto;padding-top:11px;border-top:1px solid var(--line-soft);font:400 14px/1.5 var(--mono);color:var(--ink)}
 .pv-xr .was{color:var(--meta);text-decoration:line-through;text-decoration-color:rgba(255,255,255,.22)}
 .pv-xr .arr{color:var(--accent)}
 .pv-xr .became{color:var(--ink);font-weight:500}
 .pv-xs{margin-top:11px;padding:10px 12px;border-radius:8px;background:rgba(0,0,0,.28);border:1px solid var(--line-soft);
-  font:400 12px/1.7 var(--mono);color:var(--body);overflow:hidden}
+  font:400 14px/1.7 var(--mono);color:var(--body);overflow:hidden}
 .pv-xs .ok{color:var(--accent)}
 .pv-steps{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 10px}
 .pv-step{min-height:36px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:transparent;
-  color:var(--body);font:400 12.5px/1 var(--mono);cursor:pointer;letter-spacing:.02em}
+  color:var(--body);font:400 14px/1 var(--mono);cursor:pointer;letter-spacing:.02em}
 .pv-step:hover{border-color:rgba(var(--accent-rgb),.5);color:var(--ink)}
 .pv-step.on{border-color:rgba(var(--accent-rgb),.7);color:var(--accent);background:rgba(123,196,168,.06)}
 .pv-art{padding:12px 14px;border-radius:8px;background:rgba(0,0,0,.28);border:1px solid var(--line-soft);
-  font:400 12.5px/1.6 var(--mono);color:var(--accent);overflow-wrap:anywhere}
+  font:400 14px/1.6 var(--mono);color:var(--accent);overflow-wrap:anywhere}
 .pv-stepdesc{font-size:14px;color:var(--body);line-height:1.55;margin:10px 0 0}
 .pv-xrow.deep{border-color:rgba(var(--accent-rgb),.45);background:rgba(123,196,168,.05)}
 .pv-case{margin-top:26px;border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;
   background:rgba(255,255,255,.015);display:grid;grid-template-columns:1.25fr .8fr;gap:26px}
-.pv-tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.pv-tag{font-family:var(--mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .pv-title{font-family:var(--display);font-size:19px;font-weight:600;color:var(--ink);line-height:1.3;margin:8px 0 10px}
 .pv-body{font-size:15.5px;color:var(--body);line-height:1.65;margin:0}
 .pv-aside{display:flex;flex-direction:column;gap:12px;min-width:0}
 .pv-transform{font-size:15px;color:var(--ink);line-height:1.6;margin:0;padding:14px 16px;
   border-left:2px solid rgba(var(--accent-rgb),.6);background:rgba(123,196,168,.05)}
-.pv-meta{font:400 12.5px/1.6 var(--mono);color:var(--meta);margin:0}
+.pv-meta{font:400 14px/1.6 var(--mono);color:var(--meta);margin:0}
 .pv-bench{margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:20px 22px 12px;background:rgba(0,0,0,.14)}
 .pv-bench h3{margin:0 0 4px;font-size:16px;color:var(--ink);font-weight:600}
-.pv-brow{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font:400 13.5px/1.5 var(--mono)}
+.pv-brow{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font:400 14px/1.5 var(--mono)}
 .pv-brow:last-of-type{border-bottom:none}
 .pv-brow .k{color:var(--meta);flex:0 0 auto}
 .pv-brow .v{color:var(--ink);text-align:right;min-width:0}
-.pv-note{font:400 12.5px/1.5 var(--mono);color:var(--meta);margin:0;padding:10px 0 4px;border-top:1px solid rgba(255,255,255,.06)}
+.pv-note{font:400 14px/1.5 var(--mono);color:var(--meta);margin:0;padding:10px 0 4px;border-top:1px solid rgba(255,255,255,.06)}
 .pv-pits{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .pv-pit{border:1px solid var(--line);border-radius:12px;padding:16px}
-.pv-pit .lb{display:block;font:500 12.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--meta);margin-bottom:8px}
+.pv-pit .lb{display:block;font:500 14px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--meta);margin-bottom:8px}
 .pv-pit .p{font-size:14px;color:var(--body);line-height:1.5;margin:0}
-.pv-pit .f{margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line-soft);font-size:13.5px;color:var(--accent);line-height:1.5}
+.pv-pit .f{margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line-soft);font-size:14px;color:var(--accent);line-height:1.5}
 .pv-key{margin-top:16px;border-top:1px solid var(--line)}
 .pv-keyrow{display:grid;grid-template-columns:minmax(140px,200px) 1fr auto;gap:6px 18px;align-items:baseline;padding:13px 2px;border-bottom:1px solid var(--line-soft)}
-.pv-keyrow .w{font:400 12.5px/1.4 var(--mono);color:var(--accent)}
+.pv-keyrow .w{font:400 14px/1.4 var(--mono);color:var(--accent)}
 .pv-keyrow .s{font-size:14.5px;color:var(--body);line-height:1.5}
-.pv-keyrow a{font-size:13.5px;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(var(--accent-rgb),.4);white-space:nowrap}
+.pv-keyrow a{font-size:14px;color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(var(--accent-rgb),.4);white-space:nowrap}
 .pv-keyrow a:hover{border-bottom-color:var(--accent)}
 .pv-quote{margin:22px 0 0;padding:18px 20px;border-left:2px solid rgba(var(--accent-rgb),.6);background:rgba(123,196,168,.04);border-radius:0 12px 12px 0}
 .pv-quote p{margin:0;font-size:15.5px;color:var(--ink);line-height:1.6}
-.pv-quote span{display:block;margin-top:10px;font:400 12.5px/1.5 var(--mono);color:var(--meta)}
+.pv-quote span{display:block;margin-top:10px;font:400 14px/1.5 var(--mono);color:var(--meta)}
 .pv-cta{margin:22px 0 0}
 @media (max-width:860px){.pv-case{grid-template-columns:1fr;gap:16px;padding:20px 16px}}
 @media (max-width:760px){
@@ -439,12 +439,12 @@ nav.top a.calc.on{background:rgba(var(--accent-rgb),.12);box-shadow:none}
   .nav-items{margin-left:0;width:100%;flex-wrap:nowrap;overflow-x:auto;gap:0 14px;
     scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
   .nav-items::-webkit-scrollbar{display:none}
-  .nav-items > a{flex:0 0 auto;font-size:13.5px;min-height:var(--tap);white-space:nowrap}
+  .nav-items > a{flex:0 0 auto;font-size:14px;min-height:var(--tap);white-space:nowrap}
   nav.top a.calc{min-height:44px;padding:0 12px}
 }
 
 /* служебный текст: 12.5px на всех ширинах */
-.op-kicker-note, .pi-t { font-size: 12.5px; }
+.op-kicker-note, .pi-t { font-size: 14px; }
 /* ═══ ЛЕГАСИ-ФИКС 24.10: мелкий текст и вкладки на мобилке ═══
    Замер показал подписи 11px (ниже читаемого порога на телефоне) и вкладки виджета
    шириной 370px при доступных 352px — четвёртая вкладка подрезалась.
@@ -474,11 +474,11 @@ nav.top a.calc.on{background:rgba(var(--accent-rgb),.12);box-shadow:none}
   .tdiv,
   .tga label,
   dt {
-    font-size: 12.5px;
+    font-size: 14px;
   }
   /* вкладки виджета: четыре должны помещаться без подрезки */
   .screen-tabs { gap: 2px; }
-  .screen-tabs > * { padding-left: 8px; padding-right: 8px; font-size: 12.5px; }
+  .screen-tabs > * { padding-left: 8px; padding-right: 8px; font-size: 14px; }
 }
 
 /* ═══ ЛЕГАСИ-ФИКС 24.10 (продолжение): служебный текст на мобилке ≥12.5px ═══
@@ -508,6 +508,6 @@ nav.top a.calc.on{background:rgba(var(--accent-rgb),.12);box-shadow:none}
   .ic-price,
   .btn-buy,
   .icard .ic-if {
-    font-size: 12.5px;
+    font-size: 14px;
   }
 }

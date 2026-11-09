@@ -212,7 +212,7 @@ footer a:hover{color:#8fa8ff}
     <p class="forwho"><b>Кому:</b> самозанятым и малому бизнесу, кто выбирает внедрение и не хочет платить за то, что не работает. <b>Зачем:</b> увидеть цену и риск до оплаты, а не после.</p>
     <div class="cta" style="margin-top:28px">
       <a class="btn btn-p" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Читать канал — бесплатно</a>
-      <a class="btn btn-g" href="#signals">Что уже вышло</a>
+      <a class="btn btn-g" href="#signals">Посмотреть посты</a>
     </div>
   </section>
 
@@ -255,7 +255,7 @@ footer a:hover{color:#8fa8ff}
     <div class="sigtbl">
       <a class="sigr" href="https://t.me/discoverysystem/9" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
         <span class="num">999–350 000 ₽</span>
-        <span class="fact">Одна и та же установка агента на Авито. Гарантии — через «Защиту сделки», то есть приёмка до оплаты стала платным стандартом.
+        <span class="fact">Одна и та же установка агента на Авито. Гарантии — через «Защиту сделки»: за проверку результата платят заранее.
           <span class="src">пост от 26.10.2026 → t.me/discoverysystem/9</span></span>
       </a>
       <a class="sigr" href="https://t.me/discoverysystem/15" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
@@ -289,7 +289,7 @@ footer a:hover{color:#8fa8ff}
       </div>
       <div class="item">
         <h3>Экономика открыто</h3>
-        <p>Прайсы, TCO, наценки в рублях. <b>Польза:</b> видно, за что платишь на самом деле — и сколько это стоит в месяц.</p>
+        <p>Прайсы, стоимость владения, наценки в рублях. <b>Польза:</b> видно, за что платишь на самом деле — и сколько это стоит в месяц.</p>
         <span class="fmt">₽ · замер с датой</span>
       </div>
     </div>
@@ -300,7 +300,7 @@ footer a:hover{color:#8fa8ff}
     <p>Канал в Telegram — там всё выходит первым, посты открыты без подписки на что-либо ещё.</p>
     <div class="cta">
       <a class="btn btn-p" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Открыть канал</a>
-      <a class="btn btn-g" href="market.html">Срез рынка на сайте</a>
+      <a class="btn btn-g" href="market.html">Открыть срез рынка</a>
     </div>
   </section>
 </div>
@@ -419,8 +419,8 @@ setTimeout(reveal,350);
   var L = D.links.map(function(l){ return {a:N[l[0]],b:N[l[1]],t:l[2]}; });
   var EATERS = N.filter(function(n){return n.st===-2;});
   EATERS.forEach(function(e,k){ e.code = ('0'+(k+1)).slice(-2); });
-  var EATCOUNT = {};
-  D.links.forEach(function(l){ if(l[2]===0){ EATCOUNT[l[1]]=(EATCOUNT[l[1]]||0)+1; } });
+  var EAстоимость владенияUNT = {};
+  D.links.forEach(function(l){ if(l[2]===0){ EAстоимость владенияUNT[l[1]]=(EAстоимость владенияUNT[l[1]]||0)+1; } });
   var COL = ['#3fb98a','#63b07c','#b0a35f','#d18b4a','#c25f52','#8e3b3b'];
   var W=0,H=0,DPR=1,hover=-1,running=false,raf=0,R=0;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -513,7 +513,7 @@ setTimeout(reveal,350);
     hover=best;
     if(best>=0&&tip){var n=N[best];
       var st=n.st===-2?'':(n.st<0?'без оценки':'стадия '+n.st);
-      var lbl = (n.st===-2) ? ('давит на '+(EATCOUNT[n.i]||0)+' рынков') : (n.sec+' · '+st);
+      var lbl = (n.st===-2) ? ('давит на '+(EAстоимость владенияUNT[n.i]||0)+' рынков') : (n.sec+' · '+st);
       tip.innerHTML='<b>'+((n.st===-2)?('фактор '+n.code):n.name)+'</b><span>'+lbl+'</span>';
       tip.style.transform='translate('+Math.round(n.x+14)+'px,'+Math.round(n.y-12)+'px)';tip.hidden=false;}
     else if(tip){tip.hidden=true;}
