@@ -410,6 +410,20 @@ header.nav .nav-in > .brand img{filter:none}
 .tier-more-sum::-webkit-details-marker{display:none}
 .tier-more-sum:before{content:"＋ "}
 .tier-more[open] .tier-more-sum:before{content:"− "}
+
+.bill{margin-top:14px;border:1px solid var(--hair);border-radius:12px;padding:0 16px}
+.bill summary{cursor:pointer;padding:12px 0;font:500 15px/1.4 var(--sans);color:var(--navy);list-style:none}
+.bill summary::-webkit-details-marker{display:none}
+.bill summary:before{content:"＋ ";font-family:var(--mono)}
+.bill[open] summary:before{content:"− "}
+.bill ul{list-style:none;margin:0;padding:0 0 12px}
+.bill li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:9px 0;border-top:1px solid var(--hair)}
+.bill .bl-k{font-size:15px;color:var(--ink)}
+.bill .bl-v{font:500 15px/1.3 var(--mono);color:var(--navy);white-space:nowrap}
+.bill .bl-n{grid-column:1/-1;font-size:14px;color:var(--meta);font-style:normal}
+.bill .bl-total{border-top:1px solid rgba(16,20,31,.28);margin-top:4px}
+.bill .bl-total .bl-k{font-weight:600}
+.bill-note{font-size:14px;color:var(--meta);margin:0 0 14px}
 </style>
 <style>
 /* ── AIR v2.4: мета-текст ≥14px (канон 15), светлые хинты героя, воздух шагов ── */
@@ -623,6 +637,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         </div>
       </div>
       <div class="hero-compare" id="heroCompare" style="display:none"></div>
+      <details class="bill" id="billBox" style="display:none"><summary>Счёт за месяц, постатейно: <span id="billSum"></span></summary><ul id="billList"></ul><p class="bill-note">Цены — замер 09.11.2026. Модель — меньшая часть счёта: деньги уходят на сервер, шлюз и подключения. Именно это и есть «владение», а не токены.</p></details>
       <div class="scen-box" id="scenBox" style="display:none"></div>
       <div id="detailBox" style="display:none">
         <div class="brk" id="brkTable"></div>
@@ -1228,6 +1243,17 @@ function renderHeroCompare(e,rate){
     '<div class="hc-cell after"><small>'+rightL+'</small><b>'+rightV+'</b>'+(rightSub?'<span class="hc-sub">'+rightSub+'</span>':'')+'</div>'+
     '<div class="hc-note">'+note+'</div>';
   box.style.display='block';
+  renderBill(e);
+}
+function renderBill(e){
+  const box=document.getElementById('billBox'); if(!box||!e||!e.bill)return;
+  const list=document.getElementById('billList'); if(!list)return;
+  box.style.display='block';
+  const sum=document.getElementById('billSum'); if(sum)sum.textContent=e.monthly.toLocaleString('ru-RU')+' ₽';
+  const share=Math.round((e.billHosting/Math.max(1,e.monthly))*100);
+  list.innerHTML=e.bill.map(b=>'<li><span class="bl-k">'+b.k+'</span><span class="bl-v">'+b.v.toLocaleString('ru-RU')+' ₽</span><em class="bl-n">'+b.note+'</em></li>').join('')
+    +'<li class="bl-total"><span class="bl-k">Итого</span><span class="bl-v">'+e.monthly.toLocaleString('ru-RU')+' ₽/мес</span><em class="bl-n">инфраструктура — '+share+'% счёта, модель — '+(100-share)+'%</em></li>';
+
 }
 function recWhy(key){
   if(key==='optimization') return 'У тебя уже есть связка, и она мешает. Сначала аудит: где утекают токены и время, потом пересборка. Новое строить не надо.';
@@ -1427,12 +1453,37 @@ function estimate(){
   /* Шлюз для Telegram на РФ-хостинге: api.telegram.org из дата-центров РФ не отвечает (ТСПУ).
      MTProxy/реверс-прокси на дешёвом VPS — 200–400 ₽/мес, берём середину. */
   const gateway=(tgNeeded&&rfColo)?300:0;
-  const hosting=(hosted?hostBase:0)+gateway;
-  const connCost=conns.reduce((s,c)=>s+CONNS.find(x=>x.id===c).cost,0);
+  /* ── ПОСТАТЕЙНЫЙ СЧЁТ ВЛАДЕНИЯ ──────────────────────────────────
+     Раньше показывали одну цифру и на этом всё. Клиент не видел, из чего
+     она: сервер, шлюз, прокси, бэкапы, мониторинг, домен, подключения.
+     Теперь каждая строка — отдельная статья с источником (замер 09.11.2026).
+     Модель — меньшая часть счёта; деньги уходят на инфраструктуру. */
+  const needsOutbound=goals.some(g=>['scan','leads','report'].includes(g));
+  const retries=1.25;                      /* ретраи, повторные попытки, служебные вызовы */
+  const modelBill=Math.round(modelCost*retries);
+  const hostBaseExtra=Math.max(0,nAgents-5)*700;  /* каждый агент сверх пяти — ещё память */
+  const serverBill=hosted?hostBase+hostBaseExtra:0;
+  const connCost=conns.reduce((s,c)=>{const f=CONNS.find(x=>x.id===c);return s+(f?f.cost:0);},0);
+  const connBill=connCost;
+  const items=[];
+  if(serverBill)items.push({k:'Сервер (VPS РФ, '+nAgents+' агент'+(nAgents>1?'а':'')+')',v:serverBill,note:'2 vCPU · 4–8 ГБ · замер 09.11.2026'});
+  if(gateway)items.push({k:'Шлюз для Telegram',v:gateway,note:'api.telegram.org из РФ не отвечает · MTProxy на VPS'});
+  if(needsOutbound)items.push({k:'Прокси для внешних API',v:300,note:'авито, сайты, поиск — по 1–2 прокси'});
+  items.push({k:'Модель (токены)',v:modelBill,note:'тариф провайдера + ретраи и служебные вызовы'});
+  if(hosted){
+    items.push({k:'Бэкапы',v:200,note:'S3, 10 ГБ + снапшоты базы знаний'});
+    items.push({k:'Мониторинг и логи',v:250,note:'uptime, ошибки, расход токенов'});
+    items.push({k:'Домен и SSL',v:100,note:'свой адрес для бота и панели'});
+  } else {
+    items.push({k:'Электричество и диск',v:400,note:'свой ПК/GPU 24/7 — считаем честно, а не «бесплатно»'});
+  }
+  if(connBill)items.push({k:'Подключения',v:connBill,note:conns.map(c=>(CONNS.find(x=>x.id===c)||{}).label).filter(Boolean).join(', ')});
+  const billTotal=items.reduce((a,b)=>a+b.v,0);
+  const hosting=billTotal-modelBill-connBill;
   let handsHours=gs.reduce((s,g)=>s+g.econ,0); /* задачи выведены из целей — их часы уже внутри g.econ */
   const hostCost=hosting;
-  const connTotal=connCost;
-  const monthly=Math.round(modelCost+hostCost+connTotal);
+  const connTotal=connBill;
+  const monthly=billTotal;
   // с агентом: что осталось человеку — контроль и правки, доля от автономности
   /* доля рутины, которую забирает агент — растёт с автономностью.
      Аудит 21-audit-tech: прежние доли (агент забирал 60–90% даже на «Черновиках»)
@@ -1441,7 +1492,7 @@ function estimate(){
   const agentHours=Math.round(handsHours*agentShare(autonomy));
   const handsTotal=handsHours;
   const startMoney=startBase();
-  return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost,hostCost,connTotal,gateway,modelName:m.name,base:startMoney};
+  return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost:modelBill,hostCost,connTotal,gateway,modelName:m.name,base:startMoney,bill:items,billHosting:hosting};
 }
 /* ========== WIZARD: воронка из 7 шагов ==========
    Один вопрос на экран, прогресс, mini-CTA. Честному расчёту нужны 6 шагов —
