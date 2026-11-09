@@ -354,7 +354,7 @@ footer a:hover{text-decoration:underline}
 /* ═══ кейсы: слайдер из 8 карточек (канон 25.10) ═══ */
 .cslider{position:relative;margin-top:clamp(18px,2.4vw,26px)}
 .cviewport{overflow:hidden;padding:2px 0 10px}
-.ctrack{display:flex;gap:16px;will-change:transform;transition:transform .38s cubic-bezier(.25,.8,.25,1)}
+.ctrack{display:flex;gap:16px;will-change:transform;transition:transform .72s cubic-bezier(.22,.61,.36,1)}
 .cslide{flex:0 0 330px;display:flex;flex-direction:column;gap:9px;
  border:1px solid var(--hair);border-radius:14px;background:#fff;padding:18px 18px 16px;min-height:0}
 .cs-top{display:flex;justify-content:space-between;align-items:center}
@@ -395,6 +395,7 @@ footer a:hover{text-decoration:underline}
 .cs-proof span{display:block;font:500 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--meta);margin-bottom:6px}
 .cs-n{position:absolute;top:20px;right:20px;font:400 14px/1 var(--mono);color:var(--meta)}
 @media(max-width:640px){ .cslide{flex:0 0 min(300px,82vw)} }
+.cs-who{font:400 14px/1.35 var(--mono);color:var(--meta);margin:-2px 0 2px}
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
 </head>
@@ -560,48 +561,56 @@ footer a:hover{text-decoration:underline}
   <div class="cviewport" id="cviewport"><div class="ctrack" id="ctrack">
 <article class="cslide" data-i="0" aria-label="Агент ведёт учёт сам: голос в таблицу, с">
   <span class="cs-m">24/7</span>
+  <p class="cs-who">Николай · учёт смен и смет · услуги</p>
   <p class="cs-what">Агент ведёт учёт сам: голос в таблицу, сводки в 9:00 и 21:00.</p>
   <p class="cs-proof"><span>чем проверено</span>Журнал операций у клиента на его сервере — видно каждую строку.</p>
   <span class="cs-n">01</span>
 </article>
 <article class="cslide" data-i="1" aria-label="Дизайнер без программиста дошёл до своей">
   <span class="cs-m">1</span>
+  <p class="cs-who">дизайнер-фрилансер · креатив</p>
   <p class="cs-what">Дизайнер без программиста дошёл до своей игры на Unity.</p>
   <p class="cs-proof"><span>чем проверено</span>Проект собран: сцены, скрипты, ассеты из его же макетов.</p>
   <span class="cs-n">02</span>
 </article>
 <article class="cslide" data-i="2" aria-label="Радар ниши: 5–6 000 ₽/мес чужих подписок">
   <span class="cs-m">×40</span>
+  <p class="cs-who">ювелирный бренд · радар ниши</p>
   <p class="cs-what">Радар ниши: 5–6 000 ₽/мес чужих подписок → 150 ₽/мес своих расходников.</p>
   <p class="cs-proof"><span>чем проверено</span>Аудит зависимостей скилла: три платных сервиса заменены своим кодом.</p>
   <span class="cs-n">03</span>
 </article>
 <article class="cslide" data-i="3" aria-label="Столько компаний ведёт главбух с агентом">
   <span class="cs-m">12</span>
+  <p class="cs-who">главбух · 12 компаний</p>
   <p class="cs-what">Столько компаний ведёт главбух с агентом вместо ручной сверки.</p>
   <p class="cs-proof"><span>чем проверено</span>Обезличивание до модели по 152-ФЗ, первичка и регистры по 402-ФЗ, подпись за человеком.</p>
   <span class="cs-n">04</span>
 </article>
 <article class="cslide" data-i="4" aria-label="Нарезок из 2 ч 40 мин сырья: пять отобра">
   <span class="cs-m">14</span>
+  <p class="cs-who">продакшн · видео и нарезки</p>
   <p class="cs-what">Нарезок из 2 ч 40 мин сырья: пять отобрано в работу, сценарии и склейки готовы.</p>
   <p class="cs-proof"><span>чем проверено</span>Лог обработки: сколько файлов, сколько нарезок, что отобрано.</p>
   <span class="cs-n">05</span>
 </article>
 <article class="cslide" data-i="5" aria-label="Три карьерных трека и парсер открытых ва">
   <span class="cs-m">3</span>
+  <p class="cs-who">клиент на поиске работы · карьера</p>
   <p class="cs-what">Три карьерных трека и парсер открытых вакансий вместо ручных откликов.</p>
   <p class="cs-proof"><span>чем проверено</span>Сопроводительное собирается под конкретную вакансию, а не веером.</p>
   <span class="cs-n">06</span>
 </article>
 <article class="cslide" data-i="6" aria-label="Источников с датами за один прогон иссле">
   <span class="cs-m">14</span>
+  <p class="cs-who">B2B-исследование · рынок</p>
   <p class="cs-what">Источников с датами за один прогон исследования рынка.</p>
   <p class="cs-proof"><span>чем проверено</span>Отдельно указано, что данные НЕ доказывают — границы не сглажены.</p>
   <span class="cs-n">07</span>
 </article>
 <article class="cslide" data-i="7" aria-label="Точность поиска заказов против поиска по">
   <span class="cs-m">63/47</span>
+  <p class="cs-who">открытый инструмент · лидген</p>
   <p class="cs-what">Точность поиска заказов против поиска по словам: 63% и 47%.</p>
   <p class="cs-proof"><span>чем проверено</span>EVAL.md в репозитории: разметка 110 карточек, контрольная выборка 286 постов.</p>
   <span class="cs-n">08</span>
@@ -651,13 +660,6 @@ footer a:hover{text-decoration:underline}
       <li><b>Радар спроса: 14 досок и 8 чатов</b>, прогон каждые 12 часов — своя инфраструктура, не чужая подписка.</li>
       <li><b>Уведомление РКН по 152-ФЗ подано</b>, эквайринг и автовыдача гайдов прогнаны от оплаты до файла.</li>
       <li><b>Замеры по внедрениям — в блоке выше</b>: WorkWay, Chill Music Lab, Music Lab, НСПД. <a href="#cases">посмотреть</a></li>
-    </ul>
-
-    <p class="who-label">границы</p>
-    <ul class="who-no">
-      <li>берусь за то, что закрывается критериями: обзвон, модерацию и съёмку не беру — там нужен человек;</li>
-      <li>не беру процессы, где нужен человек: обзвон, модерация, съёмка;</li>
-      <li>не продаю подписку на чужой сервис: агент живёт в твоём контуре, ключи у тебя.</li>
     </ul>
 
     <p class="who-clients">С кем работал: WorkWay · Chill Music Lab · Music Lab · НСПД</p>
