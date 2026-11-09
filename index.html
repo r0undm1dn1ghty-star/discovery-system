@@ -396,6 +396,8 @@ footer a:hover{text-decoration:underline}
 .cs-n{position:absolute;top:20px;right:20px;font:400 14px/1 var(--mono);color:var(--meta)}
 @media(max-width:640px){ .cslide{flex:0 0 min(300px,82vw)} }
 .cs-who{font:400 14px/1.35 var(--mono);color:var(--meta);margin:-2px 0 2px}
+.tg-chip{align-self:center;margin:8px auto 2px;padding:6px 12px;border-radius:11px;background:rgba(143,168,255,.14);border:1px solid rgba(143,168,255,.32);font:500 14px/1.2 var(--sans);color:#cfe0ff;text-align:center}
+.tg-kb button:disabled{opacity:.55;cursor:default}
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
 </head>
@@ -428,82 +430,134 @@ footer a:hover{text-decoration:underline}
 <span>критерии приёмки — до старта</span>
 </div></div>
 <div class="showcase" id="showcase">
-  <div class="vw-stage">
-<div class="vw-card" data-i="0" aria-label="Агент заявок">
-  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
-    <span class="tg-who"><b>Агент заявок</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
-  <div class="tg-body">
-  <div class="tg-day">Вторник</div>
-  <div class="tg-in">Здравствуйте! Сколько стоит монтаж и когда сможете приехать?<span class="tg-tm">23:47</span></div>
-  <div class="tg-out">Монтаж — 18 400 ₽. Ближайшее окно: четверг, 10:00.<span class="tg-tm">23:47 <i class="ok">✓✓</i></span></div>
-  <div class="tg-out sm">Записать?<span class="tg-tm">23:47 <i class="ok">✓✓</i></span></div></div>
-  <div class="tg-kb"><button type="button">Записать · четверг 10:00</button><button type="button">Другое время</button></div>
-  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
-</div>
-<div class="vw-card" data-i="1" aria-label="Агент-бухгалтер">
-  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
-    <span class="tg-who"><b>Агент-бухгалтер</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
-  <div class="tg-body">
-  <div class="tg-day">Сверка за март</div>
-  <div class="tg-doc"><span class="tg-pdf">PDF</span><span><b>Счёт №1847</b><i>в договоре — 42 000 ₽</i><i>в счёте — 46 800 ₽</i></span></div>
-  <div class="tg-out">Расхождение +11%. Похоже, добавили доставку, которой нет в договоре.<span class="tg-tm">09:12 <i class="ok">✓✓</i></span></div></div>
-  <div class="tg-kb"><button type="button">Написать поставщику</button><button type="button">Принять как есть</button></div>
-  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
-</div>
-<div class="vw-card" data-i="2" aria-label="Агент-лиды">
-  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
-    <span class="tg-who"><b>Агент-лиды</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
-  <div class="tg-body">
-  <div class="tg-day">Парсинг · 12:40</div>
-  <div class="tg-funnel"><i style="--w:100%"><b>100</b> холодных</i><i style="--w:64%"><b>20</b> горячих</i><i style="--w:30%"><b>7</b> наши</i></div>
-  <div class="tg-out">У этих семи есть повод: новый филиал, смена подрядчика, вакансия на монтажника.<span class="tg-tm">12:41 <i class="ok">✓✓</i></span></div></div>
-  <div class="tg-kb"><button type="button">Открыть семь писем</button><button type="button">Показать поводы</button></div>
-  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
-</div>
-<div class="vw-card" data-i="3" aria-label="Агент-проджект">
-  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
-    <span class="tg-who"><b>Агент-проджект</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
-  <div class="tg-body">
-  <div class="tg-day">Утро · 09:00</div>
-  <div class="tg-out">2 риска: Климов тянет оплату 11 дней, у Грина сорван срок на объекте.<span class="tg-tm">09:00 <i class="ok">✓✓</i></span></div>
-  <div class="tg-out sm">3 задачи на сегодня. Одна — твоя подпись.<span class="tg-tm">09:00 <i class="ok">✓✓</i></span></div>
-  <div class="tg-in">Климову — письмо<span class="tg-tm">09:03</span></div>
-  <div class="tg-out">Готово, черновик в буфере. Пеня посчитана по договору.<span class="tg-tm">09:04 <i class="ok">✓✓</i></span></div></div>
-  <div class="tg-kb"><button type="button">Показать риски</button><button type="button">Что на мне</button></div>
-  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
-</div>
-<div class="vw-card" data-i="4" aria-label="Агент-риск">
-  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
-    <span class="tg-who"><b>Агент-риск</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
-  <div class="tg-body">
-  <div class="tg-day">Проверка контрагента</div>
-  <div class="tg-doc warn"><span class="tg-pdf">ИНН</span><span><b>ООО «Спектр-М»</b><i>маркер: зелёный</i><i>3 иска за 6 месяцев</i></span></div>
-  <div class="tg-out">Зелёный маркер врёт. Директор сменился в августе. Работать — только по предоплате.<span class="tg-tm">14:20 <i class="ok">✓✓</i></span></div></div>
-  <div class="tg-kb"><button type="button">Поставить на мониторинг</button><button type="button">Скачать досье</button></div>
-  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
-</div>
-<div class="vw-card" data-i="5" aria-label="Агент-советник">
-  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
-    <span class="tg-who"><b>Агент-советник</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
-  <div class="tg-body">
-  <div class="tg-day">Советник</div>
-  <div class="tg-in">Беру склад в аренду или достраиваю свой?<span class="tg-tm">20:04</span></div>
-  <div class="tg-out">Три варианта, по каждому — цена ошибки: аренда 240 тыс/год, свой 1,9 млн с окупаемостью 3,4 года, гибрид с паллетным хранением пиков. Твои условия сходятся с третьим.<span class="tg-tm">20:06 <i class="ok">✓✓</i></span></div></div>
-  <div class="tg-kb"><button type="button">Сравнить по цифрам</button><button type="button">Записать решение</button></div>
-  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
-</div>
-<div class="vw-card" data-i="6" aria-label="Агент-документы">
-  <div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">г</span>
-    <span class="tg-who"><b>Агент-документы</b><i>бот</i></span><span class="tg-ico">⋮</span></div>
-  <div class="tg-body">
-  <div class="tg-day">Документы за неделю</div>
-  <div class="tg-check"><span>✓ реквизиты сверены</span><span>✓ сумма сходится</span><span>✓ подписант в праве</span><span>✓ дублей нет</span></div>
-  <div class="tg-out">12 документов. Один на подпись, один вернул с ошибкой в дате.<span class="tg-tm">18:30 <i class="ok">✓✓</i></span></div></div>
-  <div class="tg-kb"><button type="button">Отправить на подпись</button><button type="button">Показать ошибку</button></div>
-  <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>
-</div>
-  </div>
-  <p class="vw-hint">смахни окно — следующий агент</p>
+  <div class="vw-stage" id="vwStage"></div>
+<script>
+(function(){
+  var S = 
+[
+{name:'Агент заявок', day:'Вторник · 23:47', steps:[
+ {in:['Здравствуйте! Нужен монтаж. Сколько стоит и когда сможете приехать?'],
+  b:['Узнать цену', 'Сразу записаться']},
+ {out:['Здравствуйте! Я агент бригады, отвечаю и ночью. Монтаж под ключ — 18 400 ₽. Уточню: квартира или офис?'],
+  b:['Квартира, 42 м²','Офис, 60 м²']},
+ {in:['Квартира, 42 м²'],
+  out:['Понял: квартира, 42 м². Свободно в четверг в 10:00 и в пятницу в 15:00. Какое окно удобнее?'],
+  b:['Четверг 10:00','Пятница 15:00']},
+ {in:['Четверг 10:00 подходит'],
+  out:['Записал: четверг, 10:00. Смета 18 400 ₽ уже в карточке заявки. Напомню в среду вечером и за час до выезда.'],
+  chip:'Заявка №184 создана'}
+]},
+{name:'Агент-бухгалтер', day:'Сверка · 09:12', steps:[
+ {in:['Проверь счёт от поставщика, сумма кажется не та.'],
+  b:['Приложить счёт']},
+ {out:['Здравствуйте! Присылайте счёт — сверю с договором и предыдущими поставками.'],
+  doc:['Счёт №1847','в договоре — 42 000 ₽','в счёте — 46 800 ₽'],
+  b:['Сверить','Сверить и написать поставщику']},
+ {out:['Сверил: расхождение 4 800 ₽. В договоре доставки нет, в счёте она появилась отдельной строкой.'],
+  b:['Написать поставщику','Это доставка, всё верно']},
+ {out:['Письмо готово: прошу убрать доставку или выставить её отдельным счётом. Отправил, ответ придёт в этот чат.'],
+  chip:'Письмо отправлено'}
+]},
+{name:'Агент-лиды', day:'Прогон · 12:40', steps:[
+ {in:['Кому сейчас нужен монтаж в Екатеринбурге?'],
+  b:['Собрать за сутки']},
+ {out:['Здравствуйте! Я ночной агент по заявкам. Прошёл 14 досок и 8 чатов: 100 объявлений, 20 похожи на горячие, 7 с реальным поводом.'],
+  funnel:[['100','холодных'],['20','горячих'],['7','наши']],
+  b:['Показать 7','Только контакты']},
+ {out:['У семи есть повод: открыли филиал, сменили подрядчика, ищут монтажника. К каждому — строка, почему пишем именно им.'],
+  b:['Открыть письма','Отложить до утра']},
+ {out:['Семь писем готовы: персональный повод в первой строке. Черновики лежат в этом чате, отправка — по твоему слову.'],
+  chip:'7 писем в черновиках'}
+]},
+{name:'Агент-проджект', day:'Утро · 09:00', steps:[
+ {in:['Что по проектам на сегодня?'],
+  b:['Показать сводку']},
+ {out:['Доброе утро. Три проекта: два идут по плану, один отстаёт на два дня. Климов тянет оплату 11 дней, у Смирновой просрочен макет.'],
+  b:['Что делать с Климовым?','Кому написать по макету?']},
+ {out:['Черновик Климову: напоминание об оплате со ссылкой на акт. Смирновой — запрос макета до пятницы. Оба готовы к отправке.'],
+  b:['Отправить оба','Только Климову']},
+ {out:['Отправил. Задачи созданы, сроки в календаре. Завтра в 09:00 пришлю новую сводку.'],
+  chip:'2 задачи поставлены'}
+]},
+{name:'Агент-риск', day:'Проверка · 14:20', steps:[
+ {in:['Проверь контрагента перед предоплатой.'],
+  b:['Проверить по ИНН']},
+ {out:['Здравствуйте! Проверяю: реестры, суды, залоги, смена директора за год. Нужен ИНН или название.'],
+  b:['ИНН из договора','Пришлю позже']},
+ {out:['Нашёл три сигнала: смена директора 2 месяца назад, два суда на 1,2 млн ₽, залог на оборудование. Предоплату лучше не платить.'],
+  b:['Что предложить взамен?','Понял, отказ']},
+ {out:['Предложение: оплата по этапам, первый — после поставки партии. Черновик письма и выписка по сигналам — в этом чате.'],
+  chip:'Выписка готова'}
+]},
+{name:'Агент-советник', day:'Решение · 18:05', steps:[
+ {in:['Брать клиента на 300 тысяч, если он просит отсрочку 60 дней?'],
+  b:['Посчитать']},
+ {out:['Считаю по твоим цифрам: маржа 22%, отсрочка 60 дней, средний платёж 300 тысяч. При такой отсрочке кассовый разрыв — 66 тысяч на цикл.'],
+  b:['Где узкое место?','Что если 45 дней?']},
+ {out:['Узкое место — не маржа, а касса: два клиента с отсрочкой одновременно вымывают оборотку. При 45 днях разрыв падает до 33 тысяч.'],
+  b:['Дай формулировку для клиента']},
+ {out:['Формулировка: «Работаем с отсрочкой 45 дней; при 60 — предоплата 30%». Три варианта письма — в чате.'],
+  chip:'3 варианта готовы'}
+]},
+{name:'Агент-документы', day:'Документы за неделю', steps:[
+ {in:['Проверь документы за неделю, что подписывать?'],
+  b:['Проверить 12']},
+ {out:['Здравствуйте! Проверил 12 документов: реквизиты сверены, суммы сходятся, подписанты в праве. Один вернулся с ошибкой в дате.'],
+  check:['реквизиты сверены','суммы сходятся','подписант в праве','дублей нет'],
+  b:['Показать ошибку','Отправить на подпись']},
+ {out:['Ошибка в счёте №1890: дата 03.09 вместо 03.11. Исправление ушло поставщику, документ вернётся в подпись после ответа.'],
+  b:['Отправить остальные']},
+ {out:['11 документов отправлены на подпись. Один ждёт исправления. Итог пришлю, когда вернётся.'],
+  chip:'11 из 12 подписаны'}
+]}
+];
+  var stage = document.getElementById('vwStage');
+  if(!stage) return;
+  S.forEach(function(scr, ci){
+    var card = document.createElement('div');
+    card.className='vw-card'; card.setAttribute('data-i', ci); card.setAttribute('aria-label', scr.name);
+    card.innerHTML = '<div class="tg-top"><span class="tg-back">‹</span><span class="tg-ava">'+scr.name.replace(/[^А-Яа-яA-Za-z]/g,'').slice(0,1).toLowerCase()+'</span>'+
+      '<span class="tg-who"><b>'+scr.name+'</b><i>бот</i></span><span class="tg-ico">⋮</span></div>'+
+      '<div class="tg-body"><div class="tg-day">'+scr.day+'</div></div>'+
+      '<div class="tg-kb" hidden></div>'+
+      '<div class="tg-input"><span class="tg-clip">📎</span><span class="tg-field">Сообщение</span><span class="tg-send">➤</span></div>';
+    var body=card.querySelector('.tg-body'), kb=card.querySelector('.tg-kb');
+    function msg(html, cls){
+      var d=document.createElement('div'); d.className=cls; d.innerHTML=html; body.appendChild(d); body.scrollTop=body.scrollHeight;
+    }
+    function time(){ var d=new Date(); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+    function render(step){
+      (step.in||[]).forEach(function(t){ msg(t+'<span class="tg-tm">'+time()+' <i class="ok">✓✓</i></span>','tg-out'); });
+      if(step.doc){ msg('<span class="tg-pdf">PDF</span><span><b>'+step.doc[0]+'</b><i>'+step.doc[1]+'</i><i>'+step.doc[2]+'</i></span>','tg-doc'); }
+      if(step.funnel){ msg(step.funnel.map(function(f){return '<i><b>'+f[0]+'</b> '+f[1]+'</i>';}).join(''),'tg-funnel'); }
+      if(step.check){ msg(step.check.map(function(c){return '<span>✓ '+c+'</span>';}).join(''),'tg-check'); }
+      (step.out||[]).forEach(function(t){ msg(t+'<span class="tg-tm">'+time()+'</span>','tg-in'); });
+      if(step.chip){ msg('<b>'+step.chip+'</b>','tg-chip'); }
+      kb.innerHTML=''; 
+      if(step.b && step.b.length){
+        kb.hidden=false;
+        step.b.forEach(function(label,idx){
+          var b=document.createElement('button'); b.type='button'; b.textContent=label;
+          b.addEventListener('click', function(){
+            kb.querySelectorAll('button').forEach(function(x){x.disabled=true;});
+            advance(label);
+          });
+          kb.appendChild(b);
+        });
+      } else { kb.hidden=true; }
+    }
+    var queue = scr.steps.slice(), current=0;
+    function advance(label){
+      msg(label+'<span class="tg-tm">'+time()+' <i class="ok">✓✓</i></span>','tg-out');
+      current++;
+      if(current < queue.length){ render(queue[current]); }
+    }
+    render(queue[0]);
+    stage.appendChild(card);
+  });
+})();
+</script>
+<p class="vw-hint">смахни окно — следующий агент</p>
   <div class="vw-dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 </div>
 </div>
