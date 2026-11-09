@@ -167,6 +167,15 @@ footer a:hover{color:#8fa8ff}
  .siggrid{grid-template-columns:1fr}
  .pipe li{grid-template-columns:40px 1fr;gap:10px}
 }
+
+.maptop{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:0 0 26px;border-top:1px solid var(--hair);padding-top:22px}
+.mnum b{display:block;font:500 clamp(30px,3.4vw,44px)/1 var(--mono);color:#eef2fb;letter-spacing:-.02em}
+.mnum span{display:block;margin-top:8px;font-size:15px;color:#a9b4cc;line-height:1.45}
+.mapfig{margin-top:18px}
+.mapfig svg{display:block;width:100%;height:auto}
+.mapsrc{margin-top:16px;font:400 14px/1.6 var(--mono);color:#8a94ad}
+.mapsrc a{color:#8fa8ff}
+@media(max-width:700px){.maptop{grid-template-columns:1fr;gap:14px}}
 </style>
 <script>document.documentElement.className+=' js';</script>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
@@ -200,6 +209,22 @@ footer a:hover{color:#8fa8ff}
       <li><b>Успеваешь до оплаты</b>: блокировки, смена условий, демпинг — раньше, чем это станет твоей проблемой.</li>
     </ul>
   </section>
+
+  <section id="map-data">
+  <div class="shead">
+    <h2>Карта 300 рынков — в цифрах</h2>
+    <p class="s">Клубок линий ничего не объясняет. Вот те же данные: <b>кто ест рынки</b> и <b>насколько далеко зашло</b>. Собрано 01.11.2026.</p>
+  </div>
+  <div class="maptop">
+    <div class="mnum"><b>300</b><span>рынков · 16 экосистем · 1 082 связи</span></div>
+    <div class="mnum"><b>22</b><span>рынков уже в поздней стадии (4–5)</span></div>
+    <div class="mnum"><b>51</b><span>рынок едят ИИ-агенты</span></div>
+  </div>
+  <div class="mapfig"><svg viewBox="0 0 1000 458" role="img" aria-label="Кто ест рынки из 300: маркетплейсы 66; аренда и ФОТ 64; федеральные сети 60; ИИ-агенты 51; налоги и регуляторика 48; агрегаторы и платформы 41; самозанятые и демпинг 39; иностранцы и импорт 25" font-family="IBM Plex Mono, monospace"><text x="0" y="16" font-size="14" fill="#8a94ad">сколько рынков из 300 съедает каждый</text><text x="0" y="68" font-size="16" fill="#eef2fb">маркетплейсы</text><rect x="330" y="52" width="580" height="22" rx="4" fill="#4a5f9e"/><text x="922" y="69" font-size="17" fill="#eef2fb">66</text><text x="0" y="114" font-size="16" fill="#eef2fb">аренда и ФОТ</text><rect x="330" y="98" width="562" height="22" rx="4" fill="#4a5f9e"/><text x="904" y="115" font-size="17" fill="#eef2fb">64</text><text x="0" y="160" font-size="16" fill="#eef2fb">федеральные сети</text><rect x="330" y="144" width="527" height="22" rx="4" fill="#4a5f9e"/><text x="869" y="161" font-size="17" fill="#eef2fb">60</text><text x="0" y="206" font-size="16" fill="#eef2fb">ИИ-агенты</text><rect x="330" y="190" width="448" height="22" rx="4" fill="#8fa8ff"/><text x="790" y="207" font-size="17" fill="#eef2fb">51</text><text x="0" y="252" font-size="16" fill="#eef2fb">налоги и регуляторика</text><rect x="330" y="236" width="422" height="22" rx="4" fill="#4a5f9e"/><text x="764" y="253" font-size="17" fill="#eef2fb">48</text><text x="0" y="298" font-size="16" fill="#eef2fb">агрегаторы и платформы</text><rect x="330" y="282" width="360" height="22" rx="4" fill="#4a5f9e"/><text x="702" y="299" font-size="17" fill="#eef2fb">41</text><text x="0" y="344" font-size="16" fill="#eef2fb">самозанятые и демпинг</text><rect x="330" y="328" width="343" height="22" rx="4" fill="#4a5f9e"/><text x="685" y="345" font-size="17" fill="#eef2fb">39</text><text x="0" y="390" font-size="16" fill="#eef2fb">иностранцы и импорт</text><rect x="330" y="374" width="220" height="22" rx="4" fill="#4a5f9e"/><text x="562" y="391" font-size="17" fill="#eef2fb">25</text></svg></div>
+  <div class="mapfig"><svg viewBox="0 0 1000 150" role="img" aria-label="Стадии вытеснения из 300 рынков: стадия 0 — 66, стадия 1 — 80, стадия 2 — 87, стадия 3 — 43, стадия 4 — 19, стадия 5 — 3, без оценки — 2" font-family="IBM Plex Mono, monospace"><text x="0" y="16" font-size="14" fill="#8a94ad">насколько далеко зашло вытеснение</text><rect x="0" y="32" width="206.8" height="26" fill="#22304f"/><rect x="207" y="32" width="250.7" height="26" fill="#35507e"/><rect x="457" y="32" width="272.6" height="26" fill="#4a6ea8"/><rect x="730" y="32" width="134.7" height="26" fill="#6c8bd0"/><rect x="865" y="32" width="59.5" height="26" fill="#b0705e"/><text x="103" y="84" font-size="15" fill="#eef2fb" text-anchor="middle">66</text><text x="103" y="104" font-size="14" fill="#8a94ad" text-anchor="middle">стадия 0</text><text x="332" y="84" font-size="15" fill="#eef2fb" text-anchor="middle">80</text><text x="332" y="104" font-size="14" fill="#8a94ad" text-anchor="middle">стадия 1</text><text x="594" y="84" font-size="15" fill="#eef2fb" text-anchor="middle">87</text><text x="594" y="104" font-size="14" fill="#8a94ad" text-anchor="middle">стадия 2</text><text x="797" y="84" font-size="15" fill="#eef2fb" text-anchor="middle">43</text><text x="797" y="104" font-size="14" fill="#8a94ad" text-anchor="middle">стадия 3</text><text x="895" y="84" font-size="15" fill="#eef2fb" text-anchor="middle">19</text><text x="895" y="104" font-size="14" fill="#8a94ad" text-anchor="middle">стадия 4</text><text x="0" y="138" font-size="14" fill="#8a94ad">стадия 5 — 3 рынка · без оценки стадии — 2 · дробные стадии округлены</text></svg></div>
+  <p class="mapsrc" style="margin-top:10px">Один рынок может есть несколько игроков — поэтому сумма по столбцам больше 300.</p>
+  <p class="mapsrc">карта и полные разборы — <a href="https://t.me/discoverysystem" target="_blank" rel="noopener">в канале</a> · данные: 300 рынков, 1 082 связи · сборка 01.11.2026</p>
+</section>
 
   <section id="signals">
     <div class="shead">
