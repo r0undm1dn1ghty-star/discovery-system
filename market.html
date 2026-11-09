@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Рынок ИИ — Discovery System</title>
+<title>Агентов продают все. Работающих — единицы — Discovery System</title>
 <link rel="canonical" href="https://discovery-system.ru/market.html" />
 <!-- SEO:CORE v1 — собирается scripts/seo-index.py, руками не править -->
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
@@ -14,7 +14,7 @@
 <!-- /SEO:CORE -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Discovery System","item":"https://discovery-system.ru/"},{"@type":"ListItem","position":2,"name":"Рынок ИИ","item":"https://discovery-system.ru/market.html"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://discovery-system.ru/market.html#webpage","url":"https://discovery-system.ru/market.html","name":"Рынок ИИ — Discovery System","description":"Рынок меняется быстрее, чем о нём пишут: четыре стандарта внедрения, живые числа лабы, четыре дороги мимо агента, цифры под твою ситуацию.","inLanguage":"ru","datePublished":"2026-11-06","dateModified":"2026-11-06","author":{"@id":"https://discovery-system.ru/#author"},"publisher":{"@id":"https://discovery-system.ru/#organization"},"isPartOf":{"@type":"WebSite","url":"https://discovery-system.ru/","name":"Discovery System"}}</script>
-<meta name="description" content="Рынок меняется быстрее, чем о нём пишут: четыре стандарта внедрения, живые числа лабы, четыре дороги мимо агента, цифры под твою ситуацию.">
+<meta name="description" content="Три месяца рынка ИИ-внедрений: курсы, вебинары, клодо-внедренцы, студии, Авито. Что из этого не работает и почему критерии приёмки фиксируют до денег — со ссылками на замеры.">
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f2f4f6;--ink:#10141f;--body:#414a5e;--meta:#7a8296;--hair:rgba(16,20,31,.10);--hair2:rgba(16,20,31,.06);--navy:#1b2a6b;--navy2:#24368f;--acc:#8fa8ff;--btn:#1b2a6b;--btn-h:#24368f;--btn-t:#f2f6ff;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Onest',var(--sans);--ease:cubic-bezier(.2,.7,.2,1)}
@@ -110,143 +110,105 @@ footer a:hover{color:#8fa8ff}
 <nav style="display:flex;gap:22px;margin-left:auto;font-size:14.5px">
 <a href="index.html">Главная</a><a href="market.html" class="on">Рынок ИИ</a><a href="service.html">Сервис</a><a href="system.html">Система</a><a href="calculator.html">Калькулятор</a><a href="channel.html">Канал</a></nav>
 </div></header>
-<div class="zone-dark" id="top">
-<div id="heroFx" data-plasma aria-hidden="true"></div>
+<style id="story-css">
+.story{--nh:clamp(1.35rem,3.1vw,1.95rem)}
+.story .chap{border-top:1px solid var(--hair);padding:clamp(38px,6vw,64px) 0}
+.story .chap:first-of-type{border-top:0}
+.story .cnum{font:500 13px/1 var(--mono);letter-spacing:.14em;color:var(--meta);text-transform:uppercase}
+.story .chap h2{font-family:var(--disp);font-size:var(--nh);line-height:1.16;letter-spacing:-.02em;margin:10px 0 16px;color:var(--ink);text-wrap:balance;max-width:22ch}
+.story .chap p{font-size:17px;line-height:1.62;color:var(--body);margin:0 0 14px;max-width:62ch}
+.story .chap p b{color:var(--ink);font-weight:500}
+.story .src{font:400 13.5px/1.5 var(--mono);color:var(--meta);margin-top:6px;max-width:62ch}
+.story .src a{color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,42,107,.32)}
+.story .pull{font-family:var(--disp);font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.3;color:var(--ink);border-left:2px solid var(--navy);padding-left:20px;margin:22px 0;max-width:34ch}
+.story .hero2{padding:clamp(30px,7vw,64px) 0 clamp(26px,5vw,44px)}
+.story .hero2 h1{font-family:var(--disp);font-size:clamp(1.9rem,5vw,3.05rem);line-height:1.1;letter-spacing:-.025em;margin:12px 0 18px;max-width:24ch;text-wrap:balance}
+.story .hero2 .lede{font-size:clamp(1rem,1.7vw,1.15rem);line-height:1.6;max-width:58ch;color:var(--body);margin:0}
+.story .end{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.story .end a{display:inline-block;padding:13px 22px;border-radius:999px;font:500 15px/1 var(--sans);text-decoration:none}
+.story .end .p{background:var(--btn);color:var(--btn-t)}
+.story .end .g{border:1px solid var(--hair);color:var(--ink)}
+@media(max-width:640px){.story .chap h2{max-width:none}.story .chap p{font-size:16px}}
+</style>
 
-<div class="wrap">
-<section class="hero">
-<div class="kicker">Рынок ИИ · внедрения</div>
-<h1>Рынок меняется быстрее, чем о нём пишут.</h1>
-<p class="lede">Правила внедрения уже сложились: приёмка до старта, данные у тебя, провайдер — твой выбор. Ниже — <b>четыре стандарта</b>, живые числа из лабы и цифры под твою ситуацию.</p>
-</section>
-</div>
-<div class="wrap stand">
-<div class="stand-k">Стандарты внедрения · что держится на всех проектах</div>
-<div class="slist">
-<article class="scard"><div class="snum">7–10%</div><div class="ssub">из 96 разобранных внедрений доходит до прода · досье agent-failures, РФ</div><h3>Приёмка до старта — письменно</h3><p>Критерии приёмки фиксируем до сборки: что агент делает, как проверяем, что считается готовым. Оплата — за работу в проде.</p></article>
-<article class="scard"><div class="snum">74–206 тыс.</div><div class="ssub bad-sub">потеряли аккаунты в 2026 · рабочая оценка 144 тыс. · до ~5,3 млрд ₽/год сгоревших подписок · модель v8.1</div><h3>Агент и данные остаются твоими</h3><p>Связка живёт на твоём аккаунте, переписка и бэкап — у тебя. Цена чужой платформы выше: аккаунт с историей могут закрыть одним днём. Смена платформы не обнуляет работу.</p></article>
-<article class="scard"><div class="snum">11,59 ₽ против 300 ₽</div><div class="ssub">один запрос · одна модель · два продавца</div><h3>Провайдера выбираешь сам</h3><p>Модель и сервер оплачиваешь провайдерам напрямую по открытым тарифам. Тарифы сверены 26.10.2026.</p></article>
-<article class="scard"><div class="snum">1 100 ₽/мес</div><div class="ssub">владение связкой: модель + хостинг, тарифы сверены 26.10.2026</div><h3>Гарантия после приёмки</h3><p>После приёмки держу замер и поддержку: связка работает в проде, цифры проверяемы до и после. Сотрудник на той же рутине — 16 250–65 000 ₽/мес (расчёт Discovery System, тарифы сверены 26.10.2026). Оплата — после согласования критериев, дальше платишь только провайдеру напрямую. Данные лабораторных прогонов: парсер 63% против 47% наивного поиска (контрольная 79% на 286 постах, EVAL 20.09 + 26.09.2026), отбор заявок 20% → 80% проверено на 30 кандидатах, годовая выручка бренда +16%.</p></article>
-</div>
-</div>
-<div class="wrap pov">
-<div class="pov-k">Живые числа · что это значит на твоей стороне</div>
-<div class="plist">
-<article class="povc"><h3 class="ppain">Платишь подписке и не видишь наценку</h3><p class="pexp">Один и тот же запрос стоит 11,59 ₽ у одного продавца и 300 ₽ у другого. <b class="bad">Переплата ×25.9 каждый месяц оседает у посредника.</b></p><div class="pansw"><p><span class="met">×25.9</span>Своя связка: модель и сервер оплачиваешь напрямую по открытым тарифам. Разница остаётся у тебя каждый месяц.</p></div></article>
-<article class="povc"><h3 class="ppain">Аккаунт может умереть вместе с перепиской</h3><p class="pexp">74–206 тыс. человек потеряли аккаунты в 2026 (рабочая оценка 144 тыс.): проекты, код и история — всё в чужом кабинете. <b class="bad">До ~5,3 млрд ₽/год сгоревших подписок.</b></p><div class="pansw"><p><span class="met">твоё</span>Агент и данные остаются твоими: связка на твоём аккаунте, переписка и бэкап — у тебя. Смена платформы не обнуляет работу.</p></div></article>
-<article class="povc"><h3 class="ppain">Пилот стоит денег и не доходит до прода</h3><p class="pexp">Из 96 разобранных внедрений до прода доходит 7–10%. Остальные свёрнуты или заморожены: приёмки не было. <b class="bad">Прототип показали, в работу не передали.</b></p><div class="pansw"><p><span class="met">7–10%</span>Критерии приёмки до старта: платишь за то, что работает в проде. Замер до и после — в цифрах.</p></div></article>
-<article class="povc"><h3 class="ppain">Сотрудник и студия съедают бюджет</h3><p class="pexp">Сотрудник на той же рутине стоит 16 250–65 000 ₽/мес, студия — чёрный ящик от 50 000 ₽. <b class="bad">Деньги уходят, связка не собирается.</b></p><div class="pansw"><p><span class="met">1 100 ₽/мес</span>Своя связка после установки стоит 2–4К ₽/мес — это счёт провайдеров модели и хостинга. Лабораторные прогоны это подтверждают: парсер находит тёплые лиды 63% против 47% наивного поиска.</p></div></article>
-</div>
-</div>
+<div class="zone-dark" id="top">
+  <div id="heroFx" data-plasma aria-hidden="true"></div>
+  <div class="wrap">
+    <section class="hero story">
+      <div class="hero2">
+        <div class="kicker">Рынок ИИ · три месяца, которые всё поменяли</div>
+        <h1>Агентов продают все. Работающих — единицы.</h1>
+        <p class="lede">За три месяца рынок ИИ-внедрений в России вырос из ниши в базар. Курсы, вебинары, «внедренцы» из телеграма, студии и мастера по ремонту — все продают одного и того же агента. Проблема в другом: <b>проверить, что он работает, у покупателя нет способа</b>. Пока не заплатил — не увидел. А когда заплатил — поздно.</p>
+      </div>
+    </section>
+  </div>
 </div>
 
 <div class="light-zone">
-<div class="wrap">
-<section id="valuechain">
-<h2>Куда уходят деньги вместо агента</h2>
-</section>
-</div>
-<div class="wrap mapbox">
-<svg viewBox="0 0 1000 660" role="img" aria-label="Карта рынка: кто продаёт → что получает бизнес → где ломается. Ответ: Discovery — своя связка" font-family="IBM Plex Sans, sans-serif">
-<defs>
-<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1b2a6b"/></marker>
-</defs>
-<!-- заголовки колонок -->
-<text x="140" y="28" text-anchor="middle" font-size="14" font-weight="500" letter-spacing=".12em" fill="#464e5f" font-family="IBM Plex Mono, monospace">ЧЕТЫРЕ ДОРОГИ</text>
-<text x="500" y="28" text-anchor="middle" font-size="14" font-weight="500" letter-spacing=".12em" fill="#464e5f" font-family="IBM Plex Mono, monospace">ЧТО ПОЛУЧАЕТ БИЗНЕС</text>
-<text x="860" y="28" text-anchor="middle" font-size="14" font-weight="500" letter-spacing=".12em" fill="#464e5f" font-family="IBM Plex Mono, monospace">ГДЕ ЛОМАЕТСЯ</text>
-<!-- левая колонка: кто продаёт -->
-<g font-size="16.5" font-weight="500" fill="#10141f">
-<rect x="10" y="50" width="260" height="96" rx="12" fill="#fff" stroke="rgba(16,20,31,.14)"/>
-<text x="30" y="90">Курсы</text>
-<text x="30" y="118" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">знание без связки</text>
-<rect x="10" y="170" width="260" height="96" rx="12" fill="#fff" stroke="rgba(16,20,31,.14)"/>
-<text x="30" y="210">Подписка на чужое</text>
-<text x="30" y="238" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">инструмент не твой</text>
-<rect x="10" y="290" width="260" height="96" rx="12" fill="#fff" stroke="rgba(16,20,31,.14)"/>
-<text x="30" y="330">Студия</text>
-<text x="30" y="358" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">работа остаётся у неё</text>
-<rect x="10" y="410" width="260" height="96" rx="12" fill="#fff" stroke="rgba(16,20,31,.14)"/>
-<text x="30" y="450">Найм</text>
-<text x="30" y="478" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">данные у людей</text>
-</g>
-<!-- центр: что получает бизнес -->
-<rect x="370" y="130" width="260" height="288" rx="12" fill="#eef1f8" stroke="rgba(27,42,107,.25)"/>
-<g font-size="16.5" font-weight="500" fill="#1b2a6b">
-<text x="390" y="170">Знание на вечер</text>
-<text x="390" y="240">Время исполнителя</text>
-<text x="390" y="310">Аренда инструмента</text>
-</g>
-<g font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">
-<text x="390" y="194">согласен — рутина на месте</text>
-<text x="390" y="264">работа и данные — у него</text>
-<text x="390" y="334">платёж не кончается</text>
-</g>
-<text x="390" y="384" font-size="15" font-weight="500" fill="#10141f">Связка не собирается</text>
-<text x="390" y="404" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">в работающую систему</text>
-<!-- правая колонка: где ломается -->
-<g font-size="16.5" font-weight="500" fill="#10141f">
-<rect x="730" y="50" width="260" height="96" rx="12" fill="#fff" stroke="rgba(16,20,31,.14)"/>
-<text x="750" y="90">Знания не оцифрованы</text>
-<text x="750" y="118" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">опыт остаётся в голове</text>
-<rect x="730" y="170" width="260" height="96" rx="12" fill="#fff" stroke="rgba(16,20,31,.14)"/>
-<text x="750" y="210">Нет приёмки</text>
-<text x="750" y="238" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">критериев нет до старта</text>
-<rect x="730" y="290" width="260" height="96" rx="12" fill="#fff" stroke="rgba(16,20,31,.14)"/>
-<text x="750" y="330">Данные у чужих</text>
-<text x="750" y="358" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">история — у продавца</text>
-<rect x="730" y="410" width="260" height="96" rx="12" fill="#fff" stroke="rgba(16,20,31,.14)"/>
-<text x="750" y="450">До прода — 7–10%</text>
-<text x="750" y="478" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#464e5f">из 96 кейсов внедрений</text>
-</g>
-<!-- стрелки: кто продаёт → что получает -->
-<path class="flow" pathLength="1" d="M270 98 C320 98, 320 160, 366 160" marker-end="url(#ar)"/>
-<path class="flow" pathLength="1" d="M270 218 L366 218" marker-end="url(#ar)"/>
-<path class="flow" pathLength="1" d="M270 338 C320 338, 320 280, 366 280" marker-end="url(#ar)"/>
-<path class="flow" pathLength="1" d="M270 458 C320 458, 320 350, 366 350" marker-end="url(#ar)"/>
-<!-- стрелки: что получает → где ломается -->
-<path class="flow" pathLength="1" d="M630 180 C680 180, 680 98, 726 98" marker-end="url(#ar)"/>
-<path class="flow" pathLength="1" d="M630 240 L726 218" marker-end="url(#ar)"/>
-<path class="flow" pathLength="1" d="M630 300 L726 338" marker-end="url(#ar)"/>
-<path class="flow" pathLength="1" d="M630 360 C680 360, 680 458, 726 458" marker-end="url(#ar)"/>
-<!-- стрелка: где ломается → ответ -->
-<path class="flow" pathLength="1" d="M860 506 L860 548" marker-end="url(#ar)"/>
-<!-- ответ внизу -->
-<rect x="10" y="556" width="980" height="84" rx="12" fill="#1b2a6b"/>
-<text x="40" y="590" font-size="17" font-weight="500" fill="#f2f6ff">Сборка платится один раз</text>
-<text x="40" y="618" font-size="14" font-weight="400" font-family="IBM Plex Mono, monospace" fill="#cdd8f7">Дальше платишь только провайдеру напрямую. Я не продаю токены и подписки.</text>
-</svg>
-</div>
-<div class="wrap">
-<section id="persona">
-<h2>Что это значит для тебя</h2>
-<p class="sub">Выбери свою ситуацию — боль, число с рынка, типичный провал и что меняет Discovery. Числа — из разборов выше, без выдумок.</p>
-<div class="segs" role="group" aria-label="Твоя ситуация">
-<button type="button" class="seg" data-seg="solo" aria-pressed="false" title="применяешь в своей работе без бизнеса">Личный</button>
-<button type="button" class="seg" data-seg="self" aria-pressed="false" title="налог 4-6%, есть клиенты">Самозанятый</button>
-<button type="button" class="seg" data-seg="ip" aria-pressed="false" title="учёт и наём до ~10">ИП</button>
-<button type="button" class="seg" data-seg="mid" aria-pressed="false" title="процессы и бюджет">Команда 10-30</button>
-</div>
-<div class="pgrid">
-<div><span class="pk">Главная боль</span><p id="pPain"></p></div>
-<div><span class="pk">Число рынка</span><p class="pnum" id="pProof"></p><p class="pnumsub" id="pProofSub"></p></div>
-<div><span class="pk">Пример провала</span><p id="pFail"></p></div>
-<div><span class="pk">Результат Discovery</span><p id="pWin"></p></div>
-</div>
-</section>
-</div>
-</div>
+  <div class="wrap story">
 
-<div class="zone-dark">
-<div class="wrap">
-<section class="final">
-<h2>Ты уже хочешь ИИ-агента. Вопрос один: чей он — твой или платформы.</h2>
-<p>Если ты развиваешь бизнес и ищешь надёжный способ ускорить его развитие — ИИ-агенты помогут в этом. В одиночку один компетентный специалист заменяет от 3 до 10 средних.</p>
-<div class="cta">
-<a class="btn btn-p" href="service.html">Выбрать сервис: полка 15–60К разово</a>
+    <section class="chap">
+      <div class="cnum">01 · что случилось</div>
+      <h2>Три месяца назад выбор был. Сейчас его нет</h2>
+      <p>Год назад, чтобы поставить себе агента, надо было найти человека, который вообще понимает, о чём речь. Сейчас таких — тысячи: в телеграме, на Авито, в каждом втором канале про запуск.</p>
+      <p>Выбор стал не «делать или не делать». Выбор стал — <b>кому отдать и как не потерять деньги</b>. И тут рынок подвёл: пока спрос рос, никто не взял на себя труд показать, что его агент действительно работает.</p>
+      <p class="pull">Рынок вырос в предложении. В доказательствах — нет.</p>
+      <p class="src">Что происходит по нишам — в живых сигналах: <a href="channel.html">канал и разборы</a>.</p>
+    </section>
+
+    <section class="chap">
+      <div class="cnum">02 · вариант «пойти поучиться»</div>
+      <h2>Две недели курсов — это конспект, а не агент</h2>
+      <p>Курс даёт понимание. На выходе у тебя — записи, промпты и лектор, который больше ничего не должен. Ошибся в конфигурации на своём сервере — разбираться самому, а курс уже закрыт.</p>
+      <p>Внедрение — это не знание, это работа: поднять контур, подключить каналы, проверить на твоих данных, довести до состояния «не надо донастраивать». Курс за две недели этого не делает. Он делает так, что ты теперь знаешь, как это выглядит, когда всё сломалось.</p>
+      <p class="src">Как это выглядит на практике — разбор провалов: <a href="agent-failures.html">досье провалов внедрений</a>.</p>
+    </section>
+
+    <section class="chap">
+      <div class="cnum">03 · вариант «вебинар»</div>
+      <h2>Вебинар продаёт вебинар</h2>
+      <p>Механика простая: три часа эфира, «осталось два места», чат с восторгом. После покупки — доступ к записи и ещё один эфир, где предлагают следующий уровень. К работе над твоей задачей это не имеет отношения.</p>
+      <p>Я разобрал <b>83 внедрения и продающих кейса</b>: 76 провалов и 7 судебных кейсов. До реальной работы доходит примерно <b>7–10%</b> того, что обещают. Остальное — продающая обёртка.</p>
+      <p class="src">Полное досье, карточки и суммы: <a href="agent-failures.html">agent-failures</a>.</p>
+    </section>
+
+    <section class="chap">
+      <div class="cnum">04 · вариант «внедренец из телеграма»</div>
+      <h2>Клодо-внедренцы: бомба замедленного действия</h2>
+      <p>Схема простая: подписка на зарубежный сервис перепродаётся в рублях с наценкой. Я замерил наценку на рынке — <b>до ×25,9</b> к реальной цене провайдера. Ты платишь не за работу, а за посредника.</p>
+      <p>Хуже другое: аккаунт живёт не у тебя. Его блокируют, и вместе с ним останавливается твой агент — на следующий день, без предупреждения. В этом году так потеряли аккаунты <b>74–206 тысяч человек</b>, оценивают в 144 тысячи; по деньгам это около <b>5,3 млрд ₽</b> в год.</p>
+      <p class="pull">Агент, который живёт в чужом аккаунте, — не твой агент. Это аренда с риском отключения.</p>
+      <p class="src">Замер наценки: <a href="nacenka.html">наценка на подписки</a> · потери аккаунтов: <a href="lost-accounts.html">lost-accounts</a>.</p>
+    </section>
+
+    <section class="chap">
+      <div class="cnum">05 · вариант «студия»</div>
+      <h2>Студия делает месяц. Узнаешь ты в конце</h2>
+      <p>Студии работают прилично — с дизайном, презентациями, менеджером. Но их процесс устроен так: сначала месяц работ, потом приёмка. Всё это время ты видишь статус, а не работу. И ценник — от 50 тысяч, у нормальных — до полутора миллионов.</p>
+      <p>За эти деньги ты получаешь не агента, а проект вокруг агента. Когда контракт заканчивается, поддерживать его некому: тот, кто собирал, уже на другом проекте.</p>
+      <p class="src">Вилки и сроки рынка: <a href="value-chain.html">сколько стоит звено</a> · <a href="tseny-vnedreniy.html">цены внедрений</a>.</p>
+    </section>
+
+    <section class="chap">
+      <div class="cnum">06 · вариант «мастер с Авито»</div>
+      <h2>На Авито уже все: от студентов до сантехников</h2>
+      <p>Агента сейчас продают сантехники и мастера по ремонту — потому что это выглядит как способ поднять чек. Проблема не в людях. Проблема в том, что <b>цена перестала что-то значить</b>: за 5 тысяч и за 50 тысяч тебе обещают одно и то же.</p>
+      <p>Проверить нечем. Ни замера, ни критериев, ни «покажи на моих данных». Ты покупаешь слово.</p>
+    </section>
+
+    <section class="chap">
+      <div class="cnum">07 · что вместо</div>
+      <h2>Критерии — до денег. Замер — до приёмки</h2>
+      <p>Внедрение можно продавать по-другому. Сначала фиксируем, что считается работающим: конкретные сценарии, конкретные цифры, чек-лист приёмки. Только потом — оплата. Дальше — <b>1–10 рабочих дней</b>, прогон на твоих данных и замер: сколько часов было, сколько стало.</p>
+      <p>Контур остаётся твой: железо твоё, ключи твои, данные твои. Провайдер — тоже твой, по реальной цене, без наценки посредника. Отключить это можно только выдернув твой собственный сервер.</p>
+      <div class="end">
+        <a class="p" href="calculator.html">Посчитать свою связку — 0 ₽</a>
+        <a class="g" href="service.html">Цены и что входит</a>
+      </div>
+    </section>
+
+  </div>
 </div>
-<p class="pquiet" style="margin-top:18px;font-size:14px;color:#8a94ad">или написать лично — <a id="pLive" href="https://t.me/victorpinksight?text=%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A0%D1%8B%D0%BD%D0%BE%D0%BA%20%D0%98%D0%98%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%81%D0%B2%D0%BE%D1%8E%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D1%83%3A%20%D0%BA%D0%B0%D0%BA%D0%B0%D1%8F%20%D0%BF%D0%BE%D0%BB%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B9%D0%B4%D1%91%D1%82%20%D0%BC%D0%BD%D0%B5%3F" style="color:#8fa8ff">t.me/victorpinksight</a> · посчитать связку — <a href="calculator.html">калькулятор 0 ₽</a> · сигналы и разборы — <a href="https://t.me/discoverysystem">в канале</a>, отвечаю сам</p>
-</section>
 <footer>Личка: <a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A0%D1%8B%D0%BD%D0%BE%D0%BA%20%D0%98%D0%98%C2%BB%20%E2%80%94%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B5.">t.me/victorpinksight</a> · Канал: <a href="https://t.me/discoverysystem">t.me/discoverysystem</a> · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a><br>Отвечаю лично, без ботов · <a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · <a href="https://discovery-system.ru/reviews.html">отзывы</a> · ИНН 780627413110</footer>
 </div>
 </div>

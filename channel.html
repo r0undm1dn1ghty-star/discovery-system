@@ -142,14 +142,21 @@ footer a:hover{color:#8fa8ff}
 @media(max-width:720px){header.nav .nav-in{flex-wrap:wrap;gap:10px 18px}header.nav nav{margin-left:0;flex-wrap:wrap;gap:6px 16px}}
 @media(prefers-reduced-motion:reduce){.js .fx{opacity:1;transform:none;transition:none}}
 
-/* карточки сигналов — самостоятельные объекты */
+/* карточки сигналов — тип → цифра-контраст → сдвиг → последствие → источник */
 .siggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:22px}
-.sigc{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:22px 20px;background:#131c2b;display:flex;flex-direction:column;gap:10px}
-.sigc-num{font:500 clamp(32px,3vw,44px)/1 var(--mono);color:#8fa8ff;letter-spacing:-.02em}
-.sigc-num small{font-size:16px;font-weight:500;color:rgba(238,242,251,.7);margin-left:6px}
+.sigc{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:22px 20px;background:#131c2b;display:flex;flex-direction:column;gap:10px;overflow-wrap:break-word}
+.sigc-tag{display:flex;align-items:center;gap:8px;font:500 14px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(238,242,251,.55)}
+.sigc-tag i{width:7px;height:7px;border-radius:50%;background:#8fa8ff;flex:none}
+.sigc-death .sigc-tag i{background:#a08455}
+.sigc-grow .sigc-tag i{background:#6f8f7f}
+.sigc-shift .sigc-tag i{background:#b9c1d6}
+.sigc-num{font:500 clamp(32px,3vw,44px)/1 var(--mono);color:#8fa8ff;letter-spacing:-.02em;margin-top:4px}
+.sigc-num small{display:block;margin:10px 0 0;font:500 15px/1.4 var(--sans);letter-spacing:0;color:rgba(238,242,251,.65)}
+.sigc-contrast{font:500 15px/1.5 var(--mono);color:rgba(238,242,251,.82);margin:0;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.10)}
 .sigc-fact{font-size:16.5px;line-height:1.55;color:#eef2fb;margin:0}
 .sigc-follow{font-size:15.5px;line-height:1.5;color:#a9bcff;margin:0;font-weight:500}
-.sigc-src{font:400 14px/1.5 var(--mono);color:rgba(238,242,251,.6);margin:auto 0 0;padding-top:8px;border-top:1px solid rgba(255,255,255,.12)}
+.sigc-follow .lbl{display:block;font:500 14px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(238,242,251,.5);margin-bottom:5px}
+.sigc-src{font:400 14px/1.5 var(--mono);color:rgba(238,242,251,.6);margin:auto 0 0;padding-top:10px;border-top:1px solid rgba(255,255,255,.12)}
 /* конвейер */
 .pipe{list-style:none;padding:0;margin:14px 0 0;border-top:1px solid var(--hair)}
 .pipe li{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--hair);align-items:start}
@@ -266,36 +273,56 @@ footer a:hover{color:#8fa8ff}
 <p class="ssrc">источник: открытые прайсы Яндекс AI Studio и Selectel · замер 27.09.2026</p>
 </div>
 </figure>
-<div class="siggrid"><article class="sigc fx">
-  <div class="sigc-num">99,5%<small>обещают</small></div>
-  <p class="sigc-fact">Продавцы баз обещают точность <b>до 99,5%</b>. В замере клиента из 4 200 контактов рабочих оказалось <b>36%</b>.</p>
-  <p class="sigc-follow">Платят за объём, а не за рабочий контакт — вот где дыра.</p>
-  <p class="sigc-src">источник: прайс Lead Hub (от 15 000 ₽) · замер yestcontact.ru, 27.04.2026</p>
+<div class="siggrid">
+<article class="sigc sigc-anom fx">
+  <div class="sigc-tag"><i aria-hidden="true"></i>ценовая аномалия</div>
+  <div class="sigc-num">×25<small>за ту же функцию</small></div>
+  <p class="sigc-contrast">100 000 ₽/мес в штате · 3 990 ₽/мес подписка</p>
+  <p class="sigc-fact">Проектный менеджер и подписка продают одно и то же — чтобы задачи не терялись.</p>
+  <p class="sigc-follow"><span class="lbl">последствие</span>100 000 ₽/мес платишь за человека, который всё равно спрашивает статус в чате. 20–30% сделок теряется на статусах, и оклад эту дыру не закрывает.</p>
+  <p class="sigc-src">источник: медиана gorodrabot, май 2026 · прайс Melion · TenChat, 21.04.2026</p>
 </article>
-<article class="sigc fx">
-  <div class="sigc-num">×2,9</div>
-  <p class="sigc-fact">Бухгалтерия без ввода первички — <b>2 400 ₽/мес</b>. С выпиской документов — <b>7 000 ₽</b> за те же налоги.</p>
-  <p class="sigc-follow">Самая дорогая часть учёта — бумаги, а не проводки.</p>
-  <p class="sigc-src">источник: прайс buh-guru.ru · срез 09.11.2026</p>
+<article class="sigc sigc-anom fx">
+  <div class="sigc-tag"><i aria-hidden="true"></i>ценовая аномалия</div>
+  <div class="sigc-num">×14<small>за одну справку</small></div>
+  <p class="sigc-contrast">33 500 ₽/год · 2 388 ₽/год</p>
+  <p class="sigc-fact">Проверка контрагента — одна и та же справка у двух продавцов.</p>
+  <p class="sigc-follow"><span class="lbl">последствие</span>Банковский скоринг дал зелёный маркер мошеннику: убыток почти 1 млн ₽. Заплатил за справку — получил разрыв.</p>
+  <p class="sigc-src">источник: прайсы Контур.Фокус и proverim.org (199 ₽/мес) · habr, 15.09.2026 · срез 09.11.2026</p>
 </article>
-<article class="sigc fx">
-  <div class="sigc-num">20–50<small>ч/мес</small></div>
-  <p class="sigc-fact">Столько уходит на сверку денежных средств. <b>94% команд</b> держат это в таблицах.</p>
-  <p class="sigc-follow">Сверка — не разовая задача, а ежемесячный налог на время.</p>
-  <p class="sigc-src">источник: Ledge, бенчмарк закрытия месяца 2025 · цит. vc.ru, 28.09.2026</p>
+<article class="sigc sigc-death fx">
+  <div class="sigc-tag"><i aria-hidden="true"></i>смерть ниши</div>
+  <div class="sigc-num">36%<small>рабочих контактов из 4 200</small></div>
+  <p class="sigc-contrast">обещают 99,5% · 38 000 ₽ за 4 200 контактов</p>
+  <p class="sigc-fact">Ниша продаёт объём: чек привязан к строкам, а не к рабочим номерам.</p>
+  <p class="sigc-follow"><span class="lbl">последствие</span>1 512 рабочих номеров, и через три месяца половина уже мусор. Покупка повторяется, результат — нет.</p>
+  <p class="sigc-src">источник: прайс Lead Hub от 15 000 ₽ · yestcontact.ru, 27.04.2026</p>
 </article>
-<article class="sigc fx">
-  <div class="sigc-num">8,2<small>трлн ₽</small></div>
-  <p class="sigc-fact">Просроченная кредиторская задолженность предприятий РФ, <b>+20% за год</b>.</p>
-  <p class="sigc-follow">Дебиторка — не исключение, а система. Её надо вести, а не вспоминать.</p>
-  <p class="sigc-src">источник: vc.ru со ссылкой на РБК · 24.04.2026</p>
+<article class="sigc sigc-death fx">
+  <div class="sigc-tag"><i aria-hidden="true"></i>смерть ниши</div>
+  <div class="sigc-num">70%<small>внедрений не приживаются</small></div>
+  <p class="sigc-contrast">150–300 тыс ₽ за проект · отказ через 3–6 мес у 15–20%</p>
+  <p class="sigc-fact">Рынок внедрений вырос на продаже проектов, а не работающих систем.</p>
+  <p class="sigc-follow"><span class="lbl">последствие</span>Через полгода владелец возвращается к таблицам — с тем же хаосом и минус бюджет.</p>
+  <p class="sigc-src">источник: IPG · kuratov.ru, 19.05.2026 · прайс gooseai.ru, срез 09.11.2026</p>
 </article>
-<article class="sigc fx">
-  <div class="sigc-num">×25,9</div>
-  <p class="sigc-fact">Одна и та же модель у двух продавцов: <b>300 ₽ против 11,59 ₽</b> за 1 млн токенов входа.</p>
-  <p class="sigc-follow">Наценка живёт в прайсе, а не в модели.</p>
-  <p class="sigc-src">источник: открытые прайсы Яндекс AI Studio и Selectel · замер 27.09.2026</p>
-</article></div>
+<article class="sigc sigc-grow fx">
+  <div class="sigc-tag"><i aria-hidden="true"></i>рост ниши</div>
+  <div class="sigc-num">57,42%<small>полей первички прочитано верно</small></div>
+  <p class="sigc-contrast">99,35% полей найдено · 57,42% прочитано верно</p>
+  <p class="sigc-fact">ИИ-распознавание первички растёт на обещании, что робот разберёт документы.</p>
+  <p class="sigc-follow"><span class="lbl">последствие</span>Ввод документов — самая дорогая часть учёта (×2,9 к тарифу без первички), и половина полей читается неверно. Экономия уходит в пени.</p>
+  <p class="sigc-src">источник: замер распознавания первички, vc.ru, 23.10.2026 · прайс buh-guru.ru</p>
+</article>
+<article class="sigc sigc-shift fx">
+  <div class="sigc-tag"><i aria-hidden="true"></i>рыночный сдвиг</div>
+  <div class="sigc-num">8,2 трлн ₽<small>+20% за год</small></div>
+  <p class="sigc-contrast">просроченная кредиторка предприятий · +20% за год</p>
+  <p class="sigc-fact">Долг перестал быть исключением и стал нормой расчётов между компаниями.</p>
+  <p class="sigc-follow"><span class="lbl">последствие</span>Кассовый разрыв в 5,2 млн узнают постфактум, хотя проверка контрагента стоит 3 000 ₽. Кто не ведёт дебиторку, финансирует чужой разрыв.</p>
+  <p class="sigc-src">источник: vc.ru со ссылкой на РБК, 24.04.2026 · TenChat, 07.08.2026 · прайс rosco.su</p>
+</article>
+</div>
 <div class="shead fx" style="margin-top:38px">
 <h2>Как это собирается</h2>
 <p class="s">Один сигнал — это не пост руками. Это конвейер, в котором человек стоит на последнем шаге.</p>
