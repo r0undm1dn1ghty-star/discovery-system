@@ -594,7 +594,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
     <section class="wiz-step" id="wstep3" hidden>
       <h2 class="ws-title">Обвязка <em>— необязательно</em></h2>
       <p class="ws-sub" id="ws3sub">Всё уже стоит по умолчанию и входит в цену. Меняй, только если у тебя иначе — цифра пересчитается сразу.</p>
-      <div class="wz-group"><div class="wz-l">Где живёт агент</div><div class="opts" id="deviceOpts"></div></div>
+      <div class="wz-group"><div class="wz-l">Класс модели — от него почти вся цена токенов</div><div class="opts" id="classOpts"><button type="button" class="opt" data-c="lite" onclick="setModelClass('lite')">Дешёвая · GLM Flash<em>2,8 / 6,8 ₽ за 1 млн</em></button><button type="button" class="opt" data-c="pro" onclick="setModelClass('pro')">Рабочая · DeepSeek Flash<em>4,2 / 46,6 ₽</em></button><button type="button" class="opt" data-c="max" onclick="setModelClass('max')">Топ · Claude Opus<em>411 / 2 054 ₽</em></button></div><p class="wz-hint" id="classHint">Сейчас — по задаче: рутина на дешёвой, документы и отчёты на рабочей.</p></div><div class="wz-group"><div class="wz-l">Где живёт агент</div><div class="opts" id="deviceOpts"></div></div>
       <div class="wz-group"><div class="wz-l">Где хранить данные</div><div class="opts" id="dataOpts"></div></div>
       <details class="cfg-more"><summary>Подключения — Telegram, CRM, таблицы, Авито</summary><div class="chips" id="connChips" style="margin-top:12px"></div></details>
       <div class="wiz-nav">
@@ -1411,22 +1411,41 @@ function estimate(){
      Тарифы GigaChat async, ₽ за 1 млн токенов (официальный прайс developers.sber.ru):
        Lite 32,5 · Pro 250 · Max 325.
      Объёмы — допущения из типовой рутины МСБ; калибровать на живых клиентах. */
-  const TARIFF={lite:32.5,pro:250,max:325};
-  const TOK_MONTH={repeat:3.6e6, leads:2.25e6, remind:6e5, report:1.2e5, scan:1.8e6, write:1.6e5, quote:1.2e5, paper:1.5e5, unsure:0};
+  /* ── ТОКЕНЫ: СЧИТАЕМ ВЫЗОВЫ, А НЕ «ОБРАЩЕНИЯ» ──────────────────
+     Замер по своему роутеру (09.11.2026): 16 376 вызовов за 9 дней,
+     306,6 млн токенов входа и 18,2 млн выхода — это ~18 700 входных
+     токенов на ОДИН вызов. Агент с инструментами и памятью делает
+     не один вызов на сообщение: 3–6 (планирование, инструмент, ответ).
+     Прежняя модель считала 1 вызов и 4 000 токенов — отсюда «дешёвые»
+     85 ₽. Ниже — сообщения × вызовы на сообщение × токены на вызов. */
+  const MESSAGES={repeat:1200, leads:700, remind:300, report:60, scan:300, write:120, quote:60, paper:150};
+  const TIN={repeat:10000, leads:12000, remind:6000, report:14000, scan:11000, write:9000, quote:10000, paper:12000};
+  const TOUT={repeat:500, leads:600, remind:250, report:900, scan:450, write:1100, quote:700, paper:800};
+  const CALLS_OF={draft:2, review:3, auto:5, full:6};
+  /* ₽ за 1 млн токенов по классу модели, замер 09.11.2026, курс 82,14 ₽:
+       lite — GLM 5.3 Flash ($0,034 / $0,083)
+       pro  — DeepSeek V4.1 Flash ($0,051 / $0,567)
+       max  — Claude Opus 5 ($5,00 / $25,00) */
+  const PRICE={lite:{in:2.8,out:6.8}, pro:{in:4.2,out:46.6}, max:{in:411,out:2054}};
   const TIER_OF={repeat:'lite', leads:'lite', remind:'lite', scan:'lite', report:'pro', write:'pro', quote:'pro', paper:'pro'};
-  const TASK_TOK={text:1.2e5,design:6e4,docs:1.8e5,data:1.5e5,web:1.2e5,social:8e4,sales:1.5e5,research:1.2e5};
-  const AUTO_TOK={draft:0.8,review:1,auto:1.4,full:2.0};
+  const callsPerMsg=CALLS_OF[autonomy]||3;
+  let tokIn=0,tokOut=0,calls=0;
+  gs.forEach(g=>{ if(g.id==='unsure')return;
+    const msgs=MESSAGES[g.id]||0, c=msgs*callsPerMsg;
+    calls+=c; tokIn+=c*(TIN[g.id]||8000); tokOut+=c*(TOUT[g.id]||500);
+  });
   let tokenCost=0;
   gs.forEach(g=>{ if(g.id==='unsure')return;
-    const tok=TOK_MONTH[g.id]||0;
-    tokenCost+=tok/1e6*TARIFF[TIER_OF[g.id]||'lite'];
+    const msgs=MESSAGES[g.id]||0, c=msgs*callsPerMsg;
+    const pr=PRICE[modelClass||TIER_OF[g.id]||'lite'];
+    tokenCost+=(c*(TIN[g.id]||8000)/1e6)*pr.in+(c*(TOUT[g.id]||500)/1e6)*pr.out;
   });
-  /* задачи выведены из целей — их объёмы уже внутри TOK_MONTH, не суммируем повторно */
-  tokenCost=tokenCost*(AUTO_TOK[autonomy]||1);
-  /* локальная модель — расход провайдера 0 (электричество не считаем);
+  /* локальная модель — провайдеру 0 (электричество считаем отдельной строкой);
      гибрид — половина уходит в API */
   const MODEL_SHARE={qwen:1,deepseek:1,multimodal:1,open:0.8,local:0,hybrid:0.5};
   const modelCost=Math.round(tokenCost*(MODEL_SHARE[modelKey]??1));
+  const tokShare=MODEL_SHARE[modelKey]??1;
+  const callNote=calls.toLocaleString('ru-RU')+' вызовов · '+(tokIn/1e6).toFixed(1).replace('.',',')+' млн вход / '+(tokOut/1e6).toFixed(1).replace('.',',')+' млн выход';
 
   /* ── ХОСТИНГ ПО ЧИСЛУ АГЕНТОВ ──
      Плоские 2190 на любое число функций = 6 агентов на одной VPS по цене одного.
@@ -1469,7 +1488,8 @@ function estimate(){
   if(serverBill)items.push({k:'Сервер (VPS РФ, '+nAgents+' агент'+(nAgents>1?'а':'')+')',v:serverBill,note:'2 vCPU · 4–8 ГБ · замер 09.11.2026'});
   if(gateway)items.push({k:'Шлюз для Telegram',v:gateway,note:'api.telegram.org из РФ не отвечает · MTProxy на VPS'});
   if(needsOutbound)items.push({k:'Прокси для внешних API',v:300,note:'авито, сайты, поиск — по 1–2 прокси'});
-  items.push({k:'Модель (токены)',v:modelBill,note:'тариф провайдера + ретраи и служебные вызовы'});
+  if(modelBill>0)items.push({k:'Модель (токены)'+(modelClass?' · '+{lite:'дешёвая',pro:'рабочая',max:'топ'}[modelClass]:''),v:modelBill,note:callNote+' · тариф провайдера + ретраи ×1,25'});
+  else items.push({k:'Модель — локальная',v:0,note:callNote+' · платишь только за железо и электричество, провайдеру — 0'});
   if(hosted){
     items.push({k:'Бэкапы',v:200,note:'S3, 10 ГБ + снапшоты базы знаний'});
     items.push({k:'Мониторинг и логи',v:250,note:'uptime, ошибки, расход токенов'});
@@ -1492,7 +1512,7 @@ function estimate(){
   const agentHours=Math.round(handsHours*agentShare(autonomy));
   const handsTotal=handsHours;
   const startMoney=startBase();
-  return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost:modelBill,hostCost,connTotal,gateway,modelName:m.name,base:startMoney,bill:items,billHosting:hosting};
+  return {monthly,hours:agentHours,handsHours:handsTotal,cat,modelKey,modelCost:modelBill,hostCost,connTotal,gateway,modelName:m.name,base:startMoney,bill:items,billHosting:hosting,tokIn,tokOut,calls,modelRaw:Math.round(tokenCost)};
 }
 /* ========== WIZARD: воронка из 7 шагов ==========
    Один вопрос на экран, прогресс, mini-CTA. Честному расчёту нужны 6 шагов —
@@ -1589,7 +1609,7 @@ const ROLES={
         sub:'Типовая рутина уже подставлена — поправь под себя.'}
 };
 const ROLE_ORDER=['docs','leads','pm','risk','advice','unsure'];
-let role=null, goalsExpanded=false;
+let role=null, goalsExpanded=false, modelClass=null;
 function renderRoleOpts(){
   const el=document.getElementById('roleOpts'); if(!el)return;
   el.innerHTML=ROLE_ORDER.map(k=>{const r=ROLES[k];
@@ -1599,6 +1619,13 @@ function renderRoleOpts(){
   a11y();
 }
 function showAllGoals(){ goalsExpanded=true; renderCards(); }
+function setModelClass(c){
+  modelClass=(modelClass===c?null:c);
+  document.querySelectorAll('#classOpts .opt').forEach(b=>b.classList.toggle('on',b.dataset.c===modelClass));
+  const h=document.getElementById('classHint');
+  if(h)h.textContent=modelClass?('Считаю по классу: '+{lite:'дешёвая',pro:'рабочая',max:'топ'}[modelClass]+'. Нажми ещё раз, чтобы вернуть по задаче.'):'Сейчас — по задаче: рутина на дешёвой, документы и отчёты на рабочей.';
+  updateLive(); if(typeof calculate==='function')calculate();
+}
 function setRole(k){
   if(!ROLES[k])return;
   role=k; goalsExpanded=false;
