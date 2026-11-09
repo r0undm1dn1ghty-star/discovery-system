@@ -441,6 +441,33 @@ header.nav .nav-in > .brand img{filter:none}
 .risk-legend{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0 0;font:400 13.5px/1.4 var(--mono);color:var(--meta)}
 .risk-legend span{display:inline-flex;align-items:center;gap:6px}
 .risk-legend i{width:9px;height:9px;border-radius:50%}
+
+.wiz-bar{align-items:flex-start;gap:16px}
+.wiz-live{position:sticky;top:12px;z-index:5;margin-left:auto;min-width:340px;background:rgba(15,23,48,.92);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:14px 18px 12px;box-shadow:0 18px 40px rgba(6,10,24,.28)}
+.wl-row{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:14px}
+.wl-m{display:flex;flex-direction:column;min-width:0}
+.wl-k{font:500 11.5px/1.3 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:rgba(238,242,251,.55);margin-bottom:6px;white-space:nowrap}
+.wl-m b{font:600 22px/1 var(--disp);color:#eef2fb;letter-spacing:-.02em}
+.wl-m i{font:400 12px/1 var(--mono);font-style:normal;color:rgba(238,242,251,.5);margin-top:5px}
+.wl-main b{color:#8fa8ff;font-size:26px}
+.wl-bar{height:3px;background:rgba(255,255,255,.12);border-radius:2px;margin:12px 0 8px;overflow:hidden}
+.wl-bar i{display:block;height:100%;background:linear-gradient(90deg,#4f6fe0,#8fa8ff);border-radius:2px;transition:width .55s cubic-bezier(.22,.61,.36,1)}
+.wl-note{font:400 13.5px/1.4 var(--sans);color:rgba(238,242,251,.62)}
+.wl-ok{margin-top:10px;display:none;align-items:center;gap:8px;font:500 13.5px/1.3 var(--mono);padding:7px 10px;border-radius:9px}
+.wl-ok.on{display:inline-flex}
+.wl-ok.good{background:rgba(63,143,106,.16);color:#8fd6b3}
+.wl-ok.bad{background:rgba(192,65,63,.16);color:#f0a6a4}
+.wl-ok i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.wl-flash{animation:wlflash .5s ease}
+@keyframes wlflash{0%{color:#fff}40%{color:#b8c8ff}100%{color:inherit}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media(max-width:760px){
+ .wiz-live{position:static;min-width:0;width:100%;margin:0 0 14px}
+ .wl-row{grid-template-columns:1fr 1fr;gap:10px}
+ .wl-main{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:8px}
+ .wl-m b{font-size:19px}.wl-main b{font-size:23px}
+ .wl-main .wl-k{margin:0}
+}
 </style>
 <style>
 /* ── AIR v2.4: мета-текст ≥14px (канон 15), светлые хинты героя, воздух шагов ── */
@@ -566,7 +593,17 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <button type="button" class="wp" data-step="3" onclick="goStep(3)"><i>03</i><span class="wt">Обвязка</span></button>
         <button type="button" class="wp" data-step="4" onclick="goStep(4)"><i>04</i><span class="wt">Результат</span></button>
       </nav>
-      <div class="wiz-price" id="wizPrice" style="display:none"><span id="livePrice" aria-live="polite">— <span>₽/мес</span></span><small id="liveHint">цена появится после выбора рутины</small></div>
+      <div class="wiz-live" id="wizPrice" style="display:none" aria-live="polite">
+      <div class="wl-row">
+        <div class="wl-m"><span class="wl-k">рутина сейчас</span><b id="lvHands">0</b><i>ч/мес</i></div>
+        <div class="wl-m"><span class="wl-k">агент забирает</span><b id="lvAgent">0</b><i>ч/мес</i></div>
+        <div class="wl-m wl-main"><span class="wl-k">владение</span><b id="lvCost">0</b><i>₽/мес</i></div>
+      </div>
+      <div class="wl-bar"><i id="lvBar" style="width:0%"></i></div>
+      <div class="wl-note" id="liveHint">выбери сценарий — цифра посчитается</div>
+      <div class="wl-ok" id="lvOk"></div>
+      <span class="sr" id="livePrice">—</span>
+    </div>
     </div>
 
     <!-- 01 · один тап: сценарий. Рутина и часы подставляются, экраны не плодятся -->
@@ -1452,7 +1489,9 @@ function estimate(){
      Прежняя модель считала 1 вызов и 4 000 токенов — отсюда «дешёвые»
      85 ₽. Ниже — сообщения × вызовы на сообщение × токены на вызов. */
   const MESSAGES={repeat:1200, leads:700, remind:300, report:60, scan:300, write:120, quote:60, paper:150};
-  const TIN={repeat:10000, leads:12000, remind:6000, report:14000, scan:11000, write:9000, quote:10000, paper:12000};
+  /* вход на вызов: клиентский агент с короткой памятью — 3–7 тысяч;
+     мой замер 18 700 — это разработка с длинным контекстом, не клиентская сборка */
+  const TIN={repeat:4000, leads:5000, remind:3000, report:7000, scan:5000, write:5000, quote:5000, paper:6000};
   const TOUT={repeat:500, leads:600, remind:250, report:900, scan:450, write:1100, quote:700, paper:800};
   const CALLS_OF={draft:2, review:3, auto:5, full:6};
   /* доля входа, которая читается из кэша: у агента с памятью и историей контекст повторяется */
@@ -1715,6 +1754,19 @@ function goStep(n){
   a11y();
 }
 
+function animateNum(el,to,from){
+  if(!el)return;
+  const start=(typeof from==='number')?from:(parseFloat(String(el.textContent).replace(/\s/g,'').replace(',','.'))||0);
+  const end=Number(to)||0, t0=performance.now(), dur=520;
+  const fmt=v=>Math.round(v).toLocaleString('ru-RU');
+  el.classList.remove('wl-flash'); void el.offsetWidth; el.classList.add('wl-flash');
+  function tick(t){
+    const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+    el.textContent=fmt(start+(end-start)*e);
+    if(k<1)requestAnimationFrame(tick); else el.textContent=fmt(end);
+  }
+  requestAnimationFrame(tick);
+}
 function updateLive(){
   const lb=document.getElementById('livebar');
   const e=estimate();
@@ -1730,9 +1782,24 @@ function updateLive(){
   if(emptyEl)emptyEl.style.display='none';
   if(lb)lb.style.display='';
   const wp=document.getElementById('wizPrice'); if(wp)wp.style.display='';
-  const lp=document.getElementById('livePrice'); if(lp)lp.innerHTML=e.monthly.toLocaleString('ru-RU')+' <span>₽/мес</span>';
+  animateNum(document.getElementById('lvHands'),e.handsHours);
+  animateNum(document.getElementById('lvAgent'),e.hours);
+  animateNum(document.getElementById('lvCost'),e.monthly);
+  const lp=document.getElementById('livePrice'); if(lp)lp.textContent=e.monthly.toLocaleString('ru-RU')+' ₽/мес';
+  const bar=document.getElementById('lvBar'); if(bar)bar.style.width=Math.min(100,Math.round(e.monthly/Math.max(1,e.monthly)*100))+'%';
   const hintEl=document.getElementById('liveHint');
-  if(hintEl)hintEl.textContent='сейчас уходит '+e.handsHours+' ч/мес · освободит ~'+e.hours+' ч';
+  const sl=document.getElementById('pbSlider');
+  const rate=sl?(+sl.value||700):700;
+  const saved=e.hours*rate, net=saved-e.monthly;
+  if(hintEl)hintEl.innerHTML='освободит ~'+e.hours+' ч/мес ≈ <b>'+saved.toLocaleString('ru-RU')+' ₽</b> по '+rate.toLocaleString('ru-RU')+' ₽/ч · чистыми '+
+    (net>=0?'+':'−')+Math.abs(net).toLocaleString('ru-RU')+' ₽/мес';
+  const ok=document.getElementById('lvOk');
+  if(ok){
+    ok.className='wl-ok on '+(net>=0?'good':'bad');
+    ok.innerHTML='<i></i>'+(net>=0
+      ? 'окупается ×'+(saved/Math.max(1,e.monthly)).toFixed(1).replace('.',',')+' — агент дешевле сэкономленных часов'
+      : 'не окупается при '+rate.toLocaleString('ru-RU')+' ₽/ч: подними ставку часа или снизь объём токенов');
+  }
   const r=document.getElementById('result');
   if(r&&!r.classList.contains('show')&&wizStep===4){r.classList.add('show');if(typeof renderConfig==='function')renderConfig();}
 }
