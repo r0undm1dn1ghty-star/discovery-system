@@ -136,7 +136,7 @@ footer a{color:var(--meta);text-decoration:underline}
 <label for="tgIn">Твой ник (Telegram или ВК)</label>
 <input id="tgIn" type="text" inputmode="text" autocomplete="off" placeholder="@username или ссылка t.me/..."/>
 <div class="msgr">
-<button class="btn" id="tgBtn" type="button">Отправить заявку в Telegram →</button>
+<button class="btn" id="tgBtn" type="button">Отправь заявку в Telegram →</button>
 </div>
 <p class="tga-note">Принимаю заявки в Telegram. Если оба не под рукой — <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a>.</p>
 </div>
@@ -342,7 +342,7 @@ var NEXT = {
 
   if(btnTg){
     btnTg.addEventListener('click',function(){
-      if(!nick()){ if(inp){inp.focus();inp.style.borderColor='rgba(240,178,74,.6)';} btnTg.textContent='Сначала укажи ник ↑'; setTimeout(function(){btnTg.textContent='Отправить заявку в Telegram →';},2200); return; }
+      if(!nick()){ if(inp){inp.focus();inp.style.borderColor='rgba(240,178,74,.6)';} btnTg.textContent='Сначала укажи ник ↑'; setTimeout(function(){btnTg.textContent='Отправь заявку в Telegram →';},2200); return; }
       window.open('https://t.me/victorpinksight?text='+encodeURIComponent(buildOrder()),'_blank','noopener');
     });
   }
