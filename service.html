@@ -58,7 +58,7 @@ section{padding:clamp(64px,8vw,110px) 0 0}
 .shead .s{font-size:15px;max-width:58ch}
 .shead .s b{color:var(--ink)}
 /* ── точка выбора: 4 двери ── */
-.doors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:26px 0 0}
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:26px 0 0}
 .door{position:relative;display:flex;align-items:flex-start;gap:16px;width:100%;text-align:left;background:#fff;border:1px solid var(--hair);border-radius:14px;padding:24px 26px;min-height:132px;cursor:pointer;font-family:var(--sans);transition:transform .4s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease)}
 .door:hover{transform:translateY(-3px);border-color:rgba(27,42,107,.4);box-shadow:0 14px 34px rgba(16,20,31,.10)}
 .door[aria-pressed="true"]{border-color:var(--navy);box-shadow:0 0 0 1px var(--navy),0 16px 40px rgba(27,42,107,.14);background:#fbfcfe}
@@ -120,11 +120,11 @@ section{padding:clamp(64px,8vw,110px) 0 0}
 .js .take-panel.on .s2{animation-delay:.12s}
 .js .take-panel.on .s3{animation-delay:.18s}
 .js .take-panel.on .s4{animation-delay:.24s}
-.take-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 24px}
+.take-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 28px}
 .take-case{border-left:2px solid var(--hair);padding-left:18px}
 .take-case b{display:block;color:var(--ink);font-weight:500;font-size:18px;letter-spacing:-.015em;line-height:1.3}
 .take-case span{display:block;font-size:15px;color:#555e72;margin-top:6px;line-height:1.5}
-@media(max-width:1000px){.take-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.take-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1000px){.doors{grid-template-columns:repeat(2,minmax(0,1fr))}.take-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.take-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 20px}}
 @media(max-width:760px){.take-tabs{grid-template-columns:1fr}.take-tab{min-height:0;padding:16px 18px;font-size:17px}.take-row{grid-template-columns:1fr;gap:16px}.take-case span{color:#454e63}}
 /* ── сервис и инструменты: строки-кнопки с hover + клик-модалка ── */
 .shelf{margin-top:8px}
@@ -250,9 +250,9 @@ header.nav a.brand{flex-basis:100%}
 
 <div class="hero">
 <div class="kicker fx">сервис · запуск и сопровождение ии-агентов</div>
-<h1 class="fx" style="animation-delay:.08s">Пять входов: от гайда за 3 тысячи до <em>системы на отдел</em>.</h1>
+<h1 class="fx" style="animation-delay:.08s">Шесть входов: от гайда за 3 тысячи до <em>системы на отдел</em>.</h1>
 <p class="lede fx" style="animation-delay:.16s">Выбери, с чем пришёл, — сцена соберётся под выбор: <b>результат, цифра и формат с ценой</b>. Агент ставится за дни, а не за месяцы, и остаётся твоим с первого дня: инструменты и данные не забираем — если облако заблокируют, работа остаётся.</p>
-<div class="cta fx hero-cta" style="animation-delay:.24s"><a class="btn btn-p" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9E%D0%BF%D0%B8%D1%88%D1%83%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83%20%E2%80%94%20%D0%BF%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%20%D0%B8%20%D1%86%D0%B5%D0%BD%D1%83.">Описать задачу</a><a class="quiet-link" href="#doors">выбрать свой вариант</a></div>
+<div class="cta fx hero-cta" style="animation-delay:.24s"><a class="btn btn-p" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9E%D0%BF%D0%B8%D1%88%D1%83%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83%20%E2%80%94%20%D0%BF%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%20%D0%B8%20%D1%86%D0%B5%D0%BD%D1%83.">Описать задачу</a></div>
 </div>
 </div>
 </div>
@@ -262,10 +262,14 @@ header.nav a.brand{flex-basis:100%}
 <section>
 <div class="shead">
 <h2>Точка выбора</h2>
-<p class="s">Пять вариантов — у каждого своя сцена: <b>боль, выход и цифра</b>. Выбор никуда не записывается — страница просто отвечает.</p>
+<p class="s">Шесть ситуаций — у каждой своя сцена: <b>боль, выход и цифра</b>.</p>
 </div>
 <div class="doors fx" role="group" aria-label="С чем вы пришли — выберите вариант" id="doors">
-<button type="button" class="door" aria-pressed="true" data-p="1">
+<button type="button" class="door" aria-pressed="true" data-p="6">
+        <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h9a4 4 0 0 1 4 4v10H8a4 4 0 0 1-4-4V5z"/><path d="M17 9h3v10h-3"/></svg></span>
+        <span class="d-t"><b>Соберу сам</b><span>Хочу настроить своими руками — нужны проверенные связки и цены</span></span>
+      </button>
+      <button type="button" class="door" aria-pressed="false" data-p="1">
 <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
 <span class="d-t"><b>Личный</b><span>План, тексты и разборы вручную — каждый вечер на это уходит час</span></span>
 </button>
@@ -281,7 +285,7 @@ header.nav a.brand{flex-basis:100%}
 <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18v3h3l5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></span>
 <span class="d-t"><b>Команда</b><span>Задачи и сроки в разных чатах — утром никто не знает, что делать</span></span>
 </button>
-<button type="button" class="door wide" aria-pressed="false" data-p="5">
+<button type="button" class="door" aria-pressed="false" data-p="5">
 <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v10"/><path d="M7 8l5-5 5 5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></span>
 <span class="d-t"><b>Потерял Claude</b><span>Подписка не платится, VPN падает — связки, которые живут в РФ без VPN, адаптация за вечер</span></span>
 </button>
@@ -298,7 +302,7 @@ header.nav a.brand{flex-basis:100%}
 <div class="p-cost s2 stag">
 <p class="p-kick">твоя рутина</p>
 <p class="p-num">36 000 <small>₽ в месяц руками</small></p>
-<p class="p-cap">Около 18 часов в месяц. С агентом — <b>десятая часть</b>. Ставится на твой ПК удалённо, данные остаются у тебя.</p>
+<p class="p-cap">18 часов в месяц по 2 000 ₽. С агентом — <b>3 400 ₽/мес</b>: сервер, обвязка, токены. Ставится на твой ПК удалённо, данные остаются у тебя.</p>
 </div>
 </div>
 <div class="p-offer s3 stag">
@@ -321,7 +325,7 @@ header.nav a.brand{flex-basis:100%}
 <div class="p-cost s2 stag">
 <p class="p-kick">твоя рутина</p>
 <p class="p-num">45 000 <small>₽ в месяц руками</small></p>
-<p class="p-cap">Переписки и записи вручную. С агентом — <b>десятая часть</b>. Приёмка на твоих заявках, не на демо.</p>
+<p class="p-cap">22 часа в месяц. С агентом — <b>3 400–4 000 ₽/мес</b>. Приёмка на твоих заявках, не на демо.</p>
 </div>
 </div>
 <div class="p-offer s3 stag">
@@ -344,7 +348,7 @@ header.nav a.brand{flex-basis:100%}
 <div class="p-cost s2 stag">
 <p class="p-kick">твоя рутина</p>
 <p class="p-num">90 000 <small>₽ в месяц руками</small></p>
-<p class="p-cap">Сверки и переносы между системами. С агентом — <b>десятая часть</b>. Работу не останавливаем: срок 1–10 дней.</p>
+<p class="p-cap">45 часов в месяц на сверки и переносы. С агентом — <b>4 600 ₽/мес</b>, три процесса в одном контуре. Работу не останавливаем: срок 1–10 дней.</p>
 </div>
 </div>
 <div class="p-offer s3 stag">
@@ -369,7 +373,7 @@ header.nav a.brand{flex-basis:100%}
 <div class="p-cost s2 stag">
 <p class="p-kick">твоя рутина</p>
 <p class="p-num">144 000 <small>₽ в месяц руками</small></p>
-<p class="p-cap">Координация и контроль сроков вручную. С агентом — <b>десятая часть</b>. Агент пишет в те же чаты, переучивать никого не надо.</p>
+<p class="p-cap">72 часа в месяц на координацию. С агентом — <b>от 4 600 ₽/мес</b>, дальше зависит от числа агентов. Пишет в те же чаты, переучивать никого не надо.</p>
 </div>
 </div>
 <div class="p-offer s3 stag">
@@ -392,7 +396,7 @@ header.nav a.brand{flex-basis:100%}
 <div class="p-cost s2 stag">
 <p class="p-kick">гайд · 20 сборок</p>
 <p class="p-num">3 000 <small>₽ разово · доступ навсегда</small></p>
-<p class="p-cap">Какие сборки живут без VPN, адаптация за вечер. <b>Обучение агента</b> под твои задачи — в переписке, без созвонов.</p>
+<p class="p-cap">Переношу связку на модели, доступные из РФ: аудит, пересборка промптов и логики, замер «до/после». <b>Работа не встаёт</b> на время переноса.</p>
 </div>
 </div>
 <div class="p-offer s3 stag">
@@ -403,6 +407,27 @@ header.nav a.brand{flex-basis:100%}
 <a class="btn btn-p btn-s" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9F%D0%BE%D1%82%D0%B5%D1%80%D1%8F%D0%BB%20Claude%3A%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B3%D0%B0%D0%B9%D0%B4%20%C2%AB20%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B9%C2%BB%2C%20%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8%20%D0%B1%D0%B5%D0%B7%20VPN.">Забрать гайд</a>
 </div>
 </article>
+      <article class="panel" id="panel6" role="group" aria-label="Сцена: соберу сам по гайду">
+        <div class="p-grid">
+          <div class="s1 stag">
+            <p class="p-kick">первая ступень</p>
+            <h3 class="p-job">Хочешь сам. Двадцать связок с ценами — и видно, что окупается.</h3>
+          </div>
+          <div class="p-cost s2 stag">
+            <p class="p-kick">гайд · 20 сборок</p>
+            <p class="p-num">3 000 <small>₽ разово · доступ навсегда</small></p>
+            <p class="p-cap">Проверенные связки: модели, цены по РФ, что живёт без VPN, что окупается за месяц. <b>Обновления</b> — бесплатно, вопросы — в переписке.</p>
+          </div>
+        </div>
+        <div class="p-offer s3 stag">
+          <div class="o-txt">
+            <span class="o-name">Гайд «20 конфигураций»</span>
+            <span class="o-note">вход для любого сегмента · сборка 3–4 часа · без кода · оплата картой или СБП · чек самозанятого</span>
+          </div>
+          <a class="btn btn-p btn-s" href="pay.html">Забрать гайд</a>
+        </div>
+      </article>
+
 </div>
 </section>
 
@@ -410,7 +435,7 @@ header.nav a.brand{flex-basis:100%}
 <section>
 <div class="shead">
 <h2>Что агент забирает</h2>
-<p class="s">Четыре направления рутины, которые <b>уходят агенту</b>. Выбери вкладку — увидишь конкретику.</p>
+<p class="s">Четыре направления рутины, которые <b>уходят агенту</b>. </p>
 </div>
 <div class="take-tabs fx" role="group" aria-label="Что агент забирает — выберите направление" id="takes">
 <button type="button" class="take-tab" aria-pressed="true" data-t="1">
@@ -436,14 +461,14 @@ header.nav a.brand{flex-basis:100%}
 <div class="take-case s1 stag"><b>Заявки</b><span>Принимает обращения из мессенджеров и форм, ночью и в выходные</span></div>
 <div class="take-case s2 stag"><b>Переписка</b><span>Отвечает на типовые вопросы и уточняет детали до записи</span></div>
 <div class="take-case s3 stag"><b>Записи</b><span>Подтверждает время и вносит запись в календарь и CRM</span></div>
-<div class="take-case s4 stag"><b>Напоминания</b><span>Напоминает клиенту за день и за 3 часа, снижает неявки</span></div>
+
 </div>
 </article>
 <article class="take-panel" id="take2" role="group" aria-label="Забирает: маркетинг">
 <div class="take-row">
 <div class="take-case s1 stag"><b>Посты</b><span>Готовит черновики постов из твоих заметок и голосовых</span></div>
 <div class="take-case s2 stag"><b>Подборки</b><span>Собирает подборки работ и отзывов под конкретный запрос</span></div>
-<div class="take-case s3 stag"><b>Ответы</b><span>Держит тон переписки: вежливо, по делу, без ожидания</span></div>
+
 <div class="take-case s4 stag"><b>Отзывы</b><span>Просит отзыв после визита и складывает в базу доверия</span></div>
 </div>
 </article>
@@ -452,7 +477,7 @@ header.nav a.brand{flex-basis:100%}
 <div class="take-case s1 stag"><b>Учёт</b><span>Фиксирует приходы и расходы по категориям без таблиц вручную</span></div>
 <div class="take-case s2 stag"><b>Сверки</b><span>Сводит заявки, оплаты и CRM — расхождения видны сразу</span></div>
 <div class="take-case s3 stag"><b>Отчёты</b><span>Собирает итог недели и месяца: выручка, средний чек, повторные</span></div>
-<div class="take-case s4 stag"><b>Документы</b><span>Готовит счета и акты по шаблону, напоминает о сроках</span></div>
+
 </div>
 </article>
 <article class="take-panel" id="take4" role="group" aria-label="Забирает: жизнь">
@@ -460,7 +485,7 @@ header.nav a.brand{flex-basis:100%}
 <div class="take-case s1 stag"><b>План дня</b><span>Утром присылает список на день: встречи, звонки, дедлайны</span></div>
 <div class="take-case s2 stag"><b>Список на утро</b><span>Вечером подводит итог и готовит повестку на завтра</span></div>
 <div class="take-case s3 stag"><b>Задачи команды</b><span>Раздаёт задачи по чатам и фиксирует, кто что взял</span></div>
-<div class="take-case s4 stag"><b>Контроль сроков</b><span>Подсвечивает просрочки и тянет статус без созвонов</span></div>
+
 </div>
 </article>
 </div>
