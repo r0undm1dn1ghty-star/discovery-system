@@ -773,15 +773,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         <button class="btn-cta btn-cta-ghost" data-tier="smb" onclick="goInstall('smb')" style="width:100%;margin-top:8px">3 процесса — 49 990 ₽ →</button>
         <button class="btn-cta btn-cta-ghost" data-tier="mid" onclick="goInstall('mid')" style="width:100%;margin-top:8px">5+ процессов — 79 990 ₽ (после аудита) →</button>
         
-      </div>
-      <div class="offer-opt" data-prod="optimization" style="border-color:rgba(242,182,101,.22)">
-        <div class="o-top"><div class="o-name">Оптимизация ИИ-агента — от 25 000 ₽</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">старт от 3 дней · замер до/после</span></div>
-        <div class="o-desc">Аудит связки: где утекают токены и время → пересборка промптов и логики → замер «до / после». Без переезда с нуля — работаем на твоей связке. Цена после аудита, до работ.</div>
-        <div class="o-price">от 25 000 ₽ <small>разово · точная цена после аудита</small></div>
-        <button class="btn-cta btn-cta-ghost" onclick="goCheckout('optimization')">Заказать аудит →</button>
-      </div>
-      
-<div class="offer-opt" data-prod="channel">
+  <div class="offer-opt" data-prod="optimization" style="border-color:rgba(242,182,101,.22)"> <div class="o-top"><div class="o-name">Оптимизация и переезд с Claude — от 25 000 ₽</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">старт от 3 дней · замер до/после</span></div> <div class="o-desc">Агент уже работает, но подписка не платится или аккаунт заблокировали — переношу связку на модели с оплатой из РФ, без VPN. Аудит → пересборка промптов и логики → замер «до/после». После переезда владение 3 400–4 600 ₽/мес. Промокод с разбора Claude — KLODNAOBOROT: −10%, то есть 22 500 ₽.</div> <div class="o-price">от 25 000 ₽ <small>разово · с промокодом 22 500 ₽</small></div> <button class="btn-cta btn-cta-ghost" onclick="goCheckout('optimization')">Заказать аудит →</button> </div> data-prod="channel">
         <div class="o-top"><div class="o-name">Подписка на канал Discovery System</div></div>
         <div class="o-desc">Сигналы рынка ИИ-агентов с источниками и датами. Что заметить, что проверить, что забрать в работу. Чтобы не упустить момент.</div>
         <div class="o-price">0 ₽ <small>Telegram · бесплатно</small></div>
@@ -2397,8 +2389,8 @@ function orderText(paid){
   if(chosenOffer==='optimization'){
     const est=estimate()||{};
     const l=['Виктор, привет! Хочу разобрать своего агента.',
-             'Что не так: (тормозит / врёт / жрёт токены / встал)',
-             'Собран на: (бот в Telegram / n8n / свой код / не знаю)',
+             'Что не так: (подписка не платится / заблокировали / дорого / врёт)',
+             'Собран на: (Claude / ChatGPT / бот в Telegram / n8n / свой код / не знаю)',
              'Что должен делать: ','Что уже пробовали: '];
     if(est.monthly)l.push('Сейчас по деньгам: ~'+est.monthly+' ₽/мес');
     return l.join('\n');
