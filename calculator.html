@@ -2350,7 +2350,7 @@ function copyBriefText(text){
 function sendToTg(kind){
   /* у спасения агента свой каркас: клиенту проще вписать, что сломалось */
   const full=(kind==='optimization')?orderText(false):briefBody(false,briefUrl(),kind);
-  const text=full.length<=DEEP_LIMIT?full:briefCompact(kind);
+  const text=(kind==='optimization')?full:(full.length<=DEEP_LIMIT?full:briefCompact(kind));
   tgSnapshot(kind,false);
   copyBriefText(full).catch(function(){}); /* буфер — всегда полный расчёт, лимита нет */
   const url=tgUrl(text);
@@ -2393,7 +2393,6 @@ function orderText(paid){
              'Что не так: (подписка не платится / заблокировали / дорого / врёт)',
              'Собран на: (Claude / ChatGPT / бот в Telegram / n8n / свой код / не знаю)',
              'Что должен делать: ','Что уже пробовали: '];
-    if(est.monthly)l.push('Сейчас по деньгам: ~'+est.monthly+' ₽/мес');
     return l.join('\n');
   }
   const est=estimate()||{};
