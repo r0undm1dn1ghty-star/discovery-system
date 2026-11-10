@@ -96,17 +96,35 @@ footer a:hover{text-decoration:underline}
 @media(max-width:760px){#research .rgrid{grid-template-columns:1fr}}
 
 .rcard{cursor:pointer}
-.rcard:focus-visible{outline:2px solid #24368f;outline-offset:3px}
+.rcard:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
 .rcard i{border-bottom:1px solid rgba(27,42,107,.32);display:inline-block;padding-bottom:2px}
 .rcard:hover b{color:var(--navy)}
 
 .herocta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:26px 0 30px}
-.hbtn{display:inline-flex;align-items:center;min-height:52px;padding:14px 26px;border-radius:10px;background:#24368f;color:#f2f6ff;text-decoration:none;font:500 15.5px/1 var(--sans);transition:background .18s ease}
+.hbtn{display:inline-flex;align-items:center;min-height:52px;padding:14px 26px;border-radius:10px;background:var(--navy);color:#f2f6ff;text-decoration:none;font:500 15.5px/1 var(--sans);transition:background .18s ease}
 .hbtn:hover{background:#2c419f}
 .hlink{font:500 14px/1.4 var(--mono);color:#b9c1d6;text-decoration:none;border-bottom:1px solid rgba(185,193,214,.35);padding-bottom:2px}
 .hlink:hover{color:#eef2fb}
 .midcta{margin:14px 0 0;font-size:16px;color:var(--body)}
 .midcta a{color:var(--navy);border-bottom:1px solid rgba(27,42,107,.32);text-decoration:none}
+.vs{margin:44px 0 0;padding-top:30px;border-top:1px solid var(--hair)}
+.vs-h{font:600 clamp(22px,2.6vw,30px)/1.2 var(--disp);letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
+.vs-sub{font-size:16px;color:var(--meta);max-width:62ch;margin:0 0 22px}
+.vs-grid{display:grid;gap:10px}
+.vs-row{display:grid;grid-template-columns:210px 1fr 220px;gap:18px;align-items:start;padding:16px 18px;border:1px solid var(--hair);border-radius:14px;background:#fff}
+.vs-who{font:600 15.5px/1.35 var(--sans);color:var(--ink)}
+.vs-who span{display:block;font:400 13.5px/1.4 var(--mono);color:var(--meta);margin-top:4px}
+.vs-what{font-size:15px;line-height:1.5;color:var(--body)}
+.vs-gap{font-size:14px;line-height:1.45;color:var(--meta)}
+.vs-own{border-color:var(--navy);background:rgba(27,42,107,.05)}
+.vs-own .vs-who{color:var(--navy)}
+@media(max-width:860px){.vs-row{grid-template-columns:1fr;gap:8px}}
+
+.vs-head{display:grid;grid-template-columns:210px 1fr 260px;gap:18px;padding:0 18px 8px;font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--meta)}
+.vs-own{box-shadow:0 10px 26px rgba(27,42,107,.10);border-width:1.5px}
+.vs-own .vs-who em{display:inline-block;margin-left:8px;padding:3px 8px;border-radius:999px;background:var(--navy);color:#fff;font:500 11.5px/1 var(--mono);font-style:normal;letter-spacing:.04em}
+.vs-note{margin:14px 0 0;font-size:13.5px;color:var(--meta)}
+@media(max-width:860px){.vs-head{display:none}.vs-row{grid-template-columns:1fr;gap:8px}}
 </style>
 </head>
 <body>
@@ -166,7 +184,35 @@ footer a:hover{text-decoration:underline}
 </div>
 </section>
 
-<section class="sec"><div class="sh"><h2>Что спросить до оплаты</h2><span class="tag">5 вопросов</span></div>
+<section class="vs" aria-label="Чем это отличается от конструкторов и платформ">
+  <h2 class="vs-h">«А конструктор дешевле и интеграции сразу»</h2>
+  <p class="vs-sub">Так и есть — на своём поле. Конструктор продаёт сценарии, платформа — доступ к моделям, студия — часы. Агент делает другое: сам решает, каким инструментом воспользоваться. Ниже — где каждый вариант силён и где ломается.</p>
+  <div class="vs-head"><span>решение</span><span>что даёт</span><span>кому подходит · где ломается</span></div>
+  <div class="vs-grid">
+    <div class="vs-row">
+      <div class="vs-who">Конструктор ботов<br><span>Salebot, BotHelp</span></div>
+      <div class="vs-what">Кнопки, ветки и воронки в мессенджере. Быстрый старт, знакомая логика.</div>
+      <div class="vs-gap"><b>Кому:</b> простой сценарий «вопрос — ответ — заявка».<br><b>Ломается:</b> когда процесс меняется — сценарий переписывают; памяти и инструментов обычно нет.</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-who">Агрегатор моделей<br><span>GoAI, Vexel, ProxyAPI</span></div>
+      <div class="vs-what">Доступ к моделям по карте РФ, дешевле каталога.</div>
+      <div class="vs-gap"><b>Кому:</b> если агент уже есть и нужен только канал к модели.<br><b>Ломается:</b> сам ничего не автоматизирует — ключи есть, исполнителя нет.</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-who">Студия или фрилансер<br><span>от 50 000 ₽</span></div>
+      <div class="vs-what">Соберут процесс под задачу, часто с дизайном и поддержкой.</div>
+      <div class="vs-gap"><b>Кому:</b> когда нужен подрядчик «под ключ» и есть бюджет.<br><b>Ломается:</b> контур обычно их — ключи и аккаунты у студии; приёмка формулируется словами.</div>
+    </div>
+    <div class="vs-row vs-own">
+      <div class="vs-who">Здесь <em>наш вариант</em><br><span>29 990 / 49 990 ₽ разово</span></div>
+      <div class="vs-what">Агент с инструментами и памятью на твоём железе. Ключи и данные твои, критерии приёмки — до старта, замер «до/после».</div>
+      <div class="vs-gap"><b>Кому:</b> процесс дороже 30 часов в месяц и нужен свой контур.<br><b>Цена владения:</b> 3–4 тыс ₽/мес провайдеру напрямую, без наценки.</div>
+    </div>
+  </div>
+  <p class="vs-note">Сравнение по публичным описаниям продуктов, сверено 10.11.2026. Не рейтинг: у каждого варианта есть задача, где он уместен.</p>
+</section>
+      <section class="sec"><div class="sh"><h2>Что спросить до оплаты</h2><span class="tag">5 вопросов</span></div>
 <div class="qs">
 <div class="q">Ключи и аккаунт у меня или у тебя?</div>
 <div class="q">Что будет с агентом, если провайдер закроет доступ?</div>
