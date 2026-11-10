@@ -468,6 +468,12 @@ header.nav .nav-in > .brand img{filter:none}
  .wl-m b{font-size:19px}.wl-main b{font-size:23px}
  .wl-main .wl-k{margin:0}
 }
+
+/* мультивыбор сценариев: галка вместо радио */
+.auto-card.multi .ac-box{position:absolute;top:16px;right:16px;width:20px;height:20px;border:2px solid var(--line2);border-radius:6px;transition:.15s;background:transparent}
+.auto-card.multi.on .ac-box{background:var(--primary);border-color:var(--primary)}
+.auto-card.multi.on .ac-box:after{content:"";position:absolute;left:5px;top:1px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg)}
+.multi-count{display:inline-flex;align-items:center;gap:8px;margin:10px 0 0;font:500 14px/1.4 var(--mono);color:var(--primary-l)}
 </style>
 <style>
 /* ── AIR v2.4: мета-текст ≥14px (канон 15), светлые хинты героя, воздух шагов ── */
@@ -608,8 +614,8 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 
     <!-- 01 · один тап: сценарий. Рутина и часы подставляются, экраны не плодятся -->
     <section class="wiz-step" id="wstep1">
-      <h2 class="ws-title">Что считаем?</h2>
-      <p class="ws-sub" id="ws1sub">Выбери свою ситуацию — калькулятор сам подставит рутину. Один тап, и цифра уже считается.</p>
+      <h2 class="ws-title">Что у тебя реально крутится?</h2>
+      <p class="ws-sub" id="ws1sub">Отметь всё, что есть — можно несколько. Рутина сложится, агент считается один: часы и токены суммируются.</p>
       <div class="auto-grid role-grid" id="roleOpts"></div>
       <details class="cfg-more" id="startDetails">
         <summary>Что у тебя уже оплачено — и чем ты рискуешь</summary>
@@ -1699,13 +1705,14 @@ const ROLES={
         sub:'Типовая рутина уже подставлена — поправь под себя.'}
 };
 const ROLE_ORDER=['docs','leads','pm','risk','advice','unsure'];
-let role=null, goalsExpanded=false, modelClass=null, loadTarget=null;
+let role=null, goalsExpanded=false, modelClass=null, loadTarget=null, pickedRoles=[];
 function renderRoleOpts(){
   const el=document.getElementById('roleOpts'); if(!el)return;
   el.innerHTML=ROLE_ORDER.map(k=>{const r=ROLES[k];
-    return '<button type="button" class="auto-card '+(role===k?'on':'')+'" onclick="setRole(\''+k+'\')" aria-pressed="'+(role===k)+'"><span class="ac-dot" aria-hidden="true"></span><span class="ac-t">'+r.t+'</span><span class="ac-d">'+r.d+'</span></button>';
+    const on=pickedRoles.includes(k);
+    return '<button type="button" class="auto-card multi '+(on?'on':'')+'" onclick="setRole(\''+k+'\')" aria-pressed="'+on+'"><span class="ac-box" aria-hidden="true"></span><span class="ac-t">'+r.t+'</span><span class="ac-d">'+r.d+'</span></button>';
   }).join('');
-  const nb=document.getElementById('next1'); if(nb)nb.disabled=!role;
+  const nb=document.getElementById('next1'); if(nb)nb.disabled=!pickedRoles.length;
   a11y();
 }
 function showAllGoals(){ goalsExpanded=true; renderCards(); }
@@ -1723,18 +1730,30 @@ function setModelClass(c){
 }
 function setRole(k){
   if(!ROLES[k])return;
-  role=k; goalsExpanded=false;
-  goals=(ROLES[k].goals||[]).slice(); goal=goals[0]||null; tasks=deriveTasks();
+  const i=pickedRoles.indexOf(k);
+  if(i>=0)pickedRoles.splice(i,1); else pickedRoles.push(k);
+  goalsExpanded=false;
+  /* рутина = объединение всех выбранных сценариев, без дублей */
+  const set=[];
+  pickedRoles.forEach(r=>{(ROLES[r].goals||[]).forEach(g=>{ if(!set.includes(g))set.push(g); });});
+  goals=set; goal=goals[0]||null; tasks=deriveTasks();
+  role=pickedRoles[0]||null;
   renderRoleOpts(); renderCards(); updateGoalMeta(); updateLive(); wizButtons();
-  const R=ROLES[k];
-  const hl=document.getElementById('heroLead'); if(hl)hl.textContent=R.lead;
-  const s1=document.getElementById('ws1sub'); if(s1)s1.textContent=R.sub;
+  const R=ROLES[pickedRoles[pickedRoles.length-1]||k];
+  const hl=document.getElementById('heroLead');
+  if(hl)hl.textContent=pickedRoles.length>1
+      ? pickedRoles.map(r=>ROLES[r].t.toLowerCase()).join(' + ')+': считаем вместе, одним агентом'
+      : R.lead;
+  const s1=document.getElementById('ws1sub');
+  if(s1)s1.textContent=pickedRoles.length>1
+      ? 'Отмечено сценариев: '+pickedRoles.length+'. Рутина сложена, агент один — часы и токены суммируются.'
+      : R.sub;
   if(estimate())calculate();
 }
 
 let wizStep=1;
 function goStep(n){
-  if(n>1&&!role){toast('Сначала выбери свой сценарий');return;}
+  if(n>1&&!pickedRoles.length){toast('Сначала отметь хотя бы один сценарий');return;}
   if(n>2&&goals.length===0){toast('Отметь хотя бы одну рутину');return;}
   if(n>2&&!autonomy){toast('Выбери уровень самостоятельности');return;}
   if(n>4)n=4;
@@ -1791,7 +1810,7 @@ function updateLive(){
   const sl=document.getElementById('pbSlider');
   const rate=sl?(+sl.value||700):700;
   const saved=e.hours*rate, net=saved-e.monthly;
-  if(hintEl)hintEl.innerHTML='освободит ~'+e.hours+' ч/мес ≈ <b>'+saved.toLocaleString('ru-RU')+' ₽</b> по '+rate.toLocaleString('ru-RU')+' ₽/ч · чистыми '+
+  if(hintEl)hintEl.innerHTML=(pickedRoles.length>1?('<b>'+pickedRoles.length+' сценария</b> · '):'')+'освободит ~'+e.hours+' ч/мес ≈ <b>'+saved.toLocaleString('ru-RU')+' ₽</b> по '+rate.toLocaleString('ru-RU')+' ₽/ч · чистыми '+
     (net>=0?'+':'−')+Math.abs(net).toLocaleString('ru-RU')+' ₽/мес';
   const ok=document.getElementById('lvOk');
   if(ok){
@@ -2158,7 +2177,13 @@ function restoreFromUrl(){
   const o=q.get('o'); if(o&&OFFER_NAMES[o])chosenOffer=o;
   const ro=q.get('ro'); if(ro&&ROLES[ro]){role=ro; if(!goals.length){goals=ROLES[ro].goals.slice(0,2); goal=goals[0]; tasks=deriveTasks();}}
   /* старые ссылки без ro: выводим сценарий из выбранной рутины, иначе расчёт не открыть */
-  if(!role&&goals.length){ const cand=Object.keys(ROLES).find(k=>ROLES[k].goals.some(g=>goals.includes(g))); if(cand)role=cand; }
+  if(goals.length){
+    /* роли восстанавливаем по совпадению рутин: не больше 3 и без «не знаю» */
+    pickedRoles=Object.keys(ROLES).filter(k=>k!=='unsure')
+      .map(k=>({k,score:ROLES[k].goals.filter(g=>goals.includes(g)).length}))
+      .filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,3).map(x=>x.k);
+    if(!role&&pickedRoles.length)role=pickedRoles[0];
+  }
   return true;
 }
 /* Подписи в личку — те, что читаются без расшифровки */
