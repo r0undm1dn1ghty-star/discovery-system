@@ -46,6 +46,14 @@ var DS_PAY = {
   optimize:{price:25000, name:'Оптимизация ИИ-агента (не работает/сломан/дорогой)',
             url:'https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og?p=optimize'},
 
+  /* ── Алиасы ключей калькулятора (тот же товар и тот же инвойс) ── */
+  table:   {price:3000,  name:'Гайд «20 конфигураций»',
+            url:'https://auth.robokassa.ru/merchant/Invoice/6Ab22kNyM0WdmIJDopenSw?p=guide'},
+  install: {price:29990, name:'Интеграция: 1 процесс (заменяет ~30 часов рутины)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/xA1sStsFtkymWJ5ncjVg7A?p=self'},
+  optimization:{price:25000, name:'Оптимизация ИИ-агента (не работает/сломан/дорогой)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og?p=optimize'},
+
   /* ── Подписки: Tribute (Robokassa не используем) ───────── */
   insights:   {price:2000,  name:'Инсайты Discovery System',
             url:'https://web.tribute.tg/s/16eU', sub:true},
