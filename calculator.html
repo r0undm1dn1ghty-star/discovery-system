@@ -1027,6 +1027,8 @@ const SUBS=[
 let subPick='',subName='',useGoal='',taxForm='';
 function pickStart(id){
   if(start!==id){start=id;userStartChosen=true;}
+  document.body.setAttribute('data-start',start);
+  if(typeof arrangeOffers==='function'){ try{ arrangeOffers(recommendProduct()); }catch(e){} }
   if(id==='sub'&&!subPick){subPick='plus';applySub();}
   renderCards();renderSubPick();renderLegalPick();updateLive();updateGoalMeta();wizButtons();if(estimate())calculate();
 }
@@ -1341,6 +1343,11 @@ function recWhy(key){
 /* Рекомендованный оффер — первым, остальные свёрнуты: пять карточек на выбор = перегруз */
 function arrangeOffers(recKey){
   const box=document.getElementById('offerBox'); if(!box) return;
+  /* «Спасение агента» — только для тех, у кого агент уже стоит: с нуля оптимизировать нечего */
+  const optEl=box.querySelector('.offer-opt[data-prod="optimization"]');
+  const hasAgent=(typeof start!=='undefined' && start==='legacy');
+  if(optEl) optEl.hidden=!hasAgent;
+  if(!hasAgent && optEl && optEl.parentNode && optEl.parentNode.id==='offerMore') optEl.hidden=true;
   const why=document.getElementById('personaWhy');
   const opts=[...box.querySelectorAll('.offer-opt[data-prod]')];
   let more=box.querySelector('#offerMore');
@@ -2460,7 +2467,10 @@ a11y();
 
 <script src="ds-plasma.js" defer></script>
 <script src="ds-nav.js" defer></script>
-<script src="ds-mnav.js?v=20261109b" defer></script>
+<script src="ds-mnav.js?v=20261109b" defer>
+try{ document.body.setAttribute('data-start',(typeof start!=='undefined'?start:'nothing'));
+     if(typeof arrangeOffers==='function') arrangeOffers(recommendProduct()); }catch(e){}
+</script>
 
 <style id="calc-align-fix">
 /* ── шапка как на главной: одна сетка с контентом, без «своего» лого ── */
@@ -2510,6 +2520,9 @@ header.nav nav{font-size:14.5px!important;gap:22px!important;margin-left:auto!im
   .opts,.tasks,.conns{grid-template-columns:1fr!important}
   .wiz-step{padding:20px 18px!important}
 }
+
+/* «Спасение агента» — только если агент уже стоит */
+body:not([data-start="legacy"]) .offer-opt[data-prod="optimization"]{display:none!important}
 </style>
 </body>
 </html>
