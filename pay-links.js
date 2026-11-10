@@ -29,11 +29,11 @@ var DS_PAY = {
             url:'https://auth.robokassa.ru/merchant/Invoice/r0tppMLGgkyzzj-YojI_6Q?p=build'},
 
   /* ── Разовые: интеграция под ключ ───────────────────────── */
-  self:    {price:29990, name:'Интеграция самозанятым (1 человек)',
+  self:    {price:29990, name:'Интеграция: 1 процесс (заменяет ~30 часов рутины)',
             url:'https://auth.robokassa.ru/merchant/Invoice/xA1sStsFtkymWJ5ncjVg7A?p=self'},
-  smb:     {price:49990, name:'Интеграция микро-бизнесу (до 15 сотрудников)',
+  smb:     {price:49990, name:'Интеграция: 3 процесса в одном контуре',
             url:'https://auth.robokassa.ru/merchant/Invoice/7Hss7HLoPkaZoz3ZOfXWTw?p=smb'},
-  mid:     {price:79990, name:'Интеграция малому бизнесу (16–30 сотрудников)',
+  mid:     {price:79990, name:'Интеграция: 5+ процессов (после аудита масштаба)',
             url:'https://auth.robokassa.ru/merchant/Invoice/pfiPRE8DqkuXocFAUbo4og?p=mid'},
 
   /* ── Разовые: дополнительные решения ───────────────────── */

@@ -232,6 +232,25 @@ header.nav a.brand{flex-basis:100%}
 .hero-cta{margin-top:30px}
 .hero-cta .quiet-link{font-family:var(--mono);font-size:15px;color:#c8d0e2;text-decoration:underline;text-underline-offset:3px}
 .hero-cta .quiet-link:hover{color:#f4f7fe}
+
+.vs{margin:44px 0 0;padding-top:30px;border-top:1px solid var(--line2)}
+.vs-h{font:600 clamp(22px,2.6vw,30px)/1.2 var(--disp);letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
+.vs-sub{font-size:16px;color:var(--muted);max-width:62ch;margin:0 0 22px}
+.vs-grid{display:grid;gap:10px}
+.vs-row{display:grid;grid-template-columns:210px 1fr 220px;gap:18px;align-items:start;padding:16px 18px;border:1px solid var(--line2);border-radius:14px;background:var(--panel)}
+.vs-who{font:600 15.5px/1.35 var(--sans);color:var(--txt)}
+.vs-who span{display:block;font:400 13.5px/1.4 var(--mono);color:var(--muted);margin-top:4px}
+.vs-what{font-size:15px;line-height:1.5;color:var(--body)}
+.vs-gap{font-size:14px;line-height:1.45;color:var(--muted)}
+.vs-own{border-color:#2f4bb8;background:rgba(27,42,107,.055)}
+.vs-own .vs-who{color:#24368f}
+@media(max-width:860px){.vs-row{grid-template-columns:1fr;gap:8px}}
+
+.vs-head{display:grid;grid-template-columns:210px 1fr 260px;gap:18px;padding:0 18px 8px;font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.vs-own{box-shadow:0 10px 26px rgba(27,42,107,.10);border-width:1.5px}
+.vs-own .vs-who em{display:inline-block;margin-left:8px;padding:3px 8px;border-radius:999px;background:#24368f;color:#fff;font:500 11.5px/1 var(--mono);font-style:normal;letter-spacing:.04em}
+.vs-note{margin:14px 0 0;font-size:13.5px;color:var(--muted)}
+@media(max-width:860px){.vs-head{display:none}.vs-row{grid-template-columns:1fr;gap:8px}}
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
 </head>
@@ -325,11 +344,11 @@ header.nav a.brand{flex-basis:100%}
 </div>
 <div class="p-offer s3 stag">
 <div class="o-txt">
-<span class="o-name">Интеграция: самозанятый</span>
+<span class="o-name">Интеграция: 1 процесс</span>
             <span class="o-price">29 990 ₽ разово</span>
-<span class="o-note">заявки и контент · несколько агентов · срок 1–10 дней</span>
+<span class="o-note">заменяет 30 часов рутины в месяц · один процесс под ключ · срок 1–10 дней</span>
 </div>
-<a class="btn btn-p btn-s" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%AF%20%D1%81%D0%B0%D0%BC%D0%BE%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D1%8B%D0%B9%3A%20%D0%BA%D0%BB%D0%B8%D0%B5%D0%BD%D1%82%D1%8B%20%D0%BF%D0%B8%D1%88%D1%83%D1%82%20%D0%B2%20%D0%BC%D0%B5%D1%81%D1%81%D0%B5%D0%BD%D0%B4%D0%B6%D0%B5%D1%80%D1%8B%2C%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D1%82%D0%B5%D1%80%D1%8F%D1%8E%D1%82%D1%81%D1%8F%20%D0%BD%D0%BE%D1%87%D1%8C%D1%8E.">Собрать для самозанятого</a>
+<a class="btn btn-p btn-s" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%AF%20%D1%81%D0%B0%D0%BC%D0%BE%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D1%8B%D0%B9%3A%20%D0%BA%D0%BB%D0%B8%D0%B5%D0%BD%D1%82%D1%8B%20%D0%BF%D0%B8%D1%88%D1%83%D1%82%20%D0%B2%20%D0%BC%D0%B5%D1%81%D1%81%D0%B5%D0%BD%D0%B4%D0%B6%D0%B5%D1%80%D1%8B%2C%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D1%82%D0%B5%D1%80%D1%8F%D1%8E%D1%82%D1%81%D1%8F%20%D0%BD%D0%BE%D1%87%D1%8C%D1%8E.">Собрать один процесс</a>
 </div>
 </article>
 
@@ -348,13 +367,42 @@ header.nav a.brand{flex-basis:100%}
 </div>
 <div class="p-offer s3 stag">
 <div class="o-txt">
-<span class="o-name">Интеграция: микро (до 15)</span>
+<span class="o-name">Интеграция: 3 процесса</span>
             <span class="o-price">49 990 ₽ разово</span>
 <span class="o-note">бот + CRM/Авито/таблицы · память между чатами · критерии приёмки до старта</span>
 </div>
-<a class="btn btn-p btn-s" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A3%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%98%D0%9F%3A%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%2C%20%D0%90%D0%B2%D0%B8%D1%82%D0%BE%2C%20CRM%20%D0%B8%20%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B%20%D0%B6%D0%B8%D0%B2%D1%83%D1%82%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE.%20%D0%9D%D1%83%D0%B6%D0%BD%D0%B0%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B0.">Собрать для ИП</a>
+<a class="btn btn-p btn-s" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A3%20%D0%BC%D0%B5%D0%BD%D1%8F%20%D0%98%D0%9F%3A%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%2C%20%D0%90%D0%B2%D0%B8%D1%82%D0%BE%2C%20CRM%20%D0%B8%20%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B%20%D0%B6%D0%B8%D0%B2%D1%83%D1%82%20%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE.%20%D0%9D%D1%83%D0%B6%D0%BD%D0%B0%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B0.">Собрать три процесса</a>
 </div>
 </article>
+<section class="vs" aria-label="Чем это отличается от конструкторов и платформ">
+  <h2 class="vs-h">«А конструктор дешевле и интеграции сразу»</h2>
+  <p class="vs-sub">Так и есть — на своём поле. Конструктор продаёт сценарии, платформа — доступ к моделям, студия — часы. Агент делает другое: сам решает, каким инструментом воспользоваться. Ниже — где каждый вариант силён и где ломается.</p>
+  <div class="vs-head"><span>решение</span><span>что даёт</span><span>кому подходит · где ломается</span></div>
+  <div class="vs-grid">
+    <div class="vs-row">
+      <div class="vs-who">Конструктор ботов<br><span>Salebot, BotHelp</span></div>
+      <div class="vs-what">Кнопки, ветки и воронки в мессенджере. Быстрый старт, знакомая логика.</div>
+      <div class="vs-gap"><b>Кому:</b> простой сценарий «вопрос — ответ — заявка».<br><b>Ломается:</b> когда процесс меняется — сценарий переписывают; памяти и инструментов обычно нет.</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-who">Агрегатор моделей<br><span>GoAI, Vexel, ProxyAPI</span></div>
+      <div class="vs-what">Доступ к моделям по карте РФ, дешевле каталога.</div>
+      <div class="vs-gap"><b>Кому:</b> если агент уже есть и нужен только канал к модели.<br><b>Ломается:</b> сам ничего не автоматизирует — ключи есть, исполнителя нет.</div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-who">Студия или фрилансер<br><span>от 50 000 ₽</span></div>
+      <div class="vs-what">Соберут процесс под задачу, часто с дизайном и поддержкой.</div>
+      <div class="vs-gap"><b>Кому:</b> когда нужен подрядчик «под ключ» и есть бюджет.<br><b>Ломается:</b> контур обычно их — ключи и аккаунты у студии; приёмка формулируется словами.</div>
+    </div>
+    <div class="vs-row vs-own">
+      <div class="vs-who">Здесь <em>наш вариант</em><br><span>29 990 / 49 990 ₽ разово</span></div>
+      <div class="vs-what">Агент с инструментами и памятью на твоём железе. Ключи и данные твои, критерии приёмки — до старта, замер «до/после».</div>
+      <div class="vs-gap"><b>Кому:</b> процесс дороже 30 часов в месяц и нужен свой контур.<br><b>Цена владения:</b> 3–4 тыс ₽/мес провайдеру напрямую, без наценки.</div>
+    </div>
+  </div>
+  <p class="vs-note">Сравнение по публичным описаниям продуктов, сверено 10.11.2026. Не рейтинг: у каждого варианта есть задача, где он уместен.</p>
+</section>
+
 
 <!-- 4: команда -->
 <article class="panel" id="panel4" role="group" aria-label="Сцена: команда">
@@ -371,11 +419,11 @@ header.nav a.brand{flex-basis:100%}
 </div>
 <div class="p-offer s3 stag">
 <div class="o-txt">
-<span class="o-name">Интеграция: малый (16–30)</span>
+<span class="o-name">Интеграция: 5+ процессов</span>
             <span class="o-price">79 990 ₽ разово</span>
-<span class="o-note">несколько агентов на процессы · месяц сопровождения включён · приёмка с твоим участием</span>
+<span class="o-note">цена после аудита масштаба — сначала считаем ИИ-мощности и число процессов, потом сумма · месяц сопровождения включён</span>
 </div>
-<a class="btn btn-p btn-s" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A3%20%D0%BD%D0%B0%D1%81%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%3A%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8%20%D1%82%D0%BE%D0%BD%D1%83%D1%82%20%D0%B2%20%D1%87%D0%B0%D1%82%D0%B0%D1%85.%20%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D1%8B%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.">Собрать для команды</a>
+<a class="btn btn-p btn-s" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A3%20%D0%BD%D0%B0%D1%81%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%B0%3A%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8%20%D1%82%D0%BE%D0%BD%D1%83%D1%82%20%D0%B2%20%D1%87%D0%B0%D1%82%D0%B0%D1%85.%20%D0%9D%D1%83%D0%B6%D0%BD%D1%8B%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D1%8B%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B.">Согласовать масштаб</a>
 </div>
 </article>
 
