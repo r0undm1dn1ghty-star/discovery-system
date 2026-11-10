@@ -24,17 +24,17 @@ var DS_PAY = {
 
   /* ── Разовые: цифровые материалы ───────────────────────── */
   guide:   {price:3000,  name:'Гайд «20 конфигураций»',
-            url:null},                      /* инвойс 5 000 больше не соответствует цене — нужен новый на 3 000 */
-  build:   {price:15000, name:'Персональная сборка (архитектура + гайд по установке; ставишь сам)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/xp2UNX65i0GBewjBqkgJOw?p=build'},
+            url:'https://auth.robokassa.ru/merchant/Invoice/6Ab22kNyM0WdmIJDopenSw?p=guide'},
+  build:   {price:10000, name:'Персональная сборка (архитектура + гайд по установке; ставишь сам)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/r0tppMLGgkyzzj-YojI_6Q?p=build'},
 
   /* ── Разовые: интеграция под ключ ───────────────────────── */
   self:    {price:29990, name:'Интеграция самозанятым (1 человек)',
-            url:null},                      /* нужен новый инвойс на 29 990 */
+            url:'https://auth.robokassa.ru/merchant/Invoice/xA1sStsFtkymWJ5ncjVg7A?p=self'},
   smb:     {price:49990, name:'Интеграция микро-бизнесу (до 15 сотрудников)',
-            url:null},                      /* нужен новый инвойс на 49 990 */
+            url:'https://auth.robokassa.ru/merchant/Invoice/7Hss7HLoPkaZoz3ZOfXWTw?p=smb'},
   mid:     {price:79990, name:'Интеграция малому бизнесу (16–30 сотрудников)',
-            url:null},                      /* нужен новый инвойс на 79 990 */
+            url:'https://auth.robokassa.ru/merchant/Invoice/pfiPRE8DqkuXocFAUbo4og?p=mid'},
 
   /* ── Разовые: дополнительные решения ───────────────────── */
   factory_photo: {price:15000, name:'Контент-завод: фото',
