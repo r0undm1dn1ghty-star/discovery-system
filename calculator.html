@@ -655,7 +655,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
     <section class="wiz-step" id="wstep3" hidden>
       <h2 class="ws-title">Обвязка <em>— необязательно</em></h2>
       <p class="ws-sub" id="ws3sub">Всё уже стоит по умолчанию и входит в цену. Меняй, только если у тебя иначе — цифра пересчитается сразу.</p>
-      <div class="wz-group"><div class="wz-l">Сколько обращений в месяц</div><div class="opts" id="loadOpts"><button type="button" class="opt" data-l="300" onclick="setLoad(300)">до 300<em>один человек, тихая рутина</em></button><button type="button" class="opt" data-l="1000" onclick="setLoad(1000)">около 1 000<em>поток заявок и переписки</em></button><button type="button" class="opt" data-l="3000" onclick="setLoad(3000)">3 000 и больше<em>несколько каналов, команда</em></button></div></div><div class="wz-group"><div class="wz-l">Класс модели — от него почти вся цена токенов</div><div class="opts" id="classOpts"><button type="button" class="opt" data-c="lite" onclick="setModelClass('lite')">Дешёвая<em>вход 178 · выход 747 ₽ за 1 млн · кэш 21</em></button><button type="button" class="opt" data-c="pro" onclick="setModelClass('pro')">Рабочая<em>вход 300 · выход 500 ₽ за 1 млн · кэш 75</em></button><button type="button" class="opt" data-c="max" onclick="setModelClass('max')">Топ<em>вход 245 · выход 1 225 ₽ за 1 млн · кэш 24</em></button></div><p class="wz-hint" id="classHint">Сейчас — по задаче: рутина на дешёвой, документы и отчёты на рабочей. Цены — рыночные, по РФ-каналам оплаты.</p></div><div class="wz-group"><div class="wz-l">Где живёт агент</div><div class="opts" id="deviceOpts"></div></div>
+      <div class="wz-group"><div class="wz-l">Сколько обращений в месяц</div><div class="opts" id="loadOpts"><button type="button" class="opt" data-l="300" onclick="setLoad(300)">до 300<em>один человек, тихая рутина</em></button><button type="button" class="opt" data-l="1000" onclick="setLoad(1000)">около 1 000<em>поток заявок и переписки</em></button><button type="button" class="opt" data-l="3000" onclick="setLoad(3000)">3 000 и больше<em>несколько каналов, команда</em></button></div></div><div class="wz-group"><div class="wz-l">Класс модели — от него почти вся цена токенов</div><div class="opts" id="classOpts"><button type="button" class="opt" data-c="lite" onclick="setModelClass('lite')">Дешёвая · Lite<em>32,5 ₽ за 1 млн токенов</em></button><button type="button" class="opt" data-c="pro" onclick="setModelClass('pro')">Рабочая · Pro<em>250 ₽ за 1 млн токенов</em></button><button type="button" class="opt" data-c="max" onclick="setModelClass('max')">Топ · Max<em>325 ₽ за 1 млн токенов</em></button></div><p class="wz-hint" id="classHint">Сейчас — по задаче: рутина на дешёвой, документы и отчёты на рабочей. Цены — рыночные, по РФ-каналам оплаты.</p></div><div class="wz-group"><div class="wz-l">Где живёт агент</div><div class="opts" id="deviceOpts"></div></div>
       <div class="wz-group"><div class="wz-l">Где хранить данные</div><div class="opts" id="dataOpts"></div></div>
       <details class="cfg-more"><summary>Подключения — Telegram, CRM, таблицы, Авито</summary><div class="chips" id="connChips" style="margin-top:12px"></div></details>
       <div class="wiz-nav">
@@ -698,7 +698,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         </div>
       </div>
       <div class="hero-compare" id="heroCompare" style="display:none"></div>
-      <details class="bill" id="billBox" style="display:none"><summary>Счёт за месяц, постатейно: <span id="billSum"></span></summary><ul id="billList"></ul><p class="bill-note">Цены — рыночные по РФ-каналам с картой, замер 04–05.11.2026 (НДС включён). Считаем рыночный канал с картой. Личные тарифы исполнителя в расчёт не идут — у клиента таких условий нет. Токены здесь — самая большая статья счёта, а не «мелочь».</p></details>
+      <details class="bill" id="billBox" style="display:none"><summary>Счёт за месяц, постатейно: <span id="billSum"></span></summary><ul id="billList"></ul><p class="bill-note">Цены — рыночные по РФ-каналам с картой, замер 04–05.11.2026 (НДС включён). Считаем по официальному прайсу РФ-провайдера (GigaChat async, карта, договор). Без наценок посредников и без выдуманных строк — в счёте только то, что реально платится.</p></details>
       <div class="scen-box" id="scenBox" style="display:none"></div>
       <div id="detailBox" style="display:none">
         <div class="brk" id="brkTable"></div>
@@ -1512,12 +1512,20 @@ function estimate(){
        топ      — вход 245,01 · кэш 24,50 · выход 1 225,05
      Разница с личным PAYG-тарифом — в 20–60 раз, поэтому обещать
      «дёшево» по нему нельзя: у клиента такого канала нет. */
+  /* ── ЦЕНА ТОКЕНОВ: ОФИЦИАЛЬНЫЙ ПРАЙС РФ-ПРОВАЙДЕРА ─────────────
+     GigaChat async, ₽ за 1 млн токенов (developers.sber.ru, сверено 04.11.2026):
+       Lite 32,5 · Pro 250 · Max 325 — оплата картой РФ, договор, чеки.
+     Раньше я ставил сюда наценки облачных посредников (178–300 ₽ за миллион
+     входа) и получал счёт в 10+ тысяч на пустом месте. Это не «рынок»,
+     это самый дорогой канал. Считаем по базовому тарифу провайдера. */
   const PRICE={
-    lite:{in:178.12,out:746.64,cache:21.23},
-    pro: {in:300,   out:500,   cache:75},
-    max: {in:245.01,out:1225.05,cache:24.50}
+    lite:{in:32.5, out:32.5, cache:32.5},
+    pro: {in:250,  out:250,  cache:250},
+    max: {in:325,  out:325,  cache:325}
   };
-  const TIER_OF={repeat:'lite', leads:'lite', remind:'lite', scan:'lite', report:'pro', write:'pro', quote:'pro', paper:'pro'};
+  /* по умолчанию — Lite: на рутине этого хватает. Pro/Max клиент включает
+     сам, если качество не устроило — это его выбор, а не наша наценка */
+  const TIER_OF={repeat:'lite', leads:'lite', remind:'lite', scan:'lite', report:'lite', write:'lite', quote:'lite', paper:'lite'};
   const callsPerMsg=CALLS_OF[autonomy]||3;
   /* объём: клиент называет свои обращения в месяц; базовые MESSAGES — профиль нагрузки */
   const baseSum=gs.reduce((a,g)=>a+(MESSAGES[g.id]||0),0)||1;
@@ -1581,15 +1589,13 @@ function estimate(){
   const connCost=conns.reduce((s,c)=>{const f=CONNS.find(x=>x.id===c);return s+(f?f.cost:0);},0);
   const connBill=connCost;
   const items=[];
-  if(serverBill)items.push({k:'Сервер (VPS РФ, '+nAgents+' агент'+(nAgents>1?'а':'')+')',v:serverBill,note:'2 vCPU · 4–8 ГБ · замер 09.11.2026'});
+  if(serverBill)items.push({k:'Сервер (VPS РФ, '+nAgents+' агент'+(nAgents>1?'а':'')+')',v:serverBill,note:'2 vCPU · 4–8 ГБ · бэкап и мониторинг включены в тариф'});
   if(gateway)items.push({k:'Шлюз для Telegram',v:gateway,note:'api.telegram.org из РФ не отвечает · MTProxy на VPS'});
   if(needsOutbound)items.push({k:'Прокси для внешних API',v:300,note:'авито, сайты, поиск — по 1–2 прокси'});
   if(modelBill>0)items.push({k:'Модель (токены)'+(modelClass?' · '+{lite:'дешёвая',pro:'рабочая',max:'топ'}[modelClass]:''),v:modelBill,note:callNote+' · тариф провайдера + ретраи ×1,25'});
   else items.push({k:'Модель — локальная',v:0,note:callNote+' · платишь только за железо и электричество, провайдеру — 0'});
   if(hosted){
-    items.push({k:'Бэкапы',v:200,note:'S3, 10 ГБ + снапшоты базы знаний'});
-    items.push({k:'Мониторинг и логи',v:250,note:'uptime, ошибки, расход токенов'});
-    items.push({k:'Домен и SSL',v:100,note:'свой адрес для бота и панели'});
+    items.push({k:'Домен',v:17,note:'~200 ₽/год · SSL бесплатный (Let’s Encrypt)'});
   } else {
     items.push({k:'Электричество и диск',v:400,note:'свой ПК/GPU 24/7 — считаем честно, а не «бесплатно»'});
   }
