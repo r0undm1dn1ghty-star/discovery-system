@@ -566,6 +566,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 .hcr.total b{color:var(--primary-l);font-size:18px}
 @media (max-width:560px){.hero-compare{grid-template-columns:1fr;gap:6px}.hc-cell.after{text-align:left}.hc-arrow{display:none}}
 </style>
+<link rel="stylesheet" href="ds-nav-fix.css?v=20261110c"/>
 
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
@@ -2384,6 +2385,17 @@ function goCheckout(kind){
 
 /* Текст сообщения, которое клиент пришлёт тебе в личку */
 function orderText(paid){
+  /* Спасение агента — корнер-кейс: у клиента уже что-то стоит, и он не знает,
+     как это описать. Даём готовый каркас из четырёх строк, а не пустой чат. */
+  if(chosenOffer==='optimization'){
+    const est=estimate()||{};
+    const l=['Виктор, привет! Хочу разобрать своего агента.',
+             'Что не так: (тормозит / врёт / жрёт токены / встал)',
+             'Собран на: (бот в Telegram / n8n / свой код / не знаю)',
+             'Что должен делать: ','Что уже пробовали: '];
+    if(est.monthly)l.push('Сейчас по деньгам: ~'+est.monthly+' ₽/мес');
+    return l.join('\n');
+  }
   const est=estimate()||{};
   const offer=chosenOffer==='config'?'Персональная сборка (10 000 ₽)':chosenOffer==='optimization'?'Оптимизация агента (от 25 000 ₽)':'Гайд: 20 конфигураций (3 000 ₽)';
   const lines=[];

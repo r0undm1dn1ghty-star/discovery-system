@@ -1,0 +1,48 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   DS NAV FIX — одна липкая шапка на всех внутренних страницах.
+
+   Проблема: часть страниц держала nav.top в position:relative — шапка
+   уезжала вверх вместе с контентом и «отлипала» от края экрана, а на
+   мобиле над ней оставался зазор от padding. Калькулятор имел
+   margin-top:22px на .nav, из-за чего полоса висела ниже верха экрана.
+
+   Правило: nav.top и header.nav липнут к top:0, фон непрозрачный
+   (иначе под шапкой видно пролетающий текст), высота на телефоне
+   меньше, ссылки прокручиваются горизонтально, а не переносятся
+   в три строки.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+body html, body { margin: 0; }
+
+body nav.top {
+  position: sticky;
+  top: 0;
+  z-index: 70;
+  margin: 0;
+  background: var(--nav-bg, var(--bg, #111524));
+}
+
+@media (max-width: 720px) {
+  body nav.top {
+    padding: 12px 0;
+  }
+  nav.top .wrap,
+  nav.top .fw,
+  nav.top .nav-in {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav.top .wrap::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Калькулятор: полоса не должна висеть ниже верха экрана */
+header.nav {
+  position: sticky;
+  top: 0;
+}
+@media (max-width: 720px) {
+  .nav { margin-top: 0; }
+}
