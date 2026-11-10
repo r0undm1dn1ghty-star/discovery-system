@@ -2348,7 +2348,8 @@ function copyBriefText(text){
 /* Копируем ДО перехода: если в Telegram поле окажется пустым (iOS, старые клиенты),
    расчёт уже в буфере — вставится одним удержанием. */
 function sendToTg(kind){
-  const full=briefBody(false,briefUrl(),kind);
+  /* у спасения агента свой каркас: клиенту проще вписать, что сломалось */
+  const full=(kind==='optimization')?orderText(false):briefBody(false,briefUrl(),kind);
   const text=full.length<=DEEP_LIMIT?full:briefCompact(kind);
   tgSnapshot(kind,false);
   copyBriefText(full).catch(function(){}); /* буфер — всегда полный расчёт, лимита нет */
