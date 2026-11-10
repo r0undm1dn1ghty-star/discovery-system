@@ -264,7 +264,7 @@ footer a:hover{text-decoration:underline}
 @media(max-width:980px){
  .hero{grid-template-columns:1fr;min-height:0;padding:22px 0 26px;gap:18px}
  .showcase{margin-top:4px}
- .showcase .vw-stage{height:400px}
+ .showcase .vw-stage{height:auto;min-height:452px}
 }
 @media(max-width:420px){ .showcase .vw-card{width:268px;margin-left:-134px} }
 
@@ -1117,7 +1117,7 @@ document.querySelectorAll('.msvg').forEach(function(s){io.observe(s);});
 
 /* ── витрина: одно окно, настоящий телеграм, без соседей ── */
 .showcase{position:relative}
-.showcase .vw-stage{position:relative;height:452px;touch-action:pan-y;cursor:grab;overflow:hidden}
+.showcase .vw-stage{position:relative;height:auto;min-height:452px;touch-action:pan-y;cursor:grab;overflow:hidden}
 .showcase .vw-stage.drag{cursor:grabbing}
 .showcase .vw-card{width:300px;margin:0 auto;background:#17212b;border:1px solid rgba(255,255,255,.13);
  border-radius:14px;overflow:hidden;box-shadow:0 20px 46px rgba(6,12,26,.5);display:none}
@@ -1133,7 +1133,8 @@ document.querySelectorAll('.msvg').forEach(function(s){io.observe(s);});
 .tg-who b{font:600 15px/1.1 var(--sans);color:#eef2fb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tg-who i{font:400 14px/1 var(--mono);color:#8fa8ff;font-style:normal}
 .tg-ico{margin-left:auto;color:#7d8fa5;font-size:18px;line-height:1}
-.tg-body{background:#0e1621;padding:12px 10px 6px;display:flex;flex-direction:column;gap:7px;height:290px;overflow:hidden}
+.tg-body{background:#0e1621;padding:12px 10px 6px;display:flex;flex-direction:column;gap:7px;height:290px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none}
+.tg-body::-webkit-scrollbar{display:none}
 .tg-day{align-self:center;font:500 14px/1 var(--mono);color:#9fb0c4;background:rgba(255,255,255,.06);
  padding:5px 9px;border-radius:8px;margin-bottom:2px}
 .tg-in,.tg-out{position:relative;max-width:86%;padding:8px 10px 7px;border-radius:12px;
@@ -1175,7 +1176,7 @@ document.querySelectorAll('.msvg').forEach(function(s){io.observe(s);});
 .vw-dots i.on{background:#8fa8ff}
 @media(max-width:980px){
  .hero.hero-split{grid-template-columns:1fr!important;min-height:0;padding:22px 0 26px;gap:18px}
- .showcase .vw-stage{height:412px}
+ .showcase .vw-stage{height:auto;min-height:452px}
 }
 @media(max-width:420px){ .showcase .vw-card{width:288px} }
 </style>
