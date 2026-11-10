@@ -1,18 +1,23 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   DS NAV FIX — одна липкая шапка на всех внутренних страницах.
+   DS NAV FIX — одна липкая шапка на всех страницах сайта.
 
-   Проблема: часть страниц держала nav.top в position:relative — шапка
-   уезжала вверх вместе с контентом и «отлипала» от края экрана, а на
-   мобиле над ней оставался зазор от padding. Калькулятор имел
-   margin-top:22px на .nav, из-за чего полоса висела ниже верха экрана.
+   Что лечим:
+   1) часть страниц держала nav.top в position:relative — шапка уезжала вверх
+      вместе с контентом и «отлипала» от края экрана;
+   2) на nacenka у body оставался дефолтный margin 8px — полоса висела ниже
+      верха экрана;
+   3) калькулятор имел margin-top:22px на .nav — та же щель сверху;
+   4) шапка была ниже своих ссылок (height 56px при тап-зоне 44px и padding):
+      низ полосы срезал текст и тап-зоны — «обрезанный снизу навбар»;
+   5) flex-wrap рвал меню на два ряда — полоса вырастала до 120px.
 
-   Правило: nav.top и header.nav липнут к top:0, фон непрозрачный
-   (иначе под шапкой видно пролетающий текст), высота на телефоне
-   меньше, ссылки прокручиваются горизонтально, а не переносятся
-   в три строки.
+   Правило: липнем к top:0, высота по содержимому, одна строка.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-body html, body { margin: 0; }
+html,
+body {
+  margin: 0;
+}
 
 body nav.top {
   position: sticky;
@@ -22,27 +27,49 @@ body nav.top {
   background: var(--nav-bg, var(--bg, #111524));
 }
 
-@media (max-width: 720px) {
-  body nav.top {
-    padding: 12px 0;
-  }
-  nav.top .wrap,
-  nav.top .fw,
-  nav.top .nav-in {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  nav.top .wrap::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-/* Калькулятор: полоса не должна висеть ниже верха экрана */
 header.nav {
   position: sticky;
   top: 0;
 }
+
+/* одна строка и высота по контенту — иначе полоса обрезает тап-зоны */
+body nav.top .wrap,
+body nav.top .fw,
+body nav.top .nav-in,
+body header.nav .nav-in {
+  flex-wrap: nowrap;
+  align-items: center;
+  min-height: var(--nav-h, 56px);
+  height: auto;
+  padding-block: 6px;
+}
+
+body nav.top a,
+body header.nav a,
+body header.nav nav a {
+  white-space: nowrap;
+}
+
 @media (max-width: 720px) {
-  .nav { margin-top: 0; }
+  body nav.top {
+    padding: 6px 0;
+  }
+  body header.nav .nav-in {
+    padding-block: 6px;
+  }
+  /* длинное меню прокручивается вбок, а не переносится в три строки */
+  body nav.top .wrap,
+  body nav.top .fw,
+  body nav.top .nav-in {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  body nav.top .wrap::-webkit-scrollbar,
+  body nav.top .fw::-webkit-scrollbar,
+  body nav.top .nav-in::-webkit-scrollbar {
+    display: none;
+  }
+  .nav {
+    margin-top: 0;
+  }
 }

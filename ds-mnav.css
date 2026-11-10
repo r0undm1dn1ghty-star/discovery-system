@@ -264,7 +264,7 @@ html,body{overflow-x:clip}
 header.nav{position:sticky;top:0;z-index:60;background:rgba(15,23,48,.94);
   -webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
   border-bottom:1px solid rgba(255,255,255,.10)}
-header.nav .nav-in{min-height:56px!important;height:56px!important;padding-top:0!important;padding-bottom:0!important;border-bottom:0!important}
+header.nav .nav-in{min-height:56px!important;height:auto!important;padding-top:8px!important;padding-bottom:8px!important;border-bottom:0!important}
 header.nav .brand{min-height:44px;padding:0 8px;border-radius:8px;color:#eef2fb!important}
 header.nav .brand:hover{background:rgba(255,255,255,.07)}
 header.nav .nav-in > nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
