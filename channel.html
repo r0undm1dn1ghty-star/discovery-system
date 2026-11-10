@@ -419,8 +419,8 @@ setTimeout(reveal,350);
   var L = D.links.map(function(l){ return {a:N[l[0]],b:N[l[1]],t:l[2]}; });
   var EATERS = N.filter(function(n){return n.st===-2;});
   EATERS.forEach(function(e,k){ e.code = ('0'+(k+1)).slice(-2); });
-  var EAстоимость владенияUNT = {};
-  D.links.forEach(function(l){ if(l[2]===0){ EAстоимость владенияUNT[l[1]]=(EAстоимость владенияUNT[l[1]]||0)+1; } });
+  var EATERS_CNT = {};
+  D.links.forEach(function(l){ if(l[2]===0){ EATERS_CNT[l[1]]=(EATERS_CNT[l[1]]||0)+1; } });
   var COL = ['#3fb98a','#63b07c','#b0a35f','#d18b4a','#c25f52','#8e3b3b'];
   var W=0,H=0,DPR=1,hover=-1,running=false,raf=0,R=0;
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -513,7 +513,7 @@ setTimeout(reveal,350);
     hover=best;
     if(best>=0&&tip){var n=N[best];
       var st=n.st===-2?'':(n.st<0?'без оценки':'стадия '+n.st);
-      var lbl = (n.st===-2) ? ('давит на '+(EAстоимость владенияUNT[n.i]||0)+' рынков') : (n.sec+' · '+st);
+      var lbl = (n.st===-2) ? ('давит на '+(EATERS_CNT[n.i]||0)+' рынков') : (n.sec+' · '+st);
       tip.innerHTML='<b>'+((n.st===-2)?('фактор '+n.code):n.name)+'</b><span>'+lbl+'</span>';
       tip.style.transform='translate('+Math.round(n.x+14)+'px,'+Math.round(n.y-12)+'px)';tip.hidden=false;}
     else if(tip){tip.hidden=true;}
