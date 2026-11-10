@@ -535,6 +535,7 @@ footer a:hover{text-decoration:underline}
   chip:'11 из 12 подписаны'}
 ]}
 ];
+  var lastPick=[];
   var stage = document.getElementById('vwStage');
   if(!stage) return;
   S.forEach(function(scr, ci){
@@ -549,14 +550,30 @@ footer a:hover{text-decoration:underline}
     function msg(html, cls){
       var d=document.createElement('div'); d.className=cls; d.innerHTML=html; body.appendChild(d); body.scrollTop=body.scrollHeight;
     }
-    function time(){ var d=new Date(); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+    /* время в чате идёт от времени сцены, а не от часов посетителя:
+       иначе под «Вторник · 23:47» висело бы 17:23 */
+    var tm=/·\s*(\d{1,2}):(\d{2})/.exec(scr.day||''), base=tm?(+tm[1])*60+(+tm[2]):9*60, tick=0;
+    function time(){
+      var total=base+(tick++), h=Math.floor(total/60)%24, m=total%60;
+      return ('0'+h).slice(-2)+':'+('0'+m).slice(-2);
+    }
     function render(step){
-      (step.in||[]).forEach(function(t){ msg(t+'<span class="tg-tm">'+time()+' <i class="ok">✓✓</i></span>','tg-out'); });
+      /* если человек выбрал другую кнопку, чат не должен отвечать за него другое:
+         подставляем его настоящий текст вместо заготовленного и переносим его в ответ агента */
+      var pick=lastPick[ci];
+      function align(t){
+        if(!pick||!step.in||!step.in[0]) return t;
+        var needle=String(step.in[0]).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+        return t.replace(new RegExp(needle,'gi'), pick);
+      }
+      var lines=(step.in||[]).map(function(t,i){ return (i===0&&pick)?pick:t; });
+      if(pick&&!lines.length) lines=[pick];
+      lines.forEach(function(t){ msg(t+'<span class="tg-tm">'+time()+' <i class="ok">✓✓</i></span>','tg-out'); });
       if(step.doc){ msg('<span class="tg-pdf">PDF</span><span><b>'+step.doc[0]+'</b><i>'+step.doc[1]+'</i><i>'+step.doc[2]+'</i></span>','tg-doc'); }
       if(step.funnel){ msg(step.funnel.map(function(f){return '<i><b>'+f[0]+'</b> '+f[1]+'</i>';}).join(''),'tg-funnel'); }
       if(step.check){ msg(step.check.map(function(c){return '<span>✓ '+c+'</span>';}).join(''),'tg-check'); }
-      (step.out||[]).forEach(function(t){ msg(t+'<span class="tg-tm">'+time()+'</span>','tg-in'); });
-      if(step.chip){ msg('<b>'+step.chip+'</b>','tg-chip'); }
+      (step.out||[]).forEach(function(t){ msg(align(t)+'<span class="tg-tm">'+time()+'</span>','tg-in'); });
+      if(step.chip){ msg('<b>'+align(step.chip)+'</b>','tg-chip'); }
       kb.innerHTML=''; 
       if(step.b && step.b.length){
         kb.hidden=false;
@@ -572,7 +589,9 @@ footer a:hover{text-decoration:underline}
     }
     var queue = scr.steps.slice(), current=0;
     function advance(label){
-      msg(label+'<span class="tg-tm">'+time()+' <i class="ok">✓✓</i></span>','tg-out');
+      lastPick[ci]=label;
+      /* реплику в чат выводит render() — ровно один раз и ровно тем текстом,
+         который человек выбрал; здесь только фиксируем выбор */
       current++;
       if(current < queue.length){ render(queue[current]); }
     }
