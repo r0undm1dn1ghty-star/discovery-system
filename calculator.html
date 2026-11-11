@@ -35,7 +35,7 @@
   :root{
     --bg:#f2f4f6; --bg2:#ffffff; --bg3:#e9edf1;
     --panel:#ffffff; --panel2:#e9edf1; --line:rgba(16,20,31,.10); --line2:rgba(16,20,31,.14);
-    --ink:#10141f; --txt:#10141f; --body:#414a5e; --muted:#414a5e; --meta:#666f85; --dim:#7a8296; --faint:#7a8296;
+    --ink:#10141f; --txt:#10141f; --body:#414a5e; --muted:#414a5e; --meta:#5c6479; --dim:#7a8296; --faint:#7a8296;
     --primary:#1b2a6b; --primary-l:#1b2a6b; --primary-dim:rgba(27,42,107,.07); --primary-line:rgba(27,42,107,.24);
     --emerald:#1b2a6b; --emerald-l:#24368f;
     --accent:#1b2a6b; --navy:#1b2a6b; --navy2:#24368f; --btn:#1b2a6b; --btn-h:#24368f; --btn-t:#f2f6ff;
@@ -474,6 +474,19 @@ header.nav .nav-in > .brand img{filter:none}
 .auto-card.multi.on .ac-box{background:var(--primary);border-color:var(--primary)}
 .auto-card.multi.on .ac-box:after{content:"";position:absolute;left:5px;top:1px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg)}
 .multi-count{display:inline-flex;align-items:center;gap:8px;margin:10px 0 0;font:500 14px/1.4 var(--mono);color:var(--primary-l)}
+
+/* футеры собраны в div.foot / div.f — ссылки тоже должны быть тапабельными */
+.foot a,
+.f a,
+.doc a,
+.wiz-hint a,
+.hero .quiet a,
+.hero a:not(.btn) {
+  display: inline-block;
+  padding-block: 11px;
+}
+.foot,
+.f { line-height: 1.5; }
 </style>
 <style>
 /* ── AIR v2.4: мета-текст ≥14px (канон 15), светлые хинты героя, воздух шагов ── */
@@ -629,7 +642,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
         </div>
       </details>
       <div class="wiz-nav"><span></span><button class="btn-cta wiz-next" id="next1" disabled onclick="goStep(2)">Дальше — сколько часов →</button></div>
-      <p class="wiz-hint">Оплата из РФ · VPN только на шаге ключа · данные твои · цифры по реальным тарифам провайдеров.</p>
+      <p class="wiz-hint"><b>Дальше — 3 шага, минута, без регистрации.</b> Часы рутины → твоё железо и подключения → счёт владения в рублях в месяц. Оплата из РФ, данные твои.</p>
     </section>
 
     <!-- 02 · рутина (предзаполнена) + самостоятельность: обе ручки цены на одном экране -->
@@ -672,7 +685,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 
 <div class="result" id="result">
     <div class="rcard">
-      <div class="aha-tag" id="ahaTag">Твоя связка готова</div>
+      <div class="aha-tag" id="ahaTag">Твой агент готов</div>
       <div class="aha-title" id="ahaTitle"></div>
       <div class="aha-desc" id="ahaDesc"></div>
       <!-- История результата: сначала часы (рутина vs агент), затем деньги, затем связка.
@@ -752,7 +765,7 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       <div class="offer-tag">Забрать результат</div>
       <p class="persona-why" id="personaWhy" style="display:none"></p>
       <div class="offer-opt" data-prod="build" style="border-color:rgba(27,42,107,.28);background:rgba(27,42,107,.05)">
-        <div class="o-top"><div class="o-name">Персональная сборка — твоя связка</div><span class="o-badge" style="background:rgba(27,42,107,.08);border-color:rgba(27,42,107,.28);color:#24368f">архитектура + гайд по установке · ставишь сам · 24 часа</span></div>
+        <div class="o-top"><div class="o-name">Персональная сборка — твой агент</div><span class="o-badge" style="background:rgba(27,42,107,.08);border-color:rgba(27,42,107,.28);color:#24368f">архитектура + гайд по установке · ставишь сам · 24 часа</span></div>
                 <div class="o-desc">Гайд (20 конфигураций) включён + архитектура под твой кейс + полный гайд установки и отладки. Гарантия: если гайд что-то не покрыл — решаю до 3 твоих вопросов за свой счёт. Без демо и созвонов — всё в переписке. Вклад: 30 мин + доступы по выбору.</div>
         <div class="o-price">10 000 ₽ <small>разово · <a href="service.html" style="color:var(--muted);text-decoration:underline">что входит →</a></small></div>
         <button class="btn-cta" onclick="payNow('build','config')">Оплатить 10 000 ₽ картой →</button>
@@ -760,20 +773,20 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
       </div>
       <div class="offer-opt" data-prod="table">
         <div class="o-top"><div class="o-name">Гайд: 20 конфигураций — собрать самому</div></div>
-        <div class="o-desc">Все связки с моделями и промптами в одной таблице — соберёшь сам за 3–4 часа. Апгрейд до персональной сборки: доплатишь разницу — 7 000 ₽.</div>
+        <div class="o-desc">Все сборки с моделями и промптами в одной таблице — соберёшь сам за 3–4 часа. Апгрейд до персональной сборки: доплатишь разницу — 7 000 ₽.</div>
         <div class="o-price">3 000 ₽ <small>разово</small></div>
         <button class="btn-cta btn-cta-ghost" onclick="payNow('guide','table')">Забрать гайд — 3 000 ₽ →</button>
             <button class="wz-link" style="margin-top:8px;display:block;margin-left:auto;margin-right:auto" onclick="goCheckout('table')">или пришлю гайд в Telegram по расчёту</button>
       </div>
       <div class="offer-opt" data-prod="install" style="border-color:rgba(242,182,101,.22)">
-        <div class="o-top"><div class="o-name">Интеграция под ключ — по числу процессов</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">демо-смена агента за 2 часа · внедрение 1–10 раб. дней</span></div>
-        <div class="o-desc">Один процесс — 29 990 (заменяет ~30 часов рутины в месяц). Три процесса в одном контуре — 49 990 (до ~60 часов). Пять и больше — 79 990, но цена после аудита масштаба: сначала считаем ИИ-мощности и число процессов. Ставлю я, на твоём железе. Состав и чек-лист приёмки фиксируем до старта — без «допов по ходу». <a href="service.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в сервисе →</a></div>
+        <div class="o-top"><div class="o-name">Внедрение под ключ — по числу процессов</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">демо-смена агента за 2 часа · внедрение 1–10 раб. дней</span></div>
+        <div class="o-desc">Один процесс — 29 990 (заменяет ~30 часов рутины в месяц). Три процесса у одного агента — 49 990 (до ~60 часов). Пять и больше — 79 990, но цена после аудита масштаба: сначала считаем ИИ-мощности и число процессов. Ставлю я, на твоём железе. Состав и чек-лист приёмки фиксируем до старта — без «допов по ходу». <a href="service.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в сервисе →</a></div>
         <div class="o-price">29 990 / 49 990 / 79 990 <small>разово · 1–10 рабочих дней · 79 990 — после аудита</small></div>
         <button class="btn-cta btn-cta-ghost" data-tier="self" onclick="goInstall('self')" style="width:100%">1 процесс — 29 990 ₽ →</button>
         <button class="btn-cta btn-cta-ghost" data-tier="smb" onclick="goInstall('smb')" style="width:100%;margin-top:8px">3 процесса — 49 990 ₽ →</button>
         <button class="btn-cta btn-cta-ghost" data-tier="mid" onclick="goInstall('mid')" style="width:100%;margin-top:8px">5+ процессов — 79 990 ₽ (после аудита) →</button>
         
-  <div class="offer-opt" data-prod="optimization" style="border-color:rgba(242,182,101,.22)"> <div class="o-top"><div class="o-name">Оптимизация и переезд с Claude — от 25 000 ₽</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">старт от 3 дней · замер до/после</span></div> <div class="o-desc">Агент уже работает, но подписка не платится или аккаунт заблокировали — переношу связку на модели с оплатой из РФ, без VPN. Аудит → пересборка промптов и логики → замер «до/после». После переезда владение 3 400–4 600 ₽/мес. Промокод с разбора Claude — KLODNAOBOROT: −10%, то есть 22 500 ₽.</div> <div class="o-price">от 25 000 ₽ <small>разово · с промокодом 22 500 ₽</small></div> <button class="btn-cta btn-cta-ghost" onclick="goCheckout('optimization')">Заказать аудит →</button> </div> data-prod="channel">
+  <div class="offer-opt" data-prod="optimization" style="border-color:rgba(242,182,101,.22)"> <div class="o-top"><div class="o-name">Оптимизация и переезд с Claude — от 25 000 ₽</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">старт от 3 дней · замер до/после</span></div> <div class="o-desc">Агент уже работает, но подписка не платится или аккаунт заблокировали — переношу агента на модели с оплатой из РФ, без VPN. Аудит → пересборка промптов и логики → замер «до/после». После переезда владение 3 400–4 600 ₽/мес. Промокод с разбора Claude — KLODNAOBOROT: −10%, то есть 22 500 ₽.</div> <div class="o-price">от 25 000 ₽ <small>разово · с промокодом 22 500 ₽</small></div> <button class="btn-cta btn-cta-ghost" onclick="goCheckout('optimization')">Заказать аудит →</button> </div> data-prod="channel">
         <div class="o-top"><div class="o-name">Подписка на канал Discovery System</div></div>
         <div class="o-desc">Сигналы рынка ИИ-агентов с источниками и датами. Что заметить, что проверить, что забрать в работу. Чтобы не упустить момент.</div>
         <div class="o-price">0 ₽ <small>Telegram · бесплатно</small></div>
@@ -972,7 +985,7 @@ const MODELS={ /* подписи — нейтральные классы, без
   multimodal:{cost:285,name:'Мультимодальная (Pro-класс)',cat:'Облако',dets:['Картинки, брифы, распознавание','Оплата за изображение отдельно','Без VPN, рубли']},
   open:{cost:150,name:'Эконом-класс (старт)',cat:'Облако',dets:['Дешёвый вход для пробы','Ниже качество на сложном','Апгрейд в один клик']},
   local:{cost:0,name:'Локальная модель (твоё железо)',cat:'Локально',dets:['Провайдеру не платишь','Настройка ~20–40 ч или персональной сборкой 10 000 ₽','Данные никуда не уходят']},
-  hybrid:{cost:400,name:'Гибрид: локально + API',cat:'Гибрид',dets:['Черновики локально','Сложное — через API','Безопасный контур']}
+  hybrid:{cost:400,name:'Гибрид: локально + API',cat:'Гибрид',dets:['Черновики локально','Сложное — через API','Всё у тебя']}
 };
 
 /* ====== STATE ====== */
@@ -1293,7 +1306,7 @@ function renderHeroCompare(e,rate){
     leftL='Подписка сейчас'; leftV=B+' ₽/мес'; rightL='Своя связка'; rightV=M+' ₽/мес';
     note=(e.monthly<st.base
       ? 'Дешевле на '+(st.base-e.monthly).toLocaleString('ru-RU')+' ₽/мес. '
-      : 'Дороже на '+(e.monthly-st.base).toLocaleString('ru-RU')+' ₽/мес — платишь за то, что контур твой: ')
+      : 'Дороже на '+(e.monthly-st.base).toLocaleString('ru-RU')+' ₽/мес — платишь за то, что всё у тебя: ')
       +'аккаунт и данные у тебя, отключить не смогут.';
   } else if(start==='legacy'){
     leftL='Уходит сейчас'; leftV='~'+B+' ₽/мес'; rightL='После оптимизации'; rightV=M+' ₽/мес';
@@ -1399,11 +1412,11 @@ function arrangeOffers(recKey){
   }
 }
 
-const PERSONA_COPY={  P1:{tag:'Твой путь — свой контур',
+const PERSONA_COPY={  P1:{tag:'Твой путь — всё у тебя',
       title:'Агент, который <em>нельзя отключить</em>',
       desc:'Данные и агент — на твоём железе. Никто не может закрыть аккаунт и отобрать доступ: это не обещание, а архитектура. Оплата рублями. VPN — только на шаге ключа, дальше работа без VPN.',
       spec:['Агент и данные физически у тебя','Оплата картой РФ / СБП','Дальше — без VPN'],
-      best:'install',why:'Тебе важнее всего, чтобы контур был твой. Персональная сборка (10 000 ₽) — данные остаются на диске; интеграция под ключ (от 29 990 ₽) — если нужны CRM и заявки.'},
+      best:'install',why:'Тебе важнее всего, чтобы всё было у тебя. Персональная сборка (10 000 ₽) — данные остаются на диске; интеграция под ключ (от 29 990 ₽) — если нужны CRM и заявки.'},
   P2:{tag:'Твой путь — результат под ключ',
       title:'Связка, которая <em>работает без тебя</em>',
       desc:'Ты покупаешь результат, а не инструмент. Соберу под твой процесс и отдам работающим — правки до приёмки, тебе не нужно быть техзаказчиком.',
@@ -1637,7 +1650,7 @@ const LENSES={
     ws4s:'Каналы, через которые агент работает с миром. Нажми — цена обновится сразу.',
     ws5s:'Железо, данные, оплата. По умолчанию — РФ-облако, можно поменять: цена пересчитается сразу.',
     ws6s:'Два вопроса, 10 секунд. От этого зависит законность тарифов и персданные клиентов.',
-    tag:'Твоя связка готова',preset:null,next1:'Выбрал — что жрёт время →'},
+    tag:'Твой агент готов',preset:null,next1:'Выбрал — что жрёт время →'},
   people:{
     title:'Сколько стоит <em>твой человек на рутине</em>',
     lead:'Считаем долю зарплаты, которую съедает рутина, против владения агентом. Человек остаётся — на том, что требует головы.',
@@ -2082,7 +2095,7 @@ let chosenOffer=null;
 let installTier=null;
 const OFFER_NAMES={config:'Персональная сборка — 10 000 ₽',table:'Гайд: 20 конфигураций — 3 000 ₽',
   optimization:'Оптимизация агента — от 25 000 ₽',diagnostic:'Диагностика — бриф, 0 ₽'};
-const INSTALL_NAMES={self:'Интеграция: 1 процесс — 29 990 ₽',smb:'Интеграция: 3 процесса — 49 990 ₽',mid:'Интеграция: 5+ процессов — 79 990 ₽ (после аудита)'};
+const INSTALL_NAMES={self:'Внедрение: 1 процесс — 29 990 ₽',smb:'Внедрение: 3 процесса — 49 990 ₽',mid:'Внедрение: 5+ процессов — 79 990 ₽ (после аудита)'};
 function recKind(k){ return (!k||k==='build')?'config':k; }
 function productLabel(kind){
   if(kind==='install') return INSTALL_NAMES[installTier]||'Внедрение под ключ';
@@ -2515,6 +2528,58 @@ header.nav nav{font-size:14.5px!important;gap:22px!important;margin-left:auto!im
 
 /* «Спасение агента» — только если агент уже стоит */
 body:not([data-start="legacy"]) .offer-opt[data-prod="optimization"]{display:none!important}
+
+/* ── отклик на нажатие: кнопка отвечает в момент касания, а не после клика ── */
+.btn,
+button,
+.door,
+.shelf-row,
+.offer-opt,
+.card,
+.chip,
+.rcard,
+.tg-kb button,
+a.btn {
+  transition: transform .09s cubic-bezier(.22,.61,.36,1), background .18s var(--ease, ease), border-color .18s var(--ease, ease), color .15s ease;
+}
+.btn:active,
+button:active,
+.door:active,
+.shelf-row:active,
+.offer-opt:active,
+.chip:active,
+.rcard:active,
+.tg-kb button:active,
+a.btn:active {
+  transform: scale(.98);
+}
+.door:active,
+.shelf-row:active { transform: scale(.995); }
+
+/* ── фокус с клавиатуры: видно всегда ── */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #24368f;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.hero a:focus-visible,
+.hero button:focus-visible,
+header a:focus-visible,
+header button:focus-visible { outline-color: #8fa8ff; }
+
+/* ── тап-зоны: ссылки в подписях и футере не меньше 44px ── */
+footer a,
+.quiet a,
+.pnote a,
+.src a,
+p a {
+  display: inline-block;
+  padding-block: 11px;
+}
+footer p { margin: 2px 0; }
 </style>
 </body>
 </html>

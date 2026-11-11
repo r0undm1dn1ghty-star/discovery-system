@@ -17,7 +17,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://discovery-system.ru/service.html#webpage","url":"https://discovery-system.ru/service.html","name":"Сервис — Discovery System","description":"Не прайс-лист — сервис. Выбери, с чего начать: сцена покажет результат, цифру издержки и формат с ценой. Гайд 3 000 ₽, персональная сборка 10 000 ₽, интеграция 29 990–79 990 ₽, поддержка 15–40 тыс. ₽/мес, калькулятор бесплатно.","inLanguage":"ru","datePublished":"2026-11-06","dateModified":"2026-11-06","author":{"@id":"https://discovery-system.ru/#author"},"publisher":{"@id":"https://discovery-system.ru/#organization"},"isPartOf":{"@type":"WebSite","url":"https://discovery-system.ru/","name":"Discovery System"}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f2f4f6;--ink:#10141f;--body:#414a5e;--meta:#7a8296;--hair:rgba(16,20,31,.10);--hair2:rgba(16,20,31,.06);--navy:#1b2a6b;--navy2:#24368f;--glow:rgba(77,104,220,.32);--btn-t:#f2f6ff;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Onest',var(--sans);--ease:cubic-bezier(.2,.7,.2,1)}
+:root{--bg:#f2f4f6;--ink:#10141f;--body:#414a5e;--meta:#5c6479;--hair:rgba(16,20,31,.10);--hair2:rgba(16,20,31,.06);--navy:#1b2a6b;--navy2:#24368f;--glow:rgba(77,104,220,.32);--btn-t:#f2f6ff;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Onest',var(--sans);--ease:cubic-bezier(.2,.7,.2,1)}
 .zone-dark{--ink:#eef2fb;--body:#b9c1d6;--meta:#8a94ad;--hair:rgba(255,255,255,.14);--hair2:rgba(255,255,255,.08);--accent:#8fa8ff;background:#0f1730;color:var(--body);position:relative;overflow:hidden;isolation:isolate}
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -233,6 +233,71 @@ header.nav a.brand{flex:0 0 auto}
 .hero-cta .quiet-link{font-family:var(--mono);font-size:15px;color:#c8d0e2;text-decoration:underline;text-underline-offset:3px}
 .hero-cta .quiet-link:hover{color:#f4f7fe}
 
+
+/* ── отклик на нажатие: кнопка отвечает в момент касания, а не после клика ── */
+.btn,
+button,
+.door,
+.shelf-row,
+.offer-opt,
+.card,
+.chip,
+.rcard,
+.tg-kb button,
+a.btn {
+  transition: transform .09s cubic-bezier(.22,.61,.36,1), background .18s var(--ease, ease), border-color .18s var(--ease, ease), color .15s ease;
+}
+.btn:active,
+button:active,
+.door:active,
+.shelf-row:active,
+.offer-opt:active,
+.chip:active,
+.rcard:active,
+.tg-kb button:active,
+a.btn:active {
+  transform: scale(.98);
+}
+.door:active,
+.shelf-row:active { transform: scale(.995); }
+
+/* ── фокус с клавиатуры: видно всегда ── */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #24368f;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.hero a:focus-visible,
+.hero button:focus-visible,
+header a:focus-visible,
+header button:focus-visible { outline-color: #8fa8ff; }
+
+/* ── тап-зоны: ссылки в подписях и футере не меньше 44px ── */
+footer a,
+.quiet a,
+.pnote a,
+.src a,
+p a {
+  display: inline-block;
+  padding-block: 11px;
+}
+footer p { margin: 2px 0; }
+
+/* футеры собраны в div.foot / div.f — ссылки тоже должны быть тапабельными */
+.foot a,
+.f a,
+.doc a,
+.wiz-hint a,
+.hero .quiet a,
+.hero a:not(.btn) {
+  display: inline-block;
+  padding-block: 11px;
+}
+.foot,
+.f { line-height: 1.5; }
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
 </head>
@@ -267,7 +332,7 @@ header.nav a.brand{flex:0 0 auto}
 <div class="doors fx" role="group" aria-label="С чем вы пришли — выберите вариант" id="doors">
 <button type="button" class="door" aria-pressed="true" data-p="6">
         <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h9a4 4 0 0 1 4 4v10H8a4 4 0 0 1-4-4V5z"/><path d="M17 9h3v10h-3"/></svg></span>
-        <span class="d-t"><b>Соберу сам</b><span>Хочу настроить своими руками — нужны проверенные связки и цены</span></span>
+        <span class="d-t"><b>Соберу сам</b><span>Хочу настроить своими руками — нужны проверенные сборки и цены</span></span>
       </button>
       <button type="button" class="door" aria-pressed="false" data-p="1">
 <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
@@ -287,7 +352,7 @@ header.nav a.brand{flex:0 0 auto}
 </button>
 <button type="button" class="door" aria-pressed="false" data-p="5">
 <span class="d-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v10"/><path d="M7 8l5-5 5 5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></span>
-<span class="d-t"><b>Потерял Claude</b><span>Подписка не платится, VPN падает — связки, которые живут в РФ без VPN, адаптация за вечер</span></span>
+<span class="d-t"><b>Потерял Claude</b><span>Подписка не платится, VPN падает — сборки, которые живут в РФ без VPN, адаптация за вечер</span></span>
 </button>
 </div>
 
@@ -330,7 +395,7 @@ header.nav a.brand{flex:0 0 auto}
 </div>
 <div class="p-offer s3 stag">
 <div class="o-txt">
-<span class="o-name">Интеграция: 1 процесс</span>
+<span class="o-name">Внедрение: 1 процесс</span>
             <span class="o-price">29 990 ₽ разово</span>
 <span class="o-note">заменяет 30 часов рутины в месяц · один процесс под ключ · срок 1–10 дней</span>
 </div>
@@ -343,17 +408,17 @@ header.nav a.brand{flex:0 0 auto}
 <div class="p-grid">
 <div class="s1 stag">
 <p class="p-kick">боль → выход</p>
-<h3 class="p-job">Авито, CRM и таблицы живут отдельно. Агент сводит их в один контур.</h3>
+<h3 class="p-job">Авито, CRM и таблицы живут отдельно. Агент сводит их в одну систему.</h3>
 </div>
 <div class="p-cost s2 stag">
 <p class="p-kick">твоя рутина</p>
 <p class="p-num">90 000 <small>₽ в месяц руками</small></p>
-<p class="p-cap">45 часов в месяц на сверки и переносы. С агентом — <b>4 600 ₽/мес</b>, три процесса в одном контуре. Работу не останавливаем: срок 1–10 дней.</p>
+<p class="p-cap">45 часов в месяц на сверки и переносы. С агентом — <b>4 600 ₽/мес</b>, три процесса у одного агента. Работу не останавливаем: срок 1–10 дней.</p>
 </div>
 </div>
 <div class="p-offer s3 stag">
 <div class="o-txt">
-<span class="o-name">Интеграция: 3 процесса</span>
+<span class="o-name">Внедрение: 3 процесса</span>
             <span class="o-price">49 990 ₽ разово</span>
 <span class="o-note">бот + CRM/Авито/таблицы · память между чатами · критерии приёмки до старта</span>
 </div>
@@ -378,7 +443,7 @@ header.nav a.brand{flex:0 0 auto}
 </div>
 <div class="p-offer s3 stag">
 <div class="o-txt">
-<span class="o-name">Интеграция: 5+ процессов</span>
+<span class="o-name">Внедрение: 5+ процессов</span>
             <span class="o-price">79 990 ₽ разово</span>
 <span class="o-note">цена после аудита масштаба — сначала считаем ИИ-мощности и число процессов, потом сумма · месяц сопровождения включён</span>
 </div>
@@ -396,7 +461,7 @@ header.nav a.brand{flex:0 0 auto}
 <div class="p-cost s2 stag">
 <p class="p-kick">гайд · 20 сборок</p>
 <p class="p-num">3 000 <small>₽ разово · доступ навсегда</small></p>
-<p class="p-cap">Переношу связку на модели, доступные из РФ: аудит, пересборка промптов и логики, замер «до/после». <b>Работа не встаёт</b> на время переноса.</p>
+<p class="p-cap">Переношу агента на модели, доступные из РФ: аудит, пересборка промптов и логики, замер «до/после». <b>Работа не встаёт</b> на время переноса.</p>
 </div>
 </div>
 <div class="p-offer s3 stag">
@@ -416,7 +481,7 @@ header.nav a.brand{flex:0 0 auto}
           <div class="p-cost s2 stag">
             <p class="p-kick">гайд · 20 сборок</p>
             <p class="p-num">3 000 <small>₽ разово · доступ навсегда</small></p>
-            <p class="p-cap">Проверенные связки: модели, цены по РФ, что живёт без VPN, что окупается за месяц. <b>Обновления</b> — бесплатно, вопросы — в переписке.</p>
+            <p class="p-cap">Проверенные сборки: модели, цены по РФ, что живёт без VPN, что окупается за месяц. <b>Обновления</b> — бесплатно, вопросы — в переписке.</p>
           </div>
         </div>
         <div class="p-offer s3 stag">
@@ -494,7 +559,7 @@ header.nav a.brand{flex:0 0 auto}
 <!-- один контур: входящие → агент → выход -->
 <section class="flow">
 <div class="shead">
-<h2>Один контур</h2>
+<h2>Один агент</h2>
 <p class="s">Всё, что приходит в бизнес, уходит агенту — и возвращается <b>готовой работой</b>. Не набор скриптов: один агент с общей памятью, в тех же чатах, где твоя команда.</p>
 </div>
 <div class="flowbox fx">
@@ -520,7 +585,7 @@ header.nav a.brand{flex:0 0 auto}
 </g>
 <rect x="388" y="196" width="164" height="88" rx="16" class="fb-core"/>
 <text x="470" y="232" text-anchor="middle" class="fb-core-t">Агент</text>
-<text x="470" y="254" text-anchor="middle" class="fb-core-s">один контур</text>
+<text x="470" y="254" text-anchor="middle" class="fb-core-s">один агент</text>
 <text x="470" y="270" text-anchor="middle" class="fb-core-s">одна память</text>
 <g class="fb-ins">
 <text x="28" y="69" class="fb-in">Авито</text>
@@ -548,7 +613,7 @@ header.nav a.brand{flex:0 0 auto}
 <p class="s">Все цены на одном экране, <b>видны до разговора</b>. Строка раскрывается: состав, срок и критерии приёмки — до оплаты.</p>
 </div>
 <button type="button" class="shelf-row fx" data-offer="install">
-<span class="n">Интеграция под ключ</span>
+<span class="n">Внедрение под ключ</span>
           <span class="p">29 990 / 49 990 / 79 990 ₽</span>
 <span class="d">соло · самозанятый · ИП · средний бизнес · разово</span>
 <span class="x" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>
@@ -581,10 +646,10 @@ header.nav a.brand{flex:0 0 auto}
 <button type="button" class="shelf-row fx" data-offer="calc">
 <span class="n">Калькулятор и канал</span>
 <span class="p">0 ₽</span>
-<span class="d">связка в рублях за минуту · сигналы рынка с источниками — t.me/discoverysystem</span>
+<span class="d">рутина в рублях за минуту · сигналы рынка с источниками — t.me/discoverysystem</span>
 <span class="x" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg></span>
 </button>
-<p class="shelf-vs fx">Для сравнения: студия — чёрный ящик <b>от 50 000 ₽</b>, найм — <b>40–60 тыс. ₽ каждый месяц</b>. Своя связка после установки стоит 2–4К ₽/мес — это счёт провайдеров модели и хостинга.</p>
+<p class="shelf-vs fx">Для сравнения: студия — чёрный ящик <b>от 50 000 ₽</b>, найм — <b>40–60 тыс. ₽ каждый месяц</b>. Свой агент после установки стоит 2–4К ₽/мес — это счёт провайдеров модели и хостинга.</p>
 </section>
 </main>
 
@@ -615,7 +680,7 @@ header.nav a.brand{flex:0 0 auto}
 <!-- финал -->
 <div class="zone-dark end">
 <div class="wrap end-in">
-<p class="fx">Опиши задачу в личке — отвечаю лично, без ботов. Если удобнее сначала прикинуть — калькулятор покажет связку в рублях за минуту.</p>
+<p class="fx">Опиши задачу в личке — отвечаю лично, без ботов. Если удобнее сначала прикинуть — калькулятор покажет рутину в рублях за минуту.</p>
 <div class="cta fx" style="animation-delay:.14s">
 <a class="btn btn-p" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9E%D0%BF%D0%B8%D1%88%D1%83%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D1%83%20%E2%80%94%20%D0%BF%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%20%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%20%D0%B8%20%D1%86%D0%B5%D0%BD%D1%83.">Описать задачу</a>
 </div>
@@ -690,7 +755,7 @@ setTimeout(function(){play();},1200); /* фоллбек: скрытый таб /
 (function(){
 'use strict';
 var OFFERS={
-install:{kick:'разово · до старта',ctx:'шаг: выбран вариант «Личный» на этой странице — установка закрывает её боль целиком',title:'Установка под ключ',what:'Сборка агентов под твои процессы, база знаний на твоих документах, интеграция CRM / Авито / таблиц, память между чатами.',lvls:[['Персональная сборка','10 000 ₽ — гайд-инструкция по установке и интеграции + удалённая помощь с отладкой; ставишь сам'],['Интеграция: 1 процесс','29 990 ₽ — заявки и контент: клиенту ответ приходит ночью, а утром'],['Интеграция: 3 процесса','49 990 ₽ — бот + CRM / Авито / таблицы в одном контуре, работа не останавливается'],['Интеграция: 5+ процессов','79 990 ₽ — несколько агентов на процессы, цена после аудита масштаба, месяц сопровождения']],when:'1–10 дней, работа не останавливается',accept:'Работает на <b>твоих задачах</b> — проверяешь руками. Критерии приёмки согласованы до старта, принимает при тебе.',need:'Доступы к CRM / Авито / таблицам и твои документы для базы знаний. Час твоего времени на приёмку — при тебе.',btn:'Описать задачу',href:'https://t.me/victorpinksight'},
+install:{kick:'разово · до старта',ctx:'шаг: выбран вариант «Личный» на этой странице — установка закрывает её боль целиком',title:'Установка под ключ',what:'Сборка агентов под твои процессы, база знаний на твоих документах, интеграция CRM / Авито / таблиц, память между чатами.',lvls:[['Персональная сборка','10 000 ₽ — гайд-инструкция по установке и интеграции + удалённая помощь с отладкой; ставишь сам'],['Внедрение: 1 процесс','29 990 ₽ — заявки и контент: клиенту ответ приходит ночью, а утром'],['Внедрение: 3 процесса','49 990 ₽ — бот + CRM / Авито / таблицы у одного агента, работа не останавливается'],['Внедрение: 5+ процессов','79 990 ₽ — несколько агентов на процессы, цена после аудита масштаба, месяц сопровождения']],when:'1–10 дней, работа не останавливается',accept:'Работает на <b>твоих задачах</b> — проверяешь руками. Критерии приёмки согласованы до старта, принимает при тебе.',need:'Доступы к CRM / Авито / таблицам и твои документы для базы знаний. Час твоего времени на приёмку — при тебе.',btn:'Описать задачу',href:'https://t.me/victorpinksight'},
 rescue:{kick:'переезд с Claude и ChatGPT · аудит → замер до/после',ctx:'шаг: подписка Claude не платится или аккаунт ушёл в блок — агента переносим на модели, доступные из РФ, без VPN и без сборки с нуля',title:'Спасение агента — переезд с Claude',what:'Переносим то, что уже работает: аудит текущей схемы → пересборка промптов и логики под доступные модели → замер «до/после». Данные и доступы остаются у тебя, агент не собирается заново.',when:'старт от 3 дней · владение после переезда 3 400–4 600 ₽/мес — модели плюс сервер и обвязка; провайдер моделей оплачивается отдельно по его тарифам',accept:'Замер до/после <b>в цифрах</b> на тех же задачах: расход в месяц, скорость, качество ответов. Приёмка при тебе.',need:'Ссылка открывает чат с готовым текстом — впиши, что не так (или что заблокировали) и на чём был собран агент. Дальше 20 минут разговора и замер до/после.',btn:'Разобрать агента',href:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%B5%D1%80%D0%B5%D0%BD%D0%B5%D1%81%D1%82%D0%B8%20%D1%81%D0%B2%D0%BE%D0%B5%D0%B3%D0%BE%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0.%0A%D0%A1%D0%BE%D0%B1%D1%80%D0%B0%D0%BD%20%D0%BD%D0%B0%3A%20%28Claude%20/%20ChatGPT%20/%20%D0%B1%D0%BE%D1%82%20%D0%B2%20Telegram%20/%20n8n%20/%20%D1%81%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%BE%D0%B4%20/%20%D0%BD%D0%B5%20%D0%B7%D0%BD%D0%B0%D1%8E%29%0A%D0%A7%D1%82%D0%BE%20%D0%BD%D0%B5%20%D1%82%D0%B0%D0%BA%3A%20%28%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0%20%D0%BD%D0%B5%20%D0%BF%D0%BB%D0%B0%D1%82%D0%B8%D1%82%D1%81%D1%8F%20/%20%D0%B7%D0%B0%D0%B1%D0%BB%D0%BE%D0%BA%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BB%D0%B8%20/%20%D0%B4%D0%BE%D1%80%D0%BE%D0%B3%D0%BE%20/%20%D0%B2%D1%80%D1%91%D1%82%29%0A%D0%A7%D1%82%D0%BE%20%D0%B4%D0%BE%D0%BB%D0%B6%D0%B5%D0%BD%20%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C%3A%20%0A%D0%9F%D1%80%D0%BE%D0%BC%D0%BE%D0%BA%D0%BE%D0%B4%3A%20KLODNAOBOROT'},
 guide:{kick:'вход в связки РФ · без VPN',ctx:'шаг: ты перебежчик — Claude не платится, VPN падает; гайд — первый ход после потери подписки, внедрение пойдёт следом',title:'Гайд «20 конфигураций»',what:'20 сборок: какие живут в РФ без VPN, провайдеры модели и хостинга, адаптация под свою рутину за вечер.',when:'сборка своими руками за 3–4 часа',accept:'Сборка поднимается <b>без VPN</b> по шагам из гайда. Обучение агента под твои задачи — в переписке, без созвонов.',need:'3–4 часа твоего времени и твой компьютер. Гайд ведут по шагам — код писать не надо.',btn:'Забрать гайд',href:'https://t.me/victorpinksight'},
 pick:{kick:'разово · ставишь сам · 24 часа',ctx:'шаг: хочешь поставить сам — получаешь архитектуру, гайд и мою удалённую отладку',title:'Персональная сборка',what:'Полная гайд-инструкция по установке и интеграции конкретного агента (20 конфигураций включены) + удалённая помощь с отладкой по согласованным сценариям до приёмки. Ставишь сам; передача 24 часа.',when:'24 часа',accept:'Ставишь по гайду сам; отладку по согласованным сценариям ведём вместе, пока не заработает.',need:'Одно описание задачи: что болит и на чём сидишь (CRM, Авито, таблицы). Остальное — подбираю сам.',btn:'Взять сборку',href:'https://t.me/victorpinksight'},

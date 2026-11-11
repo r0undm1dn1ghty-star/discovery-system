@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
 <style>*{box-sizing:border-box;margin:0}
-:root{--bg:#f2f4f6;--ink:#10141f;--body:#414a5e;--meta:#7a8296;--hair:rgba(16,20,31,.12);--navy:#1b2a6b;--acc:#8fa8ff;--dark:#0f1730;--disp:'Onest',system-ui,sans-serif;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace}
+:root{--bg:#f2f4f6;--ink:#10141f;--body:#414a5e;--meta:#5c6479;--hair:rgba(16,20,31,.12);--navy:#1b2a6b;--acc:#8fa8ff;--dark:#0f1730;--disp:'Onest',system-ui,sans-serif;--sans:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace}
 body{background:var(--bg);color:var(--body);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
 .w{width:min(1080px,calc(100% - 48px));margin:0 auto}
 .hero{background:var(--dark);color:#eef2fb;padding:clamp(48px,7vw,84px) 0 clamp(36px,5vw,56px)}
@@ -125,6 +125,74 @@ footer a:hover{text-decoration:underline}
 .vs-own .vs-who em{display:inline-block;margin-left:8px;padding:3px 8px;border-radius:999px;background:var(--navy);color:#fff;font:500 11.5px/1 var(--mono);font-style:normal;letter-spacing:.04em}
 .vs-note{margin:14px 0 0;font-size:13.5px;color:var(--meta)}
 @media(max-width:860px){.vs-head{display:none}.vs-row{grid-template-columns:1fr;gap:8px}}
+
+/* ── отклик на нажатие: кнопка отвечает в момент касания, а не после клика ── */
+.btn,
+button,
+.door,
+.shelf-row,
+.offer-opt,
+.card,
+.chip,
+.rcard,
+.tg-kb button,
+a.btn {
+  transition: transform .09s cubic-bezier(.22,.61,.36,1), background .18s var(--ease, ease), border-color .18s var(--ease, ease), color .15s ease;
+}
+.btn:active,
+button:active,
+.door:active,
+.shelf-row:active,
+.offer-opt:active,
+.chip:active,
+.rcard:active,
+.tg-kb button:active,
+a.btn:active {
+  transform: scale(.98);
+}
+.door:active,
+.shelf-row:active { transform: scale(.995); }
+
+/* ── фокус с клавиатуры: видно всегда ── */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #24368f;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.hero a:focus-visible,
+.hero button:focus-visible,
+header a:focus-visible,
+header button:focus-visible { outline-color: #8fa8ff; }
+
+/* ── тап-зоны: ссылки в подписях и футере не меньше 44px ── */
+footer a,
+.quiet a,
+.pnote a,
+.src a,
+p a {
+  display: inline-block;
+  padding-block: 11px;
+}
+footer p { margin: 2px 0; }
+
+.cta-mid{padding-top:8px}
+.cta-mid-p{max-width:62ch;margin:0 0 14px;color:var(--body)}
+
+/* футеры собраны в div.foot / div.f — ссылки тоже должны быть тапабельными */
+.foot a,
+.f a,
+.doc a,
+.wiz-hint a,
+.hero .quiet a,
+.hero a:not(.btn) {
+  display: inline-block;
+  padding-block: 11px;
+}
+.foot,
+.f { line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -137,7 +205,7 @@ footer a:hover{text-decoration:underline}
 <p>Я собрал цифры по рынку ИИ-агентов: сколько просят, что обещают и что получается на самом деле. У каждого числа есть источник и дата — можно проверить.</p>
 <p class="author" style="color:#8a94ad">Считал сам: открытые прайсы, 83 разбора внедрений, расчёт потерь аккаунтов. Где взял — написано под каждым блоком.</p>
 <div class="herocta">
-  <a class="hbtn" href="calculator.html">Посчитать свою связку — 0 ₽</a>
+  <a class="hbtn" href="calculator.html">Посчитать свою рутину — 0 ₽</a>
   <a class="hlink" href="service.html">Цены и что входит</a>
 </div>
 <div class="hnums">
@@ -171,7 +239,11 @@ footer a:hover{text-decoration:underline}
 <div class="fig"><svg viewBox="0 0 470 240" role="img" aria-label="Та же нагрузка: по каталогу 20–500 рублей, с картой РФ 4 700–7 400 рублей в месяц" font-family="IBM Plex Mono, monospace"><text x="0" y="24" font-size="14" fill="#7a8296">та же нагрузка · 1 000 обращений, 3 вызова на сообщение</text><rect x="0" y="62" width="6" height="34" rx="3" fill="#7f93d8"/><text x="16" y="85" font-size="22" fill="#10141f">20–500 ₽ <tspan font-size="14" fill="#7a8296">каталог моделей</tspan></text><rect x="0" y="132" width="440" height="34" rx="4" fill="#1b2a6b"/><text x="14" y="155" font-size="22" fill="#eef2fb">4 700–7 400 ₽ <tspan font-size="14" fill="#b9c1d6">с картой РФ</tspan></text><text x="0" y="214" font-size="18" fill="#1b2a6b">×20–60 — во столько раз дороже</text><text x="0" y="236" font-size="14" fill="#5c6479">каталог 09.11.2026 · РФ-канал 04.11.2026</text></svg><div class="cap">Каталожная цена — не твоя. По каталогу та же нагрузка стоит 20–500 ₽, с картой РФ — 4 700–7 400 ₽. Модель перечитывает инструкцию и переписку: на это уходит 70–90% счёта.</div></div><p class="src">нагрузка и расчёт — 18 моделей, замер 09.11.2026 · цены РФ-каналов — 04.11.2026</p>
         </section>
 
-<section class="sec" id="research">
+<section class="sec cta-mid"><div class="sh"><h2>Сколько это стоит у тебя</h2><span class="tag">0 ₽ · без регистрации</span></div>
+        <p class="cta-mid-p">Цифры рынка показывают разброс. Твой счёт считается за минуту: часы рутины, какое железо, сколько обращений — и сколько остаётся платить каждый месяц.</p>
+        <p><a class="btn btn-p" href="calculator.html">Посчитать свою рутину — 0 ₽</a></p>
+      </section>
+      <section class="sec" id="research">
 <div class="sh"><h2>Мои исследования — откуда эти цифры</h2><span class="tag">открыто, с методикой</span></div>
 <div class="rgrid">
   <a class="rcard" href="claude-access.html"><b>Дешёвый Claude живёт ещё неделю</b><span>9 слоёв детекции аккаунта, прокси закрывает 2 из 9, что меняют правила 12.11</span><i>открыть разбор →</i></a>
@@ -201,12 +273,12 @@ footer a:hover{text-decoration:underline}
     <div class="vs-row">
       <div class="vs-who">Студия или фрилансер<br><span>от 50 000 ₽</span></div>
       <div class="vs-what">Соберут процесс под задачу, часто с дизайном и поддержкой.</div>
-      <div class="vs-gap"><b>Кому:</b> когда нужен подрядчик «под ключ» и есть бюджет.<br><b>Ломается:</b> контур обычно их — ключи и аккаунты у студии; приёмка формулируется словами.</div>
+      <div class="vs-gap"><b>Кому:</b> когда нужен подрядчик «под ключ» и есть бюджет.<br><b>Ломается:</b> ключи и аккаунты обычно у студии; приёмка формулируется словами.</div>
     </div>
     <div class="vs-row vs-own">
       <div class="vs-who">Здесь <em>наш вариант</em><br><span>29 990 / 49 990 ₽ разово</span></div>
       <div class="vs-what">Агент с инструментами и памятью на твоём железе. Ключи и данные твои, критерии приёмки — до старта, замер «до/после».</div>
-      <div class="vs-gap"><b>Кому:</b> процесс дороже 30 часов в месяц и нужен свой контур.<br><b>Цена владения:</b> 3–4 тыс ₽/мес провайдеру напрямую, без наценки.</div>
+      <div class="vs-gap"><b>Кому:</b> процесс дороже 30 часов в месяц и нужно, чтобы всё было у тебя.<br><b>Цена владения:</b> 3–4 тыс ₽/мес провайдеру напрямую, без наценки.</div>
     </div>
   </div>
   <p class="vs-note">Сравнение по публичным описаниям продуктов, сверено 10.11.2026. Не рейтинг: у каждого варианта есть задача, где он уместен.</p>
@@ -219,7 +291,7 @@ footer a:hover{text-decoration:underline}
 <div class="q">Как поймём, что сценарий работает?</div>
 <div class="q">Кто и за сколько чинит, когда сломается?</div>
 </div>
-<div class="cta"><a class="p" href="calculator.html">Посчитать свою связку — 0 ₽</a><a class="g" href="service.html">Цены и что входит</a></div></section>
+<div class="cta"><a class="p" href="calculator.html">Посчитать свою рутину — 0 ₽</a><a class="g" href="service.html">Цены и что входит</a></div></section>
 </div><footer><div class="fw">Личка: <a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A0%D1%8B%D0%BD%D0%BE%D0%BA%20%D0%98%D0%98%C2%BB%20%E2%80%94%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B5.">t.me/victorpinksight</a> · Канал: <a href="https://t.me/discoverysystem">t.me/discoverysystem</a> · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a><br>Отвечаю лично, без ботов · <a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · ИНН 780627413110</div></footer>
 <script src="ds-mnav.js?v=20261109b"></script>
 </body></html>
