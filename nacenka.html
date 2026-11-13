@@ -43,6 +43,14 @@ th,td{padding:9px 8px;border-bottom:1px solid var(--hair);text-align:left}
 th{font:500 14px/1.3 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--meta)}
 td.n,th.n{text-align:right;font-family:var(--mono);font-size:14px}
 .fin{display:inline-block;margin-top:34px;font:500 16px/1.4 var(--sans);color:var(--navy);border-bottom:1px solid rgba(27,42,107,.3);text-decoration:none}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 0}
+.ctas a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:10px;font:500 16px/1.2 var(--sans);text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.ctas .p{background:var(--navy);color:#fff}
+.ctas .p:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(27,42,107,.22)}
+.ctas .g{border:1px solid rgba(27,42,107,.28);color:var(--navy)}
+.ctas .g:hover{background:rgba(27,42,107,.05)}
+@media(max-width:520px){.ctas a{width:100%}}
+@media(prefers-reduced-motion:reduce){.ctas .p:hover{transform:none;box-shadow:none}}
 @media(max-width:720px){
  .br{grid-template-columns:1fr 74px;grid-template-areas:"n v" "b b";gap:2px 10px;padding:6px 0}
  .bn{grid-area:n}.bt{grid-area:b}.bv{grid-area:v}
@@ -123,6 +131,17 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-size:14px}
 <tbody><tr><td>GLM 5.3 Flash</td><td class="n">0,0</td><td class="n">0,1</td><td class="n">20,6</td></tr><tr><td>GPT-5 Nano</td><td class="n">0,0</td><td class="n">0,4</td><td class="n">57,9</td></tr><tr><td>Llama 4 Scout</td><td class="n">0,1</td><td class="n">0,3</td><td class="n">66,5</td></tr><tr><td>DeepSeek V4.1 Flash</td><td class="n">0,1</td><td class="n">0,6</td><td class="n">74,7</td></tr><tr><td>GPT-6 Luna</td><td class="n">0,1</td><td class="n">0,5</td><td class="n">86,2</td></tr><tr><td>Claude Haiku 5.5</td><td class="n">0,1</td><td class="n">0,5</td><td class="n">86,2</td></tr><tr><td>Qwen3.8 Flash</td><td class="n">0,1</td><td class="n">0,5</td><td class="n">102</td></tr><tr><td>MiniMax M3</td><td class="n">0,3</td><td class="n">1,2</td><td class="n">229</td></tr><tr><td>Gemini 3.1 Flash Lite</td><td class="n">0,2</td><td class="n">1,5</td><td class="n">240</td></tr><tr><td>DeepSeek V4 Pro 0423</td><td class="n">0,9</td><td class="n">1,8</td><td class="n">509</td></tr><tr><td>Grok 4.3</td><td class="n">1,2</td><td class="n">2,5</td><td class="n">708</td></tr><tr><td>Qwen3.8 Max (0902)</td><td class="n">2,0</td><td class="n">6,0</td><td class="n">1 331</td></tr><tr><td>GPT-6.1 Sol</td><td class="n">2,0</td><td class="n">10,0</td><td class="n">1 725</td></tr><tr><td>GLM 5.3 Prime</td><td class="n">2,8</td><td class="n">8,8</td><td class="n">1 902</td></tr><tr><td>Gemini 3.1 Pro Preview</td><td class="n">2,0</td><td class="n">12,0</td><td class="n">1 922</td></tr><tr><td>Claude Opus 5</td><td class="n">5,0</td><td class="n">25,0</td><td class="n">4 312</td></tr><tr><td>GPT-6 Astra</td><td class="n">10,0</td><td class="n">50,0</td><td class="n">8 625</td></tr><tr><td>Claude Opus 4.1</td><td class="n">15,0</td><td class="n">75,0</td><td class="n">12 937</td></tr></tbody></table>
 </details>
 <p class="note">Считал по одной нагрузке. Другая нагрузка — другая сумма, но порядок величин тот же.</p>
+</section>
+
+<section class="sec" id="chto-delat">
+<p class="eyebrow">что с этим делать</p>
+<h2>Дешёвая модель не экономит. Экономит связка под задачу.</h2>
+<p>В гайде «20 конфигураций» — какая модель под какую задачу, что живёт без VPN, сколько выходит в месяц по РФ-каналам оплаты и что окупается за первый месяц. Разово 3 000 ₽, доступ навсегда. Ставишь сам за 3–4 часа, без кода.</p>
+<div class="ctas">
+<a class="p" href="pay.html">Забрать гайд — 3 000 ₽</a>
+<a class="g" href="calculator.html">Посчитать своё владение →</a>
+</div>
+<p class="note">Агент уже стоит, но счёт растёт — переезд на модели с оплатой из РФ: от 25 000 ₽, с промокодом <b>KLODNAOBOROT</b> 22 500 ₽. <a href="service.html#optimization">Что входит →</a></p>
 </section>
 
 <a class="fin" href="https://t.me/discoverysystem">Разборы и сигналы — в канале →</a>
