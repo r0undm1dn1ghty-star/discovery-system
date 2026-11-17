@@ -48,19 +48,18 @@
     } catch (e) {}
 
     var C = dark
-      ? { hair: "rgba(255,255,255,.08)", ink: "#eef2f9", sub: "#8893a8",
-          ghostBg: "rgba(255,255,255,.08)", ghostBd: "rgba(255,255,255,.22)", ghostBdH: "rgba(255,255,255,.4)",
+      ? { hair: "rgba(255,255,255,.08)", ink: "#eef2f9", sub: "#b8c3d6",
+          ghostBg: "rgba(255,255,255,.10)", ghostBd: "rgba(255,255,255,.25)", ghostBdH: "rgba(255,255,255,.45)",
           ghostHv: "#eef2f9", main: "#24368f", mainHv: "#2b3f9e", ok: "#1f7a4d", focus: "#8fa8ff" }
-      : { hair: "rgba(16,20,31,.10)", ink: "#10141f", sub: "#666f85",
-          ghostBg: "#fff", ghostBd: "rgba(16,20,31,.22)", ghostBdH: "#24368f",
+      : { hair: "rgba(16,20,31,.10)", ink: "#10141f", sub: "#414a5e",
+          ghostBg: "#fff", ghostBd: "rgba(16,20,31,.25)", ghostBdH: "#24368f",
           ghostHv: "#24368f", main: "#24368f", mainHv: "#2b3f9e", ok: "#1f7a4d", focus: "#24368f" };
 
     var css = ''
-      + '#ds-share{max-width:760px;margin:0 auto;padding:30px 20px 26px;text-align:center;'
-      + 'border-top:1px solid ' + C.hair + ';'
+      + '#ds-share{max-width:760px;margin:0 auto;padding:36px 24px 30px;text-align:center;'
       + 'font-family:"IBM Plex Sans",system-ui,Arial,sans-serif}'
-      + '#ds-share .ds-sh-h{font-size:16px;font-weight:700;color:' + C.ink + ';margin:0 0 5px}'
-      + '#ds-share .ds-sh-sub{font-size:13.5px;line-height:1.5;color:' + C.sub + ';margin:0 0 16px}'
+      + '#ds-share .ds-sh-h{font-size:21px;font-weight:700;letter-spacing:-.01em;color:' + C.ink + ';margin:0 0 6px;text-wrap:balance}'
+      + '#ds-share .ds-sh-sub{font-size:14.5px;line-height:1.5;color:' + C.sub + ';margin:0 0 18px}'
       + '#ds-share .ds-sh-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}'
       + '#ds-share button,#ds-share a{display:inline-flex;align-items:center;gap:7px;'
       + 'height:44px;padding:0 18px;border-radius:999px;cursor:pointer;'
@@ -171,6 +170,39 @@
     var footer = document.querySelector('footer');
     if (footer && footer.parentNode) footer.parentNode.insertBefore(sec, footer);
     else document.body.appendChild(sec);
+
+    /* ширина — как контентная колонка страницы: оси блока, автора и футера совпадают */
+    try {
+      var inner = footer && (footer.querySelector('.wrap') || footer.querySelector('div') || footer);
+      var w = Math.round(inner.getBoundingClientRect().width);
+      if (w >= 320) sec.style.maxWidth = w + 'px';
+    } catch (e) {}
+
+    /* плавающие CTA страницы не перекрывают блок: пока он в кадре — прячем их */
+    var floaters = [];
+    try {
+      if (footer) {
+        document.querySelectorAll('a, button, div').forEach(function (el) {
+          if (sec.contains(el) || footer.contains(el)) return;
+          var cs = getComputedStyle(el);
+          if (cs.position !== 'fixed') return;
+          var r = el.getBoundingClientRect();
+          if (r.width === 0 || r.height === 0) return;
+          if (r.top > innerHeight * 0.5) floaters.push(el);
+        });
+      }
+    } catch (e) {}
+    if (floaters.length && 'IntersectionObserver' in window) {
+      var ioF = new IntersectionObserver(function (es) {
+        var on = es.some(function (en) { return en.isIntersecting; });
+        floaters.forEach(function (el) {
+          el.style.transition = 'opacity .3s var(--ease, ease)';
+          el.style.opacity = on ? '0' : '';
+          el.style.pointerEvents = on ? 'none' : '';
+        });
+      }, { threshold: .2 });
+      ioF.observe(sec);
+    }
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
