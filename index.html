@@ -929,7 +929,7 @@ footer a:hover{text-decoration:underline}
       'проверка на твоих задачах',
       'отладка до закрытия всех критериев']}
   ];
-  var TICK = 750;
+  var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1150, ROW_PREP = 300, HIDE_MS = 180, GAP = 200;
 
   /* ── панель 1: степ-лист с часами ── */
   var list = document.getElementById('dsAilList');
@@ -966,14 +966,19 @@ footer a:hover{text-decoration:underline}
     row.lbl.appendChild(frag);
   }
   function setLog(row, lines){
-    if (!lines.length){ row.log.style.height='0px'; row.track.innerHTML=''; return; }
-    row.log.classList.toggle('masked', lines.length > 3);
-    row.track.innerHTML = lines.map(function(t,i){
-      return '<div class="ds-ail-line vis"><span class="ds-n">'+(i+1)+'</span><span class="ds-tx">'+t+'</span></div>';
-    }).join('');
-    row.log.style.height = (Math.min(lines.length,3)*24)+'px';
-    row.track.style.transform = 'translateY('+(-Math.max(0,lines.length-3)*24)+'px)';
-  }
+      if (!lines.length){ row.log.style.height='0px'; row.track.innerHTML=''; return; }
+      row.log.classList.toggle('masked', lines.length > 4);
+      row.track.innerHTML = lines.map(function(t,i){
+        return '<div class="ds-ail-line" style="transition-delay:'+(i*LINE_STAG)+'ms"><span class="ds-n">'+(i+1)+'</span><span class="ds-tx">'+t+'</span></div>';
+      }).join('');
+      row.log.style.height = (Math.min(lines.length,4)*24)+'px';
+      row.track.style.transform = 'translateY('+(-Math.max(0,lines.length-4)*24)+'px)';
+      /* каскад: строки проявляются по очереди */
+      setTimeout(function(){
+        var ls = row.track.children;
+        for (var k=0;k<ls.length;k++) ls[k].classList.add('vis');
+      }, 30);
+    }
 
   var pos = {step:0, line:0};
   var title = document.getElementById('dsAilTitle'),
@@ -992,7 +997,7 @@ footer a:hover{text-decoration:underline}
       if (state === 'running'){
         running = st;
         waveLabel(r, st.label);
-        setLog(r, st.detail.slice(0, pos.line));
+        setLog(r, st.detail);
       } else {
         r.lbl.textContent = st.label;
         setLog(r, []);
@@ -1012,23 +1017,25 @@ footer a:hover{text-decoration:underline}
   function tick(){
     if (pos.step >= STEPS.length) return;
     var st = STEPS[pos.step];
-    pos.line++;
-    if (pos.line > st.detail.length){
-      pos.step++; pos.line = 0;
+    render();
+    /* шаг держится ровно на каскад логов + короткая пауза */
+    var dur = st.detail.length*LINE_STAG + STEP_HOLD;
+    setTimeout(function(){
+      pos.step++;
       if (pos.step >= STEPS.length){
         render(); ail.classList.add('closed');
-        setTimeout(startPlan, 600);
+        setTimeout(startPlan, 350);
         return;
       }
-    }
-    render();
-    setTimeout(tick, TICK);
+      render();
+      setTimeout(tick, GAP);
+    }, dur);
   }
   function startAil(){
     pos = {step:0, line:0};
     ail.classList.remove('closed');
     render();
-    setTimeout(tick, TICK);
+    setTimeout(tick, GAP);
   }
 
   /* ── панель 2: чек-лист приёмки + оверлеи-артефакты ── */
@@ -1098,11 +1105,11 @@ footer a:hover{text-decoration:underline}
       planRender();
       showProof(i);
       setTimeout(function(){
-        hideProof(function(){ ti++; setTimeout(tickPlan, 350); });
-      }, 2400);
-    }, 700);
+        hideProof(function(){ ti++; setTimeout(tickPlan, ROW_PREP); });
+      }, PROOF_MS);
+    }, ROW_PREP);
   }
-  function startPlan(){ ti = 0; setTimeout(tickPlan, 500); }
+  function startPlan(){ ti = 0; setTimeout(tickPlan, 350); }
 
   /* стоп на итоге: развёртка один раз при входе во вьюпорт */
   var replayBtn = document.getElementById('dsReplay');
