@@ -453,6 +453,39 @@ footer a:hover{text-decoration:underline}
 .f { line-height: 1.5; }
 </style>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
+
+<style>
+/* единый футер сайта */
+footer.site-foot{border-top:1px solid rgba(16,20,31,.12);margin-top:56px;padding:34px 0 38px;font:400 14px/1.6 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479;background:inherit}
+footer.site-foot .sfw{width:min(1080px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;gap:18px 28px;align-items:start}
+footer.site-foot .sf-l{display:flex;align-items:center;gap:14px}
+footer.site-foot .sf-logo{height:38px;width:auto;display:block}
+footer.site-foot .sf-name{font:600 16px/1.25 "IBM Plex Sans",system-ui,sans-serif;color:#10141f;display:flex;flex-direction:column;gap:3px}
+footer.site-foot .sf-name span{font:400 14px/1.4 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
+footer.site-foot .sf-c{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+footer.site-foot .sf-b{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:10px;background:#1b2a6b;color:#f2f6ff;font:500 14.5px/1 "IBM Plex Sans",system-ui,sans-serif;text-decoration:none;transition:background .18s ease}
+footer.site-foot .sf-b:hover{background:#2c419f}
+footer.site-foot .sf-b.g{background:transparent;color:#1b2a6b;border:1px solid rgba(27,42,107,.35)}
+footer.site-foot .sf-b.g:hover{border-color:#1b2a6b}
+footer.site-foot .sf-h{font:400 14px/1.5 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
+footer.site-foot .sf-note{font:400 14px/1.5 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
+footer.site-foot .sf-r{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+footer.site-foot a{color:#1b2a6b;text-decoration:none}
+footer.site-foot a:hover{text-decoration:underline}
+footer.site-foot .sf-legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 22px;padding-top:14px;border-top:1px solid rgba(16,20,31,.08);margin-top:6px}
+footer.site-foot.ft-dark{border-top-color:rgba(255,255,255,.14);color:#b9c1d6}
+footer.site-foot.ft-dark .sf-name{color:#eef2fb}
+footer.site-foot.ft-dark .sf-name span,footer.site-foot.ft-dark .sf-note,footer.site-foot.ft-dark .sf-h{color:#a9b4cc}
+footer.site-foot.ft-dark .sf-b{background:#8fa8ff;color:#0f1730}
+footer.site-foot.ft-dark .sf-b:hover{background:#a3b6ff}
+footer.site-foot.ft-dark .sf-b.g{background:transparent;color:#eef2fb;border-color:rgba(255,255,255,.28)}
+footer.site-foot.ft-dark a{color:#eef2fb}
+footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
+@media(max-width:820px){
+  footer.site-foot .sfw{grid-template-columns:1fr}
+  footer.site-foot .sf-r{align-items:flex-start;text-align:left}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in">
@@ -924,12 +957,20 @@ footer a:hover{text-decoration:underline}
       'рублями / криптой']},
     {id:'build', label:'Внедрение и отладка', detail:[
       'стек агента: провайдер моделей · модели',
-      'хостинг: твоё облако',
-      'база знаний',
-      'проверка на твоих задачах',
+      'хостинг: твоё облако · база знаний',
+      'прогон на твоих задачах',
+      'голос проверен',
+      'заявка в карточке — проверено',
+      'сводка за день — проверено',
+      'сверка счёта — расхождение поймано',
+      'бронь и напоминание — проверено',
       'отладка до закрытия всех критериев']}
   ];
-  var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1000, ROW_PREP = 250, GAP = 200, LINE_HOLD = 1500;
+  /* шаг 4: строительные строки — по таймеру, строки проверки — в момент закрытия галки */
+  var BUILD_LINES = STEPS[3].detail.slice(0, 3);
+  var CHECK_LINES = STEPS[3].detail.slice(3, 8);
+  var FINAL_LINE  = STEPS[3].detail[8];
+  var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1000, ROW_PREP = 250, GAP = 200, BUILD_EVERY = 1200;
 
   /* ── панель 1: степ-лист с часами ── */
   var list = document.getElementById('dsAilList');
@@ -1022,9 +1063,9 @@ footer a:hover{text-decoration:underline}
        логи проявляются по одному, сдача приходит с последней галкой */
     if (idx === STEPS.length-1){
       setLog(rows[idx], []);
-      for (var k=0;k<st.detail.length;k++){
+      for (var k=0;k<BUILD_LINES.length;k++){
         (function(k){
-          setTimeout(function(){ revealLine(rows[idx], st.detail, k); }, k*LINE_HOLD);
+          setTimeout(function(){ revealLine(rows[idx], BUILD_LINES, k); }, k*BUILD_EVERY);
         })(k);
       }
       startPlan();
@@ -1117,6 +1158,11 @@ footer a:hover{text-decoration:underline}
       trows[i].className = 'ds-trow done';
       planRender();
       showProof(i);
+      /* строка проверки в логе внедрения — синхронно с галкой */
+      revealLine(rows[3], CHECK_LINES, i);
+      if (i === CHECK_LINES.length-1){
+        setTimeout(function(){ revealLine(rows[3], CHECK_LINES.concat([FINAL_LINE]), 5); }, 400);
+      }
       setTimeout(function(){
         hideProof(function(){ ti++; setTimeout(tickPlan, ROW_PREP); });
       }, PROOF_MS);
@@ -1251,7 +1297,7 @@ footer a:hover{text-decoration:underline}
 </div>
 </div>
 
-<footer>Личка: <a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20Discovery%20System.">t.me/victorpinksight</a> · Канал: <a href="https://t.me/discoverysystem">t.me/discoverysystem</a> · <a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a><br>Отвечаю лично, без ботов · <a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · ИНН 780627413110</footer>
+<footer class="site-foot"><div class="sfw"><div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div><div class="sf-c"><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="sf-b" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20Discovery%20System.">Написать лично</a><a class="sf-b g" href="https://t.me/discoverysystem">Канал с сигналами</a></div><span class="sf-h">t.me/victorpinksight · t.me/discoverysystem</span><span class="sf-note">Отвечаю лично, без ботов</span></div><div class="sf-r"><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div><div class="sf-legal"><a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · ИНН 780627413110</div></div></footer>
 
 <script>
 /* ── DS Plasma, герой-версия: canvas внутри тёмной зоны, синяя дымка (sfer-light-v4, без изменений) ── */
