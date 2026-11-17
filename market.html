@@ -86,19 +86,103 @@ footer a{color:#1b2a6b;text-decoration:none}
 footer a:hover{text-decoration:underline}
 .fin{margin-top:34px}
 
-#research .rgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.rcard{display:block;background:#fff;border:1px solid var(--hair);border-radius:16px;padding:22px 24px;text-decoration:none;transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}
-.rcard:hover{border-color:rgba(27,42,107,.35);transform:translateY(-2px);box-shadow:0 10px 26px rgba(16,20,31,.07)}
-.rcard b{display:block;font:600 clamp(19px,2vw,23px)/1.2 var(--disp);color:var(--ink);letter-spacing:-.015em;margin-bottom:8px}
-.rcard span{display:block;font-size:15.5px;line-height:1.5;color:var(--body);max-width:42ch}
-.rcard i{display:block;margin-top:14px;font:500 14px/1.4 var(--mono);color:var(--navy);font-style:normal}
-.rcard:hover i{text-decoration:underline}
-@media(max-width:760px){#research .rgrid{grid-template-columns:1fr}}
-
-.rcard{cursor:pointer}
-.rcard:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
-.rcard i{border-bottom:1px solid rgba(27,42,107,.32);display:inline-block;padding-bottom:2px}
-.rcard:hover b{color:var(--navy)}
+#research .rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 36px;justify-items:center}
+@media(max-width:980px){#research .rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:660px){#research .rgrid{grid-template-columns:1fr}}
+#research .folder{position:relative;display:block;width:100%;max-width:320px;height:352px;isolation:isolate;-webkit-tap-highlight-color:transparent;text-decoration:none;border-radius:22px}
+#research .folder:focus-visible{outline:2px solid var(--navy);outline-offset:4px}
+#research .f-stage{position:absolute;inset:0;perspective:1200px}
+#research .f-back{
+  position:absolute;left:0;top:14px;right:0;bottom:0;border-radius:22px;
+  background:linear-gradient(165deg,#2b3a7e 0%,#1b2a6b 46%,#131c4d 100%);
+  box-shadow:0 0 0 1px rgba(16,20,31,.10), 0 18px 40px -18px rgba(16,20,31,.3);
+  overflow:hidden;transition:box-shadow .3s var(--ease), transform .5s var(--ease);
+}
+#research .f-back:after{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:26px 26px;
+}
+#research .folder:hover .f-back{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(16,20,31,.10), 0 24px 48px -18px rgba(16,20,31,.38)}
+#research .f-files{position:absolute;inset:0;z-index:5;pointer-events:none;clip-path:inset(-300px -300px 8px -300px)}
+#research .sheet{
+  position:absolute;left:28px;right:28px;top:46px;height:190px;border-radius:14px;
+  display:block;padding:10px 18px 0;
+  background:linear-gradient(180deg,#ffffff 0%,#f1f1ee 100%);
+  box-shadow:0 0 0 .5px rgba(0,0,0,.10), 0 10px 24px -10px rgba(10,12,20,.28);
+  transform-origin:50% 100%;
+  transform:translate(0,var(--lift,20px));
+  transition:transform .55s var(--spring) calc(var(--d)*45ms), box-shadow .3s var(--ease);
+}
+#research .sheet .sf{display:block;font:500 15.5px/1.2 var(--disp);color:var(--navy);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#research .sheet .sp{display:block;margin-top:4px;font:400 14px/1.3 var(--mono);color:var(--meta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#research .folder:hover .sheet,#research .folder:focus-visible .sheet{--lift:2px}
+#research .f-front{
+  position:absolute;left:0;right:0;top:118px;bottom:0;z-index:10;border-radius:22px;
+  -webkit-backdrop-filter:blur(14px) saturate(1.3);
+  backdrop-filter:blur(14px) saturate(1.3);
+  background:linear-gradient(180deg,rgba(255,255,255,.30) 0%,rgba(255,255,255,.55) 30%,rgba(250,250,252,.96) 100%);
+  box-shadow:0 0 0 1px rgba(16,20,31,.10), inset 0 1px 0 rgba(255,255,255,.9), 0 16px 34px -16px rgba(16,20,31,.3);
+  transform-origin:50% 100%;
+  transform:perspective(760px) rotateX(var(--hinge,0deg));
+  transition:transform .55s var(--spring);
+}
+#research .folder:hover .f-front,#research .folder:focus-visible .f-front{--hinge:-8deg}
+#research .f-viz{position:absolute;left:26px;right:30px;top:14px;height:88px}
+#research .f-label{position:absolute;left:24px;right:24px;bottom:16px;display:flex;flex-direction:column;gap:4px}
+#research .f-title{font:500 16.5px/1.25 var(--disp);letter-spacing:-.01em;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#research .f-meta{font:400 14px/1.4 var(--mono);color:rgba(20,20,22,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#research .f-fig{font:500 14.5px/1.35 var(--mono);color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#research .vz-layers{display:flex;gap:7px;align-items:flex-end;height:100%}
+#research .vz-layers b{flex:1;height:68%;border-radius:8px;background:rgba(27,42,107,.34);border:1px solid rgba(27,42,107,.28);
+  transform-origin:50% 100%;transition:transform .45s var(--spring) calc(var(--i)*40ms), background .3s;
+  animation:rf-breathe 3.4s var(--ease) calc(var(--i)*.18s) infinite}
+#research .vz-layers b.off{background:repeating-linear-gradient(45deg,rgba(27,42,107,.14) 0 5px,rgba(27,42,107,.26) 5px 7px);animation:none}
+#research .folder:hover .vz-layers b:not(.off),#research .folder:focus-visible .vz-layers b:not(.off){transform:translateY(-8px);background:rgba(27,42,107,.55)}
+@keyframes rf-breathe{0%,100%{opacity:.72}50%{opacity:1}}
+#research .vz-dots{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;height:100%}
+#research .vz-dots i{border-radius:50%;background:rgba(27,42,107,.32);transform:scale(.82);transition:transform .4s var(--spring) calc(var(--i)*14ms), background .3s}
+#research .vz-dots i.hot{background:rgba(27,42,107,.85)}
+#research .folder:hover .vz-dots i,#research .folder:focus-visible .vz-dots i{transform:scale(1)}
+#research .vz-wave svg{display:block;width:100%;height:100%}
+#research .vz-wave .axis{stroke:rgba(27,42,107,.3);stroke-width:1.5}
+#research .vz-wave .wv{fill:none;stroke:var(--navy);stroke-width:2.5;stroke-linejoin:round}
+#research .vz-wave circle{fill:var(--navy)}
+#research .folder:hover .vz-wave circle,#research .folder:focus-visible .vz-wave circle{animation:rf-pulse 1.8s var(--ease) calc(var(--i)*.4s) infinite}
+@keyframes rf-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.75;transform:scale(1.25)}}
+#research .vz-gap{display:flex;gap:26px;align-items:flex-end;height:100%}
+#research .vz-gap .rf-col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;flex:1;height:100%}
+#research .vz-gap .rf-col em{font:500 14px/1 var(--mono);font-style:normal;color:var(--ink)}
+#research .vz-gap .rf-bar{width:100%;border-radius:8px 8px 3px 3px;background:rgba(27,42,107,.5);
+  height:calc(var(--h)*.8%);transition:height .6s var(--spring), background .3s}
+#research .vz-gap .rf-col:last-child .bar{background:var(--navy)}
+#research .folder:hover .vz-gap .rf-bar,#research .folder:focus-visible .vz-gap .rf-bar{height:calc(var(--h)*.88%)}
+#research .vz-chain{display:flex;gap:6px;align-items:flex-start;height:100%}
+#research .vz-chain b{flex:1;border-radius:6px;background:rgba(27,42,107,.34);height:calc(var(--h)*1%);
+  transition:transform .5s var(--spring) calc(var(--p)*60ms), background .3s;
+  animation:rf-drop 3.6s var(--ease) calc(var(--p)*.3s) infinite}
+#research .vz-chain b:last-child{background:rgba(27,42,107,.85);outline:1.5px solid var(--navy);outline-offset:3px}
+@keyframes rf-drop{0%,100%{opacity:.6}50%{opacity:.95}}
+#research .folder:hover .vz-chain b,#research .folder:focus-visible .vz-chain b{animation-play-state:paused;opacity:1}
+#research .vz-live{display:flex;flex-direction:column;gap:14px;justify-content:center;height:100%}
+#research .vz-live .row{display:flex;align-items:center;gap:10px;overflow:hidden}
+#research .vz-live .row i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--navy);animation:rf-blink 2.2s var(--ease) calc(var(--i)*.45s) infinite}
+#research .vz-live .row s{flex:1;height:6px;border-radius:3px;text-decoration:none;
+  background:linear-gradient(90deg,rgba(27,42,107,.15) 0%,rgba(27,42,107,.45) 40%,rgba(27,42,107,.12) 60%,rgba(27,42,107,.15) 100%);
+  background-size:220% 100%;animation:rf-sweep 3.6s linear calc(var(--i)*.4s) infinite}
+#research .vz-live .row u{flex:none;width:34px;height:6px;border-radius:3px;text-decoration:none;background:rgba(27,42,107,.85)}
+@keyframes rf-sweep{0%{background-position:110% 0}100%{background-position:-110% 0}}
+@keyframes rf-blink{0%,100%{opacity:.45}45%{opacity:1}}
+#research .folder:hover .vz-live .row i{animation-duration:1.1s}
+#research .folder:hover .vz-live .row s{animation-duration:1.6s}
+@media(prefers-reduced-motion:reduce){
+  #research *,#research *:before,#research *:after{animation:none!important;transition:none!important}
+  #research .folder:hover .f-front,#research .folder:focus-visible .f-front{transform:none!important}
+  #research .folder:hover .f-back{transform:none}
+  #research .sheet{--lift:0px!important}
+  #research .vz-layers b{transform:none}
+}
 
 .herocta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:26px 0 30px}
 .hbtn{display:inline-flex;align-items:center;min-height:52px;padding:14px 26px;border-radius:10px;background:var(--navy);color:#f2f6ff;text-decoration:none;font:500 15.5px/1 var(--sans);transition:background .18s ease}
@@ -157,7 +241,6 @@ button,
 .offer-opt,
 .card,
 .chip,
-.rcard,
 .tg-kb button,
 a.btn {
   transition: transform .09s cubic-bezier(.22,.61,.36,1), background .18s var(--ease, ease), border-color .18s var(--ease, ease), color .15s ease;
@@ -168,7 +251,6 @@ button:active,
 .shelf-row:active,
 .offer-opt:active,
 .chip:active,
-.rcard:active,
 .tg-kb button:active,
 a.btn:active {
   transform: scale(.98);
@@ -277,14 +359,53 @@ footer p { margin: 2px 0; }
       </section>
       <section class="sec" id="research">
 <div class="sh"><h2>Мои исследования — откуда эти цифры</h2><span class="tag">открыто, с методикой</span></div>
-<div class="rgrid">
-  <a class="rcard" href="claude-access.html"><b>Дешёвый Claude живёт ещё неделю</b><span>9 слоёв детекции аккаунта, прокси закрывает 2 из 9, что меняют правила 12.11</span><i>открыть разбор →</i></a>
-  <a class="rcard" href="agent-failures.html"><b>76 провалов внедрений</b><span>каждый случай: что именно сломалось и чем закончилось</span><i>открыть разбор →</i></a>
-  <a class="rcard" href="lost-accounts.html"><b>Как теряют аккаунты</b><span>74–206 тысяч человек, деньги и волны блокировок</span><i>открыть расчёт →</i></a>
-  <a class="rcard" href="nacenka.html"><b>Сколько стоит модель</b><span>18 моделей на одной нагрузке: от 21 до 12 937 ₽ в месяц</span><i>открыть замер →</i></a>
-  <a class="rcard" href="value-chain.html"><b>Кто сколько забирает в цепочке</b><span>звенья, наценки и кому уходит маржа</span><i>открыть карту →</i></a>
-  <a class="rcard" href="channel.html"><b>Сигналы рынка</b><span>что происходит прямо сейчас: цены, провалы, блокировки</span><i>открыть канал ↗</i></a>
-</div>
+<div class="rgrid" id="rgrid"></div>
+<script>
+/* полка исследований: папка-ссылка, клик ведёт на страницу. Цифры — с самих страниц и фак-канона */
+(function(){
+'use strict';
+var STUDIES=[
+ {title:"Claude живёт ещё два дня",meta:"разбор · 12.11",href:"claude-access.html",
+  fig:"прокси закрывает 2 из 9 слоёв",viz:"layers",
+  sheets:[{f:"12.11",p:"день смены правил"},{f:"дни",p:"окно доступа, а не месяцы"},{f:"9 уровней защиты",p:"аккаунта — разбор целиком"}]},
+ {title:"76 провалов внедрений ИИ-агента",meta:"корпус · обновляется",href:"agent-failures.html",
+  fig:"76 провалов + 7 судебных дел",viz:"dots",
+  sheets:[{f:"→",p:"полный корпус на странице"},{f:"76",p:"что сломалось — по карточкам"},{f:"Причины провалов",p:"в карточках корпуса"}]},
+ {title:"Потери аккаунтов Claude и ChatGPT",meta:"измерение · 04.11",href:"lost-accounts.html",
+  fig:"74–206 тыс · ≈ 3,7 млрд ₽/год",viz:"wave",
+  sheets:[{f:"74–206 тыс",p:"аккаунтов потеряно в 2026"},{f:"3,7 млрд ₽",p:"в год — и не возмещается"},{f:"Диапазон потерь",p:"в рублях: 3,7 млрд ₽/год"}]},
+ {title:"Наценки на модели от российских компаний",meta:"замер · 09.11",href:"nacenka.html",
+  fig:"21 → 12 937 ₽/мес · 18 моделей",viz:"gap",
+  sheets:[{f:"18",p:"моделей на одной нагрузке"},{f:"×600",p:"разрыв цены в месяц"},{f:"Средняя наценка",p:"РФ-провайдеров по DeepSeek"}]},
+ {title:"Цепочка создания ценности рынка",meta:"карта · наценки",href:"value-chain.html",
+  fig:"5 звеньев · наценка ×148",viz:"chain",
+  sheets:[{f:"×148",p:"наценка на кэш-чтении"},{f:"5 звеньев",p:"пока агент дойдёт до тебя"},{f:"Кто влияет на цены",p:"цепочка и наценки"}]},
+ {title:"Канал с сигналами о рынке ИИ-агентов",meta:"канал · живая лента",href:"channel.html",
+  fig:"цены · провалы · блокировки",viz:"live",
+  sheets:[{f:"цены",p:"кто поднял и на сколько"},{f:"провалы",p:"со словами заказчиков"},{f:"Риски и возможности",p:"рынка ИИ-агентов в РФ"}]}
+];
+function vizHTML(type){
+ if(type==="layers"){var off=[2,6];var h="";for(var i=0;i<9;i++)h+='<b style="--i:'+i+'"'+(off.indexOf(i)>=0?' class="off"':'')+'></b>';return '<div class="vz-layers">'+h+'</div>';}
+ if(type==="dots"){var hot={9:1,23:1,37:1,44:1,51:1,60:1,69:1};var d="";for(var j=0;j<76;j++)d+='<i style="--i:'+j+'"'+(hot[j]?' class="hot"':'')+'></i>';return '<div class="vz-dots">'+d+'</div>';}
+ if(type==="wave"){return '<svg viewBox="0 0 276 104" preserveAspectRatio="none" aria-hidden="true"><line class="axis" x1="0" y1="96" x2="276" y2="96"/><path class="wv" d="M0 94 C30 93 50 92 62 76 C70 66 74 58 80 58 C88 58 94 72 104 84 C118 94 130 92 145 72 C152 62 156 44 164 40 C174 36 180 56 190 72 C198 84 208 80 216 60 C220 50 224 30 232 24 C240 20 246 30 254 52 C262 74 270 84 276 90"/><circle cx="80" cy="58" r="5" style="--i:0"/><circle cx="164" cy="40" r="5" style="--i:1"/><circle cx="232" cy="24" r="5" style="--i:2"/></svg>';}
+ if(type==="gap"){function hh(v){return (7+93*Math.sqrt(v/12937)).toFixed(1);}return '<div class="vz-gap"><div class="rf-col"><em>21 ₽</em><div class="rf-bar" style="--h:'+hh(21)+'"></div></div><div class="rf-col"><em>12 937 ₽</em><div class="rf-bar" style="--h:'+hh(12937)+'"></div></div></div>';}
+ if(type==="chain"){var hs=[80,60,42,28,16];var c="";for(var k=0;k<5;k++)c+='<b style="--h:'+hs[k]+';--p:'+k+'"></b>';return '<div class="vz-chain">'+c+'</div>';}
+ if(type==="live"){var l="";for(var m=0;m<3;m++)l+='<div class="row" style="--i:'+m+'"><i></i><s></s><u></u></div>';return '<div class="vz-live">'+l+'</div>';}
+ return "";
+}
+var grid=document.getElementById("rgrid");
+STUDIES.forEach(function(s){
+ var f=document.createElement("a");
+ f.className="folder";f.href=s.href;
+ f.setAttribute("aria-label",s.title+" — "+s.fig+". Открыть исследование.");
+ f.innerHTML='<div class="f-stage" aria-hidden="true"><div class="f-back"></div><div class="f-files">'+
+  s.sheets.map(function(sh,i){return '<span class="sheet" style="--d:'+i+'"><span class="sf">'+sh.f+'</span><span class="sp">'+sh.p+'</span></span>';}).join("")+
+  '</div><div class="f-front"><div class="f-viz">'+vizHTML(s.viz)+'</div><div class="f-label">'+
+  '<span class="f-title">'+s.title+'</span><span class="f-meta">'+s.meta+'</span><span class="f-fig">'+s.fig+'</span></div></div></div>';
+ grid.appendChild(f);
+});
+})();
+</script>
 </section>
 
 <section class="vs" aria-label="Чем это отличается от конструкторов и платформ">
