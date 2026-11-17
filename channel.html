@@ -808,10 +808,10 @@ const clampAspect = a => Math.min(Math.max(a || 0.75, 0.35), 1.25);
 // адаптация: контент — моя 2D-канва (source), не html-in-canvas
 function createDecrypt(sourceCanvas, outputCanvas, opts) {
   const config = Object.assign({
-    radius: 340, softness: .5, cell: 10, aspect: .75, charset: PRINTABLE_ASCII,
-    colored: 1, color: C.acc, brightness: 1, legibility: 1, contrast: 1, exposure: 1,
-    scramble: .1, scrambleSpeed: 6, edgeWidth: .2, edgeFlicker: 1, edgeGlow: 2, edgeTint: .75,
-    aberration: 10, passthrough: .15, threshold: .025, background: C.card, smoothing: .2,
+    radius: 340, softness: .5, cell: 12, aspect: .75, charset: PRINTABLE_ASCII,
+    colored: .3, color: C.acc, brightness: .95, legibility: .85, contrast: 1, exposure: 1,
+    scramble: .08, scrambleSpeed: 6, edgeWidth: .2, edgeFlicker: 1, edgeGlow: 2, edgeTint: .75,
+    aberration: 8, passthrough: .22, threshold: .025, background: C.card, smoothing: .2,
   }, opts);
   const gl = outputCanvas.getContext("webgl2", { alpha: true, depth: false, stencil: false, antialias: false, premultipliedAlpha: false });
   if (!gl || gl.isContextLost()) return null;
