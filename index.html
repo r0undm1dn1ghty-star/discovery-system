@@ -751,18 +751,395 @@ footer a:hover{text-decoration:underline}
 </section>
 
 <!-- ═══ УЦП «После внедрения» — между кейсами и «что хочешь сейчас» ═══ -->
+<style id="ds-after-css">
+/* ── секция «срок»: часы внедрения + чек-лист приёмки (порты AI-анимаций, ваниль) ── */
+#after{--ease-out:cubic-bezier(.23,1,.32,1)}
+.ds-thesis{font:400 15.5px/1.6 var(--mono);color:var(--body);margin:0 0 clamp(26px,3.5vw,40px);max-width:60ch}
+.ds-thesis b{color:var(--accent);font-weight:500}
+.ds-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,36px);align-items:start}
+@media (max-width:860px){.ds-duo{grid-template-columns:1fr}}
+.ds-pancap{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px}
+.ds-pansub{font:400 13.5px/1.5 var(--mono);color:var(--meta);margin:-8px 0 18px;max-width:52ch}
+/* панель 1 — часы */
+.ds-ail{border:1px solid var(--hair2);border-radius:14px;background:rgba(255,255,255,.03);padding:18px 20px 16px}
+.ds-ail-head{display:flex;width:100%;align-items:center;gap:10px;font:500 14px/1.4 var(--sans);color:var(--body);padding:2px 0 8px}
+.ds-ail-head .ds-ttl{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+.ds-ail-head svg{margin-left:auto;flex:none;transition:transform .25s var(--ease-out);color:var(--meta)}
+.ds-ail.closed .ds-ail-head svg{transform:rotate(180deg)}
+.ds-ail-body{display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s var(--ease-out)}
+.ds-ail.closed .ds-ail-body{grid-template-rows:0fr}
+.ds-ail-body>div{overflow:hidden;min-height:0}
+.ds-ail-list{list-style:none;position:relative}
+.ds-ail-row{position:relative;display:flex;gap:12px;padding-top:14px}
+.ds-rail{position:absolute;top:34px;bottom:-10px;left:7.5px;width:1px;background:var(--hair2);overflow:hidden}
+.ds-rail i{display:block;height:100%;width:100%;background:var(--meta);transform:scaleY(0);transform-origin:top;transition:transform .5s var(--ease-out)}
+.ds-ail-row.done .ds-rail i{transform:scaleY(1)}
+.ds-ic{position:relative;flex:none;width:16px;height:16px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ds-ic span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .18s var(--ease-out),filter .18s var(--ease-out)}
+.ds-ic .s-pend{opacity:1}
+.ds-ic .s-run,.ds-ic .s-done{opacity:0;filter:blur(2px)}
+.ds-ail-row.running .ds-ic .s-pend,.ds-ail-row.done .ds-ic .s-pend{opacity:0;filter:blur(2px)}
+.ds-ail-row.running .ds-ic .s-run{opacity:1;filter:blur(0)}
+.ds-ail-row.done .ds-ic .s-done{opacity:1;filter:blur(0)}
+.ds-dot{width:6px;height:6px;border-radius:50%;background:var(--meta)}
+.ds-spin{color:var(--body);animation:ds-spin .8s linear infinite}
+@keyframes ds-spin{to{transform:rotate(360deg)}}
+.ds-spin .ds-track{stroke:var(--hair)}
+.ds-spin .ds-arc{stroke:currentColor}
+.ds-chk{color:var(--accent)}
+.ds-chk path{stroke-dasharray:1;stroke-dashoffset:1;animation:ds-draw .3s var(--ease-out) .05s forwards}
+@keyframes ds-draw{to{stroke-dashoffset:0}}
+.ds-ail-main{flex:1;min-width:0;margin-top:-2px}
+.ds-ail-top{display:flex;align-items:baseline;gap:8px}
+.ds-ail-lbl{flex:1;min-width:0;font:500 14px/1.4 var(--sans);color:var(--meta);transition:color .2s var(--ease-out);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ds-ail-row.running .ds-ail-lbl{color:var(--ink)}
+.ds-ail-row.done .ds-ail-lbl{color:var(--body)}
+.ds-wav{animation:ds-wave 1.6s ease-in-out infinite both}
+@keyframes ds-wave{50%{opacity:.3}}
+.ds-hrs{flex:none;font:500 12.5px/1.4 var(--mono);color:var(--meta);border:1px solid var(--hair2);border-radius:9px;padding:2px 8px;transition:color .2s var(--ease-out),border-color .2s var(--ease-out)}
+.ds-ail-row.running .ds-hrs,.ds-ail-row.done .ds-hrs{color:var(--accent);border-color:rgba(143,168,255,.3)}
+.ds-ail-log{overflow:hidden;transition:height .3s var(--ease-out);margin-top:4px}
+.ds-ail-log.masked{mask-image:linear-gradient(to bottom,rgba(0,0,0,.25),#000 70%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.25),#000 70%)}
+.ds-ail-log-track{transition:transform .3s var(--ease-out)}
+.ds-ail-line{display:flex;align-items:center;gap:8px;height:24px;font:400 12px/1 var(--mono);color:var(--meta);opacity:0;transition:opacity .2s var(--ease-out)}
+.ds-ail-line.vis{opacity:1}
+.ds-ail-line .ds-n{width:16px;text-align:right;color:rgba(143,168,255,.4);flex:none;font-variant-numeric:tabular-nums}
+.ds-ail-line .ds-tx{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ds-total{margin-top:14px;padding-top:12px;border-top:1px solid var(--hair2);display:flex;flex-direction:column;gap:6px}
+.ds-total .ds-fin{font:400 14.5px/1.55 var(--sans);color:var(--body)}
+.ds-total .ds-fin b{color:var(--accent);font-weight:500}
+.ds-total .ds-sum{font:500 13px/1.5 var(--mono);color:var(--meta)}
+.ds-replay{background:none;border:0;border-bottom:1px solid rgba(143,168,255,.4);padding:0 0 2px;font:500 13px/1.4 var(--mono);color:var(--accent);cursor:pointer;margin-top:14px}
+.ds-replay:hover{color:var(--ink)}
+/* панель 2 — чек-лист */
+.ds-plan{border:1px solid var(--hair2);border-radius:14px;background:rgba(255,255,255,.03);padding:18px 20px 14px;position:relative;overflow:hidden}
+.ds-plan-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.ds-plan-head .ds-lb{font:500 14px/1.4 var(--sans);color:var(--ink)}
+.ds-plan-head .ds-cd{font:400 12px/1.4 var(--mono);color:var(--meta);font-variant-numeric:tabular-nums}
+.ds-plan ul{list-style:none}
+.ds-trow{position:relative;display:flex;align-items:flex-start;gap:10px;padding:6px 0 9px;transition:opacity .25s var(--ease-out)}
+.ds-trow.done{opacity:.65}
+.ds-tbox{flex:none;width:15px;height:15px;margin-top:3px}
+.ds-tbox rect{fill:var(--accent);fill-opacity:0;stroke:var(--body);stroke-width:1.4;transition:fill-opacity .2s var(--ease-out),stroke .2s var(--ease-out)}
+.ds-trow.done .ds-tbox rect{fill-opacity:.12;stroke:var(--accent)}
+.ds-trow.running .ds-tbox rect{stroke:var(--ink)}
+.ds-tbox path{fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0}
+.ds-trow.done .ds-tbox path{opacity:1;animation:ds-plandraw .2s var(--ease-out) both}
+@keyframes ds-plandraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.ds-tlbl{flex:1;min-width:0;font:400 14px/1.45 var(--sans);color:var(--body)}
+.ds-trow.running .ds-tlbl{color:var(--ink)}
+.ds-tnote{flex:none;font:400 12px/1.7 var(--mono);color:var(--meta);font-variant-numeric:tabular-nums}
+.ds-undl{position:absolute;left:0;right:0;bottom:0;height:1px;opacity:0;pointer-events:none;background-image:linear-gradient(90deg,transparent 0%,currentColor 50%,transparent 100%);background-size:50% 100%}
+.ds-trow.running .ds-undl{opacity:.5;animation:ds-undl 1.4s cubic-bezier(.645,.045,.355,1) infinite}
+@keyframes ds-undl{from{background-position-x:0%}to{background-position-x:200%}}
+.ds-plan-note{margin-top:12px;padding-top:10px;border-top:1px solid var(--hair2);font:400 13px/1.6 var(--mono);color:var(--meta)}
+/* оверлей-артефакт */
+.ds-proof{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;background:rgba(15,23,48,.96);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .25s var(--ease-out);padding:16px}
+.ds-proof.show{opacity:1}
+.ds-proof .ds-pcard{background:rgba(29,42,69,.6);border:1px solid var(--hair2);border-radius:14px;padding:16px;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.ds-pcard{width:100%;max-width:300px;display:flex;flex-direction:column;gap:8px}
+.ds-pcrit{font:500 12px/1.5 var(--mono);color:var(--accent)}
+.ds-pbub{background:#1d2a45;border-radius:12px;padding:9px 12px;font:400 13px/1.45 var(--sans);color:var(--ink);position:relative}
+.ds-pbub.in{margin-right:36px;background:#243049;color:#c6d2f2}
+.ds-pbub.out{margin-left:36px}
+.ds-pbub .ds-ptm{display:block;text-align:right;font:400 10.5px/1 var(--mono);color:#a8c6e6;margin-top:4px}
+.ds-pchip{align-self:center;font:400 11.5px/1.3 var(--mono);color:#cfe0f4;background:rgba(0,0,0,.32);border-radius:10px;padding:4px 11px}
+.ds-pvoice{display:flex;align-items:center;gap:9px;background:#1d2a45;border-radius:14px;padding:9px 12px}
+.ds-pvoice .ds-pvbtn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#0f1730;font-size:11px}
+.ds-pwave{flex:1;display:flex;align-items:center;gap:2px;height:20px}
+.ds-pwave i{flex:1;background:rgba(143,168,255,.55);border-radius:2px}
+.ds-pvoice .ds-pvdur{flex:none;font:400 11px/1 var(--mono);color:#a8c6e6}
+.ds-prow{display:flex;justify-content:space-between;gap:10px;font:400 12.5px/1.5 var(--mono);color:var(--body);background:#1d2a45;border-radius:9px;padding:7px 11px}
+.ds-prow b{color:var(--ink);font-weight:500}
+.ds-prow.warn{color:#f0d8a8;background:#2a2540}
+.ds-prow.warn b{color:#f0d8a8}
+@media (prefers-reduced-motion:reduce){
+  .ds-ail-head svg,.ds-rail i,.ds-tbox rect,.ds-tbox path{transition:none!important;animation:none!important}
+  .ds-spin{animation:none!important}
+  .ds-wav{animation:none!important}
+  .ds-trow.running .ds-undl{animation:none!important;opacity:0}
+  .ds-ail-body{transition:none!important}
+}
+</style>
 <section id="after" class="zone-dark aftersec">
 <div class="wrap">
 <p class="lbl">срок</p>
 <h2>Агент за 1–3 дня.<br><span class="dim">И он работает, а не лежит.</span></h2>
-<ol class="tdays">
-  <li class="fx"><span class="td-d">день 0</span><b>Требования</b><p>15–20 минут разговора. Снимаю процесс и критерии приёмки.</p></li>
-  <li class="fx"><span class="td-d">день 1</span><b>Конфигурация</b><p>Модель, хранение, доступы. Показываю, что получилось.</p></li>
-  <li class="fx"><span class="td-d">день 3</span><b>Внедрено</b><p>Агент в работе на твоих данных, критерии закрыты.</p></li>
-</ol>
+<p class="ds-thesis">3 дня — календарь. <b>5–12 часов — работа.</b> Ниже — сколько занимает что и какие критерии агент закрывает.</p>
+<div class="ds-duo">
+  <div>
+    <span class="ds-pancap">сколько занимает что</span>
+    <p class="ds-pansub">тайминг в часах работы, не «сроки в неделях»</p>
+    <div class="ds-ail" id="dsAil">
+      <div class="ds-ail-head">
+        <span class="ds-ttl" id="dsAilTitle">Готовим внедрение</span>
+        <span id="dsCnt"></span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6.5 8 10.5 12 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="ds-ail-body"><div>
+        <ol class="ds-ail-list" id="dsAilList"></ol>
+        <div class="ds-total" id="dsTotal" style="visibility:hidden">
+          <span class="ds-fin"><b>Итог:</b> ИИ-агент, который решает ваши задачи и принадлежит вам</span>
+          <span class="ds-sum">3 дня календаря · <b id="dsHrsSum">5–12</b> часов работы</span>
+        </div>
+      </div></div>
+    </div>
+    <button class="ds-replay" id="dsReplay" hidden>смотреть снова ↻</button>
+  </div>
+  <div>
+    <span class="ds-pancap">что проверяем при приёмке</span>
+    <p class="ds-pansub">критерии зафиксированы до старта, каждая строка проверяется</p>
+    <div class="ds-plan" id="dsPlan">
+      <div class="ds-plan-head">
+        <span class="ds-lb">Критерии приёмки агента</span>
+        <span class="ds-cd" id="dsPlanCnt">0/5</span>
+      </div>
+      <ul id="dsPlanList"></ul>
+      <p class="ds-plan-note">Критерии под твой процесс — это пример внедрения с живыми сценариями.</p>
+    </div>
+  </div>
+</div>
 <p class="tdnote">Сложный случай — до 10 дней: тестирую и отлаживаю так, чтобы моя поддержка потом почти не требовалась.</p>
 </div>
 </section>
+<script>
+(function(){
+  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── часы внедрения (подтверждены владельцем 17.11.2026) ── */
+  var HOURS = ['1–3 ч', '1–2 ч', '10 мин', '3–8 ч'];
+  var HOURS_SUM = '5–12';
+
+  var STEPS = [
+    {id:'talk', label:'Консультация', detail:[
+      'снимаю запрос, процессы и цели',
+      'считаю экономику',
+      'показываю решение']},
+    {id:'crit', label:'Критерии приёмки', detail:[
+      'формирую 5 критериев приёмки',
+      'критерии — это чек-лист справа',
+      'согласуем их до старта']},
+    {id:'pay', label:'Оплата', detail:[
+      'вперёд, после согласования критериев',
+      'рублями / криптой']},
+    {id:'build', label:'Внедрение и отладка', detail:[
+      'стек агента: провайдер моделей · модели',
+      'хостинг: твоё облако',
+      'база знаний',
+      'проверка на твоих задачах',
+      'отладка до закрытия всех критериев']}
+  ];
+  var TICK = 750;
+
+  /* ── панель 1: степ-лист с часами ── */
+  var list = document.getElementById('dsAilList');
+  var rows = STEPS.map(function(st, i){
+    var li = document.createElement('li');
+    li.className = 'ds-ail-row';
+    li.innerHTML =
+      (i < STEPS.length-1 ? '<span class="ds-rail"><i></i></span>' : '') +
+      '<span class="ds-ic">' +
+        '<span class="s-pend"><span class="ds-dot"></span></span>' +
+        '<span class="s-run"><svg class="ds-spin" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
+          '<circle class="ds-track" cx="8" cy="8" r="6.25" stroke-width="1.5"/>' +
+          '<path class="ds-arc" d="M8 1.75a6.25 6.25 0 0 1 6.25 6.25" stroke-width="1.5" stroke-linecap="round"/></svg></span>' +
+        '<span class="s-done"><svg class="ds-chk" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">' +
+          '<path d="M3.5 8.5 6.5 11.5 12.5 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg></span>' +
+      '</span>' +
+      '<div class="ds-ail-main"><div class="ds-ail-top"><p class="ds-ail-lbl"></p><span class="ds-hrs">' + HOURS[i] + '</span></div>' +
+        '<div class="ds-ail-log"><div class="ds-ail-log-track"></div></div></div>';
+    list.appendChild(li);
+    return {el:li, lbl:li.querySelector('.ds-ail-lbl'),
+            log:li.querySelector('.ds-ail-log'), track:li.querySelector('.ds-ail-log-track')};
+  });
+  document.getElementById('dsHrsSum').textContent = HOURS_SUM;
+
+  function waveLabel(row, text){
+    row.lbl.textContent = '';
+    var frag = document.createDocumentFragment();
+    for (var i=0;i<text.length;i++){
+      var s = document.createElement('span');
+      s.className = 'ds-wav'; s.textContent = text[i];
+      s.style.animationDelay = (i*0.05)+'s';
+      frag.appendChild(s);
+    }
+    row.lbl.appendChild(frag);
+  }
+  function setLog(row, lines){
+    if (!lines.length){ row.log.style.height='0px'; row.track.innerHTML=''; return; }
+    row.log.classList.toggle('masked', lines.length > 3);
+    row.track.innerHTML = lines.map(function(t,i){
+      return '<div class="ds-ail-line vis"><span class="ds-n">'+(i+1)+'</span><span class="ds-tx">'+t+'</span></div>';
+    }).join('');
+    row.log.style.height = (Math.min(lines.length,3)*24)+'px';
+    row.track.style.transform = 'translateY('+(-Math.max(0,lines.length-3)*24)+'px)';
+  }
+
+  var pos = {step:0, line:0};
+  var title = document.getElementById('dsAilTitle'),
+      cnt  = document.getElementById('dsCnt'),
+      ail  = document.getElementById('dsAil'),
+      total = document.getElementById('dsTotal');
+
+  function render(){
+    var running = null;
+    STEPS.forEach(function(st, i){
+      var r = rows[i], state;
+      if (i < pos.step) state = 'done';
+      else if (i === pos.step && pos.step < STEPS.length) state = 'running';
+      else state = 'pending';
+      r.el.className = 'ds-ail-row ' + state;
+      if (state === 'running'){
+        running = st;
+        waveLabel(r, st.label);
+        setLog(r, st.detail.slice(0, pos.line));
+      } else {
+        r.lbl.textContent = st.label;
+        setLog(r, []);
+      }
+    });
+    total.style.visibility = pos.step >= STEPS.length ? 'visible' : 'hidden';
+    if (pos.step >= STEPS.length){
+      title.textContent = 'Итог · агент за 3 дня';
+      cnt.textContent = '';
+      return true;
+    }
+    title.textContent = running ? running.label : 'Готовим внедрение';
+    cnt.textContent = '';
+    return false;
+  }
+
+  function tick(){
+    if (pos.step >= STEPS.length) return;
+    var st = STEPS[pos.step];
+    pos.line++;
+    if (pos.line > st.detail.length){
+      pos.step++; pos.line = 0;
+      if (pos.step >= STEPS.length){
+        render(); ail.classList.add('closed');
+        setTimeout(startPlan, 600);
+        return;
+      }
+    }
+    render();
+    setTimeout(tick, TICK);
+  }
+  function startAil(){
+    pos = {step:0, line:0};
+    ail.classList.remove('closed');
+    render();
+    setTimeout(tick, TICK);
+  }
+
+  /* ── панель 2: чек-лист приёмки + оверлеи-артефакты ── */
+  var TASKS = [
+    {label:'Голосовое клиента → расшифровал и ответил сам', note:'без тебя'},
+    {label:'Сообщение клиента → ответ и заявка в карточке', note:'23:47'},
+    {label:'Сводка по бизнесу за день', note:'вечер · 1 сообщ.'},
+    {label:'Счёт поставщика → сверка с договором', note:'4 800 ₽'},
+    {label:'Бронь слота и напоминание до выезда', note:'за 1 час'}
+  ];
+  var planList = document.getElementById('dsPlanList'),
+      planCnt  = document.getElementById('dsPlanCnt');
+  var trows = TASKS.map(function(t){
+    var li = document.createElement('li');
+    li.className = 'ds-trow';
+    li.innerHTML =
+      '<svg class="ds-tbox" viewBox="0 0 14 14" aria-hidden="true">' +
+        '<rect x="1" y="1" width="12" height="12" rx="3.5"/>' +
+        '<path d="M3.5 7.5 6 10 10.5 4.5" pathLength="1"/></svg>' +
+      '<span class="ds-tlbl">'+t.label+'</span>' +
+      '<span class="ds-tnote">'+t.note+'</span>' +
+      '<span class="ds-undl"></span>';
+    planList.appendChild(li);
+    return li;
+  });
+
+  /* артефакты: данные из живых сценариев внедрения (герой страницы) */
+  var PROOFS = [
+    '<div class="ds-pvoice"><span class="ds-pvbtn">▶</span>' +
+      '<span class="ds-pwave"><i style="height:8px"></i><i style="height:14px"></i><i style="height:6px"></i><i style="height:16px"></i><i style="height:10px"></i><i style="height:15px"></i><i style="height:7px"></i><i style="height:13px"></i><i style="height:9px"></i><i style="height:14px"></i><i style="height:6px"></i><i style="height:11px"></i></span>' +
+      '<span class="ds-pvdur">0:07 · 23:52</span></div>' +
+    '<div class="ds-pbub out">Расшифровал: «Здравствуйте! Нужен монтаж. Сколько стоит?»<span class="ds-ptm">ответил сам · 23:53</span></div>',
+    '<div class="ds-pbub in">Здравствуйте! Нужен монтаж. Сколько стоит и когда сможете приехать?<span class="ds-ptm">клиент · 23:47</span></div>' +
+    '<div class="ds-pbub out">Монтаж под ключ — 18 400 ₽. Уточню: квартира или офис?<span class="ds-ptm">агент · 23:47</span></div>' +
+    '<span class="ds-pchip">Заявка No184 создана</span>',
+    '<div class="ds-prow"><span>Заявка No184</span><b>в карточке</b></div>' +
+    '<div class="ds-prow"><span>Запись</span><b>чт · 10:00</b></div>' +
+    '<div class="ds-prow"><span>Счёт поставщика</span><b>проверен</b></div>',
+    '<div class="ds-prow"><span>Счёт No1847</span><b>46 800 ₽</b></div>' +
+    '<div class="ds-prow"><span>В договоре</span><b>42 000 ₽</b></div>' +
+    '<div class="ds-prow warn"><span>Расхождение — доставка не в договоре</span><b>4 800 ₽</b></div>' +
+    '<span class="ds-pchip">Письмо поставщику отправлено</span>',
+    '<div class="ds-prow"><span>Четверг 10:00</span><b>слот забронирован</b></div>' +
+    '<div class="ds-pbub out">Напомню в среду вечером и за час до выезда.<span class="ds-ptm">агент · автоматически</span></div>'
+  ];
+  var proof = document.createElement('div');
+  proof.className = 'ds-proof';
+  document.getElementById('dsPlan').appendChild(proof);
+  function showProof(i){
+    proof.innerHTML = '<div class="ds-pcard"><span class="ds-pcrit">критерий: '+TASKS[i].label+'</span>'+PROOFS[i]+'</div>';
+    proof.classList.add('show');
+  }
+  function hideProof(cb){
+    proof.classList.remove('show');
+    setTimeout(cb, 280);
+  }
+
+  function planRender(){ planCnt.textContent = trows.filter(function(r){return r.classList.contains('done')}).length + '/' + trows.length; }
+  var ti = 0;
+  function tickPlan(){
+    if (ti >= trows.length){ planRender(); finish(); return; }
+    trows[ti].className = 'ds-trow running';
+    planRender();
+    var i = ti;
+    setTimeout(function(){
+      trows[i].className = 'ds-trow done';
+      planRender();
+      showProof(i);
+      setTimeout(function(){
+        hideProof(function(){ ti++; setTimeout(tickPlan, 350); });
+      }, 2400);
+    }, 700);
+  }
+  function startPlan(){ ti = 0; setTimeout(tickPlan, 500); }
+
+  /* стоп на итоге: развёртка один раз при входе во вьюпорт */
+  var replayBtn = document.getElementById('dsReplay');
+  function finish(){ replayBtn.hidden = false; }
+  function replay(){
+    replayBtn.hidden = true;
+    trows.forEach(function(r){ r.className = 'ds-trow'; });
+    planRender();
+    startAil();
+  }
+  replayBtn.addEventListener('click', replay);
+
+  if (RM){
+    rows.forEach(function(r,i){
+      r.el.className = 'ds-ail-row done';
+      r.lbl.textContent = STEPS[i].label;
+      setLog(r, []);
+    });
+    total.style.visibility = 'visible';
+    title.textContent = 'Итог · агент за 3 дня';
+    trows.forEach(function(r){ r.className = 'ds-trow done'; });
+    planRender();
+    finish();
+  } else {
+    planRender();
+    var played = false;
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        if (entries[0].isIntersecting && !played){ played = true; io.disconnect(); startAil(); }
+      }, {threshold: 0.3});
+      io.observe(ail);
+    } else {
+      startAil();
+    }
+  }
+})();
+</script>
 
 <!-- ═══ кто делает ═══ -->
 
