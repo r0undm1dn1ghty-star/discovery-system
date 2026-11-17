@@ -120,68 +120,29 @@ footer a:hover{text-decoration:underline}
 #research .folder:hover .sheet,#research .folder:focus-visible .sheet{--lift:2px}
 #research .f-front{
   position:absolute;left:0;right:0;top:118px;bottom:0;z-index:10;border-radius:22px;
-  -webkit-backdrop-filter:blur(14px) saturate(1.3);
-  backdrop-filter:blur(14px) saturate(1.3);
-  background:linear-gradient(180deg,rgba(255,255,255,.30) 0%,rgba(255,255,255,.55) 30%,rgba(250,250,252,.96) 100%);
-  box-shadow:0 0 0 1px rgba(16,20,31,.10), inset 0 1px 0 rgba(255,255,255,.9), 0 16px 34px -16px rgba(16,20,31,.3);
+  background:#fff;
+  box-shadow:0 0 0 1px rgba(16,20,31,.10), 0 16px 34px -16px rgba(16,20,31,.25);
   transform-origin:50% 100%;
   transform:perspective(760px) rotateX(var(--hinge,0deg));
   transition:transform .55s var(--spring);
 }
 #research .folder:hover .f-front,#research .folder:focus-visible .f-front{--hinge:-8deg}
-#research .f-viz{position:absolute;left:26px;right:30px;top:14px;height:88px}
-#research .f-label{position:absolute;left:24px;right:24px;bottom:16px;display:flex;flex-direction:column;gap:4px}
-#research .f-title{font:500 16.5px/1.25 var(--disp);letter-spacing:-.01em;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#research .f-brand{position:absolute;left:24px;right:24px;top:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#research .f-brand img{height:26px;width:auto;display:block}
+#research .f-brand .bs{font:500 14px/1 var(--mono);letter-spacing:.06em;color:var(--meta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#research .f-brand .idx{margin-left:auto;font:500 14px/1 var(--mono);color:rgba(27,42,107,.45)}
+#research .f-tg{display:flex;align-items:center;gap:8px;flex:1}
+#research .f-tg svg{width:20px;height:20px;flex:none;fill:var(--navy)}
+#research .f-label{position:absolute;left:24px;right:24px;bottom:16px;display:flex;flex-direction:column;gap:5px}
+#research .f-title{font:600 20px/1.22 var(--disp);letter-spacing:-.015em;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 #research .f-meta{font:400 14px/1.4 var(--mono);color:rgba(20,20,22,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#research .f-fig{font:500 14.5px/1.35 var(--mono);color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#research .vz-layers{display:flex;gap:7px;align-items:flex-end;height:100%}
-#research .vz-layers b{flex:1;height:68%;border-radius:8px;background:rgba(27,42,107,.34);border:1px solid rgba(27,42,107,.28);
-  transform-origin:50% 100%;transition:transform .45s var(--spring) calc(var(--i)*40ms), background .3s;
-  animation:rf-breathe 3.4s var(--ease) calc(var(--i)*.18s) infinite}
-#research .vz-layers b.off{background:repeating-linear-gradient(45deg,rgba(27,42,107,.14) 0 5px,rgba(27,42,107,.26) 5px 7px);animation:none}
-#research .folder:hover .vz-layers b:not(.off),#research .folder:focus-visible .vz-layers b:not(.off){transform:translateY(-8px);background:rgba(27,42,107,.55)}
-@keyframes rf-breathe{0%,100%{opacity:.72}50%{opacity:1}}
-#research .vz-dots{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;height:100%}
-#research .vz-dots i{border-radius:50%;background:rgba(27,42,107,.32);transform:scale(.82);transition:transform .4s var(--spring) calc(var(--i)*14ms), background .3s}
-#research .vz-dots i.hot{background:rgba(27,42,107,.85)}
-#research .folder:hover .vz-dots i,#research .folder:focus-visible .vz-dots i{transform:scale(1)}
-#research .vz-wave svg{display:block;width:100%;height:100%}
-#research .vz-wave .axis{stroke:rgba(27,42,107,.3);stroke-width:1.5}
-#research .vz-wave .wv{fill:none;stroke:var(--navy);stroke-width:2.5;stroke-linejoin:round}
-#research .vz-wave circle{fill:var(--navy)}
-#research .folder:hover .vz-wave circle,#research .folder:focus-visible .vz-wave circle{animation:rf-pulse 1.8s var(--ease) calc(var(--i)*.4s) infinite}
-@keyframes rf-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.75;transform:scale(1.25)}}
-#research .vz-gap{display:flex;gap:26px;align-items:flex-end;height:100%}
-#research .vz-gap .rf-col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;flex:1;height:100%}
-#research .vz-gap .rf-col em{font:500 14px/1 var(--mono);font-style:normal;color:var(--ink)}
-#research .vz-gap .rf-bar{width:100%;border-radius:8px 8px 3px 3px;background:rgba(27,42,107,.5);
-  height:calc(var(--h)*.8%);transition:height .6s var(--spring), background .3s}
-#research .vz-gap .rf-col:last-child .bar{background:var(--navy)}
-#research .folder:hover .vz-gap .rf-bar,#research .folder:focus-visible .vz-gap .rf-bar{height:calc(var(--h)*.88%)}
-#research .vz-chain{display:flex;gap:6px;align-items:flex-start;height:100%}
-#research .vz-chain b{flex:1;border-radius:6px;background:rgba(27,42,107,.34);height:calc(var(--h)*1%);
-  transition:transform .5s var(--spring) calc(var(--p)*60ms), background .3s;
-  animation:rf-drop 3.6s var(--ease) calc(var(--p)*.3s) infinite}
-#research .vz-chain b:last-child{background:rgba(27,42,107,.85);outline:1.5px solid var(--navy);outline-offset:3px}
-@keyframes rf-drop{0%,100%{opacity:.6}50%{opacity:.95}}
-#research .folder:hover .vz-chain b,#research .folder:focus-visible .vz-chain b{animation-play-state:paused;opacity:1}
-#research .vz-live{display:flex;flex-direction:column;gap:14px;justify-content:center;height:100%}
-#research .vz-live .row{display:flex;align-items:center;gap:10px;overflow:hidden}
-#research .vz-live .row i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--navy);animation:rf-blink 2.2s var(--ease) calc(var(--i)*.45s) infinite}
-#research .vz-live .row s{flex:1;height:6px;border-radius:3px;text-decoration:none;
-  background:linear-gradient(90deg,rgba(27,42,107,.15) 0%,rgba(27,42,107,.45) 40%,rgba(27,42,107,.12) 60%,rgba(27,42,107,.15) 100%);
-  background-size:220% 100%;animation:rf-sweep 3.6s linear calc(var(--i)*.4s) infinite}
-#research .vz-live .row u{flex:none;width:34px;height:6px;border-radius:3px;text-decoration:none;background:rgba(27,42,107,.85)}
-@keyframes rf-sweep{0%{background-position:110% 0}100%{background-position:-110% 0}}
-@keyframes rf-blink{0%,100%{opacity:.45}45%{opacity:1}}
-#research .folder:hover .vz-live .row i{animation-duration:1.1s}
-#research .folder:hover .vz-live .row s{animation-duration:1.6s}
+#research .f-fig{font:500 15px/1.35 var(--mono);color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#research .f-tg .f-fig{flex:1}
 @media(prefers-reduced-motion:reduce){
   #research *,#research *:before,#research *:after{animation:none!important;transition:none!important}
   #research .folder:hover .f-front,#research .folder:focus-visible .f-front{transform:none!important}
   #research .folder:hover .f-back{transform:none}
   #research .sheet{--lift:0px!important}
-  #research .vz-layers b{transform:none}
 }
 
 .herocta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:26px 0 30px}
@@ -192,16 +153,15 @@ footer a:hover{text-decoration:underline}
 .range{margin:0 0 22px;max-width:720px}
 .range .track{position:relative;height:34px;background:rgba(255,255,255,.06);border-radius:17px;cursor:pointer;touch-action:none}
 .range .fill{position:absolute;left:0;top:0;height:100%;width:25%;background:linear-gradient(90deg,rgba(143,168,255,.28),rgba(143,168,255,.65));border-radius:17px;transition:width .45s cubic-bezier(.2,.7,.2,1)}
-.range .m0{position:absolute;left:34px;top:50%;transform:translateY(-50%);font:500 14px/1 var(--mono);color:#0f1730;background:#8fa8ff;border-radius:999px;padding:5px 12px}
-.range .m3{position:absolute;right:34px;top:50%;transform:translateY(-50%);font:500 14px/1 var(--mono);color:#eef2fb;pointer-events:none}
-.range .thumb{position:absolute;left:25%;top:50%;width:26px;height:26px;border-radius:50%;background:#eef2fb;border:2px solid #8fa8ff;transform:translate(-50%,-50%);box-shadow:0 2px 10px rgba(15,23,48,.55);transition:left .45s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.range .thumb{position:absolute;left:25%;top:50%;min-width:64px;height:34px;border-radius:17px;background:#eef2fb;border:1px solid rgba(143,168,255,.55);transform:translate(-50%,-50%);box-shadow:0 2px 10px rgba(15,23,48,.55);transition:left .45s cubic-bezier(.2,.7,.2,1);pointer-events:none;display:flex;align-items:center;justify-content:center;padding:0 12px;font:500 13px/1 var(--mono);color:#0f1730;white-space:nowrap}
+.range.dragging .fill,.range.dragging .thumb{transition:none}
 .range .steps{display:flex;justify-content:space-between;margin-top:10px;font:400 13px/1 var(--mono);color:#a9b2cc}
 .range .steps span{white-space:nowrap;background:none;border:0;padding:6px 2px;color:inherit;font:inherit;cursor:pointer;transition:color .15s ease}
 .range .steps span:hover,.range .steps span.on{color:#8fa8ff}
 .range .steps span:focus-visible{outline:2px solid #8fa8ff;outline-offset:2px}
-@media(max-width:640px){.range .m0,.range .m3{display:none}}
+@media(max-width:640px){.range{max-width:none}}
 /* вывод слайдера: что за деньги · где ломается · вариант в DS */
-.sout{max-width:640px;min-height:96px;margin:0 0 26px}
+.sout{max-width:640px;margin:0 0 26px}
 .sout .row{margin:0 0 10px;font-size:clamp(1rem,1.4vw,1.12rem);color:#eef2fb;transition:opacity .2s ease,transform .2s ease}
 .sout .row.brk{font-size:15.5px;color:#8a94ad}
 .sout .row.brk b{color:#e0605e;font-weight:500}
@@ -305,28 +265,22 @@ footer p { margin: 2px 0; }
 <a class="brand" href="index.html" style="display:flex;align-items:center;gap:10px;font-family:Onest;font-weight:500;letter-spacing:-.01em;color:var(--ink);text-decoration:none;font-size:15.5px"><img src="logo-5.png" alt="Discovery System" width="26" height="26" style="border-radius:6px">discovery system</a>
 <nav style="display:flex;gap:22px;margin-left:auto;font-size:14.5px">
 <a href="index.html">Главная</a><a href="market.html" class="on">Рынок ИИ</a><a href="service.html">Сервис</a><a href="system.html">Система</a><a href="calculator.html">Калькулятор</a><a href="channel.html">Канал</a></nav>
-</div></header><div class="hero"><div class="w"><div class="k">рынок ИИ-внедрений · срез 09.11.2026</div>
+</div></header><div class="hero"><div class="w">
 <h1>Одну и ту же работу продают за 0 ₽ и за 3 миллиона.</h1>
 <div class="range" aria-label="Слайдер цен внедрения: от 0 рублей до 3 миллионов">
-  <div class="track" id="ptrack"><div class="fill" id="pfill"></div><span class="m0">0 ₽</span><span class="m3">3 млн ₽</span><div class="thumb" id="pthumb"></div></div>
+  <div class="track" id="ptrack"><div class="fill" id="pfill"></div><div class="thumb" id="pthumb"><span id="pval">0 ₽</span></div></div>
   <div class="steps" id="psteps"></div>
 </div>
 <div class="sout" aria-live="polite">
   <div class="out" id="pout">
     <p class="row" id="sWhat"></p>
-    <p class="row brk" id="sBrk"></p>
     <p class="row ds" id="sDs"></p>
   </div>
 </div>
 <div class="herocta">
   <a class="hbtn" href="calculator.html">Посчитать свою рутину — 0 ₽</a>
-  <a class="hlink" href="service.html">Цены и что входит</a>
 </div>
-<div class="hnums">
-<div class="hn"><div class="v">7–10%</div><div class="l">из ста начатых проектов до работы доходят меньше десяти · CNews, март 2026</div></div>
-<div class="hn"><div class="v">×20–60</div><div class="l">во столько раз дороже та же модель с картой РФ · замер 04.11.2026</div></div>
-<div class="hn"><div class="v">74–206 тыс.</div><div class="l">столько людей потеряли аккаунт Claude или ChatGPT · расчёт 04.11.2026</div></div>
-</div></div></div>
+</div></div>
 
 <div class="w">
 <section class="sec"><div class="sh"><h2>Сколько просят за одну и ту же работу</h2><span class="tag">₽ разово</span></div>
@@ -372,7 +326,7 @@ var STUDIES=[
   fig:"76 провалов + 7 судебных дел",viz:"dots",
   sheets:[{f:"→",p:"полный корпус на странице"},{f:"76",p:"что сломалось — по карточкам"},{f:"Причины провалов",p:"в карточках корпуса"}]},
  {title:"Потери аккаунтов Claude и ChatGPT",meta:"измерение · 04.11",href:"lost-accounts.html",
-  fig:"74–206 тыс · ≈ 3,7 млрд ₽/год",viz:"wave",
+  fig:"май · 1–2 окт · 28–30 окт",viz:"wave",
   sheets:[{f:"74–206 тыс",p:"аккаунтов потеряно в 2026"},{f:"3,7 млрд ₽",p:"в год — и не возмещается"},{f:"Диапазон потерь",p:"в рублях: 3,7 млрд ₽/год"}]},
  {title:"Наценки на модели от российских компаний",meta:"замер · 09.11",href:"nacenka.html",
   fig:"21 → 12 937 ₽/мес · 18 моделей",viz:"gap",
@@ -384,23 +338,18 @@ var STUDIES=[
   fig:"цены · провалы · блокировки",viz:"live",
   sheets:[{f:"цены",p:"кто поднял и на сколько"},{f:"провалы",p:"со словами заказчиков"},{f:"Риски и возможности",p:"рынка ИИ-агентов в РФ"}]}
 ];
-function vizHTML(type){
- if(type==="layers"){var off=[2,6];var h="";for(var i=0;i<9;i++)h+='<b style="--i:'+i+'"'+(off.indexOf(i)>=0?' class="off"':'')+'></b>';return '<div class="vz-layers">'+h+'</div>';}
- if(type==="dots"){var hot={9:1,23:1,37:1,44:1,51:1,60:1,69:1};var d="";for(var j=0;j<76;j++)d+='<i style="--i:'+j+'"'+(hot[j]?' class="hot"':'')+'></i>';return '<div class="vz-dots">'+d+'</div>';}
- if(type==="wave"){return '<svg viewBox="0 0 276 104" preserveAspectRatio="none" aria-hidden="true"><line class="axis" x1="0" y1="96" x2="276" y2="96"/><path class="wv" d="M0 94 C30 93 50 92 62 76 C70 66 74 58 80 58 C88 58 94 72 104 84 C118 94 130 92 145 72 C152 62 156 44 164 40 C174 36 180 56 190 72 C198 84 208 80 216 60 C220 50 224 30 232 24 C240 20 246 30 254 52 C262 74 270 84 276 90"/><circle cx="80" cy="58" r="5" style="--i:0"/><circle cx="164" cy="40" r="5" style="--i:1"/><circle cx="232" cy="24" r="5" style="--i:2"/></svg>';}
- if(type==="gap"){function hh(v){return (7+93*Math.sqrt(v/12937)).toFixed(1);}return '<div class="vz-gap"><div class="rf-col"><em>21 ₽</em><div class="rf-bar" style="--h:'+hh(21)+'"></div></div><div class="rf-col"><em>12 937 ₽</em><div class="rf-bar" style="--h:'+hh(12937)+'"></div></div></div>';}
- if(type==="chain"){var hs=[80,60,42,28,16];var c="";for(var k=0;k<5;k++)c+='<b style="--h:'+hs[k]+';--p:'+k+'"></b>';return '<div class="vz-chain">'+c+'</div>';}
- if(type==="live"){var l="";for(var m=0;m<3;m++)l+='<div class="row" style="--i:'+m+'"><i></i><s></s><u></u></div>';return '<div class="vz-live">'+l+'</div>';}
- return "";
-}
 var grid=document.getElementById("rgrid");
-STUDIES.forEach(function(s){
+var TG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7L18.5 6c.4-.3-.1-.5-.6-.2L7.3 12.6l-4.5-1.4c-1-.3-1-1 .2-1.4L20.5 3.4c.8-.3 1.6.5 1.4 1.2z"/></svg>';
+STUDIES.forEach(function(s,n){
  var f=document.createElement("a");
  f.className="folder";f.href=s.href;
  f.setAttribute("aria-label",s.title+" — "+s.fig+". Открыть исследование.");
+ var brand = s.viz==="live"
+   ? '<span class="f-tg">'+TG+'<span class="f-fig">t.me/discoverysystem</span></span><span class="bs">канал Discovery System</span>'
+   : '<img src="logo-5.png" alt="" loading="lazy"><span class="bs">Discovery System</span><span class="idx">0'+(n+1)+'</span>';
  f.innerHTML='<div class="f-stage" aria-hidden="true"><div class="f-back"></div><div class="f-files">'+
   s.sheets.map(function(sh,i){return '<span class="sheet" style="--d:'+i+'"><span class="sf">'+sh.f+'</span><span class="sp">'+sh.p+'</span></span>';}).join("")+
-  '</div><div class="f-front"><div class="f-viz">'+vizHTML(s.viz)+'</div><div class="f-label">'+
+  '</div><div class="f-front"><div class="f-brand">'+brand+'</div><div class="f-label">'+
   '<span class="f-title">'+s.title+'</span><span class="f-meta">'+s.meta+'</span><span class="f-fig">'+s.fig+'</span></div></div></div>';
  grid.appendChild(f);
 });
@@ -429,9 +378,9 @@ STUDIES.forEach(function(s){
       <div class="vs-gap"><b>Кому:</b> когда нужен подрядчик «под ключ» и есть бюджет.<br><b>Ломается:</b> ключи и аккаунты обычно у студии; приёмка формулируется словами.</div>
     </div>
     <div class="vs-row vs-own">
-      <div class="vs-who">Здесь <em>наш вариант</em><br><span>29 990 / 49 990 ₽ разово</span></div>
+      <div class="vs-who">Здесь <em>наш вариант</em><br><span>29 990 / 49 990 ₽ разово</span></div>
       <div class="vs-what">Агент с инструментами и памятью на твоём железе. Ключи и данные твои, критерии приёмки — до старта, замер «до/после».</div>
-      <div class="vs-gap"><b>Кому:</b> процесс дороже 30 часов в месяц и нужно, чтобы всё было у тебя.<br><b>Цена владения:</b> 3–4 тыс ₽/мес провайдеру напрямую, без наценки.</div>
+      <div class="vs-gap"><b>Кому:</b> процесс дороже 30 часов в месяц и нужно, чтобы всё было у тебя.<br><b>Цена владения:</b> 3–4 тыс ₽/мес провайдеру напрямую, без наценки.</div>
     </div>
   </div>
   <p class="vs-note">Сравнение по публичным описаниям продуктов, сверено 10.11.2026. Не рейтинг: у каждого варианта есть задача, где он уместен.</p>
@@ -452,14 +401,14 @@ STUDIES.forEach(function(s){
 (function(){
 'use strict';
 var S=[
- {name:'курсы',p:0,what:'Курсы и пробы: агента дают на пару дней или записи вебинара — 10–100 тыс ₽ за знания.',brk:'Ломается: <b>проба заканчивается</b> — что останется у тебя через месяц, не видно.',ds:'В DS это: <b>гайд «20 конфигураций» — 3 000 ₽</b>'},
- {name:'фриланс',p:25,what:'Kwork, Авито, Профи: до 50 тыс ₽ — за 5 и за 50 обещают одно и то же.',brk:'Ломается: <b>цена ничего не значит</b> — ни критериев, ни проверки на твоих данных.',ds:'В DS это: <b>персональная сборка — 10 000 ₽ разово</b>'},
- {name:'внедренцы',p:50,what:'Внедренец из телеграма: 15–60 тыс ₽, подписка с наценкой до ×25,9.',brk:'Ломается: <b>аккаунт чужой</b> — блокируют вместе с агентом, без предупреждения.',ds:'В DS это: <b>переезд со своей подписки — от 25 000 ₽</b>'},
- {name:'студии',p:75,what:'Студии: 50 тыс – 1,5 млн ₽. Месяц работ — ты видишь статус, а не работу.',brk:'Ломается: <b>приёмка в конце</b> — контракт закрыт, поддерживать некому.',ds:'В DS это: <b>интеграция 1 процесса (≈30 ч/мес) — 29 990 ₽</b>'},
- {name:'интеграторы',p:100,what:'Enterprise-интеграторы: от 3 млн ₽ за корпоративный процесс.',brk:'Ломается в обратную сторону: <b>3 млн за 30 часов рутины в месяц</b> — процесс не того масштаба.',ds:'В DS это: <b>интеграция 5+ процессов — 79 990 ₽</b>, после аудита масштаба'}
+ {name:'курсы',p:0,what:'Курсы и пробы: агента дают на пару дней или записи вебинара — 10–100 тыс ₽ за знания.',brk:'Ломается: <b>проба заканчивается</b> — что останется у тебя через месяц, не видно.',ds:'В Discovery System это: <b>гайд «20 конфигураций» — 3 000 ₽</b>'},
+ {name:'фриланс',p:25,what:'Kwork, Авито, Профи: до 50 тыс ₽ — за 5 и за 50 обещают одно и то же.',brk:'Ломается: <b>цена ничего не значит</b> — ни критериев, ни проверки на твоих данных.',ds:'В Discovery System это: <b>персональная сборка — 10 000 ₽ разово</b>'},
+ {name:'внедренцы',p:50,what:'Внедренец из телеграма: 15–60 тыс ₽, подписка с наценкой до ×25,9.',brk:'Ломается: <b>аккаунт чужой</b> — блокируют вместе с агентом, без предупреждения.',ds:'В Discovery System это: <b>переезд со своей подписки — от 25 000 ₽</b>'},
+ {name:'студии',p:75,what:'Студии: 50 тыс – 1,5 млн ₽. Месяц работ — ты видишь статус, а не работу.',brk:'Ломается: <b>приёмка в конце</b> — контракт закрыт, поддерживать некому.',ds:'В Discovery System это: <b>интеграция 1 процесса (≈30 ч/мес) — 29 990 ₽</b>'},
+ {name:'интеграторы',p:100,what:'Enterprise-интеграторы: от 3 млн ₽ за корпоративный процесс.',brk:'Ломается в обратную сторону: <b>3 млн за 30 часов рутины в месяц</b> — процесс не того масштаба.',ds:'В Discovery System это: <b>интеграция 5+ процессов — 79 990 ₽</b>, после аудита масштаба'}
 ];
 var track=document.getElementById('ptrack'),fill=document.getElementById('pfill'),thumb=document.getElementById('pthumb'),steps=document.getElementById('psteps');
-var out=document.getElementById('pout'),wEl=document.getElementById('sWhat'),bEl=document.getElementById('sBrk'),dEl=document.getElementById('sDs');
+var out=document.getElementById('pout'),wEl=document.getElementById('sWhat'),dEl=document.getElementById('sDs');
 var i=-1;
 S.forEach(function(s,n){
   var b=document.createElement('span');
@@ -469,35 +418,88 @@ S.forEach(function(s,n){
   steps.appendChild(b);
 });
 var els=[].slice.call(steps.children);
+/* цена внутри ползунка: одометр на якорях ступеней, тикает вслед за пальцем */
+var pill=document.getElementById('pval');
+var RM=false;try{RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
+var A=[[0,0],[25,50000],[50,60000],[75,1500000],[100,3000000]];
+var cur=-1,target=0,raf=0;
+function valAt(pct){
+  for(var k=1;k<A.length;k++){
+    if(pct<=A[k][0]){var a=A[k-1],b=A[k];return a[1]+(b[1]-a[1])*(pct-a[0])/(b[0]-a[0]);}
+  }
+  return 3000000;
+}
+function fmt(v){
+  v=Math.round(v);
+  if(v<=500)return'0 ₽';
+  if(v<1e6){var t=Math.max(1,Math.round(v/1000));return t+'\u00a0тыс ₽';}
+  var m=Math.round(v/1e5)/10;
+  return (m>=2.95?'3':String(m).replace('.',','))+'\u00a0млн ₽';
+}
+function paint(){pill.textContent=fmt(cur);}
+function step(){
+  var d=target-cur;
+  var eps=target<1e6?600:6000;
+  if(Math.abs(d)<eps){cur=target;paint();raf=0;return;}
+  cur+=d*0.22;paint();
+  raf=requestAnimationFrame(step);
+}
+function tick(pct,instant){
+  target=valAt(pct);
+  if(RM||instant||cur<0){cur=target;paint();return;}
+  if(!raf)raf=requestAnimationFrame(step);
+}
+function place(pct,instant){
+  fill.style.width=Math.max(pct,6)+'%';
+  thumb.style.left=pct<6?'36px':(pct>94?'calc(100% - 36px)':pct+'%');
+  tick(pct,instant);
+}
+function text(n){
+  wEl.innerHTML=S[n].what;dEl.innerHTML=S[n].ds;
+  els.forEach(function(e,k){e.classList.toggle('on',k===n);});
+}
 function set(n,skipAnim){
   if(n===i)return;
-  var prev=i;i=n;var s=S[n];
-  fill.style.width=Math.max(s.p,6)+'%';
-  thumb.style.left=s.p===0?'13px':(s.p===100?'calc(100% - 13px)':s.p+'%');
-  els.forEach(function(e,k){e.classList.toggle('on',k===n);});
-  if(skipAnim){wEl.innerHTML=s.what;bEl.innerHTML=s.brk;dEl.innerHTML=s.ds;}
-  else{
-    out.classList.add('sw');
-    setTimeout(function(){
-      wEl.innerHTML=s.what;bEl.innerHTML=s.brk;dEl.innerHTML=s.ds;
-      out.classList.remove('sw');
-    },200);
-  }
+  i=n;var s=S[n];
+  place(s.p,skipAnim);
+  if(skipAnim)text(n);
+  else{out.classList.add('sw');setTimeout(function(){text(n);out.classList.remove('sw');},200);}
   try{sessionStorage.setItem('ds_pseg',String(n));}catch(e){}
 }
-function seek(e){
-  var r=track.getBoundingClientRect();
-  var x=e.clientX-r.left;
-  var pct=Math.max(0,Math.min(100,100*x/r.width));
+function nearest(pct){
   var best=0,d=1e9;
   S.forEach(function(s,n){var dd=Math.abs(s.p-pct);if(dd<d){d=dd;best=n;}});
-  set(best);
+  return best;
 }
-var drag=false;
-track.addEventListener('pointerdown',function(e){drag=true;seek(e);if(track.setPointerCapture)try{track.setPointerCapture(e.pointerId);}catch(x){}});
-track.addEventListener('pointermove',function(e){if(drag)seek(e);});
-track.addEventListener('pointerup',function(){drag=false;});
-track.addEventListener('pointercancel',function(){drag=false;});
+function trackPct(e){
+  var r=track.getBoundingClientRect();
+  return Math.max(0,Math.min(100,100*(e.clientX-r.left)/r.width));
+}
+/* непрерывное слайдение: ползунок едет за пальцем, текст меняется при пересечении ступени, на отпускании — доводка */
+var drag=false,lastN=-1;
+track.addEventListener('pointerdown',function(e){
+  drag=true;track.classList.add('dragging');
+  if(track.setPointerCapture)try{track.setPointerCapture(e.pointerId);}catch(x){}
+  var pct=trackPct(e);place(pct);
+  lastN=nearest(pct);
+  if(lastN!==i){i=lastN;text(lastN);try{sessionStorage.setItem('ds_pseg',String(lastN));}catch(x){}}
+});
+track.addEventListener('pointermove',function(e){
+  if(!drag)return;
+  var pct=trackPct(e);place(pct);
+  var n=nearest(pct);
+  if(n!==lastN){lastN=n;i=n;text(n);try{sessionStorage.setItem('ds_pseg',String(n));}catch(x){}}
+});
+function release(e){
+  if(!drag)return;
+  drag=false;track.classList.remove('dragging');
+  var pct=trackPct(e);var n=nearest(pct);
+  place(S[n].p);
+  if(n!==i){i=n;text(n);}
+  try{sessionStorage.setItem('ds_pseg',String(n));}catch(x){}
+}
+track.addEventListener('pointerup',release);
+track.addEventListener('pointercancel',function(){drag=false;track.classList.remove('dragging');place(S[Math.max(i,0)].p);});
 var init=0;
 try{var q=parseInt(new URLSearchParams(location.search).get('pseg'),10);if(q>=0&&q<S.length)init=q;else{var sv=parseInt(sessionStorage.getItem('ds_pseg'),10);if(sv>=0&&sv<S.length)init=sv;}}catch(e){}
 set(init,true);
