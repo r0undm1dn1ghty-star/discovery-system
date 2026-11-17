@@ -511,3 +511,12 @@ nav.top a.calc.on{background:rgba(var(--accent-rgb),.12);box-shadow:none}
     font-size: 14px;
   }
 }
+
+/* ── DS карточка канала (decrypt-reveal, канон §8 КАНОН-факты-лендинга) ── */
+.dsx-sec{max-width:620px;margin:clamp(48px,7vw,88px) auto 0;padding:0 clamp(20px,4vw,32px)}
+.dsx-stage{position:relative;border-radius:14px;overflow:hidden}
+.dsx-stage canvas{display:block;width:100%}
+.dsx-fcard{background:#131c2b;border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:clamp(18px,2.5vw,26px)}
+.dsx-chip{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;font-weight:500;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#b9c1d6}
+.dsx-btn{display:inline-flex;align-items:center;min-height:52px;padding:13px 28px;margin-top:20px;width:100%;justify-content:center;border-radius:10px;font-size:15.5px;font-weight:500;text-decoration:none;background:#1b2a6b;color:#f2f6ff;transition:background .18s}
+.dsx-btn:hover{background:#24368f}
