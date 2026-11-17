@@ -49,19 +49,19 @@
 
     var C = dark
       ? { hair: "rgba(255,255,255,.08)", ink: "#eef2f9", sub: "#8893a8",
-          ghostBg: "rgba(255,255,255,.04)", ghostBd: "rgba(255,255,255,.14)", ghostBdH: "rgba(255,255,255,.28)",
+          ghostBg: "rgba(255,255,255,.08)", ghostBd: "rgba(255,255,255,.22)", ghostBdH: "rgba(255,255,255,.4)",
           ghostHv: "#eef2f9", main: "#24368f", mainHv: "#2b3f9e", ok: "#1f7a4d", focus: "#8fa8ff" }
       : { hair: "rgba(16,20,31,.10)", ink: "#10141f", sub: "#666f85",
-          ghostBg: "#fff", ghostBd: "rgba(16,20,31,.16)", ghostBdH: "#24368f",
+          ghostBg: "#fff", ghostBd: "rgba(16,20,31,.22)", ghostBdH: "#24368f",
           ghostHv: "#24368f", main: "#24368f", mainHv: "#2b3f9e", ok: "#1f7a4d", focus: "#24368f" };
 
     var css = ''
-      + '#ds-share{max-width:760px;margin:0 auto;padding:26px 20px 10px;'
+      + '#ds-share{max-width:760px;margin:0 auto;padding:30px 20px 26px;text-align:center;'
       + 'border-top:1px solid ' + C.hair + ';'
       + 'font-family:"IBM Plex Sans",system-ui,Arial,sans-serif}'
-      + '#ds-share .ds-sh-h{font-size:15px;font-weight:600;color:' + C.ink + ';margin:0 0 4px}'
-      + '#ds-share .ds-sh-sub{font-size:13px;line-height:1.5;color:' + C.sub + ';margin:0 0 14px}'
-      + '#ds-share .ds-sh-row{display:flex;flex-wrap:wrap;gap:10px}'
+      + '#ds-share .ds-sh-h{font-size:16px;font-weight:700;color:' + C.ink + ';margin:0 0 5px}'
+      + '#ds-share .ds-sh-sub{font-size:13.5px;line-height:1.5;color:' + C.sub + ';margin:0 0 16px}'
+      + '#ds-share .ds-sh-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}'
       + '#ds-share button,#ds-share a{display:inline-flex;align-items:center;gap:7px;'
       + 'height:44px;padding:0 18px;border-radius:999px;cursor:pointer;'
       + 'font:600 13.5px "IBM Plex Sans",system-ui,Arial,sans-serif;'
@@ -125,7 +125,8 @@
       var aTg = document.createElement('a');
       aTg.href = 'https://t.me/share/url?url=' + eu + '&text=' + et;
       aTg.target = '_blank'; aTg.rel = 'noopener';
-      aTg.className = 'ds-sh-ghost';
+      /* главный акцент — Telegram: залитая кнопка, когда системного шаринга нет (десктоп) */
+      aTg.className = (NATIVE && TOUCH) ? 'ds-sh-ghost' : 'ds-sh-main';
       aTg.innerHTML = ICON_TG + '<span>Telegram</span>';
       aTg.addEventListener('click', function () { goal('tg'); });
       row.appendChild(aTg);
