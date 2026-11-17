@@ -929,7 +929,7 @@ footer a:hover{text-decoration:underline}
       'проверка на твоих задачах',
       'отладка до закрытия всех критериев']}
   ];
-  var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1150, ROW_PREP = 300, HIDE_MS = 180, GAP = 200;
+  var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1000, ROW_PREP = 250, GAP = 200, LINE_HOLD = 1500;
 
   /* ── панель 1: степ-лист с часами ── */
   var list = document.getElementById('dsAilList');
@@ -1018,12 +1018,22 @@ footer a:hover{text-decoration:underline}
     var st = STEPS[pos.step];
     var idx = pos.step;
     render();
-    /* на последнем шаге (внедрение) критерии справа уже закрываются */
-    if (idx === STEPS.length-1) startPlan();
+    /* последний шаг: внедрение длится ровно столько, сколько закрываются критерии.
+       логи проявляются по одному, сдача приходит с последней галкой */
+    if (idx === STEPS.length-1){
+      setLog(rows[idx], []);
+      for (var k=0;k<st.detail.length;k++){
+        (function(k){
+          setTimeout(function(){ revealLine(rows[idx], st.detail, k); }, k*LINE_HOLD);
+        })(k);
+      }
+      startPlan();
+      return;
+    }
     var dur = st.detail.length*LINE_STAG + STEP_HOLD;
     setTimeout(function(){
       pos.step++;
-      if (pos.step >= STEPS.length){ render(); return; }  /* финальный кадр: все done, ждём приёмку */
+      if (pos.step >= STEPS.length){ render(); return; }
       render();
       setTimeout(tick, GAP);
     }, dur);
@@ -1032,6 +1042,17 @@ footer a:hover{text-decoration:underline}
     pos = {step:0, line:0};
     render();
     setTimeout(tick, GAP);
+  }
+  function revealLine(row, lines, k){
+    var d = document.createElement('div');
+    d.className = 'ds-ail-line';
+    d.innerHTML = '<span class="ds-n">'+(k+1)+'</span><span class="ds-tx">'+lines[k]+'</span>';
+    row.track.appendChild(d);
+    var n = k+1;
+    row.log.classList.toggle('masked', n > 4);
+    row.log.style.height = (Math.min(n,4)*24)+'px';
+    row.track.style.transform = 'translateY('+(-Math.max(0,n-4)*24)+'px)';
+    setTimeout(function(){ d.classList.add('vis'); }, 30);
   }
 
   /* ── панель 2: чек-лист приёмки + оверлеи-артефакты ── */
@@ -1084,10 +1105,6 @@ footer a:hover{text-decoration:underline}
     proof.innerHTML = '<div class="ds-pcard"><span class="ds-pcrit">критерий: '+TASKS[i].label+'</span>'+PROOFS[i]+'</div>';
     proof.classList.add('show');
   }
-  function hideProof(cb){
-    proof.classList.remove('show');
-    setTimeout(cb, 280);
-  }
 
   function planRender(){ planCnt.textContent = trows.filter(function(r){return r.classList.contains('done')}).length + '/' + trows.length; }
   var ti = 0;
@@ -1107,12 +1124,18 @@ footer a:hover{text-decoration:underline}
   }
   function startPlan(){ ti = 0; setTimeout(tickPlan, 350); }
 
-  /* стоп на итоге: левый блок сдаёт итог-карточкой, когда критерии закрылись */
+  /* стоп на итоге: сдача приходит с последней галкой приёмки */
   var replayBtn = document.getElementById('dsReplay');
   function finish(){
+    pos.step = STEPS.length;
+    render();
     total.style.visibility = 'visible';
     title.textContent = 'Итог · агент за 3 дня';
     replayBtn.hidden = false;
+  }
+  function hideProof(cb){
+    proof.classList.remove('show');
+    setTimeout(cb, 180);
   }
   function replay(){
     replayBtn.hidden = true;
