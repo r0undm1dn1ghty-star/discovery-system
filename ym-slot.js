@@ -36,7 +36,7 @@ window.__ymId = 113187640;
       + 'padding:10px 14px;font:400 12.5px/1.5 "IBM Plex Sans",system-ui,sans-serif;'
       + 'color:#b8c3d6;box-shadow:0 4px 18px rgba(0,0,0,.35)';
     b.innerHTML = 'Сайт использует cookie и Яндекс.Метрику для статистики. '
-      + '<a href="/policy.html" style="color:#7bc4a8;text-decoration:underline">Политика</a>';
+      + '<a href="/policy.html" style="color:#8fa8ff;text-decoration:underline">Политика</a>';
     var x = document.createElement('button');
     x.textContent = 'понятно';
     x.style.cssText = 'margin-left:10px;background:none;border:1px solid rgba(255,255,255,.25);'

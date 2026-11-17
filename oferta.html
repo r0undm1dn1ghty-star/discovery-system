@@ -21,7 +21,7 @@
 
 <link href="fonts/fonts.css" rel="stylesheet">
 <style>
-:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#7a85a0;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#7bc4a8;--accent-rgb:123,196,168;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Onest',var(--sans)}
+:root{--bg:#111524;--ink:#eef2f9;--body:#b8c3d6;--meta:#8893a8;--faint:#7a85a0;--line:rgba(255,255,255,.12);--line-soft:rgba(255,255,255,.07);--accent:#8fa8ff;--accent-rgb:143,168,255;--mono:'IBM Plex Mono',ui-monospace,monospace;--sans:'IBM Plex Sans',system-ui,sans-serif;--display:'Onest',var(--sans)}
 *{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}.wrap{max-width:820px;margin:0 auto;padding:0 24px}a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}nav.top{padding:28px 0}nav.top .wrap{display:flex;gap:26px;flex-wrap:wrap;align-items:center;justify-content:center}nav.top a{color:var(--meta);text-decoration:none;font-size:15px;min-height:44px;display:inline-flex;align-items:center}nav.top a:hover{color:var(--ink)}nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600}header.doc{padding:56px 0 32px;border-bottom:1px solid var(--line-soft)}h1{color:var(--ink);font-family:var(--display);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;line-height:1.2;margin:0 0 14px;letter-spacing:-.01em}.doc-meta{font-family:var(--mono);font-size:13px;color:var(--meta);line-height:1.8}main{padding:40px 0 72px}h2{color:var(--ink);font-family:var(--display);font-size:1.2rem;font-weight:600;margin:40px 0 14px}h2:first-of-type{margin-top:0}h3{color:var(--ink);font-size:1rem;margin:24px 0 8px}p{margin:0 0 16px;text-wrap:pretty}ul,ol{margin:0 0 16px;padding-left:22px}li{margin-bottom:8px}.req{border:1px solid var(--line-soft);border-radius:14px;padding:24px;background:rgba(255,255,255,.02);margin:24px 0}.req dl{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;margin:0;font-size:15.5px}.req dt{color:var(--meta);font-family:var(--mono);font-size:13px}.req dd{margin:0;color:var(--ink)}.note{border-left:2px solid var(--accent);background:rgba(var(--accent-rgb),.04);border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0;font-size:15.5px}footer{padding:40px 0 64px;border-top:1px solid var(--line-soft)}.sig-c{color:var(--meta);font-size:14px;text-align:center}.sig-c a{color:var(--meta);text-decoration:none}.sig-c a:hover{color:var(--ink)}
 @media(max-width:760px){body{font-size:16px}nav.top{padding:14px 0}nav.top .wrap{gap:0 10px}nav.top a{font-size:13px;min-height:38px}nav.top a.home{flex-basis:100%;justify-content:center}header.doc{padding:40px 0 24px}.req dl{grid-template-columns:1fr;gap:2px 0}.req dt{margin-top:10px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
@@ -32,9 +32,17 @@ body{position:relative}body:after{content:"";pointer-events:none;opacity:.035;po
 <link rel="stylesheet" href="ds-nav-fix.css?v=20261110d"/>
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* единый навбар лендинга (тёмный тон) */
+.nav{border-bottom:1px solid rgba(255,255,255,.12);position:relative;z-index:5}
+.nav a{color:var(--meta,#8893a8);text-decoration:none;font-size:15px}
+.nav a:hover{color:#8fa8ff}
+.nav a.on{color:var(--ink,#eef2f9)}
+</style>
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<nav class="top" aria-label="Основная навигация" data-ds-nav><div class="wrap"><a class="home" href="index.html"><img src="logo-5.png" alt="Discovery System" height="28"/><span>Discovery System</span></a></div></nav>
+<header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap"><a class="brand" href="index.html" style="display:flex;align-items:center;gap:10px;font-family:Onest,system-ui,sans-serif;font-weight:500;letter-spacing:-.01em;color:var(--ink,#eef2f9);text-decoration:none;font-size:15.5px"><img src="logo-5.png" alt="Discovery System" width="26" height="26" style="border-radius:6px">discovery system</a><nav style="display:flex;gap:22px;margin-left:auto;font-size:15px;flex-wrap:wrap"><a href="index.html">Главная</a><a href="market.html">Рынок ИИ</a><a href="service.html">Сервис</a><a href="system.html">Система</a><a href="calculator.html">Калькулятор</a><a href="channel.html">Канал</a></nav></div></header>
 <header class="doc"><div class="wrap"><h1>Публичная оферта</h1><p class="doc-meta">о предоставлении цифровых материалов, сборки, установки и подписочных форматов<br/>редакция от 24 сентября 2026 г.</p></div></header>
 <main><div class="wrap">
 <h2>1. Общие положения</h2>

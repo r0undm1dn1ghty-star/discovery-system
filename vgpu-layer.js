@@ -30,7 +30,7 @@
   if (sessionStorage.getItem('gpu-crashed') === '1') return; // упало один раз — не зацикливаемся
 
   /* ---------- общая обвязка ---------- */
-  var ACCENT = [0.482, 0.769, 0.659]; // #7bc4a8
+  var ACCENT = [0.482, 0.769, 0.659]; // #8fa8ff
 
   function mount(canvas, opts) {
     // canvas растянут контейнером; surface сам подхватит размер
