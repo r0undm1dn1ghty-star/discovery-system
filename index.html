@@ -990,8 +990,8 @@ footer a:hover{text-decoration:underline}
     var running = null;
     STEPS.forEach(function(st, i){
       var r = rows[i], state;
-      if (i < pos.step) state = 'done';
-      else if (i === pos.step && pos.step < STEPS.length) state = 'running';
+      if (i < pos.step || pos.step >= STEPS.length) state = 'done';
+      else if (i === pos.step) state = 'running';
       else state = 'pending';
       r.el.className = 'ds-ail-row ' + state;
       if (state === 'running'){
@@ -1003,7 +1003,6 @@ footer a:hover{text-decoration:underline}
         setLog(r, []);
       }
     });
-    total.style.visibility = pos.step >= STEPS.length ? 'visible' : 'hidden';
     if (pos.step >= STEPS.length){
       title.textContent = 'Итог · агент за 3 дня';
       cnt.textContent = '';
@@ -1017,23 +1016,20 @@ footer a:hover{text-decoration:underline}
   function tick(){
     if (pos.step >= STEPS.length) return;
     var st = STEPS[pos.step];
+    var idx = pos.step;
     render();
-    /* шаг держится ровно на каскад логов + короткая пауза */
+    /* на последнем шаге (внедрение) критерии справа уже закрываются */
+    if (idx === STEPS.length-1) startPlan();
     var dur = st.detail.length*LINE_STAG + STEP_HOLD;
     setTimeout(function(){
       pos.step++;
-      if (pos.step >= STEPS.length){
-        render(); ail.classList.add('closed');
-        setTimeout(startPlan, 350);
-        return;
-      }
+      if (pos.step >= STEPS.length){ render(); return; }  /* финальный кадр: все done, ждём приёмку */
       render();
       setTimeout(tick, GAP);
     }, dur);
   }
   function startAil(){
     pos = {step:0, line:0};
-    ail.classList.remove('closed');
     render();
     setTimeout(tick, GAP);
   }
@@ -1111,9 +1107,13 @@ footer a:hover{text-decoration:underline}
   }
   function startPlan(){ ti = 0; setTimeout(tickPlan, 350); }
 
-  /* стоп на итоге: развёртка один раз при входе во вьюпорт */
+  /* стоп на итоге: левый блок сдаёт итог-карточкой, когда критерии закрылись */
   var replayBtn = document.getElementById('dsReplay');
-  function finish(){ replayBtn.hidden = false; }
+  function finish(){
+    total.style.visibility = 'visible';
+    title.textContent = 'Итог · агент за 3 дня';
+    replayBtn.hidden = false;
+  }
   function replay(){
     replayBtn.hidden = true;
     trows.forEach(function(r){ r.className = 'ds-trow'; });
