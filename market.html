@@ -23,6 +23,7 @@ body{background:var(--bg);color:var(--body);font:400 16px/1.55 var(--sans);-webk
 .hero{background:var(--dark);color:#eef2fb;padding:clamp(56px,8vw,96px) 0 clamp(48px,6vw,72px);position:relative;overflow:hidden}
 .hero .w{position:relative;z-index:2}
 #heroFx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#rheroFx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .k{font:500 14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#8a94ad}
 h1{font-family:var(--disp);font-weight:500;font-size:clamp(34px,4.6vw,54px);line-height:1.08;letter-spacing:-.03em;margin:16px 0 20px;max-width:20ch;text-wrap:balance}
 .hero p{max-width:56ch;color:#b9c1d6;font-size:clamp(1rem,1.4vw,1.12rem);margin:0 0 26px}
@@ -96,13 +97,13 @@ footer a:hover{text-decoration:underline}
 #research .f-stage{position:absolute;inset:0;perspective:1200px}
 #research .f-back{
   position:absolute;left:0;top:14px;right:0;bottom:0;border-radius:22px;
-  background:linear-gradient(165deg,#2b3a7e 0%,#1b2a6b 46%,#131c4d 100%);
+  background:linear-gradient(165deg,#161f45 0%,#131c4d 46%,#0f1730 100%);
   box-shadow:0 0 0 1px rgba(16,20,31,.10), 0 18px 40px -18px rgba(16,20,31,.3);
   overflow:hidden;transition:box-shadow .3s var(--ease), transform .5s var(--ease);
 }
 #research .f-back:after{
   content:"";position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
                    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:26px 26px;
 }
@@ -136,7 +137,7 @@ footer a:hover{text-decoration:underline}
 #research .f-tg{display:flex;align-items:center;gap:8px;flex:1}
 #research .f-tg svg{width:20px;height:20px;flex:none;fill:var(--navy)}
 #research .f-label{position:absolute;left:24px;right:24px;bottom:16px;display:flex;flex-direction:column;gap:5px}
-#research .f-title{font:600 20px/1.22 var(--disp);letter-spacing:-.015em;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+#research .f-title{font:600 25px/1.22 var(--disp);letter-spacing:-.015em;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 #research .f-meta{font:400 14px/1.4 var(--mono);color:rgba(20,20,22,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #research .f-fig{font:500 15px/1.35 var(--mono);color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #research .f-tg .f-fig{flex:1}
@@ -323,13 +324,13 @@ footer p { margin: 2px 0; }
 #research .f-stage{position:absolute;inset:0;perspective:1200px}
 #research .f-back{
   position:absolute;left:0;top:14px;right:0;bottom:0;border-radius:22px;
-  background:linear-gradient(165deg,#2b3a7e 0%,#1b2a6b 46%,#131c4d 100%);
+  background:linear-gradient(165deg,#161f45 0%,#131c4d 46%,#0f1730 100%);
   box-shadow:0 0 0 1px rgba(16,20,31,.10), 0 18px 40px -18px rgba(16,20,31,.3);
   overflow:hidden;transition:box-shadow .3s var(--ease), transform .5s var(--ease);
 }
 #research .f-back:after{
   content:"";position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
                    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:26px 26px;
 }
@@ -363,7 +364,7 @@ footer p { margin: 2px 0; }
 #research .f-tg{display:flex;align-items:center;gap:8px;flex:1}
 #research .f-tg svg{width:20px;height:20px;flex:none;fill:var(--navy)}
 #research .f-label{position:absolute;left:24px;right:24px;bottom:16px;display:flex;flex-direction:column;gap:5px}
-#research .f-title{font:600 20px/1.22 var(--disp);letter-spacing:-.015em;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+#research .f-title{font:600 25px/1.22 var(--disp);letter-spacing:-.015em;color:var(--ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 #research .f-meta{font:400 14px/1.4 var(--mono);color:rgba(20,20,22,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #research .f-fig{font:500 15px/1.35 var(--mono);color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #research .f-tg .f-fig{flex:1}
@@ -395,10 +396,28 @@ footer p { margin: 2px 0; }
 .rdark .sh h2{color:#eef2fb}
 .rdark .sh .tag{color:#8a94ad}
 .rdark .sh{border-bottom:0;margin-bottom:8px}
-.rdark .f-back{box-shadow:0 0 0 1px rgba(255,255,255,.14)}
-.rdark .folder:hover .f-back{box-shadow:0 0 0 1px rgba(255,255,255,.22), 0 24px 48px -18px rgba(0,0,0,.55)}
+.rdark .f-back{box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.rdark .folder:hover .f-back{box-shadow:0 0 0 1px rgba(255,255,255,.16), 0 24px 48px -18px rgba(0,0,0,.55)}
 /* ── шеринг: по оси контентной колонки ── */
 #ds-share{max-width:none!important;width:min(1080px,calc(100% - 48px));margin:0 auto!important}
+
+/* ── финальный CTA: тёмная полоса в тон героя, плазма-намёк чистым CSS (без canvas) ── */
+.ctafin{position:relative;overflow:hidden;background:var(--dark);color:#eef2fb;margin-top:44px;padding:clamp(44px,6vw,72px) 0}
+.ctafin:before{content:"";position:absolute;inset:0;pointer-events:none;background:
+ radial-gradient(120% 200% at 6% 130%, rgba(27,42,107,.60), transparent 62%),
+ radial-gradient(80% 150% at 96% -30%, rgba(143,168,255,.16), transparent 55%),
+ radial-gradient(55% 100% at 52% 125%, rgba(143,168,255,.10), transparent 60%),
+ radial-gradient(45% 80% at 22% -20%, rgba(27,42,107,.45), transparent 60%)}
+.ctafin .w{position:relative;z-index:2}
+.ctafin-h{font:600 clamp(22px,2.6vw,30px)/1.2 var(--disp);letter-spacing:-.02em;color:#eef2fb;margin:0 0 6px;max-width:24ch}
+.ctafin .cta{margin-top:18px;gap:12px}
+.ctafin .cta a{display:inline-flex;align-items:center;min-height:52px;padding:14px 26px;border-radius:10px;font:500 15.5px/1 var(--sans);transition:transform .09s cubic-bezier(.22,.61,.36,1),background .18s ease,box-shadow .18s ease,border-color .18s ease,color .15s ease}
+.ctafin .cta a:active{transform:scale(.98)}
+.ctafin .cta .p{background:#eef2fb;color:#0f1730;border:1px solid transparent;box-shadow:0 1px 2px rgba(16,20,31,.2),0 6px 24px rgba(143,168,255,.28)}
+.ctafin .cta .p:hover{background:#fff;box-shadow:0 1px 2px rgba(16,20,31,.2),0 8px 30px rgba(143,168,255,.45)}
+.ctafin .cta .g{background:rgba(255,255,255,.12);color:#eef2fb;border:1px solid rgba(255,255,255,.40)}
+.ctafin .cta .g:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.55)}
+.ctafin .cta a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 
 </style>
 
@@ -411,13 +430,18 @@ footer.site-foot .sf-logo{height:38px;width:auto;display:block}
 footer.site-foot .sf-name{font:600 16px/1.25 "IBM Plex Sans",system-ui,sans-serif;color:#10141f;display:flex;flex-direction:column;gap:3px}
 footer.site-foot .sf-name span{font:400 14px/1.4 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
 footer.site-foot .sf-c{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-footer.site-foot .sf-b{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:10px;background:#1b2a6b;color:#f2f6ff;font:500 14.5px/1 "IBM Plex Sans",system-ui,sans-serif;text-decoration:none;transition:background .18s ease}
+footer.site-foot .sf-actions{display:flex;gap:10px;flex-wrap:wrap}
+footer.site-foot .sf-b{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 20px;border-radius:10px;background:#1b2a6b;color:#f2f6ff;font:500 14.5px/1 "IBM Plex Sans",system-ui,sans-serif;text-decoration:none;transition:background .18s ease}
+footer.site-foot .sf-b .ic{width:16px;height:16px;fill:currentColor;flex:none}
 footer.site-foot .sf-b:hover{background:#2c419f}
 footer.site-foot .sf-b.g{background:transparent;color:#1b2a6b;border:1px solid rgba(27,42,107,.35)}
 footer.site-foot .sf-b.g:hover{border-color:#1b2a6b}
 footer.site-foot .sf-h{font:400 14px/1.5 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
 footer.site-foot .sf-note{font:400 14px/1.5 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
-footer.site-foot .sf-r{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+footer.site-foot .sf-r{display:flex;flex-direction:column;align-items:flex-end;gap:8px;text-align:right;padding-left:28px;border-left:1px solid rgba(16,20,31,.10)}
+footer.site-foot .sf-k{font:500 11px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#5c6479}
+footer.site-foot .sf-r a{font:500 14px/1.4 "IBM Plex Mono",ui-monospace,monospace;color:#1b2a6b;text-decoration:none;border-bottom:1px solid rgba(27,42,107,.32);padding-bottom:2px}
+footer.site-foot .sf-r a:hover{border-bottom-color:#1b2a6b}
 footer.site-foot a{color:#1b2a6b;text-decoration:none}
 footer.site-foot a:hover{text-decoration:underline}
 footer.site-foot .sf-legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 22px;padding-top:14px;border-top:1px solid rgba(16,20,31,.08);margin-top:6px}
@@ -431,7 +455,7 @@ footer.site-foot.ft-dark a{color:#eef2fb}
 footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
 @media(max-width:820px){
   footer.site-foot .sfw{grid-template-columns:1fr}
-  footer.site-foot .sf-r{align-items:flex-start;text-align:left}
+  footer.site-foot .sf-r{align-items:flex-start;text-align:left;border-left:0;padding-left:0}
 }
 </style>
 </head>
@@ -440,7 +464,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
 <a class="brand" href="index.html" style="display:flex;align-items:center;gap:10px;font-family:Onest;font-weight:500;letter-spacing:-.01em;color:var(--ink);text-decoration:none;font-size:15.5px"><img src="logo-5.png" alt="Discovery System" width="26" height="26" style="border-radius:6px">discovery system</a>
 <nav style="display:flex;gap:22px;margin-left:auto;font-size:14.5px">
 <a href="index.html">Главная</a><a href="market.html" class="on">Рынок ИИ</a><a href="service.html">Сервис</a><a href="system.html">Система</a><a href="calculator.html">Калькулятор</a><a href="channel.html">Канал</a></nav>
-</div></header><div class="hero"><div id="heroFx" data-plasma aria-hidden="true"></div><div class="w">
+</div></header><div class="hero"><div id="heroFx" data-plasma data-plasma-full aria-hidden="true"></div><div class="w">
 <h1>Одну и ту же работу продают за 0 ₽ и за 3 миллиона.</h1>
 <div class="range" aria-label="Слайдер цен внедрения: от 0 рублей до 3 миллионов">
   <div class="track" id="ptrack"><div class="fill" id="pfill"></div><div class="thumb" id="pthumb"><span id="pval">0 ₽</span></div></div>
@@ -547,8 +571,7 @@ STUDIES.forEach(function(s,n){
 </div></div>
 
 
-      <section class="sec"><div class="cta"><a class="p" href="calculator.html">Посчитать свою рутину — 0 ₽</a><a class="g" href="service.html">Цены и что входит</a></div></section>
-</div><footer class="site-foot"><div class="sfw"><div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div><div class="sf-c"><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="sf-b" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A0%D1%8B%D0%BD%D0%BE%D0%BA%20%D0%98%D0%98%C2%BB%20%E2%80%94%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B5.">Написать лично</a><a class="sf-b g" href="https://t.me/discoverysystem">Канал с сигналами</a></div><span class="sf-note">Отвечаю лично, без ботов</span></div><div class="sf-r"><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div><div class="sf-legal"><span><a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · ИНН 780627413110</span></div></div></footer>
+</div><section class="ctafin"><div class="w"><h2 class="ctafin-h">Сколько это стоит у тебя</h2><div class="cta"><a class="p" href="calculator.html">Посчитать свою рутину — 0 ₽</a><a class="g" href="service.html">Цены и что входит</a></div></div></section><footer class="site-foot"><div class="sfw"><div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div><div class="sf-c"><div class="sf-actions"><a class="sf-b" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A0%D1%8B%D0%BD%D0%BE%D0%BA%20%D0%98%D0%98%C2%BB%20%E2%80%94%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B5."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7L18.5 6c.4-.3-.1-.5-.6-.2L7.3 12.6l-4.5-1.4c-1-.3-1-1 .2-1.4L20.5 3.4c.8-.3 1.6.5 1.4 1.2z"/></svg>Написать лично</a><a class="sf-b g" href="https://t.me/discoverysystem"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7L18.5 6c.4-.3-.1-.5-.6-.2L7.3 12.6l-4.5-1.4c-1-.3-1-1 .2-1.4L20.5 3.4c.8-.3 1.6.5 1.4 1.2z"/></svg>Канал с сигналами</a></div><span class="sf-note">Отвечаю лично, без ботов</span></div><div class="sf-r"><span class="sf-k">почта</span><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div><div class="sf-legal"><span><a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · ИНН 780627413110</span></div></div></footer>
 <script src="ds-mnav.js?v=20261109b"></script>
 <script>
 /* слайдер ценового сегмента: двигаешь — герой меняется. Цены — из SVG-диаграммы ниже, DS-цены — инвойсы лестницы 10.11.2026 */
@@ -659,94 +682,7 @@ try{var q=parseInt(new URLSearchParams(location.search).get('pseg'),10);if(q>=0&
 set(init,true);
 })();
 </script>
-<script>
-/* ── DS Plasma (механизм главной, heroFx): BRAND #0f1730, синяя дымка, pointer-reactive, reduced-motion → статика ── */
-(function(){
-'use strict';
-var hosts=[].slice.call(document.querySelectorAll('[data-plasma]'));
-if(!hosts.length)return;
-var STATIC=window.matchMedia('(prefers-reduced-motion: reduce)').matches||/(?:\?|&)static=1(?:&|$)/.test(window.location.search);
-var mqSmall=window.matchMedia('(max-width: 760px)');
-var FPS=mqSmall.matches?16:24,DPR_CAP=mqSmall.matches?1:2,CELL_BASE=mqSmall.matches?34:26;
-var BRAND=[15,23,48];
-var AMP=26,TONE=[0.85,0.95,1.35],MID_CURVE=0.8,EDGE_MAX=0.55,EDGE_K=0.5;
-var MAXPX=1000000;
-var px=0.5,py=0.5,tx=0.5,ty=0.5,t=0;
-function hash(x,y,s){var h=(x*374761393+y*668265263+s*1442695041)|0;h=(h^(h>>13))*1274126177|0;return((h^(h>>16))>>>0)/4294967295;}
-function noise(x,y,s){var xi=Math.floor(x),yi=Math.floor(y);var xf=x-xi,yf=y-yi;var u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf);var a=hash(xi,yi,s),b=hash(xi+1,yi,s),c=hash(xi,yi+1,s),d=hash(xi+1,yi+1,s);return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v;}
-function fbm(x,y,t){var n=0,amp=0.55,f=1;for(var o=0;o<3;o++){n+=amp*noise(x*f+t*(o+1)*0.35,y*f-t*(o+1)*0.22,o*7+3);amp*=0.5;f*=2.1;}return n;}
-function Inst(host){
-  this.host=host;this.vis=true;
-  this.cv=document.createElement('canvas');
-  this.cv.setAttribute('aria-hidden','true');
-  this.cv.style.cssText='position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:block;';
-  host.appendChild(this.cv);
-  this.ctx=this.cv.getContext('2d');this.W=0;this.H=0;this.dpr=1;this.CELL=CELL_BASE;this.edge=true;
-}
-Inst.prototype.metrics=function(){
-  var r=this.host.getBoundingClientRect();return[r.width,r.height];
-};
-Inst.prototype.resize=function(){
-  var m=this.metrics(),w=Math.max(1,m[0]),h=Math.max(1,m[1]);
-  var dpr=Math.min(window.devicePixelRatio||1,DPR_CAP);
-  var cap=Math.sqrt(MAXPX/(w*h));if(cap<dpr)dpr=cap;if(dpr<0.3)dpr=0.3;
-  this.dpr=dpr;this.W=this.cv.width=Math.max(1,Math.floor(w*dpr));this.H=this.cv.height=Math.max(1,Math.floor(h*dpr));
-  this.CELL=CELL_BASE*dpr;
-  this.edge=!host.hasAttribute('data-plasma-full')&&this.H<=dpr*(window.innerHeight||900)*1.6;
-  if(STATIC)this.draw();
-};
-Inst.prototype.draw=function(){
-  if(!this.W||!this.H)return;
-  if(!this.buf){this.buf=document.createElement('canvas');this.bufCtx=this.buf.getContext('2d');}
-  if(this.buf.width!==this.W||this.buf.height!==this.H){this.buf.width=this.W;this.buf.height=this.H;}
-  var cols=Math.ceil(this.W/this.CELL)+1,rows=Math.ceil(this.H/this.CELL)+1,cells=cols*rows;
-  if(!this.field||this.field.length!==cells)this.field=new Float64Array(cells);
-  var img=this.bufCtx.createImageData(cols,rows),data=img.data;
-  var ox=(px-0.5)*0.9,oy=(py-0.5)*0.9,i,j,v,sum=0;
-  for(j=0;j<rows;j++){for(i=0;i<cols;i++){v=fbm(i*0.028+ox*1.6,j*0.028+oy*1.6,t);this.field[j*cols+i]=v;sum+=v;}}
-  var mean=sum/cells,maxdev=1e-6;
-  for(i=0;i<cells;i++){var dd=this.field[i]-mean;if(dd<0)dd=-dd;if(dd>maxdev)maxdev=dd;}
-  var sSum=0;
-  for(i=0;i<cells;i++){var sv=(this.field[i]-mean)/maxdev;sv=(sv<0?-1:1)*Math.pow(sv<0?-sv:sv,MID_CURVE);this.field[i]=sv;sSum+=sv;}
-  var sMean=sSum/cells,p=0,useEdge=this.edge;
-  for(j=0;j<rows;j++){for(i=0;i<cols;i++){
-    var k=1;
-    if(useEdge){var vx=Math.abs(i/cols-0.5)*2,vy=Math.abs(j/rows-0.5)*2;var edge=Math.max(0,(vx*vx+vy*vy)-0.42)*1.4;k=1-Math.min(EDGE_MAX,edge*EDGE_K);}
-    var s=this.field[j*cols+i]-sMean;if(s>1)s=1;else if(s<-1)s=-1;
-    data[p++]=BRAND[0]+AMP*s*TONE[0]*k;data[p++]=BRAND[1]+AMP*s*TONE[1]*k;data[p++]=BRAND[2]+AMP*s*TONE[2]*k;data[p++]=255;}}
-  this.bufCtx.putImageData(img,0,0);
-  this.ctx.imageSmoothingEnabled=true;this.ctx.imageSmoothingQuality='high';
-  this.ctx.clearRect(0,0,this.W,this.H);
-  this.ctx.drawImage(this.buf,0,0,cols,rows,0,0,this.W,this.H);
-};
-var insts=hosts.map(function(h){return new Inst(h);});
-function resizeAll(){insts.forEach(function(o){o.resize();});}
-function drawAll(){insts.forEach(function(o){if(o.vis)o.draw();});}
-function drawStatic(){t=7.3;drawAll();}
-var running=false,raf=0,last=0;
-function loop(ts){if(!running)return;
-  if(ts-last>1000/FPS){last=ts;t+=0.012;px+=(tx-px)*0.04;py+=(ty-py)*0.04;drawAll();}
-  raf=requestAnimationFrame(loop);}
-function start(){if(!running&&!STATIC){running=true;raf=requestAnimationFrame(loop);}}
-function stop(){running=false;if(raf)cancelAnimationFrame(raf);raf=0;}
-var rq=false;
-function resize(){if(rq)return;rq=true;requestAnimationFrame(function(){rq=false;resizeAll();});}
-window.addEventListener('resize',resize,{passive:true});
-if(mqSmall.addEventListener){mqSmall.addEventListener('change',function(){var l=mqSmall.matches;FPS=l?16:24;DPR_CAP=l?1:2;CELL_BASE=l?34:26;resize();});}
-if('IntersectionObserver' in window){
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){for(var i=0;i<insts.length;i++){if(insts[i].host===e.target)insts[i].vis=e.isIntersecting;}});},{rootMargin:'160px'});
-  insts.forEach(function(o){io.observe(o.host);});
-}
-if(!STATIC){
-  window.addEventListener('pointermove',function(e){
-    tx=e.clientX/Math.max(1,document.documentElement.clientWidth);
-    ty=e.clientY/Math.max(1,document.documentElement.clientHeight);
-  },{passive:true});
-  document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});
-}
-resizeAll();
-if(STATIC)drawStatic();else start();
-})();
-</script>
+<script src="ds-plasma-zone.js" defer></script>
+
 <script src="ds-share.js" defer></script>
 </body></html>
