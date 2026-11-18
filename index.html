@@ -231,14 +231,16 @@ main section:first-child{border-top:0}
 .door:not(.main) .go{color:var(--meta);font-size:14.5px}
 .door:not(.main):hover .go{color:var(--navy)}
 .door.main:hover{border-color:var(--navy2);background:var(--navy2)}
-.endz .btn-p{border:1px solid rgba(143,168,255,.55)}
-.endz .btn-p:hover{border-color:#8fa8ff}
 .quiet{font-size:15px;color:var(--meta);margin-top:28px}
-.endz .quiet{color:rgba(238,242,251,.72)}.endz .quiet a{color:#8fa8ff}
-/* ── футер-зона: одна строка-миссия + CTA (финал-миссия как отдельный блок снята) ── */
-.endz{margin-top:clamp(72px,9vw,120px)}
-.end{padding:clamp(48px,6vw,72px) 0 clamp(48px,6vw,64px)}
-.endline{font-family:var(--disp);font-weight:500;font-size:clamp(20px,2.4vw,27px);letter-spacing:-.015em;line-height:1.35;color:var(--ink);max-width:44ch;margin-bottom:26px}
+/* ── карточка канала (decrypt-reveal), канон §8, эталон channel.html#profile ── */
+#profile{padding:clamp(56px,7vw,88px) 0 clamp(40px,5vw,64px)}
+#profile .shead{display:block;text-align:center;margin-bottom:22px}
+.dsx-stage{position:relative;border-radius:14px;overflow:hidden;max-width:620px;margin:0 auto}
+.dsx-stage canvas{display:block;width:100%}
+.dsx-fcard{--ink:#eef2fb;--body:#b9c1d6;--meta:#8a94ad;--hair2:rgba(255,255,255,.08);background:#131c2b;border:1px solid rgba(255,255,255,.10);border-radius:14px;padding:clamp(18px,2.5vw,26px);max-width:620px;margin:0 auto}
+.dsx-chip{font-family:var(--mono);font-size:13px;font-weight:500;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--hair2);color:var(--body)}
+.dsx-btn{display:inline-flex;align-items:center;min-height:52px;padding:13px 28px;margin-top:20px;width:100%;justify-content:center;border-radius:10px;font-size:15.5px;font-weight:500;text-decoration:none;background:#1b2a6b;color:#f2f6ff;transition:background .18s var(--ease)}
+.dsx-btn:hover{background:#24368f}
 /* ── футер ── */
 footer{border-top:1px solid var(--hair);padding:24px 24px 32px;font:500 14px/1.7 var(--mono);color:var(--body);text-align:center}
 footer a{color:var(--navy);text-decoration:none}
@@ -453,34 +455,22 @@ footer a:hover{text-decoration:underline}
 
 <style>
 /* единый футер сайта */
-footer.site-foot{border-top:1px solid rgba(16,20,31,.12);margin-top:56px;padding:34px 0 38px;font:400 14px/1.6 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479;background:inherit}
-footer.site-foot .sfw{width:min(1080px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;gap:18px 28px;align-items:start}
+footer.site-foot{border-top:1px solid rgba(16,20,31,.12);margin-top:0;padding:30px 0 36px;font:400 14px/1.6 var(--sans);color:#5c6479;background:inherit}
+footer.site-foot .sfw{width:min(1080px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:12px 28px;align-items:center}
 footer.site-foot .sf-l{display:flex;align-items:center;gap:14px}
 footer.site-foot .sf-logo{height:38px;width:auto;display:block}
-footer.site-foot .sf-name{font:600 16px/1.25 "IBM Plex Sans",system-ui,sans-serif;color:#10141f;display:flex;flex-direction:column;gap:3px}
-footer.site-foot .sf-name span{font:400 14px/1.4 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
-footer.site-foot .sf-c{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-footer.site-foot .sf-b{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:10px;background:#1b2a6b;color:#f2f6ff;font:500 14.5px/1 "IBM Plex Sans",system-ui,sans-serif;text-decoration:none;transition:background .18s ease}
-footer.site-foot .sf-b:hover{background:#2c419f}
-footer.site-foot .sf-b.g{background:transparent;color:#1b2a6b;border:1px solid rgba(27,42,107,.35)}
-footer.site-foot .sf-b.g:hover{border-color:#1b2a6b}
-footer.site-foot .sf-h{font:400 14px/1.5 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
-footer.site-foot .sf-note{font:400 14px/1.5 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
-footer.site-foot .sf-r{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
-footer.site-foot a{color:#1b2a6b;text-decoration:none}
-footer.site-foot a:hover{text-decoration:underline}
-footer.site-foot .sf-legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 22px;padding-top:14px;border-top:1px solid rgba(16,20,31,.08);margin-top:6px}
-footer.site-foot.ft-dark{border-top-color:rgba(255,255,255,.14);color:#b9c1d6}
-footer.site-foot.ft-dark .sf-name{color:#eef2fb}
-footer.site-foot.ft-dark .sf-name span,footer.site-foot.ft-dark .sf-note,footer.site-foot.ft-dark .sf-h{color:#a9b4cc}
-footer.site-foot.ft-dark .sf-b{background:#8fa8ff;color:#0f1730}
-footer.site-foot.ft-dark .sf-b:hover{background:#a3b6ff}
-footer.site-foot.ft-dark .sf-b.g{background:transparent;color:#eef2fb;border-color:rgba(255,255,255,.28)}
-footer.site-foot.ft-dark a{color:#eef2fb}
-footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
-@media(max-width:820px){
+footer.site-foot .sf-name{font:600 16px/1.25 var(--sans);color:#10141f;display:flex;flex-direction:column;gap:3px}
+footer.site-foot .sf-name span{font:400 14px/1.4 var(--mono);color:#5c6479}
+footer.site-foot .sf-r{justify-self:end;text-align:right}
+footer.site-foot .sf-mail{font:400 14px/1.5 var(--mono)}
+footer.site-foot .sf-mail a{color:#1b2a6b;text-decoration:none}
+footer.site-foot .sf-mail a:hover{text-decoration:underline}
+footer.site-foot .sf-legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 22px;padding-top:14px;border-top:1px solid rgba(16,20,31,.08);margin-top:10px;font:400 13px/1.6 var(--mono)}
+footer.site-foot .sf-legal a{color:#1b2a6b;text-decoration:none}
+footer.site-foot .sf-legal a:hover{text-decoration:underline}
+@media(max-width:640px){
   footer.site-foot .sfw{grid-template-columns:1fr}
-  footer.site-foot .sf-r{align-items:flex-start;text-align:left}
+  footer.site-foot .sf-r{justify-self:start;text-align:left}
 }
 </style>
 </head>
@@ -789,7 +779,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
 .ds-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,36px);align-items:start}
 @media (max-width:860px){.ds-duo{grid-template-columns:1fr}}
 .ds-pancap{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px}
-.ds-pansub{font:400 13.5px/1.5 var(--mono);color:#a9b4cc;margin:-8px 0 18px;max-width:52ch}
+.ds-pansub{font:400 13.5px/1.5 var(--mono);color:var(--meta);margin:-8px 0 18px;max-width:52ch}
 /* панель 1 — часы */
 .ds-ail{border:1px solid var(--hair2);border-radius:14px;background:rgba(255,255,255,.03);padding:18px 20px 16px}
 .ds-ail-head{display:flex;width:100%;align-items:center;gap:10px;font:500 14px/1.4 var(--sans);color:var(--body);padding:2px 0 8px}
@@ -829,12 +819,13 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
 .ds-hrs{flex:none;font:500 12.5px/1.4 var(--mono);color:var(--meta);border:1px solid var(--hair2);border-radius:9px;padding:2px 8px;transition:color .2s var(--ease-out),border-color .2s var(--ease-out)}
 .ds-ail-row.running .ds-hrs,.ds-ail-row.done .ds-hrs{color:var(--accent);border-color:rgba(143,168,255,.3)}
 .ds-ail-log{overflow:hidden;transition:height .3s var(--ease-out);margin-top:4px}
+.ds-ail-log.masked{mask-image:linear-gradient(to bottom,rgba(0,0,0,.25),#000 70%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.25),#000 70%)}
 .ds-ail-log-track{transition:transform .3s var(--ease-out)}
-.ds-ail-line{display:flex;align-items:center;gap:8px;height:28px;font:400 14px/1 var(--mono);color:var(--body);opacity:0;transition:opacity .2s var(--ease-out)}
+.ds-ail-line{display:flex;align-items:center;gap:8px;height:24px;font:400 12px/1 var(--mono);color:var(--meta);opacity:0;transition:opacity .2s var(--ease-out)}
 .ds-ail-line.vis{opacity:1}
-.ds-ail-line .ds-n{width:16px;text-align:right;font-size:13px;color:rgba(143,168,255,.6);flex:none;font-variant-numeric:tabular-nums}
+.ds-ail-line .ds-n{width:16px;text-align:right;color:rgba(143,168,255,.4);flex:none;font-variant-numeric:tabular-nums}
 .ds-ail-line .ds-tx{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ds-ail-line.chk{color:var(--accent);font-weight:500}
+.ds-ail-line.chk{color:var(--accent)}
 .ds-ail-line.chk .ds-tx::before{content:'✓ '}
 .ds-total{margin-top:14px;padding-top:12px;border-top:1px solid var(--hair2);display:flex;flex-direction:column;gap:6px}
 .ds-total .ds-fin{font:400 14.5px/1.55 var(--sans);color:var(--body)}
@@ -860,11 +851,11 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
 @keyframes ds-plandraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 .ds-tlbl{flex:1;min-width:0;font:400 14px/1.45 var(--sans);color:var(--body)}
 .ds-trow.running .ds-tlbl{color:var(--ink)}
-.ds-tnote{flex:none;font:400 13px/1.7 var(--mono);color:#a9b4cc;font-variant-numeric:tabular-nums}
+.ds-tnote{flex:none;font:400 12px/1.7 var(--mono);color:var(--meta);font-variant-numeric:tabular-nums}
 .ds-undl{position:absolute;left:0;right:0;bottom:0;height:1px;opacity:0;pointer-events:none;background-image:linear-gradient(90deg,transparent 0%,currentColor 50%,transparent 100%);background-size:50% 100%}
 .ds-trow.running .ds-undl{opacity:.5;animation:ds-undl 1.4s cubic-bezier(.645,.045,.355,1) infinite}
 @keyframes ds-undl{from{background-position-x:0%}to{background-position-x:200%}}
-.ds-plan-note{margin-top:12px;padding-top:10px;border-top:1px solid var(--hair2);font:400 13.5px/1.6 var(--mono);color:#a9b4cc}
+.ds-plan-note{margin-top:12px;padding-top:10px;border-top:1px solid var(--hair2);font:400 13px/1.6 var(--mono);color:var(--meta)}
 /* оверлей-артефакт */
 .ds-proof{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;background:rgba(15,23,48,.96);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .25s var(--ease-out);padding:16px}
 .ds-proof.show{opacity:1}
@@ -963,11 +954,11 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
       'хостинг: твоё облако',
       'база знаний',
       'прогон на твоих задачах',
-      'Голосовое клиента → расшифровал и ответил сам',
-      'Сообщение клиента → ответ и заявка в карточке',
-      'Сводка по бизнесу за день',
-      'Счёт поставщика → сверка с договором',
-      'Бронь слота и напоминание до выезда',
+      'распознавание голоса (STT) — критерий закрыт',
+      'сценарий заявок — критерий закрыт',
+      'планировщик сводки — критерий закрыт',
+      'база знаний: договор — критерий закрыт',
+      'календарь и напоминания — критерий закрыт',
       'отладка до закрытия всех критериев']}
   ];
   /* шаг 4: единое мастер-расписание на одних часах —
@@ -1023,21 +1014,19 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
     }
     row.lbl.appendChild(frag);
   }
-  function setLog(row, lines, visT){
+  function setLog(row, lines){
       if (!lines.length){ row.log.style.height='0px'; row.track.innerHTML=''; return; }
       row.log.classList.toggle('masked', lines.length > 4);
       row.track.innerHTML = lines.map(function(t,i){
         return '<div class="ds-ail-line" style="transition-delay:'+(i*LINE_STAG)+'ms"><span class="ds-n">'+(i+1)+'</span><span class="ds-tx">'+t+'</span></div>';
       }).join('');
-      row.log.style.height = (Math.min(lines.length,4)*28)+'px';
-      row.track.style.transform = 'translateY('+(-Math.max(0,lines.length-4)*28)+'px)';
-      /* каскад: строки проявляются по очереди (+30 мс после установки содержимого);
-         на мастере-расписании это событие, вне ролика (RM) — локальный таймер */
-      var showVis = function(){
+      row.log.style.height = (Math.min(lines.length,4)*24)+'px';
+      row.track.style.transform = 'translateY('+(-Math.max(0,lines.length-4)*24)+'px)';
+      /* каскад: строки проявляются по очереди */
+      setTimeout(function(){
         var ls = row.track.children;
         for (var k=0;k<ls.length;k++) ls[k].classList.add('vis');
-      };
-      if (visT == null) setTimeout(showVis, 30); else after(visT + 30, showVis);
+      }, 30);
     }
 
   var pos = {step:0, line:0};
@@ -1046,7 +1035,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
       ail  = document.getElementById('dsAil'),
       total = document.getElementById('dsTotal');
 
-  function render(visT){
+  function render(){
     var running = null;
     STEPS.forEach(function(st, i){
       var r = rows[i], state;
@@ -1057,10 +1046,10 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
       if (state === 'running'){
         running = st;
         waveLabel(r, st.label);
-        if (i !== STEPS.length-1) setLog(r, st.detail, visT);  /* шаг 4 раскрывается по расписанию, без вспышки */
+        setLog(r, st.detail);
       } else {
         r.lbl.textContent = st.label;
-        if (!(i === STEPS.length-1 && pos.step >= STEPS.length)) setLog(r, [], visT);  /* журнал внедрения остаётся после сдачи */
+        setLog(r, []);
       }
     });
     if (pos.step >= STEPS.length){
@@ -1073,98 +1062,49 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
     return false;
   }
 
-  /* ── мастер-планировщик: ОДНО расписание событий на весь ролик + ОДИН rAF-цикл ──
-     Все события считаются от t=0 старта ролика. rAF сам паузится в скрытой вкладке,
-     после возврата события доигрываются в правильном порядке — замерших
-     рассинхронных состояний больше нет. Никаких цепочек setTimeout. */
-  var SCHED = [], EV = 0, T0 = 0, rafId = 0, PB = 0, PK = -1;
-  /* вставка события с сохранением порядка оставшихся (микрокаскады +30 мс) */
-  function after(t, fn){
-    var i = EV;
-    while (i < SCHED.length && SCHED[i].t <= t) i++;
-    SCHED.splice(i, 0, {t:t, fn:fn});
-  }
-  function frameLoop(now){
-    var el = now - T0 - PB;  /* часы ждут зрителя: паузы не ломают расписание */
-    while (EV < SCHED.length && SCHED[EV].t <= el){
-      try { SCHED[EV].fn(); } catch(e){}
-      EV++;
+  function tick(){
+    if (pos.step >= STEPS.length) return;
+    var st = STEPS[pos.step];
+    var idx = pos.step;
+    render();
+    /* последний шаг: внедрение длится ровно столько, сколько закрываются критерии.
+       логи проявляются по одному, сдача приходит с последней галкой */
+    if (idx === STEPS.length-1){
+      setLog(rows[idx], []);
+      for (var k=0;k<BUILD_LINES.length;k++){
+        (function(k){
+          setTimeout(function(){ revealLine(rows[idx], BUILD_LINES, k); }, BUILD_AT[k]);
+        })(k);
+      }
+      /* приёмка стартует после того, как внедрение рассказало сборку */
+      setTimeout(startPlan, PLAN_DELAY);
+      return;
     }
-    if (EV < SCHED.length) rafId = requestAnimationFrame(frameLoop);
-    else rafId = 0;
-  }
-  function pauseClock(){ if (PK === -1){ PK = performance.now(); if (rafId) cancelAnimationFrame(rafId); rafId = 0; } }
-  function resumeClock(){
-    if (PK !== -1){ PB += performance.now() - PK; PK = -1; }
-    if (played && EV < SCHED.length && !rafId) rafId = requestAnimationFrame(frameLoop);
+    /* шаг 2 «Критерии приёмки»: чек-строки проявляются одна за другой,
+       шаг 3 «Оплата»: чип «зафиксированы до старта» появляется в шапке чек-листа */
+    if (idx === 1){
+      for (var k=0;k<trows.length;k++){
+        (function(k){
+          setTimeout(function(){ trows[k].classList.remove('hidden'); }, TROW_LAG + k*TROW_STAG);
+        })(k);
+      }
+    } else if (idx === 2){
+      setTimeout(function(){ planChip.classList.add('vis'); }, 30);
+    }
+    var dur = (idx === 1 ? trows.length*TROW_STAG : st.detail.length*LINE_STAG) + STEP_HOLD;
+    setTimeout(function(){
+      pos.step++;
+      if (pos.step >= STEPS.length){ render(); return; }
+      render();
+      setTimeout(tick, GAP);
+    }, dur);
   }
   function startAil(){
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = 0; PB = 0; PK = -1;
-    buildSchedule();
-    SCHED.sort(function(a,b){ return a.t - b.t; });
-    EV = 0; T0 = performance.now();
-    rafId = requestAnimationFrame(frameLoop);
+    pos = {step:0, line:0};
+    render();
+    setTimeout(tick, GAP);
   }
-  function buildSchedule(){
-    var ev = [];
-    function at(t, fn){ ev.push({t:t, fn:fn}); }
-    /* шаг 1 «Консультация»: старт */
-    at(0, function(){ pos = {step:0, line:0}; render(0); });
-    var t = GAP;
-    /* шаги 1–3: тик шага, сопутствующие события, рендер следующего шага */
-    for (var s=0; s<STEPS.length-1; s++){
-      (function(s, tTick){
-        at(tTick, function(){ render(tTick); });
-        if (s === 1){  /* шаг 2 «Критерии приёмки»: чек-лист справа проявляется строка за строкой */
-          for (var k=0;k<trows.length;k++){
-            (function(k){
-              at(tTick + TROW_LAG + k*TROW_STAG, function(){ trows[k].classList.remove('hidden'); });
-            })(k);
-          }
-        } else if (s === 2){  /* шаг 3 «Оплата»: чип «зафиксированы до старта» в шапке чек-листа */
-          at(tTick + 30, function(){ planChip.classList.add('vis'); });
-        }
-        var dur = (s === 1 ? trows.length*TROW_STAG : STEPS[s].detail.length*LINE_STAG) + STEP_HOLD;
-        var tEnd = tTick + dur;
-        at(tEnd, function(){ pos.step = s+1; render(tEnd); });
-        t = tEnd + GAP;
-      })(s, t);
-    }
-    /* шаг 4 «Внедрение и отладка»: журнал раскрывается по расписанию */
-    var t4 = t;
-    at(t4, function(){ render(t4); setLog(rows[3], [], t4); });
-    for (var k=0;k<BUILD_LINES.length;k++){
-      (function(k){
-        at(t4 + BUILD_AT[k], function(){ revealLine(rows[3], BUILD_LINES, k, t4 + BUILD_AT[k]); });
-      })(k);
-    }
-    /* приёмка: галка k = running → done + артефакт + чек-строка; оверлей прячется через PROOF_MS —
-       всё событиями расписания, без вложенных setTimeout */
-    var R0 = t4 + PLAN_DELAY + PLAN_FIRST;  /* старт первой галки */
-    for (var k=0;k<trows.length;k++){
-      (function(k){
-        var rT = R0 + k*ROW_CYCLE, cT = rT + ROW_PREP;
-        at(rT, function(){ trows[k].className = 'ds-trow running'; planRender(); });
-        at(cT, function(){
-          trows[k].className = 'ds-trow done';
-          planRender();
-          showProof(k);
-          /* строка проверки в логе внедрения — синхронно с галкой */
-          revealLine(rows[3], CHECK_LINES, k, cT);
-        });
-        at(cT + PROOF_MS, function(){ proof.classList.remove('show'); });
-        if (k === trows.length-1){
-          at(cT + 400, function(){ revealLine(rows[3], STEPS[3].detail, STEPS[3].detail.length-1, cT + 400); });
-        }
-      })(k);
-    }
-    /* финал: сдача приходит после последней галки */
-    var lastC = R0 + (trows.length-1)*ROW_CYCLE + ROW_PREP;
-    at(lastC + PROOF_MS + HIDE_MS + ROW_PREP, function(){ planRender(); finish(); });
-    SCHED = ev;
-  }
-  function revealLine(row, lines, k, visT){
+  function revealLine(row, lines, k){
     var d = document.createElement('div');
     /* строка проверки — зеркало галки: акцентный цвет и префикс «✓» */
     d.className = 'ds-ail-line' + (CHECK_LINES.indexOf(lines[k]) !== -1 ? ' chk' : '');
@@ -1172,10 +1112,9 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
     row.track.appendChild(d);
     var n = k+1;
     row.log.classList.toggle('masked', n > 4);
-    row.log.style.height = (Math.min(n,4)*28)+'px';
-    row.track.style.transform = 'translateY('+(-Math.max(0,n-4)*28)+'px)';
-    var showVis = function(){ d.classList.add('vis'); };
-    if (visT == null) setTimeout(showVis, 30); else after(visT + 30, showVis);
+    row.log.style.height = (Math.min(n,4)*24)+'px';
+    row.track.style.transform = 'translateY('+(-Math.max(0,n-4)*24)+'px)';
+    setTimeout(function(){ d.classList.add('vis'); }, 30);
   }
 
   /* ── панель 2: чек-лист приёмки + оверлеи-артефакты ── */
@@ -1231,6 +1170,27 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
   }
 
   function planRender(){ planCnt.textContent = trows.filter(function(r){return r.classList.contains('done')}).length + '/' + trows.length; }
+  var ti = 0;
+  function tickPlan(){
+    if (ti >= trows.length){ planRender(); finish(); return; }
+    trows[ti].className = 'ds-trow running';
+    planRender();
+    var i = ti;
+    setTimeout(function(){
+      trows[i].className = 'ds-trow done';
+      planRender();
+      showProof(i);
+      /* строка проверки в логе внедрения — синхронно с галкой */
+      revealLine(rows[3], CHECK_LINES, i);
+      if (i === CHECK_LINES.length-1){
+        setTimeout(function(){ revealLine(rows[3], CHECK_LINES.concat([FINAL_LINE]), CHECK_LINES.length); }, 400);
+      }
+      setTimeout(function(){
+        hideProof(function(){ ti++; setTimeout(tickPlan, ROW_PREP); });
+      }, PROOF_MS);
+    }, ROW_PREP);
+  }
+  function startPlan(){ ti = 0; setTimeout(tickPlan, 350); }
 
   /* стоп на итоге: сдача приходит с последней галкой приёмки */
   var replayBtn = document.getElementById('dsReplay');
@@ -1241,11 +1201,14 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
     title.textContent = 'Итог · агент за 3 дня';
     replayBtn.hidden = false;
   }
+  function hideProof(cb){
+    proof.classList.remove('show');
+    setTimeout(cb, HIDE_MS);
+  }
   function replay(){
     replayBtn.hidden = true;
     trows.forEach(function(r){ r.className = 'ds-trow hidden'; });
     planChip.classList.remove('vis');
-    proof.classList.remove('show');
     planRender();
     startAil();
   }
@@ -1255,7 +1218,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
     rows.forEach(function(r,i){
       r.el.className = 'ds-ail-row done';
       r.lbl.textContent = STEPS[i].label;
-      setLog(r, i === STEPS.length-1 ? STEPS[3].detail : []);
+      setLog(r, []);
     });
     total.style.visibility = 'visible';
     title.textContent = 'Итог · агент за 3 дня';
@@ -1271,12 +1234,6 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
         if (entries[0].isIntersecting && !played){ played = true; io.disconnect(); startAil(); }
       }, {threshold: 0.3});
       io.observe(ail);
-      /* часы ждут зрителя: пауза при скрытой вкладке или уходе секции из вьюпорта */
-      document.addEventListener('visibilitychange', function(){ document.hidden ? pauseClock() : resumeClock(); });
-      var vio = new IntersectionObserver(function(entries){
-        entries[0].isIntersecting ? resumeClock() : pauseClock();
-      }, {threshold: 0.15});
-      vio.observe(ail);
     } else {
       startAil();
     }
@@ -1320,12 +1277,12 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
 </div>
 </section>
 
-<!-- ═══ что хочешь сейчас: 3 двери + написать лично внутри блока ═══ -->
+<!-- ═══ что хочешь сейчас: два шага ═══ -->
 <section id="doors">
 <div class="wrap">
 <div class="shead">
 <h2>С чего начать</h2>
-<p class="s">Сначала цифры, потом открытые материалы, потом решение. Первые два шага бесплатны и ничего не требуют.</p>
+<p class="s">Сначала цифры, потом открытые навыки. Оба шага бесплатны и ничего не требуют.</p>
 </div>
 <div class="doors">
 <a class="door main" href="calculator.html">
@@ -1335,33 +1292,53 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
 <span class="go">открыть калькулятор →</span>
 </a>
 <a class="door" href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">
-          <span class="dk">шаг 2 · 0 ₽</span>
-          <span class="dt">Открытые скиллы и исследования</span>
-          <span class="dd">7 скиллов на GitHub: код, процедуры, проверки — можно клонировать и посмотреть, как устроено внутри. Плюс разборы: цены рынка, провалы внедрений, потери аккаунтов — с методикой и датами.</span>
-          <span class="go">смотреть код и разборы →</span>
-        </a>
-<a class="door" href="pay.html">
-          <span class="dk">шаг 3 · 3 000 ₽</span>
-          <span class="dt">Собрать самому по гайду</span>
-          <span class="dd">20 проверенных связок с ценами по РФ: что окупается, а что нет. Для тех, кто верит, что настроит сам — сборка 3–4 часа, без кода.</span>
-          <span class="go">забрать гайд →</span>
-        </a>
+<span class="dk">шаг 2 · 0 ₽</span>
+<span class="dt">Навыки для своего агента</span>
+<span class="dd">7 скиллов на GitHub: код, процедуры, проверки — можно клонировать и подключить своему агенту. Плюс разборы: цены рынка, провалы внедрений, потери аккаунтов — с методикой и датами.</span>
+<span class="go">забрать навыки →</span>
+</a>
+</div>
+</div>
+</section>
+
+<section id="profile">
+<div class="wrap">
+<div class="shead">
+<h2>Где это найти</h2>
+</div>
+<div class="dsx-stage" id="dsx-stage" hidden><canvas id="dsx-output" role="img" aria-label="Карточка канала Discovery System"></canvas></div>
+<div class="dsx-fcard" id="dsx-fallback">
+<div style="display:flex;align-items:center;gap:14px">
+<img id="dsx-logo" src="logo-5.png" alt="" style="flex:none;width:52px;height:52px;border-radius:50%;object-fit:cover">
+<div>
+<b style="display:block;color:var(--ink);font-family:var(--disp);font-weight:500;font-size:17px;line-height:1.35">Discovery System // Виктор Зайцев про рынок ИИ-агентов</b>
+<span style="font-family:var(--mono);font-size:14px;font-weight:500;color:var(--meta)">t.me/discoverysystem</span>
+</div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0">
+<span class="dsx-chip">сигнал</span><span class="dsx-chip">скилл</span><span class="dsx-chip">исследование</span><span class="dsx-chip">бизнес-модель</span>
+</div>
+<p style="color:var(--body);font-size:15.5px;line-height:1.55;margin:16px 0 0">Канал с исследованиями российского рынка ИИ-агентов — для самозанятых, владельцев малого бизнеса и ИИ-предпринимателей. Я внедряю ИИ-агентов и показываю экономику владения сборками, которые не заблокируют.</p>
+<div style="display:flex;gap:10px;align-items:baseline;padding:16px 0 0;border-top:1px solid var(--hair2);margin-top:16px;white-space:nowrap;font-family:var(--mono);font-weight:500;font-size:16px;color:var(--ink)">
+<span>2–4 дня<span style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--meta);margin-left:4px">новый сигнал</span></span>
+<span style="color:var(--meta);font-size:12px;align-self:center">·</span>
+<span>500+<span style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--meta);margin-left:4px">сигналов в базе</span></span>
+<span style="color:var(--meta);font-size:12px;align-self:center">·</span>
+<span>дальше<span style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--meta);margin-left:4px">карта смерти рынков</span></span>
+</div>
+<a class="dsx-btn" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Подписаться</a>
+</div>
 </div>
 </section>
 
 </main>
 
-<!-- ═══ футер-зона: одна строка-миссия + CTA ═══ -->
-<div class="zone-dark endz">
-<div class="wrap end">
-<p class="endline">Агент остаётся твоим. Данные — твои.</p>
-<div class="cta">
-<a class="btn btn-p" href="calculator.html">Посчитать свою рутину</a>
-</div>
-</div>
-</div>
-
-<footer class="site-foot"><div class="sfw"><div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div><div class="sf-c"><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="sf-b" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20Discovery%20System.">Написать лично</a><a class="sf-b g" href="https://t.me/discoverysystem">Канал с сигналами</a></div><span class="sf-h">t.me/victorpinksight · t.me/discoverysystem</span><span class="sf-note">Отвечаю лично, без ботов</span></div><div class="sf-r"><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div><div class="sf-legal"><span><a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · ИНН 780627413110</span></div></div></footer>
+<script src="ds-decrypt.js" defer></script>
+<footer class="site-foot"><div class="sfw">
+<div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div>
+<div class="sf-r"><div class="sf-mail"><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div></div>
+<div class="sf-legal"><span><a href="https://discovery-system.ru/oferta.html">оферта</a></span><span><a href="https://discovery-system.ru/policy.html">политика ПД</a></span><span>ИНН 780627413110</span></div>
+</div></footer>
 
 <script>
 /* ── DS Plasma, герой-версия: canvas внутри тёмной зоны, синяя дымка (sfer-light-v4, без изменений) ── */
@@ -1413,6 +1390,7 @@ if(!STATIC){window.addEventListener('pointermove',function(e){var r=host.getBoun
 document.addEventListener('visibilitychange',function(){document.hidden?stop():start();});}
 resize();if(STATIC)drawStatic();else start();
 })();
+
 /* ── каскад + typewriter (sfer-light-v4); static=1/reduced → вся статика, capture-детерминизм ── */
 (function(){
 var QS=/(?:\?|&)static=1(?:&|$)/.test(window.location.search);
