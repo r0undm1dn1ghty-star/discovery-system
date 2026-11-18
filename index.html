@@ -1056,10 +1056,10 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
       if (state === 'running'){
         running = st;
         waveLabel(r, st.label);
-        setLog(r, st.detail);
+        if (i !== STEPS.length-1) setLog(r, st.detail);  /* шаг 4 раскрывается по расписанию, без вспышки */
       } else {
         r.lbl.textContent = st.label;
-        setLog(r, []);
+        if (!(i === STEPS.length-1 && pos.step >= STEPS.length)) setLog(r, []);  /* журнал внедрения остаётся после сдачи */
       }
     });
     if (pos.step >= STEPS.length){
@@ -1228,7 +1228,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
     rows.forEach(function(r,i){
       r.el.className = 'ds-ail-row done';
       r.lbl.textContent = STEPS[i].label;
-      setLog(r, []);
+      setLog(r, i === STEPS.length-1 ? STEPS[3].detail : []);
     });
     total.style.visibility = 'visible';
     title.textContent = 'Итог · агент за 3 дня';
