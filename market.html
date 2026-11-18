@@ -399,10 +399,10 @@ footer p { margin: 2px 0; }
 .rdark .f-back{box-shadow:0 0 0 1px rgba(255,255,255,.08)}
 .rdark .folder:hover .f-back{box-shadow:0 0 0 1px rgba(255,255,255,.16), 0 24px 48px -18px rgba(0,0,0,.55)}
 /* ── шеринг: по оси контентной колонки ── */
-#ds-share{max-width:none!important;width:min(1080px,calc(100% - 48px));margin:0 auto!important}
+#ds-share{max-width:none!important;width:min(1080px,calc(100% - 48px));margin:0 auto!important;padding:26px 0 6px!important}
 
 /* ── финальный CTA: тёмная полоса в тон героя, плазма-намёк чистым CSS (без canvas) ── */
-.ctafin{position:relative;overflow:hidden;background:var(--dark);color:#eef2fb;margin-top:44px;padding:clamp(44px,6vw,72px) 0}
+.ctafin{position:relative;overflow:hidden;background:var(--dark);color:#eef2fb;margin-top:44px;padding:clamp(44px,6vw,72px) 0 clamp(36px,5vw,52px)}
 .ctafin:before{content:"";position:absolute;inset:0;pointer-events:none;background:
  radial-gradient(120% 200% at 6% 130%, rgba(27,42,107,.60), transparent 62%),
  radial-gradient(80% 150% at 96% -30%, rgba(143,168,255,.16), transparent 55%),
@@ -423,7 +423,7 @@ footer p { margin: 2px 0; }
 
 <style>
 /* единый футер сайта */
-footer.site-foot{border-top:1px solid rgba(16,20,31,.12);margin-top:56px;padding:34px 0 38px;font:400 14px/1.6 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479;background:inherit}
+footer.site-foot{border-top:1px solid rgba(16,20,31,.12);margin-top:0;padding:34px 0 38px;font:400 14px/1.6 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479;background:inherit}
 footer.site-foot .sfw{width:min(1080px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;gap:18px 28px;align-items:start}
 footer.site-foot .sf-l{display:flex;align-items:center;gap:14px}
 footer.site-foot .sf-logo{height:38px;width:auto;display:block}
