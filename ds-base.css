@@ -208,6 +208,13 @@ main > section:first-of-type, .page section:first-of-type { padding-top: var(--s
 .sig { display: block; }
 .sig:has(.sig-photo) { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
 .sig:has(.sig-text) { display: flex; align-items: center; gap: 16px; }
+
+/* ── Футер исследований/pay: единый ритм (одна центрированная колонка) ── */
+footer .sig { justify-content: center; margin-bottom: 14px; }
+footer .sig-text { text-align: center; }
+footer .sig-c { text-align: center; margin-top: 14px; }
+footer .sig-c:last-of-type { margin-top: 6px; }
+footer .sig-c .nw { white-space: nowrap; }
 @media (max-width: 760px) {
   .sig-meta { row-gap: 4px; }
   .sig-src, .sig-head, .sig-take { min-width: 0; overflow-wrap: anywhere; }
