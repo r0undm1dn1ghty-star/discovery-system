@@ -984,11 +984,11 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
   /* момент галки k от старта шага 4 = PLAN_FIRST + k*ROW_CYCLE + ROW_PREP */
   var ROW_CYCLE = ROW_PREP + PROOF_MS + HIDE_MS + ROW_PREP;            /* 1680 мс */
   function checkAt(k){ return PLAN_FIRST + ROW_PREP + k*ROW_CYCLE; }   /* 600 + k*1680 */
-  /* строительные строки: стек сразу, остальные — середина паузы перед соответствующей галкой */
-  var BUILD_AT = [0,
-    checkAt(1) - ROW_CYCLE/2,   /* 1440 */
-    checkAt(2) - ROW_CYCLE/2,   /* 3120 */
-    checkAt(3) - ROW_CYCLE/2];  /* 4800 */
+  /* строительные строки: сборка рассказывается первой и целиком —
+     стек → хостинг → база знаний → прогон; приёмка стартует только после,
+     чтобы галки не спешили впереди внедрения */
+  var BUILD_AT = [0, 700, 1400, 2100];
+  var PLAN_DELAY = 2200;   /* первая галка = PLAN_FIRST + PLAN_DELAY + ROW_PREP = 2800 */
 
   /* ── панель 1: степ-лист с часами ── */
   var list = document.getElementById('dsAilList');
@@ -1086,7 +1086,8 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
           setTimeout(function(){ revealLine(rows[idx], BUILD_LINES, k); }, BUILD_AT[k]);
         })(k);
       }
-      startPlan();
+      /* приёмка стартует после того, как внедрение рассказало сборку */
+      setTimeout(startPlan, PLAN_DELAY);
       return;
     }
     /* шаг 2 «Критерии приёмки»: чек-строки проявляются одна за другой,
