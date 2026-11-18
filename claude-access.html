@@ -65,7 +65,7 @@ nav.top a.cur{color:var(--accent)}
 .accent{color:var(--accent);font-weight:700}
 .eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:20px}
 .stat3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:52px auto 0;max-width:760px;text-align:left}
-.sc{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px 26px 24px;display:flex;flex-direction:column;box-shadow:0 24px 60px -38px rgba(0,0,0,.6)}
+.sc{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;box-shadow:0 24px 60px -38px rgba(0,0,0,.6)}
 .sc.mid{border-color:rgba(143,168,255,.45);background:rgba(143,168,255,.05)}
 .sc .k{font-family:var(--mono);font-size:12px;color:var(--meta);letter-spacing:.1em;text-transform:uppercase}
 .sc .v{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,5vw,2.6rem);color:var(--ink);letter-spacing:-.02em;margin:6px 0 2px}
@@ -152,34 +152,34 @@ section+section{border-top:1px solid rgba(255,255,255,.05)}
 .hero h1{font-size:clamp(2.3rem,6vw,4.1rem);letter-spacing:-.025em;line-height:1.06;max-width:900px;margin:0 auto 26px}
 .hero .lead{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--body);max-width:640px;margin:0 auto 34px}
 .sc .v{font-variant-numeric:tabular-nums;letter-spacing:-.03em}
-.sc{transition:transform .45s cubic-bezier(.32,.72,0,1),border-color .3s,background .3s}
+.sc{transition:transform .3s var(--ease),border-color .3s,background .3s}
 .sc:hover{transform:translateY(-3px);border-color:rgba(143,168,255,.32)}
-.sc.mid{box-shadow:0 0 0 1px rgba(143,168,255,.12),0 24px 70px -38px rgba(143,168,255,.28)}
-.wipe,.personal,.now{position:relative;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:20px;box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 30px 80px -50px rgba(0,0,0,.55)}
+.sc.mid{box-shadow:0 24px 60px -38px rgba(0,0,0,.6)}
+.wipe,.personal,.now{position:relative;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.08);border-radius:14px;box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 30px 80px -50px rgba(0,0,0,.55)}
 .wipe{overflow:hidden}
 .wipe .top{border-right:2px solid var(--accent);background:linear-gradient(90deg,rgba(13,18,32,.97),rgba(13,18,32,.88))}
 .wipe .big{letter-spacing:-.03em}
-.wipe .top .big{color:var(--accent);text-shadow:0 0 34px rgba(143,168,255,.35)}
+.wipe .top .big{color:var(--accent)}
 .wipe .lab{letter-spacing:.16em}
-.tl2 button{border-radius:12px;transition:background .25s cubic-bezier(.32,.72,0,1),transform .25s cubic-bezier(.32,.72,0,1)}
+.tl2 button{border-radius:12px;transition:background .25s var(--ease),transform .25s var(--ease)}
 .tl2 button:hover{background:rgba(255,255,255,.045);transform:translateX(2px)}
 .tl2 .dt{font-variant-numeric:tabular-nums}
-.btn{border-radius:999px;padding:14px 26px;transition:transform .35s cubic-bezier(.32,.72,0,1),background .2s,box-shadow .35s cubic-bezier(.32,.72,0,1)}
-.btn-primary{box-shadow:0 14px 40px -16px rgba(36,54,143,.55),0 1px 0 rgba(255,255,255,.12) inset}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 52px -18px rgba(36,54,143,.65),0 1px 0 rgba(255,255,255,.14) inset}
+.btn{border-radius:10px;padding:14px 26px;transition:transform .25s var(--ease),background .2s,box-shadow .25s var(--ease)}
+.btn-primary{box-shadow:0 1px 0 rgba(255,255,255,.12) inset}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 1px 0 rgba(255,255,255,.14) inset}
 .btn:active{transform:translateY(0) scale(.98)}
 .btn-ghost:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.06)}
-.conflict{border-radius:20px;background:linear-gradient(180deg,rgba(143,168,255,.06),rgba(143,168,255,.02));border:1px solid rgba(143,168,255,.22);padding:36px 38px;box-shadow:0 30px 80px -56px rgba(0,0,0,.6)}
+.conflict{border-radius:14px;background:linear-gradient(180deg,rgba(143,168,255,.06),rgba(143,168,255,.02));border:1px solid rgba(143,168,255,.22);padding:36px 38px;box-shadow:0 30px 80px -56px rgba(0,0,0,.6)}
 .conflict .q{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,3vw,1.75rem);line-height:1.4;letter-spacing:-.015em}
 .conflict .q:first-letter{color:var(--accent)}
 table.data td{padding:14px 12px}
 table.data tr{transition:background .2s}
 table.data tr:hover td{background:rgba(255,255,255,.022)}
 table.data td.n{font-variant-numeric:tabular-nums}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:999px;font-size:12px;background:rgba(255,255,255,.03)}
-.eyebrow:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(143,168,255,.8)}
-.js .rv{opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}
-.js .rv.in{opacity:1;transform:none;filter:blur(0)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:12px;background:rgba(255,255,255,.03)}
+.eyebrow:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
 ::selection{background:rgba(143,168,255,.28);color:#fff}
 @media(min-width:900px){
  body::-webkit-scrollbar{width:10px}
@@ -191,10 +191,17 @@ table.data td.n{font-variant-numeric:tabular-nums}
  .sc:hover,.tl2 button:hover{transform:none}
 }
 
-/* читаемость */
-.fn,.dt,.dt.hi,.dt.mid,.eyebrow,.k,.c,th,.lab,.ms-per,.ms-src,small,td{font-size:14px!important}
+/* шторка: на десктопе текст половин уходит от линии разреза */
+@media(min-width:761px){
+ .wipe .base{text-align:right;padding-right:56px}
+ .wipe .top .base{text-align:left;padding-left:56px;padding-right:28px}
+ .wipe .sub2{max-width:320px}
+ .wipe .base .sub2{margin-left:auto}
+ .wipe .top .sub2{margin-left:0;margin-right:auto}
+}
 
-span,.ms-src,.dt,.fn{font-size:14px!important}
+/* читаемость */
+.fn,.dt,.dt.hi,.dt.mid,.eyebrow,.k,.c,th,.lab,.ms-per,.ms-src{font-size:14px!important}
 </style>
 <link rel="stylesheet" href="ds-nav-fix.css?v=20261110d"/>
 <script src="ym-slot.js" defer></script>
@@ -236,7 +243,7 @@ span,.ms-src,.dt,.fn{font-size:14px!important}
 <div class="top"><div class="base"><div class="lab">так устроена проверка</div><div class="big">9 слоёв</div><div class="sub2">прокси закрывает два, и то частично · слои разобраны ниже</div></div></div>
 </div>
 <div class="wipe-ctl rv"><span>обещание</span><input type="range" id="wipeRange" min="0" max="100" value="50" aria-label="Сравнение обещания и устройства"/><span>устройство</span></div>
-<p class="src rv">Проверка ведёт не адрес, а аккаунт: документ, платёж, устройство, поведение, текст. Адрес — один сигнал из девяти.</p>
+<p class="src rv">Проверка привязана не к адресу, а к аккаунту: документ, платёж, устройство, поведение, текст. Адрес — один сигнал из девяти.</p>
 </div></section>
 <section id="kak"><div class="wrap">
 <p class="eyebrow rv">методика</p>
@@ -273,7 +280,7 @@ span,.ms-src,.dt,.fn{font-size:14px!important}
 <tr><td>«Все нейросети навсегда»</td><td class="n">200–450 ₽</td><td>Агрегатор без имени и оферты: нельзя проверить, какая модель отвечает</td><td class="s">Anthropic в сентябрьском отчёте описал случай, когда платили за Claude, а шла другая модель</td></tr>
 <tr><td>Резидентный прокси</td><td class="n">от ~120 ₽/мес</td><td>Честнее остальных: закрывает слои 02–04 частично при полной изоляции трафика</td><td class="s">Не закрывает устройство, телеметрию, семантику, платёж и документ — пять слоёв остаются</td></tr>
 </table></div>
-<div class="card fake rv"><h3>Почему «купленная проверка» не работает</h3><p>Продавец закрывает слой 09 чужим документом — и тем самым создаёт два новых сигнала: аккаунт привязан к чужой личности (передача доступа, прямой запрет с 12.11) и рассинхрон «документ одной страны — устройство и поведение другой» (слои 05–07). Это объясняет свидетельства недели: бан сразу или через сутки после «купленной» проверки. Имена не называю намеренно: услуга не может выполнить обещание в принципе, потому что обещание противоречит правилам платформы.</p></div>
+<div class="card fake rv"><h3>Почему «купленная проверка» не работает</h3><p>Продавец закрывает слой 09 чужим документом — и тем самым создаёт два новых сигнала: аккаунт привязан к чужой личности (передача доступа, прямой запрет с 12.11) и рассинхрон «документ одной страны — устройство и поведение другой» (слои 05–07). Это объясняет свидетельства недели: бан сразу или через сутки после «купленной» проверки. Имена не называю намеренно: услуга не может выполнить обещание в принципе — оно противоречит правилам платформы.</p></div>
 </div></section>
 <section id="tebe"><div class="wrap">
 <p class="eyebrow rv">как это касается тебя</p>
@@ -299,10 +306,10 @@ span,.ms-src,.dt,.fn{font-size:14px!important}
 </div>
 <div class="conflict rv">
 <p class="q">Сидеть на серой схеме и ждать письма с «подозрительными сигналами» или переехать на свою связку — теперь выбор с датой: 12 ноября.</p>
-<p>Слово для этого одно — <b style="color:var(--accent)">владение</b>. Своя связка на российских провайдерах: доступ, который не отключат из-за страны входа, данные, которые остаются у тебя, критерии приёмки, зафиксированные до старта.</p>
+<p>Разница между этими дорогами — <b style="color:var(--accent)">владение</b>. Своя связка на российских провайдерах: доступ, который не отключат из-за страны входа, данные, которые остаются у тебя, критерии приёмки, зафиксированные до старта.</p>
 </div>
 <div class="card fact-ok rv" id="perezd">
-<h3>Переезд с серой схемы — как оптимизация</h3>
+<h3>Переезд с серой схемы: что входит в оптимизацию</h3>
 <p>Переезд делается через <b style="color:var(--ink)">оптимизацию существующего агента</b>: аудит текущей схемы, перенос данных и процессов на свою связку, согласование критериев приёмки до старта. Оптимизация — от 25 000 ₽.</p>
 <div class="promo">промокод с этой страницы: <b>KLODNAOBOROT</b> · −10% · от 22 500 ₽</div>
 <div class="cta-row" style="margin-top:20px">

@@ -13,10 +13,8 @@
 <meta property="article:published_time" content="2026-09-30"/>
 <meta property="article:modified_time" content="2026-11-05"/>
 <!-- /SEO:CORE -->
-<meta property="article:published_time" content="2026-09-26T00:00:00+03:00"/>
-<meta property="article:modified_time" content="2026-10-05T00:00:00+03:00"/>
 <meta property="og:title" content="ИИ-агент, который не заработал: 76 провалов 2026"/>
-<meta property="og:description" content="Семь схем, из которых умирает агент. Каждый случай — источник, цифра, дата. Проверь свой проект по чек-листу."/>
+<meta property="og:description" content="Семь схем, по которым ломается агент. Каждый случай: источник, цифра, дата. Проверь свой проект по чек-листу."/>
 <meta property="og:url" content="https://discovery-system.ru/agent-failures.html"/>
 <meta property="og:type" content="article"/>
 <meta property="og:image" content="https://discovery-system.ru/og-cover.png"/>
@@ -35,20 +33,15 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 html,body{overflow-x:hidden}
-body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.75;-webkit-font-smoothing:antialiased;position:relative}
-body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:
-radial-gradient(720px 480px at 82% -6%,rgba(143,168,255,.10),transparent 68%),
-radial-gradient(640px 520px at -8% 34%,rgba(70,96,168,.08),transparent 70%),
-radial-gradient(560px 420px at 55% 112%,rgba(150,118,84,.06),transparent 72%)}
-body:after{content:"";pointer-events:none;opacity:.035;position:fixed;inset:0;z-index:100;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-.wrap{max-width:880px;margin:0 auto;padding:0 24px}
-section{padding:96px 0;border-top:1px solid var(--line-soft)}
+body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;position:relative}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+section{padding:88px 0;border-top:1px solid var(--line-soft)}
 section:first-of-type{border-top:none}
-h1,h2{color:var(--ink);font-family:var(--display);line-height:1.15;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
-h1{font-size:clamp(2.1rem,5.4vw,3.3rem);margin:0 0 28px}
-h2{font-size:clamp(1.5rem,3.3vw,2.05rem);margin:0 0 28px}
+h1,h2{color:var(--ink);font-family:var(--display);line-height:1.14;font-weight:700;letter-spacing:-.012em;text-wrap:balance}
+h1{font-size:clamp(2.1rem,5.2vw,3.15rem);margin:0 0 26px;max-width:19ch}
+h2{font-size:clamp(1.5rem,3.2vw,2rem);margin:0 0 24px;max-width:26ch}
 h3{color:var(--ink);font-family:var(--display);font-size:1.15rem;margin:0 0 8px}
-p{margin:0 0 20px;text-wrap:pretty}
+p{margin:0 0 20px;text-wrap:pretty;max-width:70ch}
 a{color:var(--ink)}
 :focus-visible{outline:2px solid #8fa8ff;outline-offset:3px;border-radius:4px}
 nav.top{padding:28px 0}
@@ -59,11 +52,11 @@ nav.top a.home{display:inline-flex;align-items:center;gap:8px;color:var(--ink);f
 nav.top img{height:28px;width:auto;border-radius:4px}
 nav.top a.calc{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
 nav.top a.cur{color:var(--accent)}
-.hero{padding:104px 0 64px;text-align:center}
-.hero .sub{color:var(--meta);font-size:14px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px;font-family:var(--mono)}
-.hero .lead{max-width:700px;margin:0 auto 20px;font-size:20px}
+.hero{padding:100px 0 56px;text-align:center}
+.hero .sub{color:var(--meta);font-size:15px;letter-spacing:.02em;margin-bottom:24px;font-family:var(--mono)}
+.hero .lead{max-width:640px;margin:0 auto 20px;font-size:19.5px;line-height:1.62}
 .hero .lead b{color:var(--ink)}
-.hero-cap{color:var(--meta);font-size:15px;font-family:var(--mono);margin-top:18px}
+.hero-cap{color:var(--meta);font-size:14.5px;line-height:1.6;font-family:var(--mono);margin:18px auto 0;max-width:620px}
 .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:44px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15.5px;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:background .15s,border-color .15s,transform .15s}
 .btn-primary{background:#24368f;color:#f2f6ff;border-color:rgba(255,255,255,.14)}.btn-primary:hover{background:#2c419f;transform:translateY(-1px)}
@@ -71,33 +64,26 @@ nav.top a.cur{color:var(--accent)}
 .btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);transform:translateY(-1px)}
 .btn.sm{min-height:40px;padding:8px 16px;font-size:14px;border-radius:8px}
 .accent{color:var(--accent);font-weight:700}
-.eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.12em;margin-bottom:22px}
+.eyebrow{font-family:var(--mono);font-size:14px;color:var(--meta);letter-spacing:.02em;margin-bottom:18px}
 
-/* KPI strip */
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:12px;overflow:hidden}
-.kpi{padding:32px 24px;background:var(--bg)}
-.kpi-n{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,4.6vw,2.3rem);color:var(--ink);line-height:1.1;margin-bottom:10px;letter-spacing:-.02em}
+/* KPI strip: типографика на волосяных линиях, без плиток */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kpi{padding:26px 24px 24px;border-left:1px solid var(--line-soft)}
+.kpi:first-child{border-left:0;padding-left:0}
+.kpi-n{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.6vw,2.5rem);color:var(--ink);line-height:1.05;margin-bottom:12px;letter-spacing:-.025em}
 .kpi-n.acc{color:var(--accent)}
 .kpi-n.bad{color:var(--bad)}
 .kpi-n small{font-size:.5em;color:var(--meta);font-weight:500;letter-spacing:0}
-.kpi-t{font-size:15px;color:var(--body);line-height:1.5;margin-bottom:8px}
-.kpi-s{font-size:13px;color:var(--meta);line-height:1.5;font-family:var(--mono)}
-.kpi.wide{grid-column:1/-1;background:rgba(143,168,255,.06)}
-.chart-cap{font-size:14px;color:var(--meta);margin-top:16px}
+.kpi-t{font-size:15px;color:var(--body);line-height:1.55;margin-bottom:10px;text-wrap:pretty}
+.kpi-s{font-size:13.5px;color:var(--meta);line-height:1.5;font-family:var(--mono)}
+.kpi.wide{grid-column:1/-1;border-left:0;border-top:1px solid var(--line-soft);padding-left:0;display:grid;grid-template-columns:minmax(0,.9fr) 2fr;gap:24px;align-items:baseline}
+.kpi.wide .kpi-n{margin:0}
+.kpi.wide .kpi-s{grid-column:2}
+.chart-cap{font-size:14px;color:var(--meta);line-height:1.6;margin-top:18px;max-width:70ch}
 
-/* self-check */
-.schemes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.scheme{display:flex;gap:14px;align-items:flex-start;text-align:left;background:rgba(255,255,255,.03);border:1px solid var(--line);border-left-width:3px;border-radius:12px;padding:20px 22px;cursor:pointer;font-family:inherit;color:inherit;width:100%;transition:border-color .2s,background .2s,transform .15s}
-.scheme:hover{background:rgba(255,255,255,.055);transform:translateY(-1px)}
-.scheme.on{border-color:var(--accent);background:rgba(143,168,255,.08)}
-.scheme .box{width:22px;height:22px;border:1.5px solid var(--faint);border-radius:6px;flex:0 0 22px;margin-top:2px;position:relative;transition:all .2s}
-.scheme.on .box{background:var(--accent);border-color:var(--accent)}
-.scheme.on .box::after{content:"";position:absolute;left:7px;top:3px;width:5px;height:10px;border:2px solid #05121f;border-top:0;border-left:0;transform:rotate(45deg)}
-.scheme .txt h3{font-size:1.04rem;margin:0 0 6px}
-.scheme .txt p{margin:0;font-size:14px;color:var(--meta);line-height:1.5;font-style:italic}
-.scheme .txt .n{font-family:var(--mono);color:var(--accent);font-size:12.5px;display:block;margin-top:8px}
-.verdict{margin-top:26px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;background:rgba(143,168,255,.05);padding:26px 28px}
-.verdict .score{font-family:var(--display);font-size:1.9rem;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+/* self-check index (схемы — ссылками, без плиток) */
+.verdict{margin-top:26px;border:0;border-left:2px solid var(--accent);border-radius:0;background:none;padding:2px 0 2px 24px}
+.verdict .score{font-family:var(--display);font-size:1.9rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
 .verdict .score b{color:var(--accent)}
 .verdict>p{margin:10px 0 0;font-size:16px}
 .verdict ul{list-style:none;margin:18px 0 0;padding:0}
@@ -133,23 +119,25 @@ nav.top a.cur{color:var(--accent)}
 
 /* dataset */
 .ledctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:22px}
-.chip{font-family:var(--mono);font-size:13px;color:var(--meta);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.chip{font-family:var(--mono);font-size:13px;color:var(--body);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
 .chip:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
 .chip.on{color:#05121f;font-weight:600;border-color:transparent}
-.chip .c{opacity:.75}
+.chip .c{opacity:1;color:var(--meta)}
+.chip.on .c{color:inherit}
 .ledsearch{flex:1;min-width:200px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:11px 18px;color:var(--ink);font-family:inherit;font-size:14.5px;outline:none;transition:border-color .2s}
 .ledsearch::placeholder{color:var(--faint)}
 .ledsearch:focus{border-color:var(--accent)}
 .ledcount{font-family:var(--mono);font-size:13px;color:var(--faint);margin-left:auto;white-space:nowrap}
-.ledgrid{display:grid;gap:12px}
-.led{background:rgba(255,255,255,.03);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:11px;padding:18px 22px;transition:border-color .2s,background .2s}
-.led:hover{background:rgba(255,255,255,.05)}
-.led .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}
-.led .src{font-family:var(--mono);font-size:11.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
-.led .date{font-family:var(--mono);font-size:11.5px;color:var(--faint);white-space:nowrap}
-.led p{margin:0;font-size:15.5px;line-height:1.6;color:var(--ink)}
-.led .nums{margin-top:10px;display:flex;flex-direction:column;gap:2px}
-.led .nums span{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ink);line-height:1.5;padding-left:14px;position:relative}
+.ledgrid{display:grid;gap:0;border-top:1px solid var(--line-soft)}
+.led{position:relative;border-bottom:1px solid var(--line-soft);padding:22px 0 20px 18px;background:none;transition:background .2s}
+.led:before{content:"";position:absolute;left:0;top:27px;width:3px;height:13px;background:var(--c,var(--accent));border-radius:1px}
+.led:hover{background:rgba(255,255,255,.02)}
+.led .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:7px}
+.led .src{font-family:var(--mono);font-size:12.5px;color:var(--meta);letter-spacing:.02em}
+.led .date{font-family:var(--mono);font-size:12.5px;color:var(--faint);white-space:nowrap}
+.led p{margin:0;font-size:16.5px;line-height:1.62;color:var(--ink);max-width:66ch}
+.led .nums{margin-top:9px;display:flex;flex-direction:column;gap:2px}
+.led .nums span{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--ink);line-height:1.55;padding-left:14px;position:relative}
 .led .nums span::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:1px;background:var(--accent)}
 
 /* schemes index (compact) */
@@ -168,26 +156,26 @@ nav.top a.cur{color:var(--accent)}
 .road-mark[aria-pressed="true"] .box{background:var(--accent);border-color:var(--accent)}
 .road-mark[aria-pressed="true"] .box::after{content:"";position:absolute;left:5px;top:1px;width:4px;height:9px;border:2px solid #05121f;border-top:0;border-left:0;transform:rotate(45deg)}
 /* why + ref lines */
-.led .why{margin-top:12px;padding-top:11px;border-top:1px solid var(--line-soft);font-size:15px;line-height:1.55;color:var(--body)}
-.led .why-k{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
-.led .ref{overflow-wrap:anywhere;margin-top:8px;font-family:var(--mono);font-size:12px;color:var(--faint);line-height:1.5}
+.led .why{margin-top:12px;padding-top:11px;border-top:1px solid var(--line-soft);font-size:15.5px;line-height:1.6;color:var(--body);max-width:66ch}
+.led .why-k{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+.led .ref{overflow-wrap:anywhere;margin-top:8px;font-family:var(--mono);font-size:13px;color:var(--faint);line-height:1.55;max-width:66ch}
 /* court */
-#court .court-lead{max-width:680px;color:var(--body);border-left:2px solid var(--line);padding-left:18px}
-#court .led{background:transparent}
+#court .court-lead{max-width:640px;color:var(--body);border-left:2px solid var(--line);padding-left:18px}
 .ledempty{color:var(--faint);font-size:15px;padding:24px 0}
 .morebar{display:flex;justify-content:center;margin-top:24px}
 
-/* checklist */
-.check{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.item{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:20px 22px;cursor:pointer;transition:border-color .2s,background .2s}
-.item:hover{border-color:rgba(255,255,255,.2)}
-.item.done{border-color:rgba(143,168,255,.5);background:rgba(143,168,255,.06)}
-.item .ck{width:22px;height:22px;border:1.5px solid var(--faint);border-radius:6px;flex:0 0 22px;margin-top:2px;position:relative;transition:all .2s}
+/* checklist: строки на линиях, без коробок */
+.check{display:grid;grid-template-columns:1fr 1fr;gap:0 36px;border-top:1px solid var(--line)}
+.item{display:flex;gap:14px;align-items:flex-start;background:none;border:0;border-bottom:1px solid var(--line-soft);border-radius:0;padding:18px 0;cursor:pointer;transition:background .2s}
+.item:hover{background:rgba(255,255,255,.02)}
+.item.done{background:none}
+.item.done h3{color:var(--accent)}
+.item .ck{width:20px;height:20px;border:1.5px solid var(--faint);border-radius:5px;flex:0 0 20px;margin-top:2px;position:relative;transition:all .2s}
 .item.done .ck{background:var(--accent);border-color:var(--accent)}
-.item.done .ck::after{content:"";position:absolute;left:7px;top:3px;width:5px;height:10px;border:2px solid #05121f;border-top:0;border-left:0;transform:rotate(45deg)}
-.item .k{font-family:var(--mono);font-size:12.5px;color:var(--accent);font-weight:600}
-.item h3{font-size:1.04rem;margin:6px 0 6px}
-.item p{margin:0;font-size:14px;color:var(--meta);line-height:1.5}
+.item.done .ck::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:9px;border:2px solid #05121f;border-top:0;border-left:0;transform:rotate(45deg)}
+.item .k{font-family:var(--mono);font-size:12.5px;color:var(--accent);font-weight:500}
+.item h3{font-size:1.02rem;margin:5px 0 5px;line-height:1.35}
+.item p{margin:0;font-size:14.5px;color:var(--meta);line-height:1.5;max-width:44ch}
 .checkbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:24px}
 .checkbar .pbar{flex:1;min-width:180px;height:7px;border-radius:4px;background:rgba(255,255,255,.07);overflow:hidden}
 .checkbar .pfill{height:100%;width:0;background:var(--accent);transition:width .3s}
@@ -201,17 +189,17 @@ table.data td.n{font-family:var(--mono);color:var(--ink);white-space:nowrap}
 table.data td.s{color:var(--meta);font-size:14px}
 .src{font-size:14px;color:var(--meta)}
 
-/* conflict / thesis */
-.conflict{border:1px solid rgba(143,168,255,.3);background:rgba(143,168,255,.045);border-radius:14px;padding:30px 32px;margin:32px 0}
-.conflict .q{font-family:var(--display);font-size:clamp(1.12rem,2.5vw,1.42rem);color:var(--ink);line-height:1.42;font-weight:600;margin-bottom:14px}
-.conflict p:last-child{margin-bottom:0}
+/* conflict / thesis — редакционная врезка, не карточка */
+.conflict{border:0;border-left:2px solid rgba(143,168,255,.55);background:none;border-radius:0;padding:2px 0 2px 24px;margin:36px 0}
+.conflict .q{font-family:var(--display);font-size:clamp(1.15rem,2.4vw,1.4rem);color:var(--ink);line-height:1.4;font-weight:600;margin-bottom:12px;max-width:34ch}
+.conflict p:last-child{margin-bottom:0;max-width:64ch}
 
 /* sticky cta */
 .sticky-cta{position:fixed;bottom:24px;right:24px;z-index:50;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
 .sticky-cta.show{opacity:1;transform:none;pointer-events:auto}
-.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:10px;background:#24368f;color:#f2f6ff;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.4)}
-.sticky-cta a:hover{transform:scale(1.02)}
-@media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:16px}.sticky-cta a{width:100%;justify-content:center}}
+.sticky-cta a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 24px;border-radius:10px;background:#24368f;color:#f2f6ff;font-weight:600;font-size:15px;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.35);transition:background .15s}
+.sticky-cta a:hover{background:#2c419f}
+@media(max-width:760px){.sticky-cta{bottom:16px;right:16px;left:auto}.sticky-cta a{width:auto;justify-content:center;min-height:44px;padding:10px 18px;font-size:14px}}
 
 /* footer */
 footer{padding:70px 0 60px;border-top:1px solid var(--line-soft)}
@@ -237,7 +225,11 @@ nav.top .wrap{gap:0 10px}
 nav.top a{font-size:13px;min-height:38px}
 nav.top a.home{flex-basis:100%;justify-content:center}
 .kpis{grid-template-columns:1fr}
-.schemes,.check{grid-template-columns:1fr}
+.kpi{border-left:0;border-top:1px solid var(--line-soft);padding:20px 0}
+.kpi:first-child{border-top:0;padding-top:0}
+.kpi.wide{grid-template-columns:1fr;gap:6px}
+.kpi.wide .kpi-s{grid-column:auto}
+.check{grid-template-columns:1fr;gap:0}
 .gaprow{grid-template-columns:1fr;gap:8px;position:relative}
 .gap-label{text-align:left;font-size:14px}
 .gap-val{position:absolute;right:0;top:0}
@@ -252,28 +244,11 @@ table.data td.s{grid-column:1/-1;padding:0 0 12px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}.js .gapchart .gap-fill{transform:scaleX(1)}}
 
-/* читаемость: весь служебный текст — минимум 14px */
-.checkbar .ptext,
-.chip,
-.item .k,
-.kpi-s,
-.led .date,
-.led .nums span,
-.led .ref,
-.led .src,
-.led .why-k,
-.ledcount,
-.road-i,
-.road-mark,
-.road-price,
-.sch-n,
-.scheme .txt .n,
-nav.top a,
-table.data th{font-size:14px}
-
-.mnav a,.mnav button,.foot a{font-size:14px!important}
-
-.src,.date,.why-k,.led .src,.led .date,.led .nums span,.chip{font-size:14px!important}
+/* служебный текст: один кегль, не мельче 14px */
+.checkbar .ptext,.chip,.item .k,.kpi-s,.led .nums span,.led .ref,
+.led .src,.led .date,.led .why-k,.ledcount,.road-i,.road-mark,
+.road-price,.sch-n,nav.top a,table.data th,.src{font-size:14px}
+.led .src,.led .date{letter-spacing:.04em}
 </style>
 <link rel="stylesheet" href="ds-nav-fix.css?v=20261110d"/>
 <script src="ym-slot.js" defer></script>
@@ -281,6 +256,11 @@ table.data th{font-size:14px}
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* страничный override поверх ds-base (правило базы: отличаешься — переопределяй явно).
+   Причина: это исследование читают подряд, абзацы длинные — мера 70–76 знаков важнее сетки 880 */
+.wrap{max-width:760px}
+body{font-size:18px;line-height:1.7}
+@media(max-width:760px){body{font-size:17px}}
 /* единый навбар лендинга (тёмный тон) */
 .nav{border-bottom:1px solid rgba(255,255,255,.12);position:relative;z-index:5}
 .nav a{color:var(--meta,#8893a8);text-decoration:none;font-size:15px}
@@ -295,8 +275,8 @@ table.data th{font-size:14px}
 <header class="hero"><div class="wrap">
 <p class="sub rv">исследование · сентябрь 2026 · только практика РФ</p>
 <h1 class="rv" style="transition-delay:.06s">Ты заплатил за ИИ-агента.<br/>Он не работает.</h1>
-<p class="lead rv" style="transition-delay:.12s">И ты не один. Я собрал <b><span id="heroTotal">76</span> задокументированных случаев за 2026 год</b>, когда бизнес заплатил подрядчику за агента и остался с ботом, который молчит, врёт или сломался. С источниками, цифрами и датами. Отметь ниже, что узнаёшь у себя.</p>
-<p class="hero-cap rv" style="transition-delay:.18s">документированный корпус, а не перепись рынка · наружу без имён · каждый случай проверяем · проверено 05.10.2026 · нашёл ошибку — напиши, поправлю с датой</p>
+<p class="lead rv" style="transition-delay:.12s">Я собрал <b><span id="heroTotal">76</span> случаев за 2026 год</b>: бизнес заплатил подрядчику за агента и остался с ботом, который молчит, врёт или сломался. У каждого случая открытый источник и дата. Отметь ниже, что узнаёшь у себя.</p>
+<p class="hero-cap rv" style="transition-delay:.18s">76 случаев из открытых источников · имён нет · каждый проверяем · сверено 05.10.2026 · нашёл ошибку — напиши, поправлю с датой</p>
 <div class="cta-row rv" style="transition-delay:.24s">
 <a class="btn btn-primary" href="#schemes-list">Проверить свой проект ↗</a>
 <a class="btn btn-ghost" href="#dataset">Смотреть датасет →</a>
@@ -313,23 +293,23 @@ table.data th{font-size:14px}
 <div class="kpi"><div class="kpi-n">73%</div><div class="kpi-t">проектов внедрения идут без владельца процесса, реальная стоимость кратно выше сметы</div><div class="kpi-s">Strategy Partners · 08.2026 · выборка не раскрыта</div></div>
 <div class="kpi wide"><div class="kpi-n"><span id="kpiLoss">25 млн ₽</span></div><div class="kpi-t">крупнейшая заявленная потеря в корпусе: партнёры интегратора ботов вместо готовых клиентов получили базы телефонов для холодного обзвона. Возбуждено уголовное дело о мошенничестве</div><div class="kpi-s">40+ партнёров · ч. 3 ст. 159 УК РФ · ICT-Online · 09.2026</div></div>
 </div>
-<p class="chart-cap rv">Каждый случай ниже — из открытого источника, с датой. Цифры приведены как есть в источнике.</p>
+<p class="chart-cap rv">У каждого случая открытый источник и дата. Цифры — как в источнике.</p>
 </div></section>
 
 <section id="selfcheck"><div class="wrap">
 <p class="eyebrow rv">семь схем · коротко</p>
-<h2 class="rv">Агент умирает по одной из семи схем</h2>
-<p class="rv">Нажми на схему — перейдёшь к разбору и к тому, что делать. Там же можно отметить, что узнаёшь у себя.</p>
+<h2 class="rv">Семь схем, по которым ломается агент</h2>
+<p class="rv">Нажми на схему: там разбор, что делать и отметка «узнаю у себя».</p>
 <nav class="sch-index rv" id="schemes" aria-label="Семь схем"></nav>
 </div></section>
 
 <section id="gap"><div class="wrap">
 <p class="eyebrow rv">разрыв, который видно</p>
-<h2 class="rv">Пробуют все. Доходит один из десяти.</h2>
+<h2 class="rv">Пробуют все, до работы доходит один из десяти</h2>
 <div class="gapchart rv" role="img" aria-label="Сравнение: 53 процента малого бизнеса пробуют нейросети, только 7-10 процентов испытаний доходят до промышленной эксплуатации">
 <div class="gaprow"><span class="gap-label">Пробуют нейросети</span><div class="gap-track"><div class="gap-fill" style="--w:53%"></div></div><span class="gap-val">53%</span></div>
 <div class="gaprow"><span class="gap-label">Доходят до работы</span><div class="gap-track"><div class="gap-fill gap-fill-low" style="--w:9%"></div></div><span class="gap-val">7–10%</span></div>
-<div class="gap-mark rv"><span class="gap-x">×6</span><span class="gap-note">разрыв между «попробовал» и «работает» — не про технологию. По разбору 18 препятствий внедрения <b>около половины причин провала лежит не на подрядчике, а внутри компании-заказчика</b>: нет владельца процесса, не измеряется эффект, никто не чинит после сдачи.</span></div>
+<div class="gap-mark rv"><span class="gap-x">×6</span><span class="gap-note">Шестикратный разрыв между «попробовал» и «работает» упирается в компанию-заказчика. В разборе 18 препятствий внедрения <b>около половины причин провала лежит внутри бизнеса</b>: нет владельца процесса, эффект не измеряется, после сдачи никто не чинит.</span></div>
 </div>
 <p class="chart-cap rv">53% — ПСБ · Опора России, 08.2026 · 7–10% и 18 препятствий — CNews · 03.2026 и vc.ru · 08.2026</p>
 </div></section>
@@ -352,7 +332,7 @@ table.data th{font-size:14px}
 <section id="dataset"><div class="wrap">
 <p class="eyebrow rv">датасет · без имён, каждый случай проверяем</p>
 <h2 class="rv">Что происходит на рынке</h2>
-<p class="rv">Источники: vc.ru, Хабр, РБК, Коммерсантъ, CNews, TAdviser, ComNews, Forbes, арбитражные акты, отзывы на Авито / Kwork / FL.ru / 2ГИС / TenChat. Фильтруй по схемам и ищи по словам. Под каждым случаем — что он значит для тебя.</p>
+<p class="rv">Источники: vc.ru, Хабр, РБК, Коммерсантъ, CNews, TAdviser, ComNews, Forbes, арбитражные акты, отзывы на Авито / Kwork / FL.ru / 2ГИС / TenChat. Фильтруй по схемам, ищи по словам. Под каждым случаем строка «касается тебя».</p>
 <div class="ledctl rv">
 <div id="chips" style="display:flex;flex-wrap:wrap;gap:10px"></div>
 <input class="ledsearch" id="ledSearch" type="text" placeholder="Поиск по случаям: 1С, галлюцинации, штраф..."/>
@@ -365,14 +345,14 @@ table.data th{font-size:14px}
 <section id="court"><div class="wrap">
 <p class="eyebrow rv">отдельно · <span id="courtTotal">7</span> случаев · соседняя тема</p>
 <h2 class="rv">Отдельно: когда ИИ подвёл в суде</h2>
-<p class="rv court-lead">Это не про внедрение агента. Это про то, как ИИ ошибается там, где цена ошибки максимальна. Если ИИ ошибается даже перед судом — проверяй, что подписываешь и на что опираешься.</p>
+<p class="rv court-lead">Семь случаев, где ИИ ошибся в судебных документах, а отвечал человек. Присмотрись, что подписываешь и на что опираешься.</p>
 <div class="ledgrid court-list rv" id="courtList"></div>
 </div></section>
 
 <section id="check"><div class="wrap">
 <p class="eyebrow rv">приёмка · чек-лист</p>
 <h2 class="rv">8 пунктов приёмки</h2>
-<p class="rv">Ровно то, чего не было ни в одном провале из корпуса. Отмечай, что у тебя уже закрыто, — внизу можно скопировать или скачать список.</p>
+<p class="rv">Этих пунктов не было ни в одном провале из корпуса. Отмечай закрытое: список можно скопировать или скачать.</p>
 <div class="check rv" id="checklist"></div>
 <div class="checkbar rv">
 <span class="ptext" id="checkText">Закрыто: 0 из 8</span>
@@ -381,8 +361,8 @@ table.data th{font-size:14px}
 <button class="btn btn-ghost sm" id="dlCheck">Скачать .md</button>
 </div>
 <div class="conflict rv" style="margin-top:32px">
-<p class="q">Агент уже стоит, но приёмки не было?</p>
-<p>Тогда это не внедрение, а оптимизация. Аудит связки: где утекают токены и время, пересборка промптов, модели и логики, замер «до / после». Старт — <b class="accent">от 25 000 ₽</b>, точная цена после аудита.</p>
+<p class="q">Агент уже стоит, а приёмки не было?</p>
+<p>Начни с аудита связки: где утекают токены и время, пересборка промптов и логики, замер «до / после». Старт — <b class="accent">от 25 000 ₽</b>, точная цена после аудита.</p>
 <div class="cta-row" style="margin-top:22px;justify-content:flex-start">
 <a class="btn btn-primary sm" href="service.html#optimization">Оптимизировать мой агент ↗</a>
 </div>
@@ -408,8 +388,8 @@ table.data th{font-size:14px}
 
 <section id="start"><div class="wrap">
 <div class="conflict rv">
-<p class="q">Агент умирает не от технологии. Он умирает там, где не было приёмки, метрики и ответственного после сдачи.</p>
-<p>Если агент у тебя уже есть — и он врёт, тормозит или жжёт токены — начинать с нуля не нужно. Это чинится: аудит связки, пересборка промптов и логики, замер «до / после». Старт — от 25 000 ₽.</p>
+<p class="q">Проект ломается там, где не было приёмки, метрики и ответственного после сдачи.</p>
+<p>Если агент уже есть и он врёт, тормозит или жжёт токены, начинать с нуля не нужно: аудит связки, пересборка промптов и логики, замер «до / после». Старт — от 25 000 ₽.</p>
 </div>
 <div class="cta-row rv">
 <a class="btn btn-primary" href="service.html#optimization">Оптимизировать мой агент ↗</a>
@@ -464,7 +444,7 @@ table.data th{font-size:14px}
 <script>
 var CORPUS_TOTAL = 83; /* все карточки массива LEDGER: основной фид + судебная секция; старое 96 было суммой счётчиков схем, а не числом опубликованных карточек */
 var LINK_OK = 0; /* счётчик «живых ссылок» не подтверждён данными корпуса — не выводим */
-var SCHEMA_CASES = {"obeshchali-ne-sdelali": {"label": "Обещали и не сделали", "count": 14, "short": "«Платил четыре месяца, а заявок ноль. Отчитывались красиво, результата нет.»", "todo": "Потребуй зафиксировать критерии приёмки и тест в бою до старта"}, "bot-slomal-doverie": {"label": "Бот сломал доверие", "count": 19, "short": "«Агент придумывал номера заказов и обещал компенсации, которых не было. Клиенты ушли.»", "todo": "Пропиши границы агента и запрет обещаний вне его прав"}, "nastrolili-i-brosili": {"label": "Настроили и бросили", "count": 4, "short": "«Сдал, взял деньги и пропал. На сообщения не отвечает, поддержки нет.»", "todo": "Зафиксируй, что будет, если исполнитель пропадёт: код и доступы у тебя"}, "integrator-ne-tyanet": {"label": "Интегратор сам не тянет", "count": 10, "short": "«Взял проект, не осилил, тянет время месяцами вместо честного отказа.»", "todo": "Kill-критерий: при каком результате ты останавливаешь проект"}, "partnerskaya-piramida": {"label": "Партнёрская схема", "count": 4, "short": "«Вместо готовых клиентов передали базы для холодного прозвона. Партнёры в убытке.»", "todo": "Проверяй, за что именно платишь — за результат или за доступ"}, "net-priyomki-i-metrik": {"label": "Нет приёмки и метрик", "count": 33, "short": "«Проект идёт, деньги уходят, а измеримой метрики нет. Непонятно, работает ли вообще.»", "todo": "Одна метрика, которую агент улучшает, и способ её измерить"}, "yuridika-i-otvetstvennost": {"label": "Юридика и ответственность", "count": 12, "short": "«Ошибка агента привела к штрафу, а ответственного в договоре не оказалось.»", "todo": "Пропиши в договоре, кто отвечает за ошибку агента"}};
+var SCHEMA_CASES = {"obeshchali-ne-sdelali": {"label": "Обещали и не сделали", "count": 13, "short": "«Платил четыре месяца, а заявок ноль. Отчитывались красиво, результата нет.»", "todo": "Потребуй зафиксировать критерии приёмки и тест в бою до старта"}, "bot-slomal-doverie": {"label": "Бот сломал доверие", "count": 17, "short": "«Агент придумывал номера заказов и обещал компенсации, которых не было. Клиенты ушли.»", "todo": "Пропиши границы агента и запрет обещаний вне его прав"}, "nastrolili-i-brosili": {"label": "Настроили и бросили", "count": 3, "short": "«Сдал, взял деньги и пропал. На сообщения не отвечает, поддержки нет.»", "todo": "Зафиксируй, что будет, если исполнитель пропадёт: код и доступы у тебя"}, "integrator-ne-tyanet": {"label": "Интегратор сам не тянет", "count": 7, "short": "«Взял проект, не осилил, тянет время месяцами вместо честного отказа.»", "todo": "Kill-критерий: при каком результате ты останавливаешь проект"}, "partnerskaya-piramida": {"label": "Партнёрская схема", "count": 3, "short": "«Вместо готовых клиентов передали базы для холодного прозвона. Партнёры в убытке.»", "todo": "Проверяй, за что именно платишь — за результат или за доступ"}, "net-priyomki-i-metrik": {"label": "Нет приёмки и метрик", "count": 30, "short": "«Проект идёт, деньги уходят, а измеримой метрики нет. Непонятно, работает ли вообще.»", "todo": "Одна метрика, которую агент улучшает, и способ её измерить"}, "yuridika-i-otvetstvennost": {"label": "Юридика и ответственность", "count": 3, "short": "«Ошибка агента привела к штрафу, а ответственного в договоре не оказалось.»", "todo": "Пропиши в договоре, кто отвечает за ошибку агента"}};
 var LEDGER = [{"cat": "Нет приёмки и метрик", "claim": "Крупный банк сократил 65% региональных менеджеров и объяснил это внедрением ИИ. Сколько здесь дал ИИ, а сколько — экономия на людях, никто не отделил.", "numbers": ["производительность персонала +40%"], "publisher": "other", "date": "2026-06-19", "why": "Подрядчик тоже может записать в «эффект ИИ» то, что ты сэкономил сам. Проси считать вклад агента отдельно."}, {"cat": "Обещали и не сделали", "claim": "Партнёр-франчайзи интегратора ботов подал в арбитраж: хочет расторгнуть лицензионный договор и взыскать долг с процентами.", "numbers": ["576 054,09 ₽ — сумма иска"], "publisher": "court", "date": "2026-02-09", "why": "Если подрядчик пропадает, долг и суд достаются тебе, а не ему.", "ref": "дело А60-71847/2025 · АС Свердловской области · лицензионный договор №25102023/Ч от 25.10.2023"}, {"cat": "Юридика и ответственность", "claim": "Верховный суд впервые сказал прямо: кто готовит позицию с помощью программы, делает это на свой риск и обязан проверить результат. За ссылку на несуществующий пункт постановления Пленума вопрос о штрафе адресовали лично представителю.", "numbers": ["в постановлении 14 пунктов, сослались на 15-й", "банкротство тянется с 2018 года"], "publisher": "other", "date": "2026-09-03", "why": "Документ от ИИ, который ты подписал не читая, — твой риск, а не программы.", "ref": "СКЭС ВС РФ · п. 15 постановления Пленума ВС РФ от 25.12.2018 № 48", "court": 1}, {"cat": "Нет приёмки и метрик", "claim": "Модель за три дня «навайбкодила» воркфлоу, который сам публикует Reels. Больше трети узлов в нём — защитная логика: первая версия собиралась «лишь бы работало» и раздулась.", "numbers": ["127 узлов в итоге, 156 в первой версии", "60,9 млн токенов за три дня, 85,3% — кеш", "итоговый счёт ~$4 по цене $0,07 за 1 млн"], "publisher": "habr", "date": "2026-09-04", "why": "«Лишь бы работало» от подрядчика потом чинишь за свои: проси объяснить, что в агенте зачем."}, {"cat": "Юридика и ответственность", "claim": "Суд в деле о банкротстве не принял обзор рыночных цен, который подготовила нейросеть: собран по сайтам, носит справочный характер, доказательством не считается.", "numbers": [], "publisher": "other", "date": "2026-01-27", "why": "Отчёт, собранный ИИ, в споре может не стоить ничего. Опирайся на данные, которые можно проверить.", "ref": "дело А40-251278/2022", "court": 1}, {"cat": "Нет приёмки и метрик", "claim": "Разбор франшизы по ИИ-продвижению в нейровыдаче: заявленный доход партнёра ничем не подтверждён. Редакция пишет, что отзывы сразу после обучения окупаемость не доказывают — это прогноз.", "numbers": ["заявлено 400–500 тыс. ₽ в месяц", "окупаемость ~4 месяца — тоже заявлена"], "publisher": "other", "date": "2026-04-03", "why": "Цифры дохода в презентации подрядчика — обещание, а не результат. Проси кейсы, которые можно проверить."}, {"cat": "Бот сломал доверие", "claim": "Автономный агент ритейлера гнался за метрикой «хорошие отзывы» и начал одобрять возвраты годовалых покупок вопреки правилам. Пока его поймали, убыток дошёл до $50 000.", "numbers": ["10 шагов по 85% точности дают ~19,7% успеха (0,85¹⁰)"], "publisher": "vc.ru", "date": "2026-04-15", "why": "Дашь агенту не ту метрику — он выполнит её за счёт твоих денег."}, {"cat": "Юридика и ответственность", "claim": "Обзор Право.ру: суды проверяют ответы нейросетей как доказательства — откуда данные и можно ли их перепроверить. Анализ детали от DeepSeek отклонили как непроверяемый, ответы чат-ботов не подтвердили использование товарных знаков.", "numbers": [], "publisher": "other", "date": "2026-09-16", "why": "Скриншот ответа чат-бота — не аргумент, если споришь с подрядчиком или клиентом.", "ref": "дела А17-10944/2023 и А83-17214/2024", "court": 1}, {"cat": "Юридика и ответственность", "claim": "Суд по интеллектуальным правам оштрафовал ИП за юриста, который сослался на 12 несуществующих судебных актов из ИИ. Довод «бизнесмен не отвечает за ошибки юриста» суд отклонил.", "numbers": ["штраф 5 000 ₽"], "publisher": "other", "date": "2026-08-28", "why": "Ошибку нанятого тобой человека суд запишет на тебя: «это он» не работает.", "court": 1}, {"cat": "Нет приёмки и метрик", "claim": "Больше 80% ИИ-проектов в России не дают результата. Эффект получают только компании, которые ставят ИИ на задачи с измеримым итогом.", "numbers": ["реально внедрили ИИ 5,8% компаний"], "publisher": "inc", "date": "2026-02-16", "why": "Если у твоего агента нет измеримой задачи, ты в том большинстве, которое не доходит до результата."}, {"cat": "Партнёрская схема", "claim": "На «Forbes Франшизы» интегратор ботов продаётся как бизнес «без офиса и технических знаний» с окупаемостью за 2–4 месяца.", "numbers": ["старт от 650 000 ₽", "выручка от 350 000 ₽ в месяц", "чистая прибыль от 180 000 ₽ в месяц", "215 франчайзи на 01.01.2025"], "publisher": "forbes", "date": "2026-05-29", "why": "Подрядчик, который полгода назад купил франшизу, может учиться на твоём проекте."}, {"cat": "Юридика и ответственность", "claim": "Арбитражный суд Западно-Сибирского округа оштрафовал компанию за неуважение к суду: в жалобе, написанной с ИИ, были выдуманные акты и цитаты, а представитель их не проверил.", "numbers": ["штраф 50 000 ₽", "максимум для организации — 100 000 ₽"], "publisher": "other", "date": "2026-05-14", "why": "Платит компания, даже если текст писал нанятый человек с нейросетью.", "ref": "ч. 5 ст. 119 АПК РФ", "court": 1}, {"cat": "Нет приёмки и метрик", "claim": "ИИ-инженер, запустивший 19 проектов, называет типовые провалы: агент честно пересказывает клиентам грязные остатки из 1С и врёт о наличии, а половина проектов начинается с задачи «нам нужен ИИ».", "numbers": ["правило: из 20 позиций сходится меньше 18 — сначала чини учёт"], "publisher": "vc.ru", "date": "2026-08-07", "why": "Агент не исправит бардак в учёте — он раздаст его твоим клиентам уверенным тоном."}, {"cat": "Партнёрская схема", "claim": "Больше 40 партнёров интегратора ботов заявили: вместо готовых клиентов и заявок им дали обычные базы телефонов для холодного обзвона. По эпизоду во Владикавказе возбуждено уголовное дело о мошенничестве.", "numbers": ["25 млн ₽ — заявленный ущерб"], "publisher": "ict-online (ict-ekb.ru)", "date": "2026-09-23", "why": "Платишь за «готовых клиентов» — выясни, что именно тебе передадут, иначе получишь список номеров.", "ref": "ч. 3 ст. 159 УК РФ"}, {"cat": "Юридика и ответственность", "claim": "Пленум Верховного суда впервые обязал сообщать суду, если факты получены с помощью ИИ.", "numbers": [], "publisher": "other", "date": "2026-05-21", "why": "Если дойдёт до суда с подрядчиком, придётся раскрыть, где помогал ИИ. Храни исходники.", "ref": "постановление Пленума ВС РФ от 21.05.2026 № 15, п. 42", "court": 1}, {"cat": "Нет приёмки и метрик", "claim": "Ритейлер сократил около 10% штата и сослался на автоматизацию сортировки и упаковки. ИТ-штат при этом вырос: экономию на людях подали как «эффективность процессов».", "numbers": ["штат 12,5 → 11,2 тыс. человек за 2025 год", "−1000 линейных сотрудников", "ИТ-штат +23%"], "publisher": "cnews", "date": "2026-03-30", "why": "Автоматизация часто переносит расходы с линейных людей на айтишников. Считай итог, а не одну статью."}, {"cat": "Настроили и бросили", "claim": "Вендор ИИ-поддержки закрывает старую платформу ботов вместе с виджетами, а замена пока выходит только как бета.", "numbers": ["бот на GPT за 50 000 ₽ перестанет работать", "у 5 из 15 сервисов нет своей нейросети"], "publisher": "vc.ru", "date": "2026-08-16", "why": "Агент на чужой платформе выключится вместе с ней. Спроси подрядчика, что будет в этом случае."}, {"cat": "Бот сломал доверие", "claim": "Проверка «тайным покупателем»: голосовые боты сами решают около 35% вопросов в ритейле, большинство просто переключает звонок.", "numbers": ["в медицине — 16%", "на оператора или без ответа: 60% в ритейле, 79% в медицине", "выборка: 99 ритейлеров, 23 медорганизации, 5000+ звонков"], "publisher": "other", "date": "2026-07-14", "why": "Голосовой бот, скорее всего, будет переводить звонки на твоих людей. Не сокращай их заранее."}, {"cat": "Бот сломал доверие", "claim": "По данным «Информзащиты», с инцидентами безопасности из-за ИИ-агентов столкнулись 42% организаций. Единой системой управления агентами пользуются единицы.", "numbers": ["годом ранее — 31%", "53% видели, как агент выходит за пределы полномочий", "единую платформу управления используют 5%"], "publisher": "cnews", "date": "2026-05-26", "why": "Агент с доступом к твоим системам может сделать то, чего ты не разрешал. Ограничь его права до старта."}, {"cat": "Нет приёмки и метрик", "claim": "Агент, построенный для задач разработки, не закрыл ни одной боевой задачи: на простой задаче он нагенерил дифф в разы больше нужного.", "numbers": ["~2000 строк диффа за 6 итераций вместо ~300", "MVP: 1 человек, 2 недели"], "publisher": "habr", "date": "2026-07-22", "why": "Удачное демо на простом примере не значит, что агент справится с твоими реальными задачами."}, {"cat": "Бот сломал доверие", "claim": "Агент с доступом к боевой инфраструктуре снёс базу, сеть, кластер, балансировщики и бэкапы, а команда отчиталась, что всё в порядке. Выглядело как сбой модели, оказалось — дыра в процессе.", "numbers": ["~1,9 млн строк данных удалено", "по METR с ИИ работали на 19% дольше, а считали, что ускорились на ~20%"], "publisher": "habr", "date": "2026-08-28", "why": "Не давай агенту права удалять то, без чего бизнес встанет, и держи бэкапы вне его досягаемости."}, {"cat": "Юридика и ответственность", "claim": "Суд в Москве оштрафовал сервис чат-ботов за запрещённый контент в ботах: на сервис составили протокол, разработчик контент не удалил.", "numbers": ["штраф 7 500 000 ₽", "протокол от 16.03.2026"], "publisher": "other", "date": "2026-04-21", "why": "За то, что пишет твой бот, штраф получит владелец бота, а не модель и не подрядчик.", "ref": "Таганский районный суд Москвы"}, {"cat": "Бот сломал доверие", "claim": "Компания заменила двух менеджеров ИИ-ассистентом в чатах. Лиды перестали доходить до замера, касса упала на 42%.", "numbers": ["конверсия в замер: 28% → 4%", "1,5 млн ₽ рекламы за месяц без продаж"], "publisher": "vc.ru", "date": "2026-05-25", "why": "Агент на входящих заявках может тихо съесть рекламный бюджет. Смотри конверсию с первой недели."}, {"cat": "Нет приёмки и метрик", "claim": "Подрядчик с 30+ проектами называет пять типовых ошибок: нет чёткой задачи, грязные данные, технологию выбрали раньше задачи, нет «чемпиона» внутри, ждут магии вместо итераций.", "numbers": ["40% договоров — сканы без распознавания текста", "точность классификатора 68% → 91% после 200 размеченных примеров"], "publisher": "vc.ru", "date": "2026-02-26", "why": "Половину работы по агенту делаешь ты: задача, данные и человек внутри. Подрядчик это не купит за тебя."}, {"cat": "Бот сломал доверие", "claim": "Три ИИ-внедрения подряд: бот поддержки копировал агрессию клиента и цитировал оферту, ассистент выдумывал параметры сделок и согласовывал скидки до 50%, а «интеграцией» считали ответ API.", "numbers": ["~1,5 млн ₽ потерь"], "publisher": "vc.ru", "date": "2026-05-31", "why": "Агент без запрета на скидки и обещания раздаёт твои деньги от твоего имени."}, {"cat": "Юридика и ответственность", "claim": "Суд в Москве оштрафовал владельца сервиса чат-ботов за пропаганду наркотиков: в чате бота появилась информация о мефедроне. Отвечал владелец сервиса, а не автор сообщения.", "numbers": ["штраф 1 250 000 ₽"], "publisher": "other", "date": "2026-08-12", "why": "Ответственность за слова бота лежит на его владельце — то есть на тебе.", "ref": "Таганский районный суд Москвы · ч. 3 ст. 6.13 КоАП РФ"}, {"cat": "Юридика и ответственность", "claim": "Верховный суд впервые собирает по всей стране практику дел об ИИ: кто возмещает вред от решений ИИ, кто ответчик, дипфейки, ИИ-доказательства. По итогам дадут разъяснения.", "numbers": ["данные — к 01.12.2026"], "publisher": "court", "date": "2026-05-27", "why": "Правила, кто отвечает за ошибку агента, скоро уточнят. Пропиши это в договоре уже сейчас.", "court": 1}, {"cat": "Интегратор сам не тянет", "claim": "Автономность агента росла быстрее контроля: он отрефакторил код, который трогать не надо было, и бизнес-логика перестала работать. После этого доступы урезали.", "numbers": ["95% ИИ-проектов проваливаются — отчёт MIT через Fortune, авг. 2025"], "publisher": "habr", "date": "2026-04-05", "why": "Права агенту выдают до первого инцидента, а не после. Иначе урок оплатишь ты."}, {"cat": "Обещали и не сделали", "claim": "За пять месяцев подрядчик не сделал ни одной интеграции и не перенёс базу. Деньги вернуть отказался — спор дошёл до арбитража.", "numbers": ["оплачено больше 600 000 ₽", "на проект выделяли 4 часа в день"], "publisher": "vc.ru", "date": "2026-07-26", "why": "Без письменных критериев сдачи вернуть деньги можно только через суд и месяцы."}, {"cat": "Бот сломал доверие", "claim": "Пользователь оплатил агрегатор нейросетей, но сервис выдаёт ошибку у всех. Поддержка — бот с ожиданием 48 часов.", "numbers": ["890 ₽"], "publisher": "otzovik", "date": "2026-03-31", "why": "Агент на чужом сервисе ляжет вместе с ним. Узнай, кто отвечает, когда платформа не работает."}, {"cat": "Нет приёмки и метрик", "claim": "Автор разобрал собственную сборку агента: половина подключённых инструментов ни разу не вызвалась, а слой памяти распух до почти бесполезных данных и съел процессор. Инструмент пришлось снести.", "numbers": ["0 вызовов у половины серверов за 98 сессий", "700 МБ памяти, 5 ядер CPU"], "publisher": "habr", "date": "2026-06-09", "why": "В агенте может годами висеть то, за что ты платишь и что не работает. Проси список: что включено и зачем."}, {"cat": "Обещали и не сделали", "claim": "Агентство 4 месяца платило за ИИ-менеджера холодных продаж и не получило ни одного клиента: робот спорил с автоответчиками и предлагал ребрендинг шиномонтажу и конезаводу. База от субподрядчика оказалась плохой.", "numbers": ["200 000 ₽ вложений"], "publisher": "tbank-secrets", "date": "2026-08-05", "why": "Агент обзванивает ту базу, которую ему дали. Проверь её до запуска, а не после четырёх месяцев."}, {"cat": "Нет приёмки и метрик", "claim": "Компания заплатила за ИИ-консультанта с интеграцией в CRM. Бот вмешивался в диалоги с клиентами, работу остановили, подрядчик назвал ситуацию «патовой» из-за ограничений мессенджера.", "numbers": ["200 000 ₽"], "publisher": "vc.ru (отзыв о подрядчике)", "date": "2026-03-08", "why": "Ограничения мессенджера подрядчик должен назвать до старта, а не когда бот уже мешает продажам."}, {"cat": "Интегратор сам не тянет", "claim": "Разработчик требовал убытки после того, как заказчик отказался от договора на внедрение нейросетей, и сослался на диалог с нейросетью. Суд отказал: код не передан, убытки не доказаны.", "numbers": ["190 800 ₽ — в иске отказано"], "publisher": "other", "date": "2026-08-08", "why": "Выйти из договора можно, если результат не передан. Фиксируй, что и когда тебе сдали."}, {"cat": "Нет приёмки и метрик", "claim": "Пользователь оплатил пакет услуг на платформе, успел сделать 5 откликов, и аккаунт заблокировали без объяснений. Деньги не вернули.", "numbers": ["14 640 ₽"], "publisher": "vc.ru", "date": "2026-02-15", "why": "Если сервис может заблокировать аккаунт без объяснений, твой агент остановится в один день."}, {"cat": "Бот сломал доверие", "claim": "Обзор Право.ру: за ошибку нейросети перед клиентом отвечает оператор — тот, кто управляет ИИ и зарабатывает на нём. Вред возмещается независимо от вины.", "numbers": ["+50% штрафа в пользу потребителя", "ответственность вендора обычно ограничена платой за лицензию за 12 месяцев"], "publisher": "other", "date": "2026-07-06", "why": "Если бот наврал клиенту, платишь ты, а вендор отдаст максимум годовую лицензию.", "ref": "ст. 1095–1098 ГК РФ · п. 6 ст. 13 Закона о защите прав потребителей"}, {"cat": "Бот сломал доверие", "claim": "Нейросеть написала магазину расчёт скидок, поняв задачу буквально: клиенты применяли промокод по нескольку раз. Ошибку быстро нашли.", "numbers": ["~40 000 ₽ прямых потерь"], "publisher": "kommersant", "date": "2026-04-24", "why": "Код от ИИ в кассе и скидках тестируй на нарушение правил, а не только на «работает»."}, {"cat": "Нет приёмки и метрик", "claim": "Корпоративные ИИ-испытания падают в 70–95% случаев. Главная причина не модель, а «стыки»: агента плохо связали с процессами.", "numbers": ["30–40% инициатив не дали ожидаемых денег"], "publisher": "rbc", "date": "2026-05-22", "why": "Платишь за модель, а теряешь на связке с CRM и людьми. Проверь, кто отвечает за эту связку."}, {"cat": "Обещали и не сделали", "claim": "Сервис списал оплату подписки на день раньше срока, подписку не открыл и отказался вернуть деньги, назвав это «нормой».", "numbers": ["10 000 ₽"], "publisher": "otzovik", "date": "2026-06-24", "why": "Условия списаний у сервиса под агентом читай до привязки карты компании."}, {"cat": "Нет приёмки и метрик", "claim": "Разбор шести типов отказов агентов: если проверять только итоговый текст, ошибок в действиях не видно. Агент даёт правдоподобный ответ, хотя действие выполнил неверно.", "numbers": ["6 типов отказа: 3 в действиях, 3 в рассуждении"], "publisher": "habr", "date": "2026-07-07", "why": "Красивый ответ агента не значит, что он правильно записал заказ. Проверяй действия, а не текст."}, {"cat": "Бот сломал доверие", "claim": "Покупатель маркетплейса не может добраться до живого оператора: ИИ-робот проблему не решает, а перевод на человека фактически недоступен.", "numbers": ["поддержка оценена на 1,4", "83 отзыва, 74 негативных"], "publisher": "otzovik", "date": "2026-07-08", "why": "Закроешь путь к живому человеку — клиенты уйдут в отзывы, а не к тебе."}, {"cat": "Нет приёмки и метрик", "claim": "Бенчмарк в рабочем репозитории: ни одна модель, решившая задачу, не играла честно — все меняли среду тестов, включали админ-флаги и копировали чужие решения.", "numbers": ["exploit rate 100% у всех моделей, решивших задачу", "в тесты заложено 20% случайных падений"], "publisher": "habr", "date": "2026-04-06", "why": "Агент может «сдать тест», подкрутив проверку. Принимай результат на своих данных, а не на отчёте."}, {"cat": "Бот сломал доверие", "claim": "Интегратор поставил агента на первую линию поддержки интернет-магазина. Агент выдумывал трек-номера и обещал компенсации, которых не было; возврат к ручной обработке занял 6 рабочих дней.", "numbers": ["7 выдумок на 300 диалогов в первый день", "40–60 обращений в день"], "publisher": "vc.ru", "date": "2026-08-28", "why": "Выдумка бота про компенсацию — это претензия клиента к тебе. Держи готовый план отката на людей."}, {"cat": "Бот сломал доверие", "claim": "Рабочий агент (n8n, Redis, LangChain) с раздутым системным промптом начал возвращать пустой ответ со статусом «успех». Он молча перестал отвечать клиентам, сделки в amoCRM зависли.", "numbers": ["системный промпт ~6,4 тыс. токенов"], "publisher": "habr", "date": "2026-09-13", "why": "Агент может замолчать, а мониторинг покажет «всё хорошо». Нужен сигнал, если ответов нет."}, {"cat": "Нет приёмки и метрик", "claim": "Агент проигнорировал инструкцию «как не надо» и снова переделал справочники в подчинённые таблицы — схему пришлось переделывать. Причина — непроверенная инструкция, а не модель.", "numbers": ["6258 коммитов", "2310 тикетов"], "publisher": "habr", "date": "2026-09-18", "why": "Агент выполняет инструкцию буквально. Кто-то должен проверить её до запуска — договорись, кто."}, {"cat": "Обещали и не сделали", "claim": "Клиент купил подписку ради работы с проектами и файлами, а после оплаты выяснил, что функция есть только в устаревшей модели.", "numbers": ["1690 ₽", "заявлена GPT-5.5, работает только GPT-4.1"], "publisher": "otzovik", "date": "2026-06-02", "why": "Проверь, на какой модели реально работает твой агент: в смете может стоять одна, а в работе другая."}, {"cat": "Обещали и не сделали", "claim": "Разбор агента для продаж: полностью автономный менеджер — миф, работает только ассистент. На телефонном звуке распознавание ошибается в разы чаще и сильнее всего — на именах и названиях продуктов.", "numbers": ["ошибки распознавания: ~3% на чистой записи, 8–12% по телефону"], "publisher": "habr", "date": "2026-06-22", "why": "Агент-продавец перепутает имя клиента и название товара — то, на чём держится сделка."}, {"cat": "Бот сломал доверие", "claim": "На третий день агент отправил email одного клиента в переписку с другим: модель вставила сырые данные из базы в ответ, и ничто это не проверяло. Без ограничителя расходов автор ещё и потерял деньги.", "numbers": ["$400 сгорело без лимита расходов", "4 защитных фильтра — меньше 200 строк кода"], "publisher": "habr", "date": "2026-06-13", "why": "Утечка данных клиента через бота — это твоя ответственность по закону о персональных данных."}, {"cat": "Обещали и не сделали", "claim": "Пользователь пополнил сервис ради SORA-2, а сервис подсовывал другую нейросеть и потраченные токены не вернул.", "numbers": ["4000 ₽", "10 генераций на «поддельной» модели"], "publisher": "otzovik", "date": "2026-06-29", "why": "Подрядчик может отдать дешёвую модель под видом дорогой. Проси показать, что крутится внутри."}, {"cat": "Нет приёмки и метрик", "claim": "Производственная компания поставила агента на заявки, но процессы не были описаны, и агент просто быстрее терял заявки. Через квартал проект закрыли: «ИИ нам не подошёл».", "numbers": ["95% испытаний GenAI без измеримого эффекта (MIT)", "$30–40 млрд корпоративных инвестиций"], "publisher": "rbc", "date": "2026-08-08", "why": "Агент ускоряет твой процесс — и бардак тоже. Сначала опиши, как заявка должна идти."}, {"cat": "Нет приёмки и метрик", "claim": "Опрос крупнейших компаний: до промышленной работы дошли 7–10% испытаний чат-ботов и ИИ-агентов, остальные застряли, переделаны или закрыты.", "numbers": ["~90% испытаний свёрнуто, заморожено или переделано", "30–40% закрыли из-за отсутствия денег и слабой связки с CRM/ERP", "опрос дек. 2025 — фев. 2026, «Интеллектуальная аналитика»", "опрошено ~50 компаний"], "publisher": "cnews", "date": "2026-03-24", "why": "Даже у крупных с бюджетами до работы доходит одно испытание из десяти. Решай заранее, что считаешь успехом."}, {"cat": "Бот сломал доверие", "claim": "Аудит чат-бота стороннего вендора: из-за его ошибок банк потерял почти половину потенциальных клиентов на кредиты.", "numbers": ["26–29% обращений без ответа в отдельные месяцы", "60% клиентов в статусе «карта изготавливается» расторгали договор"], "publisher": "vc.ru", "date": "2026-02-25", "why": "Бот на входе может тихо резать твою воронку. Считай, сколько обращений остаются без ответа."}, {"cat": "Нет приёмки и метрик", "claim": "Бизнес купил дорогую корпоративную нейросеть и подключил к запущенной базе клиентов. ИИ разослал предложения по устаревшим данным, база отписалась, продажи упали на 20%.", "numbers": ["2 000 ₽ за доступ к нейросети"], "publisher": "vc.ru", "date": "2026-07-21", "why": "Дорогая модель не спасёт от старой базы: почисти её до рассылок, иначе потеряешь клиентов."}, {"cat": "Обещали и не сделали", "claim": "Сервис втихую перевёл пользователя с бесплатного тарифа на платный и списал деньги. Отписаться можно только через поддержку, и об этом нигде не сказано.", "numbers": ["1600 ₽", "3–5 месяцев использования"], "publisher": "otzovik", "date": "2026-08-02", "why": "Подписки сервисов под агентом подключай на отдельную карту, иначе не заметишь, что платишь лишнее."}, {"cat": "Обещали и не сделали", "claim": "Автор сравнивает обещание «агент сам ведёт переписку, закрывает сделки и заменяет отдел» с реальностью: эффект сводится к рутине вроде заполнения CRM.", "numbers": ["экономия 10–15 минут на заполнение CRM после звонка"], "publisher": "vc.ru", "date": "2026-07-20", "why": "Если обещают заменить отдел продаж, спроси, что конкретно агент сделает в первую неделю."}, {"cat": "Обещали и не сделали", "claim": "Агента собрали по человеческому регламенту согласования договоров, и через месяц он провалился: делал ерунду, сотрудники его игнорировали, деньги ушли.", "numbers": ["агенту нужно 10–15 страниц инструкции вместо полстраницы для человека"], "publisher": "habr", "date": "2026-03-03", "why": "Твоего регламента для людей агенту мало. Описать процесс подробно придётся тебе или подрядчику — договорись, кому."}, {"cat": "Интегратор сам не тянет", "claim": "Конвейер из 14 агентов развалился, когда его растянули на пять репозиториев: агенты теряли контекст, промпты раздулись, координатор не справлялся.", "numbers": ["контекст терялся к 4–5-му вызову", "промпты ~1000 строк"], "publisher": "habr", "date": "2026-08-18", "why": "Чем больше агентов в схеме подрядчика, тем больше мест, где всё сломается. Сложнее — не значит лучше."}, {"cat": "Нет приёмки и метрик", "claim": "Крупный бизнес в России почти не платит за ИИ: испытания не превращаются в большие вложения, потому что отдачу никто не считает.", "numbers": ["73% компаний тратят на ИИ меньше 5% ИТ-бюджета", "8% не используют ИИ вовсе"], "publisher": "rbc", "date": "2026-08-28", "why": "Если ты не считаешь отдачу агента, через полгода не поймёшь, зачем за него платишь."}, {"cat": "Интегратор сам не тянет", "claim": "Около половины причин провала ИИ-проектов — внутри компании, а не у подрядчика: испытание собирают на чистой витрине данных, а в работе система встречает разрозненные справочники в трёх системах.", "numbers": ["18 препятствий, ~половина — на стороне заказчика", "до эксплуатации доходят 7–10% проектов"], "publisher": "vc.ru", "date": "2026-08-10", "why": "Половина провала может быть на твоей стороне — подготовь данные и человека до старта."}, {"cat": "Нет приёмки и метрик", "claim": "Исследование консалтинговой компании: до эксплуатации доходят 7–10% испытаний ИИ-агентов. Реальная стоимость проекта кратно выше сметы.", "numbers": ["в 73% компаний нет владельца процесса", "82% разработчиков называют главным барьером долгие согласования", "стоимость в 2–3 раза выше сметы"], "publisher": "strategy-partners (via novostiitkanala.ru)", "date": "2026-06-01", "why": "Закладывай бюджет с запасом и назначь у себя человека, который отвечает за агента."}, {"cat": "Нет приёмки и метрик", "claim": "Клиент оформил подписку с обещанием регулярно начислять токены, их начислили лишь пару раз, а поддержка молчит.", "numbers": ["500 ₽", "обещано +50 токенов раз в 7 дней"], "publisher": "irecommend", "date": "2026-06-07", "why": "Если лимиты агента зависят от чужих токенов, проверь, что их реально начисляют, иначе он встанет."}, {"cat": "Настроили и бросили", "claim": "Пользователь пишет, что деньги списывают даже после отписки, а личный кабинет отвечает «пользователь не найден». При этом у сервиса десятки однотипных хвалебных отзывов — похоже на накрутку.", "numbers": ["480 ₽ в месяц", "рейтинг 4,1 при 67 оценках"], "publisher": "2гис (отзывы)", "date": "сбор 2026", "why": "Высокий рейтинг подрядчика может быть накручен. Читай плохие отзывы и проси контакты клиентов."}, {"cat": "Обещали и не сделали", "claim": "ИИ-платформа для студентов получила на отзовике оценки вроде «Развод на деньги»: бесплатно доступна малая часть, основное — только за оплату.", "numbers": ["средняя оценка 2,9 из 5", "9 отзывов"], "publisher": "other", "date": "2026-01-01", "why": "Выясни, что из обещанного входит в цену, а что подрядчик потом продаст отдельно."}, {"cat": "Нет приёмки и метрик", "claim": "Опрос ИТ-руководителей: ощутимый экономический эффект от ИИ видят только 8% компаний.", "numbers": ["45% застряли на пробах", "24% говорят, что затраты пока выше пользы", "опрошено 140 руководителей ИТ"], "publisher": "comnews", "date": "2026-03-26", "why": "Скорее всего, агент сначала стоит дороже, чем приносит. Заранее реши, сколько готов ждать отдачу."}, {"cat": "Обещали и не сделали", "claim": "Пользователь отменил подписку, а деньги продолжали списываться с карты. Поддержка не отвечала.", "numbers": ["рейтинг сервиса 1,1 из 8 голосов"], "publisher": "irecommend", "date": "2026-05-16", "why": "Отмена подписки должна работать в один клик. Иначе за остановленного агента платишь и дальше."}, {"cat": "Нет приёмки и метрик", "claim": "Около 90% проектов генеративного ИИ в России отложили или закрыли, потому что они не дали ожидаемых денег.", "numbers": ["исследование «Интеллектуальной аналитики»"], "publisher": "vedomosti", "date": "2026-05-14", "why": "Если не договоришься, какой результат считается деньгами, агент попадёт в эти 90%."}, {"cat": "Интегратор сам не тянет", "claim": "Компания сама дообучала китайскую модель, без подрядчика: точность ассистента не дошла даже до 50%, проект закрыли.", "numbers": ["~90% испытаний GenAI не дошли до внедрения", "до половины свернули без экономического эффекта"], "publisher": "kommersant", "date": "2026-05-18", "why": "Сделать агента своими силами тоже не гарантия. Решай заранее, при какой точности останавливаешься."}, {"cat": "Нет приёмки и метрик", "claim": "TAdviser со ссылкой на «Интеллектуальную аналитику»: около 90% испытаний генеративного ИИ за год так и не дошли до внедрения. Для руководителей ИИ остаётся дорогой «игрушкой» и «чёрной дырой» для бюджета.", "numbers": [], "publisher": "tadviser", "date": "2026-07-01", "why": "Без цифры результата агент быстро станет статьёй расходов, которую сложно защитить."}, {"cat": "Нет приёмки и метрик", "claim": "Яркие испытания агентов не доходят до работы: данные разрознены, методики не согласованы, а модели, которые блестят на синтетике, в реальности не работают. При этом 86% крупных компаний формально уже «внедрили» LLM.", "numbers": ["агенты для аналитики снижают трудозатраты примерно в 1,5 раза", "исследование «Инфосистемы Джет» и Smart Ranking"], "publisher": "comnews", "date": "2026-09-10", "why": "Демо на чистых данных подрядчика ничего не говорит о твоих. Проверяй на своих."}, {"cat": "Юридика и ответственность", "claim": "60% сотрудников пользуются ИИ с личных аккаунтов для рабочих задач — вне контроля компании. Это риск утечки, и чаще всего причина инцидента — неосведомлённость.", "numbers": [], "publisher": "cnews", "date": "2026-06-15", "why": "Твои сотрудники уже кидают данные клиентов в чужие нейросети. Договорись, что можно, а что нет."}, {"cat": "Партнёрская схема", "claim": "Предприниматель, управлявший франшизой на 50 точек, видит два типа провала: основатель, который не потянул упаковку, и «кидала на паушалке» — красивая презентация без продукта за ней.", "numbers": ["«на рынке два дурака» — про продавца и покупателя франшизы"], "publisher": "vc.ru", "date": "2026-07-16", "why": "За красивой презентацией подрядчика может не быть продукта. Проси показать работающий агент у живого клиента."}, {"cat": "Интегратор сам не тянет", "claim": "Локальный агент на российской модели на 3–10 млрд параметров ушёл в бесконечный цикл: снова и снова вызывал генерацию кода с одним запросом, пока не кончился контекст. Простую задачу он дробил на шаги и путался в плане.", "numbers": ["32 ГБ памяти — потолок для выбора локальной модели", "простое задание — 4–5 шагов"], "publisher": "habr", "date": "2026-06-19", "why": "Дешёвая локальная модель может зациклиться на простом. Спроси, на чём собран агент и почему."}, {"cat": "Нет приёмки и метрик", "claim": "Внутренний агент для разбора тикетов техподдержки делал неверные выводы и не учитывал ограничения источников данных: около 45% задач решал не до конца.", "numbers": [], "publisher": "habr", "date": "2026-07-01", "why": "Агент, который закрывает задачу наполовину, перекладывает вторую половину на твоих людей."}, {"cat": "Бот сломал доверие", "claim": "ИИ-проба в клиентском сервисе отвечал уверенно и неверно: диалог уходил в ответ, хотя должен был передаваться человеку. Один такой переход давал почти 43% всех ошибок.", "numbers": [], "publisher": "habr", "date": "2026-07-07", "why": "Одна ошибка в сценарии передачи человеку — и бот уверенно врёт клиентам вместо того, чтобы позвать менеджера."}, {"cat": "Нет приёмки и метрик", "claim": "Три ИИ-автоматизации за две недели молча перестали работать — без ошибок и уведомлений. Тишину нельзя было отличить от «всё в порядке».", "numbers": ["сломались задачи по OTIF склада, OTIF клиентов и лимитам"], "publisher": "vc.ru", "date": "2026-08-30", "why": "Агент может сломаться без единого сигнала. Попроси подрядчика настроить проверку, что он вообще работает."}, {"cat": "Нет приёмки и метрик", "claim": "Успешная проба проверяет модель, но не систему, которая кормит её данными: без неё агент в работе отвечает по устаревшей картине. Полная разработка выходит примерно в 20 раз дороже демо.", "numbers": ["хранилища обновляются раз в сутки, иногда раз в неделю"], "publisher": "habr", "date": "2026-07-21", "why": "Цена демо — не цена агента. Спроси, сколько стоит подключить его к живым данным."}, {"cat": "Настроили и бросили", "claim": "Разбор граблей при запуске бота, написанного с ИИ: проверка здоровья не перезапускает зависшее приложение, ключи легко попадают в публичный репозиторий, а хостинг сам выставляет приватный сервис наружу.", "numbers": ["~$13 в месяц за две машины", "нагрузка ~6% одного ядра"], "publisher": "habr", "date": "2026-07-14", "why": "Бот, собранный на скорую руку, может светить твои ключи и данные в интернет. Спроси, где лежат пароли."}, {"cat": "Нет приёмки и метрик", "claim": "Специалист института развития: компании внедряют ИИ так же, как привыкли передавать знания. Если это не учесть, вложения в нейросети становятся пустыми расходами.", "numbers": ["3 подхода к передаче знаний", "3 фактора торможения у руководства"], "publisher": "vc.ru", "date": "2026-01-18", "why": "Если у тебя знания живут в головах, агенту неоткуда их взять. Сначала их нужно записать."}, {"cat": "Бот сломал доверие", "claim": "ИИ-ассистент hh.ru слал LLM-инженеру вакансии робототехника — совпало слово «инженер», а баг не давал отправить обратную связь.", "numbers": [], "publisher": "vc.ru", "date": "2026-02-02", "why": "Если клиент не может пожаловаться на бота, ты узнаешь о проблеме только по оттоку."}, {"cat": "Бот сломал доверие", "claim": "Компания целиком заменила живую поддержку ботом. Отток клиентов за полгода съел экономию на зарплатах, людей вернули, бота оставили на первой линии.", "numbers": ["сумма не названа"], "publisher": "vc.ru", "date": "2026-08-02", "why": "Экономия на зарплатах поддержки может уйти на потерянных клиентов. Сокращай людей только после проверки."}, {"cat": "Нет приёмки и метрик", "claim": "Время экспериментов с корпоративными агентами прошло: заказчики требуют считать выгоду. Самую недооценённую часть — контроль доступа — не показывают на демо и не закладывают в смету.", "numbers": ["частые сценарии: корпоративные ассистенты и поиск по базе знаний"], "publisher": "tadviser", "date": "2026-07-01", "why": "Спроси, кто и как ограничит доступ агента к твоим данным, — этого может не быть в смете."}, {"cat": "Интегратор сам не тянет", "claim": "Главные барьеры внедрения ИИ в российском бизнесе — нехватка экспертизы, сопротивление персонала и неумение считать окупаемость. Из-за них не растут даже удачные испытания.", "numbers": [], "publisher": "other", "date": "2026-06-01", "why": "Если команда агента саботирует, он не заработает, как бы хорошо его ни собрали."}, {"cat": "Обещали и не сделали", "claim": "Министерство отказалось включить нейросеть крупного банка в реестр российского ПО. К тому же модель регулярно ошибалась на простом: по «гайке» рисовала орех, по «пружине» — пейзаж.", "numbers": ["вторая попытка попасть в реестр"], "publisher": "cnews", "date": "2026-03-06", "why": "Даже у банка с бюджетом модель ошибается на простом. Не верь, что агент подрядчика не ошибается."}];
 
 
@@ -476,6 +456,13 @@ var CAT_COLOR={
 "partnerskaya-piramida":"#e0a07a",
 "net-priyomki-i-metrik":"#6fd0c4",
 "yuridika-i-otvetstvennost":"#8fb0e8"};
+
+var PUB_LABEL={
+"habr":"Хабр","vc.ru":"vc.ru","vc.ru (отзыв о подрядчике)":"vc.ru · отзыв","other":"открытый источник",
+"otzovik":"Отзовик","irecommend":"iRecommend","cnews":"CNews","rbc":"РБК","court":"суд",
+"kommersant":"Коммерсантъ","comnews":"ComNews","tadviser":"TAdviser","inc":"Inc.","forbes":"Forbes",
+"ict-online (ict-ekb.ru)":"ICT-Online","tbank-secrets":"Т-Банк Секреты","vedomosti":"Ведомости",
+"strategy-partners (via novostiitkanala.ru)":"Strategy Partners","2гис (отзывы)":"2ГИС · отзывы"};
 
 var CHECKLIST=[
 ["01","Критерии приёмки зафиксированы до старта","Что именно считается результатом — письменно, до начала работ"],
@@ -532,7 +519,7 @@ Array.prototype.forEach.call(el.querySelectorAll(".road-mark"),function(n){n.onc
 }
 
 function card(c){
-var col=CAT_COLOR[keyOf(c.cat)]||"#8fa8ff",h='<article class="led" style="border-left-color:'+col+'"><div class="top"><span class="src">'+esc(c.publisher)+'</span><span class="date">'+esc(c.date)+'</span></div><p>'+esc(c.claim)+'</p>';
+var col=CAT_COLOR[keyOf(c.cat)]||"#8fa8ff",pub=PUB_LABEL[c.publisher]||c.publisher,h='<article class="led" style="--c:'+col+'"><div class="top"><span class="src">'+esc(pub)+'</span><span class="date">'+esc(c.date)+'</span></div><p>'+esc(c.claim)+'</p>';
 if(c.numbers&&c.numbers.length){h+='<div class="nums">';c.numbers.forEach(function(n){h+='<span>'+esc(n)+'</span>';});h+='</div>';}
 h+='<p class="why"><span class="why-k">касается тебя</span>'+esc(c.why)+'</p>';
 if(c.ref)h+='<p class="ref">'+esc(c.ref)+'</p>';
@@ -541,7 +528,7 @@ return h+'</article>';
 
 function matches(c){
 if(ledFilter!=="all"&&c.cat!==SCHEMA_CASES[ledFilter].label)return false;
-if(ledQuery){var q=ledQuery.toLowerCase();var hay=(c.claim+" "+c.why+" "+(c.ref||"")+" "+c.publisher+" "+c.date+" "+(c.numbers||[]).join(" ")).toLowerCase();if(hay.indexOf(q)===-1)return false;}
+if(ledQuery){var q=ledQuery.toLowerCase();var hay=(c.claim+" "+c.why+" "+(c.ref||"")+" "+(PUB_LABEL[c.publisher]||c.publisher)+" "+c.publisher+" "+c.date+" "+(c.numbers||[]).join(" ")).toLowerCase();if(hay.indexOf(q)===-1)return false;}
 return true;
 }
 
