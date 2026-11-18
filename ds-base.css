@@ -12,7 +12,7 @@
   /* ритм — единственная шкала */
   --sec-y: 96px;        /* вертикаль секции, desktop */
   --sec-y-m: 56px;      /* вертикаль секции, mobile */
-  --hero-y: 84px;       /* верх герой-блока, desktop */
+  --hero-y: 96px;       /* верх герой-блока, desktop */
   --hero-y-m: 56px;     /* верх герой-блока, mobile */
   --gut: 24px;          /* боковые поля */
   --gut-m: 18px;
@@ -47,7 +47,7 @@ body {
 
 /* --- ритм секций: одна шкала на весь сайт --- */
 section { padding: var(--sec-y) 0; }
-.hero { padding: var(--hero-y) 0 var(--sec-y); }
+.hero { padding: var(--hero-y) 0 64px; }
 @media (max-width: 760px) {
   section { padding: var(--sec-y-m) 0; }
   .hero { padding: var(--hero-y-m) 0 var(--sec-y-m); }
@@ -80,8 +80,8 @@ nav.top a, .top a {
 /* --- типографика: одна шкала заголовков --- */
 h1 {
   font-family: var(--display);
-  font-size: clamp(1.75rem, 5vw, 3.05rem);
-  line-height: 1.12;
+  font-size: clamp(2.1rem, 5.4vw, 3.3rem);
+  line-height: 1.08;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
