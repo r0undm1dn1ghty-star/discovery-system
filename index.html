@@ -456,21 +456,20 @@ footer a:hover{text-decoration:underline}
 <style>
 /* единый футер сайта */
 footer.site-foot{border-top:1px solid rgba(16,20,31,.12);margin-top:0;padding:30px 0 36px;font:400 14px/1.6 var(--sans);color:#5c6479;background:inherit}
-footer.site-foot .sfw{width:min(1080px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:12px 28px;align-items:center}
+footer.site-foot .sfw{width:min(1080px,calc(100% - 48px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}
 footer.site-foot .sf-l{display:flex;align-items:center;gap:14px}
 footer.site-foot .sf-logo{height:38px;width:auto;display:block}
 footer.site-foot .sf-name{font:600 16px/1.25 var(--sans);color:#10141f;display:flex;flex-direction:column;gap:3px}
-footer.site-foot .sf-name span{font:400 14px/1.4 var(--mono);color:#5c6479}
-footer.site-foot .sf-r{justify-self:end;text-align:right}
-footer.site-foot .sf-mail{font:400 14px/1.5 var(--mono)}
-footer.site-foot .sf-mail a{color:#1b2a6b;text-decoration:none}
-footer.site-foot .sf-mail a:hover{text-decoration:underline}
-footer.site-foot .sf-legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 22px;padding-top:14px;border-top:1px solid rgba(16,20,31,.08);margin-top:10px;font:400 13px/1.6 var(--mono)}
+footer.site-foot .sf-name span{font:400 13.5px/1.4 var(--mono);color:#5c6479}
+footer.site-foot .sf-c{display:flex;align-items:baseline;gap:8px 22px;flex-wrap:wrap}
+footer.site-foot .sf-c a{color:#1b2a6b;text-decoration:none}
+footer.site-foot .sf-c a:hover{text-decoration:underline}
+footer.site-foot .sf-legal{width:100%;display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;padding-top:14px;border-top:1px solid rgba(16,20,31,.08);margin-top:14px;font:400 13px/1.6 var(--mono);color:#5c6479}
+footer.site-foot .sf-legal span{display:block}
 footer.site-foot .sf-legal a{color:#1b2a6b;text-decoration:none}
 footer.site-foot .sf-legal a:hover{text-decoration:underline}
 @media(max-width:640px){
-  footer.site-foot .sfw{grid-template-columns:1fr}
-  footer.site-foot .sf-r{justify-self:start;text-align:left}
+  footer.site-foot .sfw{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -1046,7 +1045,8 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
       if (state === 'running'){
         running = st;
         waveLabel(r, st.label);
-        setLog(r, st.detail);
+        /* шаг «внедрение» управляется мастер-таймлайном — флэш всех строк запрещён */
+        setLog(r, st.id==='build' ? [] : st.detail);
       } else {
         r.lbl.textContent = st.label;
         setLog(r, []);
@@ -1071,13 +1071,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
        логи проявляются по одному, сдача приходит с последней галкой */
     if (idx === STEPS.length-1){
       setLog(rows[idx], []);
-      for (var k=0;k<BUILD_LINES.length;k++){
-        (function(k){
-          setTimeout(function(){ revealLine(rows[idx], BUILD_LINES, k); }, BUILD_AT[k]);
-        })(k);
-      }
-      /* приёмка стартует после того, как внедрение рассказало сборку */
-      setTimeout(startPlan, PLAN_DELAY);
+      playMaster();
       return;
     }
     /* шаг 2 «Критерии приёмки»: чек-строки проявляются одна за другой,
@@ -1170,27 +1164,35 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   }
 
   function planRender(){ planCnt.textContent = trows.filter(function(r){return r.classList.contains('done')}).length + '/' + trows.length; }
-  var ti = 0;
-  function tickPlan(){
-    if (ti >= trows.length){ planRender(); finish(); return; }
-    trows[ti].className = 'ds-trow running';
-    planRender();
-    var i = ti;
-    setTimeout(function(){
-      trows[i].className = 'ds-trow done';
-      planRender();
-      showProof(i);
-      /* строка проверки в логе внедрения — синхронно с галкой */
-      revealLine(rows[3], CHECK_LINES, i);
-      if (i === CHECK_LINES.length-1){
-        setTimeout(function(){ revealLine(rows[3], CHECK_LINES.concat([FINAL_LINE]), CHECK_LINES.length); }, 400);
-      }
-      setTimeout(function(){
-        hideProof(function(){ ti++; setTimeout(tickPlan, ROW_PREP); });
-      }, PROOF_MS);
-    }, ROW_PREP);
+  /* ── мастер-таймлайн шага 4: одна цепочка событий на обе панели.
+     Строительные строки, галка чек-листа, строка «критерий закрыт» слева и
+     артефакт-пример происходят в одном тике — разъехаться не могут. ── */
+  var MASTER=[], mtimers=[];
+  function buildMaster(){
+    MASTER=[];
+    BUILD_AT.forEach(function(at,k){ MASTER.push([at,function(){ revealLine(rows[3], BUILD_LINES, k); }]); });
+    var t = PLAN_DELAY;
+    for (var k=0;k<trows.length;k++){
+      (function(k){
+        MASTER.push([t, function(){ trows[k].className='ds-trow running'; planRender(); }]);
+        var g = t + ROW_PREP;
+        MASTER.push([g, function(){
+          trows[k].className='ds-trow done'; planRender();
+          showProof(k);
+          revealLine(rows[3], CHECK_LINES, k);
+        }]);
+        MASTER.push([g+PROOF_MS, function(){ hideProof(function(){}); }]);
+        t = g + PROOF_MS + HIDE_MS + ROW_PREP;
+      })(k);
+    }
+    MASTER.push([t+400, function(){ revealLine(rows[3], CHECK_LINES.concat([FINAL_LINE]), CHECK_LINES.length); }]);
+    MASTER.push([t+400+600, function(){ finish(); }]);
   }
-  function startPlan(){ ti = 0; setTimeout(tickPlan, 350); }
+  buildMaster();
+  function playMaster(){
+    mtimers.forEach(clearTimeout); mtimers=[];
+    MASTER.forEach(function(ev){ mtimers.push(setTimeout(ev[1], ev[0])); });
+  }
 
   /* стоп на итоге: сдача приходит с последней галкой приёмки */
   var replayBtn = document.getElementById('dsReplay');
@@ -1209,6 +1211,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     replayBtn.hidden = true;
     trows.forEach(function(r){ r.className = 'ds-trow hidden'; });
     planChip.classList.remove('vis');
+    mtimers.forEach(clearTimeout); mtimers=[];
     planRender();
     startAil();
   }
@@ -1229,13 +1232,18 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   } else {
     planRender();
     var played = false;
-    if ('IntersectionObserver' in window){
+    function tryStart(){
+      if (played) return;
+      var r = ail.getBoundingClientRect();
+      if (r.top < window.innerHeight*0.8 && r.bottom > 0){ played = true; startAil(); }
+    }
+    window.addEventListener('scroll', tryStart, {passive:true});
+    tryStart();
+    if ('IntersectionObserver' in window && !played){
       var io = new IntersectionObserver(function(entries){
         if (entries[0].isIntersecting && !played){ played = true; io.disconnect(); startAil(); }
       }, {threshold: 0.3});
       io.observe(ail);
-    } else {
-      startAil();
     }
   }
 })();
@@ -1336,7 +1344,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 <script src="ds-decrypt.js" defer></script>
 <footer class="site-foot"><div class="sfw">
 <div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div>
-<div class="sf-r"><div class="sf-mail"><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div></div>
+<div class="sf-c"><a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20Discovery%20System.">написать лично</a><a href="https://t.me/discoverysystem" target="_blank" rel="noopener">канал с сигналами</a><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div>
 <div class="sf-legal"><span><a href="https://discovery-system.ru/oferta.html">оферта</a></span><span><a href="https://discovery-system.ru/policy.html">политика ПД</a></span><span>ИНН 780627413110</span></div>
 </div></footer>
 
