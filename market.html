@@ -413,15 +413,33 @@ footer p { margin: 2px 0; }
  radial-gradient(55% 100% at 52% 125%, rgba(143,168,255,.10), transparent 60%),
  radial-gradient(45% 80% at 22% -20%, rgba(27,42,107,.45), transparent 60%)}
 .ctafin .w{position:relative;z-index:2}
-.ctafin-h{font:600 clamp(22px,2.6vw,30px)/1.2 var(--disp);letter-spacing:-.02em;color:#eef2fb;margin:0 0 6px;max-width:24ch}
-.ctafin .cta{margin-top:18px;gap:12px}
-.ctafin .cta a{display:inline-flex;align-items:center;min-height:52px;padding:14px 26px;border-radius:10px;font:500 15.5px/1 var(--sans);transition:transform .09s cubic-bezier(.22,.61,.36,1),background .18s ease,box-shadow .18s ease,border-color .18s ease,color .15s ease}
-.ctafin .cta a:active{transform:scale(.98)}
-.ctafin .cta .p{background:#eef2fb;color:#0f1730;border:1px solid transparent;box-shadow:0 1px 2px rgba(16,20,31,.2),0 6px 24px rgba(143,168,255,.28)}
-.ctafin .cta .p:hover{background:#fff;box-shadow:0 1px 2px rgba(16,20,31,.2),0 8px 30px rgba(143,168,255,.45)}
-.ctafin .cta .g{background:rgba(255,255,255,.12);color:#eef2fb;border:1px solid rgba(255,255,255,.40)}
-.ctafin .cta .g:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.55)}
-.ctafin .cta a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.rdark .ctafin-h{font:600 clamp(22px,2.6vw,30px)/1.2 var(--disp);letter-spacing:-.02em;color:#eef2fb;margin:44px 0 6px;max-width:24ch}
+.rdark .cta{margin-top:18px;gap:12px}
+.rdark .cta a{display:inline-flex;align-items:center;min-height:52px;padding:14px 26px;border-radius:10px;font:500 15.5px/1 var(--sans);transition:transform .09s cubic-bezier(.22,.61,.36,1),background .18s ease,box-shadow .18s ease,border-color .18s ease,color .15s ease}
+.rdark .cta a:active{transform:scale(.98)}
+.rdark .cta .p{background:#eef2fb;color:#0f1730;border:1px solid transparent;box-shadow:0 1px 2px rgba(16,20,31,.2),0 6px 24px rgba(143,168,255,.28)}
+.rdark .cta .p:hover{background:#fff;box-shadow:0 1px 2px rgba(16,20,31,.2),0 8px 30px rgba(143,168,255,.45)}
+.rdark .cta .g{background:rgba(255,255,255,.12);color:#eef2fb;border:1px solid rgba(255,255,255,.40)}
+.rdark .cta .g:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.55)}
+.rdark .cta a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+
+
+/* ── тёмный хвост: шаринг + футер в одной зоне с полкой ── */
+.rtail{background:#0f1730;position:relative;color:#b9c1d6}
+.rtail #ds-share{padding:56px 0 46px!important}
+.rtail #ds-share .ds-sh-h{color:#eef2fb!important}
+.rtail #ds-share .ds-sh-sub{color:#8a94ad!important}
+.rtail #ds-share .ds-sh-ghost{background:rgba(255,255,255,.12)!important;border-color:rgba(255,255,255,.40)!important;color:#eef2fb!important}
+.rtail footer.site-foot{background:none;border-top:1px solid rgba(255,255,255,.12);color:#8a94ad}
+.rtail footer.site-foot .sf-name{color:#eef2fb}
+.rtail footer.site-foot .sf-name span{color:#8a94ad}
+.rtail footer.site-foot .sf-b{background:none!important;border:0!important;color:#8fa8ff;padding:0!important;box-shadow:none!important;border-radius:0!important}
+.rtail footer.site-foot .sf-b:hover{color:#eef2fb}
+.rtail footer.site-foot .sf-note{color:#8a94ad}
+.rtail footer.site-foot .sf-k{color:#8a94ad}
+.rtail footer.site-foot .sf-r a{color:#8fa8ff;border-bottom:1px solid rgba(143,168,255,.35)}
+.rtail footer.site-foot .sf-legal{border-top:1px solid rgba(255,255,255,.10);color:#8a94ad}
+.rtail footer.site-foot .sf-legal a{color:#8fa8ff}
 
 </style>
 
@@ -436,7 +454,7 @@ footer.site-foot .sf-name{font:600 16px/1.25 "IBM Plex Sans",system-ui,sans-seri
 footer.site-foot .sf-name span{font:400 14px/1.4 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479}
 footer.site-foot .sf-c{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 footer.site-foot .sf-actions{display:flex;gap:10px;flex-wrap:wrap}
-footer.site-foot .sf-b{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 20px;border-radius:10px;background:#1b2a6b;color:#f2f6ff;font:500 14.5px/1 "IBM Plex Sans",system-ui,sans-serif;text-decoration:none;transition:background .18s ease}
+footer.site-foot .sf-b{background:none!important;border:0!important;color:var(--navy);padding:0!important;box-shadow:none!important;border-radius:0!important;display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 20px;border-radius:10px;background:#1b2a6b;color:#f2f6ff;font:500 14.5px/1 "IBM Plex Sans",system-ui,sans-serif;text-decoration:none;transition:background .18s ease}
 footer.site-foot .sf-b .ic{width:16px;height:16px;fill:currentColor;flex:none}
 footer.site-foot .sf-b:hover{background:#2c419f}
 footer.site-foot .sf-b.g{background:transparent;color:#1b2a6b;border:1px solid rgba(27,42,107,.35)}
@@ -573,10 +591,14 @@ STUDIES.forEach(function(s,n){
 });
 })();
 </script>
-</section>
-</div></div>
-
-<section class="ctafin"><div class="w"><h2 class="ctafin-h">Сколько это стоит у тебя</h2><div class="cta"><a class="p" href="calculator.html">Посчитать свою рутину — 0 ₽</a><a class="g" href="service.html">Цены и что входит</a></div></div></section><footer class="site-foot"><div class="sfw"><div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div><div class="sf-c"><div class="sf-actions"><a class="sf-b" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A0%D1%8B%D0%BD%D0%BE%D0%BA%20%D0%98%D0%98%C2%BB%20%E2%80%94%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B5."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7L18.5 6c.4-.3-.1-.5-.6-.2L7.3 12.6l-4.5-1.4c-1-.3-1-1 .2-1.4L20.5 3.4c.8-.3 1.6.5 1.4 1.2z"/></svg>Написать лично</a><a class="sf-b g" href="https://t.me/discoverysystem"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7L18.5 6c.4-.3-.1-.5-.6-.2L7.3 12.6l-4.5-1.4c-1-.3-1-1 .2-1.4L20.5 3.4c.8-.3 1.6.5 1.4 1.2z"/></svg>Канал с сигналами</a></div><span class="sf-note">Отвечаю лично, без ботов</span></div><div class="sf-r"><span class="sf-k">почта</span><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div><div class="sf-legal"><span><a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · ИНН 780627413110</span></div></div></footer>
+</section></section>
+<h2 class="ctafin-h">Сколько это стоит у тебя</h2>
+<div class="cta"><a class="p" href="calculator.html">Посчитать свою рутину — 0 ₽</a><a class="g" href="service.html">Цены и что входит</a></div>
+</div>
+</div>
+<div class="rtail">
+<footer class="site-foot"><div class="sfw"><div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div><div class="sf-c"><div class="sf-actions"><a class="sf-b" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9F%D1%80%D0%B8%D1%88%D1%91%D0%BB%20%D1%81%D0%BE%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D1%8B%20%C2%AB%D0%A0%D1%8B%D0%BD%D0%BE%D0%BA%20%D0%98%D0%98%C2%BB%20%E2%80%94%20%D0%B2%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B5."><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7L18.5 6c.4-.3-.1-.5-.6-.2L7.3 12.6l-4.5-1.4c-1-.3-1-1 .2-1.4L20.5 3.4c.8-.3 1.6.5 1.4 1.2z"/></svg>Написать лично</a><a class="sf-b g" href="https://t.me/discoverysystem"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.6 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7L18.5 6c.4-.3-.1-.5-.6-.2L7.3 12.6l-4.5-1.4c-1-.3-1-1 .2-1.4L20.5 3.4c.8-.3 1.6.5 1.4 1.2z"/></svg>Канал с сигналами</a></div><span class="sf-note">Отвечаю лично, без ботов</span></div><div class="sf-r"><span class="sf-k">почта</span><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div><div class="sf-legal"><span><a href="https://discovery-system.ru/oferta.html">оферта</a> · <a href="https://discovery-system.ru/policy.html">политика ПД</a> · ИНН 780627413110</span></div></div></footer>
+</div>
 <script src="ds-mnav.js?v=20261109b"></script>
 <script>
 /* слайдер ценового сегмента: двигаешь — герой меняется. Цены — из SVG-диаграммы ниже, DS-цены — инвойсы лестницы 10.11.2026 */
