@@ -46,6 +46,14 @@
   var AMP = 9;                    // амплитуда отклонения от BRAND
   var TONE = [0.72, 0.92, 1.3];   // синий уклон: подсветка уходит в синий, тень — в нейтрально-тёмный
   var MID_CURVE = 0.8;            // мягкая кривая середины — дымка шире, крайние значения реже
+  // Хост-страница может задать личность фона: window.DS_PLASMA_TINT =
+  // {tone:[r,g,b], amp, seed, drift}. Умолчания — канонные; хук только
+  // тонирует отклонение и сдвигает зерно/скорость, средний кадр = BRAND.
+  var TINT = window.DS_PLASMA_TINT || {};
+  if (TINT.tone) TONE = TINT.tone;
+  if (TINT.amp) AMP = TINT.amp;
+  var SEED = TINT.seed || 0;      // сдвиг зерна шума: у каждой страницы свой фон
+  var DRIFT = TINT.drift || 0.012;
   var EDGE_MAX = 0.55;            // максимум сжатия контраста на самых углах (0.45 остаётся)
   var EDGE_K = 0.5;               // как быстро включается виньетка от центра
 
@@ -108,7 +116,7 @@
   function fbm(x, y, t) {
     var n = 0, amp = 0.55, f = 1;
     for (var o = 0; o < 3; o++) {
-      n += amp * noise(x * f + t * (o + 1) * 0.35, y * f - t * (o + 1) * 0.22, o * 7 + 3);
+      n += amp * noise(x * f + t * (o + 1) * 0.35, y * f - t * (o + 1) * 0.22, o * 7 + 3 + SEED);
       amp *= 0.5; f *= 2.1;
     }
     return n;
@@ -178,7 +186,7 @@
     if (!running) return;
     if (ts - last > 1000 / FPS) { // fps по режиму: 24 desktop / 16 mobile
       last = ts;
-      t += 0.012;
+      t += DRIFT;
       px += (tx - px) * 0.04; py += (ty - py) * 0.04;
       drawFrame();
     }

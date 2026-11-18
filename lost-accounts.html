@@ -252,6 +252,7 @@ footer{padding:60px 0 56px;border-top:1px solid var(--line-soft)}
   .js .rv{opacity:1;transform:none;transition:none}
   *{animation:none!important;transition:none!important}
 }
+.hero{position:relative}.hero .wrap{position:relative;z-index:1}.hero-fx{position:absolute;inset:0;pointer-events:none;opacity:.19}
 </style>
 <link rel="stylesheet" href="ds-nav-fix.css?v=20261110d"/>
 <script src="ym-slot.js" defer></script>
@@ -268,7 +269,7 @@ footer{padding:60px 0 56px;border-top:1px solid var(--line-soft)}
 </head>
 <body><noscript><div><img src="https://mc.yandex.ru/watch/113187640" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap"><a class="brand" href="index.html" style="display:flex;align-items:center;gap:10px;font-family:Onest,system-ui,sans-serif;font-weight:500;letter-spacing:-.01em;color:var(--ink,#eef2f9);text-decoration:none;font-size:15.5px"><img src="logo-5.png" alt="Discovery System" width="26" height="26" style="border-radius:6px">discovery system</a><nav style="display:flex;gap:22px;margin-left:auto;font-size:15px;flex-wrap:wrap"><a href="index.html">Главная</a><a href="market.html">Рынок ИИ</a><a href="service.html">Сервис</a><a href="system.html">Система</a><a href="calculator.html">Калькулятор</a><a href="channel.html">Канал</a></nav></div></header>
-<header class="hero"><div class="wrap">
+<header class="hero"><svg class="hero-fx" viewBox="0 0 1440 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="#fff" stroke-width="1.5" fill="none"><path d="M0 300 Q 180 210 360 300 T 720 300 T 1080 300 T 1440 300"/><path d="M0 380 Q 240 260 480 370 T 960 380 T 1440 360"/><path d="M0 220 Q 260 150 520 230 T 1040 210 T 1440 240"/></g></svg><div class="wrap">
 <p class="sub">исследование · сентябрь — ноябрь 2026</p>
 <h1>Claude и ChatGPT <em>не принадлежат тебе</em> — сколько россиян потеряли аккаунты в 2026</h1>
 <p class="lead">Ты платишь за подписку и держишь в чатах проекты и код. Доступ закрывает платформа, когда сочтёт нужным. Мы посчитали, сколько людей в России уже потеряли аккаунты.</p>
@@ -562,7 +563,7 @@ note.innerHTML='<b>'+st.f+'</b> · '+st.m;
 if(fs){fs.addEventListener('input',function(){upd(+fs.value);});upd(8);}
 })();
 </script>
-<script src="ds-plasma.js" defer></script>
+<script>window.DS_PLASMA_TINT={tone:[1.30,0.80,0.90],amp:10,seed:7,drift:0.010};</script><script src="ds-plasma.js" defer></script>
 <script src="ds-nav.js" defer></script>
 <script src="ds-mnav.js?v=20261109b" defer></script>
 <script src="ds-share.js" defer></script>
