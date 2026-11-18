@@ -1077,7 +1077,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
      Все события считаются от t=0 старта ролика. rAF сам паузится в скрытой вкладке,
      после возврата события доигрываются в правильном порядке — замерших
      рассинхронных состояний больше нет. Никаких цепочек setTimeout. */
-  var SCHED = [], EV = 0, T0 = 0, rafId = 0;
+  var SCHED = [], EV = 0, T0 = 0, rafId = 0, PB = 0, PK = -1;
   /* вставка события с сохранением порядка оставшихся (микрокаскады +30 мс) */
   function after(t, fn){
     var i = EV;
@@ -1085,7 +1085,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
     SCHED.splice(i, 0, {t:t, fn:fn});
   }
   function frameLoop(now){
-    var el = now - T0;
+    var el = now - T0 - PB;  /* часы ждут зрителя: паузы не ломают расписание */
     while (EV < SCHED.length && SCHED[EV].t <= el){
       try { SCHED[EV].fn(); } catch(e){}
       EV++;
@@ -1093,9 +1093,14 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
     if (EV < SCHED.length) rafId = requestAnimationFrame(frameLoop);
     else rafId = 0;
   }
+  function pauseClock(){ if (PK === -1){ PK = performance.now(); if (rafId) cancelAnimationFrame(rafId); rafId = 0; } }
+  function resumeClock(){
+    if (PK !== -1){ PB += performance.now() - PK; PK = -1; }
+    if (played && EV < SCHED.length && !rafId) rafId = requestAnimationFrame(frameLoop);
+  }
   function startAil(){
     if (rafId) cancelAnimationFrame(rafId);
-    rafId = 0;
+    rafId = 0; PB = 0; PK = -1;
     buildSchedule();
     SCHED.sort(function(a,b){ return a.t - b.t; });
     EV = 0; T0 = performance.now();
@@ -1266,6 +1271,12 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
         if (entries[0].isIntersecting && !played){ played = true; io.disconnect(); startAil(); }
       }, {threshold: 0.3});
       io.observe(ail);
+      /* часы ждут зрителя: пауза при скрытой вкладке или уходе секции из вьюпорта */
+      document.addEventListener('visibilitychange', function(){ document.hidden ? pauseClock() : resumeClock(); });
+      var vio = new IntersectionObserver(function(entries){
+        entries[0].isIntersecting ? resumeClock() : pauseClock();
+      }, {threshold: 0.15});
+      vio.observe(ail);
     } else {
       startAil();
     }
