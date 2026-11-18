@@ -464,7 +464,7 @@ footer.site-foot .sf-name span{font:400 13.5px/1.4 var(--mono);color:#5c6479}
 footer.site-foot .sf-c{display:flex;align-items:baseline;gap:8px 22px;flex-wrap:wrap}
 footer.site-foot .sf-c a{color:#1b2a6b;text-decoration:none}
 footer.site-foot .sf-c a:hover{text-decoration:underline}
-footer.site-foot .sf-legal{width:100%;display:flex;flex-wrap:wrap;gap:6px 22px;align-items:flex-start;padding-top:14px;border-top:1px solid rgba(16,20,31,.08);margin-top:14px;font:400 13px/1.6 var(--mono);color:#5c6479}
+footer.site-foot .sf-legal{width:100%;display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline;padding-top:14px;border-top:1px solid rgba(16,20,31,.08);margin-top:14px;font:400 13px/1.6 var(--mono);color:#5c6479}
 footer.site-foot .sf-legal span{display:block}
 footer.site-foot .sf-legal a{color:#1b2a6b;text-decoration:none}
 footer.site-foot .sf-legal a:hover{text-decoration:underline}
@@ -913,7 +913,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   </div>
   <div>
     <span class="ds-pancap">что проверяем при приёмке</span>
-    <p class="ds-pansub">критерии зафиксированы до старта, каждая строка проверяется</p>
+    <p class="ds-pansub">каждая строка проверяется</p>
     <div class="ds-plan" id="dsPlan">
       <div class="ds-plan-head">
         <span class="ds-lb">Критерии приёмки агента</span>
@@ -951,7 +951,6 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     {id:'build', label:'Внедрение и отладка', detail:[
       'стек агента: провайдер моделей · модели',
       'хостинг: твоё облако',
-      'база знаний',
       'прогон на твоих задачах',
       'распознавание голоса (STT) — критерий закрыт',
       'сценарий заявок — критерий закрыт',
@@ -962,7 +961,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   ];
   /* шаг 4: единое мастер-расписание на одних часах —
      строительные строки в середины пауз между галками, проверки в момент галок */
-  var BUILD_LINES = STEPS[3].detail.slice(0, 4);
+  var BUILD_LINES = STEPS[3].detail.slice(0, 3);
   var CHECK_LINES = STEPS[3].detail.slice(4, 9);
   var FINAL_LINE  = STEPS[3].detail[9];
   var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1000, ROW_PREP = 250, GAP = 200, HIDE_MS = 180, PLAN_FIRST = 350;
@@ -976,7 +975,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   /* строительные строки: сборка рассказывается первой и целиком —
      стек → хостинг → база знаний → прогон; приёмка стартует только после,
      чтобы галки не спешили впереди внедрения */
-  var BUILD_AT = [0, 700, 1400, 2100];
+  var BUILD_AT = [0, 700, 1400];
   var PLAN_DELAY = 2200;   /* первая галка = PLAN_FIRST + PLAN_DELAY + ROW_PREP = 2800 */
 
   /* ── панель 1: степ-лист с часами ── */
@@ -1142,24 +1141,19 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
       '<span class="ds-pwave"><i style="height:8px"></i><i style="height:14px"></i><i style="height:6px"></i><i style="height:16px"></i><i style="height:10px"></i><i style="height:15px"></i><i style="height:7px"></i><i style="height:13px"></i><i style="height:9px"></i><i style="height:14px"></i><i style="height:6px"></i><i style="height:11px"></i></span>' +
       '<span class="ds-pvdur">0:07 · 23:52</span></div>' +
     '<div class="ds-pbub out">Расшифровал: «Здравствуйте! Нужен монтаж. Сколько стоит?»<span class="ds-ptm">ответил сам · 23:53</span></div>',
-    '<div class="ds-pbub in">Здравствуйте! Нужен монтаж. Сколько стоит и когда сможете приехать?<span class="ds-ptm">клиент · 23:47</span></div>' +
-    '<div class="ds-pbub out">Монтаж под ключ — 18 400 ₽. Уточню: квартира или офис?<span class="ds-ptm">агент · 23:47</span></div>' +
     '<span class="ds-pchip">Заявка No184 создана</span>',
     '<div class="ds-prow"><span>Заявка No184</span><b>в карточке</b></div>' +
     '<div class="ds-prow"><span>Запись</span><b>чт · 10:00</b></div>' +
     '<div class="ds-prow"><span>Счёт поставщика</span><b>проверен</b></div>',
-    '<div class="ds-prow"><span>Счёт No1847</span><b>46 800 ₽</b></div>' +
-    '<div class="ds-prow"><span>В договоре</span><b>42 000 ₽</b></div>' +
-    '<div class="ds-prow warn"><span>Расхождение — доставка не в договоре</span><b>4 800 ₽</b></div>' +
     '<span class="ds-pchip">Письмо поставщику отправлено</span>',
-    '<div class="ds-prow"><span>Четверг 10:00</span><b>слот забронирован</b></div>' +
-    '<div class="ds-pbub out">Напомню в среду вечером и за час до выезда.<span class="ds-ptm">агент · автоматически</span></div>'
+    '<div class="ds-prow"><span>Четверг 10:00</span><b>слот забронирован</b></div>'
   ];
   var proof = document.createElement('div');
   proof.className = 'ds-proof';
   document.getElementById('dsPlan').appendChild(proof);
   function showProof(i){
-    proof.innerHTML = '<div class="ds-pcard"><span class="ds-pcrit">критерий: '+TASKS[i].label+'</span>'+PROOFS[i]+'</div>';
+    /* без заголовка-дубля: строку чек-листа, по которой только что поставлена галка, глаз уже видит */
+    proof.innerHTML = '<div class="ds-pcard">'+PROOFS[i]+'</div>';
     proof.classList.add('show');
   }
 
