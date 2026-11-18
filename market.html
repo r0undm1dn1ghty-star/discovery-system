@@ -402,7 +402,11 @@ footer p { margin: 2px 0; }
 #ds-share{max-width:none!important;width:min(1080px,calc(100% - 48px));margin:0 auto!important;padding:26px 0 6px!important}
 
 /* ── финальный CTA: тёмная полоса в тон героя, плазма-намёк чистым CSS (без canvas) ── */
-.ctafin{position:relative;overflow:hidden;background:var(--dark);color:#eef2fb;margin-top:44px;padding:clamp(44px,6vw,72px) 0 clamp(36px,5vw,52px)}
+.ctafin{position:relative;overflow:hidden;background:var(--dark);color:#eef2fb;margin-top:44px;padding:clamp(40px,5vw,60px) 0}
+.ctafin .w{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap}
+.ctafin-h{margin:0}
+.ctafin .cta{margin:0;justify-content:flex-end}
+@media(max-width:820px){.ctafin .w{flex-direction:column;align-items:flex-start;gap:22px}.ctafin .cta{justify-content:flex-start}}
 .ctafin:before{content:"";position:absolute;inset:0;pointer-events:none;background:
  radial-gradient(120% 200% at 6% 130%, rgba(27,42,107,.60), transparent 62%),
  radial-gradient(80% 150% at 96% -30%, rgba(143,168,255,.16), transparent 55%),
@@ -424,7 +428,8 @@ footer p { margin: 2px 0; }
 <style>
 /* единый футер сайта */
 footer.site-foot{border-top:1px solid rgba(16,20,31,.12);margin-top:0;padding:34px 0 38px;font:400 14px/1.6 "IBM Plex Mono",ui-monospace,monospace;color:#5c6479;background:inherit}
-footer.site-foot .sfw{width:min(1080px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;gap:18px 28px;align-items:start}
+footer.site-foot .sfw{width:min(1080px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;gap:18px 28px;align-items:center}
+footer.site-foot .sf-legal{grid-column:1/-1;border-top:1px solid rgba(16,20,31,.10);padding-top:14px}
 footer.site-foot .sf-l{display:flex;align-items:center;gap:14px}
 footer.site-foot .sf-logo{height:38px;width:auto;display:block}
 footer.site-foot .sf-name{font:600 16px/1.25 "IBM Plex Sans",system-ui,sans-serif;color:#10141f;display:flex;flex-direction:column;gap:3px}
