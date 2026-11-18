@@ -779,7 +779,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 .ds-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,36px);align-items:start}
 @media (max-width:860px){.ds-duo{grid-template-columns:1fr}}
 .ds-pancap{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:14px}
-.ds-pansub{font:400 13.5px/1.5 var(--mono);color:var(--meta);margin:-8px 0 18px;max-width:52ch}
+.ds-pansub{font:400 13.5px/1.5 var(--mono);color:#a9b4cc;margin:-8px 0 18px;max-width:52ch}
 /* панель 1 — часы */
 .ds-ail{border:1px solid var(--hair2);border-radius:14px;background:rgba(255,255,255,.03);padding:18px 20px 16px}
 .ds-ail-head{display:flex;width:100%;align-items:center;gap:10px;font:500 14px/1.4 var(--sans);color:var(--body);padding:2px 0 8px}
@@ -819,13 +819,12 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 .ds-hrs{flex:none;font:500 12.5px/1.4 var(--mono);color:var(--meta);border:1px solid var(--hair2);border-radius:9px;padding:2px 8px;transition:color .2s var(--ease-out),border-color .2s var(--ease-out)}
 .ds-ail-row.running .ds-hrs,.ds-ail-row.done .ds-hrs{color:var(--accent);border-color:rgba(143,168,255,.3)}
 .ds-ail-log{overflow:hidden;transition:height .3s var(--ease-out);margin-top:4px}
-.ds-ail-log.masked{mask-image:linear-gradient(to bottom,rgba(0,0,0,.25),#000 70%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.25),#000 70%)}
 .ds-ail-log-track{transition:transform .3s var(--ease-out)}
-.ds-ail-line{display:flex;align-items:center;gap:8px;height:24px;font:400 12px/1 var(--mono);color:var(--meta);opacity:0;transition:opacity .2s var(--ease-out)}
+.ds-ail-line{display:flex;align-items:center;gap:8px;height:28px;font:400 14px/1 var(--mono);color:var(--body);opacity:0;transition:opacity .2s var(--ease-out)}
 .ds-ail-line.vis{opacity:1}
-.ds-ail-line .ds-n{width:16px;text-align:right;color:rgba(143,168,255,.4);flex:none;font-variant-numeric:tabular-nums}
+.ds-ail-line .ds-n{width:16px;text-align:right;font-size:13px;color:rgba(143,168,255,.6);flex:none;font-variant-numeric:tabular-nums}
 .ds-ail-line .ds-tx{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ds-ail-line.chk{color:var(--accent)}
+.ds-ail-line.chk{color:var(--accent);font-weight:500}
 .ds-ail-line.chk .ds-tx::before{content:'✓ '}
 .ds-total{margin-top:14px;padding-top:12px;border-top:1px solid var(--hair2);display:flex;flex-direction:column;gap:6px}
 .ds-total .ds-fin{font:400 14.5px/1.55 var(--sans);color:var(--body)}
@@ -851,11 +850,11 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 @keyframes ds-plandraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 .ds-tlbl{flex:1;min-width:0;font:400 14px/1.45 var(--sans);color:var(--body)}
 .ds-trow.running .ds-tlbl{color:var(--ink)}
-.ds-tnote{flex:none;font:400 12px/1.7 var(--mono);color:var(--meta);font-variant-numeric:tabular-nums}
+.ds-tnote{flex:none;font:400 13px/1.7 var(--mono);color:#a9b4cc;font-variant-numeric:tabular-nums}
 .ds-undl{position:absolute;left:0;right:0;bottom:0;height:1px;opacity:0;pointer-events:none;background-image:linear-gradient(90deg,transparent 0%,currentColor 50%,transparent 100%);background-size:50% 100%}
 .ds-trow.running .ds-undl{opacity:.5;animation:ds-undl 1.4s cubic-bezier(.645,.045,.355,1) infinite}
 @keyframes ds-undl{from{background-position-x:0%}to{background-position-x:200%}}
-.ds-plan-note{margin-top:12px;padding-top:10px;border-top:1px solid var(--hair2);font:400 13px/1.6 var(--mono);color:var(--meta)}
+.ds-plan-note{margin-top:12px;padding-top:10px;border-top:1px solid var(--hair2);font:400 13.5px/1.6 var(--mono);color:#a9b4cc}
 /* оверлей-артефакт */
 .ds-proof{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;background:rgba(15,23,48,.96);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .25s var(--ease-out);padding:16px}
 .ds-proof.show{opacity:1}
@@ -952,17 +951,18 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     {id:'build', label:'Внедрение и отладка', detail:[
       'стек агента: провайдер моделей · модели',
       'хостинг: твоё облако',
+      'база знаний',
       'прогон на твоих задачах',
-      'распознавание голоса (STT) — критерий закрыт',
-      'сценарий заявок — критерий закрыт',
-      'планировщик сводки — критерий закрыт',
-      'база знаний: договор — критерий закрыт',
-      'календарь и напоминания — критерий закрыт',
+      'Голосовое клиента → расшифровал и ответил сам',
+      'Сообщение клиента → ответ и заявка в карточке',
+      'Сводка по бизнесу за день',
+      'Счёт поставщика → сверка с договором',
+      'Бронь слота и напоминание до выезда',
       'отладка до закрытия всех критериев']}
   ];
   /* шаг 4: единое мастер-расписание на одних часах —
      строительные строки в середины пауз между галками, проверки в момент галок */
-  var BUILD_LINES = STEPS[3].detail.slice(0, 3);
+  var BUILD_LINES = STEPS[3].detail.slice(0, 4);
   var CHECK_LINES = STEPS[3].detail.slice(4, 9);
   var FINAL_LINE  = STEPS[3].detail[9];
   var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1000, ROW_PREP = 250, GAP = 200, HIDE_MS = 180, PLAN_FIRST = 350;
@@ -976,7 +976,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   /* строительные строки: сборка рассказывается первой и целиком —
      стек → хостинг → база знаний → прогон; приёмка стартует только после,
      чтобы галки не спешили впереди внедрения */
-  var BUILD_AT = [0, 700, 1400];
+  var BUILD_AT = [0, 700, 1400, 2100];
   var PLAN_DELAY = 2200;   /* первая галка = PLAN_FIRST + PLAN_DELAY + ROW_PREP = 2800 */
 
   /* ── панель 1: степ-лист с часами ── */
@@ -1013,19 +1013,21 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     }
     row.lbl.appendChild(frag);
   }
-  function setLog(row, lines){
+  function setLog(row, lines, visT){
       if (!lines.length){ row.log.style.height='0px'; row.track.innerHTML=''; return; }
       row.log.classList.toggle('masked', lines.length > 4);
       row.track.innerHTML = lines.map(function(t,i){
         return '<div class="ds-ail-line" style="transition-delay:'+(i*LINE_STAG)+'ms"><span class="ds-n">'+(i+1)+'</span><span class="ds-tx">'+t+'</span></div>';
       }).join('');
-      row.log.style.height = (Math.min(lines.length,4)*24)+'px';
-      row.track.style.transform = 'translateY('+(-Math.max(0,lines.length-4)*24)+'px)';
-      /* каскад: строки проявляются по очереди */
-      setTimeout(function(){
+      row.log.style.height = (Math.min(lines.length,4)*28)+'px';
+      row.track.style.transform = 'translateY('+(-Math.max(0,lines.length-4)*28)+'px)';
+      /* каскад: строки проявляются по очереди (+30 мс после установки содержимого);
+         на мастере-расписании это событие, вне ролика (RM) — локальный таймер */
+      var showVis = function(){
         var ls = row.track.children;
         for (var k=0;k<ls.length;k++) ls[k].classList.add('vis');
-      }, 30);
+      };
+      if (visT == null) setTimeout(showVis, 30); else after(visT + 30, showVis);
     }
 
   var pos = {step:0, line:0};
@@ -1034,7 +1036,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
       ail  = document.getElementById('dsAil'),
       total = document.getElementById('dsTotal');
 
-  function render(){
+  function render(visT){
     var running = null;
     STEPS.forEach(function(st, i){
       var r = rows[i], state;
@@ -1045,11 +1047,10 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
       if (state === 'running'){
         running = st;
         waveLabel(r, st.label);
-        /* шаг «внедрение» управляется мастер-таймлайном — флэш всех строк запрещён */
-        setLog(r, st.id==='build' ? [] : st.detail);
+        if (i !== STEPS.length-1) setLog(r, st.detail, visT);  /* шаг 4 раскрывается по расписанию, без вспышки */
       } else {
         r.lbl.textContent = st.label;
-        setLog(r, []);
+        if (!(i === STEPS.length-1 && pos.step >= STEPS.length)) setLog(r, [], visT);  /* журнал внедрения остаётся после сдачи */
       }
     });
     if (pos.step >= STEPS.length){
@@ -1062,43 +1063,98 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     return false;
   }
 
-  function tick(){
-    if (pos.step >= STEPS.length) return;
-    var st = STEPS[pos.step];
-    var idx = pos.step;
-    render();
-    /* последний шаг: внедрение длится ровно столько, сколько закрываются критерии.
-       логи проявляются по одному, сдача приходит с последней галкой */
-    if (idx === STEPS.length-1){
-      setLog(rows[idx], []);
-      playMaster();
-      return;
+  /* ── мастер-планировщик: ОДНО расписание событий на весь ролик + ОДИН rAF-цикл ──
+     Все события считаются от t=0 старта ролика. rAF сам паузится в скрытой вкладке,
+     после возврата события доигрываются в правильном порядке — замерших
+     рассинхронных состояний больше нет. Никаких цепочек setTimeout. */
+  var SCHED = [], EV = 0, T0 = 0, rafId = 0, PB = 0, PK = -1;
+  /* вставка события с сохранением порядка оставшихся (микрокаскады +30 мс) */
+  function after(t, fn){
+    var i = EV;
+    while (i < SCHED.length && SCHED[i].t <= t) i++;
+    SCHED.splice(i, 0, {t:t, fn:fn});
+  }
+  function frameLoop(now){
+    var el = now - T0 - PB;  /* часы ждут зрителя: паузы не ломают расписание */
+    while (EV < SCHED.length && SCHED[EV].t <= el){
+      try { SCHED[EV].fn(); } catch(e){}
+      EV++;
     }
-    /* шаг 2 «Критерии приёмки»: чек-строки проявляются одна за другой,
-       шаг 3 «Оплата»: чип «зафиксированы до старта» появляется в шапке чек-листа */
-    if (idx === 1){
-      for (var k=0;k<trows.length;k++){
-        (function(k){
-          setTimeout(function(){ trows[k].classList.remove('hidden'); }, TROW_LAG + k*TROW_STAG);
-        })(k);
-      }
-    } else if (idx === 2){
-      setTimeout(function(){ planChip.classList.add('vis'); }, 30);
-    }
-    var dur = (idx === 1 ? trows.length*TROW_STAG : st.detail.length*LINE_STAG) + STEP_HOLD;
-    setTimeout(function(){
-      pos.step++;
-      if (pos.step >= STEPS.length){ render(); return; }
-      render();
-      setTimeout(tick, GAP);
-    }, dur);
+    if (EV < SCHED.length) rafId = requestAnimationFrame(frameLoop);
+    else rafId = 0;
+  }
+  function pauseClock(){ if (PK === -1){ PK = performance.now(); if (rafId) cancelAnimationFrame(rafId); rafId = 0; } }
+  function resumeClock(){
+    if (PK !== -1){ PB += performance.now() - PK; PK = -1; }
+    if (played && EV < SCHED.length && !rafId) rafId = requestAnimationFrame(frameLoop);
   }
   function startAil(){
-    pos = {step:0, line:0};
-    render();
-    setTimeout(tick, GAP);
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = 0; PB = 0; PK = -1;
+    buildSchedule();
+    SCHED.sort(function(a,b){ return a.t - b.t; });
+    EV = 0; T0 = performance.now();
+    rafId = requestAnimationFrame(frameLoop);
   }
-  function revealLine(row, lines, k){
+  function buildSchedule(){
+    var ev = [];
+    function at(t, fn){ ev.push({t:t, fn:fn}); }
+    /* шаг 1 «Консультация»: старт */
+    at(0, function(){ pos = {step:0, line:0}; render(0); });
+    var t = GAP;
+    /* шаги 1–3: тик шага, сопутствующие события, рендер следующего шага */
+    for (var s=0; s<STEPS.length-1; s++){
+      (function(s, tTick){
+        at(tTick, function(){ render(tTick); });
+        if (s === 1){  /* шаг 2 «Критерии приёмки»: чек-лист справа проявляется строка за строкой */
+          for (var k=0;k<trows.length;k++){
+            (function(k){
+              at(tTick + TROW_LAG + k*TROW_STAG, function(){ trows[k].classList.remove('hidden'); });
+            })(k);
+          }
+        } else if (s === 2){  /* шаг 3 «Оплата»: чип «зафиксированы до старта» в шапке чек-листа */
+          at(tTick + 30, function(){ planChip.classList.add('vis'); });
+        }
+        var dur = (s === 1 ? trows.length*TROW_STAG : STEPS[s].detail.length*LINE_STAG) + STEP_HOLD;
+        var tEnd = tTick + dur;
+        at(tEnd, function(){ pos.step = s+1; render(tEnd); });
+        t = tEnd + GAP;
+      })(s, t);
+    }
+    /* шаг 4 «Внедрение и отладка»: журнал раскрывается по расписанию */
+    var t4 = t;
+    at(t4, function(){ render(t4); setLog(rows[3], [], t4); });
+    for (var k=0;k<BUILD_LINES.length;k++){
+      (function(k){
+        at(t4 + BUILD_AT[k], function(){ revealLine(rows[3], BUILD_LINES, k, t4 + BUILD_AT[k]); });
+      })(k);
+    }
+    /* приёмка: галка k = running → done + артефакт + чек-строка; оверлей прячется через PROOF_MS —
+       всё событиями расписания, без вложенных setTimeout */
+    var R0 = t4 + PLAN_DELAY + PLAN_FIRST;  /* старт первой галки */
+    for (var k=0;k<trows.length;k++){
+      (function(k){
+        var rT = R0 + k*ROW_CYCLE, cT = rT + ROW_PREP;
+        at(rT, function(){ trows[k].className = 'ds-trow running'; planRender(); });
+        at(cT, function(){
+          trows[k].className = 'ds-trow done';
+          planRender();
+          showProof(k);
+          /* строка проверки в логе внедрения — синхронно с галкой */
+          revealLine(rows[3], CHECK_LINES, k, cT);
+        });
+        at(cT + PROOF_MS, function(){ proof.classList.remove('show'); });
+        if (k === trows.length-1){
+          at(cT + 400, function(){ revealLine(rows[3], STEPS[3].detail, STEPS[3].detail.length-1, cT + 400); });
+        }
+      })(k);
+    }
+    /* финал: сдача приходит после последней галки */
+    var lastC = R0 + (trows.length-1)*ROW_CYCLE + ROW_PREP;
+    at(lastC + PROOF_MS + HIDE_MS + ROW_PREP, function(){ planRender(); finish(); });
+    SCHED = ev;
+  }
+  function revealLine(row, lines, k, visT){
     var d = document.createElement('div');
     /* строка проверки — зеркало галки: акцентный цвет и префикс «✓» */
     d.className = 'ds-ail-line' + (CHECK_LINES.indexOf(lines[k]) !== -1 ? ' chk' : '');
@@ -1106,9 +1162,10 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     row.track.appendChild(d);
     var n = k+1;
     row.log.classList.toggle('masked', n > 4);
-    row.log.style.height = (Math.min(n,4)*24)+'px';
-    row.track.style.transform = 'translateY('+(-Math.max(0,n-4)*24)+'px)';
-    setTimeout(function(){ d.classList.add('vis'); }, 30);
+    row.log.style.height = (Math.min(n,4)*28)+'px';
+    row.track.style.transform = 'translateY('+(-Math.max(0,n-4)*28)+'px)';
+    var showVis = function(){ d.classList.add('vis'); };
+    if (visT == null) setTimeout(showVis, 30); else after(visT + 30, showVis);
   }
 
   /* ── панель 2: чек-лист приёмки + оверлеи-артефакты ── */
@@ -1142,52 +1199,28 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
       '<span class="ds-pwave"><i style="height:8px"></i><i style="height:14px"></i><i style="height:6px"></i><i style="height:16px"></i><i style="height:10px"></i><i style="height:15px"></i><i style="height:7px"></i><i style="height:13px"></i><i style="height:9px"></i><i style="height:14px"></i><i style="height:6px"></i><i style="height:11px"></i></span>' +
       '<span class="ds-pvdur">0:07 · 23:52</span></div>' +
     '<div class="ds-pbub out">Расшифровал: «Здравствуйте! Нужен монтаж. Сколько стоит?»<span class="ds-ptm">ответил сам · 23:53</span></div>',
+    '<div class="ds-pbub in">Здравствуйте! Нужен монтаж. Сколько стоит и когда сможете приехать?<span class="ds-ptm">клиент · 23:47</span></div>' +
+    '<div class="ds-pbub out">Монтаж под ключ — 18 400 ₽. Уточню: квартира или офис?<span class="ds-ptm">агент · 23:47</span></div>' +
     '<span class="ds-pchip">Заявка No184 создана</span>',
     '<div class="ds-prow"><span>Заявка No184</span><b>в карточке</b></div>' +
     '<div class="ds-prow"><span>Запись</span><b>чт · 10:00</b></div>' +
     '<div class="ds-prow"><span>Счёт поставщика</span><b>проверен</b></div>',
+    '<div class="ds-prow"><span>Счёт No1847</span><b>46 800 ₽</b></div>' +
+    '<div class="ds-prow"><span>В договоре</span><b>42 000 ₽</b></div>' +
+    '<div class="ds-prow warn"><span>Расхождение — доставка не в договоре</span><b>4 800 ₽</b></div>' +
     '<span class="ds-pchip">Письмо поставщику отправлено</span>',
-    '<div class="ds-prow"><span>Четверг 10:00</span><b>слот забронирован</b></div>'
+    '<div class="ds-prow"><span>Четверг 10:00</span><b>слот забронирован</b></div>' +
+    '<div class="ds-pbub out">Напомню в среду вечером и за час до выезда.<span class="ds-ptm">агент · автоматически</span></div>'
   ];
   var proof = document.createElement('div');
   proof.className = 'ds-proof';
   document.getElementById('dsPlan').appendChild(proof);
   function showProof(i){
-    /* без заголовка-дубля: строку чек-листа, по которой только что поставлена галка, глаз уже видит */
-    proof.innerHTML = '<div class="ds-pcard">'+PROOFS[i]+'</div>';
+    proof.innerHTML = '<div class="ds-pcard"><span class="ds-pcrit">критерий: '+TASKS[i].label+'</span>'+PROOFS[i]+'</div>';
     proof.classList.add('show');
   }
 
   function planRender(){ planCnt.textContent = trows.filter(function(r){return r.classList.contains('done')}).length + '/' + trows.length; }
-  /* ── мастер-таймлайн шага 4: одна цепочка событий на обе панели.
-     Строительные строки, галка чек-листа, строка «критерий закрыт» слева и
-     артефакт-пример происходят в одном тике — разъехаться не могут. ── */
-  var MASTER=[], mtimers=[];
-  function buildMaster(){
-    MASTER=[];
-    BUILD_AT.forEach(function(at,k){ MASTER.push([at,function(){ revealLine(rows[3], BUILD_LINES, k); }]); });
-    var t = PLAN_DELAY;
-    for (var k=0;k<trows.length;k++){
-      (function(k){
-        MASTER.push([t, function(){ trows[k].className='ds-trow running'; planRender(); }]);
-        var g = t + ROW_PREP;
-        MASTER.push([g, function(){
-          trows[k].className='ds-trow done'; planRender();
-          showProof(k);
-          revealLine(rows[3], CHECK_LINES, k);
-        }]);
-        MASTER.push([g+PROOF_MS, function(){ hideProof(function(){}); }]);
-        t = g + PROOF_MS + HIDE_MS + ROW_PREP;
-      })(k);
-    }
-    MASTER.push([t+400, function(){ revealLine(rows[3], CHECK_LINES.concat([FINAL_LINE]), CHECK_LINES.length); }]);
-    MASTER.push([t+400+600, function(){ finish(); }]);
-  }
-  buildMaster();
-  function playMaster(){
-    mtimers.forEach(clearTimeout); mtimers=[];
-    MASTER.forEach(function(ev){ mtimers.push(setTimeout(ev[1], ev[0])); });
-  }
 
   /* стоп на итоге: сдача приходит с последней галкой приёмки */
   var replayBtn = document.getElementById('dsReplay');
@@ -1198,15 +1231,11 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     title.textContent = 'Итог · агент за 3 дня';
     replayBtn.hidden = false;
   }
-  function hideProof(cb){
-    proof.classList.remove('show');
-    setTimeout(cb, HIDE_MS);
-  }
   function replay(){
     replayBtn.hidden = true;
     trows.forEach(function(r){ r.className = 'ds-trow hidden'; });
     planChip.classList.remove('vis');
-    mtimers.forEach(clearTimeout); mtimers=[];
+    proof.classList.remove('show');
     planRender();
     startAil();
   }
@@ -1216,7 +1245,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     rows.forEach(function(r,i){
       r.el.className = 'ds-ail-row done';
       r.lbl.textContent = STEPS[i].label;
-      setLog(r, []);
+      setLog(r, i === STEPS.length-1 ? STEPS[3].detail : []);
     });
     total.style.visibility = 'visible';
     title.textContent = 'Итог · агент за 3 дня';
@@ -1227,18 +1256,19 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   } else {
     planRender();
     var played = false;
-    function tryStart(){
-      if (played) return;
-      var r = ail.getBoundingClientRect();
-      if (r.top < window.innerHeight*0.8 && r.bottom > 0){ played = true; startAil(); }
-    }
-    window.addEventListener('scroll', tryStart, {passive:true});
-    tryStart();
-    if ('IntersectionObserver' in window && !played){
+    if ('IntersectionObserver' in window){
       var io = new IntersectionObserver(function(entries){
         if (entries[0].isIntersecting && !played){ played = true; io.disconnect(); startAil(); }
       }, {threshold: 0.3});
       io.observe(ail);
+      /* часы ждут зрителя: пауза при скрытой вкладке или уходе секции из вьюпорта */
+      document.addEventListener('visibilitychange', function(){ document.hidden ? pauseClock() : resumeClock(); });
+      var vio = new IntersectionObserver(function(entries){
+        entries[0].isIntersecting ? resumeClock() : pauseClock();
+      }, {threshold: 0.15});
+      vio.observe(ail);
+    } else {
+      startAil();
     }
   }
 })();
