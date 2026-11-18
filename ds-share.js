@@ -28,6 +28,11 @@
     var et = encodeURIComponent(title);
 
     var sec = document.createElement('section');
+    /* ширина самовставки = контентная колонка хоста, не фиксированные 760px */
+    try {
+      var _col = document.querySelector('.wrap') || document.querySelector('main > div');
+      if (_col) sec.style.maxWidth = Math.round(_col.getBoundingClientRect().width) + 'px';
+    } catch (e) {}
     sec.id = 'ds-share';
     sec.setAttribute('aria-label', 'Поделиться исследованием');
 
@@ -50,17 +55,17 @@
     var C = dark
       ? { hair: "rgba(255,255,255,.08)", ink: "#eef2f9", sub: "#b8c3d6",
           ghostBg: "rgba(255,255,255,.10)", ghostBd: "rgba(255,255,255,.25)", ghostBdH: "rgba(255,255,255,.45)",
-          ghostHv: "#eef2f9", main: "#24368f", mainHv: "#2b3f9e", ok: "#1f7a4d", focus: "#8fa8ff" }
+          ghostHv: "#eef2f9", main: "#24368f", mainHv: "#2b3f9e", ok: "#24368f", focus: "#8fa8ff" }
       : { hair: "rgba(16,20,31,.10)", ink: "#10141f", sub: "#414a5e",
           ghostBg: "#fff", ghostBd: "rgba(16,20,31,.25)", ghostBdH: "#24368f",
-          ghostHv: "#24368f", main: "#24368f", mainHv: "#2b3f9e", ok: "#1f7a4d", focus: "#24368f" };
+          ghostHv: "#24368f", main: "#24368f", mainHv: "#2b3f9e", ok: "#24368f", focus: "#24368f" };
 
     var css = ''
-      + '#ds-share{max-width:760px;margin:0 auto;padding:36px 24px 30px;text-align:center;'
+      + '#ds-share{max-width:760px;margin:0 auto;padding:36px 24px 12px;'
       + 'font-family:"IBM Plex Sans",system-ui,Arial,sans-serif}'
       + '#ds-share .ds-sh-h{font-size:21px;font-weight:700;letter-spacing:-.01em;color:' + C.ink + ';margin:0 0 6px;text-wrap:balance}'
       + '#ds-share .ds-sh-sub{font-size:14.5px;line-height:1.5;color:' + C.sub + ';margin:0 0 18px}'
-      + '#ds-share .ds-sh-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}'
+      + '#ds-share .ds-sh-row{display:flex;flex-wrap:wrap;gap:10px}'
       + '#ds-share button,#ds-share a{display:inline-flex;align-items:center;gap:7px;'
       + 'height:44px;padding:0 18px;border-radius:999px;cursor:pointer;'
       + 'font:600 13.5px "IBM Plex Sans",system-ui,Arial,sans-serif;'
