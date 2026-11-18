@@ -835,6 +835,8 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
 .ds-ail-line.vis{opacity:1}
 .ds-ail-line .ds-n{width:16px;text-align:right;color:rgba(143,168,255,.4);flex:none;font-variant-numeric:tabular-nums}
 .ds-ail-line .ds-tx{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ds-ail-line.chk{color:var(--accent)}
+.ds-ail-line.chk .ds-tx::before{content:'✓ '}
 .ds-total{margin-top:14px;padding-top:12px;border-top:1px solid var(--hair2);display:flex;flex-direction:column;gap:6px}
 .ds-total .ds-fin{font:400 14.5px/1.55 var(--sans);color:var(--body)}
 .ds-total .ds-fin b{color:var(--accent);font-weight:500}
@@ -964,11 +966,20 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
       'бронь и напоминание — проверено',
       'отладка до закрытия всех критериев']}
   ];
-  /* шаг 4: строительные строки — по таймеру, строки проверки — в момент закрытия галки */
+  /* шаг 4: единое мастер-расписание на одних часах —
+     строительные строки в середины пауз между галками, проверки в момент галок */
   var BUILD_LINES = STEPS[3].detail.slice(0, 4);
   var CHECK_LINES = STEPS[3].detail.slice(4, 9);
   var FINAL_LINE  = STEPS[3].detail[9];
-  var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1000, ROW_PREP = 250, GAP = 200, BUILD_EVERY = 1200;
+  var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1000, ROW_PREP = 250, GAP = 200, HIDE_MS = 180, PLAN_FIRST = 350;
+  /* момент галки k от старта шага 4 = PLAN_FIRST + k*ROW_CYCLE + ROW_PREP */
+  var ROW_CYCLE = ROW_PREP + PROOF_MS + HIDE_MS + ROW_PREP;            /* 1680 мс */
+  function checkAt(k){ return PLAN_FIRST + ROW_PREP + k*ROW_CYCLE; }   /* 600 + k*1680 */
+  /* строительные строки: стек сразу, остальные — середина паузы перед соответствующей галкой */
+  var BUILD_AT = [0,
+    checkAt(1) - ROW_CYCLE/2,   /* 1440 */
+    checkAt(2) - ROW_CYCLE/2,   /* 3120 */
+    checkAt(3) - ROW_CYCLE/2];  /* 4800 */
 
   /* ── панель 1: степ-лист с часами ── */
   var list = document.getElementById('dsAilList');
@@ -1063,7 +1074,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
       setLog(rows[idx], []);
       for (var k=0;k<BUILD_LINES.length;k++){
         (function(k){
-          setTimeout(function(){ revealLine(rows[idx], BUILD_LINES, k); }, k*BUILD_EVERY);
+          setTimeout(function(){ revealLine(rows[idx], BUILD_LINES, k); }, BUILD_AT[k]);
         })(k);
       }
       startPlan();
@@ -1084,7 +1095,8 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
   }
   function revealLine(row, lines, k){
     var d = document.createElement('div');
-    d.className = 'ds-ail-line';
+    /* строка проверки — зеркало галки: акцентный цвет и префикс «✓» */
+    d.className = 'ds-ail-line' + (CHECK_LINES.indexOf(lines[k]) !== -1 ? ' chk' : '');
     d.innerHTML = '<span class="ds-n">'+(k+1)+'</span><span class="ds-tx">'+lines[k]+'</span>';
     row.track.appendChild(d);
     var n = k+1;
@@ -1179,7 +1191,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10)}
   }
   function hideProof(cb){
     proof.classList.remove('show');
-    setTimeout(cb, 180);
+    setTimeout(cb, HIDE_MS);
   }
   function replay(){
     replayBtn.hidden = true;
