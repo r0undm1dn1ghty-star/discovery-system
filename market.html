@@ -595,7 +595,7 @@ var els=[].slice.call(steps.children);
 /* цена внутри ползунка: одометр на якорях ступеней, тикает вслед за пальцем */
 var pill=document.getElementById('pval');
 var RM=false;try{RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){}
-var A=[[0,0],[25,50000],[50,60000],[75,1500000],[100,3000000]];
+var A=[[0,55000],[25,25000],[50,37500],[75,775000],[100,3000000]];
 var cur=-1,target=0,raf=0;
 function valAt(pct){
   for(var k=1;k<A.length;k++){
