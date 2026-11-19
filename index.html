@@ -477,6 +477,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   footer.site-foot .sf-legal span{padding-block:4px}
 }
 </style>
+<script src="ym-slot.js" defer></script>
 </head>
 <body>
 <header class="nav"><div class="nav-in">
@@ -719,7 +720,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
           <li><span class="n">1</span><span class="tx">3 года опыта продакт-менеджером в цифровых продуктах — исследования рынков, разработка приложений, автоматизация бизнес-процессов.</span></li>
           <li><span class="n">2</span><span class="tx">8 внедрений ИИ-агентов самозанятым и малому бизнесу — от агента по заявкам до ассистента по сменам. <a href="#cases">смотреть ↓</a></span></li>
           <li><span class="n">3</span><span class="tx">7 навыков для ИИ-агентов сделал открытыми для всех — <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">GitHub</a>.</span></li>
-          <li><span class="n">4</span><span class="tx">Раз в 2–4 дня публикую разборы рынка ИИ-агентов — <a href="https://t.me/discoverysystem" target="_blank" rel="noopener">канал с сигналами</a>.</span></li>
+          <li><span class="n">4</span><span class="tx">Раз в 2–4 дня публикую разборы рынка ИИ-агентов — публично.</span></li>
         </ol>
 
     <p class="who-clients">С кем работал: WorkWay · Chill Music Lab · NewGen Vision · VK · ВТБ</p>
@@ -920,7 +921,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 <div class="wrap">
 <p class="lbl">срок</p>
 <h2>Агент за 1–3 дня.<br><span class="dim">И он работает, а не лежит.</span></h2>
-<p class="ds-thesis">3 дня — календарь. <b>5–12 часов — работа.</b> Ниже — сколько занимает что и какие критерии агент закрывает.</p>
+<p class="ds-thesis">3 дня — календарь. <b>5–12 часов — работа.</b> С тобой — только консультация и критерии приёмки. Внедрение и отладка — моя работа.</p>
 <div class="ds-duo">
   <div>
     <span class="ds-pancap">сколько занимает что</span>
@@ -963,7 +964,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── часы внедрения (подтверждены владельцем 17.11.2026) ── */
-  var HOURS = ['1–3 ч', '1–2 ч', '10 мин', '3–8 ч'];
+  var HOURS = ['1–3 ч · вместе', '1–2 ч · твои', '10 мин', '3–8 ч · моя'];
   var HOURS_SUM = '5–12';
 
   var STEPS = [
@@ -1806,6 +1807,25 @@ footer p { margin: 2px 0; }
   });
   render(); start();
   window.__slider={go:go,index:function(){return i;},max:maxIndex,perView:perView};
+})();
+</script>
+<script>
+/* цели объектов проверки блока «кто делает» → 113187640 */
+(function(){
+function goal(n){try{if(typeof window.ym==='function'&&window.__ymId)window.ym(window.__ymId,'reachGoal',n);window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:n});}catch(e){}}
+document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('.who-facts a');
+  if(!a)return;
+  var h=a.getAttribute('href')||'';
+  if(h.indexOf('#cases')===0)goal('who_check_cases');
+  else if(h.indexOf('github')>-1)goal('who_check_github');
+},true);
+var seen=false;
+window.addEventListener('scroll',function(){
+  if(seen)return;
+  var c=document.getElementById('cases');
+  if(c&&c.getBoundingClientRect().top<window.innerHeight*0.9){seen=true;goal('who_cases_seen');}
+},{passive:true});
 })();
 </script>
 </body>

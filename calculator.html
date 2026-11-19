@@ -584,6 +584,29 @@ h2{font-size:clamp(1.35rem,5.5vw,1.7rem)}
 <script src="ym-slot.js" defer></script>
 <link rel="stylesheet" href="ds-base.css"/>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
+<style id="foot-etalon">
+/* единый футер сайта — эталон index.html */
+footer.site-foot{border-top:1px solid rgba(16,20,31,.12);margin-top:0;padding:26px 0 30px;font:400 14px/1.6 var(--sans,#10141f);color:#5c6479;background:inherit}
+footer.site-foot .sfw{width:min(1080px,calc(100% - 48px));margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px 32px;flex-wrap:wrap}
+footer.site-foot .sf-l{display:flex;align-items:center;gap:14px}
+footer.site-foot .sf-logo{height:38px;width:auto;display:block}
+footer.site-foot .sf-name{font:600 16px/1.25 var(--sans);color:#10141f;display:flex;flex-direction:column;gap:3px}
+footer.site-foot .sf-name span{font:400 13.5px/1.4 var(--mono);color:#5c6479}
+footer.site-foot .sf-c{display:flex;align-items:baseline;gap:8px 22px;flex-wrap:wrap}
+footer.site-foot .sf-c a{color:#1b2a6b;text-decoration:none}
+footer.site-foot .sf-c a:hover{text-decoration:underline}
+footer.site-foot .sf-legal{width:100%;display:flex;flex-wrap:wrap;gap:6px 32px;align-items:baseline;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(16,20,31,.08);margin-top:12px;font:400 13px/1.6 var(--mono);color:#5c6479}
+footer.site-foot .sf-legal .sf-lg{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:baseline}
+footer.site-foot .sf-legal a{color:#1b2a6b;text-decoration:none;padding-block:0}
+footer.site-foot .sf-legal a:hover{text-decoration:underline}
+@media(max-width:640px){
+  footer.site-foot .sfw{flex-direction:column;align-items:flex-start}
+  footer.site-foot .sf-c{flex-direction:column;align-items:flex-start;gap:0}
+  footer.site-foot .sf-c a{display:inline-block;padding:10px 0}
+  footer.site-foot .sf-legal{flex-direction:column;gap:2px}
+  footer.site-foot .sf-legal .sf-lg{padding:6px 0}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:8px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;position:relative;z-index:1">
@@ -2581,5 +2604,10 @@ p a {
 }
 footer p { margin: 2px 0; }
 </style>
+<footer class="site-foot"><div class="sfw">
+<div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div>
+<div class="sf-c"><a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%83.">написать лично</a><a href="https://t.me/discoverysystem" target="_blank" rel="noopener">канал с сигналами</a><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div>
+<div class="sf-legal"><span class="sf-lg"><a href="https://discovery-system.ru/oferta.html">оферта</a><a href="https://discovery-system.ru/policy.html">политика ПД</a></span><span class="sf-lg">© Discovery System, 2026 · ИНН 780627413110</span></div>
+</div></footer>
 </body>
 </html>
