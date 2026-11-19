@@ -81,8 +81,7 @@
       + '#ds-share svg{width:16px;height:16px;flex:none}'
       + '#ds-share svg.ic-fill{fill:currentColor;stroke:none}'
       + '#ds-share svg.ic-line{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}'
-      + '@media (max-width:520px){#ds-share{padding:36px 20px 32px}#ds-share .ds-sh-h{font-size:18px}}'
-    + '@media (prefers-reduced-motion:reduce){#ds-share button,#ds-share a{transition:none!important}}';
+      + '@media (prefers-reduced-motion:reduce){#ds-share button,#ds-share a{transition:none!important}}';
     var st = document.createElement('style');
     st.textContent = css;
     document.head.appendChild(st);
@@ -90,10 +89,12 @@
     var h = document.createElement('h2');
     h.className = 'ds-sh-h';
     h.textContent = 'Понравился разбор — отправь тому, кто теряет на этом деньги';
-        /* дублирующий подзаголовок снят: og:title повторяет название, которое читатель уже видел */
+    var sub = document.createElement('p');
+    sub.className = 'ds-sh-sub';
+    sub.textContent = title;
     var row = document.createElement('div');
     row.className = 'ds-sh-row';
-    sec.appendChild(h); sec.appendChild(row);
+    sec.appendChild(h); sec.appendChild(sub); sec.appendChild(row);
 
     var GOAL = 'share_research';
     function goal(kind) {
@@ -112,12 +113,24 @@
     var ICON_COPY = '<svg class="ic-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 0 0-6-6l-1.5 1.5M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 0 0 6 6l1.5-1.5"/></svg>';
     var ICON_SHARE = '<svg class="ic-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-2"/><path d="M12 3v12"/><path d="M8.5 6.5L12 3l3.5 3.5"/></svg>';
 
+    if (NATIVE && TOUCH) {
+      var bN = document.createElement('button');
+      bN.type = 'button';
+      bN.className = 'ds-sh-main';
+      bN.innerHTML = ICON_SHARE + '<span>Поделиться</span>';
+      bN.addEventListener('click', function () {
+        goal('native');
+        navigator.share({ title: title, url: url, text: title + ' — ' + url }).catch(function () {});
+      });
+      row.appendChild(bN);
+    }
+
     if (true) {
       var aTg = document.createElement('a');
       aTg.href = 'https://t.me/share/url?url=' + eu + '&text=' + et;
       aTg.target = '_blank'; aTg.rel = 'noopener';
       /* главный акцент — Telegram: залитая кнопка, когда системного шаринга нет (десктоп) */
-      aTg.className = 'ds-sh-main'; /* Telegram — единственная главная кнопка */
+      aTg.className = (NATIVE && TOUCH) ? 'ds-sh-ghost' : 'ds-sh-main';
       aTg.innerHTML = ICON_TG + '<span>Telegram</span>';
       aTg.addEventListener('click', function () { goal('tg'); });
       row.appendChild(aTg);
