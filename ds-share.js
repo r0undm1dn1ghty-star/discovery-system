@@ -61,7 +61,7 @@
           ghostHv: "#24368f", main: "#24368f", mainHv: "#2b3f9e", ok: "#24368f", focus: "#24368f" };
 
     var css = ''
-      + '#ds-share{max-width:760px;margin:0 auto;padding:36px 24px 12px;text-align:center;'
+      + '#ds-share{max-width:760px;margin:0 auto;padding:44px 24px 40px;text-align:center;'
       + 'font-family:"IBM Plex Sans",system-ui,Arial,sans-serif}'
       + '#ds-share .ds-sh-h{display:block;width:100%;max-width:none;font-size:21px;font-weight:700;letter-spacing:-.01em;color:' + C.ink + ';margin:0 0 6px;text-align:center;text-wrap:balance}'
       + '#ds-share .ds-sh-sub{display:block;width:100%;max-width:none;font-size:14.5px;line-height:1.5;color:' + C.sub + ';margin:0 0 18px;text-align:center}'
