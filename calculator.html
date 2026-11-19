@@ -607,6 +607,110 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   footer.site-foot .sf-legal .sf-lg{padding:6px 0}
 }
 </style>
+<style id="calc-align-fix">
+/* ── шапка как на главной: одна сетка с контентом, без «своего» лого ── */
+header.nav{background:rgba(15,23,48,.94)!important;border-bottom:1px solid rgba(255,255,255,.10)!important;
+  position:sticky!important;top:0;z-index:60;backdrop-filter:blur(14px)}
+header.nav .brand{color:#eef2fb!important}
+header.nav .nav-in{max-width:1140px!important;width:100%!important;margin:0 auto!important;
+  padding:8px 24px!important;gap:28px!important;display:flex!important;align-items:center!important}
+header.nav .brand{text-transform:none!important;letter-spacing:-.01em!important;
+  color:var(--ink)!important;font:500 15.5px/1 var(--disp)!important;gap:10px!important}
+header.nav .brand img{width:26px!important;height:26px!important;border-radius:6px!important}
+header.nav nav{font-size:14.5px!important;gap:22px!important;margin-left:auto!important}
+@media(max-width:900px){header.nav .nav-in{padding:12px 16px!important;gap:12px!important}}
+
+/* ── контент в ту же ширину ── */
+.wrap{max-width:1140px!important;padding:0 24px 64px!important}
+@media(max-width:900px){.wrap{padding:0 16px 48px!important}}
+.hero{padding:clamp(28px,4vw,44px) 0 clamp(26px,3.4vw,38px)!important}
+
+/* ── карточка шага: воздух по бокам, а не 96px сверху ── */
+.wiz-step{padding:clamp(22px,2.6vw,32px) clamp(22px,3vw,40px)!important;margin-bottom:20px!important}
+.ws-title{margin:0 0 8px!important}
+.ws-sub{margin:0 0 20px!important;max-width:640px!important}
+
+/* ── сетка вариантов: нечётное число не оставляет дыру ── */
+.opts,.tasks,.conns{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+.opts>*:last-child:nth-child(odd){grid-column:1/-1!important}
+/* держим две колонки: последний нечётный элемент растягивается на всю ширину — дыры нет */
+.opts>*,.tasks>*,.conns>*{height:100%!important}
+
+/* ── прогресс шагов на всю ширину карточки ── */
+.wiz-progress{width:100%!important;justify-content:space-between!important;gap:6px!important}
+.wp{flex:1 1 0!important;justify-content:center!important;min-width:0!important}
+.wp .wt{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;
+  line-height:1.15!important;text-align:center!important;hyphens:auto!important}
+.wp{padding:9px 10px!important}
+/* роль-сценарии: один тап на первом экране */
+.role-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.role-grid .auto-card{padding:16px 40px 16px 16px;min-height:104px;justify-content:center}
+.wz-morebtn{margin-top:12px;background:none;border:1px dashed var(--line2);border-radius:10px;color:var(--primary-l);font:600 14px var(--sans);padding:10px 16px;min-height:44px;cursor:pointer}
+.wz-morebtn:hover{border-color:var(--primary);background:var(--primary-dim)}
+.wz-link{background:none;border:none;color:var(--primary-l);font:600 12.5px var(--sans);cursor:pointer;padding:6px 2px;text-decoration:underline;min-height:34px}
+@media(max-width:860px){.role-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:760px){
+  .role-grid{grid-template-columns:1fr!important}
+  .wp{flex:1 1 0!important}
+  .opts,.tasks,.conns{grid-template-columns:1fr!important}
+  .wiz-step{padding:20px 18px!important}
+}
+
+/* «Спасение агента» — только если агент уже стоит */
+body:not([data-start="legacy"]) .offer-opt[data-prod="optimization"]{display:none!important}
+
+/* ── отклик на нажатие: кнопка отвечает в момент касания, а не после клика ── */
+.btn,
+button,
+.door,
+.shelf-row,
+.offer-opt,
+.card,
+.chip,
+.rcard,
+.tg-kb button,
+a.btn {
+  transition: transform .09s cubic-bezier(.22,.61,.36,1), background .18s var(--ease, ease), border-color .18s var(--ease, ease), color .15s ease;
+}
+.btn:active,
+button:active,
+.door:active,
+.shelf-row:active,
+.offer-opt:active,
+.chip:active,
+.rcard:active,
+.tg-kb button:active,
+a.btn:active {
+  transform: scale(.98);
+}
+.door:active,
+.shelf-row:active { transform: scale(.995); }
+
+/* ── фокус с клавиатуры: видно всегда ── */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #24368f;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+.hero a:focus-visible,
+.hero button:focus-visible,
+header a:focus-visible,
+header button:focus-visible { outline-color: #8fa8ff; }
+
+/* ── тап-зоны: ссылки в подписях и футере не меньше 44px ── */
+footer a,
+.quiet a,
+.pnote a,
+.src a,
+p a {
+  display: inline-block;
+  padding-block: 11px;
+}
+footer p { margin: 2px 0; }
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:8px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;position:relative;z-index:1">
@@ -2500,110 +2604,6 @@ try{ document.body.setAttribute('data-start',(typeof start!=='undefined'?start:'
      if(typeof arrangeOffers==='function') arrangeOffers(recommendProduct()); }catch(e){}
 </script>
 
-<style id="calc-align-fix">
-/* ── шапка как на главной: одна сетка с контентом, без «своего» лого ── */
-header.nav{background:rgba(15,23,48,.94)!important;border-bottom:1px solid rgba(255,255,255,.10)!important;
-  position:sticky!important;top:0;z-index:60;backdrop-filter:blur(14px)}
-header.nav .brand{color:#eef2fb!important}
-header.nav .nav-in{max-width:1140px!important;width:100%!important;margin:0 auto!important;
-  padding:8px 24px!important;gap:28px!important;display:flex!important;align-items:center!important}
-header.nav .brand{text-transform:none!important;letter-spacing:-.01em!important;
-  color:var(--ink)!important;font:500 15.5px/1 var(--disp)!important;gap:10px!important}
-header.nav .brand img{width:26px!important;height:26px!important;border-radius:6px!important}
-header.nav nav{font-size:14.5px!important;gap:22px!important;margin-left:auto!important}
-@media(max-width:900px){header.nav .nav-in{padding:12px 16px!important;gap:12px!important}}
-
-/* ── контент в ту же ширину ── */
-.wrap{max-width:1140px!important;padding:0 24px 64px!important}
-@media(max-width:900px){.wrap{padding:0 16px 48px!important}}
-.hero{padding:clamp(28px,4vw,44px) 0 clamp(26px,3.4vw,38px)!important}
-
-/* ── карточка шага: воздух по бокам, а не 96px сверху ── */
-.wiz-step{padding:clamp(22px,2.6vw,32px) clamp(22px,3vw,40px)!important;margin-bottom:20px!important}
-.ws-title{margin:0 0 8px!important}
-.ws-sub{margin:0 0 20px!important;max-width:640px!important}
-
-/* ── сетка вариантов: нечётное число не оставляет дыру ── */
-.opts,.tasks,.conns{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
-.opts>*:last-child:nth-child(odd){grid-column:1/-1!important}
-/* держим две колонки: последний нечётный элемент растягивается на всю ширину — дыры нет */
-.opts>*,.tasks>*,.conns>*{height:100%!important}
-
-/* ── прогресс шагов на всю ширину карточки ── */
-.wiz-progress{width:100%!important;justify-content:space-between!important;gap:6px!important}
-.wp{flex:1 1 0!important;justify-content:center!important;min-width:0!important}
-.wp .wt{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;
-  line-height:1.15!important;text-align:center!important;hyphens:auto!important}
-.wp{padding:9px 10px!important}
-/* роль-сценарии: один тап на первом экране */
-.role-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
-.role-grid .auto-card{padding:16px 40px 16px 16px;min-height:104px;justify-content:center}
-.wz-morebtn{margin-top:12px;background:none;border:1px dashed var(--line2);border-radius:10px;color:var(--primary-l);font:600 14px var(--sans);padding:10px 16px;min-height:44px;cursor:pointer}
-.wz-morebtn:hover{border-color:var(--primary);background:var(--primary-dim)}
-.wz-link{background:none;border:none;color:var(--primary-l);font:600 12.5px var(--sans);cursor:pointer;padding:6px 2px;text-decoration:underline;min-height:34px}
-@media(max-width:860px){.role-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
-@media(max-width:760px){
-  .role-grid{grid-template-columns:1fr!important}
-  .wp{flex:1 1 0!important}
-  .opts,.tasks,.conns{grid-template-columns:1fr!important}
-  .wiz-step{padding:20px 18px!important}
-}
-
-/* «Спасение агента» — только если агент уже стоит */
-body:not([data-start="legacy"]) .offer-opt[data-prod="optimization"]{display:none!important}
-
-/* ── отклик на нажатие: кнопка отвечает в момент касания, а не после клика ── */
-.btn,
-button,
-.door,
-.shelf-row,
-.offer-opt,
-.card,
-.chip,
-.rcard,
-.tg-kb button,
-a.btn {
-  transition: transform .09s cubic-bezier(.22,.61,.36,1), background .18s var(--ease, ease), border-color .18s var(--ease, ease), color .15s ease;
-}
-.btn:active,
-button:active,
-.door:active,
-.shelf-row:active,
-.offer-opt:active,
-.chip:active,
-.rcard:active,
-.tg-kb button:active,
-a.btn:active {
-  transform: scale(.98);
-}
-.door:active,
-.shelf-row:active { transform: scale(.995); }
-
-/* ── фокус с клавиатуры: видно всегда ── */
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible,
-[role="button"]:focus-visible {
-  outline: 2px solid #24368f;
-  outline-offset: 3px;
-  border-radius: 8px;
-}
-.hero a:focus-visible,
-.hero button:focus-visible,
-header a:focus-visible,
-header button:focus-visible { outline-color: #8fa8ff; }
-
-/* ── тап-зоны: ссылки в подписях и футере не меньше 44px ── */
-footer a,
-.quiet a,
-.pnote a,
-.src a,
-p a {
-  display: inline-block;
-  padding-block: 11px;
-}
-footer p { margin: 2px 0; }
-</style>
 <footer class="site-foot"><div class="sfw">
 <div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div>
 <div class="sf-c"><a href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81%20%D0%BF%D0%BE%20%D0%BA%D0%B0%D0%BB%D1%8C%D0%BA%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%D1%83.">написать лично</a><a href="https://t.me/discoverysystem" target="_blank" rel="noopener">канал с сигналами</a><a href="mailto:viktor.garnett@yandex.ru">viktor.garnett@yandex.ru</a></div>
