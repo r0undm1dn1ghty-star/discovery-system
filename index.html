@@ -949,10 +949,6 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
       'вперёд, после согласования критериев',
       'рублями / криптой']},
     {id:'build', label:'Внедрение и отладка', detail:[
-      'стек агента: провайдер моделей · модели',
-      'хостинг: твоё облако',
-      'база знаний',
-      'прогон на твоих задачах',
       'Голосовое клиента → расшифровал и ответил сам',
       'Сообщение клиента → ответ и заявка в карточке',
       'Сводка по бизнесу за день',
@@ -960,11 +956,9 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
       'Бронь слота и напоминание до выезда',
       'отладка до закрытия всех критериев']}
   ];
-  /* шаг 4: единое мастер-расписание на одних часах —
-     строительные строки в середины пауз между галками, проверки в момент галок */
-  var BUILD_LINES = STEPS[3].detail.slice(0, 4);
-  var CHECK_LINES = STEPS[3].detail.slice(4, 9);
-  var FINAL_LINE  = STEPS[3].detail[9];
+  /* шаг 4: в логе внедрения только закрытие критериев приёмки — строка k в момент галки k */
+  var CHECK_LINES = STEPS[3].detail.slice(0, 5);
+  var FINAL_LINE  = STEPS[3].detail[5];
   var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1000, ROW_PREP = 250, GAP = 200, HIDE_MS = 180, PLAN_FIRST = 350;
   /* шаг 2 «Критерии приёмки»: чек-лист справа формируется синхронно с логом —
      строка лога k ≈ формирование, чек-строка k проявляется с лагом TROW_LAG */
@@ -973,11 +967,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   /* момент галки k от старта шага 4 = PLAN_FIRST + k*ROW_CYCLE + ROW_PREP */
   var ROW_CYCLE = ROW_PREP + PROOF_MS + HIDE_MS + ROW_PREP;            /* 1680 мс */
   function checkAt(k){ return PLAN_FIRST + ROW_PREP + k*ROW_CYCLE; }   /* 600 + k*1680 */
-  /* строительные строки: сборка рассказывается первой и целиком —
-     стек → хостинг → база знаний → прогон; приёмка стартует только после,
-     чтобы галки не спешили впереди внедрения */
-  var BUILD_AT = [0, 700, 1400, 2100];
-  var PLAN_DELAY = 2200;   /* первая галка = PLAN_FIRST + PLAN_DELAY + ROW_PREP = 2800 */
+  var PLAN_DELAY = 200;    /* приёмка стартует сразу в начале шага 4 */
 
   /* ── панель 1: степ-лист с часами ── */
   var list = document.getElementById('dsAilList');
@@ -1124,11 +1114,6 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     /* шаг 4 «Внедрение и отладка»: журнал раскрывается по расписанию */
     var t4 = t;
     at(t4, function(){ render(t4); setLog(rows[3], [], t4); });
-    for (var k=0;k<BUILD_LINES.length;k++){
-      (function(k){
-        at(t4 + BUILD_AT[k], function(){ revealLine(rows[3], BUILD_LINES, k, t4 + BUILD_AT[k]); });
-      })(k);
-    }
     /* приёмка: галка k = running → done + артефакт + чек-строка; оверлей прячется через PROOF_MS —
        всё событиями расписания, без вложенных setTimeout */
     var R0 = t4 + PLAN_DELAY + PLAN_FIRST;  /* старт первой галки */
