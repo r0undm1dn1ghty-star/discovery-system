@@ -893,8 +893,8 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   /* шаг 4: единое мастер-расписание на одних часах —
      строительные строки в середины пауз между галками, проверки в момент галок */
   var BUILD_LINES = STEPS[3].detail.slice(0, 3);
-  var CHECK_LINES = STEPS[3].detail.slice(4, 9);
-  var FINAL_LINE  = STEPS[3].detail[9];
+  var CHECK_LINES = STEPS[3].detail.slice(3, 8);
+  var FINAL_LINE  = STEPS[3].detail[8];
   var LINE_STAG = 80, STEP_HOLD = 550, PROOF_MS = 1000, ROW_PREP = 250, GAP = 200, HIDE_MS = 180, PLAN_FIRST = 350;
   /* шаг 2 «Критерии приёмки»: чек-лист справа формируется синхронно с логом —
      строка лога k ≈ формирование, чек-строка k проявляется с лагом TROW_LAG */
