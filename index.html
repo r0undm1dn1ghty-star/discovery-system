@@ -334,10 +334,11 @@ footer a:hover{text-decoration:underline}
 .who-name b{font:500 17px/1.2 var(--disp);color:var(--ink)}
 .who-name span{font:400 14px/1.3 var(--mono);color:var(--meta)}
 .who-body{min-width:0}
-.who-list{list-style:none;margin:0 0 clamp(22px,2.6vw,30px);padding:0;border-top:1px solid var(--hair)}
-.who-list li{padding:12px 0;border-bottom:1px solid var(--hair);font-size:15.5px;line-height:1.55;color:var(--body);max-width:62ch}
-.who-list b{color:var(--ink);font-weight:500}
-.who-list a{color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor}
+.who-quote{margin:0 0 clamp(22px,2.6vw,30px);padding-left:clamp(16px,2vw,22px);border-left:2px solid var(--navy);font:500 clamp(20px,2.2vw,27px)/1.34 var(--disp);letter-spacing:-.015em;color:var(--ink);max-width:30ch}
+.who-facts{list-style:none;margin:0 0 clamp(22px,2.6vw,30px);padding:0;border-top:1px solid var(--hair)}
+.who-facts li{display:flex;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--hair)}
+.who-facts .n{flex:none;font:500 14px/1 var(--mono);color:var(--navy);font-variant-numeric:tabular-nums}
+.who-facts .tx{font-size:15.5px;line-height:1.55;color:var(--body);max-width:62ch}
 .who-no{list-style:none;margin:0 0 clamp(20px,2.4vw,26px);padding:0;display:grid;gap:8px}
 .who-no li{font-size:15.5px;line-height:1.55;color:var(--meta);padding-left:16px;position:relative;max-width:58ch}
 .who-no li::before{content:'—';position:absolute;left:0;color:var(--meta)}
@@ -1262,11 +1263,12 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   </div>
 
   <div class="who-body">
-        <ul class="who-list">
-          <li><b>7 скиллов открыто на GitHub</b> — код и процедуры, а не обещания. <a href="https://github.com/r0undm1dn1ghty-star" target="_blank" rel="noopener">открыть</a></li>
-          <li><b>8 внедрений у самозанятых и малого бизнеса</b> — заявки, учёт, контент, найм, лидген. Каждое с цифрой и способом проверки.</li>
-          <li><b>3 года продакт-менеджером в цифровых продуктах</b> — B2C и B2B: от исследования и экономики до запуска.</li>
-        </ul>
+    <figure class="who-quote">Внедряю ИИ-агента быстро, точно под сценарий, с гарантией владения сборки клиентом.</figure>
+        <ol class="who-facts">
+          <li><span class="n">1</span><span class="tx">3 года опыта продакт-менеджером цифровых продуктов.</span></li>
+          <li><span class="n">2</span><span class="tx">8 внедрений ИИ-агентов самозанятым и малому бизнесу.</span></li>
+          <li><span class="n">3</span><span class="tx">7 открытых навыков в доступе для каждого.</span></li>
+        </ol>
 
     <p class="who-clients">С кем работал: WorkWay · Chill Music Lab · NewGen Vision · VK · ВТБ</p>
 
