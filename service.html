@@ -413,6 +413,14 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   #ds-shelf .dv-h{flex-direction:column;gap:6px}
   #ds-shelf .dv-h .nm{max-width:100%}
 }
+
+/* ряд как сетка: 3 в линию на ПК, 2 на планшете, 1 на телефоне; пустых дыр по краям нет */
+#ds-shelf .row{display:grid;grid-template-columns:repeat(auto-fit,302px);justify-content:center;gap:20px;align-items:stretch}
+#ds-shelf .ticket{width:100%}
+#ds-shelf .shead .s{color:#4a5568}
+@media(max-width:700px){#ds-shelf .row{grid-template-columns:1fr}}
+#ds-shelf .agentapp{gap:5px}
+#ds-shelf .aa-ready{height:26px;min-height:26px}
 </style>
 </head>
 <body>
