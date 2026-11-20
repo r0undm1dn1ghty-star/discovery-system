@@ -23,47 +23,51 @@
 var DS_PAY = {
 
   /* ── Разовые: цифровые материалы ───────────────────────── */
-  guide:   {price:3000,  name:'Гайд «20 конфигураций»',
-            url:'https://auth.robokassa.ru/merchant/Invoice/6Ab22kNyM0WdmIJDopenSw?p=guide'},
+  guide:   {price:5000,  name:'Гайд «20 конфигураций ИИ-агентов»',
+            url:'https://auth.robokassa.ru/merchant/Invoice/s3XWNIOg3ECjBIAKRzsZPg?p=guide'},
   build:   {price:10000, name:'Персональная сборка (архитектура + гайд по установке; ставишь сам)',
             url:'https://auth.robokassa.ru/merchant/Invoice/r0tppMLGgkyzzj-YojI_6Q?p=build'},
 
-  /* ── Разовые: интеграция под ключ ───────────────────────── */
-  self:    {price:29990, name:'Интеграция: 1 процесс (заменяет ~30 часов рутины)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/xA1sStsFtkymWJ5ncjVg7A?p=self'},
-  smb:     {price:49990, name:'Интеграция: 3 процесса в одном контуре',
-            url:'https://auth.robokassa.ru/merchant/Invoice/7Hss7HLoPkaZoz3ZOfXWTw?p=smb'},
-  mid:     {price:79990, name:'Интеграция: 5+ процессов (после аудита масштаба)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/pfiPRE8DqkuXocFAUbo4og?p=mid'},
+  /* ── Разовые: внедрение под ключ ────────────────────────── */
+  self:    {price:40000, name:'Внедрение для самозанятого',
+            url:'https://auth.robokassa.ru/merchant/Invoice/QA5pR5S-y0iVDYyi4WFEeA?p=self'},
+  smb:     {price:80000, name:'Внедрение для малого бизнеса',
+            url:'https://auth.robokassa.ru/merchant/Invoice/HRzhSSbMKkSLGmM2-Mv50Q?p=smb'},
+  mid:     {price:120000,name:'Внедрение для среднего бизнеса (после аудита масштаба)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/ndY54UFqpkmMrdUkNZQc0Q?p=mid'},
 
   /* ── Разовые: дополнительные решения ───────────────────── */
-  factory_photo: {price:15000, name:'Контент-завод: фото',
-            url:'https://auth.robokassa.ru/merchant/Invoice/DkLlmgasJUSlcEP4qFsS8w?p=factory_photo'},
-  factory_video: {price:30000, name:'Контент-завод: видео',
-            url:'https://auth.robokassa.ru/merchant/Invoice/mckApiXe0kSeCp7YLTkIWw?p=factory_video'},
-  office:  {price:25000, name:'Офис ИИ-агентов (отдел из 5)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/OUoEK8kSYEWUW05bDAhlVg?p=office'},
-  optimize:{price:25000, name:'Оптимизация ИИ-агента (не работает/сломан/дорогой)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og?p=optimize'},
+  office:  {price:50000, name:'Офис ИИ-агентов (команда из 5)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/zvR1dLHiIUSPKZX2ujPfjA?p=office'},
+  rescue:  {price:25000, name:'Спасение агента (блок/бан) — переезд на связки РФ',
+            url:null},
+  optimize:{price:30000, name:'Оптимизация старого агента (аудит и доводка)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/yyQuSwHWSkSabw8ubgIvsg?p=optimize'},
+  factory_photo: {price:25000, name:'Контент-завод: фото',
+            url:'https://auth.robokassa.ru/merchant/Invoice/BwHOvk78d0m9ZU_ITFeKyw?p=factory_photo'},
+  factory_video: {price:45000, name:'Контент-завод: видео',
+            url:'https://auth.robokassa.ru/merchant/Invoice/HdROcZc5tEm6B34gVVvjcA?p=factory_video'},
 
   /* ── Алиасы ключей калькулятора (тот же товар и тот же инвойс) ── */
-  table:   {price:3000,  name:'Гайд «20 конфигураций»',
-            url:'https://auth.robokassa.ru/merchant/Invoice/6Ab22kNyM0WdmIJDopenSw?p=guide'},
-  install: {price:29990, name:'Интеграция: 1 процесс (заменяет ~30 часов рутины)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/xA1sStsFtkymWJ5ncjVg7A?p=self'},
-  optimization:{price:25000, name:'Оптимизация ИИ-агента (не работает/сломан/дорогой)',
-            url:'https://auth.robokassa.ru/merchant/Invoice/qCJpZ0vYGUaNVkfbhMj7og?p=optimize'},
+  pc:      {price:10000, name:'Персональная сборка (архитектура + гайд по установке; ставишь сам)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/r0tppMLGgkyzzj-YojI_6Q?p=build'},
+  table:   {price:5000,  name:'Гайд «20 конфигураций ИИ-агентов»',
+            url:'https://auth.robokassa.ru/merchant/Invoice/s3XWNIOg3ECjBIAKRzsZPg?p=guide'},
+  install: {price:40000, name:'Внедрение для самозанятого',
+            url:'https://auth.robokassa.ru/merchant/Invoice/QA5pR5S-y0iVDYyi4WFEeA?p=self'},
+  optimization:{price:30000, name:'Оптимизация старого агента (аудит и доводка)',
+            url:'https://auth.robokassa.ru/merchant/Invoice/yyQuSwHWSkSabw8ubgIvsg?p=optimize'},
 
   /* ── Подписки: Tribute (Robokassa не используем) ───────── */
   insights:   {price:2000,  name:'Инсайты Discovery System',
             url:'https://web.tribute.tg/s/16eU', sub:true},
-  support:    {price:15000, name:'Персональная поддержка',
+  support:    {price:20000, name:'Тех. поддержка — личное сопровождение',
             url:'https://web.tribute.tg/s/16eW', sub:true},
-  support_smb:{price:25000, name:'Поддержка: малый бизнес (до 10 человек)',
+  support_smb:{price:40000, name:'Тех. поддержка — сопровождение бизнеса',
             url:'https://web.tribute.tg/s/18R4', sub:true},
-  support_dept:{price:40000,name:'Поддержка: продуктовый отдел',
+  support_dept:{price:60000,name:'Бизнес-поддержка — продуктовый офис',
             url:'https://web.tribute.tg/s/18R9', sub:true},
-  support_year:{price:144000,name:'Годовой пакет «Персональная поддержка» (12 000 ₽/мес)',
+  support_year:{price:240000,name:'Годовой пакет «Личное сопровождение» (20 000 ₽/мес)',
             url:'https://web.tribute.tg/s/16eW', sub:true}
 };
 
