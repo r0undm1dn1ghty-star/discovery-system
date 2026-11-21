@@ -238,6 +238,17 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 }
 </style>
 <script src="ym-slot.js?v=20261120b" defer></script>
+<meta property="og:title" content="Discovery System — Канал: сигналы раньше, чем рынок замечает"/>
+<meta property="og:description" content="Канал Discovery System: факты с цифрой, источником и датой. Исследования рынка, разборы бизнес-моделей, карта смерти рынков. Вход — 0 ₽, лично — t.me/victorpinksight."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://discovery-system.ru/channel.html"/>
+<meta property="og:site_name" content="Discovery System"/>
+<style>
+/* пальцем: мелкие ссылки в подвале и финале — не меньше 40px по высоте */
+@media(max-width:700px){
+  footer a, .site-foot a, .fc-ch, .sf-c a, .sfw a{display:inline-flex;align-items:center;min-height:40px}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px">
@@ -272,7 +283,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
   <section id="deathmap-sec">
   <div class="shead">
     <h2>Карта смерти рынков</h2>
-    <p class="s">300 рынков России и 16 факторов, которые их вытесняют. Точка — рынок: зелёные живут, красные уже почти мёртвые. Наведи на точку — покажет, что это. Названия факторов скрыты намеренно.</p>
+    <p class="s">300 рынков России и 16 факторов, которые их вытесняют. Точка — рынок: зелёные живут, красные уже почти мёртвые. Наведи или тапни по точке — покажет, что это. Названия факторов скрыты намеренно.</p>
   </div>
   <div class="mapwrap">
     <canvas id="deathmap" role="img" aria-label="Граф: 300 рынков России и 16 экосистем, 1082 связи"></canvas>
@@ -554,7 +565,7 @@ setTimeout(reveal,350);
     ctx.textBaseline='middle';
     var small = W < 560;
     EATERS.forEach(function(e){
-      if(small && hv!==e) return;
+      /* на телефоне подписи нужны всегда: наведения там нет */
       if(hv && e!==hv && !(linked&&linked[e.i])) return;
       var right = e.x > W/2;
       ctx.textAlign = right ? 'left' : 'right';
@@ -574,7 +585,7 @@ setTimeout(reveal,350);
 
   var tip=document.getElementById('maptip');
   cv.addEventListener('pointermove',function(e){
-    var r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,best=-1,bd=200;
+    var r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,best=-1,rad=(W<560?34:26),bd=rad*rad;
     for(var i=0;i<N.length;i++){var dx=N[i].x-mx,dy=N[i].y-my,d2=dx*dx+dy*dy;if(d2<bd){bd=d2;best=i;}}
     hover=best;
     if(best>=0&&tip){var n=N[best];
@@ -584,6 +595,18 @@ setTimeout(reveal,350);
       tip.style.transform='translate('+Math.round(n.x+14)+'px,'+Math.round(n.y-12)+'px)';tip.hidden=false;}
     else if(tip){tip.hidden=true;}
   });
+  cv.addEventListener('pointerdown',function(e){    /* тап = наведение: на телефоне иначе подсказки нет */
+    var r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top,best=-1,rad=(W<560?38:30),bd=rad*rad;
+    for(var i=0;i<N.length;i++){var dx=N[i].x-mx,dy=N[i].y-my,d2=dx*dx+dy*dy;if(d2<bd){bd=d2;best=i;}}
+    hover=best;
+    if(best>=0&&tip){var n=N[best];
+      var st=n.st===-2?'':(n.st<0?'без оценки':'стадия '+n.st);
+      var lbl=(n.st===-2)?('давит на '+(EATERS_CNT[n.i]||0)+' рынков'):(n.sec+' · '+st);
+      tip.innerHTML='<b>'+((n.st===-2)?('фактор '+n.code):n.name)+'</b><span>'+lbl+'</span>';
+      tip.style.transform='translate('+Math.round(n.x+14)+'px,'+Math.round(n.y-12)+'px)';tip.hidden=false;
+    } else if(tip){ tip.hidden=true; }
+    if(!running) draw(0);
+  },{passive:true});
   cv.addEventListener('pointerleave',function(){hover=-1;if(tip)tip.hidden=true;});
   function start(){if(running)return;running=true;raf=requestAnimationFrame(draw);}
   function stop(){running=false;cancelAnimationFrame(raf);}
