@@ -327,7 +327,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   footer.site-foot .sf-legal span{padding-block:4px}
 }
 </style>
-<script src="ym-slot.js" defer></script>
+<script src="ym-slot.js?v=20261120b" defer></script>
 <style id="ds-shelf-css">
 #ds-shelf{font-family:var(--sans);color:#fff}
 #ds-shelf *,#ds-shelf *::before,#ds-shelf *::after{box-sizing:border-box}
@@ -454,8 +454,8 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 .hero-wrap .hero{max-width:none;padding:clamp(44px,6vw,88px) 0 clamp(40px,5.5vw,76px)}
 .hero-station{position:relative;aspect-ratio:1/1;width:100%;max-width:380px;justify-self:end;touch-action:pan-y}
 #heroCv{position:absolute;inset:0;display:block;width:100%;height:100%}
-.hs-tag{position:absolute;margin-top:-20px;transform:translate(-50%,-50%);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
-  color:#8a94ad;padding:3px 7px;border:1px solid rgba(255,255,255,.14);border-radius:6px;background:rgba(15,23,48,.72);
+.hs-tag{position:absolute;margin-top:-20px;transform:translate(-50%,-50%);font-family:var(--mono);font-size:11px;letter-spacing:.05em;
+  color:#9aa4bd;padding:3px 7px;border:1px solid rgba(255,255,255,.14);border-radius:6px;background:rgba(15,23,48,.72);
   white-space:nowrap;pointer-events:none;transition:color .2s,border-color .2s,background .2s}
 .hs-tag.on{color:#fff;border-color:rgba(143,168,255,.65);background:rgba(36,54,143,.6)}
 .hs-hint{position:absolute;left:0;right:0;bottom:-16px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(138,148,173,.75)}
@@ -1356,7 +1356,7 @@ document.documentElement.classList.add('js');
     var r = stage.getBoundingClientRect();
     W = cv.width = Math.max(1, Math.round(r.width*DPR));
     H = cv.height = Math.max(1, Math.round(r.height*DPR));
-    R = Math.min(W,H)*0.375; CX = W/2; CY = H/2;
+    R = Math.min(W,H)*0.44; CX = W/2; CY = H/2;
     twide = tags.map(function(el){ return el.offsetWidth || 0; });   /* ширины подписей — один раз на ресайз */
     draw();
   }
@@ -1375,23 +1375,23 @@ document.documentElement.classList.add('js');
   function dial(){
     /* лимб: шкала вместо «шара со свечением» — прибор, а не нейро-орб */
     ctx.lineWidth = 1*DPR;
-    ctx.beginPath(); ctx.arc(CX,CY,R*1.03,0,TAU); ctx.strokeStyle='rgba(143,168,255,.20)'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(CX,CY,R*1.03,0,TAU); ctx.strokeStyle='rgba(143,168,255,.34)'; ctx.lineWidth=1.3*DPR; ctx.stroke(); ctx.lineWidth=1*DPR;
     for (var a=0;a<360;a+=6){
       var long = (a % 30 === 0), rad = (a-90)*Math.PI/180;
-      var r1 = R*1.03, r2 = R*(long ? 1.10 : 1.065);
+      var r1 = R*1.03, r2 = R*(long ? 1.13 : 1.075);
       ctx.beginPath();
       ctx.moveTo(CX+Math.cos(rad)*r1, CY+Math.sin(rad)*r1);
       ctx.lineTo(CX+Math.cos(rad)*r2, CY+Math.sin(rad)*r2);
-      ctx.strokeStyle = long ? 'rgba(143,168,255,.42)' : 'rgba(143,168,255,.16)';
+      ctx.strokeStyle = long ? 'rgba(200,212,255,.9)' : 'rgba(143,168,255,.34)';
       ctx.stroke();
     }
-    ctx.beginPath(); ctx.arc(CX,CY,R*0.62,0,TAU); ctx.strokeStyle='rgba(143,168,255,.26)'; ctx.stroke();
-    ctx.beginPath(); ctx.arc(CX,CY,R*0.36,0,TAU); ctx.strokeStyle='rgba(169,188,255,.34)'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(CX,CY,R*0.62,0,TAU); ctx.strokeStyle='rgba(143,168,255,.38)'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(CX,CY,R*0.36,0,TAU); ctx.strokeStyle='rgba(169,188,255,.5)'; ctx.stroke();
     /* центр: перекрестие вместо залитой точки */
     var c = R*0.10;
-    ctx.strokeStyle='rgba(200,208,226,.55)';
+    ctx.strokeStyle='rgba(200,208,226,.8)';
     ctx.beginPath(); ctx.moveTo(CX-c,CY); ctx.lineTo(CX+c,CY); ctx.moveTo(CX,CY-c); ctx.lineTo(CX,CY+c); ctx.stroke();
-    ctx.beginPath(); ctx.arc(CX,CY,R*0.045,0,TAU); ctx.strokeStyle='rgba(244,247,254,.75)'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(CX,CY,R*0.05,0,TAU); ctx.strokeStyle='rgba(244,247,254,.95)'; ctx.lineWidth=1.4*DPR; ctx.stroke(); ctx.lineWidth=1*DPR;
   }
 
   function ring(rg, on){
@@ -1406,7 +1406,7 @@ document.documentElement.classList.add('js');
       }
       var base = on ? (front?.85:.40) : (front?.34:.14);
       ctx.strokeStyle = 'rgba(143,168,255,'+base.toFixed(2)+')';
-      ctx.lineWidth = (on && front ? 1.4 : 0.9)*DPR; ctx.stroke();
+      ctx.lineWidth = (on && front ? 1.6 : 1.1)*DPR; ctx.stroke();
     });
   }
 
@@ -1414,7 +1414,7 @@ document.documentElement.classList.add('js');
     NODES.map(function(n,i){ return {p: pt(RINGS[n.ri], RINGS[n.ri].mods[n.mi].a), i:i, ri:n.ri}; })
       .sort(function(a,b){ return a.p.z-b.p.z; })
       .forEach(function(it){
-        var p=it.p, near=(p.z+1)/2, on=(hover===it.i), s=(on?6:4.6)*DPR*(0.85+near*0.4);
+        var p=it.p, near=(p.z+1)/2, on=(hover===it.i), s=(on?7:5.4)*DPR*(0.85+near*0.4);
         ctx.save(); ctx.translate(p.x,p.y);
         ctx.beginPath(); ctx.roundRect(-s/2,-s/2,s,s,2*DPR);
         ctx.fillStyle = on ? '#ffffff' : 'rgba(200,208,226,'+(0.22+near*0.55).toFixed(2)+')'; ctx.fill();
@@ -1425,7 +1425,7 @@ document.documentElement.classList.add('js');
         var half = (twide[it.i] || 0)/2, cx = p.x/DPR, sw = stage.clientWidth;
         cx = Math.max(half + 2, Math.min(sw - half - 2, cx));
         tag.style.left = cx+'px'; tag.style.top = (p.y/DPR)+'px';
-        tag.style.opacity = (0.28+near*0.72).toFixed(2);
+        tag.style.opacity = (0.5+near*0.5).toFixed(2);
         tag.classList.toggle('on', on);
         tag.style.visibility = near<0.22 ? 'hidden' : 'visible';
       });
