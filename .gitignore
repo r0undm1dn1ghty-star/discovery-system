@@ -49,3 +49,7 @@ mcp-tokens/
 
 # артефакты прогонов аудита (генерируются, живут в KB)
 qa/*-report.json
+_archive/
+_backups/
+qa/
+_who-variants.html
