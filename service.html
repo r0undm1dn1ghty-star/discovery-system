@@ -511,6 +511,59 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   footer a, .site-foot a, .fc-ch, .sf-c a, .sfw a{display:inline-flex;align-items:center;min-height:40px}
 }
 </style>
+<style>
+/* ── раскрытая спецификация услуги: не окно, а разворот под рядом ── */
+#ds-shelf .ticket{cursor:pointer}
+#ds-shelf .ticket.opened{outline:2px solid rgba(125,151,255,.75);outline-offset:3px}
+#ds-shelf .spec{display:grid;grid-template-rows:0fr;transition:grid-template-rows .46s cubic-bezier(.22,1,.36,1);grid-column:1/-1;margin-top:16px}
+#ds-shelf .spec.open{grid-template-rows:1fr}
+#ds-shelf .spec-in{overflow:hidden;opacity:0;transform:translateY(-6px);transition:opacity .3s ease,transform .36s cubic-bezier(.22,1,.36,1);
+  background:#0f1730;border:1px solid rgba(125,151,255,.28);border-radius:14px;padding:20px 22px 18px;color:#eef2fb}
+#ds-shelf .spec.open .spec-in{opacity:1;transform:none}
+#ds-shelf .spec-top{display:flex;align-items:flex-start;gap:16px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:16px}
+#ds-shelf .spec-nm{font-family:var(--disp);font-weight:600;font-size:20px;line-height:1.25;letter-spacing:-.02em;flex:1}
+#ds-shelf .spec-pr{font-family:var(--disp);font-weight:600;font-size:20px;color:#8fa8ff;white-space:nowrap}
+#ds-shelf .spec-x{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:transparent;color:rgba(255,255,255,.75);
+  font-size:14px;cursor:pointer;flex:0 0 auto;line-height:1;display:grid;place-items:center}
+#ds-shelf .spec-x:hover{border-color:rgba(143,168,255,.6);color:#fff}
+#ds-shelf .spec-cols{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;margin-bottom:16px}
+#ds-shelf .spec-col h4{font-family:var(--mono);font-weight:500;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a94ad;margin:0 0 10px}
+#ds-shelf .spec-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+#ds-shelf .spec-col li{position:relative;padding-left:18px;font-size:13.5px;line-height:1.45;color:rgba(238,242,251,.88)}
+#ds-shelf .spec-col li::before{content:"";position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:2px;background:rgba(125,151,255,.55)}
+#ds-shelf .spec-col.crit li::before{background:rgba(52,209,122,.75)}
+#ds-shelf .spec-col ul.crit li::before{background:rgba(52,209,122,.8)}
+#ds-shelf .spec-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+#ds-shelf .spec-meta div{background:#121a36;border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:9px 11px}
+#ds-shelf .spec-meta small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:4px}
+#ds-shelf .spec-meta b{font-size:12.5px;font-weight:500;line-height:1.35}
+#ds-shelf .spec-up{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;font-size:12.5px;color:rgba(238,242,251,.72);margin:0 0 14px}
+#ds-shelf .spec-up span{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#8a94ad}
+#ds-shelf .spec-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+#ds-shelf .spec-go{background:#24368f;color:#fff;border-radius:10px;padding:12px 18px;font-size:13.5px;font-weight:500;text-decoration:none}
+#ds-shelf .spec-go:hover{background:#2d439f}
+#ds-shelf .spec-alt{font-family:var(--mono);font-size:11.5px;color:#a9bcff;text-decoration:none;border-bottom:1px solid rgba(169,188,255,.4);padding-bottom:2px}
+#ds-shelf .spec-alt:hover{color:#fff}
+#ds-shelf .spec-note{font-family:var(--mono);font-size:10px;color:rgba(238,242,251,.45);margin-left:auto}
+@media(max-width:760px){
+  #ds-shelf .spec-in{padding:14px 13px 13px}
+  #ds-shelf .spec-top{padding-bottom:10px;margin-bottom:12px}
+  #ds-shelf .spec-col h4{margin:0 0 7px}
+  #ds-shelf .spec-col ul{gap:5px}
+  #ds-shelf .spec-col li{font-size:12.5px;line-height:1.4;padding-left:15px}
+  #ds-shelf .spec-cols{margin-bottom:12px}
+  #ds-shelf .spec-meta{margin-bottom:12px}
+  #ds-shelf .spec-cta{gap:10px}
+  #ds-shelf .spec-top{flex-wrap:wrap;gap:8px}
+  #ds-shelf .spec-nm{font-size:17px;flex:1 1 70%}
+  #ds-shelf .spec-pr{font-size:18px}
+  #ds-shelf .spec-cols{grid-template-columns:1fr;gap:16px}
+  #ds-shelf .spec-col li{font-size:13px}
+  #ds-shelf .spec-meta{grid-template-columns:1fr}
+  #ds-shelf .spec-note{margin-left:0}
+  #ds-shelf .spec-go{width:100%;text-align:center}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px">
@@ -810,9 +863,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 </div>
 </section>
 
-<dialog class="dlg" id="dvr" aria-label="Детали услуги">
-  <div class="dv-in" id="dvrBody"></div>
-</dialog>
+
 </section>
 
 <!-- декомпозиция: что агент забирает -->
@@ -1211,55 +1262,99 @@ document.documentElement.classList.add('js');
 /* содержание карточек: что входит, срок, приёмка, один CTA */
 (function(){
   var DATA = [
-   {n:'Гайд «20 конфигураций ИИ-агентов», 5 000 ₽', items:['20 сборок ИИ-агентов на провайдерах РФ','установка и отладка по шагам','обновления конфигураций','доступ сразу после оплаты'], term:'сразу после оплаты', acc:'доступ + инструкция', cta:'Купить гайд', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%92%D0%B7%D1%8F%D0%BB%20%D0%B3%D0%B0%D0%B9%D0%B4%20%C2%AB20%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B9%C2%BB%20%E2%80%94%20%D0%BA%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%3F', href:'https://auth.robokassa.ru/merchant/Invoice/s3XWNIOg3ECjBIAKRzsZPg'},
-   {n:'Персональная сборка ИИ-агента, 10 000 ₽', items:['архитектура под твою задачу','гайд по установке и отладке под твой случай','собираешь сам, я на связи по шагам','данные и доступы остаются у тебя'], term:'24 часа с момента согласования', acc:'по твоим тестовым задачам', cta:'Заказать сборку', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%83%D1%8E%20%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D1%83%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%20%2810%20000%20%E2%82%BD%29%20%E2%80%94%20%D0%B2%D0%BE%D1%82%20%D0%BC%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A', href:'https://auth.robokassa.ru/merchant/Invoice/r0tppMLGgkyzzj-YojI_6Q'},
-   {n:'Внедрение для самозанятого, 40 000 ₽', items:['один агент: заявки, ответы, записи','подключение Авито, Telegram, календаря','обучение на твоих диалогах','работает без VPN'], term:'1–3 дня (максимум 10)', acc:'по чек-листу, критерии до старта', cta:'Оплатить внедрение', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B0%D0%BC%D0%BE%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%BE%D0%B3%D0%BE%20%2840%20000%20%E2%82%BD%29.%20%D0%9C%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A', href:'https://auth.robokassa.ru/merchant/Invoice/QA5pR5S-y0iVDYyi4WFEeA'},
-   {n:'Внедрение для малого бизнеса, 80 000 ₽', items:['до трёх процессов: заявки, CRM, таблицы','память между чатами','отчёты по расписанию','сводка в Telegram к утру'], term:'1–3 дня (максимум 10)', acc:'по чек-листу, критерии до старта', cta:'Оплатить внедрение', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D0%BC%D0%B0%D0%BB%D0%BE%D0%B3%D0%BE%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0%20%2880%20000%20%E2%82%BD%29.%20%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B%3A', href:'https://auth.robokassa.ru/merchant/Invoice/HRzhSSbMKkSLGmM2-Mv50Q'},
-   {n:'Внедрение для среднего бизнеса, 120 000 ₽', items:['5+ процессов, отдел агентов','роли, доступы, журнал действий','аудит масштаба до старта','приёмка по критериям бизнеса'], term:'до 14 дней', acc:'после аудита масштаба', cta:'Согласовать масштаб', href:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%B3%D0%BE%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0.%20%D0%9C%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%3A%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D0%B2%20%D0%B8%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%20%E2%80%94'},
-   {n:'Офис ИИ-агентов (команда из 5), 50 000 ₽', items:['пять агентов в твоём Telegram','роли: заявки, CRM, контент, отчёты, сверка','ночная смена и сводка к утру','работает по твоим правилам'], term:'1–3 дня (максимум 10)', acc:'по чек-листу ролей', cta:'Оплатить офис', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D1%84%D0%B8%D1%81%20%D0%B8%D0%B7%205%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%2850%20000%20%E2%82%BD%29.%20%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B8%3A', href:'https://auth.robokassa.ru/merchant/Invoice/zvR1dLHiIUSPKZX2ujPfjA'},
-   {n:'Спасение агента (блок/бан), 25 000 ₽', items:['переезд на связки моделей РФ','замер до/после на тех же задачах','данные, память и доступы остаются у тебя','сборка не привязана к вендору'], term:'3–10 дней', acc:'замер расхода, скорости, качества', cta:'Описать задачу', href:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%90%D0%B3%D0%B5%D0%BD%D1%82%20%D0%B7%D0%B0%D0%B1%D0%BB%D0%BE%D0%BA%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%20%2F%20%D0%BD%D0%B5%20%D0%BF%D0%BB%D0%B0%D1%82%D0%B8%D1%82%D1%81%D1%8F.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B5%D1%85%D0%B0%D1%82%D1%8C%20%D0%BD%D0%B0%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B8%20%D0%A0%D0%A4.'},
-   {n:'Оптимизация старого агента, от 30 000 ₽', items:['аудит текущего агента','критерии результата согласуем до работ','доводка: цена в месяц, скорость, расходы','старый агент не выбрасываем'], term:'5–10 дней', acc:'по согласованным критериям', cta:'Оплатить аудит 30 000 ₽', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%90%D0%B3%D0%B5%D0%BD%D1%82%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82%20%D0%BF%D0%BB%D0%BE%D1%85%D0%BE%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%B8%20%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8E%20%28%D0%BE%D1%82%2030%20000%20%E2%82%BD%29.%20%D0%A7%D1%82%D0%BE%20%D1%81%20%D0%BD%D0%B8%D0%BC%3A', href:'https://auth.robokassa.ru/merchant/Invoice/yyQuSwHWSkSabw8ubgIvsg'},
-   {n:'Тех. поддержка — личное сопровождение, 20 000 ₽/мес', items:['ответ до 4 часов в рабочие дни','правки промптов и памяти','один агент под присмотром','отчёт по сбоям'], term:'пн–сб 10:00–20:00', acc:'SLA ответа 4 часа', cta:'Оформить за 20 000 ₽', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B5%20%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%20%E2%80%94%2020%20000%20%E2%82%BD%2F%D0%BC%D0%B5%D1%81.%20%D0%92%D0%BE%D1%82%20%D0%BC%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A', href:'https://web.tribute.tg/s/16eW'},
-   {n:'Тех. поддержка — сопровождение бизнеса, 40 000 ₽/мес', items:['до трёх систем под присмотром','SLA 4 часа на сбой','вопросы по бизнесу: воронки, провалы, ниши','сводка дня к 18:00'], term:'ежемесячно', acc:'SLA 4 часа, отчёт с цифрами', cta:'Оформить за 40 000 ₽', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0%20%E2%80%94%2040%20000%20%E2%82%BD%2F%D0%BC%D0%B5%D1%81.%20%D0%A7%D1%82%D0%BE%20%D0%B2%D1%85%D0%BE%D0%B4%D0%B8%D1%82%20%D0%B8%20%D1%87%D1%82%D0%BE%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%20%D0%BE%D1%82%20%D0%BC%D0%B5%D0%BD%D1%8F%3F', href:'https://web.tribute.tg/s/18R4'},
-   {n:'Бизнес-поддержка — продуктовый офис, 60 000 ₽/мес', items:['2 направления в месяц: разведка, запуск, механика','созвон 45 минут','SLA 2 часа','артефакты: отчёт, чеклист, таблица'], term:'ежемесячно', acc:'принятые артефакты месяца', cta:'Оформить за 60 000 ₽', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BE%D1%84%D0%B8%D1%81%20%E2%80%94%2060%20000%20%E2%82%BD%2F%D0%BC%D0%B5%D1%81.%20%D0%9E%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D0%BC%20%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%3F', href:'https://web.tribute.tg/s/18R9'},
-   {n:'Контент-завод: фото, 25 000 ₽', items:['12 постов в неделю','план тем на месяц','оформление под твой стиль','приёмка пачкой'], term:'первая пачка — 3 дня', acc:'пачкой по плану тем', cta:'Запустить завод', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82-%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%20%D1%84%D0%BE%D1%82%D0%BE%20%2825%20000%20%E2%82%BD%29.%20%D0%9D%D0%B8%D1%88%D0%B0%20%D0%B8%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%3A', href:'https://auth.robokassa.ru/merchant/Invoice/BwHOvk78d0m9ZU_ITFeKyw'},
-   {n:'Контент-завод: видео, 45 000 ₽', items:['ролик каждый день','нарезка, монтаж, озвучка','на согласование пачкой','без съёмочной команды'], term:'первый ролик — 5 дней', acc:'пачкой по плану', cta:'Запустить завод', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82-%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%20%2845%20000%20%E2%82%BD%29.%20%D0%9D%D0%B8%D1%88%D0%B0%20%D0%B8%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%3A', href:'https://auth.robokassa.ru/merchant/Invoice/HdROcZc5tEm6B34gVVvjcA'},
-   {n:'Калькулятор цены владения, 0 ₽', items:['считает владение по статьям','модели, сервер, подключения, бэкапы','по твоей ставке часа','без заявки и регистрации'], term:'сразу', acc:'—', cta:'Открыть калькулятор', href:'calculator.html'},
-   {n:'Канал с сигналами и разборами, 0 ₽', items:['сигналы рынка ИИ-агентов','разборы и инструменты','без оплаты'], term:'каждый день', acc:'—', cta:'Открыть канал', href:'channel.html'}
+   {n:'Гайд «20 конфигураций ИИ-агентов», 5 000 ₽', crit:['находишь свою задачу в оглавлении за пару минут', 'ставишь сборку за вечер — без VPN и зарубежных карт', 'после установки агент отвечает на тестовый запрос'], up:'сборка под твою задачу (10 000) — доплатишь разницу', items:['20 сборок ИИ-агентов на провайдерах РФ','установка и отладка по шагам','обновления конфигураций','доступ сразу после оплаты'], term:'сразу после оплаты', acc:'доступ + инструкция', cta:'Купить гайд', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%92%D0%B7%D1%8F%D0%BB%20%D0%B3%D0%B0%D0%B9%D0%B4%20%C2%AB20%20%D0%BA%D0%BE%D0%BD%D1%84%D0%B8%D0%B3%D1%83%D1%80%D0%B0%D1%86%D0%B8%D0%B9%C2%BB%20%E2%80%94%20%D0%BA%D0%B0%D0%BA%20%D0%BF%D0%BE%D0%BB%D1%83%D1%87%D0%B8%D1%82%D1%8C%20%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%3F', href:'https://auth.robokassa.ru/merchant/Invoice/s3XWNIOg3ECjBIAKRzsZPg'},
+   {n:'Персональная сборка ИИ-агента, 10 000 ₽', crit:['архитектура описана под твою задачу, а не общая', 'проходишь установку по шагам и доходишь до работающего агента', 'на твоей тестовой задаче результат тебя устраивает'], up:'внедрение для самозанятого (40 000) — доплатишь разницу', items:['архитектура под твою задачу','гайд по установке и отладке под твой случай','собираешь сам, я на связи по шагам','данные и доступы остаются у тебя'], term:'24 часа с момента согласования', acc:'по твоим тестовым задачам', cta:'Заказать сборку', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%B5%D1%80%D1%81%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D1%83%D1%8E%20%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D1%83%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%20%2810%20000%20%E2%82%BD%29%20%E2%80%94%20%D0%B2%D0%BE%D1%82%20%D0%BC%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A', href:'https://auth.robokassa.ru/merchant/Invoice/r0tppMLGgkyzzj-YojI_6Q'},
+   {n:'Внедрение для самозанятого, 40 000 ₽', crit:['одна рутина уходит агенту целиком', 'тест на твоих реальных заявках проходит при тебе', 'данные и доступы остаются на твоём железе'], up:'внедрение для малого бизнеса (80 000), когда процессов станет больше', items:['один агент: заявки, ответы, записи','подключение Авито, Telegram, календаря','обучение на твоих диалогах','работает без VPN'], term:'1–3 дня (максимум 10)', acc:'по чек-листу, критерии до старта', cta:'Оплатить внедрение', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B0%D0%BC%D0%BE%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%BE%D0%B3%D0%BE%20%2840%20000%20%E2%82%BD%29.%20%D0%9C%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A', href:'https://auth.robokassa.ru/merchant/Invoice/QA5pR5S-y0iVDYyi4WFEeA'},
+   {n:'Внедрение для малого бизнеса, 80 000 ₽', crit:['до трёх процессов работают без тебя', 'заявки из Авито и форм падают в CRM без рук', 'приёмка по твоим сценариям, чек-лист подписан до старта'], up:'средний бизнес (120 000) — после аудита масштаба', items:['до трёх процессов: заявки, CRM, таблицы','память между чатами','отчёты по расписанию','сводка в Telegram к утру'], term:'1–3 дня (максимум 10)', acc:'по чек-листу, критерии до старта', cta:'Оплатить внедрение', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D0%BC%D0%B0%D0%BB%D0%BE%D0%B3%D0%BE%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0%20%2880%20000%20%E2%82%BD%29.%20%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D1%8B%3A', href:'https://auth.robokassa.ru/merchant/Invoice/HRzhSSbMKkSLGmM2-Mv50Q'},
+   {n:'Внедрение для среднего бизнеса, 120 000 ₽', crit:['сначала аудит масштаба: процессы, нагрузка, интеграции', 'пять и больше процессов с общей памятью', 'критерии приёмки зафиксированы письменно до старта'], items:['5+ процессов, отдел агентов','роли, доступы, журнал действий','аудит масштаба до старта','приёмка по критериям бизнеса'], term:'до 14 дней', acc:'после аудита масштаба', cta:'Согласовать масштаб', href:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B2%D0%BD%D0%B5%D0%B4%D1%80%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B4%D0%BB%D1%8F%20%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%B3%D0%BE%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0.%20%D0%9C%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%3A%20%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%BE%D0%B2%20%D0%B8%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%20%E2%80%94'},
+   {n:'Офис ИИ-агентов (команда из 5), 50 000 ₽', crit:['пять агентов с ролями: приём, продажи, операции, отчёты, контроль', 'одна память и общий контекст между ними', 'видно, кто что сделал, в одном окне'], up:'поддержка офиса (от 20 000 ₽/мес)', items:['пять агентов в твоём Telegram','роли: заявки, CRM, контент, отчёты, сверка','ночная смена и сводка к утру','работает по твоим правилам'], term:'1–3 дня (максимум 10)', acc:'по чек-листу ролей', cta:'Оплатить офис', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D1%84%D0%B8%D1%81%20%D0%B8%D0%B7%205%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%2850%20000%20%E2%82%BD%29.%20%D0%97%D0%B0%D0%B4%D0%B0%D1%87%D0%B8%3A', href:'https://auth.robokassa.ru/merchant/Invoice/zvR1dLHiIUSPKZX2ujPfjA'},
+   {n:'Спасение агента (блок/бан), 25 000 ₽', crit:['агент снова отвечает — проверка на твоём сценарии', 'переезд на связки РФ: без VPN и зарубежных платежей', 'данные и история переезжают вместе с агентом'], up:'оптимизация (от 30 000) — чтобы не сломалось снова', items:['переезд на связки моделей РФ','замер до/после на тех же задачах','данные, память и доступы остаются у тебя','сборка не привязана к вендору'], term:'3–10 дней', acc:'замер расхода, скорости, качества', cta:'Описать задачу', href:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%90%D0%B3%D0%B5%D0%BD%D1%82%20%D0%B7%D0%B0%D0%B1%D0%BB%D0%BE%D0%BA%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%20%2F%20%D0%BD%D0%B5%20%D0%BF%D0%BB%D0%B0%D1%82%D0%B8%D1%82%D1%81%D1%8F.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B5%D1%85%D0%B0%D1%82%D1%8C%20%D0%BD%D0%B0%20%D1%81%D0%B2%D1%8F%D0%B7%D0%BA%D0%B8%20%D0%A0%D0%A4.'},
+   {n:'Оптимизация старого агента, от 30 000 ₽', crit:['замер до и после: расход, скорость, качество ответов', 'стоимость владения падает — цифры в отчёте', 'список узких мест, которые остались, — честно'], up:'поддержка (от 20 000 ₽/мес) — держать результат', items:['аудит текущего агента','критерии результата согласуем до работ','доводка: цена в месяц, скорость, расходы','старый агент не выбрасываем'], term:'5–10 дней', acc:'по согласованным критериям', cta:'Оплатить аудит 30 000 ₽', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%90%D0%B3%D0%B5%D0%BD%D1%82%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82%20%D0%BF%D0%BB%D0%BE%D1%85%D0%BE%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%B8%20%D0%BE%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8E%20%28%D0%BE%D1%82%2030%20000%20%E2%82%BD%29.%20%D0%A7%D1%82%D0%BE%20%D1%81%20%D0%BD%D0%B8%D0%BC%3A', href:'https://auth.robokassa.ru/merchant/Invoice/yyQuSwHWSkSabw8ubgIvsg'},
+   {n:'Тех. поддержка — личное сопровождение, 20 000 ₽/мес', crit:['вопрос по агенту закрывается в тот же день', 'правки и починки веду я, а не ты', 'отмена в любой месяц, без штрафа'], up:'сопровождение бизнеса (40 000 ₽/мес), когда контуров станет больше', items:['ответ до 4 часов в рабочие дни','правки промптов и памяти','один агент под присмотром','отчёт по сбоям'], term:'пн–сб 10:00–20:00', acc:'SLA ответа 4 часа', cta:'Оформить за 20 000 ₽', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B5%20%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%20%E2%80%94%2020%20000%20%E2%82%BD%2F%D0%BC%D0%B5%D1%81.%20%D0%92%D0%BE%D1%82%20%D0%BC%D0%BE%D1%8F%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%3A', href:'https://web.tribute.tg/s/16eW'},
+   {n:'Тех. поддержка — сопровождение бизнеса, 40 000 ₽/мес', crit:['держу несколько контуров: заявки, отчёты, интеграции', 'инцидент разбирается до причины, а не замазывается', 'раз в месяц отчёт: что сделано и что дальше'], up:'продуктовый офис (60 000 ₽/мес) — решения, а не только починка', items:['до трёх систем под присмотром','SLA 4 часа на сбой','вопросы по бизнесу: воронки, провалы, ниши','сводка дня к 18:00'], term:'ежемесячно', acc:'SLA 4 часа, отчёт с цифрами', cta:'Оформить за 40 000 ₽', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0%20%E2%80%94%2040%20000%20%E2%82%BD%2F%D0%BC%D0%B5%D1%81.%20%D0%A7%D1%82%D0%BE%20%D0%B2%D1%85%D0%BE%D0%B4%D0%B8%D1%82%20%D0%B8%20%D1%87%D1%82%D0%BE%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%20%D0%BE%D1%82%20%D0%BC%D0%B5%D0%BD%D1%8F%3F', href:'https://web.tribute.tg/s/18R4'},
+   {n:'Бизнес-поддержка — продуктовый офис, 60 000 ₽/мес', crit:['агенты получают продуктовые решения, а не только починку', 'раз в месяц разбор метрик и гипотез', 'план работ на месяц вперёд'], items:['2 направления в месяц: разведка, запуск, механика','созвон 45 минут','SLA 2 часа','артефакты: отчёт, чеклист, таблица'], term:'ежемесячно', acc:'принятые артефакты месяца', cta:'Оформить за 60 000 ₽', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%BE%D0%B2%D1%8B%D0%B9%20%D0%BE%D1%84%D0%B8%D1%81%20%E2%80%94%2060%20000%20%E2%82%BD%2F%D0%BC%D0%B5%D1%81.%20%D0%9E%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D0%BC%20%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%3F', href:'https://web.tribute.tg/s/18R9'},
+   {n:'Контент-завод: фото, 25 000 ₽', crit:['первая пачка кадров за 3 дня', 'фото под твои площадки, а не абстрактная красота', 'правки в рамках согласованного стиля'], up:'видео (45 000) — тот же стиль, другой формат', items:['12 постов в неделю','план тем на месяц','оформление под твой стиль','приёмка пачкой'], term:'первая пачка — 3 дня', acc:'пачкой по плану тем', cta:'Запустить завод', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82-%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%20%D1%84%D0%BE%D1%82%D0%BE%20%2825%20000%20%E2%82%BD%29.%20%D0%9D%D0%B8%D1%88%D0%B0%20%D0%B8%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%3A', href:'https://auth.robokassa.ru/merchant/Invoice/BwHOvk78d0m9ZU_ITFeKyw'},
+   {n:'Контент-завод: видео, 45 000 ₽', crit:['первый ролик за 5 дней', 'монтаж, титры, обложка — готово к публикации', 'стиль зафиксирован, дальше серия в том же виде'], items:['ролик каждый день','нарезка, монтаж, озвучка','на согласование пачкой','без съёмочной команды'], term:'первый ролик — 5 дней', acc:'пачкой по плану', cta:'Запустить завод', alt:'https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D0%BE%D0%BD%D1%82%D0%B5%D0%BD%D1%82-%D0%B7%D0%B0%D0%B2%D0%BE%D0%B4%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE%20%2845%20000%20%E2%82%BD%29.%20%D0%9D%D0%B8%D1%88%D0%B0%20%D0%B8%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%3A', href:'https://auth.robokassa.ru/merchant/Invoice/HdROcZc5tEm6B34gVVvjcA'},
+   {n:'Калькулятор цены владения, 0 ₽', crit:['за минуту видишь рутину в рублях и часах', 'считает на твоих числах, без регистрации', 'показывает, что заберёт агент, а что останется'], items:['считает владение по статьям','модели, сервер, подключения, бэкапы','по твоей ставке часа','без заявки и регистрации'], term:'сразу', acc:'—', cta:'Открыть калькулятор', href:'calculator.html'},
+   {n:'Канал с сигналами и разборами, 0 ₽', crit:['каждый пост с цифрой, источником и датой', 'разборы провалов, а не только успехов', 'подписка бесплатная, отписка в один клик'], items:['сигналы рынка ИИ-агентов','разборы и инструменты','без оплаты'], term:'каждый день', acc:'—', cta:'Открыть канал', href:'channel.html'}
   ];
-  var dv = document.getElementById('dvr'), body = document.getElementById('dvrBody');
-  var tickets = [].slice.call(document.querySelectorAll('.ticket'));
-  tickets.forEach(function(t, i){
-    if (t.tagName === 'A') return;  /* карточки-ссылки уходят на страницу, окно не открывают */
-    t.setAttribute('role','button');
-    t.setAttribute('tabindex','0');
-    t.setAttribute('aria-haspopup','dialog');
-    t.dataset.idx = i;
-    function open(){
-      var d = DATA[i]; if (!d) return;
-      body.innerHTML =
-        '<button class="dv-x" aria-label="Закрыть" onclick="document.getElementById(\'dvr\').close()">✕</button>' +
-        '<div class="dv-h"><span class="nm">' + d.n.split(', ')[0] + '</span><span class="pr">' + d.n.split(', ').slice(1).join(', ') + '</span></div>' +
-        '<ul>' + d.items.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>' +
-        '<div class="dv-meta"><div><small>СРОК</small><b>' + d.term + '</b></div><div><small>ПРИЁМКА</small><b>' + d.acc + '</b></div></div>' +
-        '<a class="dv-cta" href="' + d.href + '">' + d.cta + '<span>→</span></a>' +
-        (d.alt ? '<a class="dv-alt" href="' + d.alt + '">или сначала обсудить задачу →</a>' : '') +
-        '<div class="dv-note">Цена и срок фиксируются до старта · оплата вперёд — после согласования критериев приёмки</div>';
-      dv.showModal();
-      var r = t.getBoundingClientRect(), m = dv.getBoundingClientRect();
-      var dx = (r.left + r.width/2) - (m.left + m.width/2), dy = (r.top + r.height/2) - (m.top + m.height/2);
-      dv.animate([{transform:'translate(' + dx + 'px,' + dy + 'px) scale(.9)', opacity:0}, {transform:'none', opacity:1}], {duration:260, easing:'cubic-bezier(.22,1,.36,1)'});
+
+  /* ── спецификация услуги: раскрывается под рядом, контекст остаётся ── */
+  var tickets = [].slice.call(document.querySelectorAll('#ds-shelf .ticket'));
+  var curPanel = null, curCard = null;
+
+  function closePanel(){
+    if (!curPanel) return;
+    var pnl = curPanel, card = curCard;
+    pnl.classList.remove('open');
+    if (card) card.classList.remove('opened');
+    curPanel = null; curCard = null;
+    setTimeout(function(){ if (pnl && pnl.parentNode && !pnl.classList.contains('open')) pnl.parentNode.removeChild(pnl); }, 460);
+  }
+
+  function openPanel(card, d){
+    if (curCard === card) { closePanel(); return; }
+    closePanel();
+    var row = card.closest('.row');
+    var pnl = document.createElement('div');
+    pnl.className = 'spec';
+    pnl.innerHTML =
+      '<div class="spec-in">' +
+        '<div class="spec-top">' +
+          '<div class="spec-nm">' + d.n.split(', ')[0] + '</div>' +
+          '<div class="spec-pr">' + d.n.split(', ').slice(1).join(', ') + '</div>' +
+          '<button class="spec-x" type="button" aria-label="Свернуть">✕</button>' +
+        '</div>' +
+        '<div class="spec-cols">' +
+          '<div class="spec-col"><h4>что входит</h4><ul>' + d.items.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
+          '<div class="spec-col"><h4>как поймёшь, что сработало</h4><ul class="crit">' + (d.crit||[]).map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul></div>' +
+        '</div>' +
+        '<div class="spec-meta">' +
+          '<div><small>срок</small><b>' + d.term + '</b></div>' +
+          '<div><small>приёмка</small><b>' + d.acc + '</b></div>' +
+        '</div>' +
+        (d.up ? '<div class="spec-up"><span>следующий шаг</span>' + d.up + '</div>' : '') +
+        '<div class="spec-cta">' +
+          '<a class="btn btn-p spec-go" href="' + d.href + '">' + d.cta + ' →</a>' +
+          (d.alt ? '<a class="spec-alt" href="' + d.alt + '">или сначала обсудить →</a>' : '') +
+          '<span class="spec-note">цена и срок фиксируются до старта</span>' +
+        '</div>' +
+      '</div>';
+    row.parentNode.insertBefore(pnl, row.nextSibling);
+    card.classList.add('opened');
+    curPanel = pnl; curCard = card;
+    pnl.querySelector('.spec-x').addEventListener('click', closePanel);
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ pnl.classList.add('open'); }); });
+    /* если панель ушла за нижний край — подтягиваем её в кадр, но не дёргаем без нужды */
+    setTimeout(function(){
+      var r = pnl.getBoundingClientRect();
+      if (r.bottom > window.innerHeight - 24 || r.top < 64) {
+        pnl.scrollIntoView({behavior:'smooth', block: window.innerWidth < 760 ? 'center' : 'nearest'});
+      }
+    }, 260);
+  }
+
+  tickets.forEach(function(card, i){
+    if (card.tagName === 'A') return;        /* карточки-ссылки уходят на страницу */
+    card.setAttribute('role','button');
+    card.setAttribute('tabindex','0');
+    card.setAttribute('aria-expanded','false');
+    var d = DATA[i];
+    function toggle(e){
+      if (e && e.target.closest && e.target.closest('.cv-sl')) return;   /* ползунок не раскрывает */
+      var willOpen = !card.classList.contains('opened');
+      openPanel(card, d);
+      card.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
     }
-    t.addEventListener('click', function(e){
-      if (e.target.closest('.cv-sl')) return;   /* ползунок не открывает окно */
-      open();
-    });
-    t.addEventListener('keydown', function(e){
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(e); }
+      if (e.key === 'Escape') closePanel();
     });
   });
-  dv.addEventListener('click', function(e){ if (e.target === dv) dv.close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closePanel(); });
 })();
+
 </script>
 
 <script>
