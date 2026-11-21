@@ -419,12 +419,12 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 #ds-shelf .row{display:grid;grid-template-columns:repeat(auto-fit,302px);justify-content:center;gap:20px;align-items:stretch}
 #ds-shelf .ticket{width:100%}
 #ds-shelf .shead .s{color:#4a5568}
-@media(max-width:700px){#ds-shelf .row{grid-template-columns:1fr}}
+@media(max-width:700px){#ds-shelf .row{grid-template-columns:minmax(0,1fr)}}
 #ds-shelf .agentapp{gap:5px}
 #ds-shelf .aa-ready{height:26px;min-height:26px}
 #ds-shelf .sec.off,#ds-shelf .sec.off *{animation-play-state:paused !important}
 #ds-shelf .sec-4 .row{grid-template-columns:repeat(2,302px)}
-@media(max-width:700px){#ds-shelf .sec-4 .row{grid-template-columns:1fr}}
+@media(max-width:700px){#ds-shelf .sec-4 .row{grid-template-columns:minmax(0,1fr)}}
 #ds-shelf a.ticket{text-decoration:none;color:inherit}
 </style>
 <style>
@@ -470,6 +470,35 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 </style>
 <style>
 .hero-wrap h1{font-size:clamp(28px,3vw,44px);line-height:1.07;letter-spacing:-.028em;max-width:23ch}
+</style>
+<style>
+#ds-shelf .ticket{min-width:0}
+#ds-shelf .row>*{min-width:0}
+#ds-shelf .mq{overflow:hidden}
+#ds-shelf .mq-track{min-width:0}
+</style>
+<style>
+/* мобильный воздух: секции и плашки не должны дышать через силу */
+@media(max-width:700px){
+  #ds-shelf .shead{padding:0 2px;margin-bottom:18px}
+  #ds-shelf .shead h2{font-size:23px;line-height:1.18;margin-bottom:8px}
+  #ds-shelf .shead .s{font-size:14px;line-height:1.55}
+  #ds-shelf .sec{padding:16px 14px 18px;border-radius:16px;margin-bottom:26px}
+  #ds-shelf .row{gap:18px}
+  #ds-shelf .slab{font-size:17px;margin:2px 0 14px 0;gap:10px}
+  #ds-shelf .slab em{font-size:11px}
+  #ds-shelf .stage{padding:16px 16px 0}
+  #ds-shelf .plate{padding:15px 16px 17px}
+  #ds-shelf .plate .nm{font-size:16.5px;line-height:1.25}
+  #ds-shelf .plate .pr{font-size:29px;margin-top:6px}
+}
+@media(min-width:701px){
+  #ds-shelf .sec-4 .row{grid-template-columns:repeat(2,360px)}
+}
+</style>
+<style>
+#ds-shelf .chipsflow{gap:4px}
+#ds-shelf .chipsflow span{padding:2px 6px}
 </style>
 </head>
 <body>
@@ -1343,14 +1372,26 @@ document.documentElement.classList.add('js');
     return {x: CX + x2, y: CY - y1, z: z2/(R*1.15)};
   }
 
-  function core(){
-    var g = ctx.createRadialGradient(CX-R*0.28, CY-R*0.3, R*0.05, CX, CY, R*0.95);
-    g.addColorStop(0,'rgba(143,168,255,.22)'); g.addColorStop(.55,'rgba(36,54,143,.34)'); g.addColorStop(1,'rgba(15,23,48,0)');
-    ctx.beginPath(); ctx.arc(CX,CY,R*0.95,0,TAU); ctx.fillStyle=g; ctx.fill();
+  function dial(){
+    /* лимб: шкала вместо «шара со свечением» — прибор, а не нейро-орб */
     ctx.lineWidth = 1*DPR;
-    ctx.beginPath(); ctx.arc(CX,CY,R*0.62,0,TAU); ctx.strokeStyle='rgba(143,168,255,.28)'; ctx.stroke();
-    ctx.beginPath(); ctx.arc(CX,CY,R*0.36,0,TAU); ctx.strokeStyle='rgba(169,188,255,.42)'; ctx.stroke();
-    ctx.beginPath(); ctx.arc(CX,CY,R*0.17,0,TAU); ctx.fillStyle='rgba(244,247,254,.92)'; ctx.fill();
+    ctx.beginPath(); ctx.arc(CX,CY,R*1.03,0,TAU); ctx.strokeStyle='rgba(143,168,255,.20)'; ctx.stroke();
+    for (var a=0;a<360;a+=6){
+      var long = (a % 30 === 0), rad = (a-90)*Math.PI/180;
+      var r1 = R*1.03, r2 = R*(long ? 1.10 : 1.065);
+      ctx.beginPath();
+      ctx.moveTo(CX+Math.cos(rad)*r1, CY+Math.sin(rad)*r1);
+      ctx.lineTo(CX+Math.cos(rad)*r2, CY+Math.sin(rad)*r2);
+      ctx.strokeStyle = long ? 'rgba(143,168,255,.42)' : 'rgba(143,168,255,.16)';
+      ctx.stroke();
+    }
+    ctx.beginPath(); ctx.arc(CX,CY,R*0.62,0,TAU); ctx.strokeStyle='rgba(143,168,255,.26)'; ctx.stroke();
+    ctx.beginPath(); ctx.arc(CX,CY,R*0.36,0,TAU); ctx.strokeStyle='rgba(169,188,255,.34)'; ctx.stroke();
+    /* центр: перекрестие вместо залитой точки */
+    var c = R*0.10;
+    ctx.strokeStyle='rgba(200,208,226,.55)';
+    ctx.beginPath(); ctx.moveTo(CX-c,CY); ctx.lineTo(CX+c,CY); ctx.moveTo(CX,CY-c); ctx.lineTo(CX,CY+c); ctx.stroke();
+    ctx.beginPath(); ctx.arc(CX,CY,R*0.045,0,TAU); ctx.strokeStyle='rgba(244,247,254,.75)'; ctx.stroke();
   }
 
   function ring(rg, on){
@@ -1365,7 +1406,7 @@ document.documentElement.classList.add('js');
       }
       var base = on ? (front?.85:.40) : (front?.34:.14);
       ctx.strokeStyle = 'rgba(143,168,255,'+base.toFixed(2)+')';
-      ctx.lineWidth = (on && front ? 1.8 : 1)*DPR; ctx.stroke();
+      ctx.lineWidth = (on && front ? 1.4 : 0.9)*DPR; ctx.stroke();
     });
   }
 
@@ -1373,7 +1414,7 @@ document.documentElement.classList.add('js');
     NODES.map(function(n,i){ return {p: pt(RINGS[n.ri], RINGS[n.ri].mods[n.mi].a), i:i, ri:n.ri}; })
       .sort(function(a,b){ return a.p.z-b.p.z; })
       .forEach(function(it){
-        var p=it.p, near=(p.z+1)/2, on=(hover===it.i), s=(on?7:5.2)*DPR*(0.8+near*0.45);
+        var p=it.p, near=(p.z+1)/2, on=(hover===it.i), s=(on?6:4.6)*DPR*(0.85+near*0.4);
         ctx.save(); ctx.translate(p.x,p.y);
         ctx.beginPath(); ctx.roundRect(-s/2,-s/2,s,s,2*DPR);
         ctx.fillStyle = on ? '#ffffff' : 'rgba(200,208,226,'+(0.22+near*0.55).toFixed(2)+')'; ctx.fill();
@@ -1392,7 +1433,7 @@ document.documentElement.classList.add('js');
 
   function draw(){
     ctx.clearRect(0,0,W,H);
-    core();
+    dial();
     for (var i=0;i<RINGS.length;i++) ring(RINGS[i], hover>=0 && NODES[hover].ri===i);
     modules();
   }

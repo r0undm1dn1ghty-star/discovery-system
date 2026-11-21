@@ -1,49 +1,94 @@
 /* ============================================================
    ГНЕЗДО СЧЁТЧИКОВ — discovery-system.ru
-   Активен счётчик 113187640 (создан Виктором 29.09.2026,
-   webvisor + clickmap). Действует на все 17 страниц.
-   Второй счётчик (если появится) — добавить блок по образцу
-   ниже; window.__ymId = основной счётчик для целей goal().
+   Счётчик 113187640 (создан 29.09.2026, webvisor + clickmap).
+   Стартует ТОЛЬКО после согласия на cookie: до него поднимается
+   заглушка window.ym, чтобы goal() на страницах не падал.
    ============================================================ */
 
-/* ===== НАЧАЛО ГНЕЗДА ===== */
-
-/* Yandex.Metrika counter — 113187640 */
-(function(m,e,t,r,i,k,a){
-    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113187640', 'ym');
-
-ym(113187640, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-/* /Yandex.Metrika counter */
-
-/* ===== КОНЕЦ ГНЕЗДА ===== */
-
-/* Основной счётчик для целей goal(): cta_calculator, tg_click,
-   personal_calc, funnel_view → идут в 113187640. */
 window.__ymId = 113187640;
 
-/* ── Куки-нотис (одна строка, внизу слева; закрытие пишется в localStorage) ── */
 (function(){
-  try{
-    if (localStorage.getItem('ds-cookie-ok')) return;
+  var KEY = 'ds-cookie';                 /* 'all' | 'essential' */
+  var choice = null;
+  try { choice = localStorage.getItem(KEY); } catch(e){}
+
+  window.ym = window.ym || function(){ (window.ym.a = window.ym.a || []).push(arguments); };
+
+  function startCounter(){
+    if (window.__ymStarted) return;
+    window.__ymStarted = 1;
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113187640', 'ym');
+
+    ym(113187640, 'init', {
+      ssr:true, webvisor:true, clickmap:true, ecommerce:'dataLayer',
+      referrer: document.referrer, url: location.href,
+      accurateTrackBounce:true, trackLinks:true
+    });
+  }
+
+  if (choice === 'all') { startCounter(); }
+
+  /* ── плашка: карточка снизу справа; на телефоне — лист во всю ширину ── */
+  function showNotice(){
+    if (choice) return;
+
+    var css = document.createElement('style');
+    css.textContent = [
+      '#ds-cookie{position:fixed;right:20px;bottom:20px;z-index:900;width:min(360px,calc(100vw - 40px));',
+      'background:#fff;border:1px solid rgba(16,20,31,.09);border-radius:14px;',
+      'box-shadow:0 22px 48px -26px rgba(16,20,31,.45);padding:18px 18px 16px;',
+      'font-family:"IBM Plex Sans",system-ui,sans-serif;color:#10141f;',
+      'opacity:0;transform:translateY(10px);transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1)}',
+      '#ds-cookie.in{opacity:1;transform:none}',
+      '#ds-cookie .ck-t{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.12em;',
+      'text-transform:uppercase;color:#8a94ad;margin:0 0 8px}',
+      '#ds-cookie .ck-x{font-size:13.5px;line-height:1.55;color:#414a5e;margin:0 0 14px}',
+      '#ds-cookie .ck-x a{color:#24368f;text-decoration:underline;text-underline-offset:2px}',
+      '#ds-cookie .ck-row{display:flex;gap:8px;align-items:center}',
+      '#ds-cookie button{border-radius:9px;font:500 13px/1 "IBM Plex Sans",sans-serif;padding:11px 14px;cursor:pointer;border:1px solid transparent}',
+      '#ds-cookie .ck-yes{background:#24368f;color:#fff;flex:1}',
+      '#ds-cookie .ck-yes:hover{background:#1b2a6b}',
+      '#ds-cookie .ck-no{background:#fff;border-color:rgba(16,20,31,.16);color:#414a5e}',
+      '#ds-cookie .ck-no:hover{border-color:rgba(16,20,31,.32);color:#10141f}',
+      '#ds-cookie button:focus-visible{outline:2px solid #7d97ff;outline-offset:2px}',
+      '@media(max-width:560px){#ds-cookie{left:12px;right:12px;bottom:12px;width:auto;padding:16px}',
+      '#ds-cookie .ck-row{flex-direction:column-reverse;align-items:stretch}',
+      '#ds-cookie button{width:100%;padding:13px 14px;font-size:13.5px}}',
+      '@media(prefers-reduced-motion:reduce){#ds-cookie{transition:none;transform:none;opacity:1}}'
+    ].join('');
+    document.head.appendChild(css);
+
     var b = document.createElement('div');
-    b.id = 'ds-cookie-note';
-    b.style.cssText = 'position:fixed;left:16px;bottom:16px;z-index:9999;max-width:340px;'
-      + 'background:#111524;border:1px solid rgba(255,255,255,.14);border-radius:6px;'
-      + 'padding:10px 14px;font:400 12.5px/1.5 "IBM Plex Sans",system-ui,sans-serif;'
-      + 'color:#b8c3d6;box-shadow:0 4px 18px rgba(0,0,0,.35)';
-    b.innerHTML = 'Сайт использует cookie и Яндекс.Метрику для статистики. '
-      + '<a href="/policy.html" style="color:#8fa8ff;text-decoration:underline">Политика</a>';
-    var x = document.createElement('button');
-    x.textContent = 'понятно';
-    x.style.cssText = 'margin-left:10px;background:none;border:1px solid rgba(255,255,255,.25);'
-      + 'border-radius:6px;color:#e8ecf4;font:600 12.5px "IBM Plex Sans",sans-serif;'
-      + 'padding:12px 16px;min-height:44px;min-width:44px;cursor:pointer';
-    x.onclick = function(){ try{localStorage.setItem('ds-cookie-ok','1');}catch(e){} b.remove(); };
-    b.appendChild(x);
+    b.id = 'ds-cookie';
+    b.setAttribute('role','dialog');
+    b.setAttribute('aria-live','polite');
+    b.setAttribute('aria-label','Cookie и статистика');
+    b.innerHTML = '<p class="ck-t">cookie</p>'
+      + '<p class="ck-x">Считаю статистику через Яндекс.Метрику — чтобы видеть, какие разделы читают. '
+      + 'Без этого сайт работает так же. <a href="/policy.html">Политика</a></p>'
+      + '<div class="ck-row">'
+      + '<button type="button" class="ck-yes">Принять</button>'
+      + '<button type="button" class="ck-no">Только необходимые</button>'
+      + '</div>';
+
+    function close(val){
+      choice = val;
+      try { localStorage.setItem(KEY, val); } catch(e){}
+      if (val === 'all') startCounter();
+      b.classList.remove('in');
+      setTimeout(function(){ if (b.parentNode) b.parentNode.removeChild(b); }, 260);
+    }
+    b.querySelector('.ck-yes').addEventListener('click', function(){ close('all'); });
+    b.querySelector('.ck-no').addEventListener('click', function(){ close('essential'); });
     document.body.appendChild(b);
-  }catch(e){}
+    requestAnimationFrame(function(){ b.classList.add('in'); });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showNotice);
+  else showNotice();
 })();
