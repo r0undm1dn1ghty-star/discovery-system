@@ -39,26 +39,26 @@ window.__ymId = 113187640;
 
     var css = document.createElement('style');
     css.textContent = [
-      '#ds-cookie{position:fixed;right:20px;bottom:20px;z-index:900;width:min(360px,calc(100vw - 40px));',
+      '#ds-cookie{position:fixed;left:20px;bottom:20px;z-index:900;width:min(340px,calc(100vw - 40px));',
       'background:#fff;border:1px solid rgba(16,20,31,.09);border-radius:14px;',
-      'box-shadow:0 22px 48px -26px rgba(16,20,31,.45);padding:18px 18px 16px;',
+      'box-shadow:0 20px 44px -26px rgba(16,20,31,.42);padding:13px 15px 13px;',
       'font-family:"IBM Plex Sans",system-ui,sans-serif;color:#10141f;',
       'opacity:0;transform:translateY(10px);transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1)}',
       '#ds-cookie.in{opacity:1;transform:none}',
-      '#ds-cookie .ck-t{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.12em;',
-      'text-transform:uppercase;color:#8a94ad;margin:0 0 8px}',
-      '#ds-cookie .ck-x{font-size:13.5px;line-height:1.55;color:#414a5e;margin:0 0 14px}',
+      '#ds-cookie .ck-t{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;',
+      'text-transform:uppercase;color:#98a1b5;margin:0 0 6px}',
+      '#ds-cookie .ck-x{font-size:13px;line-height:1.45;color:#3c4557;margin:0 0 12px}',
       '#ds-cookie .ck-x a{color:#24368f;text-decoration:underline;text-underline-offset:2px}',
-      '#ds-cookie .ck-row{display:flex;gap:8px;align-items:center}',
-      '#ds-cookie button{border-radius:9px;font:500 13px/1 "IBM Plex Sans",sans-serif;padding:11px 14px;cursor:pointer;border:1px solid transparent}',
-      '#ds-cookie .ck-yes{background:#24368f;color:#fff;flex:1}',
+      '#ds-cookie .ck-row{display:flex;gap:8px;align-items:stretch}',
+      '#ds-cookie button{border-radius:8px;font:500 12.5px/1 "IBM Plex Sans",sans-serif;padding:0 12px;height:36px;cursor:pointer;border:1px solid transparent;white-space:nowrap}',
+      '#ds-cookie .ck-yes{background:#24368f;color:#fff;flex:1 1 auto}',
       '#ds-cookie .ck-yes:hover{background:#1b2a6b}',
-      '#ds-cookie .ck-no{background:#fff;border-color:rgba(16,20,31,.16);color:#414a5e}',
+      '#ds-cookie .ck-no{background:#fff;border-color:rgba(16,20,31,.18);color:#3c4557;flex:0 0 auto}',
       '#ds-cookie .ck-no:hover{border-color:rgba(16,20,31,.32);color:#10141f}',
       '#ds-cookie button:focus-visible{outline:2px solid #7d97ff;outline-offset:2px}',
-      '@media(max-width:560px){#ds-cookie{left:12px;right:12px;bottom:12px;width:auto;padding:16px}',
-      '#ds-cookie .ck-row{flex-direction:column-reverse;align-items:stretch}',
-      '#ds-cookie button{width:100%;padding:13px 14px;font-size:13.5px}}',
+      '@media(max-width:560px){#ds-cookie{left:12px;right:12px;bottom:12px;width:auto;padding:14px}',
+      '#ds-cookie .ck-row{flex-direction:row}',
+      '#ds-cookie button{height:40px;font-size:13px}}',
       '@media(prefers-reduced-motion:reduce){#ds-cookie{transition:none;transform:none;opacity:1}}'
     ].join('');
     document.head.appendChild(css);
@@ -69,8 +69,8 @@ window.__ymId = 113187640;
     b.setAttribute('aria-live','polite');
     b.setAttribute('aria-label','Cookie и статистика');
     b.innerHTML = '<p class="ck-t">cookie</p>'
-      + '<p class="ck-x">Считаю статистику через Яндекс.Метрику — чтобы видеть, какие разделы читают. '
-      + 'Без этого сайт работает так же. <a href="/policy.html">Политика</a></p>'
+      + '<p class="ck-x">Метрика нужна, чтобы видеть, какие разделы читают. Сайт работает и без неё. '
+      + '<a href="/policy.html">Политика</a></p>'
       + '<div class="ck-row">'
       + '<button type="button" class="ck-yes">Принять</button>'
       + '<button type="button" class="ck-no">Только необходимые</button>'
