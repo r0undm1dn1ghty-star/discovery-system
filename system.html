@@ -1064,34 +1064,34 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .st.own{color:#7ff0b6;border:1px solid rgba(52,209,122,.4);background:rgba(52,209,122,.12)}
 .dsstack .st.rent{color:#a9bcff;border:1px solid rgba(143,168,255,.45);background:rgba(143,168,255,.12)}
 
-#panel{padding:clamp(56px,8vw,104px) 0 0}
-#panel .phead h2{margin:0;font-size:clamp(26px,3.4vw,40px);line-height:1.08;max-width:22ch}
-#panel .phead p{margin:14px 0 0;max-width:64ch;font-size:15.5px;line-height:1.55;color:#8a94ad}
-#panel .pgrid{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(18px,3vw,44px);align-items:start;margin-top:clamp(24px,3.6vw,36px)}
-#panel .agent{border:1px solid rgba(255,255,255,.14);border-radius:16px;background:linear-gradient(165deg,rgba(40,54,96,.6),rgba(18,26,50,.9));padding:18px 20px 16px}
-#panel .ahead{display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.09);font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#8fa8ff}
-#panel .adot{width:7px;height:7px;border-radius:50%;background:#34d17a;box-shadow:0 0 0 3px rgba(52,209,122,.15)}
-#panel .ahead i{margin-left:auto;font-style:normal;color:#7ff0b6;font-size:10.5px}
-#panel .awhat{margin:12px 0 0;font-size:14.8px;line-height:1.5;color:#dfe6f8}
-#panel .astats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0}
-#panel .astats div{border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:9px 10px}
-#panel .astats dt{font:500 9.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#8a94ad}
-#panel .astats dd{margin:6px 0 0;font:500 22px/1 var(--mono);color:#f2f6ff}
-#panel .alog{list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:8px}
-#panel .alog li{font-size:13.4px;line-height:1.45;color:#c3cfef}
-#panel .alog b{font:500 11px/1 var(--mono);color:#8fa8ff;margin-right:8px}
-#panel .levels{list-style:none;margin:0;padding:0}
-#panel .levrow{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:clamp(10px,1.6vw,18px);align-items:center;padding:clamp(15px,1.9vw,19px) 0;border-bottom:1px solid rgba(255,255,255,.08)}
-#panel .levrow:first-child{border-top:1px solid rgba(255,255,255,.08)}
-#panel .lv{font:500 11px/1 var(--mono);color:#8fa8ff}
-#panel .lt b{display:block;font-size:15.5px;color:#f2f6ff;font-weight:500}
-#panel .lt i{display:block;font-style:normal;font-size:13.4px;line-height:1.45;color:#9aa6c8;margin-top:3px;max-width:62ch}
-#panel .sw{display:inline-flex;justify-self:end;padding:3px;gap:2px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.05)}
-#panel .sw button{border:0;background:none;cursor:pointer;border-radius:999px;padding:6px 11px;font:500 11px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:#aab7db;transition:background .16s,color .16s}
-#panel .sw button:hover{color:#dfe6f8}
-#panel .sw button.on{background:#8fa8ff;color:#0f1730}
-@media(max-width:900px){#panel .pgrid{grid-template-columns:1fr}}
-@media(max-width:520px){#panel .levrow{grid-template-columns:22px 1fr;row-gap:8px}#panel .sw{grid-column:2;justify-self:start}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:900px){}
+@media(max-width:520px){}
 </style>
 </head>
 <body>
@@ -1124,7 +1124,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
       <div class="palco">
         <header class="testa" data-testa>
           <p class="testa__nota">Discovery System · один агент и пять уровней контроля</p>
-          <h1 class="testa__titolo" data-titolo>Один агент, <span>пять уровней контроля</span></h1>
+          <h2 class="testa__titolo" data-titolo>Один агент, <span>пять уровней контроля</span></h2>
         </header>
 
         <div class="scena" data-scena>
@@ -1208,37 +1208,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
       </div>
     </section>
 
-<section id="panel">
-<div class="wrap">
-<div class="phead">
-  <h2>Один агент. Пять уровней контроля.</h2>
-  <p>Слева — сам агент. Справа — пять мест, где решаешь ты: на каждом уровне переключатель «агент» или «сам». Так выглядит пульт у запущенной сборки.</p>
-</div>
-<div class="pgrid">
-  <article class="agent">
-    <header class="ahead"><span class="adot"></span><b>агент · Discovery</b><i>работает</i></header>
-    <p class="awhat">Принимает заявки, отвечает по прайсу, пишет в CRM и сводит отчёты.</p>
-    <dl class="astats">
-      <div><dt>заявок за сутки</dt><dd>13</dd></div>
-      <div><dt>действий</dt><dd>2</dd></div>
-      <div><dt>ошибок</dt><dd>0</dd></div>
-    </dl>
-    <ul class="alog">
-      <li><b>08:04</b> сводка отправлена</li>
-      <li><b>21:40</b> заявка разобрана, черновик ответа готов</li>
-      <li><b>22:16</b> счёт на юрлицо ждёт тебя</li>
-    </ul>
-  </article>
-  <ul class="levels">
-<li class="levrow"><span class="lv">1</span><div class="lt"><b>сценарии</b><i>7 задач: заявки, ответы по прайсу, утренняя сводка, напоминания, сверки, отчёты, эскалация</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент" class="on">агент</button><button type="button" data-on="сам">сам</button></div></li>
-<li class="levrow"><span class="lv">2</span><div class="lt"><b>память</b><i>412 записей: прайс, история переписки, факты о клиентах, 30 дней логов</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент" class="on">агент</button><button type="button" data-on="сам">сам</button></div></li>
-<li class="levrow"><span class="lv">3</span><div class="lt"><b>доступы</b><i>Telegram, Авито, amoCRM, Google Sheets — чтение и запись</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент">агент</button><button type="button" data-on="сам" class="on">сам</button></div></li>
-<li class="levrow"><span class="lv">4</span><div class="lt"><b>модель и лимиты</b><i>DeepSeek V3 · потолок 3 000 ₽ в месяц · стоп при превышении</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент">агент</button><button type="button" data-on="сам" class="on">сам</button></div></li>
-<li class="levrow"><span class="lv">5</span><div class="lt"><b>контроль</b><i>журнал действий, отчёт в 8:00, чек-лист приёмки, кнопка стоп</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент">агент</button><button type="button" data-on="сам" class="on">сам</button></div></li>
-  </ul>
-</div>
-</div>
-</section>
+
 
 <section id="tools">
 <div class="wrap">
@@ -1859,10 +1829,7 @@ if (REDUCED) {
 
 <script>
 (function(){
-  document.querySelectorAll('#panel .sw').forEach(function(g){
-    g.querySelectorAll('button').forEach(function(b){
-      b.addEventListener('click', function(){
-        g.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); });
+  document.querySelectorAll(');
         b.classList.add('on');
       });
     });
