@@ -249,6 +249,17 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
   footer a, .site-foot a, .fc-ch, .sf-c a, .sfw a{display:inline-flex;align-items:center;min-height:40px}
 }
 </style>
+<style>
+/* выравнивание по одной колонке: герой не уже секций */
+.hero{max-width:none}
+.hero>*{max-width:74ch}
+#why,#deathmap-sec,#signals,#inside,#profile{padding-top:clamp(56px,7vw,88px)}
+@media(max-width:700px){
+  section{padding-top:clamp(40px,9vw,56px)}
+  .hero{padding:clamp(56px,11vw,80px) 0 clamp(40px,8vw,56px)}
+  .wrap{padding:0 clamp(18px,5vw,24px)}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px">

@@ -268,6 +268,35 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://discovery-system.ru/system.html"/>
 <meta property="og:site_name" content="Discovery System"/>
+<style>
+/* иконки инструментов */
+#tools .tool{grid-template-columns:34px minmax(0,1fr) 150px;align-items:start;gap:4px 16px}
+#tools .tic{grid-row:1/span 3;grid-column:1;display:flex;align-items:flex-start;padding-top:1px;color:var(--navy)}
+#tools .tic svg{display:block}
+#tools .tool-name{grid-column:2}
+#tools .tool-what{grid-column:2}
+#tools .tool-note{grid-column:2}
+#tools .tool-m{grid-column:3;grid-row:1}
+@media(max-width:640px){
+ #tools .tool{grid-template-columns:28px minmax(0,1fr);gap:2px 12px}
+ #tools .tic svg{width:20px;height:20px}
+ #tools .tool-m{grid-column:2;grid-row:2;text-align:left;font-size:20px;margin-top:4px}
+ #tools .tool-what,#tools .tool-note{grid-column:2}
+}
+</style>
+<style>
+/* три дня */
+#days{padding:clamp(56px,8vw,96px) 0}
+#days .shead{margin-bottom:clamp(20px,3vw,32px)}
+#days .dline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,2.4vw,28px);counter-reset:d}
+#days .dline li{position:relative;padding:22px 22px 24px;border:1px solid var(--hair);border-radius:14px;background:#fff}
+#days .dn{display:inline-block;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--navy);border-radius:999px;padding:6px 10px}
+#days h3{margin:14px 0 8px;font-size:clamp(19px,2.2vw,24px);line-height:1.2}
+#days p{margin:0;font-size:15.5px;line-height:1.55;color:var(--body)}
+#days .dget{margin-top:14px;padding-top:12px;border-top:1px solid var(--hair);font:400 13px/1.45 var(--mono);color:#5a6480}
+#days .dfoot{margin-top:clamp(18px,2.4vw,26px);font:500 15px/1.5 var(--mono);color:var(--navy)}
+@media(max-width:640px){#days .dline{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -289,43 +318,34 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 </div>
 
 <div class="wrap">
-<section class="demo-center">
+<section class="days" id="days">
+<div class="wrap">
 <div class="shead">
-<div>
-<p class="kicker fx" style="margin-bottom:12px">демо · смена агента</p>
-<h2 class="fx">Выбери агента — посмотри его действия</h2>
+<h2>Три дня — и агент у тебя на руках</h2>
+<p class="s">Не демо и не «посмотрите, как бывает». Каждый день заканчивается вещью, которую можно открыть, потрогать и проверить без меня.</p>
 </div>
-<p class="s fx demo-lede">Агент пишет тебе в Telegram — так выглядит работа. Три сценария из живых сборок: кликни и смотри смену. Ты пишешь — агент отвечает.</p>
+<ol class="dline">
+<li class="fx">
+  <span class="dn">день 1</span>
+  <h3>Разбор и граница</h3>
+  <p>Смотрю, где у тебя уходит время и что агент реально забирает. Пишу <b>критерии приёмки</b> — что считается «работает», на каких твоих примерах проверяем. Цена и срок называются до оплаты.</p>
+  <p class="dget">на руках: карта процессов · 5–7 критериев приёмки · цена и срок</p>
+</li>
+<li class="fx">
+  <span class="dn">день 2</span>
+  <h3>Сборка на твоих данных</h3>
+  <p>Ставлю на твоё железо или твой сервер, подключаю каналы, настраиваю память и правила. Прогоняю <b>твои же примеры</b> — не выдуманные: те заявки, письма и таблицы, что лежат у тебя сейчас.</p>
+  <p class="dget">на руках: работающий агент · журнал прогонов · список того, что пока не умеет</p>
+</li>
+<li class="fx">
+  <span class="dn">день 3</span>
+  <h3>Приёмка и передача</h3>
+  <p>Идём по критериям: где не прошёл — правлю при тебе. Потом отдаю <b>всё</b>: код, доступы, инструкцию на одну страницу. Дальше агент живёт у тебя, а не в моей подписке.</p>
+  <p class="dget">на руках: код и доступы · инструкция · чек-лист приёмки с подписями</p>
+</li>
+</ol>
+<p class="dfoot">Не прошло по критерию — не считается сделанным. Это записано до старта, а не после.</p>
 </div>
-<div class="demo-tabs fx" role="tablist" aria-label="Сценарии смены агента">
-<button type="button" class="demo-tab" role="tab" id="tab-requests" aria-controls="tgPanel" data-asm="requests" aria-selected="true">Заявки не ждут утра</button>
-<button type="button" class="demo-tab" role="tab" id="tab-morning" aria-controls="tgPanel" data-asm="morning" aria-selected="false" tabindex="-1">Утром — план и риски</button>
-<button type="button" class="demo-tab" role="tab" id="tab-radar" aria-controls="tgPanel" data-asm="radar" aria-selected="false" tabindex="-1">Радар ниш · топ-20</button>
-</div>
-<div class="tg fx" id="tgPanel" role="tabpanel" aria-labelledby="tab-requests" aria-label="Смена агента в Telegram">
-<div class="head">
-<span class="hic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span>
-<span class="av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
-<div class="t"><b>Ночной агент · Discovery</b><span id="tgStatus">онлайн</span></div>
-<span class="hright" aria-hidden="true">
-<span class="hic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg></span>
-<span class="hic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></span>
-</span>
-</div>
-<div class="wall" id="tgStream" role="log" aria-live="polite" aria-label="Смена агента в Telegram">
-<!-- снимок смены без JS: заявки не ждут утра — тот же сценарий, что играет демо -->
-<div class="daychip">Вторник · вечер, две заявки</div>
-<div class="cmsg out">Добрый день! Сколько стоит работа и когда сможет приехать специалист?<span class="cap">клиент · заявка 1</span><span class="bm"><span class="tm">21:40</span><svg class="tks" viewBox="0 0 18 10" aria-hidden="true"><path d="M1 5l3 3 6.5-7" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 7.5L10 9l7-8" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-<div class="syschip"><span class="lrow"><span class="st">21:40</span><span>заявка 1 разобрана: услуга, район, срочность</span></span><span class="lrow"><span class="st">22:15</span><span>заявка 2 разобрана: тот же прайс, другой район</span></span></div>
-<div class="cmsg in"><span class="bt">Черновики готовы</span>Цена по прайсу и свободные слоты в каждом. Отправляешь одной кнопкой — правила ответа задал ты.<span class="bm"><span class="tm">22:16</span></span></div>
-<div class="typing" id="tgTyping" hidden aria-label="печатает"><i></i><i></i><i></i></div>
-</div>
-<div class="foot" aria-hidden="true"><span class="field">Сообщение</span></div>
-</div>
-<p class="demo-result fx" id="demoResult"></p>
-<div class="cta fx demo-cta" id="demo"><a class="btn btn-g" id="demoCta" href="https://t.me/victorpinksight?text=%D0%92%D0%B8%D0%BA%D1%82%D0%BE%D1%80%2C%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82.%20%D0%9D%D0%B0%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5%20%C2%AB%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%C2%BB%20%D0%BF%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D0%BB%20%D1%81%D1%86%D0%B5%D0%BD%D0%B0%D1%80%D0%B8%D0%B9%20%C2%AB%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%BD%D0%B5%20%D0%B6%D0%B4%D1%83%D1%82%20%D1%83%D1%82%D1%80%D0%B0%C2%BB%20%E2%80%94%20%D1%85%D0%BE%D1%87%D1%83%20%D0%B0%D0%B3%D0%B5%D0%BD%D1%82%D0%B0%2C%20%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%B9%20%D0%B2%D0%B5%D1%87%D0%B5%D1%80%D0%BE%D0%BC%20%D1%80%D0%B0%D0%B7%D0%B1%D0%B8%D1%80%D0%B0%D0%B5%D1%82%20%D0%B2%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B8%D0%B5%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BA%D0%B8%20%D0%B8%20%D0%BA%20%D1%83%D1%82%D1%80%D1%83%20%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D1%82%20%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B2%D0%B8%D0%BA%D0%B8%20%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D0%BE%D0%B2.%20%D0%A1%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0%3A%20discovery-system.ru%2Fsystem.html">Обсудить такую смену — сообщение уже собрано</a></div>
-<button type="button" class="demo-again fx" id="tgAgain">повторить смену</button>
-<p class="demo-cap fx">Сценарии — из живых сборок: заявки вечером, утренняя сводка, радар ниш. Сводка приходит сама — отправляешь ты.</p>
 </section>
 
 <section>
@@ -401,36 +421,42 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 <p class="s">Каждый — из рабочей разведки. Клонируй и прогоняй сам: в репозитории EVAL.md и места, где инструмент проигрывает.</p>
 </div>
 <ul class="tools"><li class="tool fx">
+  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M8.6,9.6a3.6,3.6 0 0 0 0,4.8"/><path d="M6,6.9a7.5,7.5 0 0 0 0,10.2"/><path d="M15.4,9.6a3.6,3.6 0 0 1 0,4.8"/><path d="M18,6.9a7.5,7.5 0 0 1 0,10.2"/></svg></span>
   <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener">ds_content-radar</a>
   <p class="tool-what">Какой контент залетает в нише: собирает топ X, Instagram, TikTok и YouTube, находит аутлаеров и складывает план на неделю.</p>
   <p class="tool-m">~150 ₽/мес</p>
   <p class="tool-note">4 платформы · без Apify</p>
 </li>
 <li class="tool fx">
+  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4,5h16l-6,7v6l-4,2v-8z"/><circle cx="12" cy="9" r="1.2" fill="currentColor" stroke="none"/></svg></span>
   <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener">ds_warm-lead-parser</a>
   <p class="tool-what">Кто прямо сейчас ищет бота: собирает заявки и оценивает готовность платить по шкале 0–100.</p>
   <p class="tool-m">63% точности</p>
   <p class="tool-note">57 каналов · 7 бирж · EVAL.md</p>
 </li>
 <li class="tool fx">
+  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6,3.5h9l4,4V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6,20z"/><path d="M15,3.5V8h4"/><path d="M9,14.5l2,2 3.5-4"/></svg></span>
   <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_market-evidence" target="_blank" rel="noopener">ds_market-evidence</a>
   <p class="tool-what">Проверяет утверждения бизнес-модели по рынку: источник и дата у каждого вывода, отдельно — что данные не доказывают.</p>
   <p class="tool-m">5/5 вердиктов</p>
   <p class="tool-note">ютуб- и маркет-проверки</p>
 </li>
 <li class="tool fx">
+  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M11,4.5c2.4,2 2.4,11 0,13"/><path d="M4.5,11h13"/><path d="M15.8,15.8L20,20"/></svg></span>
   <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_geo-audit" target="_blank" rel="noopener">ds_geo-audit</a>
   <p class="tool-what">Готовность сайта к AI-поиску: 92 правила, score 0–100 за десять минут — что чинить первым.</p>
   <p class="tool-m">AUC 1,00</p>
   <p class="tool-note">92 правила · score 0–100</p>
 </li>
 <li class="tool fx">
+  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4,20V10"/><path d="M9.3,20V6"/><path d="M14.6,20v-7"/><path d="M20,20V4"/><path d="M3,20h18"/></svg></span>
   <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_pnl-check" target="_blank" rel="noopener">ds_pnl-check</a>
   <p class="tool-what">Сверяет прибыль, дебиторку и долг с деньгами: где подтверждено, а где догадка.</p>
   <p class="tool-m">3/3 ловушки</p>
   <p class="tool-note">модель ВШЭ + Cloud.ru</p>
 </li>
 <li class="tool fx">
+  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12,12a1.6,1.6 0 0 1 3.2,0 3.4,3.4 0 0 1-6.8,0 5.2,5.2 0 0 1 10.4,0 7,7 0 0 1-14,0 8.8,8.8 0 0 1 17.6,0"/></svg></span>
   <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_spiral-maturity" target="_blank" rel="noopener">ds_spiral-maturity</a>
   <p class="tool-what">Зрелость компании под ИИ и формат внедрения, который переживёт старт: 10 минут, 7 уровней.</p>
   <p class="tool-m">4/4 ступени</p>
