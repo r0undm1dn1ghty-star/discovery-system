@@ -777,268 +777,6 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 }
 </style>
 <style>
-/* Animorio «Layered app screen» · https://animorio.com — лицензия: можно на своих и клиентских сайтах, нельзя перепродавать */
-.dsstack{
-  --fondo: #f4f4f5;
-  --inchiostro: #0b0b0f;
-  --secondario: #71717a;
-  --tenue: #a1a1aa;
-  --linea: #e4e4e7;
-  --carta: #ffffff;
-  --accento: #4f46e5;
-  
-  --w: min(62vw, 88vh, 600px);
-  --h: calc(var(--w) * 0.62);
-  --u: calc(var(--w) / 100);
-}
-.dsstack *{ box-sizing: border-box; margin: 0; padding: 0; }
-.dsstack{ background: var(--fondo); }
-.dsstack{
-  background: var(--fondo);
-  color: var(--inchiostro);
-  font-family: 'Mona Sans Variable', 'Mona Sans', system-ui, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-.dsstack .corsa{ position: relative; height: 320vh; }
-.dsstack .palco{
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  justify-items: center;
-  align-items: center;
-  padding: min(6vh, 40px) 16px min(4vh, 28px);
-}
-.dsstack .testa{ text-align: center; }
-.dsstack .testa__nota{
-  font-size: clamp(10px, min(1.6vw, 2.4vh), 13px);
-  letter-spacing: 0.02em;
-  color: var(--secondario);
-  margin-bottom: 0.5em;
-}
-.dsstack .testa__titolo{
-  font-size: clamp(18px, min(4.2vw, 6vh), 44px);
-  font-weight: 620;
-  font-stretch: 112%;
-  letter-spacing: -0.025em;
-  line-height: 1.05;
-}
-.dsstack .testa__titolo span{ color: var(--secondario); font-weight: 520; }
-.dsstack .scena{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  perspective: calc(var(--w) * 2.6);
-  perspective-origin: 50% 40%;
-}
-.dsstack .pila{
-  position: relative;
-  width: var(--w);
-  height: var(--h);
-  transform-style: preserve-3d;
-}
-.dsstack .strato{
-  position: absolute;
-  inset: 0;
-  outline-offset: 0;
-  border-radius: calc(var(--u) * 2.4);
-  transform-style: preserve-3d;
-}
-.dsstack .strato--fondo{
-  background: var(--carta);
-  box-shadow: 0 0 0 1px rgba(15, 15, 30, 0.06), 0 calc(var(--u) * 2) calc(var(--u) * 6) rgba(15, 15, 30, 0.08);
-  overflow: visible;
-}
-.dsstack .fondo__griglia{
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background-image:
-    linear-gradient(rgba(79, 70, 229, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79, 70, 229, 0.08) 1px, transparent 1px);
-  background-size: calc(var(--w) / 12) calc(var(--w) / 12);
-  opacity: 0;
-}
-.dsstack .fondo__luce{
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.9) 48%, transparent 66%), radial-gradient(120% 90% at 85% 0%, rgba(79, 70, 229, 0.07), transparent 60%);
-  background-size: 260% 100%, 100% 100%;
-  background-position: 120% 0, 0 0;
-  mix-blend-mode: normal;
-  pointer-events: none;
-}
-.dsstack .schema{
-  position: absolute;
-  border: 1px dashed rgba(79, 70, 229, 0.55);
-  background: rgba(79, 70, 229, 0.045);
-  border-radius: calc(var(--u) * 1.2);
-}
-.dsstack .schema--lato{ left: 2.5%; top: 4%; width: 17%; height: 92%; }
-.dsstack .schema--testa{ left: 22%; top: 4%; width: 75.5%; height: 10%; }
-.dsstack .schema--a{ left: 22%; top: 19%; width: 23.8%; height: 22%; }
-.dsstack .schema--b{ left: 47.85%; top: 19%; width: 23.8%; height: 22%; }
-.dsstack .schema--c{ left: 73.7%; top: 19%; width: 23.8%; height: 22%; }
-.dsstack .schema--grafico{ left: 22%; top: 46%; width: 75.5%; height: 50%; }
-.dsstack .pezzo{
-  position: absolute;
-  background: var(--carta);
-  border: 1px solid var(--linea);
-  border-radius: calc(var(--u) * 1.4);
-  box-shadow: 0 calc(var(--u) * 0.3) calc(var(--u) * 1) rgba(15, 15, 30, 0.05);
-}
-.dsstack .pezzo--lato{
-  left: 2.5%; top: 4%; width: 17%; height: 92%;
-  background: #fafafa;
-  padding: 26% 10% 0;
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--u) * 1.2);
-}
-.dsstack .pezzo--lato i{
-  display: block;
-  height: calc(var(--u) * 4.4);
-  border-radius: calc(var(--u) * 1);
-}
-.dsstack .pezzo--lato i.acceso{ background: rgba(79, 70, 229, 0.1); }
-.dsstack .pezzo--cerca{ left: 22%; top: 4.5%; width: 38%; height: 9%; border-radius: 999px; background: #fafafa; }
-.dsstack .pezzo--bottone{ left: 81%; top: 4.5%; width: 16.5%; height: 9%; border-radius: 999px; background: var(--inchiostro); border-color: var(--inchiostro); }
-.dsstack .pezzo--a{ left: 22%; top: 19%; width: 23.8%; height: 22%; }
-.dsstack .pezzo--b{ left: 47.85%; top: 19%; width: 23.8%; height: 22%; }
-.dsstack .pezzo--c{ left: 73.7%; top: 19%; width: 23.8%; height: 22%; }
-.dsstack .pezzo--grafico{ left: 22%; top: 46%; width: 75.5%; height: 50%; }
-.dsstack .strato--testi{ color: var(--inchiostro); font-size: calc(var(--u) * 2.2); }
-.dsstack .strato--testi > span{ position: absolute; white-space: nowrap; line-height: 1; }
-.dsstack .marchio{
-  left: 5%; top: 8%;
-  display: flex; align-items: center; gap: calc(var(--u) * 0.8);
-  font-weight: 650; font-size: calc(var(--u) * 2.5); letter-spacing: -0.01em;
-}
-.dsstack .marchio svg{ width: calc(var(--u) * 2.6); height: calc(var(--u) * 2.6); fill: none; stroke: var(--accento); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.dsstack .marchio svg circle{ fill: var(--accento); stroke: none; }
-.dsstack .voce{ left: 6.6%; color: var(--secondario); font-size: calc(var(--u) * 1.9); }
-.dsstack .voce--a{ top: 23.6%; color: var(--accento); font-weight: 600; }
-.dsstack .voce--b{ top: 33.4%; }
-.dsstack .voce--c{ top: 43.2%; }
-.dsstack .voce--d{ top: 53%; }
-.dsstack .cerca{ left: 25%; top: 7.6%; color: var(--tenue); font-size: calc(var(--u) * 1.9); }
-.dsstack .bottone{ left: 83.6%; top: 7.6%; color: #fff; font-weight: 600; font-size: calc(var(--u) * 1.8); }
-.dsstack .dato{ display: flex; flex-direction: column; gap: calc(var(--u) * 1.3); top: 23.4%; }
-.dsstack .dato em{ font-style: normal; color: var(--secondario); font-size: calc(var(--u) * 1.8); }
-.dsstack .dato b{ font-weight: 640; font-size: calc(var(--u) * 3.6); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.dsstack .dato--a{ left: 24.4%; }
-.dsstack .dato--b{ left: 50.25%; }
-.dsstack .dato--c{ left: 76.1%; }
-.dsstack .grafico-titolo{ left: 24.4%; top: 50.5%; font-weight: 600; font-size: calc(var(--u) * 1.9); }
-.dsstack .linea{ position: absolute; left: 24.4%; top: 58%; width: 70.6%; height: 34%; overflow: visible; }
-.dsstack .linea__area{ fill: rgba(79, 70, 229, 0.08); stroke: none; }
-.dsstack .linea__tratto{ fill: none; stroke: var(--accento); stroke-width: 1.6; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
-.dsstack .linea__punto{ fill: var(--carta); stroke: var(--accento); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
-.dsstack .ancora{ position: absolute; left: 100%; top: 50%; width: 1px; height: 1px; pointer-events: none; }
-.dsstack .etichette{ position: absolute; inset: 0; pointer-events: none; }
-.dsstack .etichetta{ position: absolute; left: 0; top: 0; }
-.dsstack .etichetta__corpo{
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto;
-  column-gap: 8px;
-  align-items: center;
-  transform: translateY(-50%);
-  opacity: 0;
-  white-space: nowrap;
-}
-.dsstack .etichetta__filo{
-  grid-row: 1 / span 2;
-  position: relative;
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: var(--tenue);
-  transform-origin: 0 50%;
-}
-.dsstack .etichetta b{ font-weight: 600; font-size: clamp(9px, calc(var(--u) * 2.3), 15px); letter-spacing: -0.005em; line-height: 1.1; }
-.dsstack .etichetta em{ grid-column: 2; font-style: normal; color: var(--secondario); font-size: clamp(8px, calc(var(--u) * 1.8), 12px); line-height: 1.2; }
-.dsstack .filo{
-  position: absolute;
-  width: 0;
-  height: 100px;
-  border-left: 1px dashed rgba(79, 70, 229, 0.5);
-  transform-origin: 0 0;
-  opacity: 0;
-}
-.dsstack .filo--a{ left: 0; top: 0; }
-.dsstack .filo--b{ left: 100%; top: 0; }
-.dsstack .filo--c{ left: 100%; top: 100%; }
-.dsstack .filo--d{ left: 0; top: 100%; }
-.dsstack .piede{
-  font-size: clamp(10px, min(1.5vw, 2.2vh), 12px);
-  color: var(--tenue);
-  letter-spacing: 0.01em;
-}
-@media (max-width: 640px), (max-aspect-ratio: 4/5){.dsstack{ --w: min(60vw, 66vh, 420px); }
-.dsstack .etichetta em{ display: none; }}
-.dsstack{
-  --fondo:#0f1730; --inchiostro:#f2f6ff; --secondario:#8a94ad; --tenue:#5a6480;
-  --linea:rgba(255,255,255,.12); --carta:#18213f; --accento:#8fa8ff;
-}
-.dsstack{background:var(--fondo)}
-.dsstack{background:var(--fondo);color:var(--inchiostro);font-family:"IBM Plex Sans",system-ui,sans-serif}
-.dsstack .strato--fondo{background:#18213f;box-shadow:0 0 0 1px rgba(255,255,255,.1), 0 8px 30px rgba(0,0,0,.45)}
-.dsstack .strato{border:1px solid rgba(255,255,255,.1)}
-.dsstack .strato--chiavi{background:rgba(24,33,63,.92)}
-.dsstack .chiave{position:absolute;display:flex;align-items:center;gap:calc(var(--u)*1.2);
-  padding:calc(var(--u)*1.2) calc(var(--u)*1.8);border-radius:calc(var(--u)*1.4);
-  border:1px solid rgba(143,168,255,.35);background:rgba(143,168,255,.1);
-  font-size:calc(var(--u)*1.7);color:#dfe6ff;letter-spacing:.02em}
-.dsstack .chiave:before{content:"";width:calc(var(--u)*1.6);height:calc(var(--u)*1.6);border-radius:50%;
-  background:#8fa8ff;box-shadow:0 0 0 calc(var(--u)*.6) rgba(143,168,255,.18)}
-.dsstack .chiave--a{left:8%;top:22%}
-.dsstack .chiave--b{left:38%;top:22%}
-.dsstack .chiave--c{left:8%;top:58%}
-.dsstack .chiave--d{left:38%;top:58%}
-.dsstack .chiave--a:after{content:"ключи"}
-.dsstack .chiave--b:after{content:"репозиторий"}
-.dsstack .chiave--c:after{content:"приёмка"}
-.dsstack .chiave--d:after{content:"доступы к кабинетам"}
-.dsstack .chiave:after{font-size:calc(var(--u)*1.7);color:#dfe6ff}
-.dsstack .etichetta__corpo{grid-template-columns:auto auto auto}
-.dsstack .st{grid-row:1 / span 2;grid-column:3;font-style:normal;font-size:calc(var(--u)*1.5);
-  letter-spacing:.06em;text-transform:uppercase;padding:calc(var(--u)*.9) calc(var(--u)*1.3);
-  border-radius:999px;white-space:nowrap}
-.dsstack .st.own{color:#7ff0b6;border:1px solid rgba(52,209,122,.4);background:rgba(52,209,122,.12)}
-.dsstack .st.rent{color:#ffd27a;border:1px solid rgba(255,190,90,.4);background:rgba(255,190,90,.12)}
-.dsstack .testa__nota{color:#8a94ad}
-.dsstack .testa__titolo{color:#f2f6ff}
-.dsstack .testa__titolo span{color:#8fa8ff}
-.dsstack .piede{color:#7c86a0}
-.dsstack .fondo__luce{background:linear-gradient(115deg,transparent 32%,rgba(143,168,255,.16) 48%,transparent 66%),
-  radial-gradient(120% 90% at 85% 0%, rgba(143,168,255,.10), transparent 62%) !important}
-.dsstack .fondo__griglia{background-image:
-  linear-gradient(rgba(143,168,255,.10) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(143,168,255,.10) 1px, transparent 1px) !important}
-.dsstack .schema{background:none}
-.dsstack .schema--lato, .dsstack .schema--testa, .dsstack .schema--a, .dsstack .schema--b, .dsstack .schema--c, .dsstack .schema--grafico{border-color:rgba(143,168,255,.35) !important;background-color:rgba(143,168,255,.04) !important}
-.dsstack .strato--testi > span{color:#eaf0ff}
-.dsstack .dato em{color:#8a94ad}
-.dsstack .linea__tratto{stroke:#8fa8ff !important}
-.dsstack .linea__area{fill:rgba(143,168,255,.14) !important}
-.dsstack .pezzo{background:rgba(255,255,255,.07) !important;border:1px solid rgba(255,255,255,.14) !important}
-.dsstack .pezzo i{background:rgba(255,255,255,.18) !important}
-.dsstack .pezzo i.acceso{background:#8fa8ff !important}
-.dsstack .pezzo--bottone{background:#8fa8ff !important;border-color:transparent !important;color:#0f1730 !important}
-.dsstack .cerca{background:rgba(255,255,255,.06) !important;border:1px solid rgba(255,255,255,.12) !important;color:#8a94ad !important}
-.dsstack .strato--testi{color:#eaf0ff !important}
-</style>
-<style>
 /* фикс для встраивания: наши глобальные overflow ломали sticky */
 .dsstack{overflow:visible !important}
 .dsstack .palco{overflow:hidden}
@@ -1058,6 +796,59 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .etichetta__corpo{grid-template-columns:auto auto auto !important;align-items:center !important}
 .dsstack .etichetta b{font-weight:500 !important}
 .dsstack .etichetta__filo{background:rgba(143,168,255,.55) !important}
+</style>
+<style>
+/* пульт: один агент слева, пять уровней контроля справа */
+#panel{padding:clamp(56px,8vw,104px) 0 0}
+#panel .phead h2{margin:0;font-size:clamp(26px,3.4vw,40px);line-height:1.08;max-width:22ch}
+#panel .phead p{margin:14px 0 0;max-width:64ch;font-size:15.5px;line-height:1.55;color:#8a94ad}
+#panel .pgrid{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(18px,3vw,44px);align-items:start;margin-top:clamp(24px,3.6vw,36px)}
+#panel .agent{border:1px solid rgba(255,255,255,.14);border-radius:16px;background:linear-gradient(165deg,rgba(40,54,96,.6),rgba(18,26,50,.9));padding:18px 20px 16px}
+#panel .ahead{display:flex;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.09);font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#8fa8ff}
+#panel .adot{width:7px;height:7px;border-radius:50%;background:#34d17a;box-shadow:0 0 0 3px rgba(52,209,122,.15)}
+#panel .ahead i{margin-left:auto;font-style:normal;color:#7ff0b6;font-size:10.5px}
+#panel .awhat{margin:12px 0 0;font-size:14.8px;line-height:1.5;color:#dfe6f8}
+#panel .astats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0}
+#panel .astats div{border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:9px 10px}
+#panel .astats dt{font:500 9.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#7c86a0}
+#panel .astats dd{margin:6px 0 0;font:500 22px/1 var(--mono);color:#f2f6ff}
+#panel .alog{list-style:none;margin:16px 0 0;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:8px}
+#panel .alog li{font-size:13.4px;line-height:1.45;color:#c3cfef}
+#panel .alog b{font:500 11px/1 var(--mono);color:#8fa8ff;margin-right:8px}
+#panel .levels{list-style:none;margin:0;padding:0}
+#panel .levrow{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:clamp(10px,1.6vw,18px);align-items:center;padding:clamp(13px,1.7vw,17px) 0;border-bottom:1px solid rgba(255,255,255,.08)}
+#panel .levrow:first-child{border-top:1px solid rgba(255,255,255,.08)}
+#panel .lv{font:500 11px/1 var(--mono);color:#7c86a0}
+#panel .lt b{display:block;font-size:15.5px;color:#f2f6ff;font-weight:500}
+#panel .lt i{display:block;font-style:normal;font-size:13.4px;line-height:1.45;color:#8a94ad;margin-top:3px;max-width:62ch}
+#panel .sw{display:inline-flex;align-items:center;gap:8px;padding:7px 12px 7px 8px;border-radius:999px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:#c8d0e2;
+  font:500 11.5px/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;transition:border-color .18s,background .18s,color .18s}
+#panel .swdot{width:9px;height:9px;border-radius:50%;background:#8fa8ff;box-shadow:0 0 0 3px rgba(143,168,255,.16)}
+#panel .sw[data-on="сам"]{border-color:rgba(52,209,122,.45);background:rgba(52,209,122,.12);color:#a9f2c9}
+#panel .sw[data-on="сам"] .swdot{background:#34d17a;box-shadow:0 0 0 3px rgba(52,209,122,.18)}
+#panel .sw:hover{border-color:rgba(255,255,255,.34)}
+@media(max-width:900px){
+  #panel .pgrid{grid-template-columns:1fr}
+  #panel .astats{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:520px){
+  #panel .levrow{grid-template-columns:22px 1fr;row-gap:8px}
+  #panel .sw{grid-column:2;justify-self:start}
+}
+</style>
+<style>
+/* переключатель: сегментированный, видно что можно переключить */
+#panel .sw{display:inline-flex;justify-self:end;padding:3px;gap:2px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.05)}
+#panel .sw button{border:0;background:none;cursor:pointer;border-radius:999px;padding:6px 11px;
+  font:500 11px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:#aab7db;transition:background .16s,color .16s}
+#panel .sw button:hover{color:#dfe6f8}
+#panel .sw button.on{background:#8fa8ff;color:#0f1730}
+#panel .sw button.on[data-on="сам"]{background:#8fa8ff;color:#0f1730}
+#panel .levrow{padding:clamp(15px,1.9vw,19px) 0}
+#panel .lt i{color:#9aa6c8}
+#panel .lv{color:#8fa8ff}
+#panel .astats dt{color:#8a94ad}
 </style>
 </head>
 <body>
@@ -1086,93 +877,37 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 
 
 
-<section class="corsa dsstack" data-corsa id="layerstack">
-      <div class="palco">
-        <header class="testa" data-testa>
-          <p class="testa__nota">Discovery System · экран и пять слоёв под ним</p>
-          <h1 class="testa__titolo" data-titolo>Один экран, <span>пять слоёв под ним</span></h1>
-        </header>
-
-        <div class="scena" data-scena>
-          <div class="pila" data-pila>
-
-            <!-- the dashed lines that tie the corners of the layers, along the depth -->
-            <span class="filo filo--a" data-filo aria-hidden="true"></span>
-            <span class="filo filo--b" data-filo aria-hidden="true"></span>
-            <span class="filo filo--c" data-filo aria-hidden="true"></span>
-            <span class="filo filo--d" data-filo aria-hidden="true"></span>
-
-            <!-- layer: background -->
-            <div class="strato strato--fondo" data-strato>
-              <div class="fondo__griglia"></div>
-              <div class="fondo__luce" data-luce></div>
-              <span class="ancora" data-ancora></span>
-            </div>
-
-            <!-- layer: layout, the grid the interface sits on -->
-            <div class="strato strato--schema" data-strato>
-              <span class="schema schema--lato"></span>
-              <span class="schema schema--testa"></span>
-              <span class="schema schema--a"></span>
-              <span class="schema schema--b"></span>
-              <span class="schema schema--c"></span>
-              <span class="schema schema--grafico"></span>
-              <span class="ancora" data-ancora></span>
-            </div>
-
-            <!-- layer: components, the boxes and controls -->
-            <div class="strato strato--pezzi" data-strato>
-              <span class="pezzo pezzo--lato"><i></i><i class="acceso"></i><i></i><i></i></span>
-              <span class="pezzo pezzo--cerca"></span>
-              <span class="pezzo pezzo--bottone"></span>
-              <span class="pezzo pezzo--a"></span>
-              <span class="pezzo pezzo--b"></span>
-              <span class="pezzo pezzo--c"></span>
-              <span class="pezzo pezzo--grafico"></span>
-              <span class="ancora" data-ancora></span>
-            </div>
-
-                        <!-- layer: доступы, ключи и приёмка -->
-            <div class="strato strato--chiavi" data-strato>
-              <span class="chiave chiave--a"></span>
-              <span class="chiave chiave--b"></span>
-              <span class="chiave chiave--c"></span>
-              <span class="chiave chiave--d"></span>
-              <span class="ancora" data-ancora></span>
-            </div>
-
-            <!-- layer: content, words, numbers and the chart line -->
-            <div class="strato strato--testi" data-strato>
-              <span class="marchio"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 12.5V3.5h4.6a3 3 0 0 1 0 6H3"/><circle cx="12" cy="12" r="1.6"/></svg>агент</span>
-              <span class="voce voce--a">Заявки</span>
-              <span class="voce voce--b">Сделки</span>
-              <span class="voce voce--c">Отчёты</span>
-              <span class="voce voce--d">Правила</span>
-              <span class="cerca">Поиск</span>
-              <span class="bottone">Открыть отчёт</span>
-              <span class="dato dato--a"><em>Заявок</em><b data-conta="13">13</b></span>
-              <span class="dato dato--b"><em>Действий</em><b data-conta="2">2</b></span>
-              <span class="dato dato--c"><em>Ошибок</em><b data-conta="0">0</b></span>
-              <svg class="linea" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
-                <path class="linea__area" d="M0 46 C 18 44, 26 34, 40 36 S 64 22, 80 26 S 104 40, 120 30 S 150 10, 168 14 S 190 8, 200 6 V 60 H 0 Z"/>
-                <path class="linea__tratto" data-linea d="M0 46 C 18 44, 26 34, 40 36 S 64 22, 80 26 S 104 40, 120 30 S 150 10, 168 14 S 190 8, 200 6" pathLength="1"/>
-                <circle class="linea__punto" data-punto cx="168" cy="14" r="2.6"/>
-              </svg>
-              <span class="grafico-titolo">Разобрано за сутки</span>
-              <span class="ancora" data-ancora></span>
-            </div>
-          </div>
-          <div class="etichette" aria-hidden="true">
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>интеграции</b><em>Telegram, Авито, CRM, 1С</em><u class="st own">своё</u></span></div>
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>память</b><em>база знаний и история</em><u class="st own">своё</u></span></div>
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>модели</b><em>провайдер или локальная</em><u class="st rent">аренда</u></span></div>
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>доступы</b><em>ключи, репозиторий, приёмка</em><u class="st own">своё</u></span></div>
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>приложение</b><em>отчёт, который видит человек</em><u class="st own">своё</u></span></div>
-          </div>
-        </div>
-        <p class="piede" data-piede>листай — экран расходится по слоям</p>
-      </div>
-    </section>
+<section id="panel">
+<div class="wrap">
+<div class="phead">
+  <h2>Один агент. Пять уровней контроля.</h2>
+  <p>Слева — сам агент. Справа — пять мест, где решаешь ты: на каждом уровне переключатель «агент» или «сам». Так выглядит пульт у запущенной сборки.</p>
+</div>
+<div class="pgrid">
+  <article class="agent">
+    <header class="ahead"><span class="adot"></span><b>агент · Discovery</b><i>работает</i></header>
+    <p class="awhat">Принимает заявки, отвечает по прайсу, пишет в CRM и сводит отчёты.</p>
+    <dl class="astats">
+      <div><dt>заявок за сутки</dt><dd>13</dd></div>
+      <div><dt>действий</dt><dd>2</dd></div>
+      <div><dt>ошибок</dt><dd>0</dd></div>
+    </dl>
+    <ul class="alog">
+      <li><b>08:04</b> сводка отправлена</li>
+      <li><b>21:40</b> заявка разобрана, черновик ответа готов</li>
+      <li><b>22:16</b> счёт на юрлицо ждёт тебя</li>
+    </ul>
+  </article>
+  <ul class="levels">
+<li class="levrow"><span class="lv">1</span><div class="lt"><b>сценарии</b><i>7 задач: заявки, ответы по прайсу, утренняя сводка, напоминания, сверки, отчёты, эскалация</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент" class="on">агент</button><button type="button" data-on="сам">сам</button></div></li>
+<li class="levrow"><span class="lv">2</span><div class="lt"><b>память</b><i>412 записей: прайс, история переписки, факты о клиентах, 30 дней логов</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент" class="on">агент</button><button type="button" data-on="сам">сам</button></div></li>
+<li class="levrow"><span class="lv">3</span><div class="lt"><b>доступы</b><i>Telegram, Авито, amoCRM, Google Sheets — чтение и запись</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент">агент</button><button type="button" data-on="сам" class="on">сам</button></div></li>
+<li class="levrow"><span class="lv">4</span><div class="lt"><b>модель и лимиты</b><i>DeepSeek V3 · потолок 3 000 ₽ в месяц · стоп при превышении</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент">агент</button><button type="button" data-on="сам" class="on">сам</button></div></li>
+<li class="levrow"><span class="lv">5</span><div class="lt"><b>контроль</b><i>журнал действий, отчёт в 8:00, чек-лист приёмки, кнопка стоп</i></div><div class="sw" role="group" aria-label="Кто решает на этом уровне"><button type="button" data-on="агент">агент</button><button type="button" data-on="сам" class="on">сам</button></div></li>
+  </ul>
+</div>
+</div>
+</section>
 
 <section id="tools">
 <div class="wrap">
@@ -1597,198 +1332,19 @@ else if('IntersectionObserver' in window){
   });
 })();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+
+
 <script>
-/*
-  "Layered app screen" from Animorio · https://animorio.com
-  License: free on your own sites and your clients’ sites, paid work included.
-  Not for resale, redistribution, templates or code collections · https://animorio.com/en/license/
-*/
-/* The app screen that breaks into layers
-   The screen of a made-up analytics app, Pellora, in the clean product style. The stage sticks while you scroll:
-   the flat screen plays its chart and its numbers, tilts back in 3D and comes apart into its four layers,
-   background, layout, components and content, which rise one above the other on a short spring. A thin label
-   facing the reader grows beside each one, the layout guides and the grid of the background light up only while
-   the layers are apart, and four dashed lines tie their corners along the depth. Then everything sinks back and the
-   screen settles flat, with a one pixel overshoot. As the page opens, the chart line draws and the numbers count. Scroll back up and it all plays back. */
-
-/* ---- values to change ---- */
-const GAP = 18;      /* the distance between two layers, in hundredths of the screen width */
-const TILT = 50;     /* how many degrees the screen leans back */
-const TURN = 30;     /* how many degrees the screen turns on the table */
-const RIDE = 1;      /* how much scroll the whole story takes: 2 is twice as long */
-const SCRUB = 0.7;   /* how far the screen lags behind the scroll, in seconds */
-
-/* GSAP rounds px values read from CSS to whole pixels: with pathLength="1" the lines would jump instead of drawing */
-if (window.gsap) { gsap.registerPlugin({ name: "autoRound", init() {} }); gsap.defaults({ autoRound: false }); } /* the empty plugin keeps GSAP from warning on plain objects */
-
-gsap.registerPlugin(ScrollTrigger);
-
-const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
-
-const N = document.querySelectorAll('[data-strato]').length;
-const corsa = $('[data-corsa]');
-const pila = $('[data-pila]');
-const strati = $$('[data-strato]');
-const scena = $('[data-scena]');
-const ancore = $$('[data-ancora]');
-const etichette = $$('[data-etichetta]');
-const fili = $$('[data-filo]');
-const griglia = $('.fondo__griglia');
-const luce = $('[data-luce]');
-const schemi = $$('.schema');
-const linea = $('[data-linea]');
-const punto = $('[data-punto]');
-const conte = $$('[data-conta]');
-const piede = $('[data-piede]');
-const titoloParte = $('[data-titolo] span');
-
-corsa.style.height = (100 + 220 * RIDE) + 'vh';
-
-/* the whole state of the scene: GSAP moves these numbers, draw() turns them into transforms */
-const S = {
-  rx: 0, rz: 0, sc: 1,
-  su: [0, 0, 0, 0, 0],   /* how far each layer has risen, 0 to 1 */
-  bump: 0,               /* a few pixels more for the content layer while it settles */
-  guide: 0,              /* layout guides, grid and dashed lines */
-  et: [0, 0, 0, 0, 0],   /* each label, 0 to 1 */
-  luce: 0,               /* the sheen across the background */
-  traccia: 0,            /* the chart line */
-  conta: 0,              /* the numbers */
-};
-
-let larga = pila.offsetWidth;
-const fmt = (n, valuta) => (valuta ? '$' : '') + Math.round(n).toLocaleString('en-US');
-
-function draw() {
-  const gap = larga * GAP / 100;
-  const via = Math.max(...S.et);
-  /* the stack slides left a little while the labels are out, to make room for them */
-  pila.style.transform = `translateX(${-via * larga * 0.1}px) rotateX(${S.rx}deg) rotateZ(${-S.rz}deg) scale(${S.sc})`;
-  /* the layers spread around the middle, so the stack grows both ways and stays centred */
-  const z = strati.map((el, i) => (i - (N - 1) / 2) * gap * S.su[i] + (i === N - 1 ? S.bump : 0));
-  strati.forEach((el, i) => { el.style.transform = `translateZ(${z[i]}px)`; });
-
-  const alto = Math.max(1, Math.max.apply(null, z) - Math.min.apply(null, z));
-  fili.forEach((el) => {
-    el.style.height = alto + 'px';
-    el.style.transform = `translateZ(${z[0]}px) rotateX(90deg)`;
-    el.style.opacity = S.guide;
-  });
-  griglia.style.opacity = S.guide;
-  schemi.forEach((el) => { el.style.opacity = S.guide; });
-  strati[1].style.opacity = 0.35 + 0.65 * S.guide;
-  /* while apart, each upper layer shows the edge of its own plane */
-  for (let i = 1; i < N; i++) strati[i].style.outline = `1px solid rgba(79, 70, 229, ${0.28 * S.guide})`;
-  luce.style.backgroundPosition = `${120 - 160 * S.luce}% 0, 0 0`;
-
-  linea.style.strokeDashoffset = 1 - S.traccia;
-  punto.style.opacity = S.traccia > 0.98 ? 1 : 0;
-  conte.forEach((el) => { el.textContent = fmt(+el.dataset.conta * S.conta, el.hasAttribute('data-valuta')); });
-
-  /* the labels: where each layer's right edge lands on screen, and one column just past the widest of them */
-  if (via <= 0) { etichette.forEach((el) => { el.firstElementChild.style.opacity = 0; }); return; }
-  const sr = scena.getBoundingClientRect();
-  const punti = ancore.map((a) => { const r = a.getBoundingClientRect(); return { x: r.left - sr.left, y: r.top - sr.top }; });
-  const colonna = Math.max(...punti.map((q) => q.x)) + Math.max(14, larga * 0.06);
-  etichette.forEach((el, i) => {
-    const v = S.et[i];
-    const q = punti[i];
-    el.style.transform = `translate(${q.x}px, ${q.y}px)`;
-    const corpo = el.firstElementChild;
-    corpo.style.opacity = v;
-    const filo = corpo.firstElementChild;
-    filo.style.width = Math.max(6, colonna - q.x) + 'px';
-    filo.style.transform = `scaleX(${v})`;
-    corpo.style.columnGap = (6 + 4 * v) + 'px';
-  });
-}
-
-function costruisci() {
-  const tl = gsap.timeline({ paused: true, defaults: { ease: 'none' }, onUpdate: draw });
-  /* the hint below fades as soon as the scroll starts */
-  tl.to(piede, { opacity: 0, duration: 0.06 }, 0.02)
-    /* it leans back and turns on the table */
-    .to(S, { rx: TILT, rz: TURN, sc: 0.74, duration: 0.24, ease: 'power2.inOut' }, 0.08);
-  /* the layers rise, top first, each on a short spring */
-  Array.from({ length: N }, (_, k) => N - 1 - k).forEach((i, k) => {
-    tl.to(S.su, { [i]: 1, duration: 0.2, ease: 'back.out(1.5)' }, 0.24 + k * 0.035);
-  });
-  tl.to(S, { guide: 1, duration: 0.14, ease: 'power1.out' }, 0.3);
-  Array.from({ length: N }, (_, i) => i).forEach((i) => {
-    tl.to(S.et, { [i]: 1, duration: 0.09, ease: 'power2.out' }, 0.34 + i * 0.03);
-  });
-  /* while it stays apart: the light runs across the background and the content layer floats a hair */
-  tl.to(S, { luce: 1, duration: 0.2, ease: 'power1.inOut' }, 0.46)
-    .to(S, { bump: 6, duration: 0.08, ease: 'sine.out' }, 0.5)
-    .to(S, { bump: 0, duration: 0.1, ease: 'sine.inOut' }, 0.58);
-  /* back together: labels go, layers sink, the screen settles flat with a pixel of overshoot */
-  Array.from({ length: N }, (_, k) => N - 1 - k).forEach((i) => {
-    tl.to(S.et, { [i]: 0, duration: 0.06, ease: 'power1.in' }, 0.66 + (N - 1 - i) * 0.02);
-  });
-  tl.to(S, { guide: 0, duration: 0.1, ease: 'power1.in' }, 0.7);
-  Array.from({ length: N }, (_, i) => i).forEach((i, k) => {
-    tl.to(S.su, { [i]: 0, duration: 0.14, ease: 'power3.inOut' }, 0.7 + k * 0.025);
-  });
-  tl.to(S, { rx: 0, rz: 0, duration: 0.16, ease: 'back.out(1.3)' }, 0.84)
-    .to(S, { sc: 1, duration: 0.16, ease: 'power2.out' }, 0.84)
-    .to({}, { duration: 0.02 }, 0.98);
-  return tl;
-}
-
-if (REDUCED) {
-  /* no movement: the screen stays flat and its layers cross-fade in, one at a time, with the name in the title */
-  const nomi = ['the background', 'the layout', 'the components', 'the content'];
-  S.traccia = 1; S.conta = 1; S.guide = 0;
-  draw();
-  gsap.set(strati.slice(1), { opacity: 0 });
-  gsap.set(griglia, { opacity: 1 });
-  let ora = -1;
-  const mostra = (k) => {
-    if (k === ora) return;
-    ora = k;
-    strati.forEach((el, i) => {
-      const o = i <= k ? (i === 1 ? (k === 1 ? 1 : 0.35) : 1) : 0;
-      gsap.to(el, { opacity: o, duration: 0.5, overwrite: true });
+(function(){
+  document.querySelectorAll('#panel .sw').forEach(function(g){
+    g.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){
+        g.querySelectorAll('button').forEach(function(x){ x.classList.remove('on'); });
+        b.classList.add('on');
+      });
     });
-    gsap.to(griglia, { opacity: k <= 1 ? 1 : 0, duration: 0.5, overwrite: true });
-    gsap.to(schemi, { opacity: k === 1 ? 1 : 0, duration: 0.5, overwrite: true });
-    gsap.to(titoloParte, { opacity: 0, duration: 0.2, overwrite: true, onComplete: () => {
-      titoloParte.textContent = k < 4 ? nomi[k] : 'four layers';
-      gsap.to(titoloParte, { opacity: 1, duration: 0.3 });
-    } });
-  };
-  mostra(0);
-  ScrollTrigger.create({
-    trigger: corsa, start: 'top top', end: 'bottom bottom',
-    onUpdate: (st) => mostra(Math.min(4, Math.floor(st.progress * 5))),
   });
-} else {
-  const lenis = window.Lenis ? new Lenis({ duration: 1.1, smoothWheel: true }) : null;
-  if (lenis) {
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((t) => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
-  }
-
-  const tl = costruisci();
-  draw();
-  /* the screen in use as the page opens: the chart line draws and the numbers count */
-  gsap.to(S, { traccia: 1, duration: 1.4, ease: 'power2.inOut', delay: 0.3, onUpdate: draw });
-  gsap.to(S, { conta: 1, duration: 1.2, ease: 'power3.out', delay: 0.45, onUpdate: draw });
-  gsap.to(tl, {
-    progress: 1,
-    ease: 'none',
-    scrollTrigger: { trigger: corsa, start: 'top top', end: 'bottom bottom', scrub: SCRUB },
-  });
-
-  /* the gap is in pixels of the screen width: measured again when the window changes size */
-  window.addEventListener('resize', () => { larga = pila.offsetWidth; draw(); });
-}
-
+})();
 </script>
 </body>
 </html>
