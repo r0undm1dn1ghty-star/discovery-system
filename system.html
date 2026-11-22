@@ -436,6 +436,21 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
  #tools .snum{grid-column:2;grid-row:1;text-align:right}
 }
 </style>
+<style>
+/* полка скиллов: чипы, не строки */
+#tools .shelf{list-style:none;margin:clamp(20px,3vw,30px) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+#tools .shelf li{flex:1 1 268px;min-width:0;display:flex}
+#tools .chip{flex:1;display:grid;grid-template-columns:24px minmax(0,1fr) auto;grid-template-rows:auto auto;gap:2px 10px;align-items:center;padding:15px 16px 13px;border:1px solid var(--hair);border-radius:12px;background:rgba(255,255,255,.035);transition:border-color .18s ease,background .18s ease}
+#tools .chip:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.24)}
+#tools .chip-i{grid-row:1/span 2;color:#8fa8ff;display:flex;align-items:flex-start;padding-top:1px}
+#tools .chip-n{font:500 13.5px/1.2 var(--mono);color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#tools .chip-m{font:500 13px/1 var(--mono);color:#8fa8ff;justify-self:end;white-space:nowrap}
+#tools .chip-d{grid-column:2/span 2;font-size:12.8px;line-height:1.35;color:#8a94ad;margin-top:5px}
+@media(hover:hover) and (min-width:760px){
+ #tools .chip-d{grid-column:2/span 2;font-size:12.8px;max-height:0;opacity:0;overflow:hidden;transition:max-height .22s ease,opacity .18s ease,margin-top .22s ease}
+ #tools .chip:hover .chip-d,#tools .chip:focus-visible .chip-d{max-height:60px;opacity:1}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -483,12 +498,54 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 <div class="wrap">
 <div class="toolshead"><h2>Полка скиллов</h2><p>Шесть инструментов, из которых собирается система. Каждый лежит на GitHub вместе с EVAL.md.</p></div>
 <ul class="shelf">
-<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener">ds_content-radar</a><span class="swhat">что залетает в нише: топ X, Instagram, TikTok, YouTube</span><b class="snum">~150 ₽/мес</b></li>
-<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener">ds_warm-lead-parser</a><span class="swhat">кто сейчас ищет бота: заявки и готовность платить</span><b class="snum">63%</b></li>
-<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_market-evidence" target="_blank" rel="noopener">ds_market-evidence</a><span class="swhat">проверка бизнес-модели по рынку, источник к каждому выводу</span><b class="snum">5/5</b></li>
-<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_geo-audit" target="_blank" rel="noopener">ds_geo-audit</a><span class="swhat">готовность сайта к AI-поиску, 92 правила</span><b class="snum">AUC 1,00</b></li>
-<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_pnl-check" target="_blank" rel="noopener">ds_pnl-check</a><span class="swhat">прибыль, дебиторка и долг против денег</span><b class="snum">3/3</b></li>
-<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_spiral-maturity" target="_blank" rel="noopener">ds_spiral-maturity</a><span class="swhat">зрелость компании под ИИ в 7 уровнях</span><b class="snum">4/4</b></li>
+<li>
+  <a class="chip" href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener">
+    <span class="chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M8.6,9.6a3.6,3.6 0 0 0 0,4.8"/><path d="M6,6.9a7.5,7.5 0 0 0 0,10.2"/><path d="M15.4,9.6a3.6,3.6 0 0 1 0,4.8"/><path d="M18,6.9a7.5,7.5 0 0 1 0,10.2"/></svg></span>
+    <span class="chip-n">ds_content-radar</span>
+    <b class="chip-m">~150 ₽/мес</b>
+    <span class="chip-d">что залетает в нише: топ X, Instagram, TikTok, YouTube</span>
+  </a>
+</li>
+<li>
+  <a class="chip" href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener">
+    <span class="chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4,5h16l-6,7v6l-4,2v-8z"/></svg></span>
+    <span class="chip-n">ds_warm-lead-parser</span>
+    <b class="chip-m">63%</b>
+    <span class="chip-d">кто сейчас ищет бота: заявки и готовность платить</span>
+  </a>
+</li>
+<li>
+  <a class="chip" href="https://github.com/r0undm1dn1ghty-star/ds_market-evidence" target="_blank" rel="noopener">
+    <span class="chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6,3.5h9l4,4V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6,20z"/><path d="M15,3.5V8h4"/><path d="M9,14.5l2,2 3.5-4"/></svg></span>
+    <span class="chip-n">ds_market-evidence</span>
+    <b class="chip-m">5/5</b>
+    <span class="chip-d">проверка бизнес-модели по рынку, источник к каждому выводу</span>
+  </a>
+</li>
+<li>
+  <a class="chip" href="https://github.com/r0undm1dn1ghty-star/ds_geo-audit" target="_blank" rel="noopener">
+    <span class="chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M11,4.5c2.4,2 2.4,11 0,13"/><path d="M4.5,11h13"/><path d="M15.8,15.8L20,20"/></svg></span>
+    <span class="chip-n">ds_geo-audit</span>
+    <b class="chip-m">AUC 1,00</b>
+    <span class="chip-d">готовность сайта к AI-поиску, 92 правила</span>
+  </a>
+</li>
+<li>
+  <a class="chip" href="https://github.com/r0undm1dn1ghty-star/ds_pnl-check" target="_blank" rel="noopener">
+    <span class="chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4,20V10"/><path d="M9.3,20V6"/><path d="M14.6,20v-7"/><path d="M20,20V4"/><path d="M3,20h18"/></svg></span>
+    <span class="chip-n">ds_pnl-check</span>
+    <b class="chip-m">3/3</b>
+    <span class="chip-d">прибыль, дебиторка и долг против денег</span>
+  </a>
+</li>
+<li>
+  <a class="chip" href="https://github.com/r0undm1dn1ghty-star/ds_spiral-maturity" target="_blank" rel="noopener">
+    <span class="chip-i" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12,12a1.6,1.6 0 0 1 3.2,0 3.4,3.4 0 0 1-6.8,0 5.2,5.2 0 0 1 10.4,0 7,7 0 0 1-14,0 8.8,8.8 0 0 1 17.6,0"/></svg></span>
+    <span class="chip-n">ds_spiral-maturity</span>
+    <b class="chip-m">4/4</b>
+    <span class="chip-d">зрелость компании под ИИ в 7 уровнях</span>
+  </a>
+</li>
 </ul>
 </div>
 </section>
