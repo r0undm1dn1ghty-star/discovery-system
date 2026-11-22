@@ -612,6 +612,51 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 #system .rolesplain b{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:#8fa8ff;font-weight:500;margin-right:8px}
 @media(max-width:720px){#system .rolesplain{columns:1}}
 </style>
+<style>
+/* стек: приложение поверх слоёв */
+#stack{padding:clamp(56px,8vw,104px) 0 0}
+#stack .stackhead h2{margin:0;font-size:clamp(26px,3.4vw,40px);line-height:1.08;max-width:22ch}
+#stack .stackhead p{margin:14px 0 0;max-width:60ch;font-size:15.5px;line-height:1.55;color:#8a94ad}
+#stack .stage{margin-top:clamp(28px,5vw,56px);perspective:1400px}
+#stack .iso{position:relative;height:clamp(360px,42vw,520px);transform-style:preserve-3d;
+  transform:rotateX(56deg) rotateZ(-38deg) translateY(-8%);transition:transform .5s ease}
+#stack .plate{position:absolute;left:50%;top:50%;width:min(420px,72vw);height:min(240px,42vw);margin:calc(min(240px,42vw)/-2) 0 0 calc(min(420px,72vw)/-2);
+  border-radius:18px;border:1px solid rgba(255,255,255,.16);background:linear-gradient(160deg,rgba(70,92,150,.55),rgba(28,38,70,.85));
+  box-shadow:0 40px 60px -40px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.12);
+  display:flex;flex-direction:column;justify-content:flex-start;gap:5px;padding:18px 20px;
+  opacity:0;transform:translateZ(0) scale(.96);transition:opacity .5s ease, transform .6s cubic-bezier(.22,1,.36,1), border-color .3s}
+#stack .plate b{font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#f2f6ff;text-shadow:0 1px 0 rgba(0,0,0,.35)}
+#stack .plate i{font-style:normal;font-size:14px;color:#c3cfef}
+#stack .p-mem{--z:26px}
+#stack .p-mod{--z:78px}
+#stack .p-run{--z:130px}
+#stack .p-acc{--z:182px}
+#stack .p-int{--z:-26px;justify-content:center;align-items:center;flex-direction:row;flex-wrap:wrap;gap:8px;padding:16px;background:linear-gradient(160deg,rgba(40,54,96,.5),rgba(20,28,54,.85))}
+#stack .p-int span{font:500 11px/1 var(--mono);letter-spacing:.06em;color:#9fb0d8;border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:7px 10px}
+#stack .app{position:absolute;left:50%;top:44%;width:min(460px,78vw);margin-left:calc(min(460px,78vw)/-2);
+  transform:rotateZ(38deg) rotateX(-56deg) translateZ(0);transform-origin:50% 100%;
+  border-radius:14px;border:1px solid rgba(255,255,255,.2);background:#141c36;
+  box-shadow:0 50px 70px -40px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.1);
+  padding:14px 16px 12px;opacity:0;transition:opacity .6s ease .35s, transform .8s cubic-bezier(.22,1,.36,1) .2s}
+#stack .appbar{display:flex;align-items:center;gap:8px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#8fa8ff;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08)}
+#stack .adot{width:7px;height:7px;border-radius:50%;background:#34d17a;box-shadow:0 0 0 3px rgba(52,209,122,.15)}
+#stack .msg{margin:10px 0 0;font-size:14px;line-height:1.5;color:#dfe6f8;background:rgba(143,168,255,.09);border-radius:10px 10px 10px 3px;padding:9px 11px}
+#stack .msg.m2{color:#b9c6e6;background:rgba(255,255,255,.05)}
+#stack .appfoot{display:flex;gap:14px;margin-top:10px;font:500 10.5px/1 var(--mono);color:#7c86a0}
+#stack .stackread{margin:16px 0 0;text-align:center;font-family:var(--mono);font-size:13px;color:#8fa8ff;min-height:19px}
+#stack .stackread b{color:#f4f7fe;font-weight:500}
+#stack.in .plate{opacity:1;transform:translateZ(var(--z))}
+#stack.in .app{opacity:1;transform:rotateZ(38deg) rotateX(-56deg) translateZ(238px)}
+#stack .plate:hover{border-color:rgba(143,168,255,.65);transform:translateZ(calc(var(--z) + 26px))}
+@media(max-width:820px), (prefers-reduced-motion:reduce){
+  #stack .iso{transform:none;height:auto;display:flex;flex-direction:column;gap:10px;padding:0}
+  #stack .plate,#stack .app{position:static;width:100%;margin:0;height:auto;opacity:1;transform:none;border-radius:14px}
+  #stack .app{order:-1}
+  #stack .p-int{order:99}
+  #stack .plate{padding:14px 16px}
+  #stack .plate:hover{transform:none}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -639,19 +684,29 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 
 
 
-<section id="system">
+<section id="stack">
 <div class="wrap">
-<h2>Какую систему мы внедряем</h2>
-<p class="syslede">Агентную. Один агент с общей памятью встаёт на твоём сервере или ноутбуке, и из него собираются автоматизации для специалистов команды: у продаж свои сценарии, у поддержки свои — данные и память общие.</p>
-<ul class="rolesplain">
-<li><b>продажи</b> заявки, письма, напоминания по своим сделкам</li>
-<li><b>поддержка</b> ответы по базе знаний, статусы клиентов</li>
-<li><b>аналитика</b> сводки по цифрам, отклонения от плана</li>
-<li><b>контент</b> план, посты, разбор конкурентов</li>
-<li><b>операции</b> счета, сверки, документы подрядчиков</li>
-<li><b>руководитель</b> утренний отчёт и варианты решений</li>
-</ul>
-<p class="sysfoot">Всё живёт в твоём репозитории: код, промпты, память, ключи. Модель арендуешь у провайдера или ставишь локально — её нельзя забрать, она не продаётся.</p>
+<div class="stackhead">
+  <h2>Приложение сверху. Под ним — то, что остаётся твоим.</h2>
+  <p>Отчёт агента — верхний слой. Ниже — память, модели, исполнение и доступы. Ещё ниже — сервисы, с которыми он работает.</p>
+</div>
+
+<div class="stage" id="stackStage" aria-label="Слои системы: приложение, память, модели, исполнение, доступы и интеграции">
+  <div class="iso">
+    <div class="plate p-int"><span>Telegram</span><span>Авито</span><span>amoCRM</span><span>Bitrix24</span><span>Sheets</span><span>1С</span><span>Notion</span><span>GitHub</span></div>
+    <div class="plate p-acc" data-t="доступы"><b>доступы</b><i>ключи и приёмка у тебя</i></div>
+    <div class="plate p-run" data-t="исполнение"><b>исполнение</b><i>твоё железо или сервер</i></div>
+    <div class="plate p-mod" data-t="модели"><b>модели</b><i>провайдер или локальная</i></div>
+    <div class="plate p-mem" data-t="память"><b>память</b><i>база знаний и история</i></div>
+    <div class="app">
+      <div class="appbar"><span class="adot"></span>агент · 8:04</div>
+      <p class="msg">Утро. Три заявки разобраны: по двум ответил, одна ждёт тебя — клиент просит счёт на юрлицо. Сводка по вчерашним сделкам ниже.</p>
+      <p class="msg m2">Записи в CRM сделаны, напоминания на 12:30 поставлены.</p>
+      <div class="appfoot"><span>13 сообщений</span><span>2 действия</span><span>0 ошибок</span></div>
+    </div>
+  </div>
+  <p class="stackread" id="stackRead"><b>наведи на слой</b> — покажу, что в нём</p>
+</div>
 </div>
 </section>
 
@@ -1056,6 +1111,25 @@ else if('IntersectionObserver' in window){
     function hide(){ ro.innerHTML=base; }
     m.addEventListener('mouseenter',show); m.addEventListener('focus',show);
     m.addEventListener('mouseleave',hide); m.addEventListener('blur',hide);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var sec=document.getElementById('stack'); if(!sec) return;
+  function show(){ sec.classList.add('in'); }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ show(); io.disconnect(); } });},{threshold:.2});
+    io.observe(sec);
+  }
+  /* страховка: если наблюдатель не сработал (headless, старый браузер), слои всё равно видны */
+  setTimeout(show, 1800);
+  window.addEventListener('load', function(){ setTimeout(show, 300); });
+  var ro=document.getElementById('stackRead'), base=ro.innerHTML;
+  sec.querySelectorAll('.plate[data-t]').forEach(function(p){
+    p.addEventListener('mouseenter',function(){ ro.innerHTML='<b>'+p.dataset.t+'</b> — '+p.querySelector('i').textContent; });
+    p.addEventListener('mouseleave',function(){ ro.innerHTML=base; });
   });
 })();
 </script>
