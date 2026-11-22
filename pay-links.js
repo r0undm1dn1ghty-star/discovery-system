@@ -31,9 +31,9 @@ var DS_PAY = {
   /* ── Разовые: внедрение под ключ ────────────────────────── */
   self:    {price:40000, name:'Внедрение для самозанятого',
             url:'https://auth.robokassa.ru/merchant/Invoice/QA5pR5S-y0iVDYyi4WFEeA?p=self'},
-  smb:     {price:80000, name:'Внедрение для малого бизнеса',
+  smb:     {price:80000, name:'Внедрение для микро-бизнеса (1–10 человек)',
             url:'https://auth.robokassa.ru/merchant/Invoice/HRzhSSbMKkSLGmM2-Mv50Q?p=smb'},
-  mid:     {price:120000,name:'Внедрение для среднего бизнеса (после аудита масштаба)',
+  mid:     {price:120000,name:'Внедрение для малого бизнеса (10–30 человек), после аудита масштаба',
             url:'https://auth.robokassa.ru/merchant/Invoice/ndY54UFqpkmMrdUkNZQc0Q?p=mid'},
 
   /* ── Разовые: дополнительные решения ───────────────────── */

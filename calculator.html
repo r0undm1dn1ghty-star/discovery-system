@@ -908,11 +908,11 @@ footer p { margin: 2px 0; }
       </div>
       <div class="offer-opt" data-prod="install" style="border-color:rgba(242,182,101,.22)">
         <div class="o-top"><div class="o-name">Внедрение под ключ — по числу процессов</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">демо-смена агента за 2 часа · внедрение 1–10 раб. дней</span></div>
-        <div class="o-desc">Самозанятый — 40 000 (заменяет ~30 часов рутины в месяц). Малый бизнес — 80 000 (до ~60 часов). Средний бизнес — 120 000, но цена после аудита масштаба: сначала считаем ИИ-мощности и число процессов, потом фиксируем. Ставлю я, на твоём железе. Состав и чек-лист приёмки фиксируем до старта — без «допов по ходу». <a href="service.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в сервисе →</a></div>
-        <div class="o-price">40 000 / 80 000 / 120 000 <small>разово · 1–3 дня, максимум 10 · средний бизнес — до 14 дней и после аудита</small></div>
+        <div class="o-desc">Самозанятый — 40 000 (заменяет ~30 часов рутины в месяц). Микро-бизнес (1–10) — 80 000 (до ~60 часов). Малый бизнес (10–30) — 120 000, но цена после аудита масштаба: сначала считаем ИИ-мощности и число процессов, потом фиксируем. Ставлю я, на твоём железе. Состав и чек-лист приёмки фиксируем до старта — без «допов по ходу». <a href="service.html" style="color:var(--primary-l);text-decoration:underline">Подробнее в сервисе →</a></div>
+        <div class="o-price">40 000 / 80 000 / 120 000 <small>разово · 1–3 дня, максимум 10 · малый бизнес (10–30) — до 14 дней и после аудита</small></div>
         <button class="btn-cta btn-cta-ghost" data-tier="self" onclick="goInstall('self')" style="width:100%">самозанятый — 40 000 ₽ →</button>
-        <button class="btn-cta btn-cta-ghost" data-tier="smb" onclick="goInstall('smb')" style="width:100%;margin-top:8px">малый бизнес — 80 000 ₽ →</button>
-        <button class="btn-cta btn-cta-ghost" data-tier="mid" onclick="goInstall('mid')" style="width:100%;margin-top:8px">средний бизнес — 120 000 ₽ (после аудита) →</button>
+        <button class="btn-cta btn-cta-ghost" data-tier="smb" onclick="goInstall('smb')" style="width:100%;margin-top:8px">микро-бизнес (1–10) — 80 000 ₽ →</button>
+        <button class="btn-cta btn-cta-ghost" data-tier="mid" onclick="goInstall('mid')" style="width:100%;margin-top:8px">малый бизнес (10–30) — 120 000 ₽ (после аудита) →</button>
         
   <div class="offer-opt" data-prod="optimization" style="border-color:rgba(242,182,101,.22)"> <div class="o-top"><div class="o-name">Оптимизация и переезд с Claude — от 30 000 ₽</div><span class="o-badge" style="background:rgba(242,182,101,.10);border-color:rgba(242,182,101,.22);color:#f2b665">старт от 3 дней · замер до/после</span></div> <div class="o-desc">Агент уже работает, но подписка не платится или аккаунт заблокировали — переношу агента на модели с оплатой из РФ, без VPN. Аудит → пересборка промптов и логики → замер «до/после». После переезда владение 3 400–4 600 ₽/мес. Промокод с разбора Claude — KLODNAOBOROT: −10%, то есть 27 000 ₽.</div> <div class="o-price">от 30 000 ₽ <small>разово · с промокодом 27 000 ₽</small></div> <button class="btn-cta btn-cta-ghost" onclick="goCheckout('optimization')">Заказать аудит →</button> </div> data-prod="channel">
         <div class="o-top"><div class="o-name">Подписка на канал Discovery System</div></div>
@@ -2217,7 +2217,7 @@ let chosenOffer=null;
 let installTier=null;
 const OFFER_NAMES={config:'Персональная сборка — 10 000 ₽',table:'Гайд: 20 конфигураций — 5 000 ₽',
   optimization:'Оптимизация агента — от 30 000 ₽',diagnostic:'Диагностика — бриф, 0 ₽'};
-const INSTALL_NAMES={self:'Внедрение для самозанятого — 40 000 ₽',smb:'Внедрение для малого бизнеса — 80 000 ₽',mid:'Внедрение для среднего бизнеса — 120 000 ₽ (после аудита)'};
+const INSTALL_NAMES={self:'Внедрение для самозанятого — 40 000 ₽',smb:'Внедрение для микро-бизнеса (1–10) — 80 000 ₽',mid:'Внедрение для малого бизнеса (10–30) — 120 000 ₽ (после аудита)'};
 function recKind(k){ return (!k||k==='build')?'config':k; }
 function productLabel(kind){
   if(kind==='install') return INSTALL_NAMES[installTier]||'Внедрение под ключ';
