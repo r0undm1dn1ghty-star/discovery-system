@@ -407,6 +407,35 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   #own .tree-h{font-size:12px}
 }
 </style>
+<style>
+/* система + полка */
+#system{padding:clamp(56px,8vw,96px) 0 0}
+#system h2{margin:0;font-size:clamp(26px,3.4vw,38px);line-height:1.1}
+#system .syslede{margin:clamp(14px,2vw,20px) 0 0;max-width:62ch;font-size:16.5px;line-height:1.6;color:var(--body)}
+#system .roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:clamp(22px,3vw,32px);background:var(--hair)}
+#system .role{background:var(--bg);padding:clamp(16px,2vw,22px) clamp(16px,2vw,20px)}
+#system .role b{display:block;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#8fa8ff;margin-bottom:9px}
+#system .role span{font-size:14.6px;line-height:1.45;color:var(--body)}
+#system .sysfoot{margin:clamp(20px,2.6vw,28px) 0 0;max-width:66ch;font-size:14.4px;line-height:1.6;color:#8a94ad}
+@media(max-width:820px){#system .roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){#system .roles{grid-template-columns:1fr}}
+/* полка скиллов */
+#tools{padding:clamp(56px,8vw,96px) 0 0}
+#tools .toolshead{display:flex;align-items:baseline;justify-content:space-between;gap:clamp(16px,3vw,40px);flex-wrap:wrap}
+#tools .toolshead h2{margin:0;font-size:clamp(24px,3vw,34px);line-height:1.1}
+#tools .toolshead p{margin:0;max-width:46ch;font-size:14.6px;line-height:1.5;color:#8a94ad}
+#tools .shelf{list-style:none;margin:clamp(20px,3vw,30px) 0 0;padding:0;border-top:1px solid var(--hair)}
+#tools .shelf li{display:grid;grid-template-columns:minmax(0,228px) minmax(0,1fr) 96px;gap:clamp(10px,2vw,24px);align-items:baseline;padding:clamp(13px,1.7vw,17px) 0;border-bottom:1px solid var(--hair)}
+#tools .sname{font:500 14.5px/1.25 var(--mono);color:var(--ink)}
+#tools .sname:hover{color:#8fa8ff}
+#tools .swhat{font-size:14px;line-height:1.4;color:#8a94ad}
+#tools .snum{font:500 14px/1 var(--mono);color:#8fa8ff;text-align:right}
+@media(max-width:720px){
+ #tools .shelf li{grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:start}
+ #tools .swhat{grid-column:1;grid-row:2;font-size:13px}
+ #tools .snum{grid-column:2;grid-row:1;text-align:right}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -426,97 +455,40 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 </div>
 </div>
 
-<section id="own">
+
+
+
+
+
+
+
+
+<section id="system">
 <div class="wrap">
-<div class="shead">
-<h2>Вот что остаётся у тебя после приёмки</h2>
-<p class="s">Не описание «возможностей» — папка проекта, которую ты открываешь сам.</p>
+<h2>Какую систему мы внедряем</h2>
+<p class="syslede">Агентную. Один агент с общей памятью встаёт на твоём сервере или ноутбуке, и из него собираются автоматизации для специалистов команды: у продаж свои сценарии, у поддержки свои — данные и память общие.</p>
+<div class="roles">
+  <div class="role"><b>продажи</b><span>заявки, письма, напоминания по своим сделкам</span></div>
+  <div class="role"><b>поддержка</b><span>ответы по базе знаний, статусы клиентов</span></div>
+  <div class="role"><b>аналитика</b><span>сводки по цифрам, отклонения от плана</span></div>
+  <div class="role"><b>контент</b><span>план, посты, разбор конкурентов</span></div>
+  <div class="role"><b>операции</b><span>счета, сверки, документы подрядчиков</span></div>
+  <div class="role"><b>руководитель</b><span>утренний отчёт и варианты решений</span></div>
 </div>
-<div class="ownsplit">
-  <div class="tree" aria-label="Состав проекта, который передаётся клиенту">
-    <div class="tree-h"><span class="dot"></span>dg-agent<span class="tree-m">твой репозиторий</span></div>
-    <pre class="tree-b"><span class="fd">├─</span> <b>agent/</b>            код агента, промпты, правила
-<span class="fd">│  ├─</span> memory/          память и база знаний
-<span class="fd">│  └─</span> tools/            каналы: Telegram, CRM, таблицы
-<span class="fd">├─</span> <b>deploy/</b>          скрипт подъёма на твоей машине
-<span class="fd">├─</span> <b>.env.example</b>      ключи провайдера — твои, не мои
-<span class="fd">├─</span> <b>EVAL.md</b>          журнал прогонов и где агент проигрывает
-<span class="fd">├─</span> <b>ПРИЁМКА.md</b>       чек-лист с подписями по каждому критерию
-<span class="fd">└─</span> <b>README.md</b>        как поднять заново за 10 минут</pre>
-  </div>
-  <div class="rent">
-    <p class="rent-k">и одна вещь, которой ты не владеешь</p>
-    <h3>Модель</h3>
-    <p>Её ты арендуешь у провайдера или ставишь локально. Забрать нельзя: она не продаётся. Платишь провайдеру по своему счёту — я к нему не приписан.</p>
-    <p class="rent-n">Код, данные, память, ключи и выбор провайдера — твои. Это и есть владение.</p>
-  </div>
-</div>
+<p class="sysfoot">Всё живёт в твоём репозитории: код, промпты, память, ключи. Модель арендуешь у провайдера или ставишь локально — её нельзя забрать, она не продаётся.</p>
 </div>
 </section>
-
-<section id="who">
-<div class="wrap">
-<p class="wholine"><span class="whok">кому</span>самозанятый <b>40 000 ₽</b> · микро 1–10 <b>80 000 ₽</b> · малый 10–30 <b>120 000 ₽</b> после аудита · сопровождение <b>20 / 40 / 60 тыс ₽</b> в месяц · гайд <b>5 000 ₽</b>, сборка <b>10 000 ₽</b></p>
-</div>
-</section>
-
-<section class="days" id="days">
-<div class="wrap">
-<div class="shead">
-<h2>Три дня — и агент у тебя на руках</h2>
-<p class="s">В конце дня отдаю то, что можно проверить: документ, запущенный агент, чек-лист.</p>
-</div>
-<ol class="dline">
-<li class="fx">
-  <span class="dn">день 1</span>
-  <h3>Разбор и граница</h3>
-  <p>Смотрю, где уходит время и что агент забирает. Пишу <b>критерии приёмки</b>: что считаем работающим и на каких твоих примерах проверяем. Цену и срок называю до оплаты.</p>
-  <p class="dget">на руках: карта процессов · 5–7 критериев приёмки · цена и срок</p>
-</li>
-<li class="fx">
-  <span class="dn">день 2</span>
-  <h3>Сборка на твоих данных</h3>
-  <p>Ставлю на твоё железо, подключаю каналы, настраиваю память и правила. Прогоняю <b>твои примеры</b>: те заявки, письма и таблицы, что лежат у тебя сейчас.</p>
-  <p class="dget">на руках: работающий агент · журнал прогонов · список того, что пока не умеет</p>
-</li>
-<li class="fx">
-  <span class="dn">день 3</span>
-  <h3>Приёмка и передача</h3>
-  <p>Идём по критериям, где не прошёл — правлю при тебе. Отдаю код, доступы и инструкцию на одну страницу. Дальше агент живёт у тебя.</p>
-  <p class="dget">на руках: код и доступы · инструкция · чек-лист приёмки с подписями</p>
-</li>
-</ol>
-<p class="dfoot">Не прошло по критерию — не сделано. Это записано до старта.</p>
-</div>
-</section>
-
-
 
 <section id="tools">
 <div class="wrap">
-<div class="shead">
-<h2>Из чего это собрано</h2>
-<p class="s">Три инструмента из шести — самые показательные. Остальные лежат на GitHub, там же EVAL.md.</p>
-</div>
-<ul class="tools">
-<li class="tool">
-  <span class="tic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4,5h16l-6,7v6l-4,2v-8z"/><circle cx="12" cy="9" r="1.2" fill="currentColor" stroke="none"/></svg></span>
-  <div><a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener">ds_warm-lead-parser</a>
-  <p class="tool-what">Собирает заявки и оценивает готовность платить по шкале 0–100.</p></div>
-  <b class="tool-m">63%</b>
-</li>
-<li class="tool">
-  <span class="tic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M11,4.5c2.4,2 2.4,11 0,13"/><path d="M4.5,11h13"/><path d="M15.8,15.8L20,20"/></svg></span>
-  <div><a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_geo-audit" target="_blank" rel="noopener">ds_geo-audit</a>
-  <p class="tool-what">92 правила готовности сайта к AI-поиску, score 0–100 за десять минут.</p></div>
-  <b class="tool-m">AUC 1,00</b>
-</li>
-<li class="tool">
-  <span class="tic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M8.6,9.6a3.6,3.6 0 0 0 0,4.8"/><path d="M6,6.9a7.5,7.5 0 0 0 0,10.2"/><path d="M15.4,9.6a3.6,3.6 0 0 1 0,4.8"/><path d="M18,6.9a7.5,7.5 0 0 1 0,10.2"/></svg></span>
-  <div><a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener">ds_content-radar</a>
-  <p class="tool-what">Что залетает в нише: топ X, Instagram, TikTok и YouTube, план на неделю.</p></div>
-  <b class="tool-m">~150 ₽/мес</b>
-</li>
+<div class="toolshead"><h2>Полка скиллов</h2><p>Шесть инструментов, из которых собирается система. Каждый лежит на GitHub вместе с EVAL.md.</p></div>
+<ul class="shelf">
+<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener">ds_content-radar</a><span class="swhat">что залетает в нише: топ X, Instagram, TikTok, YouTube</span><b class="snum">~150 ₽/мес</b></li>
+<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener">ds_warm-lead-parser</a><span class="swhat">кто сейчас ищет бота: заявки и готовность платить</span><b class="snum">63%</b></li>
+<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_market-evidence" target="_blank" rel="noopener">ds_market-evidence</a><span class="swhat">проверка бизнес-модели по рынку, источник к каждому выводу</span><b class="snum">5/5</b></li>
+<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_geo-audit" target="_blank" rel="noopener">ds_geo-audit</a><span class="swhat">готовность сайта к AI-поиску, 92 правила</span><b class="snum">AUC 1,00</b></li>
+<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_pnl-check" target="_blank" rel="noopener">ds_pnl-check</a><span class="swhat">прибыль, дебиторка и долг против денег</span><b class="snum">3/3</b></li>
+<li><a class="sname" href="https://github.com/r0undm1dn1ghty-star/ds_spiral-maturity" target="_blank" rel="noopener">ds_spiral-maturity</a><span class="swhat">зрелость компании под ИИ в 7 уровнях</span><b class="snum">4/4</b></li>
 </ul>
 </div>
 </section>
