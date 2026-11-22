@@ -564,6 +564,36 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   #ds-shelf .spec-go{width:100%;text-align:center}
 }
 </style>
+<style>
+/* новые сцены: паспорт внедрения, панель дежурства, было→стало */
+#ds-shelf .scope{padding:10px 12px 0;display:flex;flex-direction:column;gap:9px;height:100%}
+#ds-shelf .scope-h{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+#ds-shelf .scope-h b{color:#8fa8ff;font-weight:500}
+#ds-shelf .scope-body{display:grid;grid-template-columns:1fr 92px;gap:10px;align-items:stretch}
+#ds-shelf .scope-rows{display:flex;flex-direction:column;gap:5px}
+#ds-shelf .sr{display:flex;justify-content:space-between;align-items:center;background:#121a36;border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:6px 9px}
+#ds-shelf .sr b{font-size:10.5px;font-weight:500;color:#eef2fb}
+#ds-shelf .sr i{color:#34d17a;font-style:normal;font-size:10px}
+#ds-shelf .scope-core{background:rgba(125,151,255,.1);border:1px solid rgba(125,151,255,.35);border-radius:9px;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:8px;text-align:center}
+#ds-shelf .scope-core b{font-size:11px;color:#fff}
+#ds-shelf .scope-core span{font-family:var(--mono);font-size:8px;color:#a9bcff}
+#ds-shelf .scope-core em{font-style:normal;font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.45);line-height:1.35;margin-top:4px}
+#ds-shelf .ctl{padding:8px 10px 0;display:flex;flex-direction:column;gap:5px;height:100%}
+#ds-shelf .ctl-h{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;color:rgba(255,255,255,.55);text-transform:uppercase}
+#ds-shelf .ctl-h .on{width:6px;height:6px;border-radius:50%;background:#34d17a;box-shadow:0 0 0 3px rgba(52,209,122,.15)}
+#ds-shelf .ctl-h i{margin-left:auto;font-style:normal;color:#34d17a}
+#ds-shelf .ctl-row{display:flex;align-items:center;gap:8px;background:#121a36;border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:6px 9px}
+#ds-shelf .ctl-row b{font-size:10.5px;font-weight:500;color:#fff}
+#ds-shelf .ctl-row span{margin-left:auto;font-family:var(--mono);font-size:8.5px;color:rgba(255,255,255,.55)}
+#ds-shelf .ctl-row i{font-style:normal;color:#34d17a;font-size:10px}
+#ds-shelf .ctl-foot{font-family:var(--mono);font-size:7.5px;color:rgba(255,255,255,.42);margin-top:auto;line-height:1.4}
+#ds-shelf .cmp-legend{display:flex;gap:10px;font-family:var(--mono);font-size:7.5px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:5px}
+#ds-shelf .cmp-legend .was{color:rgba(255,90,95,.9)}
+#ds-shelf .cmp-legend .now{color:#34d17a}
+#ds-shelf .cb i.bad{background:linear-gradient(90deg,rgba(255,90,95,.8),rgba(255,90,95,.35))}
+#ds-shelf .cb i.good{background:linear-gradient(90deg,#34d17a,rgba(52,209,122,.55))}
+#ds-shelf .cmp-sum{margin-top:7px;font-family:var(--mono);font-size:8px;color:#34d17a}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px">
@@ -679,20 +709,19 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   </div>
 <div class="ticket g5"><i class="orb"></i>
     <div class="stage">
-      <div class="svgbox" style="height:100%">
-        <svg viewBox="0 0 292 216">
-          <circle cx="146" cy="108" r="74" fill="none" stroke="rgba(125,151,255,.16)" stroke-width="1.5"/>
-          <circle class="sweepring" cx="146" cy="108" r="74" fill="none" stroke="#8fa8ff" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="70 395"/>
-          <rect x="124" y="12" width="44" height="26" rx="8" class="node-r nd d1"/><text x="146" y="29" text-anchor="middle" class="svg-lab" style="font-size:7.5px">найм</text>
-          <rect x="206" y="58" width="60" height="26" rx="8" class="node-r nd d2"/><text x="236" y="75" text-anchor="middle" class="svg-lab" style="font-size:7.5px">операционка</text>
-          <rect x="206" y="132" width="44" height="26" rx="8" class="node-r nd d3"/><text x="228" y="149" text-anchor="middle" class="svg-lab" style="font-size:7.5px">риски</text>
-          <rect x="116" y="178" width="60" height="26" rx="8" class="node-r nd d4"/><text x="146" y="195" text-anchor="middle" class="svg-lab" style="font-size:7.5px">экономика</text>
-          <rect x="26" y="96" width="66" height="26" rx="8" class="node-r nd d5"/><text x="59" y="113" text-anchor="middle" class="svg-lab" style="font-size:7.5px">конкуренты</text>
-          <circle cx="146" cy="108" r="32" fill="#24368f" stroke="#8fa8ff" stroke-width="1.3"/>
-          <text x="146" y="105" text-anchor="middle" class="svg-lab" style="fill:#fff">агент</text>
-          <text x="146" y="117" text-anchor="middle" class="svg-lab dim">ведёт</text>
-        </svg>
-      </div>
+      <div class="scope">
+  <div class="scope-h"><span>аудит масштаба</span><b>5+ процессов</b></div>
+  <div class="scope-body">
+    <div class="scope-rows">
+      <div class="sr"><b>заявки</b><i>✓</i></div>
+      <div class="sr"><b>переписка</b><i>✓</i></div>
+      <div class="sr"><b>CRM</b><i>✓</i></div>
+      <div class="sr"><b>отчёты</b><i>✓</i></div>
+      <div class="sr"><b>сверки</b><i>✓</i></div>
+    </div>
+    <div class="scope-core"><b>1 агент</b><span>общая память</span><em>приёмка по твоим сценариям</em></div>
+  </div>
+</div>
     </div>
     <div class="plate"><div class="nm">Внедрение ИИ-агента для среднего бизнеса</div><div class="pr">120 000 <small>₽</small> <small class="cond">после аудита</small></div></div>
   </div>
@@ -720,11 +749,13 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 <div class="ticket g4"><i class="orb"></i>
     <div class="stage">
       <div class="cmp">
-        <div class="cr"><span class="cl">цена в месяц</span><span class="cb"><i class="bad" style="width:86%"></i></span><span class="ar">→</span><span class="cb"><i class="good" style="width:34%"></i></span></div>
-        <div class="cr"><span class="cl">скорость ответа</span><span class="cb"><i class="bad" style="width:26%"></i></span><span class="ar">→</span><span class="cb"><i class="good" style="width:92%"></i></span></div>
-        <div class="cr"><span class="cl">скорость размышлений</span><span class="cb"><i class="bad" style="width:34%"></i></span><span class="ar">→</span><span class="cb"><i class="good" style="width:86%"></i></span></div>
-        <div class="cr"><span class="cl">расходы</span><span class="cb"><i class="bad" style="width:78%"></i></span><span class="ar">→</span><span class="cb"><i class="good" style="width:40%"></i></span></div>
-      </div>
+  <div class="cmp-legend"><span class="was">было</span><span class="now">стало</span></div>
+  <div class="cr"><span class="cl">цена в месяц</span><span class="cb"><i class="bad" style="width:86%"></i></span><span class="ar">→</span><span class="cb"><i class="good" style="width:34%"></i></span></div>
+  <div class="cr"><span class="cl">скорость ответа</span><span class="cb"><i class="bad" style="width:26%"></i></span><span class="ar">→</span><span class="cb"><i class="good" style="width:92%"></i></span></div>
+  <div class="cr"><span class="cl">размышления</span><span class="cb"><i class="bad" style="width:34%"></i></span><span class="ar">→</span><span class="cb"><i class="good" style="width:86%"></i></span></div>
+  <div class="cr"><span class="cl">расходы</span><span class="cb"><i class="bad" style="width:78%"></i></span><span class="ar">→</span><span class="cb"><i class="good" style="width:40%"></i></span></div>
+  <div class="cmp-sum">дешевле на 60% · быстрее в 3.5 раза</div>
+</div>
     </div>
     <div class="plate"><div class="nm">Оптимизация старого агента</div><div class="pr">от 30 000 <small>₽</small></div></div>
   </div>
@@ -752,13 +783,13 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
   </div>
 <div class="ticket g4"><i class="orb"></i>
     <div class="stage">
-      <div class="wbars">
-        <div class="wbar"><i class="bb" style="height:34%"></i><span>нед 1</span></div>
-        <div class="wbar"><i class="bb" style="height:56%"></i><span>нед 2</span></div>
-        <div class="wbar"><i class="bb" style="height:74%"></i><span>нед 3</span></div>
-        <div class="wbar"><i class="bb" style="height:96%"></i><span>нед 4</span></div>
-      </div>
-      <div class="wb-lab">вопросов по бизнесу закрыто</div>
+      <div class="ctl">
+  <div class="ctl-h"><span class="on"></span>дежурство · 3 контура<i>онлайн</i></div>
+  <div class="ctl-row"><b>заявки</b><span>128 / день</span><i class="ok">✓</i></div>
+  <div class="ctl-row"><b>отчёты</b><span>4 в месяц</span><i class="ok">✓</i></div>
+  <div class="ctl-row"><b>интеграции</b><span>6 из 6</span><i class="ok">✓</i></div>
+  <div class="ctl-foot">инциденты: 2 · закрыто 2 · расход провайдеров −8%</div>
+</div>
     </div>
     <div class="plate"><div class="nm">Тех. поддержка — сопровождение бизнеса</div><div class="pr">40 000 <small>₽/мес</small></div></div>
   </div>
@@ -780,25 +811,7 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 <h3 class="slab">Дополнения<em>25–50 тыс</em></h3>
 <div class="row">
 
-  <div class="ticket g5"><i class="orb"></i>
-    <div class="stage">
-      <div class="office">
-        <div class="avrow">
-          <div class="av"><div class="a a1">З</div><small>заявки</small></div>
-          <div class="av"><div class="a a2">С</div><small>CRM</small></div>
-          <div class="av"><div class="a a3">К</div><small>контент</small></div>
-          <div class="av"><div class="a a4">О</div><small>отчёты</small></div>
-          <div class="av"><div class="a a5">В</div><small>сверка</small></div>
-        </div>
-        <div class="chat">
-          <div class="cm"><span class="who a1">агент-заявки · 23:47</span>Клиент: «есть время завтра в 10:00?» — записал</div>
-          <div class="cm"><span class="who a2">агент-CRM · 00:30</span>Сделка №214, счёт выставлен</div>
-          <div class="cm m3"><span class="who a1">агент-отчёты · 07:00</span>12 заявок, 3 счёта. Счёт клиенту отправить?</div>
-        </div>
-      </div>
-    </div>
-    <div class="plate"><div class="nm">Офис: ещё четыре роли к агенту</div><div class="pr">50 000 <small>₽</small></div></div>
-  </div>
+  
 <div class="ticket g2"><i class="orb"></i>
     <div class="stage"><div class="win">
       <div class="whead"><i class="d g"></i><i class="d"></i><i class="d"></i><span class="t">конвейер · фото</span><span class="live">12/нед</span></div>
@@ -832,6 +845,26 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
     <div class="plate"><div class="nm">Контент-завод: видео</div><div class="pr">45 000 <small>₽</small></div></div>
   </div>
 
+
+<div class="ticket g5"><i class="orb"></i>
+    <div class="stage">
+      <div class="office">
+        <div class="avrow">
+          <div class="av"><div class="a a1">З</div><small>заявки</small></div>
+          <div class="av"><div class="a a2">С</div><small>CRM</small></div>
+          <div class="av"><div class="a a3">К</div><small>контент</small></div>
+          <div class="av"><div class="a a4">О</div><small>отчёты</small></div>
+          <div class="av"><div class="a a5">В</div><small>сверка</small></div>
+        </div>
+        <div class="chat">
+          <div class="cm"><span class="who a1">агент-заявки · 23:47</span>Клиент: «есть время завтра в 10:00?» — записал</div>
+          <div class="cm"><span class="who a2">агент-CRM · 00:30</span>Сделка №214, счёт выставлен</div>
+          <div class="cm m3"><span class="who a1">агент-отчёты · 07:00</span>12 заявок, 3 счёта. Счёт клиенту отправить?</div>
+        </div>
+      </div>
+    </div>
+    <div class="plate"><div class="nm">Офис: ещё четыре роли к агенту</div><div class="pr">50 000 <small>₽</small></div></div>
+  </div>
 </div>
 </section>
 <section class="sec" id="floor-free">
@@ -862,55 +895,6 @@ footer.site-foot .sf-legal a:hover{text-decoration:underline}
 
 </div>
 </section>
-</section>
-
-<section class="flow">
-<div class="shead">
-<h2>Один агент</h2>
-<p class="s">Всё, что приходит в бизнес, уходит агенту — и возвращается <b>готовой работой</b>. Не набор скриптов: один агент с общей памятью, в тех же чатах, где твоя команда.</p>
-</div>
-<div class="flowbox fx">
-<svg viewBox="0 0 940 460" role="img" aria-label="Схема потока: Авито, телеграм-чаты, письма, задачи команды, документы подрядчиков, бюджет и конкуренты входят в агента; назад возвращаются записи в CRM, ответы, отчёты и план дня">
-<defs>
-<marker id="arw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="flow-arrow"/></marker>
-</defs>
-<text x="28" y="30" class="fb-lab">приходит в бизнес</text>
-<text x="470" y="30" text-anchor="middle" class="fb-lab">агент</text>
-<text x="912" y="30" text-anchor="end" class="fb-lab">возвращается готовым</text>
-<g class="fb-lines">
-<path class="fb-line d1" pathLength="1" marker-end="url(#arw)" d="M244 64 C 320 64 340 240 388 240"/>
-<path class="fb-line d2" pathLength="1" marker-end="url(#arw)" d="M244 118 C 320 118 344 240 388 240"/>
-<path class="fb-line d3" pathLength="1" marker-end="url(#arw)" d="M244 172 C 320 172 350 240 388 240"/>
-<path class="fb-line d4" pathLength="1" marker-end="url(#arw)" d="M244 226 C 320 226 356 240 388 240"/>
-<path class="fb-line d5" pathLength="1" marker-end="url(#arw)" d="M244 280 C 320 280 350 240 388 240"/>
-<path class="fb-line d6" pathLength="1" marker-end="url(#arw)" d="M244 334 C 320 334 344 240 388 240"/>
-<path class="fb-line d7" pathLength="1" marker-end="url(#arw)" d="M244 388 C 320 388 340 240 388 240"/>
-<path class="fb-line d8" pathLength="1" marker-end="url(#arw)" d="M552 240 C 620 240 636 128 692 128"/>
-<path class="fb-line d9" pathLength="1" marker-end="url(#arw)" d="M552 240 C 620 240 636 206 692 206"/>
-<path class="fb-line d10" pathLength="1" marker-end="url(#arw)" d="M552 240 C 620 240 636 284 692 284"/>
-<path class="fb-line d11" pathLength="1" marker-end="url(#arw)" d="M552 240 C 620 240 636 362 692 362"/>
-</g>
-<rect x="388" y="196" width="164" height="88" rx="16" class="fb-core"/>
-<text x="470" y="232" text-anchor="middle" class="fb-core-t">Агент</text>
-<text x="470" y="254" text-anchor="middle" class="fb-core-s">один агент</text>
-<text x="470" y="270" text-anchor="middle" class="fb-core-s">одна память</text>
-<g class="fb-ins">
-<text x="28" y="69" class="fb-in">Авито</text>
-<text x="28" y="123" class="fb-in">Телеграм-чаты</text>
-<text x="28" y="177" class="fb-in">Письма</text>
-<text x="28" y="231" class="fb-in">Задачи команды</text>
-<text x="28" y="285" class="fb-in">Документы подрядчиков</text>
-<text x="28" y="339" class="fb-in">Бюджет</text>
-<text x="28" y="393" class="fb-in">Конкуренты</text>
-</g>
-<g class="fb-outs">
-<text x="700" y="133" class="fb-out">Записи в CRM</text>
-<text x="700" y="211" class="fb-out">Ответы клиентам</text>
-<text x="700" y="289" class="fb-out">Отчёты по неделе</text>
-<text x="700" y="367" class="fb-out">План дня</text>
-</g>
-</svg>
-</div>
 </section>
 
 <section class="shelf" id="optimization">
