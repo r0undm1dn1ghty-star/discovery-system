@@ -1052,6 +1052,13 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   .dsstack .testa__titolo{font-size:clamp(20px,7vw,26px) !important}
 }
 </style>
+<style>
+/* подпись: линия — название — статус, без описания, чтобы линии не резали текст */
+.dsstack .etichetta em{display:none !important}
+.dsstack .etichetta__corpo{grid-template-columns:auto auto auto !important;align-items:center !important}
+.dsstack .etichetta b{font-weight:500 !important}
+.dsstack .etichetta__filo{background:rgba(143,168,255,.55) !important}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
