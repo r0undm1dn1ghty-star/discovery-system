@@ -61,6 +61,25 @@ window.__ymId = 113187640;
       '#ds-cookie button{height:40px;font-size:13px}}',
       '@media(prefers-reduced-motion:reduce){#ds-cookie{transition:none;transform:none;opacity:1}}'
     ].join('');
+
+    /* плашка подстраивается под фон страницы: на тёмных страницах белый лист выглядит чужим */
+    var bodyBg = getComputedStyle(document.body).backgroundColor || '';
+    var m = bodyBg.match(/\d+(\.\d+)?/g) || [];
+    var lum = m.length >= 3 ? (+m[0]*0.2126 + +m[1]*0.7152 + +m[2]*0.0722) / 255 : 1;
+    if (lum < 0.45) {
+      css.textContent += [
+        '#ds-cookie{background:rgba(19,26,48,.97);border-color:rgba(255,255,255,.14);',
+        'box-shadow:0 22px 50px -26px rgba(0,0,0,.7);color:#eef2fb}',
+        '#ds-cookie .ck-t{color:#8a94ad}',
+        '#ds-cookie .ck-x{color:#c8d0e2}',
+        '#ds-cookie .ck-x a{color:#a9bcff;text-decoration:none;border-bottom:1px solid rgba(169,188,255,.35)}',
+        '#ds-cookie .ck-yes{background:#8fa8ff;color:#0f1730}',
+        '#ds-cookie .ck-yes:hover{background:#a9bcff}',
+        '#ds-cookie .ck-no{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.22);color:#c8d0e2}',
+        '#ds-cookie .ck-no:hover{border-color:rgba(255,255,255,.4);color:#f4f7fe}'
+      ].join('');
+    }
+
     document.head.appendChild(css);
 
     var b = document.createElement('div');

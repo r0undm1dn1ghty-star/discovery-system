@@ -289,7 +289,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 #days{padding:clamp(56px,8vw,96px) 0}
 #days .shead{margin-bottom:clamp(20px,3vw,32px)}
 #days .dline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,2.4vw,28px);counter-reset:d}
-#days .dline li{position:relative;padding:22px 22px 24px;border:1px solid var(--hair);border-radius:14px;background:#fff}
+#days .dline li{position:relative;padding:22px 22px 24px;border:1px solid var(--hair);border-radius:14px;background:transparent}
 #days .dn{display:inline-block;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--navy);border-radius:999px;padding:6px 10px}
 #days h3{margin:14px 0 8px;font-size:clamp(19px,2.2vw,24px);line-height:1.2}
 #days p{margin:0;font-size:15.5px;line-height:1.55;color:var(--body)}
@@ -301,7 +301,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 /* бренд-блок «кому и что» */
 #who{padding:clamp(52px,7vw,88px) 0 0}
 #who .whogrid{display:grid;align-items:stretch;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,22px);margin-top:clamp(20px,3vw,30px)}
-#who .who{height:100%;border:1px solid var(--hair);border-radius:14px;padding:20px 20px 18px;background:#fff;display:flex;flex-direction:column}
+#who .who{height:100%;border:1px solid var(--hair);border-radius:14px;padding:20px 20px 18px;background:transparent;display:flex;flex-direction:column}
 #who .wk{margin:0;font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#5a6480}
 #who h3{margin:12px 0 8px;font-size:clamp(17px,1.9vw,20px);line-height:1.25}
 #who .who p{margin:0;font-size:14.8px;line-height:1.5;color:var(--body)}
@@ -361,10 +361,10 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 /* ── «три дня» — типографика вместо карточек ── */
 #days .dline{display:block;border-top:1px solid var(--hair);margin-top:clamp(20px,3vw,30px)}
 #days .dline li{display:grid;grid-template-columns:112px minmax(0,1fr) 232px;gap:clamp(12px,2vw,28px);align-items:start;border:0;border-bottom:1px solid var(--hair);background:none;border-radius:0;padding:clamp(18px,2.4vw,26px) 0}
-#days .dn{font:500 11.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#7c86a0;background:none;padding:0;border-radius:0;margin-top:4px}
+#days .dn{font:500 11.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#8fa8ff;background:none;padding:0;border-radius:0;margin-top:4px}
 #days h3{margin:0 0 6px;font-size:clamp(19px,2.2vw,24px);line-height:1.15}
 #days p{margin:0;font-size:15px;line-height:1.55;color:var(--body);max-width:54ch}
-#days .dget{margin:0;border:0;padding:0;font:400 12.5px/1.5 var(--mono);color:#5a6480}
+#days .dget{margin:0;border:0;padding:0;font:400 12.5px/1.5 var(--mono);color:#8a94ad}
 @media(max-width:720px){
  #days .dline li{grid-template-columns:1fr;gap:8px}
 }
@@ -372,7 +372,40 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 #own .ownlist li{padding-left:0}
 #own .ownlist li:before{display:none}
 #own .ownlist{columns:2;column-gap:clamp(24px,4vw,56px)}
-#own .ownlist li{padding:6px 0;border-bottom:1px solid rgba(27,42,107,.07)}
+#own .ownlist li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+</style>
+<style>
+/* дерево проекта + аренда */
+#own{padding:clamp(52px,7vw,88px) 0 0}
+#own .ownsplit{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start;margin-top:clamp(20px,3vw,30px)}
+#own .tree{border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.04)}
+#own .tree-h{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.1);font:500 13px/1 var(--mono);color:var(--ink)}
+#own .dot{width:8px;height:8px;border-radius:50%;background:#2ec27e;flex:none}
+#own .tree-m{margin-left:auto;font:400 11.5px/1 var(--mono);color:#8a94ad}
+#own .tree-b{margin:0;padding:14px 16px 16px;font:400 12.5px/1.85 var(--mono);color:#c8d0e2;overflow-x:auto}
+#own .tree-b b{color:var(--ink);font-weight:500}
+#own .fd{color:rgba(255,255,255,.3)}
+#own .rent{padding-top:6px}
+#own .rent-k{margin:0;font:500 10.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#9aa3bb}
+#own .rent h3{margin:10px 0 8px;font-size:clamp(26px,3.4vw,34px);line-height:1.05}
+#own .rent p{margin:0;font-size:15px;line-height:1.55;color:var(--body);max-width:44ch}
+#own .rent-n{margin-top:14px !important;padding-top:12px;border-top:1px solid var(--hair);color:var(--ink) !important;font-weight:500}
+@media(max-width:820px){#own .ownsplit{grid-template-columns:1fr;gap:26px}}
+/* кому — одна строка */
+#who{padding:clamp(36px,5vw,56px) 0 0}
+#who .wholine{margin:0;font-size:15.5px;line-height:1.7;color:var(--body);border-top:1px solid var(--hair);padding-top:clamp(18px,2.4vw,24px)}
+#who .whok{display:inline-block;margin-right:10px;font:500 10.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:#8fa8ff;vertical-align:2px}
+#who b{color:var(--ink);font-weight:500}
+/* инструменты — три строки */
+#tools .tools{margin-top:clamp(18px,2.6vw,26px)}
+#tools .tool{grid-template-columns:34px minmax(0,1fr) 128px;align-items:center;padding:18px 0}
+#tools .tool-m{font:500 20px/1 var(--mono)}
+</style>
+<style>
+@media(max-width:720px){
+  #own .tree-b{font-size:10.6px;line-height:1.75;white-space:pre-wrap;word-break:break-word;overflow-x:visible}
+  #own .tree-h{font-size:12px}
+}
 </style>
 </head>
 <body>
@@ -396,88 +429,34 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 <section id="own">
 <div class="wrap">
 <div class="shead">
-<h2>Что у тебя, а что у подписки</h2>
-<p class="s">Одна таблица, без звёздочек. Где владение заканчивается — написано прямо.</p>
+<h2>Вот что остаётся у тебя после приёмки</h2>
+<p class="s">Не описание «возможностей» — папка проекта, которую ты открываешь сам.</p>
 </div>
-<table class="cmp">
-<thead><tr><th></th><th>Подписка на сервис</th><th class="me">Discovery System</th></tr></thead>
-<tbody>
-<tr><td>Код агента</td><td>не отдают</td><td class="me">репозиторий у тебя</td></tr>
-<tr><td>Данные и память</td><td>в их облаке</td><td class="me">на твоём диске или сервере</td></tr>
-<tr><td>Ключи API</td><td>их, расходов не видно</td><td class="me">твои, счёт от провайдера напрямую</td></tr>
-<tr><td>Модель</td><td>их выбор, меняют молча</td><td class="me">твой провайдер, вплоть до локальной модели</td></tr>
-<tr><td>Перестал платить</td><td>агент встал, данные заперты</td><td class="me">работает, пока работает твоё железо</td></tr>
-<tr><td>Что чинишь</td><td>ждут их сроков</td><td class="me">сам или я по договору</td></tr>
-<tr><td>Сколько стоит</td><td>подписка + наценка на токены</td><td class="me">разово за работу + провайдеру по факту</td></tr>
-</tbody>
-</table>
-<p class="caveat"><b>Честно про модель:</b> её ты арендуешь у провайдера или ставишь локально — забрать её нельзя, она не продаётся. Забираешь код, данные, ключи, память и выбор провайдера. Это и есть владение.</p>
-
-<h3 class="ownh">Что конкретно уходит с тобой</h3>
-<ul class="ownlist">
-<li>репозиторий с кодом агента</li>
-<li>схема связки: какие сервисы, что куда пишет</li>
-<li>промпты и правила поведения</li>
-<li>база знаний и память агента файлами</li>
-<li>ключи API на твоих аккаунтах</li>
-<li>конфиг моделей и лимитов</li>
-<li>скрипты деплоя</li>
-<li>инструкция на одну страницу: как поднять заново</li>
-<li>чек-лист приёмки с подписями</li>
-<li>журнал прогонов и тестов</li>
-<li>список того, что агент пока не умеет</li>
-<li>инструкция по бэкапу памяти</li>
-<li>доступ к машине или серверу</li>
-<li>план замены провайдера, если он отвалится</li>
-</ul>
+<div class="ownsplit">
+  <div class="tree" aria-label="Состав проекта, который передаётся клиенту">
+    <div class="tree-h"><span class="dot"></span>dg-agent<span class="tree-m">твой репозиторий</span></div>
+    <pre class="tree-b"><span class="fd">├─</span> <b>agent/</b>            код агента, промпты, правила
+<span class="fd">│  ├─</span> memory/          память и база знаний
+<span class="fd">│  └─</span> tools/            каналы: Telegram, CRM, таблицы
+<span class="fd">├─</span> <b>deploy/</b>          скрипт подъёма на твоей машине
+<span class="fd">├─</span> <b>.env.example</b>      ключи провайдера — твои, не мои
+<span class="fd">├─</span> <b>EVAL.md</b>          журнал прогонов и где агент проигрывает
+<span class="fd">├─</span> <b>ПРИЁМКА.md</b>       чек-лист с подписями по каждому критерию
+<span class="fd">└─</span> <b>README.md</b>        как поднять заново за 10 минут</pre>
+  </div>
+  <div class="rent">
+    <p class="rent-k">и одна вещь, которой ты не владеешь</p>
+    <h3>Модель</h3>
+    <p>Её ты арендуешь у провайдера или ставишь локально. Забрать нельзя: она не продаётся. Платишь провайдеру по своему счёту — я к нему не приписан.</p>
+    <p class="rent-n">Код, данные, память, ключи и выбор провайдера — твои. Это и есть владение.</p>
+  </div>
+</div>
 </div>
 </section>
 
 <section id="who">
 <div class="wrap">
-<div class="shead">
-<h2>Кому и что даём</h2>
-<p class="s">Четыре ситуации. У каждой видно, что человек получает, сколько платит и сколько ждёт.</p>
-</div>
-<ol class="ladder">
-<li class="fx">
-  <span class="ln">01</span>
-  <div class="lx">
-    <p class="lk">самозанятый · один человек</p>
-    <h3>Заявки и переписка без тебя</h3>
-    <p class="ld">Агент принимает заявки, отвечает по твоему прайсу, пишет в CRM или таблицу. Живёт на твоём ноутбуке.</p>
-  </div>
-  <div class="lp"><b>40 000 ₽</b><span>1–3 дня</span></div>
-</li>
-<li class="fx">
-  <span class="ln">02</span>
-  <div class="lx">
-    <p class="lk">микро · 1–10 человек</p>
-    <h3>Рутина команды на агенте</h3>
-    <p class="ld">Несколько каналов, одна память, сводка по утрам. Забирает работу, которую вы делаете руками.</p>
-  </div>
-  <div class="lp"><b>80 000 ₽</b><span>до 10 дней</span></div>
-</li>
-<li class="fx">
-  <span class="ln">03</span>
-  <div class="lx">
-    <p class="lk">малый · 10–30 человек</p>
-    <h3>Процессы и контуры</h3>
-    <p class="ld">Сначала аудит масштаба и цена, потом сборка: заявки, CRM, отчёты, сверки.</p>
-  </div>
-  <div class="lp"><b>120 000 ₽</b><span>после аудита</span></div>
-</li>
-<li class="fx">
-  <span class="ln">04</span>
-  <div class="lx">
-    <p class="lk">после запуска · каждый месяц</p>
-    <h3>Держать в рабочем виде</h3>
-    <p class="ld">Отчёт каждый день, ответ в тот же день, разбор до причины. На верхнем тарифе агенты готовят варианты решения, выбираешь ты.</p>
-  </div>
-  <div class="lp"><b>20–60 тыс</b><span>в месяц</span></div>
-</li>
-</ol>
-<p class="whofoot">Начать можно с гайда за 5 000 ₽ или сборки за 10 000 ₽. Калькулятор и канал сигналов — бесплатно.</p>
+<p class="wholine"><span class="whok">кому</span>самозанятый <b>40 000 ₽</b> · микро 1–10 <b>80 000 ₽</b> · малый 10–30 <b>120 000 ₽</b> после аудита · сопровождение <b>20 / 40 / 60 тыс ₽</b> в месяц · гайд <b>5 000 ₽</b>, сборка <b>10 000 ₽</b></p>
 </div>
 </section>
 
@@ -516,51 +495,29 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 <section id="tools">
 <div class="wrap">
 <div class="shead">
-<h2>Шесть инструментов, открытых на GitHub</h2>
-<p class="s">Каждый из рабочей разведки. Клонируй и прогоняй сам: в репозитории EVAL.md и места, где инструмент проигрывает.</p>
+<h2>Из чего это собрано</h2>
+<p class="s">Три инструмента из шести — самые показательные. Остальные лежат на GitHub, там же EVAL.md.</p>
 </div>
-<ul class="tools"><li class="tool fx">
-  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M8.6,9.6a3.6,3.6 0 0 0 0,4.8"/><path d="M6,6.9a7.5,7.5 0 0 0 0,10.2"/><path d="M15.4,9.6a3.6,3.6 0 0 1 0,4.8"/><path d="M18,6.9a7.5,7.5 0 0 1 0,10.2"/></svg></span>
-  <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener">ds_content-radar</a>
-  <p class="tool-what">Какой контент залетает в нише: собирает топ X, Instagram, TikTok и YouTube, находит аутлаеров и складывает план на неделю.</p>
-  <p class="tool-m">~150 ₽/мес</p>
-  <p class="tool-note">4 платформы · без Apify</p>
+<ul class="tools">
+<li class="tool">
+  <span class="tic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4,5h16l-6,7v6l-4,2v-8z"/><circle cx="12" cy="9" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+  <div><a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener">ds_warm-lead-parser</a>
+  <p class="tool-what">Собирает заявки и оценивает готовность платить по шкале 0–100.</p></div>
+  <b class="tool-m">63%</b>
 </li>
-<li class="tool fx">
-  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4,5h16l-6,7v6l-4,2v-8z"/><circle cx="12" cy="9" r="1.2" fill="currentColor" stroke="none"/></svg></span>
-  <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_warm-lead-parser" target="_blank" rel="noopener">ds_warm-lead-parser</a>
-  <p class="tool-what">Кто прямо сейчас ищет бота: собирает заявки и оценивает готовность платить по шкале 0–100.</p>
-  <p class="tool-m">63% точности</p>
-  <p class="tool-note">57 каналов · 7 бирж · EVAL.md</p>
+<li class="tool">
+  <span class="tic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M11,4.5c2.4,2 2.4,11 0,13"/><path d="M4.5,11h13"/><path d="M15.8,15.8L20,20"/></svg></span>
+  <div><a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_geo-audit" target="_blank" rel="noopener">ds_geo-audit</a>
+  <p class="tool-what">92 правила готовности сайта к AI-поиску, score 0–100 за десять минут.</p></div>
+  <b class="tool-m">AUC 1,00</b>
 </li>
-<li class="tool fx">
-  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6,3.5h9l4,4V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6,20z"/><path d="M15,3.5V8h4"/><path d="M9,14.5l2,2 3.5-4"/></svg></span>
-  <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_market-evidence" target="_blank" rel="noopener">ds_market-evidence</a>
-  <p class="tool-what">Проверяет утверждения бизнес-модели по рынку: источник и дата у каждого вывода, отдельно: что данные не доказывают.</p>
-  <p class="tool-m">5/5 вердиктов</p>
-  <p class="tool-note">ютуб- и маркет-проверки</p>
+<li class="tool">
+  <span class="tic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><path d="M8.6,9.6a3.6,3.6 0 0 0 0,4.8"/><path d="M6,6.9a7.5,7.5 0 0 0 0,10.2"/><path d="M15.4,9.6a3.6,3.6 0 0 1 0,4.8"/><path d="M18,6.9a7.5,7.5 0 0 1 0,10.2"/></svg></span>
+  <div><a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_content-radar" target="_blank" rel="noopener">ds_content-radar</a>
+  <p class="tool-what">Что залетает в нише: топ X, Instagram, TikTok и YouTube, план на неделю.</p></div>
+  <b class="tool-m">~150 ₽/мес</b>
 </li>
-<li class="tool fx">
-  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M11,4.5c2.4,2 2.4,11 0,13"/><path d="M4.5,11h13"/><path d="M15.8,15.8L20,20"/></svg></span>
-  <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_geo-audit" target="_blank" rel="noopener">ds_geo-audit</a>
-  <p class="tool-what">Готовность сайта к AI-поиску: 92 правила, score 0–100 за десять минут: что чинить первым.</p>
-  <p class="tool-m">AUC 1,00</p>
-  <p class="tool-note">92 правила · score 0–100</p>
-</li>
-<li class="tool fx">
-  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4,20V10"/><path d="M9.3,20V6"/><path d="M14.6,20v-7"/><path d="M20,20V4"/><path d="M3,20h18"/></svg></span>
-  <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_pnl-check" target="_blank" rel="noopener">ds_pnl-check</a>
-  <p class="tool-what">Сверяет прибыль, дебиторку и долг с деньгами: где подтверждено, а где догадка.</p>
-  <p class="tool-m">3/3 ловушки</p>
-  <p class="tool-note">модель ВШЭ + Cloud.ru</p>
-</li>
-<li class="tool fx">
-  <span class="tic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12,12a1.6,1.6 0 0 1 3.2,0 3.4,3.4 0 0 1-6.8,0 5.2,5.2 0 0 1 10.4,0 7,7 0 0 1-14,0 8.8,8.8 0 0 1 17.6,0"/></svg></span>
-  <a class="tool-name" href="https://github.com/r0undm1dn1ghty-star/ds_spiral-maturity" target="_blank" rel="noopener">ds_spiral-maturity</a>
-  <p class="tool-what">Зрелость компании под ИИ и формат внедрения, который переживёт старт: 10 минут, 7 уровней.</p>
-  <p class="tool-m">4/4 ступени</p>
-  <p class="tool-note">10 минут · 7 уровней</p>
-</li></ul>
+</ul>
 </div>
 </section>
 
