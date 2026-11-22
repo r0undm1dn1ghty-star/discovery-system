@@ -328,6 +328,28 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
  #who .lp span{margin:0}
 }
 </style>
+<style>
+/* таблица владения + список */
+#own{padding:clamp(52px,7vw,88px) 0 0}
+#own .cmp{width:100%;border-collapse:collapse;margin-top:clamp(20px,3vw,30px);font-size:15px}
+#own .cmp th{text-align:left;padding:0 0 12px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#7c86a0;border-bottom:1px solid var(--navy)}
+#own .cmp th.me{color:var(--navy)}
+#own .cmp td{padding:14px 18px 14px 0;border-bottom:1px solid var(--hair);vertical-align:top;color:#7c86a0}
+#own .cmp td:first-child{color:var(--ink);font-weight:500;width:34%}
+#own .cmp td.me{color:var(--ink);background:rgba(27,42,107,.04)}
+#own .cmp tbody tr:hover td{background:rgba(27,42,107,.045)}
+#own .caveat{margin:clamp(16px,2.4vw,22px) 0 0;padding:14px 16px;border-left:3px solid var(--navy);background:rgba(27,42,107,.045);font-size:14.6px;line-height:1.5;color:var(--body);max-width:78ch}
+#own .ownh{margin:clamp(28px,4vw,40px) 0 0;font-size:clamp(19px,2.2vw,23px)}
+#own .ownlist{list-style:none;margin:14px 0 0;padding:0;columns:2;column-gap:clamp(20px,3vw,44px);font-size:14.8px;line-height:1.55;color:var(--body)}
+#own .ownlist li{break-inside:avoid;padding:5px 0 5px 18px;position:relative}
+#own .ownlist li:before{content:"";position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:2px;background:var(--navy);opacity:.55}
+@media(max-width:720px){
+ #own .cmp{font-size:13.6px}
+ #own .cmp td{padding:11px 10px 11px 0}
+ #own .cmp td:first-child{width:38%}
+ #own .ownlist{columns:1}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -339,16 +361,54 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 
 
 <div class="hero">
-<div class="kicker fx">бренд · кому и что даём</div>
-<h1 class="fx">Discovery System ставит ИИ-агентов на твои данные. <em>Агент остаётся твоим.</em></h1>
-<p class="lede fx">Гайд 5 000 ₽, сборка 10 000 ₽, внедрение от 40 000 ₽, сопровождение от 20 000 ₽ в месяц. Цену, срок и критерии приёмки говорю <b>до оплаты</b>.</p>
-<p class="conflict fx">Подписка на чужое облако кончается вместе с подпиской. Агент на твоём железе работает, пока работает железо.</p>
-<p class="terms fx"><span class="tlab">приёмка · оплата · сроки</span>Оплата рублями после согласования. Срок — от суток до 10 дней, зависит от числа процессов.</p>
+<div class="kicker fx">Discovery System</div>
+<h1 class="fx">Система агентов, которой <em>ты владеешь</em></h1>
+<p class="lede fx">Поэтому тебе не придётся платить второй раз и просить доступ к своему же агенту. Код, данные и ключи остаются у тебя: <b>забрал — и работает без меня</b>.</p>
+<p class="conflict fx">Гайд 5 000 ₽. Сборка 10 000 ₽. Внедрение от 40 000 ₽. Сопровождение от 20 000 ₽ в месяц. Цену, срок и критерии приёмки говорю до оплаты.</p>
 <div class="hero-cta fx"><a class="btn btn-p" href="service.html">Услуги и цены</a><a class="quiet-link" href="#days">как идут три дня</a></div>
 </div>
 </div>
 
+<section id="own">
 <div class="wrap">
+<div class="shead">
+<h2>Что у тебя, а что у подписки</h2>
+<p class="s">Одна таблица, без звёздочек. Где владение заканчивается — написано прямо.</p>
+</div>
+<table class="cmp">
+<thead><tr><th></th><th>Подписка на сервис</th><th class="me">Discovery System</th></tr></thead>
+<tbody>
+<tr><td>Код агента</td><td>не отдают</td><td class="me">репозиторий у тебя</td></tr>
+<tr><td>Данные и память</td><td>в их облаке</td><td class="me">на твоём диске или сервере</td></tr>
+<tr><td>Ключи API</td><td>их, расходов не видно</td><td class="me">твои, счёт от провайдера напрямую</td></tr>
+<tr><td>Модель</td><td>их выбор, меняют молча</td><td class="me">твой провайдер, вплоть до локальной модели</td></tr>
+<tr><td>Перестал платить</td><td>агент встал, данные заперты</td><td class="me">работает, пока работает твоё железо</td></tr>
+<tr><td>Что чинишь</td><td>ждут их сроков</td><td class="me">сам или я по договору</td></tr>
+<tr><td>Сколько стоит</td><td>подписка + наценка на токены</td><td class="me">разово за работу + провайдеру по факту</td></tr>
+</tbody>
+</table>
+<p class="caveat"><b>Честно про модель:</b> её ты арендуешь у провайдера или ставишь локально — забрать её нельзя, она не продаётся. Забираешь код, данные, ключи, память и выбор провайдера. Это и есть владение.</p>
+
+<h3 class="ownh">Что конкретно уходит с тобой</h3>
+<ul class="ownlist">
+<li>репозиторий с кодом агента</li>
+<li>схема связки: какие сервисы, что куда пишет</li>
+<li>промпты и правила поведения</li>
+<li>база знаний и память агента файлами</li>
+<li>ключи API на твоих аккаунтах</li>
+<li>конфиг моделей и лимитов</li>
+<li>скрипты деплоя</li>
+<li>инструкция на одну страницу: как поднять заново</li>
+<li>чек-лист приёмки с подписями</li>
+<li>журнал прогонов и тестов</li>
+<li>список того, что агент пока не умеет</li>
+<li>инструкция по бэкапу памяти</li>
+<li>доступ к машине или серверу</li>
+<li>план замены провайдера, если он отвалится</li>
+</ul>
+</div>
+</section>
+
 <section id="who">
 <div class="wrap">
 <div class="shead">
@@ -488,7 +548,6 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 </div>
 <p class="quiet">или сигналы и разборы — <a href="https://t.me/discoverysystem">в канале</a></p>
 </section>
-</div>
 
 <footer class="site-foot ft-dark"><div class="sfw">
 <div class="sf-l"><img class="sf-logo" src="logo-5.png" alt="Discovery System"><div class="sf-name">Discovery System<span>discovery-system.ru</span></div></div>
