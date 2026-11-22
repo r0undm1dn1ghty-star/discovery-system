@@ -833,7 +833,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 </style>
 <style>
 /* первый экран: обещание слева, пульт справа */
-.hero2{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);align-items:center;
+.hero2{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(28px,4vw,64px);align-items:center;
   padding:clamp(44px,6.4vw,84px) 0 clamp(32px,4.6vw,56px)}
 .hero2 .hk{margin:0;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#8fa8ff}
 .hero2 h1{margin:16px 0 0;font-size:clamp(30px,4.2vw,54px);line-height:1.04;letter-spacing:-.02em;color:#f4f7fe;font-weight:500;max-width:18ch}
@@ -850,11 +850,11 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .pult .ph b{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#f2f6ff}
 .pult .ph i{margin-left:auto;font-style:normal;font:500 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#7c86a0}
 .pult .pdot{width:7px;height:7px;border-radius:50%;background:#34d17a;box-shadow:0 0 0 3px rgba(52,209,122,.16)}
-.pult .pstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.pult .pstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
 .pult .pstats div{border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:8px 10px}
 .pult .pstats span{display:block;font:500 9px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#7c86a0}
-.pult .pstats b{display:block;margin-top:6px;font:500 20px/1 var(--mono);color:#f2f6ff}
-.pult .hlevels{list-style:none;margin:14px 0 0;padding:0}
+.pult .pstats b{display:block;margin-top:5px;font:500 19px/1 var(--mono);color:#f2f6ff}
+.pult .hlevels{list-style:none;margin:11px 0 0;padding:0}
 .pult .hrow{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-top:1px solid rgba(255,255,255,.07);align-items:center}
 .pult .hrow:first-child{border-top:0;padding-top:4px}
 .pult .hrow b{font-size:14px;color:#eaf0ff;font-weight:500}
@@ -862,7 +862,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .pult .hchip{grid-row:1/span 2;grid-column:2;font:500 9.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:999px;white-space:nowrap;font-size:10.5px}
 .pult .hchip.a{color:#7ff0b6;border:1px solid rgba(52,209,122,.4);background:rgba(52,209,122,.1)}
 .pult .hchip.m{color:#a9bcff;border:1px solid rgba(143,168,255,.42);background:rgba(143,168,255,.12)}
-.pult .pfoot{margin:14px 0 0;text-wrap:pretty;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font:400 11.5px/1.5 var(--mono);color:#7c86a0}
+.pult .pfoot{margin:9px 0 0;text-wrap:pretty;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font:400 11.5px/1.5 var(--mono);color:#7c86a0}
 @media(max-width:980px){.hero2{grid-template-columns:1fr;gap:26px}.hero2 h1{font-size:clamp(28px,7vw,38px);max-width:20ch}}
 </style>
 <style>
@@ -889,7 +889,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .pult .hrow:hover .hbar span{filter:brightness(1.25)}
 .pult .pdot{animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(52,209,122,.16)}50%{box-shadow:0 0 0 7px rgba(52,209,122,.05)}}
-.pult .plog{display:flex;align-items:center;gap:9px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07)}
+.pult .plog{display:flex;align-items:center;gap:9px;margin-top:11px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07)}
 .pult .plogdot{width:6px;height:6px;border-radius:50%;background:#8fa8ff;flex:none}
 .pult .plogt{font:400 12px/1.4 var(--mono);color:#9aa6c8;transition:opacity .35s ease}
 .pult .plogt.fade{opacity:0}
@@ -916,7 +916,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   color:#a9bcff;letter-spacing:.08em;font-size:9.5px;vertical-align:2px}
 
 /* панель: стекло с градиентной кромкой */
-.pult{position:relative;border-radius:20px;padding:20px 22px 18px;
+.pult{position:relative;border-radius:20px;padding:16px 18px 14px;
   background:linear-gradient(168deg,rgba(46,62,110,.72),rgba(14,21,42,.94));
   backdrop-filter:blur(14px);
   box-shadow:0 60px 90px -58px rgba(0,0,0,.98), 0 18px 40px -34px rgba(143,168,255,.5), inset 0 1px 0 rgba(255,255,255,.14)}
@@ -926,7 +926,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   -webkit-mask-composite:xor;mask-composite:exclude}
 .pult:after{content:"";position:absolute;left:22px;right:22px;top:0;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent)}
-.pult .pspark{margin-top:12px;position:relative}
+.pult .pspark{margin-top:9px;position:relative}
 .pult .pspark svg{display:block;width:100%;height:44px}
 .pult .sp-line{fill:none;stroke:#8fa8ff;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;
   stroke-dasharray:420;stroke-dashoffset:420;animation:spdraw 1.5s .35s cubic-bezier(.22,1,.36,1) forwards}
@@ -955,7 +955,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .pult .ht b{font-size:15.5px}
 .pult .ht i{font-size:13.9px;line-height:1.5}
 .pult .hchip{font-size:11px;padding:8px 11px}
-.pult .pspark svg{height:52px}
+.pult .pspark svg{height:40px}
 .pult .sp-lab{font-size:10px;color:#8a94ad}
 .pult .ph i{font-size:10.5px;color:#8a94ad}
 .pult .pfoot{font-size:12px;color:#8a94ad;line-height:1.6}
@@ -966,6 +966,23 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   background-size:280% 100%;animation:sweep 7s ease-in-out infinite}
 @keyframes sweep{0%{background-position:120% 0}55%,100%{background-position:-40% 0}}
 @media(prefers-reduced-motion:reduce){.pult .sweep{display:none}}
+</style>
+<style>
+/* плотная спека по уровням: много конкретики в каждом */
+.pult .hlevels{list-style:none;margin:11px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pult .lvblk:nth-child(5){grid-column:span 2}
+.pult .lvblk{border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:11px 12px 10px;
+  background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+  opacity:0;transform:translateY(8px);animation:rowin .55s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(.1s + var(--i) * .1s)}
+.pult .lvhead{display:flex;align-items:center;gap:9px}
+.pult .lvn{font:500 10px/1 var(--mono);color:#6f7ca8}
+.pult .lvhead b{font-size:15px;color:#f2f6ff;font-weight:500}
+.pult .lvhead .hchip{margin-left:auto}
+.pult .lvsum{margin:6px 0 0;font:500 11.5px/1.35 var(--mono);color:#8fa8ff}
+.pult .lvitems{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.pult .lvitems span{font:400 11px/1 var(--mono);color:#e2e9f9;border:1px solid rgba(255,255,255,.16);border-radius:7px;padding:5px 7px;background:rgba(255,255,255,.05)}
+.pult .hrow,.pult .hbar{display:none}
+@media(max-width:980px){.pult .lvitems span{font-size:11px}}
 </style>
 </head>
 <body>
@@ -995,42 +1012,37 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
       </div>
       <div class="pspark">
         <svg viewBox="0 0 220 46" preserveAspectRatio="none" aria-hidden="true">
-          <path class="sp-area" d="M0 38 L28 30 L56 33 L84 22 L112 25 L140 14 L168 17 L196 8 L220 11 V46 H0 Z"/>
-          <path class="sp-line" d="M0 38 L28 30 L56 33 L84 22 L112 25 L140 14 L168 17 L196 8 L220 11"/>
+          <path class="sp-area" d="M0 40 L24 22 L48 31 L72 12 L96 27 L120 9 L144 20 L168 6 L192 16 L220 4 V46 H0 Z"/>
+          <path class="sp-line" d="M0 40 L24 22 L48 31 L72 12 L96 27 L120 9 L144 20 L168 6 L192 16 L220 4"/>
         </svg>
         <span class="sp-lab">заявки · 7 дней</span>
       </div>
       <ul class="hlevels">
-<li class="hrow" style="--i:0">
-          <span class="hn">01</span>
-          <div class="ht"><b>сценарии</b><i>заявки, ответы по прайсу, сводка, напоминания</i></div>
-          <span class="hbar"><span></span></span>
-          <span class="hchip a">агент</span>
-        </li>
-<li class="hrow" style="--i:1">
-          <span class="hn">02</span>
-          <div class="ht"><b>память</b><i>прайс, история переписки, факты о клиентах</i></div>
-          <span class="hbar"><span></span></span>
-          <span class="hchip a">агент</span>
-        </li>
-<li class="hrow" style="--i:2">
-          <span class="hn">03</span>
-          <div class="ht"><b>доступы</b><i>Telegram, Авито, amoCRM, Sheets — чтение и запись</i></div>
-          <span class="hbar"><span></span></span>
-          <span class="hchip m">сам</span>
-        </li>
-<li class="hrow" style="--i:3">
-          <span class="hn">04</span>
-          <div class="ht"><b>модель и лимиты</b><i>DeepSeek V3 · потолок 3 000 ₽ в месяц</i></div>
-          <span class="hbar"><span></span></span>
-          <span class="hchip m">сам</span>
-        </li>
-<li class="hrow" style="--i:4">
-          <span class="hn">05</span>
-          <div class="ht"><b>контроль</b><i>журнал действий, отчёт в 8:00, чек-лист приёмки</i></div>
-          <span class="hbar"><span></span></span>
-          <span class="hchip m">сам</span>
-        </li>
+<li class="lvblk" style="--i:0">
+        <div class="lvhead"><span class="lvn">01</span><b>сценарии</b><span class="hchip a">агент</span></div>
+        <p class="lvsum">7 задач работают без тебя</p>
+        <div class="lvitems"><span>заявки</span><span>ответы по прайсу</span><span>утренняя сводка</span><span>напоминания</span><span>сверки</span><span>отчёты</span><span>эскалация</span></div>
+      </li>
+<li class="lvblk" style="--i:1">
+        <div class="lvhead"><span class="lvn">02</span><b>память</b><span class="hchip a">агент</span></div>
+        <p class="lvsum">412 записей · 30 дней истории</p>
+        <div class="lvitems"><span>прайс 38</span><span>история переписки 210</span><span>клиенты 164</span><span>правила и запреты</span><span>база возражений</span></div>
+      </li>
+<li class="lvblk" style="--i:2">
+        <div class="lvhead"><span class="lvn">03</span><b>доступы</b><span class="hchip m">сам</span></div>
+        <p class="lvsum">8 сервисов, чтение и запись</p>
+        <div class="lvitems"><span>Telegram</span><span>Авито</span><span>amoCRM</span><span>Bitrix24</span><span>Google Sheets</span><span>1С</span><span>Notion</span><span>GitHub</span></div>
+      </li>
+<li class="lvblk" style="--i:3">
+        <div class="lvhead"><span class="lvn">04</span><b>модель и лимиты</b><span class="hchip m">сам</span></div>
+        <p class="lvsum">DeepSeek V3 · 3 000 ₽ в месяц</p>
+        <div class="lvitems"><span>стоп при превышении</span><span>смена провайдера за час</span><span>локальная модель</span><span>кэш промптов</span></div>
+      </li>
+<li class="lvblk" style="--i:4">
+        <div class="lvhead"><span class="lvn">05</span><b>контроль</b><span class="hchip m">сам</span></div>
+        <p class="lvsum">4 вещи, которые нельзя спрятать</p>
+        <div class="lvitems"><span>журнал действий</span><span>отчёт в 8:00</span><span>чек-лист приёмки</span><span>кнопка стоп</span></div>
+      </li>
       </ul>
       <div class="plog"><span class="plogdot"></span><span class="plogt" id="plogt">08:04 — сводка отправлена</span></div>
       <p class="pfoot">модель арендуешь у провайдера — остальное уходит с тобой на приёмке</p>
