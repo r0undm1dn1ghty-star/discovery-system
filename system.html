@@ -779,6 +779,10 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 <style>
 /* фикс для встраивания: наши глобальные overflow ломали sticky */
 .dsstack{overflow:visible !important}
+.dsstack .palco{top:66px !important;height:calc(100vh - 66px) !important}
+.dsstack .testa{position:relative;z-index:3}
+@media (max-height:760px){.dsstack{--w:min(84vw,58vh,980px)}}
+@media (max-height:640px){.dsstack{--w:min(86vw,54vh,860px)}}
 .dsstack .palco{overflow:hidden}
 </style>
 <style>
@@ -1080,7 +1084,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   --carta: #ffffff;
   --accento: #4f46e5;
   
-  --w: min(88vw, 90vh, 1240px);
+  --w: min(84vw, 62vh, 1150px);
   --h: calc(var(--w) * 0.62);
   --u: calc(var(--w) / 100);
 }
@@ -1434,6 +1438,10 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .strato--tg .tg-typing{display:none}
 .dsstack .strato--tg .tg-m{padding:calc(var(--u)*1.05) calc(var(--u)*1.35)}
 .dsstack{overflow:visible !important}
+.dsstack .palco{top:66px !important;height:calc(100vh - 66px) !important}
+.dsstack .testa{position:relative;z-index:3}
+@media (max-height:760px){.dsstack{--w:min(84vw,58vh,980px)}}
+@media (max-height:640px){.dsstack{--w:min(86vw,54vh,860px)}}
 .dsstack .palco{overflow:hidden}</style>
 </head>
 <body>
@@ -2039,7 +2047,7 @@ else if('IntersectionObserver' in window){
    screen settles flat, with a one pixel overshoot. As the page opens, the chart line draws and the numbers count. Scroll back up and it all plays back. */
 
 /* ---- values to change ---- */
-const GAP = 30;      /* the distance between two layers, in hundredths of the screen width */
+const GAP = 16;      /* the distance between two layers, in hundredths of the screen width */
 const TILT = 50;     /* how many degrees the screen leans back */
 const TURN = 30;     /* how many degrees the screen turns on the table */
 const RIDE = 1;      /* how much scroll the whole story takes: 2 is twice as long */
