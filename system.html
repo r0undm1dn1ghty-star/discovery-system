@@ -1006,6 +1006,69 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   .pult .lvblk:after{transform:scaleY(1)}
 }
 </style>
+<style>
+/* сцена: чат → раскрытие на уровни → карточка слоя */
+#scene{position:relative;margin-top:clamp(24px,4vw,48px)}
+#scene .sc-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;perspective:1500px}
+#scene .sc-inner{width:min(1060px,calc(100vw - 2*clamp(18px,4vw,32px)));margin:0 auto;position:relative}
+#scene .sc-stage{position:relative;height:clamp(560px,74vh,780px);transform-style:preserve-3d;will-change:transform}
+
+/* чат */
+#scene .sc-chat{position:absolute;left:50%;top:0;width:min(520px,86vw);margin-left:calc(min(520px,86vw)/-2);
+  border:1px solid rgba(255,255,255,.14);border-radius:18px;background:linear-gradient(170deg,#18213f,#111a33);
+  box-shadow:0 40px 80px -50px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.07);overflow:hidden;
+  transform-style:preserve-3d;will-change:transform}
+#scene .sc-chead{display:flex;align-items:center;gap:8px;padding:12px 15px;border-bottom:1px solid rgba(255,255,255,.08);
+  font:500 11px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:#8fa8ff;background:rgba(255,255,255,.02)}
+#scene .sc-dot{width:7px;height:7px;border-radius:50%;background:#34d17a;box-shadow:0 0 0 3px rgba(52,209,122,.15)}
+#scene .sc-chead i{margin-left:auto;font-style:normal;color:#7ff0b6;font-size:10px}
+#scene .sc-msgs{display:flex;flex-direction:column;gap:9px;padding:14px 15px}
+#scene .sc-m{max-width:84%;font-size:13.6px;line-height:1.45;padding:9px 11px;border-radius:11px;position:relative}
+#scene .sc-m .sc-t{display:block;font:500 9.5px/1 var(--mono);color:rgba(255,255,255,.45);margin-bottom:5px}
+#scene .sc-m.out{align-self:flex-end;background:rgba(143,168,255,.16);color:#eaf0ff;border-bottom-right-radius:3px}
+#scene .sc-m.in{align-self:flex-start;background:rgba(255,255,255,.06);color:#dfe6f8;border-bottom-left-radius:3px}
+#scene .sc-m.sys{align-self:stretch;max-width:100%;background:rgba(52,209,122,.09);border:1px solid rgba(52,209,122,.22);color:#d8f7e6;border-radius:10px}
+#scene .sc-cfoot{display:flex;gap:14px;padding:10px 15px 12px;border-top:1px solid rgba(255,255,255,.07);
+  font:500 10px/1 var(--mono);color:#7c86a0}
+
+/* уровни */
+#scene .sc-layers{position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none;opacity:0}
+#scene .sc-layer{position:absolute;left:50%;top:50%;width:min(680px,88vw);margin:calc(-62px) 0 0 calc(min(680px,88vw)/-2);
+  height:124px;pointer-events:auto;cursor:pointer;text-align:left;
+  border:1px solid rgba(143,168,255,.28);border-radius:14px;padding:16px 18px;
+  background:linear-gradient(160deg,rgba(44,60,104,.92),rgba(17,25,50,.96));
+  box-shadow:0 30px 50px -40px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.07);
+  transform:translateZ(0);transition:border-color .2s,box-shadow .2s;transform-style:preserve-3d}
+#scene .sc-layer:hover{border-color:rgba(143,168,255,.65);box-shadow:0 30px 60px -30px rgba(143,168,255,.35), inset 0 1px 0 rgba(255,255,255,.12)}
+#scene .sc-lname{display:block;font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#8fa8ff}
+#scene .sc-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+#scene .sc-chips span{font:400 12.5px/1 var(--mono);color:#f2f6ff;border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.08);border-radius:8px;padding:7px 9px;white-space:nowrap}
+#scene .sc-hint{margin:18px 0 0;text-align:center;font:400 11.5px/1.5 var(--mono);color:#7c86a0;letter-spacing:.04em}
+
+/* карточка слоя — обычная 2D панель */
+#scene .sc-card{position:fixed;z-index:60;right:clamp(12px,3vw,32px);top:50%;transform:translateY(-50%) translateX(24px);
+  width:min(500px,94vw);max-height:78vh;overflow:auto;padding:22px 24px;
+  border:1px solid rgba(255,255,255,.16);border-radius:18px;background:#121b36;
+  box-shadow:0 60px 90px -50px rgba(0,0,0,.98), inset 0 1px 0 rgba(255,255,255,.08);
+  opacity:0;pointer-events:none;transition:opacity .22s ease,transform .28s cubic-bezier(.22,1,.36,1)}
+#scene .sc-card.open{opacity:1;pointer-events:auto;transform:translateY(-50%)}
+#scene .sc-card h3{margin:0 0 4px;font-size:22px;color:#f4f7fe;font-weight:500}
+#scene .sc-card ul{list-style:none;margin:14px 0 0;padding:0}
+#scene .sc-card li{position:relative;padding:10px 0 10px 18px;border-bottom:1px solid rgba(255,255,255,.07);
+  font-size:14.5px;line-height:1.5;color:#dbe3f7;text-wrap:pretty}
+#scene .sc-card li:before{content:"";position:absolute;left:0;top:16px;width:6px;height:6px;border-radius:2px;background:#8fa8ff;opacity:.7}
+#scene .sc-x{position:absolute;right:10px;top:8px;border:0;background:none;color:#8a94ad;font-size:22px;line-height:1;cursor:pointer;padding:6px}
+#scene .sc-x:hover{color:#f4f7fe}
+@media(prefers-reduced-motion:reduce){#scene .sc-sticky{position:static;height:auto}#scene .sc-stage{height:auto}
+  #scene .sc-chat{position:static;margin:0;width:auto}#scene .sc-layers{position:static;opacity:1;display:flex;flex-direction:column;gap:10px;margin-top:16px}
+  #scene .sc-layer{position:static;margin:0;width:auto;height:auto;transform:none}
+  #scene .sc-card{position:static;transform:none;opacity:1;pointer-events:auto;margin-top:16px;max-height:none}}
+@media(max-width:640px){
+  #scene .sc-layer{height:auto;min-height:150px}
+  #scene .sc-chips span{font-size:11.5px}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -1016,7 +1079,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 <div class="wrap">
 
 
-<div class="hero2"><div class="hglow" aria-hidden="true"></div><div class="hgrid" aria-hidden="true"></div>
+<div class="hero2">
   <div class="hleft">
     <p class="hk">Discovery System <span class="hbadge">5 уровней · 1 агент</span></p>
     <h1>Система агентов, которой <em>ты владеешь</em></h1>
@@ -1024,66 +1087,70 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
     <ul class="hprice"><li><span>гайд</span><b>5 000 ₽</b></li><li><span>сборка</span><b>10 000 ₽</b></li><li><span>внедрение</span><b>от 40 000 ₽</b></li><li><span>сопровождение</span><b>от 20 000 ₽/мес</b></li></ul>
     <div class="hcta"><a class="btn btn-p" href="service.html">Услуги и цены <span aria-hidden="true">→</span></a><a class="quiet-link" href="#tools">на чём это держится</a></div>
   </div>
-  <div class="hright">
-    <div class="pult">
-      <span class="sweep" aria-hidden="true"></span><header class="ph"><span class="pdot"></span><b>агент · работает</b><i>5 уровней контроля</i></header>
-      <div class="pstats">
-        <div><span>заявок за сутки</span><b data-count="13">0</b></div>
-        <div><span>действий</span><b data-count="2">0</b></div>
-        <div><span>ошибок</span><b data-count="0">0</b></div>
+  
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="scene">
+<div class="sc-sticky">
+  <div class="sc-inner">
+    <div class="sc-stage" id="scStage">
+
+      <div class="sc-chat" id="scChat" aria-label="чат агента в Telegram">
+        <header class="sc-chead"><span class="sc-dot"></span><b>агент · Discovery</b><i>в сети</i></header>
+        <div class="sc-msgs">
+          <div class="sc-m out"><span class="sc-t">21:40</span>Сколько стоит лендинг и когда сможете начать?</div>
+          <div class="sc-m in"><span class="sc-t">21:40</span>Лендинг — от 180 000 ₽, срок три недели. Если скинешь бриф, смету пришлю до утра.</div>
+          <div class="sc-m sys"><span class="sc-t">08:04</span>Утро. Три заявки разобраны: по двум ответил, одна ждёт тебя — просят счёт на юрлицо.</div>
+        </div>
+        <footer class="sc-cfoot"><span>13 сообщений</span><span>2 действия</span><span>0 ошибок</span></footer>
       </div>
-      <div class="pspark">
-        <svg viewBox="0 0 220 46" preserveAspectRatio="none" aria-hidden="true">
-          <path class="sp-area" d="M0 40 L24 22 L48 31 L72 12 L96 27 L120 9 L144 20 L168 6 L192 16 L220 4 V46 H0 Z"/>
-          <path class="sp-line" d="M0 40 L24 22 L48 31 L72 12 L96 27 L120 9 L144 20 L168 6 L192 16 L220 4"/>
-        </svg>
-        <span class="sp-lab">заявки · 7 дней</span>
+
+      <div class="sc-layers" id="scLayers">
+<button type="button" class="sc-layer" data-k="scen" style="--i:0">
+        <span class="sc-lname">сценарии</span>
+        <span class="sc-chips"><span>заявки с сайта</span><span>ответы в Telegram</span><span>КП по брифу</span></span>
+      </button>
+<button type="button" class="sc-layer" data-k="mem" style="--i:1">
+        <span class="sc-lname">память</span>
+        <span class="sc-chips"><span>кейсы 47</span><span>брифы 96</span><span>переписка 1 240</span></span>
+      </button>
+<button type="button" class="sc-layer" data-k="int" style="--i:2">
+        <span class="sc-lname">интеграции</span>
+        <span class="sc-chips"><span>Telegram</span><span>amoCRM</span><span>1С</span></span>
+      </button>
+<button type="button" class="sc-layer" data-k="mod" style="--i:3">
+        <span class="sc-lname">модели</span>
+        <span class="sc-chips"><span>DeepSeek 4.1 Flash</span><span>локальная модель</span><span>потолок 3 000 ₽</span></span>
+      </button>
+<button type="button" class="sc-layer" data-k="ctl" style="--i:4">
+        <span class="sc-lname">контроль</span>
+        <span class="sc-chips"><span>отчёт каждый день</span><span>гарантия 30 дней</span><span>журнал действий</span></span>
+      </button>
       </div>
-      <ul class="hlevels">
-<li class="lvblk" style="--i:0">
-        <div class="lvhead"><span class="lvn">01</span><b>сценарии</b><span class="hchip a">агент</span></div>
-        <p class="lvsum">7 задач работают без тебя</p>
-        <div class="lvitems"><span style="--j:0">заявки</span><span style="--j:1">ответы по прайсу</span><span style="--j:2">утренняя сводка</span><span style="--j:3">напоминания</span><span style="--j:4">сверки</span><span style="--j:5">отчёты</span><span style="--j:6">эскалация</span></div>
-      </li>
-<li class="lvblk" style="--i:1">
-        <div class="lvhead"><span class="lvn">02</span><b>память</b><span class="hchip a">агент</span></div>
-        <p class="lvsum">412 записей · 30 дней истории</p>
-        <div class="lvitems"><span style="--j:0">прайс 38</span><span style="--j:1">история переписки 210</span><span style="--j:2">клиенты 164</span><span style="--j:3">правила и запреты</span><span style="--j:4">база возражений</span></div>
-      </li>
-<li class="lvblk" style="--i:2">
-        <div class="lvhead"><span class="lvn">03</span><b>доступы</b><span class="hchip m">сам</span></div>
-        <p class="lvsum">8 сервисов, чтение и запись</p>
-        <div class="lvitems"><span style="--j:0">Telegram</span><span style="--j:1">Авито</span><span style="--j:2">amoCRM</span><span style="--j:3">Bitrix24</span><span style="--j:4">Google Sheets</span><span style="--j:5">1С</span><span style="--j:6">Notion</span><span style="--j:7">GitHub</span></div>
-      </li>
-<li class="lvblk" style="--i:3">
-        <div class="lvhead"><span class="lvn">04</span><b>модель и лимиты</b><span class="hchip m">сам</span></div>
-        <p class="lvsum">DeepSeek V3 · 3 000 ₽ в месяц</p>
-        <div class="lvitems"><span style="--j:0">стоп при превышении</span><span style="--j:1">смена провайдера за час</span><span style="--j:2">локальная модель</span><span style="--j:3">кэш промптов</span></div>
-      </li>
-<li class="lvblk" style="--i:4">
-        <div class="lvhead"><span class="lvn">05</span><b>контроль</b><span class="hchip m">сам</span></div>
-        <p class="lvsum">4 вещи, которые нельзя спрятать</p>
-        <div class="lvitems"><span style="--j:0">журнал действий</span><span style="--j:1">отчёт в 8:00</span><span style="--j:2">чек-лист приёмки</span><span style="--j:3">кнопка стоп</span></div>
-      </li>
-      </ul>
-      <div class="plog"><span class="plogdot"></span><span class="plogt" id="plogt">08:04 — сводка отправлена</span></div>
-      <p class="pfoot">модель арендуешь у провайдера — остальное уходит с тобой на приёмке</p>
+
     </div>
+    <p class="sc-hint" id="scHint">листай — агент раскроется на уровни, клик по уровню покажет всё</p>
   </div>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
+<aside class="sc-card" id="scCard" hidden aria-live="polite">
+  <button type="button" class="sc-x" id="scX" aria-label="закрыть">×</button>
+  <h3 id="scCardT"></h3>
+  <ul id="scCardL"></ul>
+</aside>
+</section>
 
 <section id="tools">
 <div class="wrap">
@@ -1531,6 +1598,82 @@ else if('IntersectionObserver' in window){
       setTimeout(function(){ k=(k+1)%lines.length; node.textContent=lines[k]; node.classList.remove('fade'); }, 320);
     }, 3200);
   }
+})();
+</script>
+
+<script>
+(function(){
+  var DATA = {"scen": ["сценарии", ["заявки с сайта", "ответы в Telegram", "КП по брифу"], ["заявки с сайта с квалификацией в CRM", "ответы в Telegram по прайсу", "разбор почты: счета, акты, договоры", "КП по брифу за три минуты", "счёт с проверкой реквизитов", "акт по шаблону", "сверка оплат с банком", "напоминание клиенту о дедлайне", "ответы на отзывы Яндекс и 2ГИС", "контент-план на неделю", "отчёт клиенту по проекту", "апдейт статуса после звонка", "договор по шаблону", "поиск дублей клиентов", "пинок менеджеру по зависшей сделке", "презентация кейса из базы", "эскалация человеку, если клиент злится"]], "mem": ["память", ["кейсы 47", "брифы 96", "переписка 1 240"], ["кейсы 47 с цифрами", "брифы 96", "договоры и шаблоны 12", "счета 380", "карточки клиентов 164", "история переписки 1 240 тредов", "прайс, три версии", "регламенты 9", "возражения и ответы 38"]], "int": ["интеграции", ["Telegram", "amoCRM", "1С"], ["Telegram", "WhatsApp", "Avito", "формы сайта", "amoCRM", "Bitrix24", "Google Sheets", "Google Docs", "Google Calendar", "почта IMAP", "1С", "МойСклад", "Notion", "Figma", "GitHub", "Яндекс Метрика", "Яндекс Директ", "Robokassa"]], "mod": ["модели", ["DeepSeek 4.1 Flash", "локальная модель", "потолок 3 000 ₽"], ["DeepSeek 4.1 Flash", "локальная модель на твоём железе", "роутер: дешёвая на рутину, сильная на сложное", "потолок 3 000 ₽ в месяц", "стоп при превышении", "кэш промптов"]], "ctl": ["контроль", ["отчёт каждый день", "гарантия 30 дней", "журнал действий"], ["отчёт каждый день: что сделал, что ждёт тебя, что не смог", "чек-лист приёмки на 7 критериев с подписями", "гарантия на сборку 30 дней: не проходит по критерию — доделываю без оплаты", "журнал каждого действия с временем и результатом", "кнопка стоп", "план замены провайдера"]]};
+  var scene = document.getElementById('scene');
+  var stage = document.getElementById('scStage');
+  var chat  = document.getElementById('scChat');
+  var layersWrap = document.getElementById('scLayers');
+  var layers = Array.prototype.slice.call(document.querySelectorAll('.sc-layer'));
+  var hint = document.getElementById('scHint');
+  var card = document.getElementById('scCard');
+  var cardT = document.getElementById('scCardT');
+  var cardL = document.getElementById('scCardL');
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  scene.style.height = (reduce ? 100 : 260) + 'vh';
+
+  function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+  function ease(t){ return t<0.5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2; }
+
+  var raf = null;
+  function paint(){
+    raf = null;
+    var r = scene.getBoundingClientRect();
+    var total = r.height - innerHeight;
+    var p = clamp((-r.top) / Math.max(1,total), 0, 1);
+
+    /* 0 → 0.45: чат уходит наверх и раскрывается; 0.45 → 1: слои стоят */
+    var open = ease(clamp(p / .45, 0, 1));
+
+    chat.style.transform =
+      'translateY(' + (-open * 34) + '%) ' +
+      'rotateX(' + (open * 46) + 'deg) rotateZ(' + (-open * 4) + 'deg) scale(' + (1 - open * .34) + ')';
+    chat.style.opacity = String(1 - open * .88);
+
+    layersWrap.style.opacity = String(clamp(open * 1.6, 0, 1));
+
+    layers.forEach(function(el, i){
+      var t2 = clamp((open - i * .08) / .55, 0, 1);
+      var z = i * 34 - 85;          /* разносим по глубине */
+      var y = (i - 2) * 132;          /* и по вертикали, чтобы все были видны */
+      el.style.transform =
+        'translate3d(0,' + (y * t2) + 'px,' + (z * t2) + 'px) rotateX(' + (-6 * t2) + 'deg)';
+      el.style.opacity = String(t2);
+    });
+
+    hint.style.opacity = String(1 - open * 1.3);
+    stage.style.transform = 'rotateX(' + (-open * 8) + 'deg)';
+  }
+  function onScroll(){ if(!raf) raf = requestAnimationFrame(paint); }
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll);
+  paint();
+
+  /* клик по слою — карточка вбок */
+  function openCard(key){
+    var d = DATA[key]; if(!d) return;
+    cardT.textContent = d[0];
+    cardL.innerHTML = d[2].map(function(x){ return '<li>' + x + '</li>'; }).join('');
+    card.classList.add('open');
+    card.hidden = false;
+  }
+  layers.forEach(function(el){
+    el.addEventListener('click', function(){ openCard(el.dataset.k); });
+  });
+  document.getElementById('scX').addEventListener('click', function(){
+    card.classList.remove('open');
+  });
+  addEventListener('keydown', function(e){ if(e.key === 'Escape') card.classList.remove('open'); });
+  document.addEventListener('click', function(e){
+    if(!card.classList.contains('open')) return;
+    if(card.contains(e.target) || e.target.closest('.sc-layer')) return;
+    card.classList.remove('open');
+  });
 })();
 </script>
 </body>
