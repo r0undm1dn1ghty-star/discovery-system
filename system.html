@@ -779,17 +779,17 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 <style>
 /* фикс для встраивания: наши глобальные overflow ломали sticky */
 .dsstack{overflow:visible !important}
-.dsstack .palco{top:66px !important;height:calc(100vh - 66px) !important}
+.dsstack .palco{top:66px !important;height:calc(100vh - 66px) !important;padding-bottom:0 !important}
 .dsstack .testa{position:relative;z-index:3}
-.dsstack{--w:min(84vw,46vh,900px) !important}
-@media (max-height:760px){.dsstack{--w:min(84vw,44vh,760px) !important}}
-@media (max-height:640px){.dsstack{--w:min(86vw,42vh,700px) !important}}
+.dsstack{}
+@media (max-height:760px){.dsstack{}}
+@media (max-height:640px){.dsstack{}}
 .dsstack .palco{overflow:hidden}
 </style>
 <style>
 /* мобилка: сцена крупнее, подписи читаемее */
 @media(max-width:820px){
-  .dsstack{--w:min(84vw,56vh) !important}
+  .dsstack{--w:min(92vw,1000px)}
   .dsstack .etichetta b{font-size:12px !important}
   .dsstack .st{font-size:10px !important;padding:4px 7px !important}
   .dsstack .testa__titolo{font-size:clamp(20px,7vw,26px) !important}
@@ -1085,8 +1085,8 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   --carta: #ffffff;
   --accento: #4f46e5;
   
-  --w: min(88vw, 78vh, 1320px);
-  --h: calc(var(--w) * 0.62);
+  --w: min(92vw, 1000px);
+  --h: calc(var(--w) * 0.30);
   --u: calc(var(--w) / 100);
 }
 .dsstack{ box-sizing: border-box; margin: 0; padding: 0; }
@@ -1577,12 +1577,39 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .strato--fondo .ctl__card p, .dsstack .strato--fondo .ctl__list span{font-size:calc(var(--u)*1.45)}
 .dsstack .strato--fondo .ctl__log{font-size:calc(var(--u)*1.4)}
 .dsstack .strato--fondo .ctl__badge{font-size:calc(var(--u)*1.4)}
+.dsstack .strato--scen>.chain{height:calc(var(--u)*6.4)}
+.dsstack .strato--scen>.chain>.chain__row{height:calc(var(--u)*3);padding:calc(var(--u)*.35) calc(var(--u)*1)}
+.dsstack .strato--scen .chain__ic{width:calc(var(--u)*2.4);height:calc(var(--u)*2.4);font-size:calc(var(--u)*1.2)}
+.dsstack .strato--scen .chain__row b{font-size:calc(var(--u)*1.5)}
+.dsstack .strato--scen .chain__row i{font-size:calc(var(--u)*1.3)}
+.dsstack .strato--scen .chain__row em{font-size:calc(var(--u)*1.2)}
+.dsstack .strato--chiavi>.files{height:calc(var(--u)*6.4)}
+.dsstack .strato--chiavi>.files>.files__row{height:calc(var(--u)*2.1)}
+.dsstack .strato--chiavi .files__ic{width:calc(var(--u)*3);height:calc(var(--u)*1.7);font-size:calc(var(--u)*.8)}
+.dsstack .strato--chiavi .files__row b{font-size:calc(var(--u)*1.45)}
+.dsstack .strato--chiavi .files__row i{font-size:calc(var(--u)*1.3)}
+.dsstack .strato--pezzi>.apps{height:calc(var(--u)*6.6)}
+.dsstack .strato--pezzi>.apps>.app{height:calc(var(--u)*3.1);gap:calc(var(--u)*.35)}
+.dsstack .strato--pezzi .app svg{width:calc(var(--u)*1.8);height:calc(var(--u)*1.8)}
+.dsstack .strato--pezzi .app b{font-size:calc(var(--u)*.95)}
+.dsstack .strato--pezzi .app--mono s{width:calc(var(--u)*1.8);height:calc(var(--u)*1.8);font-size:calc(var(--u)*.95)}
+.dsstack .strato--schema>.mdl{height:calc(var(--u)*6.4)}
+.dsstack .strato--schema>.mdl>.mdl__card{height:calc(var(--u)*4.8);padding:calc(var(--u)*.8)}
+.dsstack .strato--schema .mdl__card b{font-size:calc(var(--u)*1.5)}
+.dsstack .strato--schema .mdl__card i{font-size:calc(var(--u)*1.2)}
+.dsstack .strato--schema .mdl__card em{font-size:calc(var(--u)*1.2)}
+.dsstack .strato--schema .mdl__foot{font-size:calc(var(--u)*1.2);padding-top:calc(var(--u)*.4)}
+.dsstack .strato--fondo>.ctl{height:calc(var(--u)*6.2)}
+.dsstack .strato--fondo .ctl__card b, .dsstack .strato--fondo .ctl__list b{font-size:calc(var(--u)*1.35)}
+.dsstack .strato--fondo .ctl__card p, .dsstack .strato--fondo .ctl__list span{font-size:calc(var(--u)*1.2)}
+.dsstack .strato--fondo .ctl__log{font-size:calc(var(--u)*1.1)}
+.dsstack .strato--fondo .ctl__badge{font-size:calc(var(--u)*1.1);padding:calc(var(--u)*.4) calc(var(--u)*.8)}
+@media (max-height: 820px){.dsstack{ --w: min(92vw, 820px); }}
+@media (max-height: 720px){.dsstack{ --w: min(92vw, 720px); }}
+@media (max-height: 640px){.dsstack{ --w: min(92vw, 640px); }}
 .dsstack{overflow:visible !important}
-.dsstack .palco{top:66px !important;height:calc(100vh - 66px) !important}
-.dsstack .testa{position:relative;z-index:3}
-.dsstack{--w:min(88vw,74vh,1240px) !important}
-@media (max-height:760px){.dsstack{--w:min(88vw,68vh,1100px) !important}}
-@media (max-height:640px){.dsstack{--w:min(88vw,60vh,980px) !important}}</style>
+.dsstack .palco{top:66px !important;height:calc(100vh - 66px) !important;padding-bottom:0 !important}
+.dsstack .testa{position:relative;z-index:3}</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -2227,7 +2254,7 @@ else if('IntersectionObserver' in window){
    screen settles flat, with a one pixel overshoot. As the page opens, the chart line draws and the numbers count. Scroll back up and it all plays back. */
 
 /* ---- values to change ---- */
-const GAP = 20;      /* the distance between two layers, in hundredths of the screen width */
+const GAP = 9;      /* the distance between two layers, in hundredths of the screen width */
 const TILT = 50;     /* how many degrees the screen leans back */
 const TURN = 30;     /* how many degrees the screen turns on the table */
 const RIDE = 1;      /* how much scroll the whole story takes: 2 is twice as long */
@@ -2259,7 +2286,7 @@ const conte = $$('[data-conta]');
 const piede = $('[data-piede]');
 const titoloParte = $('[data-titolo] span');
 
-corsa.style.height = (100 + 220 * RIDE) + 'vh';
+corsa.style.height = (100 + 90 * RIDE) + 'vh';
 
 /* the whole state of the scene: GSAP moves these numbers, draw() turns them into transforms */
 const S = {
@@ -2399,27 +2426,7 @@ if (REDUCED) {
     scrollTrigger: { trigger: corsa, start: 'top top', end: 'bottom bottom', scrub: SCRUB },
   });
 
-  /* камера едет по стопке: экран ведёт по слоям — от агента к контролю */
-  const centri = () => strati.map((el) => { const r = el.getBoundingClientRect(); return (r.top + r.bottom) / 2; });
-  const guida = (t) => {
-    const f = t * (N - 1);
-    const i0 = Math.floor(f), i1 = Math.min(N - 1, i0 + 1), fr = f - i0;
-    const c = centri();
-    return c[i0] * (1 - fr) + c[i1] * fr;
-  };
-  ScrollTrigger.create({
-    trigger: corsa, start: 'top top', end: 'bottom bottom',
-    onUpdate: (st) => {
-      const t = Math.max(0, Math.min(1, (st.progress - 0.32) / 0.60));
-      /* проезд живёт только пока слои разведены: в начале и в конце сцена стоит по центру */
-      const fade = st.progress > 0.84 ? Math.max(0, (0.92 - st.progress) / 0.08) : 1;
-      if (t <= 0 || fade <= 0) { S.ride = 0; draw(); return; }
-      S.ride = 0; draw();
-      for (let k = 0; k < 3; k++) { S.ride += (window.innerHeight / 2 - guida(t)); draw(); }
-      S.ride *= fade; draw();
-    },
-  });
-
+  S.ride = 0;
   /* the gap is in pixels of the screen width: measured again when the window changes size */
   window.addEventListener('resize', () => { larga = pila.offsetWidth; draw(); });
 }
