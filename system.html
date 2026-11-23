@@ -984,6 +984,28 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .pult .hrow,.pult .hbar{display:none}
 @media(max-width:980px){.pult .lvitems span{font-size:11px}}
 </style>
+<style>
+/* каждый уровень оживает по очереди: чипы высыпаются, блок подсвечивается */
+.pult .lvitems span{opacity:0;transform:translateY(5px) scale(.96);
+  animation:chiprise .38s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay:calc(.35s + var(--i) * .12s + var(--j) * .045s)}
+@keyframes chiprise{to{opacity:1;transform:none}}
+.pult .lvblk{position:relative;overflow:hidden}
+.pult .lvblk:after{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#8fa8ff,#34d17a);
+  transform:scaleY(0);transform-origin:top;animation:rail .6s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(.28s + var(--i) * .12s)}
+@keyframes rail{to{transform:scaleY(1)}}
+.pult .lvblk{animation:rowin .55s cubic-bezier(.22,1,.36,1) forwards, blkglow 10s calc(2.2s + var(--i) * 1.1s) infinite;
+  animation-delay:calc(.1s + var(--i) * .1s), calc(2.2s + var(--i) * 1.1s)}
+@keyframes blkglow{
+  0%,100%{border-color:rgba(255,255,255,.09);box-shadow:none}
+  6%{border-color:rgba(143,168,255,.55);box-shadow:0 0 0 1px rgba(143,168,255,.18),0 12px 30px -22px rgba(143,168,255,.65)}
+  14%{border-color:rgba(255,255,255,.09);box-shadow:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .pult .lvitems span,.pult .lvblk,.pult .lvblk:after{animation:none;opacity:1;transform:none}
+  .pult .lvblk:after{transform:scaleY(1)}
+}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -1021,27 +1043,27 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 <li class="lvblk" style="--i:0">
         <div class="lvhead"><span class="lvn">01</span><b>сценарии</b><span class="hchip a">агент</span></div>
         <p class="lvsum">7 задач работают без тебя</p>
-        <div class="lvitems"><span>заявки</span><span>ответы по прайсу</span><span>утренняя сводка</span><span>напоминания</span><span>сверки</span><span>отчёты</span><span>эскалация</span></div>
+        <div class="lvitems"><span style="--j:0">заявки</span><span style="--j:1">ответы по прайсу</span><span style="--j:2">утренняя сводка</span><span style="--j:3">напоминания</span><span style="--j:4">сверки</span><span style="--j:5">отчёты</span><span style="--j:6">эскалация</span></div>
       </li>
 <li class="lvblk" style="--i:1">
         <div class="lvhead"><span class="lvn">02</span><b>память</b><span class="hchip a">агент</span></div>
         <p class="lvsum">412 записей · 30 дней истории</p>
-        <div class="lvitems"><span>прайс 38</span><span>история переписки 210</span><span>клиенты 164</span><span>правила и запреты</span><span>база возражений</span></div>
+        <div class="lvitems"><span style="--j:0">прайс 38</span><span style="--j:1">история переписки 210</span><span style="--j:2">клиенты 164</span><span style="--j:3">правила и запреты</span><span style="--j:4">база возражений</span></div>
       </li>
 <li class="lvblk" style="--i:2">
         <div class="lvhead"><span class="lvn">03</span><b>доступы</b><span class="hchip m">сам</span></div>
         <p class="lvsum">8 сервисов, чтение и запись</p>
-        <div class="lvitems"><span>Telegram</span><span>Авито</span><span>amoCRM</span><span>Bitrix24</span><span>Google Sheets</span><span>1С</span><span>Notion</span><span>GitHub</span></div>
+        <div class="lvitems"><span style="--j:0">Telegram</span><span style="--j:1">Авито</span><span style="--j:2">amoCRM</span><span style="--j:3">Bitrix24</span><span style="--j:4">Google Sheets</span><span style="--j:5">1С</span><span style="--j:6">Notion</span><span style="--j:7">GitHub</span></div>
       </li>
 <li class="lvblk" style="--i:3">
         <div class="lvhead"><span class="lvn">04</span><b>модель и лимиты</b><span class="hchip m">сам</span></div>
         <p class="lvsum">DeepSeek V3 · 3 000 ₽ в месяц</p>
-        <div class="lvitems"><span>стоп при превышении</span><span>смена провайдера за час</span><span>локальная модель</span><span>кэш промптов</span></div>
+        <div class="lvitems"><span style="--j:0">стоп при превышении</span><span style="--j:1">смена провайдера за час</span><span style="--j:2">локальная модель</span><span style="--j:3">кэш промптов</span></div>
       </li>
 <li class="lvblk" style="--i:4">
         <div class="lvhead"><span class="lvn">05</span><b>контроль</b><span class="hchip m">сам</span></div>
         <p class="lvsum">4 вещи, которые нельзя спрятать</p>
-        <div class="lvitems"><span>журнал действий</span><span>отчёт в 8:00</span><span>чек-лист приёмки</span><span>кнопка стоп</span></div>
+        <div class="lvitems"><span style="--j:0">журнал действий</span><span style="--j:1">отчёт в 8:00</span><span style="--j:2">чек-лист приёмки</span><span style="--j:3">кнопка стоп</span></div>
       </li>
       </ul>
       <div class="plog"><span class="plogdot"></span><span class="plogt" id="plogt">08:04 — сводка отправлена</span></div>
