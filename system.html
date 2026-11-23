@@ -781,8 +781,9 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack{overflow:visible !important}
 .dsstack .palco{top:66px !important;height:calc(100vh - 66px) !important}
 .dsstack .testa{position:relative;z-index:3}
-@media (max-height:760px){.dsstack{--w:min(84vw,58vh,980px)}}
-@media (max-height:640px){.dsstack{--w:min(86vw,54vh,860px)}}
+.dsstack{--w:min(84vw,46vh,900px) !important}
+@media (max-height:760px){.dsstack{--w:min(84vw,44vh,760px) !important}}
+@media (max-height:640px){.dsstack{--w:min(86vw,42vh,700px) !important}}
 .dsstack .palco{overflow:hidden}
 </style>
 <style>
@@ -1084,7 +1085,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   --carta: #ffffff;
   --accento: #4f46e5;
   
-  --w: min(84vw, 62vh, 1150px);
+  --w: min(88vw, 90vh, 1240px);
   --h: calc(var(--w) * 0.62);
   --u: calc(var(--w) / 100);
 }
@@ -1437,12 +1438,124 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .strato--tg .tg-body{gap:calc(var(--u)*.95)}
 .dsstack .strato--tg .tg-typing{display:none}
 .dsstack .strato--tg .tg-m{padding:calc(var(--u)*1.05) calc(var(--u)*1.35)}
+.dsstack .strato--scen>.schema, .dsstack .strato--schema>.schema, .dsstack .strato--pezzi>.pezzo, .dsstack .strato--chiavi>.chiave{display:none}
+.dsstack .strato--scen>.chain, .dsstack .strato--chiavi>.files, .dsstack .strato--pezzi>.apps, .dsstack .strato--schema>.mdl, .dsstack .strato--fondo>.ctl{
+  position:absolute;inset:auto 5% 5% 5%;display:grid;align-content:end;max-height:38%}
+.dsstack .chain{grid-template-columns:1fr 1fr;gap:calc(var(--u)*1.4)}
+.dsstack .chain__row{display:flex;align-items:center;gap:calc(var(--u)*1.1);padding:calc(var(--u)*1.1) calc(var(--u)*1.3);
+  border:1px solid rgba(143,168,255,.18);border-radius:calc(var(--u)*1.3);background:rgba(143,168,255,.05);min-width:0}
+.dsstack .chain__ic{flex:0 0 auto;width:calc(var(--u)*2.8);height:calc(var(--u)*2.8);border-radius:calc(var(--u)*.9);
+  display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*1.5);color:#c9d6ff;background:rgba(143,168,255,.16)}
+.dsstack .chain__row b{flex:0 0 auto;font-size:calc(var(--u)*1.5);font-weight:600;color:#eef3fb;white-space:nowrap}
+.dsstack .chain__row i{font-style:normal;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:calc(var(--u)*1.25);color:#94a3bd}
+.dsstack .chain__row em{flex:0 0 auto;font-style:normal;font-size:calc(var(--u)*1.15);color:#7f8ea6}
+.dsstack .files{grid-template-columns:1fr 1fr;gap:calc(var(--u)*1.2) calc(var(--u)*2.4)}
+.dsstack .files__row{display:flex;align-items:center;gap:calc(var(--u)*1.2);padding:calc(var(--u)*.9) 0;
+  border-bottom:1px solid rgba(255,255,255,.07);min-width:0}
+.dsstack .files__ic{flex:0 0 auto;width:calc(var(--u)*3.4);height:calc(var(--u)*2.4);border-radius:calc(var(--u)*.45);
+  display:flex;align-items:center;justify-content:center;font:600 calc(var(--u)*.95)/1 "IBM Plex Mono",monospace;color:#0d1424;background:#8fa8ff}
+.dsstack .files__ic.pdf{background:#e0574f;color:#fff}
+.dsstack .files__ic.xls{background:#3fae6b;color:#08130c}
+.dsstack .files__ic.msg{background:#a98bff;color:#120a24}
+.dsstack .files__row b{font-size:calc(var(--u)*1.45);font-weight:500;color:#e6ecfa;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dsstack .files__row i{font-style:normal;margin-left:auto;font-size:calc(var(--u)*1.25);color:#8fa0ba;white-space:nowrap}
+.dsstack .apps{grid-template-columns:repeat(5,1fr);gap:calc(var(--u)*1.2)}
+.dsstack .app{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u)*.8);
+  padding:calc(var(--u)*1.3) calc(var(--u)*.6);border-radius:calc(var(--u)*1.4);
+  border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+.dsstack .app svg{width:calc(var(--u)*3.2);height:calc(var(--u)*3.2);fill:#dbe4ff;opacity:.92}
+.dsstack .app b{font-size:calc(var(--u)*1.15);font-weight:500;color:#b9c6de;white-space:nowrap}
+.dsstack .app--mono s{width:calc(var(--u)*3.2);height:calc(var(--u)*3.2);border-radius:calc(var(--u)*.7);display:flex;
+  align-items:center;justify-content:center;text-decoration:none;font:600 calc(var(--u)*1.35)/1 "IBM Plex Mono",monospace;color:#fff}
+.dsstack .mdl{grid-template-columns:repeat(3,1fr);gap:calc(var(--u)*1.4);align-content:center}
+.dsstack .mdl__card{display:flex;flex-direction:column;gap:calc(var(--u)*.8);padding:calc(var(--u)*1.6);
+  border:1px solid rgba(143,168,255,.18);border-radius:calc(var(--u)*1.4);background:rgba(143,168,255,.05)}
+.dsstack .mdl__card b{font-size:calc(var(--u)*1.7);color:#eef3fb;font-weight:600}
+.dsstack .mdl__card i{font-style:normal;font-size:calc(var(--u)*1.3);color:#94a3bd;line-height:1.3}
+.dsstack .mdl__card em{font-style:normal;margin-top:auto;font-size:calc(var(--u)*1.3);color:#9fd0ff;font-family:"IBM Plex Mono",monospace}
+.dsstack .mdl__foot{grid-column:1/-1;display:flex;gap:calc(var(--u)*2.4);padding-top:calc(var(--u)*1.2);border-top:1px solid rgba(255,255,255,.1);
+  font-size:calc(var(--u)*1.25);color:#8fa0ba}
+.dsstack .mdl__foot b{color:#dfe6ff;font-weight:600}
+.dsstack .ctl{grid-template-columns:1.1fr 1fr .9fr;gap:calc(var(--u)*1.6);align-content:center}
+.dsstack .ctl__card{padding:calc(var(--u)*1.5);border-radius:calc(var(--u)*1.4);border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04)}
+.dsstack .ctl__card b{display:block;font-size:calc(var(--u)*1.5);color:#eef3fb;margin-bottom:calc(var(--u)*.9)}
+.dsstack .ctl__card p{margin:0 0 calc(var(--u)*.6);font-size:calc(var(--u)*1.25);color:#a7b4c9;line-height:1.35}
+.dsstack .ctl__list{display:flex;flex-direction:column;gap:calc(var(--u)*.5)}
+.dsstack .ctl__list b{font-size:calc(var(--u)*1.5);color:#eef3fb;margin-bottom:calc(var(--u)*.4)}
+.dsstack .ctl__list span{font-size:calc(var(--u)*1.2);color:#a7b4c9;padding-left:calc(var(--u)*1.8);position:relative;line-height:1.35}
+.dsstack .ctl__list span:before{content:"✓";position:absolute;left:0;color:#4fd08a;font-size:calc(var(--u)*1.2)}
+.dsstack .ctl__side{display:flex;flex-direction:column;gap:calc(var(--u)*.8)}
+.dsstack .ctl__badge{align-self:flex-start;padding:calc(var(--u)*.8) calc(var(--u)*1.2);border-radius:999px;
+  background:rgba(79,208,138,.14);border:1px solid rgba(79,208,138,.4);color:#c8f5db;font-size:calc(var(--u)*1.2)}
+.dsstack .ctl__log{font-size:calc(var(--u)*1.15);color:#8fa0ba;display:flex;gap:calc(var(--u)*.8)}
+.dsstack .ctl__log i{font-style:normal;font-family:"IBM Plex Mono",monospace;color:#6f7f96}
+.dsstack .chain{grid-template-columns:1fr 1fr;gap:calc(var(--u)*.9)}
+.dsstack .chain__row{padding:calc(var(--u)*.7) calc(var(--u)*1);border-radius:calc(var(--u)*1)}
+.dsstack .chain__ic{width:calc(var(--u)*2.2);height:calc(var(--u)*2.2);font-size:calc(var(--u)*1.2);border-radius:calc(var(--u)*.7)}
+.dsstack .chain__row b{font-size:calc(var(--u)*1.25)}
+.dsstack .chain__row i{font-size:calc(var(--u)*1.1)}
+.dsstack .chain__row em{font-size:calc(var(--u)*1.05)}
+.dsstack .files{gap:calc(var(--u)*.5) calc(var(--u)*2)}
+.dsstack .files__row{padding:calc(var(--u)*.55) 0}
+.dsstack .files__ic{width:calc(var(--u)*2.9);height:calc(var(--u)*2);font-size:calc(var(--u)*.8)}
+.dsstack .files__row b{font-size:calc(var(--u)*1.25)}
+.dsstack .files__row i{font-size:calc(var(--u)*1.1)}
+.dsstack .apps{grid-template-columns:repeat(8,1fr);gap:calc(var(--u)*.7)}
+.dsstack .app{padding:calc(var(--u)*.8) calc(var(--u)*.3);gap:calc(var(--u)*.5);border-radius:calc(var(--u)*1)}
+.dsstack .app svg{width:calc(var(--u)*2.5);height:calc(var(--u)*2.5)}
+.dsstack .app b{font-size:calc(var(--u)*.95)}
+.dsstack .app--mono s{width:calc(var(--u)*2.5);height:calc(var(--u)*2.5);font-size:calc(var(--u)*1.05)}
+.dsstack .mdl{gap:calc(var(--u)*1)}
+.dsstack .mdl__card{padding:calc(var(--u)*1.1);gap:calc(var(--u)*.4)}
+.dsstack .mdl__card b{font-size:calc(var(--u)*1.35)}
+.dsstack .mdl__card i{font-size:calc(var(--u)*1.05)}
+.dsstack .mdl__card em{font-size:calc(var(--u)*1.05)}
+.dsstack .mdl__foot{padding-top:calc(var(--u)*.7);font-size:calc(var(--u)*1.05)}
+.dsstack .ctl{gap:calc(var(--u)*1.2)}
+.dsstack .ctl__card{padding:calc(var(--u)*1)}
+.dsstack .ctl__card b{font-size:calc(var(--u)*1.25);margin-bottom:calc(var(--u)*.5)}
+.dsstack .ctl__card p{font-size:calc(var(--u)*1.02);margin-bottom:calc(var(--u)*.35)}
+.dsstack .ctl__list b{font-size:calc(var(--u)*1.25)}
+.dsstack .ctl__list span{font-size:calc(var(--u)*1.02)}
+.dsstack .ctl__badge{font-size:calc(var(--u)*1.02);padding:calc(var(--u)*.6) calc(var(--u)*1)}
+.dsstack .ctl__log{font-size:calc(var(--u)*1)}
+.dsstack .strato--scen>.chain, .dsstack .strato--chiavi>.files, .dsstack .strato--pezzi>.apps, .dsstack .strato--schema>.mdl{
+  grid-auto-rows:min-content;grid-auto-flow:row;max-height:none;align-content:end}
+.dsstack .strato--fondo>.ctl{display:flex;flex-direction:row;align-items:flex-start;gap:calc(var(--u)*1.2);max-height:none}
+.dsstack .strato--fondo>.ctl>.ctl__list{flex:1 1 auto}
+.dsstack .strato--fondo>.ctl>.ctl__side{flex:0 0 auto}
+.dsstack .strato--fondo>.ctl>.ctl__card{flex:0 0 30%}
+.dsstack .strato--scen>.chain, .dsstack .strato--chiavi>.files, .dsstack .strato--pezzi>.apps, .dsstack .strato--schema>.mdl{display:flex !important;flex-wrap:wrap;align-content:flex-end}
+.dsstack .strato--scen>.chain{flex-direction:row;gap:calc(var(--u)*.8)}
+.dsstack .strato--scen>.chain>.chain__row{flex:0 0 calc(50% - var(--u)*.4)}
+.dsstack .strato--chiavi>.files{gap:calc(var(--u)*.4) calc(var(--u)*1.6)}
+.dsstack .strato--chiavi>.files>.files__row{flex:0 0 calc(50% - var(--u)*.8)}
+.dsstack .strato--pezzi>.apps{gap:calc(var(--u)*.6);justify-content:flex-start}
+.dsstack .strato--pezzi>.apps>.app{flex:0 0 calc(12.5% - var(--u)*.6)}
+.dsstack .strato--schema>.mdl{gap:calc(var(--u)*1)}
+.dsstack .strato--schema>.mdl>.mdl__card{flex:1 1 0}
+.dsstack .strato--schema>.mdl>.mdl__foot{flex:0 0 100%}
+.dsstack .strato--scen>.chain{height:calc(var(--u)*11)}
+.dsstack .strato--scen>.chain>.chain__row{height:calc(var(--u)*5);flex-wrap:nowrap;overflow:hidden}
+.dsstack .strato--scen .chain__row b, .dsstack .strato--scen .chain__row i, .dsstack .strato--scen .chain__row em{white-space:nowrap !important;line-height:1.1 !important}
+.dsstack .strato--scen .chain__row i{flex:1 1 auto !important;min-width:0 !important}
+.dsstack .strato--chiavi>.files{height:calc(var(--u)*11)}
+.dsstack .strato--chiavi>.files>.files__row{height:calc(var(--u)*3.2);overflow:hidden}
+.dsstack .strato--chiavi .files__row b, .dsstack .strato--chiavi .files__row i{white-space:nowrap !important;line-height:1.1 !important}
+.dsstack .strato--pezzi>.apps{height:calc(var(--u)*12)}
+.dsstack .strato--pezzi>.apps>.app{height:calc(var(--u)*5.6);overflow:hidden}
+.dsstack .strato--schema>.mdl{height:calc(var(--u)*11)}
+.dsstack .strato--schema>.mdl>.mdl__card{height:calc(var(--u)*8);overflow:hidden}
+.dsstack .strato--fondo>.ctl{height:calc(var(--u)*10);overflow:hidden}
+.dsstack .strato--fondo .ctl__card p:nth-child(3){display:none}
 .dsstack{overflow:visible !important}
 .dsstack .palco{top:66px !important;height:calc(100vh - 66px) !important}
 .dsstack .testa{position:relative;z-index:3}
-@media (max-height:760px){.dsstack{--w:min(84vw,58vh,980px)}}
-@media (max-height:640px){.dsstack{--w:min(86vw,54vh,860px)}}
-.dsstack .palco{overflow:hidden}</style>
+.dsstack{--w:min(84vw,46vh,900px) !important}
+@media (max-height:760px){.dsstack{--w:min(84vw,44vh,760px) !important}}
+@media (max-height:640px){.dsstack{--w:min(86vw,42vh,700px) !important}}</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -1495,7 +1608,30 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 
             <!-- layer: background -->
             <div class="strato strato--fondo" data-strato data-k="ctl" tabindex="0" role="button">
-              <div class="fondo__griglia"></div><div class="chips"><span>отчёт каждый день</span><span>7 критериев приёмки</span><span>гарантия 30 дней</span><span class="more">+2</span></div>
+              <div class="fondo__griglia"></div><div class="ctl">
+                  <div class="ctl__card">
+                    <b>Отчёт · 08:00</b>
+                    <p>Сделал: 13 заявок, 4 письма, счёт в 1С.</p>
+                    <p>Ждёт тебя: счёт на юрлицо, сроки.</p>
+                    <p>Не смог: доступ к CRM истёк.</p>
+                  </div>
+                  <div class="ctl__list">
+                    <b>Приёмка · 7 пунктов</b>
+                    <span>сценарии работают на твоих данных</span>
+                    <span>память наполнена и проверена</span>
+                    <span>интеграции на твоих ключах</span>
+                    <span>модель и лимит настроены</span>
+                    <span>журнал и стоп-кнопка</span>
+                    <span>отчёт приходит в Telegram</span>
+                    <span>код и доступы у тебя</span>
+                  </div>
+                  <div class="ctl__side">
+                    <span class="ctl__badge">гарантия 30 дней</span>
+                    <div class="ctl__log"><i>08:04</i> заявка разобрана</div>
+                    <div class="ctl__log"><i>08:07</i> счёт отправлен</div>
+                    <div class="ctl__log"><i>09:12</i> эскалация</div>
+                  </div>
+                </div>
               <div class="fondo__luce" data-luce></div>
               <span class="ancora" data-ancora></span>
             </div>
@@ -1507,7 +1643,12 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
               <span class="schema schema--a"></span>
               <span class="schema schema--b"></span>
               <span class="schema schema--c"></span>
-              <span class="schema schema--grafico"></span><div class="chips"><span>DeepSeek 4.1 Flash</span><span>локальная модель</span><span>роутер: дешёвая/сильная</span><span class="more">+2</span></div>
+              <span class="schema schema--grafico"></span><div class="mdl">
+                  <div class="mdl__card"><b>DeepSeek 4.1 Flash</b><i>рутина: письма, ответы, сводки</i><em>~0.2 ₽ за 1k</em></div>
+                  <div class="mdl__card"><b>Локальная модель</b><i>приватное: договоры, зарплаты</i><em>0 ₽ · своё железо</em></div>
+                  <div class="mdl__card"><b>Сильная модель</b><i>сложное: аудит, стратегия</i><em>~8 ₽ за 1k</em></div>
+                  <div class="mdl__foot"><span>лимит <b>3 000 ₽/мес</b></span><span>стоп при <b>90 %</b></span><span>кэш <b>вкл</b></span></div>
+                </div>
               <span class="ancora" data-ancora></span>
             </div>
 
@@ -1519,7 +1660,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
               <span class="pezzo pezzo--a"></span>
               <span class="pezzo pezzo--b"></span>
               <span class="pezzo pezzo--c"></span>
-              <span class="pezzo pezzo--grafico"></span><div class="chips"><span>Telegram</span><span>WhatsApp</span><span>Avito</span><span class="more">+2</span></div>
+              <span class="pezzo pezzo--grafico"></span><div class="apps"><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg><b>Telegram</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg><b>WhatsApp</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg><b>Gmail</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google Sheets</title><path d="M11.318 12.545H7.91v-1.909h3.41v1.91zM14.728 0v6h6l-6-6zm1.363 10.636h-3.41v1.91h3.41v-1.91zm0 3.273h-3.41v1.91h3.41v-1.91zM20.727 6.5v15.864c0 .904-.732 1.636-1.636 1.636H4.909a1.636 1.636 0 0 1-1.636-1.636V1.636C3.273.732 4.005 0 4.909 0h9.318v6.5h6.5zm-3.273 2.773H6.545v7.909h10.91v-7.91zm-6.136 4.636H7.91v1.91h3.41v-1.91z"/></svg><b>Таблицы</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google Drive</title><path d="M12.01 1.485c-2.082 0-3.754.02-3.743.047.01.02 1.708 3.001 3.774 6.62l3.76 6.574h3.76c2.081 0 3.753-.02 3.742-.047-.005-.02-1.708-3.001-3.775-6.62l-3.76-6.574zm-4.76 1.73a789.828 789.861 0 0 0-3.63 6.319L0 15.868l1.89 3.298 1.885 3.297 3.62-6.335 3.618-6.33-1.88-3.287C8.1 4.704 7.255 3.22 7.25 3.214zm2.259 12.653-.203.348c-.114.198-.96 1.672-1.88 3.287a423.93 423.948 0 0 1-1.698 2.97c-.01.026 3.24.042 7.222.042h7.244l1.796-3.157c.992-1.734 1.85-3.23 1.906-3.323l.104-.167h-7.249z"/></svg><b>Диск</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Notion</title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/></svg><b>Notion</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Trello</title><path d="M21.147 0H2.853A2.86 2.86 0 000 2.853v18.294A2.86 2.86 0 002.853 24h18.294A2.86 2.86 0 0024 21.147V2.853A2.86 2.86 0 0021.147 0zM10.34 17.287a.953.953 0 01-.953.953h-4a.954.954 0 01-.954-.953V5.38a.953.953 0 01.954-.953h4a.954.954 0 01.953.953zm9.233-5.467a.944.944 0 01-.953.947h-4a.947.947 0 01-.953-.947V5.38a.953.953 0 01.953-.953h4a.954.954 0 01.953.953z"/></svg><b>Trello</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><b>GitHub</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Figma</title><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg><b>Figma</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Slack</title><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg><b>Slack</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Zoom</title><path d="M5.033 14.649H.743a.74.74 0 0 1-.686-.458.74.74 0 0 1 .16-.808L3.19 10.41H1.06A1.06 1.06 0 0 1 0 9.35h3.957c.301 0 .57.18.686.458a.74.74 0 0 1-.161.808L1.51 13.59h2.464c.585 0 1.06.475 1.06 1.06zM24 11.338c0-1.14-.927-2.066-2.066-2.066-.61 0-1.158.265-1.537.686a2.061 2.061 0 0 0-1.536-.686c-1.14 0-2.066.926-2.066 2.066v3.311a1.06 1.06 0 0 0 1.06-1.06v-2.251a1.004 1.004 0 0 1 2.013 0v2.251c0 .586.474 1.06 1.06 1.06v-3.311a1.004 1.004 0 0 1 2.012 0v2.251c0 .586.475 1.06 1.06 1.06zM16.265 12a2.728 2.728 0 1 1-5.457 0 2.728 2.728 0 0 1 5.457 0zm-1.06 0a1.669 1.669 0 1 0-3.338 0 1.669 1.669 0 0 0 3.338 0zm-4.82 0a2.728 2.728 0 1 1-5.458 0 2.728 2.728 0 0 1 5.457 0zm-1.06 0a1.669 1.669 0 1 0-3.338 0 1.669 1.669 0 0 0 3.338 0z"/></svg><b>Zoom</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Jira</title><path d="M11.571 11.513H0a5.218 5.218 0 0 0 5.232 5.215h2.13v2.057A5.215 5.215 0 0 0 12.575 24V12.518a1.005 1.005 0 0 0-1.005-1.005zm5.723-5.756H5.736a5.215 5.215 0 0 0 5.215 5.214h2.129v2.058a5.218 5.218 0 0 0 5.215 5.214V6.758a1.001 1.001 0 0 0-1.001-1.001zM23.013 0H11.455a5.215 5.215 0 0 0 5.215 5.215h2.129v2.057A5.215 5.215 0 0 0 24 12.483V1.005A1.001 1.001 0 0 0 23.013 0Z"/></svg><b>Jira</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Airtable</title><path d="M11.992 1.966c-.434 0-.87.086-1.28.257L1.779 5.917c-.503.208-.49.908.012 1.116l8.982 3.558a3.266 3.266 0 0 0 2.454 0l8.982-3.558c.503-.196.503-.908.012-1.116l-8.957-3.694a3.255 3.255 0 0 0-1.272-.257zM23.4 8.056a.589.589 0 0 0-.222.045l-10.012 3.877a.612.612 0 0 0-.38.564v8.896a.6.6 0 0 0 .821.552L23.62 18.1a.583.583 0 0 0 .38-.551V8.653a.6.6 0 0 0-.6-.596zM.676 8.095a.644.644 0 0 0-.48.19C.086 8.396 0 8.53 0 8.69v8.355c0 .442.515.737.908.54l6.27-3.006.307-.147 2.969-1.436c.466-.22.43-.908-.061-1.092L.883 8.138a.57.57 0 0 0-.207-.044z"/></svg><b>Airtable</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>HubSpot</title><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/></svg><b>HubSpot</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Stripe</title><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/></svg><b>Stripe</b></span><span class="app"><svg class="lg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>VK</title><path d="m9.489.004.729-.003h3.564l.73.003.914.01.433.007.418.011.403.014.388.016.374.021.36.025.345.03.333.033c1.74.196 2.933.616 3.833 1.516.9.9 1.32 2.092 1.516 3.833l.034.333.029.346.025.36.02.373.025.588.012.41.013.644.009.915.004.98-.001 3.313-.003.73-.01.914-.007.433-.011.418-.014.403-.016.388-.021.374-.025.36-.03.345-.033.333c-.196 1.74-.616 2.933-1.516 3.833-.9.9-2.092 1.32-3.833 1.516l-.333.034-.346.029-.36.025-.373.02-.588.025-.41.012-.644.013-.915.009-.98.004-3.313-.001-.73-.003-.914-.01-.433-.007-.418-.011-.403-.014-.388-.016-.374-.021-.36-.025-.345-.03-.333-.033c-1.74-.196-2.933-.616-3.833-1.516-.9-.9-1.32-2.092-1.516-3.833l-.034-.333-.029-.346-.025-.36-.02-.373-.025-.588-.012-.41-.013-.644-.009-.915-.004-.98.001-3.313.003-.73.01-.914.007-.433.011-.418.014-.403.016-.388.021-.374.025-.36.03-.345.033-.333c.196-1.74.616-2.933 1.516-3.833.9-.9 2.092-1.32 3.833-1.516l.333-.034.346-.029.36-.025.373-.02.588-.025.41-.012.644-.013.915-.009ZM6.79 7.3H4.05c.13 6.24 3.25 9.99 8.72 9.99h.31v-3.57c2.01.2 3.53 1.67 4.14 3.57h2.84c-.78-2.84-2.83-4.41-4.11-5.01 1.28-.74 3.08-2.54 3.51-4.98h-2.58c-.56 1.98-2.22 3.78-3.8 3.95V7.3H10.5v6.92c-1.6-.4-3.62-2.34-3.71-6.92Z"/></svg><b>ВКонтакте</b></span><span class="app app--mono"><s style="background:#2c8ee0">am</s><b>amoCRM</b></span><span class="app app--mono"><s style="background:#e64b3c">bx</s><b>Bitrix24</b></span><span class="app app--mono"><s style="background:#00aaff">av</s><b>Avito</b></span><span class="app app--mono"><s style="background:#c8102e">1c</s><b>1С</b></span></div>
               <span class="ancora" data-ancora></span>
             </div>
 
@@ -1528,13 +1669,25 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
               <span class="chiave chiave--a"></span>
               <span class="chiave chiave--b"></span>
               <span class="chiave chiave--c"></span>
-              <span class="chiave chiave--d"></span><div class="chips"><span>кейсы 47</span><span>брифы 96</span><span>договоры 12</span><span class="more">+2</span></div>
+              <span class="chiave chiave--d"></span><div class="files">
+                  <div class="files__row"><span class="files__ic pdf">PDF</span><b>Кейсы и разборы</b><i>47 файлов</i></div>
+                  <div class="files__row"><span class="files__ic doc">DOC</span><b>Брифы клиентов</b><i>96 файлов</i></div>
+                  <div class="files__row"><span class="files__ic msg">MSG</span><b>Переписка</b><i>1 240 диалогов</i></div>
+                  <div class="files__row"><span class="files__ic xls">XLS</span><b>Счета и акты</b><i>380 таблиц</i></div>
+                  <div class="files__row"><span class="files__ic doc">DOC</span><b>Договоры</b><i>12 шаблонов</i></div>
+                  <div class="files__row"><span class="files__ic msg">ТЗ</span><b>Регламенты и тон</b><i>9 инструкций</i></div>
+                </div>
               <span class="ancora" data-ancora></span>
             </div>
 
             <!-- layer: сценарии -->
             <div class="strato strato--scen" data-strato data-k="scen" tabindex="0" role="button">
-              <div class="chips"><span>заявки с сайта</span><span>ответы в Telegram</span><span>разбор почты</span><span class="more">+2</span></div>
+              <div class="chain">
+                  <div class="chain__row"><span class="chain__ic">◧</span><b>заявка с сайта</b><i>квалификация → карточка в CRM</i><em>2 мин</em></div>
+                  <div class="chain__row"><span class="chain__ic">✉</span><b>письмо с брифом</b><i>разбор вложений → КП по шаблону</i><em>6 мин</em></div>
+                  <div class="chain__row"><span class="chain__ic">₽</span><b>счёт в почте</b><i>сверка реквизитов → запись в 1С</i><em>1 мин</em></div>
+                  <div class="chain__row"><span class="chain__ic">★</span><b>отзыв на 2 звезды</b><i>черновик ответа → на согласование</i><em>4 мин</em></div>
+                  </div>
               <span class="ancora" data-ancora></span>
             </div>
 
@@ -2047,7 +2200,7 @@ else if('IntersectionObserver' in window){
    screen settles flat, with a one pixel overshoot. As the page opens, the chart line draws and the numbers count. Scroll back up and it all plays back. */
 
 /* ---- values to change ---- */
-const GAP = 16;      /* the distance between two layers, in hundredths of the screen width */
+const GAP = 20;      /* the distance between two layers, in hundredths of the screen width */
 const TILT = 50;     /* how many degrees the screen leans back */
 const TURN = 30;     /* how many degrees the screen turns on the table */
 const RIDE = 1;      /* how much scroll the whole story takes: 2 is twice as long */
