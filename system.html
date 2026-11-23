@@ -1070,7 +1070,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 }
 </style>
 <style>
-/* Animorio «Layered app screen» · animorio.com — можно на своих и клиентских сайтах, нельзя перепродавать */
+/* Animorio «Layered app screen» · animorio.com */
 .dsstack{
   --fondo: #f4f4f5;
   --inchiostro: #0b0b0f;
@@ -1080,11 +1080,11 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   --carta: #ffffff;
   --accento: #4f46e5;
   
-  --w: min(62vw, 88vh, 600px);
+  --w: min(88vw, 90vh, 1240px);
   --h: calc(var(--w) * 0.62);
   --u: calc(var(--w) / 100);
 }
-.dsstack *{ box-sizing: border-box; margin: 0; padding: 0; }
+.dsstack{ box-sizing: border-box; margin: 0; padding: 0; }
 .dsstack{ background: var(--fondo); }
 .dsstack{
   background: var(--fondo);
@@ -1365,9 +1365,76 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .sc-x{position:absolute;right:10px;top:8px;border:0;background:none;color:#8a94ad;font-size:22px;line-height:1;cursor:pointer;padding:6px}
 .dsstack .sc-x:hover{color:#f4f7fe}
 .dsstack .strato{cursor:pointer}
+.dsstack .strato--tg{background:#17212b;border-radius:calc(var(--u)*2.4);overflow:hidden;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08), 0 calc(var(--u)*2) calc(var(--u)*6) rgba(0,0,0,.35)}
+.dsstack .tg{position:absolute;inset:0;display:flex;flex-direction:column;font-family:"IBM Plex Sans",system-ui,sans-serif;color:#e9eef6}
+.dsstack .tg-h{display:flex;align-items:center;gap:calc(var(--u)*1.4);padding:calc(var(--u)*1.6) calc(var(--u)*2);
+  background:#1c2a36;border-bottom:1px solid rgba(255,255,255,.06)}
+.dsstack .tg-back{font-size:calc(var(--u)*3);color:#7aa7d9;line-height:1}
+.dsstack .tg-ava{width:calc(var(--u)*4.4);height:calc(var(--u)*4.4);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,#5b8def,#7ff0b6);color:#0f1730;font:600 calc(var(--u)*1.7)/1 "IBM Plex Mono",monospace}
+.dsstack .tg-who{display:flex;flex-direction:column;gap:calc(var(--u)*.35)}
+.dsstack .tg-who b{font-size:calc(var(--u)*1.9);font-weight:600}
+.dsstack .tg-who i{font-style:normal;font-size:calc(var(--u)*1.35);color:#7aa7d9}
+.dsstack .tg-menu{margin-left:auto;color:#8aa0b4;font-size:calc(var(--u)*2.4);line-height:1}
+.dsstack .tg-body{flex:1;display:flex;flex-direction:column;gap:calc(var(--u)*1.2);padding:calc(var(--u)*1.6) calc(var(--u)*2);overflow:hidden}
+.dsstack .tg-day{align-self:center;font-size:calc(var(--u)*1.25);color:#8aa0b4;background:rgba(255,255,255,.05);
+  padding:calc(var(--u)*.5) calc(var(--u)*1.2);border-radius:999px}
+.dsstack .tg-m{max-width:76%;position:relative;padding:calc(var(--u)*1.2) calc(var(--u)*1.5);border-radius:calc(var(--u)*1.6)}
+.dsstack .tg-m p{margin:0;font-size:calc(var(--u)*1.65);line-height:1.35}
+.dsstack .tg-m .tg-t{display:block;text-align:right;font-size:calc(var(--u)*1.1);color:rgba(255,255,255,.45);margin-top:calc(var(--u)*.5)}
+.dsstack .tg-m.out{align-self:flex-end;background:#2b5278;border-bottom-right-radius:calc(var(--u)*.5)}
+.dsstack .tg-m.in{align-self:flex-start;background:#212d3b;border-bottom-left-radius:calc(var(--u)*.5)}
+.dsstack .tg-file{align-self:flex-start;display:flex;align-items:center;gap:calc(var(--u)*1.2);
+  background:#212d3b;border-radius:calc(var(--u)*1.4);padding:calc(var(--u)*1.1) calc(var(--u)*1.4)}
+.dsstack .tg-ficon{width:calc(var(--u)*3.2);height:calc(var(--u)*3.6);border-radius:calc(var(--u)*.5);display:flex;align-items:center;justify-content:center;
+  background:#c0392b;color:#fff;font:600 calc(var(--u)*1.1)/1 "IBM Plex Mono",monospace}
+.dsstack .tg-fname{font-size:calc(var(--u)*1.6);color:#8fc0f0}
+.dsstack .tg-fsize{font-size:calc(var(--u)*1.25);color:#8aa0b4}
+.dsstack .tg-btns{align-self:flex-start;display:flex;gap:calc(var(--u)*.9);margin-top:calc(var(--u)*.4)}
+.dsstack .tg-btns button{border:1px solid rgba(122,167,217,.45);background:rgba(122,167,217,.12);color:#9fd0ff;
+  border-radius:calc(var(--u)*1);padding:calc(var(--u)*.9) calc(var(--u)*1.4);font-size:calc(var(--u)*1.45);cursor:pointer}
+.dsstack .tg-typing{align-self:flex-start;display:flex;align-items:center;gap:calc(var(--u)*.5);color:#8aa0b4;font-size:calc(var(--u)*1.35)}
+.dsstack .tg-typing i{width:calc(var(--u)*.8);height:calc(var(--u)*.8);border-radius:50%;background:#8aa0b4;animation:tgd 1.2s infinite}
+.dsstack .tg-typing i:nth-child(2){animation-delay:.15s}
+.dsstack .tg-typing i:nth-child(3){animation-delay:.3s}
+.dsstack @keyframes tgd{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.dsstack .tg-f{display:flex;gap:calc(var(--u)*2);padding:calc(var(--u)*1.2) calc(var(--u)*2);
+  background:#1c2a36;border-top:1px solid rgba(255,255,255,.06);font-size:calc(var(--u)*1.25);color:#8aa0b4}
+.dsstack .tg-f b{color:#e9eef6;font-weight:600}
+.dsstack .tg-hidden{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.dsstack .strato--tg .tg-m p{font-size:calc(var(--u)*2.05);line-height:1.32;color:#eef3fb}
+.dsstack .strato--tg .tg-who b{font-size:calc(var(--u)*2.1)}
+.dsstack .strato--tg .tg-who i{font-size:calc(var(--u)*1.5)}
+.dsstack .strato--tg .tg-day{font-size:calc(var(--u)*1.4)}
+.dsstack .strato--tg .tg-fname{font-size:calc(var(--u)*1.9)}
+.dsstack .strato--tg .tg-fsize{font-size:calc(var(--u)*1.45)}
+.dsstack .strato--tg .tg-f{font-size:calc(var(--u)*1.45)}
+.dsstack .strato--tg .tg-typing{font-size:calc(var(--u)*1.5)}
+.dsstack .strato--tg .tg-btns{align-self:stretch;flex-direction:column;gap:calc(var(--u)*.7);max-width:76%}
+.dsstack .strato--tg .tg-btns button{width:100%;text-align:center;font-size:calc(var(--u)*1.65);
+  padding:calc(var(--u)*1.15) calc(var(--u)*1.4);border-radius:calc(var(--u)*1.1)}
+.dsstack .strato--tg .tg-input{display:flex;align-items:center;gap:calc(var(--u)*1.2);margin:0 calc(var(--u)*2) calc(var(--u)*1.2);
+  padding:calc(var(--u)*1.1) calc(var(--u)*1.6);border-radius:999px;background:#1c2a36;border:1px solid rgba(255,255,255,.07)}
+.dsstack .strato--tg .tg-clip, .dsstack .strato--tg .tg-send{color:#7aa7d9;font-size:calc(var(--u)*1.9);line-height:1}
+.dsstack .strato--tg .tg-ph{color:#7d8fa1;font-size:calc(var(--u)*1.6)}
+.dsstack .strato--tg .tg-send{margin-left:auto}
+.dsstack .strato--tg .tg-menu{color:#8aa0b4;font-size:calc(var(--u)*2.2)}
+.dsstack .strato--tg .tg-body{min-height:0;overflow:hidden}
+.dsstack .palco{padding:min(3vh,24px) 16px min(2vh,16px) !important}
+.dsstack .strato--tg .tg-body{gap:calc(var(--u)*1.05)}
+.dsstack .strato--tg .tg-day{display:none}
+.dsstack .strato--tg .tg-btns button{background:rgba(122,167,217,.22);border-color:transparent;color:#bfe0ff;font-weight:500}
+.dsstack .strato--tg .tg-btns button:hover{background:rgba(122,167,217,.32)}
+.dsstack .strato--tg .tg{flex-direction:column}
+.dsstack .strato--tg .tg-body{flex:1 1 auto;min-height:0;overflow:hidden}
+.dsstack .strato--tg .tg-input, .dsstack .strato--tg .tg-f{flex:0 0 auto}
+.dsstack .strato--tg .tg-m p{font-size:calc(var(--u)*1.98)}
+.dsstack .strato--tg .tg-body{gap:calc(var(--u)*.95)}
+.dsstack .strato--tg .tg-typing{display:none}
+.dsstack .strato--tg .tg-m{padding:calc(var(--u)*1.05) calc(var(--u)*1.35)}
 .dsstack{overflow:visible !important}
-.dsstack .palco{overflow:hidden}
-</style>
+.dsstack .palco{overflow:hidden}</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -1464,23 +1531,26 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
             </div>
 
             <!-- layer: content — экран агента -->
-            <div class="strato strato--testi" data-strato>
-              <span class="marchio"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 12.5V3.5h4.6a3 3 0 0 1 0 6H3"/><circle cx="12" cy="12" r="1.6"/></svg>агент</span>
-              <span class="voce voce--a">Заявки</span>
-              <span class="voce voce--b">Сделки</span>
-              <span class="voce voce--c">Отчёты</span>
-              <span class="voce voce--d">Правила</span>
-              <span class="cerca">Поиск</span>
-              <span class="bottone">Открыть отчёт</span>
-              <span class="dato dato--a"><em>Заявок</em><b data-conta="13">13</b></span>
-              <span class="dato dato--b"><em>Действий</em><b data-conta="2">2</b></span>
-              <span class="dato dato--c"><em>Ошибок</em><b data-conta="0">0</b></span>
-              <svg class="linea" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
-                <path class="linea__area" d="M0 46 C 18 44, 26 34, 40 36 S 64 22, 80 26 S 104 40, 120 30 S 150 10, 168 14 S 190 8, 200 6 V 60 H 0 Z"/>
-                <path class="linea__tratto" data-linea d="M0 46 C 18 44, 26 34, 40 36 S 64 22, 80 26 S 104 40, 120 30 S 150 10, 168 14 S 190 8, 200 6" pathLength="1"/>
-                <circle class="linea__punto" data-punto cx="168" cy="14" r="2.6"/>
-              </svg>
-              <span class="grafico-titolo">Разобрано за сутки</span>
+            <div class="strato strato--testi strato--tg" data-strato>
+              <div class="tg">
+                <header class="tg-h">
+                  <span class="tg-back">‹</span>
+                  <span class="tg-ava">DS</span>
+                  <span class="tg-who"><b>агент · Discovery</b><i>в сети</i></span>
+                  <span class="tg-menu">⋯</span>
+                </header>
+                <div class="tg-body">
+                  <div class="tg-day">сегодня</div>
+                  <div class="tg-m out"><p>Сколько стоит лендинг и когда сможете начать?</p><span class="tg-t">21:40 ✓✓</span></div>
+                  <div class="tg-m in"><p>Лендинг — от 180 000 ₽, срок три недели. Скинь бриф — смету пришлю до утра.</p><span class="tg-t">21:40</span></div>
+                  <div class="tg-m in tg-file"><span class="tg-ficon">PDF</span><span class="tg-fname">Смета_лендинг.pdf</span><span class="tg-fsize">184 КБ</span></div>
+                  <div class="tg-btns"><button type="button">Открыть смету</button><button type="button">В работу</button></div>
+                  <div class="tg-typing"><i></i><i></i><i></i><span>печатает…</span></div>
+                </div>
+                <div class="tg-input"><span class="tg-clip">📎</span><span class="tg-ph">Написать сообщение…</span><span class="tg-send">➤</span></div>
+                <footer class="tg-f"><span><b data-conta="13">13</b> сообщений</span><span><b data-conta="2">2</b> действия</span><span><b data-conta="0">0</b> ошибок</span></footer>
+                <svg class="tg-hidden" viewBox="0 0 200 60" aria-hidden="true"><path class="linea__tratto" data-linea d="M0 46 C 18 44, 26 34, 40 36" pathLength="1"/><circle data-punto cx="40" cy="36" r="1"/></svg>
+              </div>
               <span class="ancora" data-ancora></span>
             </div>
           </div>
