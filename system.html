@@ -1391,6 +1391,18 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 @media (max-height:820px){.dsstack{--w:min(94vw,810px) !important}}
 @media (max-height:720px){.dsstack{--w:min(94vw,730px) !important}}
 @media (max-height:640px){.dsstack{--w:min(94vw,660px) !important}}</style>
+<style>
+.hero2{align-items:center}
+.hright2{border-left:1px solid rgba(255,255,255,.09);padding-left:clamp(22px,3vw,44px)}
+.hr2-k{margin:0 0 14px;font:500 11.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#7f8ea6}
+.hr2-l{list-style:none;margin:0;padding:0}
+.hr2-l li{display:flex;align-items:baseline;gap:16px;padding:13px 0;border-top:1px solid rgba(255,255,255,.07)}
+.hr2-l li:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+.hr2-l b{flex:0 0 auto;min-width:42px;font:600 24px/1 var(--mono);color:#b9c8ff;letter-spacing:-.02em}
+.hr2-l span{font-size:15px;line-height:1.35;color:#c8d0e2}
+.hr2-note{margin:16px 0 0;font-size:13px;color:#7f8ea6}
+@media (max-width:900px){.hright2{border-left:0;padding-left:0;border-top:1px solid rgba(255,255,255,.09);padding-top:18px}}
+</style>
 </head>
 <body>
 <header class="nav"><div class="nav-in" style="max-width:1140px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
@@ -1405,11 +1417,21 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   <div class="hleft">
     <p class="hk">Discovery System <span class="hbadge">5 уровней · 1 агент</span></p>
     <h1>Система агентов, которой <em>ты владеешь</em></h1>
-    <p class="hlede">Поэтому тебе не придётся платить второй раз и просить доступ к своему же агенту: код, данные и ключи остаются у тебя — забрал и работает без меня.</p>
+    <p class="hlede">Система собрана на твоих ключах и живёт у тебя. Поэтому тебе не придётся платить второй раз и просить доступ к своему же агенту: код, данные и ключи остаются у тебя — забрал и работает без меня.</p>
     <ul class="hprice"><li><span>гайд</span><b>5 000 ₽</b></li><li><span>сборка</span><b>10 000 ₽</b></li><li><span>внедрение</span><b>от 40 000 ₽</b></li><li><span>сопровождение</span><b>от 20 000 ₽/мес</b></li></ul>
     <div class="hcta"><a class="btn btn-p" href="service.html">Услуги и цены <span aria-hidden="true">→</span></a><a class="quiet-link" href="#tools">на чём это держится</a></div>
   </div>
-  
+  <div class="hright2">
+    <p class="hr2-k">что внутри</p>
+    <ul class="hr2-l">
+      <li><b>17</b><span>сценариев: агент делает сам</span></li>
+      <li><b>9</b><span>разделов памяти о твоём деле</span></li>
+      <li><b>18</b><span>интеграций: Telegram, почта, CRM, 1С</span></li>
+      <li><b>6</b><span>моделей и лимит 3 000 ₽/мес</span></li>
+      <li><b>6</b><span>правил контроля и отчёт в 08:00</span></li>
+    </ul>
+    <p class="hr2-note">ниже — эти же пять уровней в разрезе; нажми на любой</p>
+  </div>
 </div>
 </div>
 
@@ -1429,7 +1451,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
       <div class="palco">
         <header class="testa" data-testa>
           <p class="testa__nota">Discovery System · экран и пять слоёв под ним</p>
-          <h1 class="testa__titolo" data-titolo>Один экран, <span>пять слоёв под ним</span></h1>
+          <h2 class="testa__titolo" data-titolo>Один экран, <span>пять слоёв под ним</span></h2>
         </header>
 
         <div class="scena" data-scena>
