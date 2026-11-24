@@ -1673,13 +1673,16 @@ function draw() {
   /* the labels: where each layer's right edge lands on screen, and one column just past the widest of them */
   if (via <= 0) { etichette.forEach((el) => { el.firstElementChild.style.opacity = 0; }); return; }
   const sr = scena.getBoundingClientRect();
-  const punti = strati.map((st) => {
-    const r = st.getBoundingClientRect();
-    /* цепляемся к НИЖНЕЙ полосе пластины: только она видна в стопке,
-       верх перекрыт слоем, который лежит ближе к зрителю */
-    return { x: r.right - sr.left, y: r.bottom - sr.top - Math.max(16, r.height * 0.06) };
+  /* прямоугольники всех слоёв: чтобы понять, какая полоса слоя реально открыта */
+  const rects = strati.map((st) => st.getBoundingClientRect());
+  const punti = rects.map((r, k) => {
+    /* слой перекрыт теми, кто ближе к зрителю (индекс больше) — берём их нижнюю границу */
+    let sopra = r.top;
+    for (let j = k + 1; j < rects.length; j += 1) sopra = Math.max(sopra, rects[j].bottom);
+    const centro = (Math.min(sopra, r.bottom - 1) + r.bottom) / 2;
+    return { x: r.right - sr.left - 8, y: centro - sr.top };
   });
-  const colonna = Math.max(...punti.map((q) => q.x)) + Math.max(14, larga * 0.06);
+  const colonna = Math.max(...punti.map((q) => q.x)) + Math.max(10, larga * 0.032);
   etichette.forEach((el, i) => {
     const v = S.et[i];
     /* привязка по имени, а не по порядку в разметке: подписи и слои живут в разном порядке */
