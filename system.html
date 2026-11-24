@@ -1682,7 +1682,8 @@ function draw() {
     const centro = (Math.min(sopra, r.bottom - 1) + r.bottom) / 2;
     return { x: r.right - sr.left - 8, y: centro - sr.top };
   });
-  const colonna = Math.max(...punti.map((q) => q.x)) + Math.max(10, larga * 0.032);
+  const colonna = 0; /* колонки больше нет: каждая пилюля у своего торца */
+  const gapPill = Math.max(8, larga * 0.01);
   etichette.forEach((el, i) => {
     const v = S.et[i];
     /* привязка по имени, а не по порядку в разметке: подписи и слои живут в разном порядке */
@@ -1691,11 +1692,11 @@ function draw() {
     let k = -1;
     if (cls) strati.forEach((st, j) => { if (st.className.indexOf('strato--' + cls) >= 0) k = j; });
     const q = punti[k >= 0 ? k : i];
-    el.style.transform = `translate(${q.x}px, ${q.y}px)`;
+    el.style.transform = `translate(${q.x + gapPill}px, ${q.y}px)`;
     const corpo = el.firstElementChild;
     corpo.style.opacity = v;
     const filo = corpo.firstElementChild;
-    filo.style.width = Math.max(6, colonna - q.x) + 'px';
+    filo.style.width = gapPill + 'px';
     filo.style.transform = `scaleX(${v})`;
     corpo.style.columnGap = (6 + 4 * v) + 'px';
   });
