@@ -1675,7 +1675,9 @@ function draw() {
   const sr = scena.getBoundingClientRect();
   const punti = strati.map((st) => {
     const r = st.getBoundingClientRect();
-    return { x: r.right - sr.left, y: r.top - sr.top + r.height * 0.18 };
+    /* цепляемся к НИЖНЕЙ полосе пластины: только она видна в стопке,
+       верх перекрыт слоем, который лежит ближе к зрителю */
+    return { x: r.right - sr.left, y: r.bottom - sr.top - Math.max(16, r.height * 0.06) };
   });
   const colonna = Math.max(...punti.map((q) => q.x)) + Math.max(14, larga * 0.06);
   etichette.forEach((el, i) => {
