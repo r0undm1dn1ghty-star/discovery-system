@@ -254,6 +254,31 @@ h1,h2,h3,.conflict,.q,.stance,.demo-result,.terms b,.lede b{color:var(--ink)}
 /* в стопке пластины должны выглядеть как плиты, а не как обрезки */
 .dsstack .strato{border-radius:14px !important;overflow:hidden !important}
 
+
+/* содержимое пластин крупнее: в разрезе и при клике текст должен читаться */
+.dsstack .chain2__row{padding:calc(var(--u)*1.7) calc(var(--u)*1.9);gap:calc(var(--u)*1.4)}
+.dsstack .chain2__tx b{font-size:calc(var(--u)*2.4)}
+.dsstack .chain2__tx i{font-size:calc(var(--u)*1.85)}
+.dsstack .chain2__ic{width:calc(var(--u)*3.8);height:calc(var(--u)*3.8)}
+.dsstack .files__row{padding:calc(var(--u)*1.5) 0;gap:calc(var(--u)*1.4)}
+.dsstack .files__row b{font-size:calc(var(--u)*2.2)}
+.dsstack .files__row i{font-size:calc(var(--u)*1.85)}
+.dsstack .files__ic{width:calc(var(--u)*5);height:calc(var(--u)*3)}
+.dsstack .mdl2__row{padding:calc(var(--u)*1.5) calc(var(--u)*1.6)}
+.dsstack .mdl2__row b{font-size:calc(var(--u)*2.2)}
+.dsstack .mdl2__row i,.dsstack .mdl2__row em{font-size:calc(var(--u)*1.75)}
+.dsstack .mdl2__foot{font-size:calc(var(--u)*1.6)}
+.dsstack .ctl2__card b{font-size:calc(var(--u)*1.8)}
+.dsstack .ctl2__card p,.dsstack .ctl2__col>span{font-size:calc(var(--u)*1.65)}
+.dsstack .apps-flat{grid-auto-rows:calc(var(--u)*9.4)}
+.dsstack .apps-flat .app img{width:calc(var(--u)*3.9);height:calc(var(--u)*3.9)}
+.dsstack .apps-flat .app b{font-size:calc(var(--u)*1.35)}
+
+/* мелочи читаемости в вынутом слое */
+.dsstack .pickclone .files__row{padding-right:calc(var(--u)*1.6)}
+.dsstack .pickclone .files__row i{color:#b6c2d6}
+.dsstack .pickclone .mdl2__row em{white-space:nowrap}
+.dsstack .pickclone .tg-time,.dsstack .pickclone .tg-fileline i{color:#a9c0d6}
 </style>
 <script>document.documentElement.className+=' js';</script>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
@@ -1192,7 +1217,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .tg-fileline i{font-size:calc(var(--u)*1.25)}
 .dsstack .tg-ficon{width:calc(var(--u)*2.6);height:calc(var(--u)*3.1);font-size:calc(var(--u)*1.1)}
 .dsstack .tg-body{gap:calc(var(--u)*1.1)}
-.dsstack{--w:min(92vw,900px) !important;--h:calc(var(--w) * 0.555);position:relative;z-index:3;isolation:isolate;
+.dsstack{--w:min(92vw,960px) !important;--h:calc(var(--w) * 0.555);position:relative;z-index:3;isolation:isolate;
   opacity:1 !important;visibility:visible !important;background:radial-gradient(ellipse at 50% 42%,rgba(24,36,66,.85),rgba(6,10,20,.98) 72%)}
 .dsstack .strato{background:#1b2745 !important;border-color:rgba(143,168,255,.6) !important;
   box-shadow:0 0 0 1px rgba(6,10,20,.95),0 34px 60px -30px rgba(0,0,0,1) !important}
@@ -1325,7 +1350,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   <div class="mdl2__row mdl2__head"><span>модель</span><span>что делает</span><span>₽ за 1k токенов</span><span>152-ФЗ</span></div>
   <div class="mdl2__row"><b>DeepSeek 4.1 Flash</b><i>письма, ответы, сводки</i><em>0.2 ₽ вход · 0.8 ₽ выход</em><s>облако</s></div>
   <div class="mdl2__row"><b>DeepSeek 4.1 Flash · РФ</b><i>то же, через российского провайдера</i><em>0.4 ₽ вход · 1.4 ₽ выход</em><s class="ok">данные в РФ</s></div>
-  <div class="mdl2__row"><b>Локальная · Qwen 2.5 14B</b><i>договоры, зарплаты, персональные данные</i><em>0 ₽ за токены · железо ~60 000 ₽</em><s class="ok">контур клиента</s></div>
+  <div class="mdl2__row"><b>Локальная · Qwen 2.5 14B</b><i>договоры, зарплаты, персональные данные</i><em>0 ₽ за токены · железо ~60 000 ₽</em><s class="ok">контур клиента</s></div>
   <div class="mdl2__row"><b>Сильная · Claude / GPT</b><i>аудит, стратегия, сложные разборы</i><em>3 ₽ вход · 9 ₽ выход</em><s>облако</s></div>
   <p class="mdl2__foot">лимит <b>3 000 ₽/мес</b> · стоп при <b>90 %</b> · кэш <b>вкл</b> · модели с пометкой «данные в РФ» не выпускают персональные данные за контур</p>
 </div>
@@ -1340,7 +1365,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 
                         <!-- layer: доступы, ключи и приёмка -->
             <div class="strato strato--chiavi" data-strato data-k="mem" tabindex="0" role="button">
-<div class="files"><div class="files__row"><span class="files__ic pdf">PDF</span><b>Кейсы и разборы</b><i>47 файлов</i></div><div class="files__row"><span class="files__ic doc">DOC</span><b>Брифы клиентов</b><i>96 файлов</i></div><div class="files__row"><span class="files__ic msg">MSG</span><b>Переписка</b><i>1 240 диалогов</i></div><div class="files__row"><span class="files__ic xls">XLS</span><b>Счета и акты</b><i>380 таблиц</i></div><div class="files__row"><span class="files__ic doc">DOC</span><b>Договоры и шаблоны</b><i>12</i></div><div class="files__row"><span class="files__ic msg">ТЗ</span><b>Регламенты</b><i>9 инструкций</i></div><div class="files__row"><span class="files__ic xls">XLS</span><b>Прайс</b><i>3 версии</i></div><div class="files__row"><span class="files__ic msg">MSG</span><b>Возражения и ответы</b><i>38</i></div></div>
+<div class="files"><div class="files__row"><span class="files__ic pdf">PDF</span><b>Кейсы и разборы</b><i>47 файлов</i></div><div class="files__row"><span class="files__ic doc">DOC</span><b>Брифы клиентов</b><i>96 файлов</i></div><div class="files__row"><span class="files__ic msg">MSG</span><b>Переписка</b><i>1 240 диалогов</i></div><div class="files__row"><span class="files__ic xls">XLS</span><b>Счета и акты</b><i>380 таблиц</i></div><div class="files__row"><span class="files__ic doc">DOC</span><b>Договоры и шаблоны</b><i>12</i></div><div class="files__row"><span class="files__ic msg">ТЗ</span><b>Регламенты</b><i>9 инструкций</i></div><div class="files__row"><span class="files__ic xls">XLS</span><b>Прайс</b><i>3 версии</i></div><div class="files__row"><span class="files__ic msg">MSG</span><b>Возражения и ответы</b><i>38</i></div></div>
 <span class="ancora" data-ancora></span>
             </div>
 
@@ -1486,7 +1511,7 @@ const N = document.querySelectorAll('[data-strato]').length;
 const corsa = $('[data-corsa]');
 const pila = $('[data-pila]');
 const strati = $$('[data-strato]');
-const NOMI = { 'агент': 'testi', 'сценарии': 'scen', 'память': 'chiavi', 'интеграции': 'pezzi', 'модели': 'schema', 'контроль': 'fondo' };
+const NOMI = ['агент', 'сценарии', 'память', 'интеграции', 'модели', 'контроль'];
 const scena = $('[data-scena]');
 const ancore = $$('[data-ancora]');
 const etichette = $$('[data-etichetta]');
@@ -1532,16 +1557,9 @@ function draw() {
   const anyPick = [0,1,2,3,4,5].reduce((m, k) => Math.max(m, S.pick[k] || 0), 0);
   strati.forEach((el, i) => {
     const pk = S.pick[i] || 0;
-    if (pk > 0.001) {
-      /* вынутый слой: гасим наклон сцены, поднимаем к зрителю и чуть увеличиваем */
-      el.style.transform = `translateY(${pk * 112}px) translateZ(${z[i] + pk * 230}px) rotateX(${-S.rx * pk}deg) rotateZ(${S.rz * pk}deg) scale(${1 + pk * 0.16})`;
-    } else {
-      el.style.transform = `translateZ(${z[i]}px)`;
-    }
-    el.style.opacity = anyPick > 0.01 && pk < 0.5 ? String(0.22 + 0.78 * (1 - anyPick)) : '1';
+    el.style.transform = `translateZ(${z[i]}px)`;
+    el.style.opacity = anyPick > 0.01 ? String(0.22 + 0.78 * (1 - anyPick)) : '1';
     el.dataset.picked = pk > 0.5 ? '1' : '0';
-    el.style.background = pk > 0.5 ? '#101a33' : '';
-    el.style.zIndex = pk > 0.5 ? '60' : '';
     el.style.pointerEvents = pk < 0.5 && anyPick > 0.5 ? 'none' : 'auto';
   });
 
@@ -1574,9 +1592,7 @@ function draw() {
     const v = S.et[i];
     /* привязка по имени, а не по порядку в разметке: подписи и слои живут в разном порядке */
     const nome = el.textContent.trim().toLowerCase();
-    const cls = NOMI[nome];
-    let k = -1;
-    if (cls) strati.forEach((st, j) => { if (st.className.indexOf('strato--' + cls) >= 0) k = j; });
+    const k = NOMI.indexOf(nome);
     const q = punti[k >= 0 ? k : i];
     el.style.transform = `translate(${q.x}px, ${q.y}px)`;
     const corpo = el.firstElementChild;
@@ -1689,22 +1705,49 @@ if (REDUCED) {
 
   S.ride = 0;
   /* ── взаимодействие: клик вынимает слой из стопки ── */
-  let picked = -1;
-  const pickLayer = (k) => {
-    picked = k;
-    strati.forEach((el, i) => {
-      gsap.to(S.pick, { [i]: i === k ? 1 : 0, duration: 0.55, ease: 'power2.out', onUpdate: draw });
-    });
-    document.body.classList.toggle('has-pick', k >= 0);
+  let picked = -1, clone = null;
+  const closePick = () => {
+    if (clone) {
+      const c = clone; clone = null;
+      gsap.to(c, { opacity: 0, duration: 0.22, onComplete: () => c.remove() });
+    }
+    picked = -1;
+    strati.forEach((el, i) => gsap.to(S.pick, { [i]: 0, duration: 0.4, ease: 'power2.out', onUpdate: draw }));
+    document.body.classList.remove('has-pick');
   };
+  const openPick = (i) => {
+    const el = strati[i];
+    const r = el.getBoundingClientRect();
+    const W = Math.min(innerWidth * 0.86, 1120);
+    const H = W * (r.height / r.width);
+    const left = (innerWidth - W) / 2;
+    const top = Math.max(74, (innerHeight - H) / 2);
+    const c = el.cloneNode(true);
+    c.className = 'strato pickclone';
+    c.removeAttribute('data-strato');
+    c.style.cssText = `position:fixed;left:${left}px;top:${top}px;width:${W}px;height:${H}px;
+      margin:0;z-index:120;background:#101a33;border:1px solid rgba(143,168,255,.45);border-radius:14px;
+      overflow:hidden;box-shadow:0 60px 90px -50px rgba(0,0,0,.95);pointer-events:none`;
+    c.style.setProperty('--w', W + 'px');
+    c.style.setProperty('--u', (W / 100) + 'px');   /* клон живёт вне сцены, масштаб ему задаём рукой */
+    /* клон внутрь сцены: стили содержимого живут под .dsstack, снаружи они не срабатывают */
+    (document.querySelector('.dsstack') || document.body).appendChild(c);
+    const s0 = r.width / W;
+    gsap.fromTo(c,
+      { x: r.left - left, y: r.top - top, scale: s0, opacity: 0.9 },
+      { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.55, ease: 'power3.out' });
+    clone = c;
+    picked = i;
+    strati.forEach((e, j) => gsap.to(S.pick, { [j]: j === i ? 1 : 0, duration: 0.45, ease: 'power2.out', onUpdate: draw }));
+    document.body.classList.add('has-pick');
+  };
+  const pickLayer = (k) => { if (k < 0 || k === picked) closePick(); else { if (clone) closePick(); openPick(k); } };
   strati.forEach((el, i) => {
     el.style.cursor = 'pointer';
-    el.addEventListener('click', (e) => { e.stopPropagation(); pickLayer(picked === i ? -1 : i); });
+    el.addEventListener('click', (e) => { e.stopPropagation(); pickLayer(i); });
   });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') pickLayer(-1); });
-  document.addEventListener('click', (e) => {
-    if (picked >= 0 && !e.target.closest('[data-strato]')) pickLayer(-1);
-  });
+  document.addEventListener('click', (e) => { if (picked >= 0 && !e.target.closest('[data-strato]')) pickLayer(-1); });
 
   /* the gap is in pixels of the screen width: measured again when the window changes size */
   window.addEventListener('resize', () => { larga = pila.offsetWidth; draw(); });
