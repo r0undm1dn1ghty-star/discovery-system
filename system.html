@@ -301,7 +301,7 @@ h1,h2,h3,.conflict,.q,.stance,.demo-result,.terms b,.lede b{color:var(--ink)}
 /* ── сноски: пилюля с номером, пунктирная выноска ── */
 .dsstack .etichetta__corpo{display:flex;align-items:center;gap:0;padding:0;border:0;background:none;box-shadow:none}
 .dsstack .etichetta b{display:flex;align-items:center;gap:calc(var(--u)*.75);
-  padding:calc(var(--u)*.85) calc(var(--u)*1.45);border-radius:999px;
+  padding:calc(var(--u)*.85) calc(var(--u)*1.45);border-radius:calc(var(--u)*1.1);
   border:1px solid rgba(143,168,255,.45);background:rgba(12,20,38,.94);
   box-shadow:0 12px 24px -16px rgba(0,0,0,.95);
   font:500 calc(var(--u)*1.65)/1 var(--sans);color:#e6edff;letter-spacing:.01em}
@@ -317,7 +317,9 @@ h1,h2,h3,.conflict,.q,.stance,.demo-result,.terms b,.lede b{color:var(--ink)}
 /* ── полоса содержимого: в свёрнутой стопке видно, что внутри слоя ── */
 .dsstack .lh__strip{position:absolute;left:calc(var(--u)*2.4);right:calc(var(--u)*2.4);bottom:calc(var(--u)*9.6);
   height:calc(var(--u)*4.6);display:flex;align-items:center;gap:calc(var(--u)*.9);overflow:hidden}
-.dsstack .lh__strip i{display:block;border-radius:calc(var(--u)*.5);flex:0 0 auto}
+.dsstack .lh__strip i{display:block;border-radius:calc(var(--u)*.4);flex:0 0 auto;opacity:.85}
+.dsstack .lh__strip i:nth-child(3n){transform:scaleY(.62);transform-origin:center}
+.dsstack .lh__strip i:nth-child(4n){opacity:.55}
 .dsstack .lh__strip i.b{height:calc(var(--u)*1.5);width:calc(var(--u)*7);background:rgba(120,170,255,.55)}
 .dsstack .lh__strip i.b:nth-child(2n){width:calc(var(--u)*4.5);background:rgba(120,170,255,.32)}
 .dsstack .lh__strip i.p{height:calc(var(--u)*2.4);flex:1 1 0;background:rgba(255,190,90,.38);border:1px solid rgba(255,190,90,.55)}
@@ -326,7 +328,7 @@ h1,h2,h3,.conflict,.q,.stance,.demo-result,.terms b,.lede b{color:var(--ink)}
 .dsstack .lh__strip i.q:nth-child(4n){background:rgba(63,174,107,.5)}
 .dsstack .lh__strip i.d{height:calc(var(--u)*2.6);width:calc(var(--u)*2.6);border-radius:50%;background:rgba(90,220,190,.5)}
 .dsstack .lh__strip i.r{height:calc(var(--u)*3.2);flex:1 1 0;background:rgba(255,140,150,.4);border:1px solid rgba(255,140,150,.6)}
-.dsstack .lh__strip i.s{height:calc(var(--u)*2.2);width:calc(var(--u)*4);border-radius:999px;background:rgba(120,230,150,.45)}
+.dsstack .lh__strip i.s{height:calc(var(--u)*2.2);width:calc(var(--u)*4);border-radius:calc(var(--u)*1.1);background:rgba(120,230,150,.45)}
 .dsstack .lh__body{inset:calc(var(--u)*2.2) calc(var(--u)*2.4) calc(var(--u)*16) calc(var(--u)*2.4)}
 .dsstack .lh{border-top:1px solid rgba(255,255,255,.14)}
 
@@ -345,6 +347,24 @@ h1,h2,h3,.conflict,.q,.stance,.demo-result,.terms b,.lede b{color:var(--ink)}
 .dsstack .mdl2__row{flex:1 1 0}
 .dsstack .files__row{flex:1 1 0;align-items:center}
 .dsstack .chain2__row{align-items:center}
+
+/* ── модели: карточки ролей, не таблица ── */
+.dsstack .mdl3{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u)*1.2);flex:1 1 auto;min-height:0}
+.dsstack .mdl3__c{position:relative;display:flex;flex-direction:column;gap:calc(var(--u)*.5);
+  padding:calc(var(--u)*1.5) calc(var(--u)*1.8);border-radius:calc(var(--u)*1.2);
+  border:1px solid rgba(255,140,150,.22);background:linear-gradient(180deg,rgba(255,140,150,.08),rgba(255,255,255,.02))}
+.dsstack .mdl3__n{font:600 calc(var(--u)*2.1)/1.2 var(--sans);color:#f2f5ff;margin:0}
+.dsstack .mdl3__d{font-size:calc(var(--u)*1.7);line-height:1.35;color:#a9b6ca;margin:0}
+.dsstack .mdl3__p{font:400 calc(var(--u)*1.6)/1 "IBM Plex Mono",monospace;color:#c9d6ff;margin:auto 0 0}
+.dsstack .mdl3__t{position:absolute;top:calc(var(--u)*1.4);right:calc(var(--u)*1.6);
+  font:400 calc(var(--u)*1.25)/1 "IBM Plex Mono",monospace;color:#c8d4ea;
+  border:1px solid rgba(255,255,255,.18);border-radius:calc(var(--u)*.8);padding:calc(var(--u)*.45) calc(var(--u)*.8)}
+.dsstack .mdl3__t.ok{color:#c8f5db;border-color:rgba(79,208,138,.45);background:rgba(79,208,138,.12)}
+.dsstack .mdl3__foot{margin:calc(var(--u)*.9) 0 0;font-size:calc(var(--u)*1.45);color:#93a4c0}
+.dsstack .mdl3__foot b{color:#dfe6ff}
+
+.dsstack .pickclone .lh__strip{display:none}
+.dsstack .pickclone .lh__body{inset:calc(var(--u)*2.2) calc(var(--u)*2.4) calc(var(--u)*10.6) calc(var(--u)*2.4)}
 </style>
 <script>document.documentElement.className+=' js';</script>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
@@ -410,7 +430,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 #days .shead{margin-bottom:clamp(20px,3vw,32px)}
 #days .dline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,2.4vw,28px);counter-reset:d}
 #days .dline li{position:relative;padding:22px 22px 24px;border:1px solid var(--hair);border-radius:14px;background:transparent}
-#days .dn{display:inline-block;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--navy);border-radius:999px;padding:6px 10px}
+#days .dn{display:inline-block;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--navy);border-radius:calc(var(--u)*1.1);padding:6px 10px}
 #days h3{margin:14px 0 8px;font-size:clamp(19px,2.2vw,24px);line-height:1.2}
 #days p{margin:0;font-size:15.5px;line-height:1.55;color:var(--body)}
 #days .dget{margin-top:14px;padding-top:12px;border-top:1px solid var(--hair);font:400 13px/1.45 var(--mono);color:#5a6480}
@@ -643,7 +663,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .pult .hrow:first-child{border-top:0;padding-top:4px}
 .pult .hrow b{font-size:14px;color:#eaf0ff;font-weight:500}
 .pult .hrow i{grid-column:1;font-style:normal;font-size:13.4px;line-height:1.55;color:#b3bfdc}
-.pult .hchip{grid-row:1/span 2;grid-column:2;font:500 9.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:999px;white-space:nowrap;font-size:10.5px}
+.pult .hchip{grid-row:1/span 2;grid-column:2;font:500 9.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:calc(var(--u)*1.1);white-space:nowrap;font-size:10.5px}
 .pult .hchip.a{color:#7ff0b6;border:1px solid rgba(52,209,122,.4);background:rgba(52,209,122,.1)}
 .pult .hchip.m{color:#a9bcff;border:1px solid rgba(143,168,255,.42);background:rgba(143,168,255,.12)}
 .pult .pfoot{margin:9px 0 0;text-wrap:pretty;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font:400 11.5px/1.5 var(--mono);color:#7c86a0}
@@ -665,7 +685,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .pult .hrow:nth-child(3) .hbar span{--w:64%}
 .pult .hrow:nth-child(4) .hbar span{--w:41%}
 .pult .hrow:nth-child(5) .hbar span{--w:96%}
-.pult .hchip{grid-column:4;grid-row:1/span 2;font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:999px;white-space:nowrap;align-self:center;
+.pult .hchip{grid-column:4;grid-row:1/span 2;font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:calc(var(--u)*1.1);white-space:nowrap;align-self:center;
   opacity:0;transform:translateY(4px);animation:chipin .5s ease forwards;animation-delay:calc(.5s + var(--i) * .18s)}
 @keyframes chipin{to{opacity:1;transform:none}}
 .pult .hrow{opacity:0;transform:translateY(6px);animation:rowin .5s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(.1s + var(--i) * .12s)}
@@ -688,15 +708,15 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .hero2 .hglow{position:absolute;z-index:-1;inset:-14% -8% -10% 32%;pointer-events:none;
   background:radial-gradient(58% 52% at 62% 38%,rgba(143,168,255,.22),rgba(143,168,255,.06) 44%,transparent 72%),
              radial-gradient(40% 40% at 88% 82%,rgba(52,209,122,.12),transparent 70%);
-  filter:blur(18px)}
+  filter:blur(18px);opacity:.45}
 .hero2 .hgrid{position:absolute;z-index:-1;inset:-6% -10% -6% 40%;pointer-events:none;
   background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
   background-size:44px 44px;
   mask-image:radial-gradient(62% 60% at 60% 45%,#000 0%,transparent 78%);
   -webkit-mask-image:radial-gradient(62% 60% at 60% 45%,#000 0%,transparent 78%)}
 .hero2 h1{font-size:clamp(32px,5vw,62px);letter-spacing:-.03em}
-.hero2 h1 em{background:linear-gradient(92deg,#a9bcff,#8fa8ff 55%,#7ff0b6);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero2 .hbadge{margin-left:10px;padding:5px 9px;border-radius:999px;border:1px solid rgba(143,168,255,.35);background:rgba(143,168,255,.1);
+.hero2 h1 em{font-style:normal;color:#a9bcff}
+.hero2 .hbadge{margin-left:10px;padding:5px 9px;border-radius:calc(var(--u)*1.1);border:1px solid rgba(143,168,255,.35);background:rgba(143,168,255,.1);
   color:#a9bcff;letter-spacing:.08em;font-size:9.5px;vertical-align:2px}
 
 /* панель: стекло с градиентной кромкой */
@@ -1044,7 +1064,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .etichetta__corpo{grid-template-columns:auto auto auto}
 .dsstack .st{grid-row:1 / span 2;grid-column:3;font-style:normal;font-size:calc(var(--u)*1.5);
   letter-spacing:.06em;text-transform:uppercase;padding:calc(var(--u)*.9) calc(var(--u)*1.3);
-  border-radius:999px;white-space:nowrap}
+  border-radius:calc(var(--u)*1.1);white-space:nowrap}
 .dsstack .st.own{color:#7ff0b6;border:1px solid rgba(52,209,122,.4);background:rgba(52,209,122,.12)}
 .dsstack .st.rent{color:#ffd27a;border:1px solid rgba(255,190,90,.4);background:rgba(255,190,90,.12)}
 .dsstack .testa__nota{color:#8a94ad}
@@ -1138,7 +1158,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .strato--fondo .ctl__list span{font-size:calc(var(--u)*1.25);color:#a9b6ca;padding-left:calc(var(--u)*1.8);position:relative;line-height:1.3}
 .dsstack .strato--fondo .ctl__list span:before{content:"✓";position:absolute;left:0;color:#4fd08a}
 .dsstack .strato--fondo .ctl__side{flex:0 0 24%;display:flex;flex-direction:column;gap:calc(var(--u)*.5)}
-.dsstack .strato--fondo .ctl__badge{align-self:flex-start;padding:calc(var(--u)*.5) calc(var(--u)*.9);border-radius:999px;
+.dsstack .strato--fondo .ctl__badge{align-self:flex-start;padding:calc(var(--u)*.5) calc(var(--u)*.9);border-radius:calc(var(--u)*1.1);
   background:rgba(79,208,138,.14);border:1px solid rgba(79,208,138,.4);color:#c8f5db;font-size:calc(var(--u)*1.2)}
 .dsstack .strato--fondo .ctl__log{font-size:calc(var(--u)*1.15);color:#93a4c0;display:flex;gap:calc(var(--u)*.6)}
 .dsstack .strato--fondo .ctl__log i{font-style:normal;font-family:"IBM Plex Mono",monospace;color:#7b8ba2}
@@ -1236,7 +1256,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .mdl2__row b{font-size:calc(var(--u)*1.9);color:#f0f4ff}
 .dsstack .mdl2__row i{font-style:normal;font-size:calc(var(--u)*1.5);color:#9fb0cc}
 .dsstack .mdl2__row em{font-style:normal;font-size:calc(var(--u)*1.55);color:#9fd0ff;font-family:"IBM Plex Mono",monospace}
-.dsstack .mdl2__row s{text-decoration:none;justify-self:start;padding:calc(var(--u)*.5) calc(var(--u)*1);border-radius:999px;
+.dsstack .mdl2__row s{text-decoration:none;justify-self:start;padding:calc(var(--u)*.5) calc(var(--u)*1);border-radius:calc(var(--u)*1.1);
   font-size:calc(var(--u)*1.25);color:#c8d4ea;background:rgba(255,255,255,.08)}
 .dsstack .mdl2__row s.ok{color:#c8f5db;background:rgba(79,208,138,.16);border:1px solid rgba(79,208,138,.35)}
 .dsstack .mdl2__foot{margin:calc(var(--u)*.8) 0 0;font-size:calc(var(--u)*1.4);color:#93a4c0}
@@ -1252,7 +1272,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack .ctl2__card.bad{border-color:rgba(224,87,79,.45);background:rgba(224,87,79,.1)}
 .dsstack .ctl2__col>span{position:relative;padding-left:calc(var(--u)*2.2);font-size:calc(var(--u)*1.45);color:#a9b6ca;line-height:1.35}
 .dsstack .ctl2__col>span:before{content:"✓";position:absolute;left:0;color:#4fd08a}
-.dsstack .ctl2__badge{align-self:flex-start;padding:calc(var(--u)*.6) calc(var(--u)*1.2);border-radius:999px;
+.dsstack .ctl2__badge{align-self:flex-start;padding:calc(var(--u)*.6) calc(var(--u)*1.2);border-radius:calc(var(--u)*1.1);
   background:rgba(79,208,138,.14);border:1px solid rgba(79,208,138,.4);color:#c8f5db;font-size:calc(var(--u)*1.35)}
 .dsstack .ctl2__badge:before{content:none}
 .dsstack .ctl2__log{display:flex;gap:calc(var(--u)*.8);font-size:calc(var(--u)*1.35);color:#93a4c0}
@@ -1264,7 +1284,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .dsstack{opacity:.35;transition:opacity .3s}
 .dsstack .tg-m{position:relative;max-width:74%;padding:calc(var(--u)*.95) calc(var(--u)*1.25) calc(var(--u)*.8)}
 .dsstack .tg-m p{font-size:calc(var(--u)*1.6);line-height:1.35}
-.dsstack .tg-time{display:block;margin-top:calc(var(--u)*.35);font-size:calc(var(--u)*1.1);color:#7f9bb5;text-align:right}
+.dsstack .tg-time{display:block;margin-top:calc(var(--u)*.35);font-size:calc(var(--u)*1.15);color:#b3c8de;text-align:right}
 .dsstack .tg-m.in .tg-time{color:#84a3bd}
 .dsstack .tg-fileline{align-self:flex-start;max-width:74%;padding:calc(var(--u)*.8) calc(var(--u)*1)}
 .dsstack .tg-fileline b{font-size:calc(var(--u)*1.45)}
@@ -1309,13 +1329,15 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 .hr2-l{list-style:none;margin:0;padding:0}
 .hr2-l li{display:flex;align-items:baseline;gap:16px;padding:13px 0;border-top:1px solid rgba(255,255,255,.07)}
 .hr2-l li:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
-.hr2-l b{flex:0 0 auto;min-width:42px;font:600 24px/1 var(--mono);color:#b9c8ff;letter-spacing:-.02em}
-.hr2-l span{font-size:15px;line-height:1.35;color:#c8d0e2}
+.hr2-l b{flex:0 0 96px;font:600 15px/1.35 var(--sans);color:#b9c8ff;letter-spacing:.01em;text-transform:lowercase}
+.hr2-l span{font-size:14.5px;line-height:1.45;color:#b6c0d4}
 .hr2-note{margin:16px 0 0;font-size:13px;color:#7f8ea6}
 @media (max-width:900px){.hright2{border-left:0;padding-left:0;border-top:1px solid rgba(255,255,255,.09);padding-top:18px}}
 </style>
 <style>
-.hcost{margin:20px 0 0;font:400 14px/1.7 var(--mono);color:#8d9ab6}
+.hcost{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px 26px;font:400 14px/1.4 var(--mono);color:#8b98b3}
+.hcost span{white-space:nowrap}
+.hcost b{white-space:nowrap}
 .hcost b{color:#e6ecfa;font-weight:500}
 </style>
 
@@ -1356,19 +1378,17 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
     <p class="hk">Discovery System</p>
     <h1>Система агентов, которой <em>ты владеешь</em></h1>
     <p class="hlede">Система собрана на твоих ключах и живёт у тебя. Поэтому тебе не придётся платить второй раз и просить доступ к своему же агенту: код, данные и ключи остаются у тебя — забрал и работает без меня.</p>
-    <p class="hcost">гайд <b>5 000 ₽</b> · сборка <b>10 000 ₽</b> · внедрение <b>от 40 000 ₽</b> · сопровождение <b>от 20 000 ₽/мес</b></p>
+    <p class="hcost"><span>гайд <b>5 000 ₽</b></span><span>сборка <b>10 000 ₽</b></span><span>внедрение <b>от 40 000 ₽</b></span><span>сопровождение <b>от 20 000 ₽/мес</b></span></p>
     <div class="hcta"><a class="btn btn-p" href="service.html">Услуги и цены <span aria-hidden="true">→</span></a><a class="quiet-link" href="#tools">на чём это держится</a></div>
   </div>
   <div class="hright2">
-    <p class="hr2-k">что внутри</p>
+    <p class="hr2-k">что за чем</p>
     <ul class="hr2-l">
-      <li><b>17</b><span>сценариев: агент делает сам</span></li>
-      <li><b>9</b><span>разделов памяти о твоём деле</span></li>
-      <li><b>18</b><span>интеграций: Telegram, почта, CRM, 1С</span></li>
-      <li><b>6</b><span>моделей и лимит 3 000 ₽/мес</span></li>
-      <li><b>6</b><span>правил контроля и отчёт в 08:00</span></li>
+      <li><b>гайд</b><span>как собрать и отладить своего агента — делаешь сам</span></li>
+      <li><b>сборка</b><span>гайд под твой случай: конфиг, ключи, лимит, отладка с тобой</span></li>
+      <li><b>внедрение</b><span>сценарии, интеграции и память настраиваю за тебя</span></li>
     </ul>
-    <p class="hr2-note">ниже — эти же пять уровней в разрезе; нажми на любой</p>
+    <p class="hr2-note">модель — единственное, что не твоё: арендуется у провайдера или ставится локально</p>
   </div>
 </div>
 </div>
@@ -1402,8 +1422,8 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
     <span>сценарии работают на твоих данных</span><span>память наполнена и проверена</span>
     <span>интеграции на твоих ключах</span><span>модель и лимит настроены</span>
     <span>журнал и стоп-кнопка</span><span>отчёт приходит в Telegram</span><span>код и доступы у тебя</span></div>
-  <div class="ctl2__col"><p class="ctl2__t">гарантия и журнал</p>
-    <span class="ctl2__badge">30 дней на исправления</span>
+  <div class="ctl2__col"><p class="ctl2__t">журнал действий</p>
+    <span class="ctl2__badge">каждое действие записано</span>
     <div class="ctl2__log"><i>08:04</i> заявка разобрана</div>
     <div class="ctl2__log"><i>08:07</i> счёт отправлен</div>
     <div class="ctl2__log"><i>09:12</i> эскалация человеку</div>
@@ -1416,20 +1436,23 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
             <div class="strato strato--schema" data-strato data-k="mod" tabindex="0" role="button">
 <div class="lh__strip"><i class="r"></i><i class="r"></i><i class="r"></i><i class="r"></i></div><div class="lh"><span class="lh__n">05</span><span class="lh__t">модели</span><span class="lh__c">4 модели · лимит 3 000 ₽ / мес</span></div>
 <div class="lh__body">
-<div class="mdl2">
-  <div class="mdl2__row mdl2__head"><span>модель</span><span>что делает</span><span>₽ за 1k токенов</span><span>152-ФЗ</span></div>
-  <div class="mdl2__row"><b>DeepSeek 4.1 Flash</b><i>письма, ответы, сводки</i><em>0.2 ₽ вход · 0.8 ₽ выход</em><s>облако</s></div>
-  <div class="mdl2__row"><b>DeepSeek 4.1 Flash · РФ</b><i>то же, через российского провайдера</i><em>0.4 ₽ вход · 1.4 ₽ выход</em><s class="ok">данные в РФ</s></div>
-  <div class="mdl2__row"><b>Локальная · Qwen 2.5 14B</b><i>договоры, зарплаты, персональные данные</i><em>0 ₽ за токены · железо ~60 000 ₽</em><s class="ok">контур клиента</s></div>
-  <div class="mdl2__row"><b>Сильная · Claude / GPT</b><i>аудит, стратегия, сложные разборы</i><em>3 ₽ вход · 9 ₽ выход</em><s>облако</s></div>
-  <p class="mdl2__foot">лимит <b>3 000 ₽/мес</b> · стоп при <b>90 %</b> · кэш <b>вкл</b> · модели с пометкой «данные в РФ» не выпускают персональные данные за контур</p>
-</div></div>
+<div class="mdl3">
+  <article class="mdl3__c"><p class="mdl3__n">DeepSeek 4.1 Flash</p><p class="mdl3__d">письма, ответы, сводки</p>
+    <p class="mdl3__p">0.2 ₽ вход · 0.8 ₽ выход</p><span class="mdl3__t">облако</span></article>
+  <article class="mdl3__c"><p class="mdl3__n">DeepSeek 4.1 Flash · РФ</p><p class="mdl3__d">то же, через российского провайдера</p>
+    <p class="mdl3__p">0.4 ₽ вход · 1.4 ₽ выход</p><span class="mdl3__t ok">данные в РФ</span></article>
+  <article class="mdl3__c"><p class="mdl3__n">Локальная · Qwen 2.5 14B</p><p class="mdl3__d">договоры, зарплаты, персональные данные</p>
+    <p class="mdl3__p">0 ₽ за токены · железо ~60 000 ₽</p><span class="mdl3__t ok">контур клиента</span></article>
+  <article class="mdl3__c"><p class="mdl3__n">Сильная · Claude / GPT</p><p class="mdl3__d">аудит, стратегия, сложные разборы</p>
+    <p class="mdl3__p">3 ₽ вход · 9 ₽ выход</p><span class="mdl3__t">облако</span></article>
+</div>
+<p class="mdl3__foot">лимит <b>3 000 ₽/мес</b> · стоп при <b>90 %</b> · кэш <b>вкл</b> · модели с пометкой «данные в РФ» не выпускают персональные данные за контур</p>
 <span class="ancora" data-ancora></span>
             </div>
 
             <!-- layer: components, the boxes and controls -->
             <div class="strato strato--pezzi" data-strato data-k="int" tabindex="0" role="button">
-<div class="lh__strip"><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i></div><div class="lh"><span class="lh__n">04</span><span class="lh__t">интеграции</span><span class="lh__c">18 сервисов · без кода</span></div>
+<div class="lh__strip"><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i></div><div class="lh"><span class="lh__n">04</span><span class="lh__t">интеграции</span><span class="lh__c">18 коннекторов</span></div>
 <div class="lh__body">
 <div class="apps-flat"><span class="app"><img src="assets/logos/telegram.png" alt=""><b>Telegram</b></span><span class="app"><img src="assets/logos/gmail.png" alt=""><b>Почта</b></span><span class="app"><img src="assets/logos/sheets.png" alt=""><b>Таблицы</b></span><span class="app"><img src="assets/logos/drive.png" alt=""><b>Диск</b></span><span class="app"><img src="assets/logos/amocrm.png" alt=""><b>amoCRM</b></span><span class="app"><img src="assets/logos/bitrix24.png" alt=""><b>Bitrix24</b></span><span class="app"><img src="assets/logos/1c.png" alt=""><b>1С</b></span><span class="app"><img src="assets/logos/moysklad.png" alt=""><b>МойСклад</b></span><span class="app"><img src="assets/logos/avito.png" alt=""><b>Avito</b></span><span class="app"><img src="assets/logos/yookassa.png" alt=""><b>ЮKassa</b></span><span class="app"><img src="assets/logos/sber.png" alt=""><b>Сбер</b></span><span class="app"><img src="assets/logos/tbank.png" alt=""><b>Т-Банк</b></span><span class="app"><img src="assets/logos/robokassa.png" alt=""><b>Robokassa</b></span><span class="app"><img src="assets/logos/wb.png" alt=""><b>Wildberries</b></span><span class="app"><img src="assets/logos/ozon.png" alt=""><b>Ozon</b></span><span class="app"><img src="assets/logos/metrika.png" alt=""><b>Метрика</b></span><span class="app"><img src="assets/logos/direct.png" alt=""><b>Директ</b></span><span class="app"><img src="assets/logos/notion.png" alt=""><b>Notion</b></span></div></div>
 <span class="ancora" data-ancora></span>
@@ -1453,10 +1476,10 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 
             <!-- layer: content — экран агента -->
             <div class="strato strato--testi strato--tg" data-strato>
-<div class="lh__strip"><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i></div><div class="lh"><span class="lh__n">01</span><span class="lh__t">агент</span><span class="lh__c">чат в Telegram · работает сам</span></div>
+<div class="lh__strip"><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i></div><div class="lh"><span class="lh__n">01</span><span class="lh__t">агент</span><span class="lh__c">чат в Telegram</span></div>
 <div class="lh__body">
 <div class="tg">
-<header class="tg-h"><span class="tg-ava">DS</span><span class="tg-who"><b>агент · твой бизнес</b><i>в сети · отвечает сам</i></span><span class="tg-menu">⋯</span></header>
+<header class="tg-h"><span class="tg-ava">DS</span><span class="tg-who"><b>агент · твой бизнес</b><i>в сети</i></span><span class="tg-menu">⋯</span></header>
 <div class="tg-body">
 <div class="tg-m out"><p>Сколько стоит лендинг и когда сможете начать?</p><span class="tg-time">11:42</span></div>
 <div class="tg-m in"><p>Собрал смету: от 180 000 ₽, три недели. Первый экран и структура — на этой неделе.</p><span class="tg-time">11:42</span></div>
