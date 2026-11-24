@@ -878,7 +878,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   height: 100%;
   display: grid;
   place-items: center;
-  perspective: calc(var(--w) * 2.6);
+  perspective: none;
   perspective-origin: 50% 40%;
 }
 .dsstack .pila{
@@ -1582,7 +1582,7 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
    screen settles flat, with a one pixel overshoot. As the page opens, the chart line draws and the numbers count. Scroll back up and it all plays back. */
 
 /* ---- values to change ---- */
-const GAP = 15;      /* the distance between two layers, in hundredths of the screen width */
+const GAP = 14;      /* the distance between two layers, in hundredths of the screen width */
 const TILT = 42;     /* how many degrees the screen leans back */
 const TURN = 18;     /* how many degrees the screen turns on the table */
 const RIDE = 1;      /* how much scroll the whole story takes: 2 is twice as long */
