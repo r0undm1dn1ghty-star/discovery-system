@@ -279,6 +279,72 @@ h1,h2,h3,.conflict,.q,.stance,.demo-result,.terms b,.lede b{color:var(--ink)}
 .dsstack .pickclone .files__row i{color:#b6c2d6}
 .dsstack .pickclone .mdl2__row em{white-space:nowrap}
 .dsstack .pickclone .tg-time,.dsstack .pickclone .tg-fileline i{color:#a9c0d6}
+
+/* ── шапка каждого слоя: номер, имя, строка-счётчик ── */
+.dsstack .lh{position:absolute;bottom:0;left:0;right:0;height:calc(var(--u)*8.4);display:flex;align-items:center;
+  gap:calc(var(--u)*1.2);padding:0 calc(var(--u)*2.2);border-top:1px solid rgba(255,255,255,.1);
+  background:linear-gradient(90deg,rgba(143,168,255,.16),rgba(143,168,255,.03) 55%,transparent)}
+.dsstack .lh__n{font:600 calc(var(--u)*2.5)/1 "IBM Plex Mono",monospace;color:#9fb6ff;letter-spacing:.02em}
+.dsstack .lh__t{font:600 calc(var(--u)*2.3)/1 var(--sans);color:#eef3ff;letter-spacing:-.01em}
+.dsstack .lh__c{margin-left:auto;font:400 calc(var(--u)*1.55)/1 "IBM Plex Mono",monospace;color:#94a6c2}
+.dsstack .lh__body{position:absolute;inset:calc(var(--u)*2.2) calc(var(--u)*2.4) calc(var(--u)*10.6) calc(var(--u)*2.4);
+  display:flex;flex-direction:column;min-height:0}
+
+/* у каждого слоя свой оттенок — пластины перестают быть одинаковыми */
+.dsstack .strato--testi  .lh{background:linear-gradient(90deg,rgba(90,168,255,.20),transparent 60%)}
+.dsstack .strato--scen   .lh{background:linear-gradient(90deg,rgba(255,190,90,.18),transparent 60%)}
+.dsstack .strato--chiavi .lh{background:linear-gradient(90deg,rgba(170,140,255,.18),transparent 60%)}
+.dsstack .strato--pezzi  .lh{background:linear-gradient(90deg,rgba(90,220,190,.16),transparent 60%)}
+.dsstack .strato--schema .lh{background:linear-gradient(90deg,rgba(255,140,150,.16),transparent 60%)}
+.dsstack .strato--fondo  .lh{background:linear-gradient(90deg,rgba(120,230,150,.16),transparent 60%)}
+
+/* ── сноски: пилюля с номером, пунктирная выноска ── */
+.dsstack .etichetta__corpo{display:flex;align-items:center;gap:0;padding:0;border:0;background:none;box-shadow:none}
+.dsstack .etichetta b{display:flex;align-items:center;gap:calc(var(--u)*.75);
+  padding:calc(var(--u)*.85) calc(var(--u)*1.45);border-radius:999px;
+  border:1px solid rgba(143,168,255,.45);background:rgba(12,20,38,.94);
+  box-shadow:0 12px 24px -16px rgba(0,0,0,.95);
+  font:500 calc(var(--u)*1.65)/1 var(--sans);color:#e6edff;letter-spacing:.01em}
+.dsstack .etichetta__filo{margin-right:calc(var(--u)*.6);height:0 !important;background:none !important;
+  border:0 !important;border-top:1.5px dashed rgba(160,183,255,.8) !important}
+.dsstack .strato.is-hot{outline:1.5px solid rgba(160,183,255,.85);outline-offset:2px;filter:brightness(1.18)}
+.dsstack .strato{transition:filter .18s ease}
+.dsstack .etichetta .etichetta__filo{border-top-width:1.5px !important;height:0 !important}
+.dsstack .etichetta__n{font:600 calc(var(--u)*1.5)/1 "IBM Plex Mono",monospace;color:#8fa8ff;font-style:normal}
+.dsstack .etichetta__filo{height:0 !important;border-top:1px dashed rgba(160,183,255,.75) !important;background:none !important}
+
+
+/* ── полоса содержимого: в свёрнутой стопке видно, что внутри слоя ── */
+.dsstack .lh__strip{position:absolute;left:calc(var(--u)*2.4);right:calc(var(--u)*2.4);bottom:calc(var(--u)*9.6);
+  height:calc(var(--u)*4.6);display:flex;align-items:center;gap:calc(var(--u)*.9);overflow:hidden}
+.dsstack .lh__strip i{display:block;border-radius:calc(var(--u)*.5);flex:0 0 auto}
+.dsstack .lh__strip i.b{height:calc(var(--u)*1.5);width:calc(var(--u)*7);background:rgba(120,170,255,.55)}
+.dsstack .lh__strip i.b:nth-child(2n){width:calc(var(--u)*4.5);background:rgba(120,170,255,.32)}
+.dsstack .lh__strip i.p{height:calc(var(--u)*2.4);flex:1 1 0;background:rgba(255,190,90,.38);border:1px solid rgba(255,190,90,.55)}
+.dsstack .lh__strip i.q{height:calc(var(--u)*3.2);width:calc(var(--u)*2.6);background:rgba(170,140,255,.45)}
+.dsstack .lh__strip i.q:nth-child(3n){background:rgba(224,87,79,.5)}
+.dsstack .lh__strip i.q:nth-child(4n){background:rgba(63,174,107,.5)}
+.dsstack .lh__strip i.d{height:calc(var(--u)*2.6);width:calc(var(--u)*2.6);border-radius:50%;background:rgba(90,220,190,.5)}
+.dsstack .lh__strip i.r{height:calc(var(--u)*3.2);flex:1 1 0;background:rgba(255,140,150,.4);border:1px solid rgba(255,140,150,.6)}
+.dsstack .lh__strip i.s{height:calc(var(--u)*2.2);width:calc(var(--u)*4);border-radius:999px;background:rgba(120,230,150,.45)}
+.dsstack .lh__body{inset:calc(var(--u)*2.2) calc(var(--u)*2.4) calc(var(--u)*16) calc(var(--u)*2.4)}
+.dsstack .lh{border-top:1px solid rgba(255,255,255,.14)}
+
+
+/* содержимое заполняет пластину по высоте, а не висит сверху */
+.dsstack .lh__body{justify-content:space-between}
+.dsstack .chain2,.dsstack .files,.dsstack .apps-flat,.dsstack .mdl2,.dsstack .ctl2{flex:1 1 auto;min-height:0}
+.dsstack .chain2{align-content:space-between}
+.dsstack .files{align-content:space-between}
+.dsstack .apps-flat{align-content:space-between}
+.dsstack .mdl2{justify-content:space-between}
+.dsstack .ctl2 .ctl2__col{justify-content:space-between}
+.dsstack .ctl2{grid-auto-rows:minmax(0,1fr);height:100%}
+.dsstack .ctl2__col{height:100%;justify-content:space-between}
+.dsstack .ctl2__card{display:flex;flex-direction:column;justify-content:center;flex:1 1 auto}
+.dsstack .mdl2__row{flex:1 1 0}
+.dsstack .files__row{flex:1 1 0;align-items:center}
+.dsstack .chain2__row{align-items:center}
 </style>
 <script>document.documentElement.className+=' js';</script>
 <link rel="stylesheet" href="ds-mnav.css?v=20261109b"/>
@@ -1325,6 +1391,8 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 
             <!-- layer: background -->
             <div class="strato strato--fondo" data-strato data-k="ctl" tabindex="0" role="button">
+<div class="lh__strip"><i class="s"></i><i class="s"></i><i class="s"></i></div><div class="lh"><span class="lh__n">06</span><span class="lh__t">контроль</span><span class="lh__c">отчёт 08:00 · приёмка · журнал</span></div>
+<div class="lh__body">
 <div class="ctl2">
   <div class="ctl2__col"><p class="ctl2__t">отчёт каждое утро</p>
     <div class="ctl2__card"><b>08:00 · что сделал</b><p>13 заявок, 4 письма, счёт в 1С</p></div>
@@ -1340,12 +1408,14 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
     <div class="ctl2__log"><i>08:07</i> счёт отправлен</div>
     <div class="ctl2__log"><i>09:12</i> эскалация человеку</div>
     <div class="ctl2__log"><i>09:40</i> лимит: 18 % из 3 000 ₽</div></div>
-</div>
+</div></div>
 <span class="ancora" data-ancora></span>
             </div>
 
             <!-- layer: layout, the grid the interface sits on -->
             <div class="strato strato--schema" data-strato data-k="mod" tabindex="0" role="button">
+<div class="lh__strip"><i class="r"></i><i class="r"></i><i class="r"></i><i class="r"></i></div><div class="lh"><span class="lh__n">05</span><span class="lh__t">модели</span><span class="lh__c">4 модели · лимит 3 000 ₽ / мес</span></div>
+<div class="lh__body">
 <div class="mdl2">
   <div class="mdl2__row mdl2__head"><span>модель</span><span>что делает</span><span>₽ за 1k токенов</span><span>152-ФЗ</span></div>
   <div class="mdl2__row"><b>DeepSeek 4.1 Flash</b><i>письма, ответы, сводки</i><em>0.2 ₽ вход · 0.8 ₽ выход</em><s>облако</s></div>
@@ -1353,30 +1423,38 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
   <div class="mdl2__row"><b>Локальная · Qwen 2.5 14B</b><i>договоры, зарплаты, персональные данные</i><em>0 ₽ за токены · железо ~60 000 ₽</em><s class="ok">контур клиента</s></div>
   <div class="mdl2__row"><b>Сильная · Claude / GPT</b><i>аудит, стратегия, сложные разборы</i><em>3 ₽ вход · 9 ₽ выход</em><s>облако</s></div>
   <p class="mdl2__foot">лимит <b>3 000 ₽/мес</b> · стоп при <b>90 %</b> · кэш <b>вкл</b> · модели с пометкой «данные в РФ» не выпускают персональные данные за контур</p>
-</div>
+</div></div>
 <span class="ancora" data-ancora></span>
             </div>
 
             <!-- layer: components, the boxes and controls -->
             <div class="strato strato--pezzi" data-strato data-k="int" tabindex="0" role="button">
-<div class="apps-flat"><span class="app"><img src="assets/logos/telegram.png" alt=""><b>Telegram</b></span><span class="app"><img src="assets/logos/gmail.png" alt=""><b>Почта</b></span><span class="app"><img src="assets/logos/sheets.png" alt=""><b>Таблицы</b></span><span class="app"><img src="assets/logos/drive.png" alt=""><b>Диск</b></span><span class="app"><img src="assets/logos/amocrm.png" alt=""><b>amoCRM</b></span><span class="app"><img src="assets/logos/bitrix24.png" alt=""><b>Bitrix24</b></span><span class="app"><img src="assets/logos/1c.png" alt=""><b>1С</b></span><span class="app"><img src="assets/logos/moysklad.png" alt=""><b>МойСклад</b></span><span class="app"><img src="assets/logos/avito.png" alt=""><b>Avito</b></span><span class="app"><img src="assets/logos/yookassa.png" alt=""><b>ЮKassa</b></span><span class="app"><img src="assets/logos/sber.png" alt=""><b>Сбер</b></span><span class="app"><img src="assets/logos/tbank.png" alt=""><b>Т-Банк</b></span><span class="app"><img src="assets/logos/robokassa.png" alt=""><b>Robokassa</b></span><span class="app"><img src="assets/logos/wb.png" alt=""><b>Wildberries</b></span><span class="app"><img src="assets/logos/ozon.png" alt=""><b>Ozon</b></span><span class="app"><img src="assets/logos/metrika.png" alt=""><b>Метрика</b></span><span class="app"><img src="assets/logos/direct.png" alt=""><b>Директ</b></span><span class="app"><img src="assets/logos/notion.png" alt=""><b>Notion</b></span></div>
+<div class="lh__strip"><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i></div><div class="lh"><span class="lh__n">04</span><span class="lh__t">интеграции</span><span class="lh__c">18 сервисов · без кода</span></div>
+<div class="lh__body">
+<div class="apps-flat"><span class="app"><img src="assets/logos/telegram.png" alt=""><b>Telegram</b></span><span class="app"><img src="assets/logos/gmail.png" alt=""><b>Почта</b></span><span class="app"><img src="assets/logos/sheets.png" alt=""><b>Таблицы</b></span><span class="app"><img src="assets/logos/drive.png" alt=""><b>Диск</b></span><span class="app"><img src="assets/logos/amocrm.png" alt=""><b>amoCRM</b></span><span class="app"><img src="assets/logos/bitrix24.png" alt=""><b>Bitrix24</b></span><span class="app"><img src="assets/logos/1c.png" alt=""><b>1С</b></span><span class="app"><img src="assets/logos/moysklad.png" alt=""><b>МойСклад</b></span><span class="app"><img src="assets/logos/avito.png" alt=""><b>Avito</b></span><span class="app"><img src="assets/logos/yookassa.png" alt=""><b>ЮKassa</b></span><span class="app"><img src="assets/logos/sber.png" alt=""><b>Сбер</b></span><span class="app"><img src="assets/logos/tbank.png" alt=""><b>Т-Банк</b></span><span class="app"><img src="assets/logos/robokassa.png" alt=""><b>Robokassa</b></span><span class="app"><img src="assets/logos/wb.png" alt=""><b>Wildberries</b></span><span class="app"><img src="assets/logos/ozon.png" alt=""><b>Ozon</b></span><span class="app"><img src="assets/logos/metrika.png" alt=""><b>Метрика</b></span><span class="app"><img src="assets/logos/direct.png" alt=""><b>Директ</b></span><span class="app"><img src="assets/logos/notion.png" alt=""><b>Notion</b></span></div></div>
 <span class="ancora" data-ancora></span>
             </div>
 
                         <!-- layer: доступы, ключи и приёмка -->
             <div class="strato strato--chiavi" data-strato data-k="mem" tabindex="0" role="button">
-<div class="files"><div class="files__row"><span class="files__ic pdf">PDF</span><b>Кейсы и разборы</b><i>47 файлов</i></div><div class="files__row"><span class="files__ic doc">DOC</span><b>Брифы клиентов</b><i>96 файлов</i></div><div class="files__row"><span class="files__ic msg">MSG</span><b>Переписка</b><i>1 240 диалогов</i></div><div class="files__row"><span class="files__ic xls">XLS</span><b>Счета и акты</b><i>380 таблиц</i></div><div class="files__row"><span class="files__ic doc">DOC</span><b>Договоры и шаблоны</b><i>12</i></div><div class="files__row"><span class="files__ic msg">ТЗ</span><b>Регламенты</b><i>9 инструкций</i></div><div class="files__row"><span class="files__ic xls">XLS</span><b>Прайс</b><i>3 версии</i></div><div class="files__row"><span class="files__ic msg">MSG</span><b>Возражения и ответы</b><i>38</i></div></div>
+<div class="lh__strip"><i class="q"></i><i class="q"></i><i class="q"></i><i class="q"></i><i class="q"></i><i class="q"></i><i class="q"></i><i class="q"></i><i class="q"></i></div><div class="lh"><span class="lh__n">03</span><span class="lh__t">память</span><span class="lh__c">9 разделов · 1 862 записи</span></div>
+<div class="lh__body">
+<div class="files"><div class="files__row"><span class="files__ic pdf">PDF</span><b>Кейсы и разборы</b><i>47 файлов</i></div><div class="files__row"><span class="files__ic doc">DOC</span><b>Брифы клиентов</b><i>96 файлов</i></div><div class="files__row"><span class="files__ic msg">MSG</span><b>Переписка</b><i>1 240 диалогов</i></div><div class="files__row"><span class="files__ic xls">XLS</span><b>Счета и акты</b><i>380 таблиц</i></div><div class="files__row"><span class="files__ic doc">DOC</span><b>Договоры и шаблоны</b><i>12</i></div><div class="files__row"><span class="files__ic msg">ТЗ</span><b>Регламенты</b><i>9 инструкций</i></div><div class="files__row"><span class="files__ic xls">XLS</span><b>Прайс</b><i>3 версии</i></div><div class="files__row"><span class="files__ic msg">MSG</span><b>Возражения и ответы</b><i>38</i></div></div></div>
 <span class="ancora" data-ancora></span>
             </div>
 
             <!-- layer: сценарии -->
             <div class="strato strato--scen" data-strato data-k="scen" tabindex="0" role="button">
-<div class="chain2"><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div class="chain2__tx"><b>заявка с сайта</b><i>квалификация <em>→</em> карточка в CRM</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div class="chain2__tx"><b>письмо с брифом</b><i>разбор вложений <em>→</em> КП по шаблону</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 20V4h5a4 4 0 010 8H8M6 15h9M6 18h9"/></svg></span><div class="chain2__tx"><b>счёт в почте</b><i>сверка реквизитов <em>→</em> запись в 1С</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4l2.4 5 5.4.8-4 3.8.9 5.4L12 16.4 7.3 19l.9-5.4-4-3.8 5.4-.8z"/></svg></span><div class="chain2__tx"><b>отзыв на 2 звезды</b><i>черновик ответа <em>→</em> на согласование</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16V11a6 6 0 1112 0v5l2 3H4l2-3z"/><path d="M10 20a2 2 0 004 0"/></svg></span><div class="chain2__tx"><b>дедлайн завтра</b><i>напоминание <em>→</em> задача тебе</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span><div class="chain2__tx"><b>клиент злится</b><i>собирает контекст <em>→</em> эскалация</i></div></div></div>
+<div class="lh__strip"><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i><i class="p"></i></div><div class="lh"><span class="lh__n">02</span><span class="lh__t">сценарии</span><span class="lh__c">6 цепочек · от заявки до счёта</span></div>
+<div class="lh__body">
+<div class="chain2"><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div class="chain2__tx"><b>заявка с сайта</b><i>квалификация <em>→</em> карточка в CRM</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div class="chain2__tx"><b>письмо с брифом</b><i>разбор вложений <em>→</em> КП по шаблону</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 20V4h5a4 4 0 010 8H8M6 15h9M6 18h9"/></svg></span><div class="chain2__tx"><b>счёт в почте</b><i>сверка реквизитов <em>→</em> запись в 1С</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4l2.4 5 5.4.8-4 3.8.9 5.4L12 16.4 7.3 19l.9-5.4-4-3.8 5.4-.8z"/></svg></span><div class="chain2__tx"><b>отзыв на 2 звезды</b><i>черновик ответа <em>→</em> на согласование</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 16V11a6 6 0 1112 0v5l2 3H4l2-3z"/><path d="M10 20a2 2 0 004 0"/></svg></span><div class="chain2__tx"><b>дедлайн завтра</b><i>напоминание <em>→</em> задача тебе</i></div></div><div class="chain2__row"><span class="chain2__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span><div class="chain2__tx"><b>клиент злится</b><i>собирает контекст <em>→</em> эскалация</i></div></div></div></div>
 <span class="ancora" data-ancora></span>
             </div>
 
             <!-- layer: content — экран агента -->
             <div class="strato strato--testi strato--tg" data-strato>
+<div class="lh__strip"><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i></div><div class="lh"><span class="lh__n">01</span><span class="lh__t">агент</span><span class="lh__c">чат в Telegram · работает сам</span></div>
+<div class="lh__body">
 <div class="tg">
 <header class="tg-h"><span class="tg-ava">DS</span><span class="tg-who"><b>агент · твой бизнес</b><i>в сети · отвечает сам</i></span><span class="tg-menu">⋯</span></header>
 <div class="tg-body">
@@ -1387,17 +1465,17 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
 <div class="tg-m in"><p>Войдёт в смету без доплаты, если берём пакет с внедрением. Пришлю два варианта в течение часа.</p><span class="tg-time">11:44</span></div>
 </div>
 <div class="tg-f"><span class="tg-input">Написать сообщение…</span><span class="tg-mic">➤</span></div>
-</div>
+</div></div>
 <span class="ancora" data-ancora></span>
             </div>
           </div>
           <div class="etichette" aria-hidden="true">
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>контроль</b></span></div>
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>модели</b></span></div>
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>интеграции</b></span></div>
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>память</b></span></div>
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>сценарии</b></span></div>
-            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b>агент</b></span></div>
+            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b><i class="etichetta__n">06</i>контроль</b></span></div>
+            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b><i class="etichetta__n">05</i>модели</b></span></div>
+            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b><i class="etichetta__n">04</i>интеграции</b></span></div>
+            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b><i class="etichetta__n">03</i>память</b></span></div>
+            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b><i class="etichetta__n">02</i>сценарии</b></span></div>
+            <div class="etichetta" data-etichetta><span class="etichetta__corpo"><i class="etichetta__filo"></i><b><i class="etichetta__n">01</i>агент</b></span></div>
           </div>
         </div>
         <p class="piede" data-piede>листай — интерфейс расходится на уровни; клик по уровню покажет всё</p>
@@ -1492,8 +1570,8 @@ p a:hover,li a:hover,.quiet a:hover,.caveat a:hover{border-bottom-color:rgba(27,
    screen settles flat, with a one pixel overshoot. As the page opens, the chart line draws and the numbers count. Scroll back up and it all plays back. */
 
 /* ---- values to change ---- */
-const GAP = 12;      /* the distance between two layers, in hundredths of the screen width */
-const TILT = 38;     /* how many degrees the screen leans back */
+const GAP = 15;      /* the distance between two layers, in hundredths of the screen width */
+const TILT = 42;     /* how many degrees the screen leans back */
 const TURN = 18;     /* how many degrees the screen turns on the table */
 const RIDE = 1;      /* how much scroll the whole story takes: 2 is twice as long */
 const SCRUB = 0.7;   /* how far the screen lags behind the scroll, in seconds */
@@ -1511,7 +1589,7 @@ const N = document.querySelectorAll('[data-strato]').length;
 const corsa = $('[data-corsa]');
 const pila = $('[data-pila]');
 const strati = $$('[data-strato]');
-const NOMI = ['агент', 'сценарии', 'память', 'интеграции', 'модели', 'контроль'];
+const NOMI = { 'агент': 'testi', 'сценарии': 'scen', 'память': 'chiavi', 'интеграции': 'pezzi', 'модели': 'schema', 'контроль': 'fondo' };
 const scena = $('[data-scena]');
 const ancore = $$('[data-ancora]');
 const etichette = $$('[data-etichetta]');
@@ -1591,8 +1669,10 @@ function draw() {
   etichette.forEach((el, i) => {
     const v = S.et[i];
     /* привязка по имени, а не по порядку в разметке: подписи и слои живут в разном порядке */
-    const nome = el.textContent.trim().toLowerCase();
-    const k = NOMI.indexOf(nome);
+    const nome = el.textContent.replace(/[^а-яё\s]/gi, '').trim().toLowerCase();
+    const cls = NOMI[nome];
+    let k = -1;
+    if (cls) strati.forEach((st, j) => { if (st.className.indexOf('strato--' + cls) >= 0) k = j; });
     const q = punti[k >= 0 ? k : i];
     el.style.transform = `translate(${q.x}px, ${q.y}px)`;
     const corpo = el.firstElementChild;
@@ -1742,6 +1822,22 @@ if (REDUCED) {
     document.body.classList.add('has-pick');
   };
   const pickLayer = (k) => { if (k < 0 || k === picked) closePick(); else { if (clone) closePick(); openPick(k); } };
+  /* наведение на пилюлю подсвечивает её слой */
+  const pairOf = (lab) => {
+    const nome = lab.textContent.replace(/[^а-яё\s]/gi, '').trim().toLowerCase();
+    const cls = NOMI[nome];
+    let hit = null;
+    if (cls) strati.forEach((st) => { if (st.className.indexOf('strato--' + cls) >= 0) hit = st; });
+    return hit;
+  };
+  etichette.forEach((lab) => {
+    const st = pairOf(lab);
+    if (!st) return;
+    lab.style.pointerEvents = 'auto';
+    lab.addEventListener('mouseenter', () => st.classList.add('is-hot'));
+    lab.addEventListener('mouseleave', () => st.classList.remove('is-hot'));
+  });
+
   strati.forEach((el, i) => {
     el.style.cursor = 'pointer';
     el.addEventListener('click', (e) => { e.stopPropagation(); pickLayer(i); });
