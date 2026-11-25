@@ -1675,15 +1675,45 @@ function draw() {
   const sr = scena.getBoundingClientRect();
   /* прямоугольники всех слоёв: чтобы понять, какая полоса слоя реально открыта */
   const rects = strati.map((st) => st.getBoundingClientRect());
+  /* Открытая полоса слоя = его прямоугольник МИНУС всё, что закрыли слои ближе к зрителю.
+     Раньше брали «от низа самого переднего слоя до своего низа» — и у заднего слоя
+     (контроль) открытая полоса вырождалась в 1px у нижнего края, поэтому его сноска
+     вставала ниже «моделей»: подписи 05 и 06 менялись местами. Теперь берём самый
+     большой неперекрытый отрезок по вертикали — он есть у любого слоя. */
   const punti = rects.map((r, k) => {
-    /* слой перекрыт теми, кто ближе к зрителю (индекс больше) — берём их нижнюю границу */
-    let sopra = r.top;
-    for (let j = k + 1; j < rects.length; j += 1) sopra = Math.max(sopra, rects[j].bottom);
-    const centro = (Math.min(sopra, r.bottom - 1) + r.bottom) / 2;
-    return { x: r.right - sr.left - 8, y: centro - sr.top };
+    const cover = [];
+    for (let j = k + 1; j < rects.length; j += 1) {
+      const a = Math.max(rects[j].top, r.top), b = Math.min(rects[j].bottom, r.bottom);
+      if (b > a) cover.push([a, b]);
+    }
+    cover.sort((p, q) => p[0] - q[0]);
+    const merged = [];
+    cover.forEach((s) => {
+      const last = merged[merged.length - 1];
+      if (last && s[0] <= last[1]) last[1] = Math.max(last[1], s[1]);
+      else merged.push([s[0], s[1]]);
+    });
+    let cur = r.top, best = [r.top, Math.min(r.bottom, r.top + 2)];
+    merged.forEach((s) => {
+      if (s[0] - cur > best[1] - best[0]) best = [cur, s[0]];
+      cur = Math.max(cur, s[1]);
+    });
+    if (r.bottom - cur > best[1] - best[0]) best = [cur, r.bottom];
+    let centro = (best[0] + best[1]) / 2;
+    /* передняя карточка открыта целиком: её полоса в 3 раза выше ярлыка, и центр
+       уводил сноску в середину карточки. Для таких полос берём низ — торец, как у всех. */
+    const hPill = (etichette[0] && etichette[0].firstElementChild.offsetHeight) || 35;
+    if (best[1] - best[0] > hPill * 3) centro = best[1] - hPill * 1.2;
+    return { x: r.right - sr.left, edge: r.right - sr.left, y: centro - sr.top };
   });
-  const colonna = 0; /* колонки больше нет: каждая пилюля у своего торца */
-  const gapPill = Math.max(8, larga * 0.01);
+  /* Ровная лестница: подписи идут в порядке слоёв с одинаковым шагом.
+     Нужна на переходных кадрах, когда стопка ещё не разошлась и у заднего слоя
+     открытой полосы нет совсем — иначе его подпись прыгает наверх. */
+  const PASSO = ((etichette[0] && etichette[0].firstElementChild.offsetHeight) || 35) + 6;
+  for (let k = punti.length - 2; k >= 0; k -= 1) {
+    if (punti[k].y < punti[k + 1].y + PASSO) punti[k].y = punti[k + 1].y + PASSO;
+  }
+  const gapPill = Math.max(12, Math.min(26, larga * 0.028)); /* длина выноски: на телефоне короче, чтобы пилюля не упиралась в край */
   etichette.forEach((el, i) => {
     const v = S.et[i];
     /* привязка по имени, а не по порядку в разметке: подписи и слои живут в разном порядке */
@@ -1692,13 +1722,18 @@ function draw() {
     let k = -1;
     if (cls) strati.forEach((st, j) => { if (st.className.indexOf('strato--' + cls) >= 0) k = j; });
     const q = punti[k >= 0 ? k : i];
-    el.style.transform = `translate(${q.x + gapPill}px, ${q.y}px)`;
     const corpo = el.firstElementChild;
+    /* на узком экране длинная подпись («04 интеграции») упиралась в край:
+       сдвигаем пилюлю внутрь и укорачиваем выноску, но она остаётся приклеенной к торцу */
+    const pillW = el.querySelector('b').getBoundingClientRect().width || 90;
+    let x = q.x;
+    if (x + pillW + 6 > sr.width) x = Math.max(q.edge + 6, sr.width - pillW - 6);
+    el.style.transform = `translate(${x}px, ${q.y}px)`;
     corpo.style.opacity = v;
     const filo = corpo.firstElementChild;
-    filo.style.width = gapPill + 'px';
+    filo.style.width = Math.max(8, Math.min(gapPill, x - q.edge)) + 'px';
     filo.style.transform = `scaleX(${v})`;
-    corpo.style.columnGap = (6 + 4 * v) + 'px';
+    corpo.style.columnGap = '0px'; /* штрих доходит до пилюли: связка не рвётся */
   });
 }
 
