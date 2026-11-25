@@ -6,7 +6,7 @@
       вместе с контентом и «отлипала» от края экрана;
    2) на nacenka у body оставался дефолтный margin 8px — полоса висела ниже
       верха экрана;
-   3) калькулятор имел margin-top:22px на .nav — та же щель сверху;
+   3) калькулятор имел margin-top:24px на .nav — та же щель сверху;
    4) шапка была ниже своих ссылок (height 56px при тап-зоне 44px и padding):
       низ полосы срезал текст и тап-зоны — «обрезанный снизу навбар»;
    5) flex-wrap рвал меню на два ряда — полоса вырастала до 120px.
@@ -52,7 +52,7 @@ body header.nav nav a {
 
 @media (max-width: 720px) {
   body nav.top {
-    padding: 6px 0;
+    padding:8px 0;
   }
   body header.nav .nav-in {
     padding-block: 6px;

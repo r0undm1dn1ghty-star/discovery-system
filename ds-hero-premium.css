@@ -10,7 +10,7 @@
    ========================================================================== */
 
 /* ---------- свет под секцией: сначала свет, потом стекло ------------------ */
-.hero{position:relative;padding:78px 0 40px;isolation:isolate;
+.hero{position:relative;padding:80px 0 40px;isolation:isolate;
   min-height:min(86vh,820px);display:flex;flex-direction:column;justify-content:center}
 .hero-light{position:absolute;inset:-14% -12% 0 -12%;z-index:0;pointer-events:none;
   background:
@@ -36,8 +36,8 @@
   background:radial-gradient(58% 56% at 34% 48%,rgba(8,11,20,.78),rgba(8,11,20,.34) 58%,transparent 80%)}
 .hero .kicker{margin:0 0 18px;font:500 12.5px/1.4 var(--mono);color:var(--meta);
   text-transform:uppercase;letter-spacing:.14em}
-.hero .lead{margin:18px 0 0;font-size:18px;line-height:1.58;color:var(--body);max-width:45ch}
-.hero .cta-row{margin-top:28px;display:flex;align-items:center;gap:14px 16px;flex-wrap:wrap}
+.hero .lead{margin:16px 0 0;font-size:17px;line-height:1.58;color:var(--body);max-width:45ch}
+.hero .cta-row{margin-top:28px;display:flex;align-items:center;gap:16px 16px;flex-wrap:wrap}
 
 /* ---------- ключевая фраза: градиент выкатывается по ходу появления ------- */
 .hero h1 .chrome-text{background:linear-gradient(100deg,
@@ -61,7 +61,7 @@
 .btn-ghost{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.13);
   color:var(--ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
 .btn-ghost .ico{width:16px;height:16px;stroke:currentColor;stroke-width:1.6;fill:none;
-  margin-right:9px;opacity:.75;transition:transform .34s var(--ease),opacity .34s var(--ease)}
+  margin-right:8px;opacity:.75;transition:transform .34s var(--ease),opacity .34s var(--ease)}
 @media(hover:hover){
   .btn-primary:hover{background:linear-gradient(180deg,#33b184,#218059);border-radius:16px;
     box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 16px 38px -18px rgba(var(--accent-rgb),.5)}
@@ -71,9 +71,9 @@
 }
 
 /* ---------- строка фактов: иконки на выверенной сетке --------------------- */
-.hero-facts{list-style:none;display:flex;gap:12px 26px;flex-wrap:wrap;margin:24px 0 0;padding:18px 0 0;
+.hero-facts{list-style:none;display:flex;gap:12px 26px;flex-wrap:wrap;margin:24px 0 0;padding:16px 0 0;
   border-top:1px solid var(--line-soft)}
-.hero-facts li{display:flex;align-items:center;gap:9px;
+.hero-facts li{display:flex;align-items:center;gap:8px;
   font:400 13.5px/1.4 var(--sans);color:var(--body)}
 .hero-facts svg{width:17px;height:17px;flex:none;stroke:var(--accent);stroke-width:1.5;fill:none;opacity:.85}
 .js .hero-facts li{opacity:0;transform:translateY(8px);
@@ -83,7 +83,7 @@
 .js .hero-facts.in li:nth-child(3){transition-delay:.18s}
 
 /* ---------- панель: стекло над светом + медленное внутреннее свечение ----- */
-.minicalc{position:relative;border-radius:20px;padding:26px 26px 24px;
+.minicalc{position:relative;border-radius:20px;padding:24px 26px 24px;
   border:1px solid rgba(255,255,255,.12);
   background:linear-gradient(180deg,var(--card),var(--deep) 58%,#0b0f1c);
   box-shadow:
@@ -124,8 +124,8 @@
 }
 @media (max-width:860px){
   .hero{padding:84px 0 56px}
-  .hero .lead{font-size:17px;margin-top:18px}
+  .hero .lead{font-size:17px;margin-top:16px}
   .hero .cta-row{margin-top:24px}
-  .hero-facts{margin-top:26px;padding-top:18px;gap:10px 18px}
+  .hero-facts{margin-top:24px;padding-top:16px;gap:8px 18px}
   .minicalc{border-radius:16px}
 }

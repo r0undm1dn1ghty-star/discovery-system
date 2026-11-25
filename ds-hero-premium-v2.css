@@ -55,7 +55,7 @@
 .hero .kicker{margin:0 0 20px;font:400 12px/1.4 var(--mono);color:var(--meta);
   text-transform:uppercase;letter-spacing:.14em}
 /* текст 16,5px при заголовке 64px = 3,9× */
-.hero .lead{margin:24px 0 0;font-size:16.5px;line-height:1.6;color:var(--body);max-width:48ch;
+.hero .lead{margin:24px 0 0;font-size:17px;line-height:1.6;color:var(--body);max-width:48ch;
   letter-spacing:-.006em}
 .hero .cta-row{margin-top:32px;display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap}
 .hero .cta-note{font:400 12.5px/1.4 var(--mono);color:var(--meta)}
@@ -91,7 +91,7 @@
              color .16s var(--ease),transform .16s var(--ease)}
 .btn-ghost:active{transform:scale(.97)}
 .btn-ghost .ico{width:15px;height:15px;stroke:currentColor;stroke-width:1.6;fill:none;
-  margin-right:9px;opacity:.6;transition:transform .3s var(--ease),opacity .3s var(--ease)}
+  margin-right:8px;opacity:.6;transition:transform .3s var(--ease),opacity .3s var(--ease)}
 /* hover микроскопический: цвет и фон, геометрия на месте (замер Linear/Stripe) */
 @media(hover:hover){
   .btn-primary:hover{background-image:linear-gradient(180deg,#33ab72,#218556);
@@ -105,10 +105,10 @@
 }
 
 /* ---------- факты: тонкие моно-метки вместо второго ряда блоков --------- */
-.hero-facts{list-style:none;display:flex;gap:8px 18px;flex-wrap:wrap;margin:26px 0 0;padding:0}
-.hero-facts li{display:flex;align-items:center;gap:7px;
+.hero-facts{list-style:none;display:flex;gap:8px 18px;flex-wrap:wrap;margin:24px 0 0;padding:0}
+.hero-facts li{display:flex;align-items:center;gap:8px;
   font:400 12.5px/1.4 var(--mono);color:var(--meta);letter-spacing:-.01em}
-.hero-facts li+li:before{content:"";width:1px;height:11px;background:var(--line);margin-right:11px}
+.hero-facts li+li:before{content:"";width:1px;height:11px;background:var(--line);margin-right:12px}
 .hero-facts svg{width:14px;height:14px;flex:none;stroke:var(--body);stroke-width:1.5;fill:none;opacity:.7}
 .js .hero-facts li{opacity:0;transform:translateY(6px);
   transition:opacity .5s var(--ease),transform .5s var(--ease)}
@@ -117,7 +117,7 @@
 .js .hero-facts.in li:nth-child(3){transition-delay:.16s}
 
 /* ---------- панель: поверхность Верника вместо витринного свечения ------ */
-.minicalc{position:relative;border-radius:14px;padding:22px 22px 20px;
+.minicalc{position:relative;border-radius:14px;padding:24px 22px 20px;
   border:1px solid rgba(255,255,255,.08);
   background:#0f1424;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
@@ -153,9 +153,9 @@
 }
 @media (max-width:860px){
   .hero{padding:72px 0 44px}
-  .hero .lead{font-size:15.5px;margin-top:18px}
+  .hero .lead{font-size:15px;margin-top:16px}
   .hero .cta-row{margin-top:24px}
   .hero-facts{margin-top:20px}
   .hero-facts li+li:before{display:none}
-  .minicalc{border-radius:12px;padding:18px 16px 16px}
+  .minicalc{border-radius:12px;padding:16px 16px 16px}
 }
