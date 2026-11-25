@@ -1726,12 +1726,18 @@ function draw() {
     /* на узком экране длинная подпись («04 интеграции») упиралась в край:
        сдвигаем пилюлю внутрь и укорачиваем выноску, но она остаётся приклеенной к торцу */
     const pillW = el.querySelector('b').getBoundingClientRect().width || 90;
-    let x = q.x;
-    if (x + pillW + 6 > sr.width) x = Math.max(q.edge + 6, sr.width - pillW - 6);
+    /* выноска начинается на торце слоя и идёт до пилюли.
+       Если подпись не влезает в сцену (узкий телефон) — сначала укорачиваем выноску,
+       потом, если совсем нет места, подвигаем пилюлю и убираем выноску. */
+    let x = q.edge, lead = gapPill;
+    if (x + lead + 12 + pillW > sr.width - 4) {
+      lead = Math.max(0, sr.width - 4 - 12 - pillW - x);
+      if (lead < 10) { lead = 0; x = Math.max(0, sr.width - 4 - pillW - 12); }
+    }
     el.style.transform = `translate(${x}px, ${q.y}px)`;
     corpo.style.opacity = v;
     const filo = corpo.firstElementChild;
-    filo.style.width = Math.max(8, Math.min(gapPill, x - q.edge)) + 'px';
+    filo.style.width = lead + 'px';
     filo.style.transform = `scaleX(${v})`;
     corpo.style.columnGap = '0px'; /* штрих доходит до пилюли: связка не рвётся */
   });
