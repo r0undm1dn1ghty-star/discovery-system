@@ -261,9 +261,17 @@ html.mnav-lock, html.mnav-lock body { overflow: hidden; }
 html,body{overflow-x:clip}
 
 /* ═══ NAVBAR-HIT: крупная площадь клика, контраст, липкая шапка ═══ */
-header.nav{position:sticky;top:0;z-index:60;background:rgba(15,23,48,.94);
-  -webkit-backdrop-filter:blur(14px) saturate(1.15);backdrop-filter:blur(14px) saturate(1.15);
-  border-bottom:1px solid rgba(255,255,255,.10)}
+header.nav{position:sticky;top:0;margin:0;z-index:60;background:rgba(15,23,48,.96);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.10);transform:translateZ(0);
+  will-change:transform}
+/* iOS/Android: блюр на липкой шапке отклеивает её от верха при инерционном скролле и
+   оставляет полосу фона над ней. На телефоне блюр не нужен — фон почти непрозрачный. */
+@media(max-width:720px){
+  header.nav{background:rgba(15,23,48,.985);-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+/* «пружинка» страницы отрывает липкую шапку от верха экрана */
+html{overscroll-behavior-y:contain}
 header.nav .nav-in{min-height:56px!important;height:auto!important;padding-top:8px!important;padding-bottom:8px!important;border-bottom:0!important}
 header.nav .brand{min-height:44px;padding:0 8px;border-radius:8px;color:#eef2fb!important}
 header.nav .brand:hover{background:rgba(255,255,255,.07)}
@@ -275,5 +283,5 @@ header.nav .nav-in > nav a.on,
 header.nav .nav-in > nav a[aria-current="page"]{color:#fff!important;background:rgba(143,168,255,.20)}
 header.nav .brand img{width:26px;height:26px;border-radius:6px}
 @media(max-width:720px){
-  header.nav .nav-in{min-height:64px}
+  header.nav .nav-in{min-height:56px;padding-block:8px!important}
 }

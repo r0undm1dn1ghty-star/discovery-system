@@ -178,6 +178,7 @@
   function open() {
     if (!state.panel || state.panel.getAttribute('data-open') === '1') return;
     state.lastFocus = document.activeElement;
+    state.scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
     state.panel.setAttribute('data-open', '1');
     state.panel.setAttribute('aria-hidden', 'false');
     state.btn.setAttribute('aria-expanded', 'true');
@@ -195,6 +196,9 @@
     state.btn.setAttribute('aria-expanded', 'false');
     state.btn.setAttribute('aria-label', 'Открыть меню');
     document.documentElement.classList.remove('mnav-lock');
+    /* iOS после overflow:hidden на html иногда возвращает страницу со сдвигом —
+       шапка тогда висит не у верха. Возвращаем позицию сами. */
+    if (typeof state.scrollY === 'number') window.scrollTo(0, state.scrollY);
     document.removeEventListener('keydown', onKey, true);
     if (restore !== false) {
       var back = state.lastFocus && document.contains(state.lastFocus) ? state.lastFocus : state.btn;
