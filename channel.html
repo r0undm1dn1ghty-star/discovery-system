@@ -373,6 +373,50 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
 /* cookie-плашка не спорит с главным CTA страницы */
 #ds-cookie .ck-yes{background:transparent!important;color:var(--ink)!important;border:1px solid rgba(255,255,255,.24)!important;box-shadow:none!important}
 #ds-cookie .ck-yes:hover{background:rgba(255,255,255,.10)!important}
+
+/* --- центрирование, воздух и разные формы секций (26.11) --- */
+.hero{text-align:center}
+.hero>*{margin-left:auto;margin-right:auto}
+.eyebrow{justify-content:center}
+.cta{justify-content:center}
+.heroproof{text-align:center}
+.sechead{text-align:center;margin-bottom:clamp(40px,6vw,72px)}
+.sechead .s{margin-left:auto;margin-right:auto}
+@media(min-width:900px){
+  .sechead--split{grid-template-columns:1fr;gap:16px;align-items:center;text-align:center}
+}
+.sec{padding-top:clamp(64px,9vw,112px)}
+.sec + .sec{margin-top:clamp(64px,9vw,112px)}
+#why .receipt{margin-left:auto;margin-right:auto}
+.findcard{margin-left:auto;margin-right:auto;text-align:center}
+.findhead{justify-content:center}
+/* посты: одна большая карточка + две — вместо трёх одинаковых */
+@media(min-width:900px){
+  .posts{grid-template-columns:1.5fr 1fr 1fr;gap:16px;align-items:stretch}
+  .post:first-child .pnum{font-size:clamp(30px,3.2vw,40px)}
+}
+/* манифест: карточки с номерами вместо лесенки с линией */
+.manifest{counter-reset:mf;display:grid;gap:16px;padding-top:0}
+.manifest:before,.mf-item:before{display:none}
+.manifest .mf-item{margin:0;max-width:none;padding:28px 24px;border:1px solid rgba(255,255,255,.10);border-radius:16px;background:#131c2b;text-align:center}
+.mf-item h3{position:relative;padding-top:40px}
+.mf-item h3:before{counter-increment:mf;content:"0" counter(mf);position:absolute;top:0;left:0;right:0;font:500 12.5px/1 var(--mono);letter-spacing:.18em;color:var(--acc)}
+@media(min-width:900px){.manifest{grid-template-columns:repeat(3,1fr);gap:16px}}
+
+/* прибить хвосты карточек к низу и усилить номера */
+.post .pgo{margin-top:auto;padding-top:12px}
+.manifest .mf-item{display:flex;flex-direction:column}
+.mf-item .fmt{margin-top:auto;padding-top:16px}
+.mf-item h3{padding-top:0}
+.mf-item h3:before{position:static;display:block;font-size:clamp(24px,3vw,32px);letter-spacing:.02em;margin-bottom:8px;color:var(--acc)}
+
+/* разрыв цен в большой карточке поста */
+.pgap{display:flex;align-items:center;gap:12px;margin-top:auto;padding:24px 0 8px;font-family:var(--mono)}
+.pgap b{font-size:15px;font-weight:500;color:var(--ink);white-space:nowrap}
+.pgap i{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.16),rgba(169,180,240,.7));position:relative;min-width:40px}
+.pgap i:after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--acc)}
+.pgap span{font-size:12.5px;letter-spacing:.1em;color:var(--acc);white-space:nowrap}
+.post:first-child .pgo{margin-top:0}
 </style>
 </head>
 <body>
@@ -386,7 +430,7 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
     <div class="kicker">канал · рынок ИИ-агентов в России</div>
     <h1>Сигнал спасает <em>до денег</em>, а не после.</h1>
     <p class="lede">Что это: разборы рынка ИИ-внедрений — цены, провалы, блокировки, счёт агента. Каждый факт с цифрой, источником и датой.</p>
-    <p class="forwho"><b>Кому:</b> самозанятым и малому бизнесу, кто выбирает внедрение и не хочет платить за то, что не работает. <b>Зачем:</b> увидеть цену и риск до оплаты, а не после.</p>
+    <p class="forwho"><b>Кому:</b> самозанятым и малому бизнесу, кто выбирает внедрение и не хочет платить за то, что не работает. <b>Зачем:</b> увидеть цену и риск до того, как заплатишь.</p>
     <div class="cta">
       <a class="btn btn-p" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Читать канал — бесплатно</a>
       <a class="btn btn-g" href="#signals">Что уже вышло</a>
@@ -402,7 +446,7 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
     <div class="sechead">
       <span class="eyebrow"><i>01</i> зачем</span>
       <h2>Зачем это тебе</h2>
-      <p class="s">На Авито одну и ту же установку агента продают за 999 ₽ и за 350 000 ₽. Разница не в цене — в том, что <b>проверить до оплаты нечем</b>. Сигналы дают эту проверку заранее.</p>
+      <p class="s">На Авито одну и ту же установку агента продают за 999 ₽ и за 350 000 ₽. Проверить до оплаты нечем: ни цену, ни результат. Сигналы дают эту проверку заранее.</p>
     </div>
     <div class="receipt">
       <div class="rc-head">смета внедрения · до оплаты</div>
@@ -420,7 +464,7 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
         <span class="eyebrow"><i>02</i> карта</span>
         <h2>Карта смерти рынков</h2>
       </div>
-      <p class="s">300 рынков России и 16 факторов, которые их вытесняют. Точка — рынок: зелёные живут, красные почти мертвы. <b>Названий нет намеренно:</b> карта показывает масштаб и стадию, а не каталог ниш.</p>
+      <p class="s">300 рынков России и 16 факторов, которые их вытесняют. Точка — рынок: зелёные живут, красные почти мертвы. <b>Названий нет намеренно:</b> карта показывает масштаб и стадию.</p>
     </div>
 
     <div class="mapcard">
@@ -428,7 +472,7 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
       <div class="mapread" id="mapread" aria-live="polite">
         <span class="mr-lbl" id="map-lbl">300 рынков · 16 факторов · 1 082 связи</span>
         <b class="mr-txt" id="map-txt">Тапни точку: покажу стадию и кто на неё давит.</b>
-        <span class="mr-sub" id="map-sub">Ниши не называю — это данные канала, а не каталог.</span>
+        <span class="mr-sub" id="map-sub">Ниши не раскрываю: это данные канала.</span>
         <div class="mapbars" id="mapbars"></div>
       </div>
     </div>
@@ -458,6 +502,7 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
         <span class="ptag">цена · 26.10</span>
         <b class="pnum">999–350 000 ₽</b>
         <p>Одна и та же установка агента на Авито. Гарантии — через «Защиту сделки»: за проверку результата платят заранее.</p>
+        <div class="pgap" aria-hidden="true"><b>999 ₽</b><i></i><b>350 000 ₽</b><span>×350</span></div>
         <span class="pgo">открыть пост →</span>
       </a>
       <a class="post" href="https://t.me/discoverysystem/15" target="_blank" rel="noopener">
