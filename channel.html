@@ -492,6 +492,16 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
   .trip [data-rise]:nth-child(2){animation-delay:.08s}
   .trip [data-rise]:nth-child(3){animation-delay:.16s}
 }
+
+/* живой сигнал в карточке подписки: тикер реальных постов канала */
+.join-live{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:6px 10px;margin:24px 0 0;padding:14px 16px;border-radius:14px;background:#0e1526;border:1px solid rgba(255,255,255,.08);text-align:left;overflow:hidden}
+.jl-dot{width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 0 rgba(169,180,240,.6);animation:jlPulse 2.4s ease-out infinite}
+@keyframes jlPulse{0%{box-shadow:0 0 0 0 rgba(169,180,240,.45)}70%{box-shadow:0 0 0 7px rgba(169,180,240,0)}100%{box-shadow:0 0 0 0 rgba(169,180,240,0)}}
+.jl-tag{font:500 10.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--meta)}
+.jl-num{grid-column:1/-1;font:500 19px/1.2 var(--mono);letter-spacing:-.01em;color:var(--ink);transition:opacity .32s cubic-bezier(.22,1,.36,1),transform .32s cubic-bezier(.22,1,.36,1)}
+.jl-meta{grid-column:1/-1;font:500 11.5px/1.4 var(--mono);letter-spacing:.08em;color:var(--acc)}
+.join-live.is-out .jl-num,.join-live.is-out .jl-meta{opacity:0;transform:translateY(-7px)}
+@media(prefers-reduced-motion:reduce){.jl-dot{animation:none}.jl-num,.jl-meta{transition:none}}
 </style>
 </head>
 <body>
@@ -605,23 +615,23 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
 
   <section id="inside" class="sec">
     <div class="sechead">
-      <h2>Что выйдет дальше</h2>
+      <h2>Что ты получаешь до оплаты</h2>
     </div>
 
     <div class="trip">
       <div class="trip-row" data-rise>
-        <h3>Цена — видна</h3>
-        <p>Прайсы, стоимость владения, наценки в рублях. Видно, за что платишь и сколько это стоит в месяц.</p>
+        <h3>Не переплатить за шаблон</h3>
+        <p>Прайсы, наценки и стоимость владения в рублях — до того, как заплатишь.</p>
         <span class="trip-tag">экономика</span>
       </div>
       <div class="trip-row" data-rise>
-        <h3>Поломка — названа</h3>
-        <p>Где именно сломалось: на приёмке, на данных, на поддержке. Чужая ошибка за чужой счёт.</p>
+        <h3>Не купить то, что сломается</h3>
+        <p>Где именно ломается: приёмка, данные, поддержка — на чужом внедрении, а не на твоём.</p>
         <span class="trip-tag">разбор</span>
       </div>
       <div class="trip-row" data-rise>
-        <h3>Правила — заранее</h3>
-        <p>Демпинг, блокировки, смена условий. Что происходит — до того, как это ударит по проекту.</p>
+        <h3>Узнать раньше рынка</h3>
+        <p>Демпинг, блокировки, смена правил — до того, как это ударит по проекту.</p>
         <span class="trip-tag">сигнал</span>
       </div>
     </div>
@@ -637,6 +647,11 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
       <img class="join-ava" src="logo-5.png" alt="Discovery System">
       <div class="join-name"><b>Discovery System</b><span>@discoverysystem</span></div>
       <p class="join-desc">Разборы рынка ИИ-внедрений: цены, провалы, блокировки, счёт агента. У каждого факта — цифра, источник и дата.</p>
+      <div class="join-live" aria-hidden="true">
+        <span class="jl-dot"></span><span class="jl-tag">свежий сигнал</span>
+        <b class="jl-num">999–350 000 ₽</b>
+        <span class="jl-meta">цена · 26.10</span>
+      </div>
       <div class="join-stats">
         <div><b>2–4 дня</b><span>новый сигнал</span></div>
         <div><b>500+</b><span>сигналов в базе</span></div>
@@ -762,5 +777,25 @@ setTimeout(reveal,350);
 
 </script>
 
-</body>
+<script>
+/* тикер подписки: реальные посты канала, ease-out, без движения при reduce */
+(function(){
+  var box=document.querySelector('.join-live'); if(!box) return;
+  var num=box.querySelector('.jl-num'), meta=box.querySelector('.jl-meta');
+  var data=[['999–350 000 ₽','цена · 26.10'],['$417 млрд','риск · 27.10'],['100 карточек','скилл · 31.10']];
+  if(!num||!meta||data.length<2) return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var i=0, t=null;
+  function tick(){
+    if(document.hidden){ t=setTimeout(tick,2000); return; }
+    box.classList.add('is-out');
+    setTimeout(function(){
+      i=(i+1)%data.length; num.textContent=data[i][0]; meta.textContent=data[i][1];
+      box.classList.remove('is-out');
+    },340);
+    t=setTimeout(tick,4200);
+  }
+  t=setTimeout(tick,4200);
+})();
+</script></body>
 </html>
