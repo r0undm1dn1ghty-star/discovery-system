@@ -417,6 +417,81 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
 .pgap i:after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-radius:50%;background:var(--acc)}
 .pgap span{font-size:12.5px;letter-spacing:.1em;color:var(--acc);white-space:nowrap}
 .post:first-child .pgo{margin-top:0}
+
+/* --- Зачем: шкала цен вместо карточки с вопросами --- */
+.scale{max-width:var(--measure);margin:0 auto}
+.scale-rule{position:relative;height:1px;background:linear-gradient(90deg,rgba(169,180,240,.85),rgba(169,180,240,.16))}
+.scale-rule i{position:absolute;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--acc)}
+.scale-rule i:nth-of-type(1){left:0}
+.scale-rule i:nth-of-type(2){right:0;background:rgba(169,180,240,.45)}
+.scale-rule b{position:absolute;left:50%;top:-32px;transform:translateX(-50%);font:500 12.5px/1 var(--mono);letter-spacing:.16em;color:var(--acc)}
+.scale-ends{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px;text-align:left}
+.scale-ends div:last-child{text-align:right}
+.scale-ends b{display:block;font:500 clamp(30px,4.4vw,46px)/1 var(--disp);letter-spacing:-.035em;color:var(--ink)}
+.scale-ends span{display:block;margin-top:8px;font-size:14px;color:var(--meta)}
+.scale-close{max-width:var(--measure);margin:40px auto 0;padding-top:20px;border-top:1px solid var(--hair2);text-align:center}
+.scale-close span{display:block;font:500 12.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--meta)}
+.scale-close b{display:block;margin:10px 0 8px;font:500 clamp(17px,2vw,21px)/1.35 var(--disp);color:var(--ink);letter-spacing:-.01em}
+.scale-close i{font:500 12.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--acc);font-style:normal}
+
+/* ×350 — смысловой центр шкалы, а не сноска */
+.scale-rule b{top:50%;transform:translate(-50%,-50%);font:500 clamp(24px,3vw,32px)/1 var(--disp);letter-spacing:-.02em;color:var(--acc);background:#0e1526;padding:0 14px}
+.scale-rule em{position:absolute;left:50%;transform:translateX(-50%);top:14px;font:500 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--meta);font-style:normal;white-space:nowrap}
+.scale-rule{margin:36px 0 0}
+
+/* --- посты как лента канала, а не три карточки --- */
+.feed{max-width:var(--measure);margin:0 auto}
+.msg{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:28px 0;border-top:1px solid var(--hair);text-decoration:none;transition:border-color .2s var(--ease,cubic-bezier(.22,1,.36,1))}
+.msg:last-child{border-bottom:1px solid var(--hair)}
+.msg:hover{border-color:rgba(255,255,255,.26)}
+.msg-ava{width:44px;height:44px;border-radius:50%;object-fit:cover;background:#131c2b}
+.msg-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.msg-head b{font:500 15px/1.2 var(--disp);color:var(--ink)}
+.msg-head time{font:500 12.5px/1 var(--mono);color:var(--meta)}
+.msg-tag{margin-left:auto;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+.msg-text{margin:0;font-size:17px;line-height:1.62;color:var(--body)}
+.msg-text mark{background:none;color:var(--ink);font-family:var(--mono);font-weight:500;font-size:19px;letter-spacing:-.01em}
+.msg-open{display:inline-block;margin-top:14px;font:500 14px/1 var(--mono);letter-spacing:.02em;color:var(--acc)}
+@media(max-width:520px){.msg{grid-template-columns:36px 1fr;gap:12px}.msg-ava{width:36px;height:36px}.msg-text{font-size:16px}}
+
+/* лента: аватар у первого, продолжение — с отступом; короче зазор до ленты */
+.msg--cont{grid-template-columns:44px 1fr;padding-top:20px}
+.msg--cont .msg-body{grid-column:2}
+@media(max-width:520px){.msg--cont{grid-template-columns:36px 1fr}}
+.feed{margin-top:-8px}
+
+/* --- «что выйдет дальше»: строки-тезисы, без лесенки и карточек --- */
+.trip{max-width:var(--measure);margin:0 auto}
+.trip-row{display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:start;padding:28px 0;border-top:1px solid var(--hair)}
+.trip-row:last-child{border-bottom:1px solid var(--hair)}
+.trip-row h3{margin:0;font:500 clamp(22px,2.6vw,29px)/1.15 var(--disp);letter-spacing:-.025em;color:var(--ink)}
+.trip-row p{margin:6px 0 0;grid-column:1;font-size:16px;line-height:1.6;color:var(--body);max-width:52ch}
+.trip-tag{grid-column:2;grid-row:1;font:500 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);white-space:nowrap;padding-top:6px}
+
+/* --- «где это выходит»: карточка канала по центру --- */
+.join{max-width:420px;margin:0 auto;padding:32px 28px;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:#131c2b;text-align:center}
+.join-ava{width:64px;height:64px;border-radius:50%;object-fit:cover;background:#0e1526}
+.join-name{margin-top:16px}
+.join-name b{display:block;font:500 19px/1.2 var(--disp);color:var(--ink)}
+.join-name span{display:block;margin-top:4px;font:500 13px/1.4 var(--mono);color:var(--meta)}
+.join-desc{margin:16px 0 0;font-size:15px;line-height:1.6;color:var(--body)}
+.join-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;padding:20px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.join-stats b{display:block;font:500 19px/1.2 var(--disp);color:var(--ink)}
+.join-stats span{display:block;margin-top:4px;font:500 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--meta)}
+.join-btn{display:block;width:100%;text-align:center}
+.join-alt{display:inline-block;margin-top:14px;font:500 12.5px/1 var(--mono);letter-spacing:.06em;color:var(--meta);text-decoration:none}
+.join-alt:hover{color:var(--acc)}
+
+
+/* вход блоков: только CSS, без JS и без скрытого состояния */
+@keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:no-preference){
+  [data-rise]{animation:riseIn .62s cubic-bezier(.22,1,.36,1) both}
+  .feed [data-rise]:nth-child(2){animation-delay:.08s}
+  .feed [data-rise]:nth-child(3){animation-delay:.16s}
+  .trip [data-rise]:nth-child(2){animation-delay:.08s}
+  .trip [data-rise]:nth-child(3){animation-delay:.16s}
+}
 </style>
 </head>
 <body>
@@ -444,25 +519,28 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
 
   <section id="why" class="sec">
     <div class="sechead">
-      <span class="eyebrow"><i>01</i> зачем</span>
-      <h2>Зачем это тебе</h2>
-      <p class="s">На Авито одну и ту же установку агента продают за 999 ₽ и за 350 000 ₽. Проверить до оплаты нечем: ни цену, ни результат. Сигналы дают эту проверку заранее.</p>
+      <h2>Одну и ту же установку<br>продают за 999 ₽ и за 350 000 ₽</h2>
+      <p class="s">Работа одна. Разница в том, что проверить её до оплаты нечем: ни цену, ни результат.</p>
     </div>
-    <div class="receipt">
-      <div class="rc-head">смета внедрения · до оплаты</div>
-      <div class="rc-row"><span>цена установки</span><i class="lead"></i><span class="val">?</span></div>
-      <div class="rc-row"><span>где сломается</span><i class="lead"></i><span class="val">?</span></div>
-      <div class="rc-row"><span>условия и блокировки</span><i class="lead"></i><span class="val">?</span></div>
-      <div class="rc-total"><span>итого</span><i class="lead"></i><span class="val">неизвестно</span></div>
-      <p class="rc-note">Три строки, которые закрываются до оплаты — а не после. В канале у каждой стоит цифра, источник и дата.</p>
+
+    <div class="scale" data-rise>
+      <div class="scale-rule" aria-hidden="true"><i></i><i></i><b>×350</b><em>одна и та же работа</em></div>
+      <div class="scale-ends">
+        <div><b>999 ₽</b><span>шаблон с Авито</span></div>
+        <div><b>350 000 ₽</b><span>внедрение под процесс</span></div>
+      </div>
+      <div class="scale-close">
+        <span>что закрывает сигнал до оплаты</span>
+        <b>цену рынка · место поломки · условия и блокировки</b>
+        <i>цифра · источник · дата</i>
+      </div>
     </div>
   </section>
 
   <section id="deathmap-sec" class="sec">
     <div class="sechead sechead--split">
       <div>
-        <span class="eyebrow"><i>02</i> карта</span>
-        <h2>Карта смерти рынков</h2>
+          <h2>Карта смерти рынков</h2>
       </div>
       <p class="s">300 рынков России и 16 факторов, которые их вытесняют. Точка — рынок: зелёные живут, красные почти мертвы. <b>Названий нет намеренно:</b> карта показывает масштаб и стадию.</p>
     </div>
@@ -493,77 +571,78 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
 
   <section id="signals" class="sec">
     <div class="sechead">
-      <span class="eyebrow"><i>03</i> посты</span>
-      <h2>Что уже вышло</h2>
-      <p class="s">Три поста из канала — как есть, с датой. Открываются в Telegram.</p>
+      <h2>Что вышло раньше,<br>чем рынок заметил</h2>
+      <p class="s">Три поста — как есть, с датой. Открываются в Telegram.</p>
     </div>
-    <div class="posts">
-      <a class="post" href="https://t.me/discoverysystem/9" target="_blank" rel="noopener">
-        <span class="ptag">цена · 26.10</span>
-        <b class="pnum">999–350 000 ₽</b>
-        <p>Одна и та же установка агента на Авито. Гарантии — через «Защиту сделки»: за проверку результата платят заранее.</p>
-        <div class="pgap" aria-hidden="true"><b>999 ₽</b><i></i><b>350 000 ₽</b><span>×350</span></div>
-        <span class="pgo">открыть пост →</span>
+
+    <div class="feed">
+      <a class="msg" data-rise href="https://t.me/discoverysystem/9" target="_blank" rel="noopener">
+        <img class="msg-ava" src="logo-5.png" alt="">
+        <div class="msg-body">
+          <div class="msg-head"><b>Discovery System</b><time>26.10</time><span class="msg-tag">цена</span></div>
+          <p class="msg-text"><mark>999–350 000 ₽</mark> — одна и та же установка агента на Авито. Гарантии через «Защиту сделки»: за проверку результата платят заранее.</p>
+          <span class="msg-open">открыть пост →</span>
+        </div>
       </a>
-      <a class="post" href="https://t.me/discoverysystem/15" target="_blank" rel="noopener">
-        <span class="ptag">риск · 27.10</span>
-        <b class="pnum">$417 млрд</b>
-        <p>Обязательства Anthropic по вычислениям после выхода на биржу; убыток за полугодие $80,7 млрд. С 12 ноября новая Usage Policy закрывает доступ реселлерам из неподдерживаемых регионов.</p>
-        <span class="pgo">открыть пост →</span>
+
+      <a class="msg msg--cont" data-rise href="https://t.me/discoverysystem/15" target="_blank" rel="noopener">
+        <div class="msg-body">
+          <div class="msg-head"><b>Discovery System</b><time>27.10</time><span class="msg-tag">риск</span></div>
+          <p class="msg-text"><mark>$417 млрд</mark> обязательств Anthropic по вычислениям после выхода на биржу; убыток за полугодие $80,7 млрд. С 12 ноября новая Usage Policy закрывает доступ реселлерам из неподдерживаемых регионов.</p>
+          <span class="msg-open">открыть пост →</span>
+        </div>
       </a>
-      <a class="post" href="https://t.me/discoverysystem/19" target="_blank" rel="noopener">
-        <span class="ptag">скилл · 31.10</span>
-        <b class="pnum">100 карточек</b>
-        <p>Открытый навык ds-pnl-check: показывает, где управленческая отчётность не сходится и каких цифр не хватает под решение. Датасет по публичным данным российских компаний.</p>
-        <span class="pgo">открыть пост →</span>
+
+      <a class="msg msg--cont" data-rise href="https://t.me/discoverysystem/19" target="_blank" rel="noopener">
+        <div class="msg-body">
+          <div class="msg-head"><b>Discovery System</b><time>31.10</time><span class="msg-tag">скилл</span></div>
+          <p class="msg-text"><mark>100 карточек</mark> открытого навыка ds-pnl-check: где управленческая отчётность не сходится и каких цифр не хватает под решение. Датасет по публичным данным российских компаний.</p>
+          <span class="msg-open">открыть пост →</span>
+        </div>
       </a>
     </div>
   </section>
 
   <section id="inside" class="sec">
     <div class="sechead">
-      <span class="eyebrow"><i>04</i> дальше</span>
-      <h2>Что будет дальше</h2>
-      <p class="s">Три вещи, без которых решение о внедрении принимают наугад.</p>
+      <h2>Что выйдет дальше</h2>
     </div>
-    <div class="manifest">
-      <div class="mf-item">
-        <h3>Сигналы рынка</h3>
-        <p>Цена, демпинг, блокировки, смена правил.<br><b>Польза:</b> знаешь, что происходит, до того как это ударит по твоему проекту.</p>
-        <span class="fmt">цифра · источник · дата</span>
+
+    <div class="trip">
+      <div class="trip-row" data-rise>
+        <h3>Цена — видна</h3>
+        <p>Прайсы, стоимость владения, наценки в рублях. Видно, за что платишь и сколько это стоит в месяц.</p>
+        <span class="trip-tag">экономика</span>
       </div>
-      <div class="mf-item">
-        <h3>Разборы внедрений</h3>
-        <p>Где именно сломалось: на приёмке, на данных, на поддержке.<br><b>Польза:</b> узнаёшь чужую ошибку за чужой счёт.</p>
-        <span class="fmt">что было → что стало</span>
+      <div class="trip-row" data-rise>
+        <h3>Поломка — названа</h3>
+        <p>Где именно сломалось: на приёмке, на данных, на поддержке. Чужая ошибка за чужой счёт.</p>
+        <span class="trip-tag">разбор</span>
       </div>
-      <div class="mf-item">
-        <h3>Экономика открыто</h3>
-        <p>Прайсы, стоимость владения, наценки в рублях.<br><b>Польза:</b> видно, за что платишь — и сколько это стоит в месяц.</p>
-        <span class="fmt">₽ · замер с датой</span>
+      <div class="trip-row" data-rise>
+        <h3>Правила — заранее</h3>
+        <p>Демпинг, блокировки, смена условий. Что происходит — до того, как это ударит по проекту.</p>
+        <span class="trip-tag">сигнал</span>
       </div>
     </div>
   </section>
 
   <section id="profile" class="sec">
     <div class="sechead">
-      <span class="eyebrow"><i>05</i> где</span>
-      <h2>Где это найти</h2>
-      <p class="s">Подписка бесплатная. Личный вопрос — в телеграм.</p>
+      <h2>Где это выходит</h2>
+      <p class="s">Канал бесплатный. Личный вопрос — в телеграм.</p>
     </div>
-    <div class="findcard">
-      <div class="findhead">
-        <img src="logo-5.png" alt="">
-        <div><b>Discovery System // Виктор Зайцев</b><span>t.me/discoverysystem</span></div>
-      </div>
-      <p>Канал с исследованиями российского рынка ИИ-агентов — для самозанятых, владельцев малого бизнеса и ИИ-предпринимателей. Внедряю ИИ-агентов и показываю экономику владения сборками, которые не заблокируют.</p>
-      <div class="chips"><span>сигнал</span><span>скилл</span><span>исследование</span><span>бизнес-модель</span></div>
-      <div class="findstats">
+
+    <div class="join" data-rise>
+      <img class="join-ava" src="logo-5.png" alt="Discovery System">
+      <div class="join-name"><b>Discovery System</b><span>@discoverysystem</span></div>
+      <p class="join-desc">Разборы рынка ИИ-внедрений: цены, провалы, блокировки, счёт агента. У каждого факта — цифра, источник и дата.</p>
+      <div class="join-stats">
         <div><b>2–4 дня</b><span>новый сигнал</span></div>
         <div><b>500+</b><span>сигналов в базе</span></div>
-        <div><b>дальше</b><span>карта смерти рынков</span></div>
       </div>
-      <a class="btn btn-p" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Подписаться на канал</a>
+      <a class="btn btn-p join-btn" href="https://t.me/discoverysystem" target="_blank" rel="noopener">Подписаться — бесплатно</a>
+      <a class="join-alt" href="https://t.me/victorpinksight" target="_blank" rel="noopener">написать лично →</a>
     </div>
   </section>
 </div>
@@ -679,6 +758,9 @@ setTimeout(reveal,350);
 })();
 </script>
 <script src="ds-mnav.js?v=20261125a" defer></script>
-<script src="channel-map.js?v=20261125d" defer></script>
+<script src="channel-map.js?v=20261125d" defer>
+
+</script>
+
 </body>
 </html>
