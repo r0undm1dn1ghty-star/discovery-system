@@ -29,7 +29,7 @@ body:after{content:"";pointer-events:none;opacity:.05;position:fixed;inset:0;z-i
 .zone-dark,.mapzone,.wrap{position:relative}
 .zone-dark,.mapzone{z-index:1}
 a{color:inherit}
-.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(20px,4vw,32px);position:relative;z-index:2}
+.wrap{--measure:632px;max-width:1060px;margin:0 auto;padding:0 clamp(20px,4vw,32px);position:relative;z-index:2}
 /* навбар: один HTML на всех страницах, инверсия через переменные тёмной зоны */
 header.nav{border-bottom:1px solid var(--hair2)}
 header.nav nav a{color:var(--meta);text-decoration:none;transition:color .18s var(--ease)}
@@ -43,10 +43,10 @@ header.nav nav a.on{color:var(--ink)}
 .kicker{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--meta);margin-bottom:24px}
 h1{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(34px,4.8vw,58px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance;margin-bottom:20px}
 h1 em{font-style:normal;color:var(--acc)}
-.lede{font-size:clamp(17px,1.5vw,19px);max-width:54ch}
+.lede{font-size:clamp(17px,1.5vw,19px);max-width:min(100%,var(--measure))}
 .lede b{color:var(--ink);font-weight:500}
 /* для кого — строка под лидом героя */
-.forwho{margin-top:24px;padding-top:16px;border-top:1px solid var(--hair2);font-size:17px;max-width:58ch}
+.forwho{margin-top:24px;padding-top:16px;border-top:1px solid var(--hair2);font-size:17px;max-width:min(100%,var(--measure))}
 .forwho b{color:var(--ink);font-weight:500}
 /* боли — волосяной список без коробок: три строки + вывод */
 .paink{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--meta);margin-bottom:8px}
@@ -71,8 +71,7 @@ h1 em{font-style:normal;color:var(--acc)}
 section{padding:clamp(64px,8vw,104px) 0 0;border-top:1px solid var(--hair2)}
 h2{color:var(--ink);font-family:var(--disp);font-weight:500;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.025em;line-height:1.15;text-wrap:balance}
 .shead{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(24px,4vw,64px);align-items:baseline;margin-bottom:clamp(28px,4vw,48px)}
-.shead .s{font-size:17px;max-width:52ch}
-.shead .s b{color:var(--ink);font-weight:500}
+.shead .shead .s b{color:var(--ink);font-weight:500}
 /* что в канале: 3 предмета крупно */
 .items{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,48px);padding-bottom:clamp(8px,1vw,16px)}
 .item{border-top:1px solid var(--hair);padding-top:24px}
@@ -252,7 +251,7 @@ footer.site-foot.ft-dark .sf-legal{border-top-color:rgba(255,255,255,.10);color:
 <style>
 /* выравнивание по одной колонке: герой не уже секций */
 .hero{max-width:none}
-.hero>*{max-width:74ch}
+.hero>*{max-width:min(100%,var(--measure))}
 #why,#deathmap-sec,#signals,#inside,#profile{padding-top:clamp(56px,7vw,88px)}
 @media(max-width:700px){
   section{padding-top:clamp(40px,9vw,56px)}
@@ -277,7 +276,7 @@ h2{font-size:var(--fs-h2);line-height:1.15}
 /* шапка: текущий раздел — не кнопка */
 header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important;color:var(--ink)!important;box-shadow:inset 0 -2px 0 var(--acc)}
 /* полоса доказательств под героем */
-.heroproof{list-style:none;display:grid;grid-template-columns:1fr;gap:0;max-width:74ch;margin-top:32px;padding-top:20px;border-top:1px solid var(--hair2)}
+.heroproof{list-style:none;display:grid;grid-template-columns:1fr;gap:0;max-width:min(100%,var(--measure));margin-top:32px;padding-top:20px;border-top:1px solid var(--hair2)}
 .heroproof li{display:flex;align-items:baseline;gap:8px;padding:8px 0}
 .heroproof b{font:500 20px/1 var(--mono);color:var(--acc);letter-spacing:-.01em;white-space:nowrap}
 .heroproof span{font-size:15px;color:var(--meta)}
@@ -289,14 +288,14 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
 .eyebrow i{font-style:normal;color:var(--acc)}
 .sechead{margin-bottom:clamp(22px,4vw,36px)}
 .sechead h2{margin-bottom:8px}
-.sechead .s{font-size:17px;line-height:1.6;color:var(--body);max-width:62ch}
+.sechead .s{font-size:17px;line-height:1.6;color:var(--body);max-width:min(100%,var(--measure))}
 .sechead .s b{color:var(--ink);font-weight:500}
 @media(min-width:900px){
   .sechead--split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,64px);align-items:end}
   .sechead--split .s{padding-bottom:4px}
 }
 /* 01 смета до оплаты — документ с тремя неизвестными, не список */
-.receipt{max-width:100%;border:1px solid var(--hair);border-radius:14px;background:rgba(19,28,43,.62);padding:clamp(16px,4.6vw,26px);font-family:var(--mono)}
+.receipt{max-width:min(100%,var(--measure));border:1px solid var(--hair);border-radius:14px;background:rgba(19,28,43,.62);padding:clamp(16px,4.6vw,26px);font-family:var(--mono)}
 .rc-head{font:500 12.5px/1.4 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--meta);margin-bottom:12px}
 .rc-row{display:flex;align-items:baseline;gap:8px;padding:12px 0;border-bottom:1px solid var(--hair2);font:400 15px/1.4 var(--mono);color:var(--ink)}
 .rc-row .lead,.rc-total .lead{flex:1;min-width:16px;border-bottom:1px dotted rgba(255,255,255,.22);transform:translateY(-4px);min-width:24px}
@@ -356,7 +355,7 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
 }
 
 /* 05 где найти */
-.findcard{border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#131c2b;padding:clamp(18px,5vw,26px);max-width:620px}
+.findcard{border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#131c2b;padding:clamp(18px,5vw,26px);max-width:min(100%,var(--measure))}
 .findhead{display:flex;align-items:center;gap:12px;min-width:0}
 .findhead img{width:46px;height:46px;border-radius:50%;flex:none;object-fit:cover}
 .findhead b{display:block;font:500 17px/1.35 var(--disp);color:var(--ink)}
@@ -374,7 +373,6 @@ header.nav .nav-in > nav a[aria-current="page"]{background:transparent!important
 /* cookie-плашка не спорит с главным CTA страницы */
 #ds-cookie .ck-yes{background:transparent!important;color:var(--ink)!important;border:1px solid rgba(255,255,255,.24)!important;box-shadow:none!important}
 #ds-cookie .ck-yes:hover{background:rgba(255,255,255,.10)!important}
-@media(min-width:900px){.receipt{max-width:calc(100% * 2 / 3)}}
 </style>
 </head>
 <body>
